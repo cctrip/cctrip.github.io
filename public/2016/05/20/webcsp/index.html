@@ -1,0 +1,180 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>WEB安全之CSP | Code.CC</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/4.1.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/2.2.3/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">WEB安全之CSP</h1><a id="logo" href="/.">Code.CC</a><p class="description">—— 乘兴所至，心无旁及。</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">WEB安全之CSP</h1><div class="post-meta">May 20, 2016<span> | </span><span class="category"><a href="/categories/technology/">technology</a></span><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span></div><div class="post-content"><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>内容安全策略(Content-Security-Policy，CSP)：是一种web应用技术用于帮助缓解大部分类型的内容注入攻击，包括XSS攻击和数据注入等，这些攻击可实现数据窃取、网站破坏和作为恶意软件分发版本等行为。该策略可让网站管理员指定客户端允许加载的各类可信任资源。</p>
+<hr>
+<h3 id="浏览器支持"><a href="#浏览器支持" class="headerlink" title="浏览器支持"></a>浏览器支持</h3><p><img src="image/607348-20151208141131543-187859986.png" alt=""></p>
+<p>统计来源：<a href="http://caniuse.com/#feat=contentsecuritypolicy" target="_blank" rel="external">caniuse.com/contentsecuritypolicy</a> &amp; <a href="https://hacks.mozilla.org/2013/05/content-security-policy-1-0-lands-in-firefox-aurora/" target="_blank" rel="external">Mozilla</a></p>
+<hr>
+<h3 id="指令参考"><a href="#指令参考" class="headerlink" title="指令参考"></a>指令参考</h3><p>Content-Security-Policy 响应头的值可配置一个或多个，多个指令以分号;隔开。</p>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>示例</th>
+<th>描述    </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> default-src</td>
+<td>‘self’ cdn.example.com</td>
+<td>默认配置，若其他指令没有配置，都以此配置的规则为准</td>
+</tr>
+<tr>
+<td> script-src</td>
+<td>‘self’ js.example.com</td>
+<td>定义允许加载的JavaScript来源</td>
+</tr>
+<tr>
+<td> style-src</td>
+<td>‘self’ css.example.com</td>
+<td>定义允许加载的样式表来源</td>
+</tr>
+<tr>
+<td> img-src</td>
+<td>‘self’ img.example.com</td>
+<td>定义允许加载的图片来源</td>
+</tr>
+<tr>
+<td> connect-src</td>
+<td>‘self’</td>
+<td>适用于XMLHttpRequest(AJAX),WebSocket或EventSource，当为不允许的来源，浏览器返回一个400的状态码。</td>
+</tr>
+<tr>
+<td> font-src</td>
+<td>font.example.com</td>
+<td>定义允许加载的字体来源</td>
+</tr>
+<tr>
+<td> object-src</td>
+<td>‘self’</td>
+<td>定义允许加载的插件来源.eg,<object\>,<embed\>或<applet\></applet\></embed\></object\></td>
+</tr>
+<tr>
+<td> media-src</td>
+<td>media.example.com</td>
+<td>定义允许加载的audio和video.eg,HTML5,<audio\>,<video\>元素</video\></audio\></td>
+</tr>
+<tr>
+<td> frame-src</td>
+<td>‘self’</td>
+<td>定义允许加载的框架来源</td>
+</tr>
+<tr>
+<td> sandbox</td>
+<td>allow-forms allow-scripts</td>
+<td>授权一个沙箱用来请求具有iframe sanbox等类似属性的资源,该沙箱默认为同源策略,禁止弹出窗口,执行插件和脚本.若要允许其他,可增加配置:allow-forms,allow-same-origin,allow-scripts,allow-top-navigation</td>
+</tr>
+<tr>
+<td> report-uri</td>
+<td>/some-report-uri</td>
+<td>该配置让浏览器发送一个失败报告到指定的路径，也可以增加-Report-only到HTTP头,让浏览器只发送报告(不做阻止动作)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="来源配置参考"><a href="#来源配置参考" class="headerlink" title="来源配置参考"></a>来源配置参考</h3><p>所有的指令都要在配置后面添加来源列表，多个来源列表可用空格隔开，*和none只能存在一个。</p>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>示例</th>
+<th>描述    </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> *</td>
+<td>img-src *</td>
+<td>无限制，允许所有</td>
+</tr>
+<tr>
+<td> ‘none’</td>
+<td>object-src ‘none’</td>
+<td>禁止加载任何路径的资源</td>
+</tr>
+<tr>
+<td> ‘self’</td>
+<td>script-src ‘self’</td>
+<td>允许加载同源的资源</td>
+</tr>
+<tr>
+<td> data:</td>
+<td>img-src ‘self’ data:</td>
+<td>允许通过数据模式加载资源</td>
+</tr>
+<tr>
+<td> domain.ccc.com</td>
+<td>img-src img.ccc.com</td>
+<td>允许加载匹配域名的资源</td>
+</tr>
+<tr>
+<td> *.ccc.com</td>
+<td>img-src *.ccc.com</td>
+<td>允许加载匹配域名的资源</td>
+</tr>
+<tr>
+<td> <a href="https://img.ccc.com" target="_blank" rel="external">https://img.ccc.com</a></td>
+<td>img-src <a href="https://img.ccc.com" target="_blank" rel="external">https://img.ccc.com</a></td>
+<td>允许加载匹配https方式的域名资源</td>
+</tr>
+<tr>
+<td> https:</td>
+<td>img-src https:</td>
+<td>允许加载所有匹配https方式的资源</td>
+</tr>
+<tr>
+<td> ‘unsafe-inline’</td>
+<td>script-src ‘unsafe-inline’</td>
+<td>允许使用内联元素,类似,Style attribute,onclick,scripttag bodies</td>
+</tr>
+<tr>
+<td> ‘unsafe-eval’</td>
+<td>script-src ‘unsafe-eval’</td>
+<td>允许不安全的动态编码，例如eval()</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><ul>
+<li><p>只允许加载同源的所有资源</p>
+<p>  <code>default-src &#39;self&#39;;</code></p>
+</li>
+<li><p>支持*号匹配</p>
+<p>  <code>default-src &#39;self&#39; https://*.ccc.com:*;</code></p>
+</li>
+<li><p>只允许加载同源的脚本</p>
+<p>  <code>script-src &#39;self&#39;;</code></p>
+</li>
+<li><p>只允许加载同源的和www.ccc.com的脚本</p>
+<p>  <code>script-src &#39;self&#39; www.ccc.com;</code></p>
+</li>
+</ul>
+<hr>
+<h3 id="常见配置"><a href="#常见配置" class="headerlink" title="常见配置"></a>常见配置</h3><ul>
+<li><p>该策略允许加载同源的图片、脚本、AJAX和CSS资源，并阻止加载其他任何资源，对于大多数网站是一个不错的配置。</p>
+<p>  <code>default-src &#39;none&#39;; script-src &#39;self&#39;; connect-src &#39;self&#39;; img-src &#39;self&#39;; style-src &#39;self&#39;;</code></p>
+</li>
+</ul>
+<ul>
+<li><p>被禁止时的报错信息：</p>
+<p>  谷歌浏览器可通过谷歌开发工具查看该报错，通常是按F12</p>
+  <font color="red">Refused to load the script ‘script-uri’ because it violates the following Content Security Policy directive: “your CSP directive”.</font>
+
+<p>  Firefox 可通过 Web Developer Tools 查看报错</p>
+  <font color="red">Content Security Policy: A violation occurred for a report-only CSP policy (“An attempt to execute inline scripts has been blocked”). The behavior was allowed, and a CSP report was sent.</font>
+
+
+
+
+</li>
+</ul>
+<hr>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="http://content-security-policy.com/" target="_blank" rel="external">http://content-security-policy.com/</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/Security/CSP" target="_blank" rel="external">https://developer.mozilla.org/en-US/docs/Web/Security/CSP</a></p>
+<p><a href="http://www.w3.org/TR/CSP2/" target="_blank" rel="external">http://www.w3.org/TR/CSP2/</a></p>
+</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="http://code-cc.github.io/2016/05/20/webcsp/" data-id="ciovly57f000bfcffzvnglzmb" class="article-share-link">分享到</a><div class="tags"><a href="/tags/web/">web</a><a href="/tags/security/">security</a></div><div class="post-nav"><a href="/2016/05/21/systemstart/" class="pre">理解系统启动过程</a><a href="/2016/05/19/tls/" class="next">理解SSL/TLS协议</a></div></div></div></div><div class="pure-u-1-4"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/technology/">technology</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/network/" style="font-size: 15px;">network</a> <a href="/tags/web/" style="font-size: 15px;">web</a> <a href="/tags/system/" style="font-size: 15px;">system</a> <a href="/tags/security/" style="font-size: 15px;">security</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/05/29/http/">谈谈HTTP</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/21/dns/">谈谈DNS</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/21/systemstart/">理解系统启动过程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/20/webcsp/">WEB安全之CSP</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/19/tls/">理解SSL/TLS协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/18/networkcomm/">简单理解计算机通信</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://buranle.github.io/" title="不然嘞" target="_blank">不然嘞</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© <a href="/." rel="nofollow">Code.CC.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css?v=0.0.0"><script type="text/javascript" src="/js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
