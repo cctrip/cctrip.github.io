@@ -1,0 +1,83 @@
+<!DOCTYPE html><html lang="zh-cn"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>谈谈DNS | Code.CC</title><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/5.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/grids-responsive-min.css"><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">谈谈DNS</h1><a id="logo" href="/.">Code.CC</a><p class="description">—— 乘兴所至，心无旁及。</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> Accueil</i></a><a href="/archives/"><i class="fa fa-archive"> Archive</i></a><a href="/about/"><i class="fa fa-user"> À propos</i></a><a href="/atom.xml"><i class="fa fa-rss"> RSS</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">谈谈DNS</h1><div class="post-meta">May 21, 2016<span> | </span><span class="category"><a href="/categories/technology/">technology</a></span><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span></div><div class="post-content"><h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><p>目前，我们大部分的网络通信都是基于TCP/IP协议的，而TCP/IP又基于IP地址作为唯一标识进行通信，随着需要记忆的IP地址数量的增多，肯定会超出我们的记忆能力范围，但如果使用一种利于人们的记忆的方式，如域名，例如”www.google.com”，我们便可以轻松的记忆这种方式的标识，而不是繁杂的数字。而DNS(域名系统)就是为了可以使用这种方式提供服务的。</p>
+<hr>
+<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>DNS(Domain Name System)，域名系统，它是因特网的一项服务。它作为将域名和IP地址相互映射的一个分布式数据库，能够使人更方便地访问互联网。DNS使用TCP和UDP端口53。当前，对于每一级域名长度的限制是63个字符，域名总长度则不能超过253个字符。</p>
+<p>DNS Domain Namespace，DNS域命名空间，是一种分层树状结构，其格式如下:”www.google.com”,以点”.”为分隔。结构如图所示：</p>
+<p><img src="image/607348-20160301212335189-776690379.gif" alt=""></p>
+<ul>
+<li><p>根域：绝对域名(FQDN)，以点”.”结尾的域名</p>
+</li>
+<li><p>顶级域：用来指示某个国家/地区或组织使用的名称的类型名称，例如.com</p>
+</li>
+<li><p>二级域：个人或组织在因特网上使用的注册名称，例如google.com</p>
+</li>
+<li><p>子域：已注册的二级域名派生的域名，一般就是网站名，例如www.google.com</p>
+</li>
+<li><p>主机名：标识网络上的特定计算机，例如h1.www.google.com</p>
+</li>
+</ul>
+<p>DNS资源记录：(即映射关系，通常由域名管理员进行配置)，常见类型如下：</p>
+<ul>
+<li><p>SOA：起始授权机构</p>
+</li>
+<li><p>NS：名称服务器</p>
+</li>
+<li><p>MX：邮件服务器</p>
+</li>
+<li><p>A：IP地址(最常用，映射IP地址)</p>
+</li>
+<li><p>CNAME：别名(较常用，映射到其他域名)</p>
+</li>
+</ul>
+<hr>
+<p>　</p>
+<h3 id="DNS工作原理"><a href="#DNS工作原理" class="headerlink" title="DNS工作原理"></a>DNS工作原理</h3><p>当我们请求一个域名时，会通过DNS服务器将域名解析成IP访问最终的主机，那么，DNS是如何查询到域名所对应的IP并返回给我们的呢？请工作机制如图所示：</p>
+<p><img src="image/607348-20160301205942986-1456220290.png" alt=""></p>
+<p>当我们请求一个域名时，直到获取到IP地址，整个过程是如何工作的？以请求www.codecc.xyz为例：</p>
+<ol>
+<li><p>首先，我们的主机会去查找本地的hosts文件和本地DNS解析器缓存，如果hosts文件和本地DNS缓存存在www.codecc.xyz和IP的映射关系，则完成域名解析，请求该IP地址，否则进入第二步。</p>
+</li>
+<li><p>当hosts和本地DNS解析器缓存都没有对应的网址映射关系，则会根据机器(/etc/reslove.conf)配置的本地DNS服务器进行查询，此服务器收到查询时，如果要查询的域名在本地配置区域资源或者缓存中存在映射关系，则跳到步骤9，将解析结果直接返回给客户机。</p>
+</li>
+</ol>
+<p>PS：一二步骤为递归查询，其余步骤为迭代查询</p>
+<ol>
+<li><p>若本地DNS服务器不存在该域名的映射关系，就把请求发送至13台根DNS服务器。</p>
+</li>
+<li><p>根DNS服务器会判断这个域名(.xyz)由谁来授权管理，并返回一个负责该顶级域的DNS服务器的一个IP给本地DNS服务器。</p>
+</li>
+<li><p>本地DNS服务器收到该IP后，会再将查询请求发送至(.xyz)所在的DNS服务器。</p>
+</li>
+<li><p>如果(.xyz)的DNS服务器无法解析该域名，就会去判断这个二级域名(codecc.xyz)的管理者，返回一个负责该二级域的DNS服务器的IP给本地DNS服务器。</p>
+</li>
+<li><p>本地DNS服务器收到该IP后，会再次将查询请求发送至(codecc.xyz)所在的DNS服务器。</p>
+</li>
+<li><p>(codecc.xyz)的DNS服务器会存有www.codecc.xzy的映射关系，将解析后的IP返回给本地DNS服务器</p>
+</li>
+<li><p>本地DNS服务器根据查询到的解析IP发送给客户机，至此，DNS解析完成。</p>
+</li>
+</ol>
+<hr>
+<h3 id="常用DNS查询命令"><a href="#常用DNS查询命令" class="headerlink" title="常用DNS查询命令"></a>常用DNS查询命令</h3><ul>
+<li><p>windows：</p>
+<ul>
+<li><p><code>nslookup 域名</code></p>
+<p><img src="image/607348-20160420012038241-52598954.png" alt=""></p>
+</li>
+</ul>
+</li>
+<li><p>Linux：</p>
+<ul>
+<li><p><code>nslookup 域名</code></p>
+<p><img src="image/607348-20160420012104335-886114220.png" alt=""></p>
+</li>
+<li><p><code>dig 域名</code></p>
+<p><img src="image/607348-20160420012127523-1968920086.png" alt=""></p>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://en.wikipedia.org/wiki/Domain_Name_System" target="_blank" rel="external">https://en.wikipedia.org/wiki/Domain_Name_System</a></p>
+<p><a href="https://technet.microsoft.com/en-us/library/cc772774(v=ws.10" target="_blank" rel="external">https://technet.microsoft.com/en-us/library/cc772774(v=ws.10).aspx</a>.aspx)</p>
+<p><a href="">《TCP/IP详解卷1：协议》</a></p>
+</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="http://code-cc.github.io/2016/05/21/dns/" data-id="cixwmkiwe0000mo8zrbxm2i67" class="article-share-link">Partager</a><div class="tags"><a href="/tags/network/">network</a></div><div class="post-nav"><a href="/2016/05/29/http/" class="pre">谈谈HTTP</a><a href="/2016/05/21/systemstart/" class="next">理解系统启动过程</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://code-cc.github.io"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Catégories</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/technology/">technology</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"><a href="/tags/network/" style="font-size: 15px;">network</a> <a href="/tags/system/" style="font-size: 15px;">system</a> <a href="/tags/web/" style="font-size: 15px;">web</a> <a href="/tags/security/" style="font-size: 15px;">security</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Récent</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/06/20/filesystem/">文件系统</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/29/http/">谈谈HTTP</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/21/dns/">谈谈DNS</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/21/systemstart/">理解系统启动过程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/20/webcsp/">WEB安全之CSP</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/19/tls/">理解SSL/TLS协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/18/networkcomm/">简单理解计算机通信</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> À suivre</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© <a href="/." rel="nofollow">Code.CC.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css?v=0.0.0"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>

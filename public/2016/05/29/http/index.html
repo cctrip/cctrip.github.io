@@ -1,0 +1,118 @@
+<!DOCTYPE html><html lang="zh-cn"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>谈谈HTTP | Code.CC</title><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/5.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/grids-responsive-min.css"><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">谈谈HTTP</h1><a id="logo" href="/.">Code.CC</a><p class="description">—— 乘兴所至，心无旁及。</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> Accueil</i></a><a href="/archives/"><i class="fa fa-archive"> Archive</i></a><a href="/about/"><i class="fa fa-user"> À propos</i></a><a href="/atom.xml"><i class="fa fa-rss"> RSS</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">谈谈HTTP</h1><div class="post-meta">May 29, 2016<span> | </span><span class="category"><a href="/categories/technology/">technology</a></span><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span></div><div class="post-content"><h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><p>如今网络已经无处不在，人们通过网络获取浏览各种信息，其中，大部分都是通过浏览器访问各种网页来获取我们想要的信息，那么浏览器与网页(服务端)究竟是如何通信的呢？这就得从HTTP协议说起了，浏览器获取网页信息都是基于HTTP协议来处理的。</p>
+<hr>
+<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>HTTP（HyperText Transfer Protocol，超文本传输协议）是互联网上应用最为广泛的一种网络协议。设计HTTP最初的目的是为了提供一种发布和接收HTML页面的方法。通过HTTP或者HTTPS协议请求的资源由统一资源标识符（Uniform Resource Identifiers，URI）来标识。HTTP是一个应用层协议，由请求和响应构成，是一个标准的客户端服务器模型。其具有如下特点：</p>
+<ul>
+<li><p>支持客户/服务器模式。</p>
+</li>
+<li><p>简单快速：客户向服务器请求服务时，只需传送请求方法和路径。请求方法常用的有GET、HEAD、POST。每种方法规定了客户与服务器联系的类型不同。由于HTTP协议简单，使得HTTP服务器的程序规模小，因而通信速度很快。</p>
+</li>
+<li><p>灵活：HTTP允许传输任意类型的数据对象。正在传输的类型由Content-Type加以标记。</p>
+</li>
+<li><p>无连接：无连接的含义是限制每次连接只处理一个请求。服务器处理完客户的请求，并收到客户的应答后，即断开连接。采用这种方式可以节省传输时间。</p>
+</li>
+<li><p>无状态：HTTP协议是无状态协议。无状态是指协议对于事务处理没有记忆能力。缺少状态意味着如果后续处理需要前面的信息，则它必须重传，这样可能导致每次连接传送的数据量增大。另一方面，在服务器不需要先前信息时它的应答就较快</p>
+</li>
+</ul>
+<p>PS：尽管TCP/IP协议是互联网上最流行的应用，HTTP协议中，并没有规定必须使用它或它支持的层。事实上，HTTP可以在任何互联网协议上，或其他网络上实现。HTTP假定其下层协议提供可靠的传输。因此，任何能够提供这种保证的协议都可以被其使用。因此也就是其在TCP/IP协议族使用TCP作为其传输层。</p>
+<hr>
+<h3 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h3><p>HTTP协议的通信过程永远是客户端发起请求(request)，服务器回送响应(respone)，如下图所示：</p>
+<p><img src="image/5657919_2.jpg" alt=""></p>
+<p>一个完整的HTTP操作称为一个事务，其流程可分为四步：</p>
+<ul>
+<li><p>建立连接(TCP三次握手)</p>
+</li>
+<li><p>客户端发送一个请求报文给服务器</p>
+</li>
+<li><p>服务器响应对应信息</p>
+</li>
+<li><p>客户端接收信息，然后断开连接</p>
+</li>
+</ul>
+<hr>
+<h3 id="请求和响应详解"><a href="#请求和响应详解" class="headerlink" title="请求和响应详解"></a>请求和响应详解</h3><h4 id="请求报文"><a href="#请求报文" class="headerlink" title="请求报文"></a>请求报文</h4><ul>
+<li><p>请求行：由请求方法、URL和HTTP版本组成</p>
+<p>  eg：GET /index.html HTTP/1.1</p>
+<ul>
+<li><p>请求方法</p>
+<ul>
+<li><p>GET：请求获取URI所标识的资源</p>
+</li>
+<li><p>HEAD：请求获取URI所标识的资源，但不传回资源的文本部分</p>
+</li>
+<li><p>POST：向指定URI资源提交数据，请求服务器进行处理</p>
+</li>
+<li><p>PUT：向指定URI资源上传其最新内容</p>
+</li>
+<li><p>DELETE：请求服务器删除URI所标识的资源</p>
+</li>
+<li><p>TRACE：回显服务器收到的请求，主要用于测试或诊断</p>
+</li>
+<li><p>OPTIONS：请求URI资源所支持的HTTP请求方法</p>
+</li>
+<li><p>CONNECT：HTTP/1.1协议中预留给能够将连接改为管道方式的代理服务器。通常用于SSL加密服务器的链接</p>
+</li>
+</ul>
+</li>
+<li><p>URL</p>
+<p>  请求的资源路径</p>
+</li>
+<li><p>协议版本</p>
+<p>  现在大部分为HTTP/1.0 和 HTTP/1.1</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>请求头部</p>
+<p>  eg：host:www.google.com</p>
+<p>  host为必选，其他都为可选参数</p>
+</li>
+<li><p>空行</p>
+</li>
+<li><p>消息体</p>
+<p>  请求所带的文本</p>
+</li>
+</ul>
+<h4 id="响应报文"><a href="#响应报文" class="headerlink" title="响应报文"></a>响应报文</h4><ul>
+<li><p>状态行：由协议版本、状态码和描述信息组成</p>
+<p>  eg：HTTP/1.1 200 OK</p>
+<ul>
+<li><p>协议版本</p>
+</li>
+<li><p>状态码：用于告诉客户端，服务器是否产生预期的响应</p>
+<ul>
+<li><p>1XX：提示信息，表示请求已被成功接收，继续处理</p>
+</li>
+<li><p>2XX：成功，表示请求已被成功接收，理解</p>
+</li>
+<li><p>3XX：重定向，要完成请求必须进行更进一步的处理</p>
+</li>
+<li><p>4XX：客户端错误，请求有语法错误或请求无法实现</p>
+</li>
+<li><p>5XX：服务器端错误，服务器未能实现合法的请求</p>
+</li>
+</ul>
+</li>
+<li><p>描述信息</p>
+</li>
+</ul>
+</li>
+<li><p>响应头部</p>
+</li>
+<li><p>空行</p>
+</li>
+<li><p>消息体</p>
+</li>
+</ul>
+<h4 id="一个例子"><a href="#一个例子" class="headerlink" title="一个例子"></a>一个例子</h4><p>访问codecc.xyz首页</p>
+<ul>
+<li>Request，首行为请求行，其余为请求头部</li>
+</ul>
+<p><img src="image/20160531232545.png" alt=""></p>
+<ul>
+<li>Respone，首行为响应状态行，空行前为响应头部，其余为响应数据</li>
+</ul>
+<p><img src="image/20160531232617.png" alt=""></p>
+<hr>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol" target="_blank" rel="external">https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol</a></p>
+</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="http://code-cc.github.io/2016/05/29/http/" data-id="cixwmkix40005mo8zfbvj617d" class="article-share-link">Partager</a><div class="tags"><a href="/tags/network/">network</a><a href="/tags/web/">web</a></div><div class="post-nav"><a href="/2016/06/20/filesystem/" class="pre">文件系统</a><a href="/2016/05/21/dns/" class="next">谈谈DNS</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://code-cc.github.io"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Catégories</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/technology/">technology</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"><a href="/tags/network/" style="font-size: 15px;">network</a> <a href="/tags/system/" style="font-size: 15px;">system</a> <a href="/tags/web/" style="font-size: 15px;">web</a> <a href="/tags/security/" style="font-size: 15px;">security</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Récent</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/06/20/filesystem/">文件系统</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/29/http/">谈谈HTTP</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/21/dns/">谈谈DNS</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/21/systemstart/">理解系统启动过程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/20/webcsp/">WEB安全之CSP</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/19/tls/">理解SSL/TLS协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/18/networkcomm/">简单理解计算机通信</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> À suivre</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© <a href="/." rel="nofollow">Code.CC.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css?v=0.0.0"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
