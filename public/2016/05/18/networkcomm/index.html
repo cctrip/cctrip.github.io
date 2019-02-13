@@ -1,7 +1,478 @@
-<!DOCTYPE html><html lang="zh-cn"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>简单理解计算机通信 | Code.CC</title><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/5.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/0.6.0/grids-responsive-min.css"><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">简单理解计算机通信</h1><a id="logo" href="/.">Code.CC</a><p class="description">—— 乘兴所至，心无旁及。</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> Accueil</i></a><a href="/archives/"><i class="fa fa-archive"> Archive</i></a><a href="/about/"><i class="fa fa-user"> À propos</i></a><a href="/atom.xml"><i class="fa fa-rss"> RSS</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">简单理解计算机通信</h1><div class="post-meta">May 18, 2016<span> | </span><span class="category"><a href="/categories/technology/">technology</a></span><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span></div><div class="post-content"><h3 id="写在前面："><a href="#写在前面：" class="headerlink" title="写在前面："></a>写在前面：</h3><p>在计算机刚出现的时候，只能在本机进行一些运算处理，想将一台计算机中的数据转移到另一台计算机中，需要通过外部存储介质来传输，例如磁带、软盘。而网络技术的出现，使得计算机间可以通过一些传输介质(网线、光纤等)，实现快速的数据传输和信息交互。如今，网络已无处不在，那么，计算机之间究竟是如何通信的呢？下面会通过一些基础的网络知识来简单理解计算机之间的通信过程。</p>
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="写在前面：在计算机刚出现的时候，只能在本机进行一些运算处理，想将一台计算机中的数据转移到另一台计算机中，需要通过外部存储介质来传输，例如磁带、软盘。而网络技术的出现，使得计算机间可以通过一些传输介质(网线、光纤等)，实现快速的数据传输和信息交互。如今，网络已无处不在，那么，计算机之间究竟是如何通信的呢？下面会通过一些基础的网络知识来简单理解计算机之间的通信过程。  网络通信模型：网络通信模型是一种">
+<meta name="keywords" content="network">
+<meta property="og:type" content="article">
+<meta property="og:title" content="简单理解计算机通信">
+<meta property="og:url" content="http://cctrip.github.io/2016/05/18/networkcomm/index.html">
+<meta property="og:site_name" content="Code.CC">
+<meta property="og:description" content="写在前面：在计算机刚出现的时候，只能在本机进行一些运算处理，想将一台计算机中的数据转移到另一台计算机中，需要通过外部存储介质来传输，例如磁带、软盘。而网络技术的出现，使得计算机间可以通过一些传输介质(网线、光纤等)，实现快速的数据传输和信息交互。如今，网络已无处不在，那么，计算机之间究竟是如何通信的呢？下面会通过一些基础的网络知识来简单理解计算机之间的通信过程。  网络通信模型：网络通信模型是一种">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://cctrip.github.io/2016/05/18/networkcomm/image/607348-20160312201154210-2019193861.jpg">
+<meta property="og:image" content="http://cctrip.github.io/2016/05/18/networkcomm/image/607348-20160312202413054-848303498.png">
+<meta property="og:image" content="http://cctrip.github.io/2016/05/18/networkcomm/image/607348-20160312203516679-1695630421.gif">
+<meta property="og:image" content="http://cctrip.github.io/2016/05/18/networkcomm/image/607348-20160312211241132-1517700594.png">
+<meta property="og:image" content="http://cctrip.github.io/2016/05/18/networkcomm/image/607348-20160312213647569-286300397.gif">
+<meta property="og:image" content="http://cctrip.github.io/2016/05/18/networkcomm/image/607348-20160312214932366-1742109445.png">
+<meta property="og:image" content="http://cctrip.github.io/2016/05/18/networkcomm/image/607348-20160312220145210-443719950.png">
+<meta property="og:image" content="http://cctrip.github.io/2016/05/18/networkcomm/image/607348-20160312220158054-2124916124.png">
+<meta property="og:image" content="http://cctrip.github.io/2016/05/18/networkcomm/image/607348-20160312220227866-1298265423.png">
+<meta property="og:image" content="http://cctrip.github.io/2016/05/18/networkcomm/image/607348-20160312221617569-1834112731.png">
+<meta property="og:image" content="http://cctrip.github.io/2016/05/18/networkcomm/image/607348-20160312221825819-331058027.png">
+<meta property="og:image" content="http://cctrip.github.io/2016/05/18/networkcomm/image/607348-20160312221946585-1872997601.png">
+<meta property="og:updated_time" content="2019-01-28T06:25:36.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="简单理解计算机通信">
+<meta name="twitter:description" content="写在前面：在计算机刚出现的时候，只能在本机进行一些运算处理，想将一台计算机中的数据转移到另一台计算机中，需要通过外部存储介质来传输，例如磁带、软盘。而网络技术的出现，使得计算机间可以通过一些传输介质(网线、光纤等)，实现快速的数据传输和信息交互。如今，网络已无处不在，那么，计算机之间究竟是如何通信的呢？下面会通过一些基础的网络知识来简单理解计算机之间的通信过程。  网络通信模型：网络通信模型是一种">
+<meta name="twitter:image" content="http://cctrip.github.io/2016/05/18/networkcomm/image/607348-20160312201154210-2019193861.jpg">
+
+
+
+
+
+
+  <link rel="canonical" href="http://cctrip.github.io/2016/05/18/networkcomm/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>简单理解计算机通信 | Code.CC</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Code.CC</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">—— 我亦是行人。</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://cctrip.github.io/2016/05/18/networkcomm/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Code.CC">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Code.CC">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">简单理解计算机通信
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-05-18 00:36:31" itemprop="dateCreated datePublished" datetime="2016-05-18T00:36:31+08:00">2016-05-18</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-01-28 14:25:36" itemprop="dateModified" datetime="2019-01-28T14:25:36+08:00">2019-01-28</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/technology/" itemprop="url" rel="index"><span itemprop="name">technology</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="写在前面："><a href="#写在前面：" class="headerlink" title="写在前面："></a>写在前面：</h3><p>在计算机刚出现的时候，只能在本机进行一些运算处理，想将一台计算机中的数据转移到另一台计算机中，需要通过外部存储介质来传输，例如磁带、软盘。而网络技术的出现，使得计算机间可以通过一些传输介质(网线、光纤等)，实现快速的数据传输和信息交互。如今，网络已无处不在，那么，计算机之间究竟是如何通信的呢？下面会通过一些基础的网络知识来简单理解计算机之间的通信过程。</p>
 <hr>
 <h3 id="网络通信模型："><a href="#网络通信模型：" class="headerlink" title="网络通信模型："></a>网络通信模型：</h3><p>网络通信模型是一种概念模型和框架，旨在使各种计算机在世界范围内互连为网络。其中有OSI七层模型和TCP/IP四层模型，现在大部分网络通信都是以TCP/IP四层模型为基础的。它们的对应层次如下图：</p>
-<p><img src="image/607348-20160312201154210-2019193861.jpg" alt=""></p>
+<p><img src="/2016/05/18/networkcomm/image/607348-20160312201154210-2019193861.jpg" alt=""></p>
 <ul>
 <li><p>OSI有七层：从上到下依次为应用层、表示层、会话层、传输层、网络层、数据链路层、物理层</p>
 </li>
@@ -9,10 +480,10 @@
 </li>
 </ul>
 <p>因为目前大部分TCP/IP模型，所以就以TCP/IP为例，我们来理解下数据间的通信，下图是两台计算机通信的数据的传输过程：</p>
-<p><img src="image/607348-20160312202413054-848303498.png" alt=""></p>
+<p><img src="/2016/05/18/networkcomm/image/607348-20160312202413054-848303498.png" alt=""></p>
 <hr>
 <h3 id="数据封装："><a href="#数据封装：" class="headerlink" title="数据封装："></a>数据封装：</h3><p>在详细了解TCP/IP每一层各自的作用前，先要理解数据封装的概念，数据在通过网络接口传送出去前，会经过层层封装，每层都会在前面的基础上添加自己的信息，在传输到对方计算机后，又会被层层进行解封装后得到最后的数据。其过程如下图所示：</p>
-<p><img src="image/607348-20160312203516679-1695630421.gif" alt=""></p>
+<p><img src="/2016/05/18/networkcomm/image/607348-20160312203516679-1695630421.gif" alt=""></p>
 <hr>
 <h3 id="TCP-IP参考模型："><a href="#TCP-IP参考模型：" class="headerlink" title="TCP/IP参考模型："></a>TCP/IP参考模型：</h3><p>TCP/IP参考模型是一个抽象的分层模型，这个模型中，所有的TCP/IP系列网络协议都被归类到4个抽象的”层”中。每一抽象层创建在低一层提供的服务上，并且为高一层提供服务。 完成一些特定的任务需要众多的协议协同工作，这些协议分布在参考模型的不同层中的，因此有时称它们为一个协议栈。</p>
 <h5 id="应用层-Application-Layer-："><a href="#应用层-Application-Layer-：" class="headerlink" title="应用层(Application Layer)："></a>应用层(Application Layer)：</h5><ul>
@@ -25,7 +496,7 @@
 <li>TCP为两台主机提供高可靠性的数据通信。它所做的工作包括把应用程序交给它的数据分成合适的小块交给下面的网络层，确认接收到的分组，设置发送最后确认分组的超时时钟等,由于运输层提供了高可靠性的端到端的通信，因此应用层可以忽略所有这些细节。</li>
 <li>因为TCP是一种面向连接的协议，所以两个在使用TCP的应用在彼此交换数据前必须先建立一个TCP连接，也就是有名的TCP三次握手，如下图所示：</li>
 </ul>
-<p><img src="image/607348-20160312211241132-1517700594.png" alt=""></p>
+<p><img src="/2016/05/18/networkcomm/image/607348-20160312211241132-1517700594.png" alt=""></p>
 <p>建立连接协议过程：（TCP三次握手协议）</p>
 <ul>
 <li>客户端发送一个SYN段指明客户打算连接的服务器的端口，以及初始序号（ISN）。</li>
@@ -42,7 +513,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="image/607348-20160312213647569-286300397.gif" alt=""></p>
+<p><img src="/2016/05/18/networkcomm/image/607348-20160312213647569-286300397.gif" alt=""></p>
 <ul>
 <li><ul>
 <li>其中A、B、C类地址为单播（unicast）地址；D类地址为组播（multicast）地址；E类地址为保留地址，以备将来的特殊用途。目前大量使用中的IP地址属于A、B、C三类地址。</li>
@@ -100,7 +571,7 @@
 <li><p>而ARP和RARP协议是为IP地址和MAC地址提供映射的：</p>
 </li>
 </ul>
-<p><img src="image/607348-20160312214932366-1742109445.png" alt=""></p>
+<p><img src="/2016/05/18/networkcomm/image/607348-20160312214932366-1742109445.png" alt=""></p>
 <hr>
 <h4 id="使用："><a href="#使用：" class="headerlink" title="使用："></a>使用：</h4><ul>
 <li><p>我们在判断两台主机应用之间的网络是否正常，通常是判断到对方IP和端口是否能通。</p>
@@ -114,14 +585,14 @@
 </ul>
 </li>
 </ul>
-<p><img src="image/607348-20160312220145210-443719950.png" alt=""></p>
+<p><img src="/2016/05/18/networkcomm/image/607348-20160312220145210-443719950.png" alt=""></p>
 <ul>
 <li><ul>
 <li><code>tracert $IP：跟踪路由，即打印出本机到到目的IP，所经过路由。</code></li>
 </ul>
 </li>
 </ul>
-<p><img src="image/607348-20160312220158054-2124916124.png" alt=""></p>
+<p><img src="/2016/05/18/networkcomm/image/607348-20160312220158054-2124916124.png" alt=""></p>
 <ul>
 <li><ul>
 <li><code>telnet $IP $port：可以测试某个IP和应用端口是否能通。</code></li>
@@ -132,7 +603,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="image/607348-20160312220227866-1298265423.png" alt=""></p>
+<p><img src="/2016/05/18/networkcomm/image/607348-20160312220227866-1298265423.png" alt=""></p>
 <ul>
 <li><p>Linux：</p>
 </li>
@@ -149,22 +620,398 @@
 </ul>
 </li>
 </ul>
-<p><img src="image/607348-20160312221617569-1834112731.png" alt=""></p>
+<p><img src="/2016/05/18/networkcomm/image/607348-20160312221617569-1834112731.png" alt=""></p>
 <ul>
 <li><ul>
 <li><code>nc -vz $IP $PORT：测试到目的IP的应用端口是否能通。</code></li>
 </ul>
 </li>
 </ul>
-<p><img src="image/607348-20160312221825819-331058027.png" alt=""></p>
+<p><img src="/2016/05/18/networkcomm/image/607348-20160312221825819-331058027.png" alt=""></p>
 <ul>
 <li><ul>
 <li><code>netstat -tupln：可以查看本机目前监听的端口</code></li>
 </ul>
 </li>
 </ul>
-<p><img src="image/607348-20160312221946585-1872997601.png" alt=""></p>
+<p><img src="/2016/05/18/networkcomm/image/607348-20160312221946585-1872997601.png" alt=""></p>
 <hr>
-<h4 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h4><p><a href="https://en.wikipedia.org/wiki/Internet_protocol_suite" target="_blank" rel="external">https://en.wikipedia.org/wiki/Internet_protocol_suite</a></p>
+<h4 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h4><p><a href="https://en.wikipedia.org/wiki/Internet_protocol_suite" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Internet_protocol_suite</a></p>
 <p><a href="">《TCP/IP详解卷1:协议》</a></p>
-</div><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a data-url="http://code-cc.github.io/2016/05/18/networkcomm/" data-id="cixwmkix60006mo8zdfub24us" class="article-share-link">Partager</a><div class="tags"><a href="/tags/network/">network</a></div><div class="post-nav"><a href="/2016/05/19/tls/" class="pre">理解SSL/TLS协议</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://code-cc.github.io"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Catégories</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/technology/">technology</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"><a href="/tags/network/" style="font-size: 15px;">network</a> <a href="/tags/system/" style="font-size: 15px;">system</a> <a href="/tags/web/" style="font-size: 15px;">web</a> <a href="/tags/security/" style="font-size: 15px;">security</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Récent</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/06/20/filesystem/">文件系统</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/29/http/">谈谈HTTP</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/21/dns/">谈谈DNS</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/21/systemstart/">理解系统启动过程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/20/webcsp/">WEB安全之CSP</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/19/tls/">理解SSL/TLS协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/18/networkcomm/">简单理解计算机通信</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> À suivre</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">© <a href="/." rel="nofollow">Code.CC.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="/css/jquery.fancybox.css?v=0.0.0"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/network/" rel="tag"># network</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/05/19/tls/" rel="prev" title="理解SSL/TLS协议">
+                理解SSL/TLS协议 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Code.CC</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#写在前面："><span class="nav-number">1.</span> <span class="nav-text">写在前面：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络通信模型："><span class="nav-number">2.</span> <span class="nav-text">网络通信模型：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据封装："><span class="nav-number">3.</span> <span class="nav-text">数据封装：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP-IP参考模型："><span class="nav-number">4.</span> <span class="nav-text">TCP/IP参考模型：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#应用层-Application-Layer-："><span class="nav-number">4.0.1.</span> <span class="nav-text">应用层(Application Layer)：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#传输层-Transport-Layer-："><span class="nav-number">4.0.2.</span> <span class="nav-text">传输层(Transport Layer)：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网络层-Internet-Layer-："><span class="nav-number">4.1.</span> <span class="nav-text">网络层(Internet Layer)：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#链路层-Link-Layer-："><span class="nav-number">4.2.</span> <span class="nav-text">链路层(Link Layer)：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用："><span class="nav-number">4.3.</span> <span class="nav-text">使用：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参考："><span class="nav-number">4.4.</span> <span class="nav-text">参考：</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Code.CC</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.0.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.0"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
