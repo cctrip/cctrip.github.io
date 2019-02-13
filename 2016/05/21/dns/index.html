@@ -415,7 +415,7 @@
 <hr>
 <h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>DNS(Domain Name System)，域名系统，它是因特网的一项服务。它作为将域名和IP地址相互映射的一个分布式数据库，能够使人更方便地访问互联网。DNS使用TCP和UDP端口53。当前，对于每一级域名长度的限制是63个字符，域名总长度则不能超过253个字符。</p>
 <p>DNS Domain Namespace，DNS域命名空间，是一种分层树状结构，其格式如下:”<a href="http://www.google.com&quot;,以点&quot;.&quot;为分隔。结构如图所示：" target="_blank" rel="noopener">www.google.com&quot;,以点&quot;.&quot;为分隔。结构如图所示：</a></p>
-<p><img src="image/607348-20160301212335189-776690379.gif" alt=""></p>
+<p><img src="/2016/05/21/dns/image/607348-20160301212335189-776690379.gif" alt=""></p>
 <ul>
 <li><p>根域：绝对域名(FQDN)，以点”.”结尾的域名</p>
 </li>
@@ -444,7 +444,7 @@
 <hr>
 <p>　</p>
 <h3 id="DNS工作原理"><a href="#DNS工作原理" class="headerlink" title="DNS工作原理"></a>DNS工作原理</h3><p>当我们请求一个域名时，会通过DNS服务器将域名解析成IP访问最终的主机，那么，DNS是如何查询到域名所对应的IP并返回给我们的呢？请工作机制如图所示：</p>
-<p><img src="image/607348-20160301205942986-1456220290.png" alt=""></p>
+<p><img src="/2016/05/21/dns/image/607348-20160301205942986-1456220290.png" alt=""></p>
 <p>当我们请求一个域名时，直到获取到IP地址，整个过程是如何工作的？以请求<a href="http://www.codecc.xyz为例：" target="_blank" rel="noopener">www.codecc.xyz为例：</a></p>
 <ol>
 <li><p>首先，我们的主机会去查找本地的hosts文件和本地DNS解析器缓存，如果hosts文件和本地DNS缓存存在<a href="http://www.codecc.xyz和IP的映射关系，则完成域名解析，请求该IP地址，否则进入第二步。" target="_blank" rel="noopener">www.codecc.xyz和IP的映射关系，则完成域名解析，请求该IP地址，否则进入第二步。</a></p>
@@ -474,17 +474,17 @@
 <li><p>windows：</p>
 <ul>
 <li><p><code>nslookup 域名</code></p>
-<p><img src="image/607348-20160420012038241-52598954.png" alt=""></p>
+<p><img src="/2016/05/21/dns/image/607348-20160420012038241-52598954.png" alt=""></p>
 </li>
 </ul>
 </li>
 <li><p>Linux：</p>
 <ul>
 <li><p><code>nslookup 域名</code></p>
-<p><img src="image/607348-20160420012104335-886114220.png" alt=""></p>
+<p><img src="/2016/05/21/dns/image/607348-20160420012104335-886114220.png" alt=""></p>
 </li>
 <li><p><code>dig 域名</code></p>
-<p><img src="image/607348-20160420012127523-1968920086.png" alt=""></p>
+<p><img src="/2016/05/21/dns/image/607348-20160420012127523-1968920086.png" alt=""></p>
 </li>
 </ul>
 </li>

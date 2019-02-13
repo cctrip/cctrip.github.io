@@ -421,7 +421,7 @@
         <h3 id="写在前面："><a href="#写在前面：" class="headerlink" title="写在前面："></a>写在前面：</h3><p>在计算机刚出现的时候，只能在本机进行一些运算处理，想将一台计算机中的数据转移到另一台计算机中，需要通过外部存储介质来传输，例如磁带、软盘。而网络技术的出现，使得计算机间可以通过一些传输介质(网线、光纤等)，实现快速的数据传输和信息交互。如今，网络已无处不在，那么，计算机之间究竟是如何通信的呢？下面会通过一些基础的网络知识来简单理解计算机之间的通信过程。</p>
 <hr>
 <h3 id="网络通信模型："><a href="#网络通信模型：" class="headerlink" title="网络通信模型："></a>网络通信模型：</h3><p>网络通信模型是一种概念模型和框架，旨在使各种计算机在世界范围内互连为网络。其中有OSI七层模型和TCP/IP四层模型，现在大部分网络通信都是以TCP/IP四层模型为基础的。它们的对应层次如下图：</p>
-<p><img src="image/607348-20160312201154210-2019193861.jpg" alt=""></p>
+<p><img src="/2016/05/18/networkcomm/image/607348-20160312201154210-2019193861.jpg" alt=""></p>
 <ul>
 <li><p>OSI有七层：从上到下依次为应用层、表示层、会话层、传输层、网络层、数据链路层、物理层</p>
 </li>
@@ -429,10 +429,10 @@
 </li>
 </ul>
 <p>因为目前大部分TCP/IP模型，所以就以TCP/IP为例，我们来理解下数据间的通信，下图是两台计算机通信的数据的传输过程：</p>
-<p><img src="image/607348-20160312202413054-848303498.png" alt=""></p>
+<p><img src="/2016/05/18/networkcomm/image/607348-20160312202413054-848303498.png" alt=""></p>
 <hr>
 <h3 id="数据封装："><a href="#数据封装：" class="headerlink" title="数据封装："></a>数据封装：</h3><p>在详细了解TCP/IP每一层各自的作用前，先要理解数据封装的概念，数据在通过网络接口传送出去前，会经过层层封装，每层都会在前面的基础上添加自己的信息，在传输到对方计算机后，又会被层层进行解封装后得到最后的数据。其过程如下图所示：</p>
-<p><img src="image/607348-20160312203516679-1695630421.gif" alt=""></p>
+<p><img src="/2016/05/18/networkcomm/image/607348-20160312203516679-1695630421.gif" alt=""></p>
 <hr>
 <h3 id="TCP-IP参考模型："><a href="#TCP-IP参考模型：" class="headerlink" title="TCP/IP参考模型："></a>TCP/IP参考模型：</h3><p>TCP/IP参考模型是一个抽象的分层模型，这个模型中，所有的TCP/IP系列网络协议都被归类到4个抽象的”层”中。每一抽象层创建在低一层提供的服务上，并且为高一层提供服务。 完成一些特定的任务需要众多的协议协同工作，这些协议分布在参考模型的不同层中的，因此有时称它们为一个协议栈。</p>
 <h5 id="应用层-Application-Layer-："><a href="#应用层-Application-Layer-：" class="headerlink" title="应用层(Application Layer)："></a>应用层(Application Layer)：</h5><ul>
@@ -445,7 +445,7 @@
 <li>TCP为两台主机提供高可靠性的数据通信。它所做的工作包括把应用程序交给它的数据分成合适的小块交给下面的网络层，确认接收到的分组，设置发送最后确认分组的超时时钟等,由于运输层提供了高可靠性的端到端的通信，因此应用层可以忽略所有这些细节。</li>
 <li>因为TCP是一种面向连接的协议，所以两个在使用TCP的应用在彼此交换数据前必须先建立一个TCP连接，也就是有名的TCP三次握手，如下图所示：</li>
 </ul>
-<p><img src="image/607348-20160312211241132-1517700594.png" alt=""></p>
+<p><img src="/2016/05/18/networkcomm/image/607348-20160312211241132-1517700594.png" alt=""></p>
 <p>建立连接协议过程：（TCP三次握手协议）</p>
 <ul>
 <li>客户端发送一个SYN段指明客户打算连接的服务器的端口，以及初始序号（ISN）。</li>
@@ -462,7 +462,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="image/607348-20160312213647569-286300397.gif" alt=""></p>
+<p><img src="/2016/05/18/networkcomm/image/607348-20160312213647569-286300397.gif" alt=""></p>
 <ul>
 <li><ul>
 <li>其中A、B、C类地址为单播（unicast）地址；D类地址为组播（multicast）地址；E类地址为保留地址，以备将来的特殊用途。目前大量使用中的IP地址属于A、B、C三类地址。</li>
@@ -520,7 +520,7 @@
 <li><p>而ARP和RARP协议是为IP地址和MAC地址提供映射的：</p>
 </li>
 </ul>
-<p><img src="image/607348-20160312214932366-1742109445.png" alt=""></p>
+<p><img src="/2016/05/18/networkcomm/image/607348-20160312214932366-1742109445.png" alt=""></p>
 <hr>
 <h4 id="使用："><a href="#使用：" class="headerlink" title="使用："></a>使用：</h4><ul>
 <li><p>我们在判断两台主机应用之间的网络是否正常，通常是判断到对方IP和端口是否能通。</p>
@@ -534,14 +534,14 @@
 </ul>
 </li>
 </ul>
-<p><img src="image/607348-20160312220145210-443719950.png" alt=""></p>
+<p><img src="/2016/05/18/networkcomm/image/607348-20160312220145210-443719950.png" alt=""></p>
 <ul>
 <li><ul>
 <li><code>tracert $IP：跟踪路由，即打印出本机到到目的IP，所经过路由。</code></li>
 </ul>
 </li>
 </ul>
-<p><img src="image/607348-20160312220158054-2124916124.png" alt=""></p>
+<p><img src="/2016/05/18/networkcomm/image/607348-20160312220158054-2124916124.png" alt=""></p>
 <ul>
 <li><ul>
 <li><code>telnet $IP $port：可以测试某个IP和应用端口是否能通。</code></li>
@@ -552,7 +552,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="image/607348-20160312220227866-1298265423.png" alt=""></p>
+<p><img src="/2016/05/18/networkcomm/image/607348-20160312220227866-1298265423.png" alt=""></p>
 <ul>
 <li><p>Linux：</p>
 </li>
@@ -569,21 +569,21 @@
 </ul>
 </li>
 </ul>
-<p><img src="image/607348-20160312221617569-1834112731.png" alt=""></p>
+<p><img src="/2016/05/18/networkcomm/image/607348-20160312221617569-1834112731.png" alt=""></p>
 <ul>
 <li><ul>
 <li><code>nc -vz $IP $PORT：测试到目的IP的应用端口是否能通。</code></li>
 </ul>
 </li>
 </ul>
-<p><img src="image/607348-20160312221825819-331058027.png" alt=""></p>
+<p><img src="/2016/05/18/networkcomm/image/607348-20160312221825819-331058027.png" alt=""></p>
 <ul>
 <li><ul>
 <li><code>netstat -tupln：可以查看本机目前监听的端口</code></li>
 </ul>
 </li>
 </ul>
-<p><img src="image/607348-20160312221946585-1872997601.png" alt=""></p>
+<p><img src="/2016/05/18/networkcomm/image/607348-20160312221946585-1872997601.png" alt=""></p>
 <hr>
 <h4 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h4><p><a href="https://en.wikipedia.org/wiki/Internet_protocol_suite" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Internet_protocol_suite</a></p>
 <p><a href="">《TCP/IP详解卷1:协议》</a></p>

@@ -411,7 +411,7 @@
 <p>接触Linux的时间也不算短了，一直都是直接使用Linux操作系统进行一些工作，很少去了解系统从开机到能使用的整个过程，感觉有需要好好理解下整个系统的启动过程，故写这篇博客加深一下理解。</p>
 <hr>
 <h3 id="启动过程"><a href="#启动过程" class="headerlink" title="启动过程"></a>启动过程</h3><p>先通过一张图来简单了解下整个系统启动的流程，整个过程基本可以分为<font color="blue">POST–&gt;BIOS–&gt;MBR(GRUB)–&gt;Kernel–&gt;Init–&gt;Runlevel</font>。下面会详细说明每个过程的作用。</p>
-<p><img src="image/607348-20151229231206354-919070678.png" alt=""></p>
+<p><img src="/2016/05/21/systemstart/image/607348-20151229231206354-919070678.png" alt=""></p>
 <ul>
 <li><p>BIOS</p>
 <p>  BIOS(Basic Input/Output System)，基本输入输出系统，该系统存储于主板的ROM芯片上，计算机在开机时，会最先读取该系统，然后会有一个加电自检过程，这个过程其实就是检查CPU和内存，计算机最基本的组成单元(控制器、运算器和存储器)，还会检查其他硬件，若没有异常就开始加载BIOS程序到内存当中。详细的BIOS功能，这边就不说了，BIOS主要的一个功能就是存储了磁盘的启动顺序，BIOS会按照启动顺序去查找第一个磁盘头的MBR信息，并加载和执行MBR中的Bootloader程序，若第一个磁盘不存在MBR，则会继续查找第二个磁盘(PS：启动顺序可以在BIOS的界面中进行设置)，一旦BootLoader程序被检测并加载内存中，BIOS就将控制权交接给了BootLoader程序。</p>

@@ -579,7 +579,7 @@
 <p>PS：尽管TCP/IP协议是互联网上最流行的应用，HTTP协议中，并没有规定必须使用它或它支持的层。事实上，HTTP可以在任何互联网协议上，或其他网络上实现。HTTP假定其下层协议提供可靠的传输。因此，任何能够提供这种保证的协议都可以被其使用。因此也就是其在TCP/IP协议族使用TCP作为其传输层。</p>
 <hr>
 <h3 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h3><p>HTTP协议的通信过程永远是客户端发起请求(request)，服务器回送响应(respone)，如下图所示：</p>
-<p><img src="image/5657919_2.jpg" alt=""></p>
+<p><img src="/2016/05/29/http/image/5657919_2.jpg" alt=""></p>
 <p>一个完整的HTTP操作称为一个事务，其流程可分为四步：</p>
 <ul>
 <li><p>建立连接(TCP三次握手)</p>
@@ -671,11 +671,11 @@
 <ul>
 <li>Request，首行为请求行，其余为请求头部</li>
 </ul>
-<p><img src="image/20160531232545.png" alt=""></p>
+<p><img src="/2016/05/29/http/image/20160531232545.png" alt=""></p>
 <ul>
 <li>Respone，首行为响应状态行，空行前为响应头部，其余为响应数据</li>
 </ul>
-<p><img src="image/20160531232617.png" alt=""></p>
+<p><img src="/2016/05/29/http/image/20160531232617.png" alt=""></p>
 <hr>
 <h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol</a></p>
 
@@ -854,7 +854,7 @@
 <hr>
 <h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>DNS(Domain Name System)，域名系统，它是因特网的一项服务。它作为将域名和IP地址相互映射的一个分布式数据库，能够使人更方便地访问互联网。DNS使用TCP和UDP端口53。当前，对于每一级域名长度的限制是63个字符，域名总长度则不能超过253个字符。</p>
 <p>DNS Domain Namespace，DNS域命名空间，是一种分层树状结构，其格式如下:”<a href="http://www.google.com&quot;,以点&quot;.&quot;为分隔。结构如图所示：" target="_blank" rel="noopener">www.google.com&quot;,以点&quot;.&quot;为分隔。结构如图所示：</a></p>
-<p><img src="image/607348-20160301212335189-776690379.gif" alt=""></p>
+<p><img src="/2016/05/21/dns/image/607348-20160301212335189-776690379.gif" alt=""></p>
 <ul>
 <li><p>根域：绝对域名(FQDN)，以点”.”结尾的域名</p>
 </li>
@@ -883,7 +883,7 @@
 <hr>
 <p>　</p>
 <h3 id="DNS工作原理"><a href="#DNS工作原理" class="headerlink" title="DNS工作原理"></a>DNS工作原理</h3><p>当我们请求一个域名时，会通过DNS服务器将域名解析成IP访问最终的主机，那么，DNS是如何查询到域名所对应的IP并返回给我们的呢？请工作机制如图所示：</p>
-<p><img src="image/607348-20160301205942986-1456220290.png" alt=""></p>
+<p><img src="/2016/05/21/dns/image/607348-20160301205942986-1456220290.png" alt=""></p>
 <p>当我们请求一个域名时，直到获取到IP地址，整个过程是如何工作的？以请求<a href="http://www.codecc.xyz为例：" target="_blank" rel="noopener">www.codecc.xyz为例：</a></p>
 <ol>
 <li><p>首先，我们的主机会去查找本地的hosts文件和本地DNS解析器缓存，如果hosts文件和本地DNS缓存存在<a href="http://www.codecc.xyz和IP的映射关系，则完成域名解析，请求该IP地址，否则进入第二步。" target="_blank" rel="noopener">www.codecc.xyz和IP的映射关系，则完成域名解析，请求该IP地址，否则进入第二步。</a></p>
@@ -913,17 +913,17 @@
 <li><p>windows：</p>
 <ul>
 <li><p><code>nslookup 域名</code></p>
-<p><img src="image/607348-20160420012038241-52598954.png" alt=""></p>
+<p><img src="/2016/05/21/dns/image/607348-20160420012038241-52598954.png" alt=""></p>
 </li>
 </ul>
 </li>
 <li><p>Linux：</p>
 <ul>
 <li><p><code>nslookup 域名</code></p>
-<p><img src="image/607348-20160420012104335-886114220.png" alt=""></p>
+<p><img src="/2016/05/21/dns/image/607348-20160420012104335-886114220.png" alt=""></p>
 </li>
 <li><p><code>dig 域名</code></p>
-<p><img src="image/607348-20160420012127523-1968920086.png" alt=""></p>
+<p><img src="/2016/05/21/dns/image/607348-20160420012127523-1968920086.png" alt=""></p>
 </li>
 </ul>
 </li>
@@ -1108,7 +1108,7 @@
 <p>接触Linux的时间也不算短了，一直都是直接使用Linux操作系统进行一些工作，很少去了解系统从开机到能使用的整个过程，感觉有需要好好理解下整个系统的启动过程，故写这篇博客加深一下理解。</p>
 <hr>
 <h3 id="启动过程"><a href="#启动过程" class="headerlink" title="启动过程"></a>启动过程</h3><p>先通过一张图来简单了解下整个系统启动的流程，整个过程基本可以分为<font color="blue">POST–&gt;BIOS–&gt;MBR(GRUB)–&gt;Kernel–&gt;Init–&gt;Runlevel</font>。下面会详细说明每个过程的作用。</p>
-<p><img src="image/607348-20151229231206354-919070678.png" alt=""></p>
+<p><img src="/2016/05/21/systemstart/image/607348-20151229231206354-919070678.png" alt=""></p>
 <ul>
 <li><p>BIOS</p>
 <p>  BIOS(Basic Input/Output System)，基本输入输出系统，该系统存储于主板的ROM芯片上，计算机在开机时，会最先读取该系统，然后会有一个加电自检过程，这个过程其实就是检查CPU和内存，计算机最基本的组成单元(控制器、运算器和存储器)，还会检查其他硬件，若没有异常就开始加载BIOS程序到内存当中。详细的BIOS功能，这边就不说了，BIOS主要的一个功能就是存储了磁盘的启动顺序，BIOS会按照启动顺序去查找第一个磁盘头的MBR信息，并加载和执行MBR中的Bootloader程序，若第一个磁盘不存在MBR，则会继续查找第二个磁盘(PS：启动顺序可以在BIOS的界面中进行设置)，一旦BootLoader程序被检测并加载内存中，BIOS就将控制权交接给了BootLoader程序。</p>
@@ -1359,7 +1359,7 @@
           
             <h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>内容安全策略(Content-Security-Policy，CSP)：是一种web应用技术用于帮助缓解大部分类型的内容注入攻击，包括XSS攻击和数据注入等，这些攻击可实现数据窃取、网站破坏和作为恶意软件分发版本等行为。该策略可让网站管理员指定客户端允许加载的各类可信任资源。</p>
 <hr>
-<h3 id="浏览器支持"><a href="#浏览器支持" class="headerlink" title="浏览器支持"></a>浏览器支持</h3><p><img src="image/607348-20151208141131543-187859986.png" alt=""></p>
+<h3 id="浏览器支持"><a href="#浏览器支持" class="headerlink" title="浏览器支持"></a>浏览器支持</h3><p><img src="/2016/05/20/webcsp/image/607348-20151208141131543-187859986.png" alt=""></p>
 <p>统计来源：<a href="http://caniuse.com/#feat=contentsecuritypolicy" target="_blank" rel="noopener">caniuse.com/contentsecuritypolicy</a> &amp; <a href="https://hacks.mozilla.org/2013/05/content-security-policy-1-0-lands-in-firefox-aurora/" target="_blank" rel="noopener">Mozilla</a></p>
 <hr>
 <h3 id="指令参考"><a href="#指令参考" class="headerlink" title="指令参考"></a>指令参考</h3><p>Content-Security-Policy 响应头的值可配置一个或多个，多个指令以分号;隔开。</p>
@@ -1725,7 +1725,7 @@
 </li>
 <li><p>Handshake Protocol：</p>
 <p>  开始一个安全连接需要客户端和服务端经过反复的建立握手。一个TLS握手需要经过如下几个步骤：</p>
-<p>  <img src="image/607348-20160224221716880-1764174375.png" alt=""></p>
+<p>  <img src="/2016/05/19/tls/image/607348-20160224221716880-1764174375.png" alt=""></p>
 </li>
 </ul>
 <p>首先还是要经过TCP三次握手建立连接，然后才是TLS握手的开始：</p>
@@ -1926,7 +1926,7 @@
             <h3 id="写在前面："><a href="#写在前面：" class="headerlink" title="写在前面："></a>写在前面：</h3><p>在计算机刚出现的时候，只能在本机进行一些运算处理，想将一台计算机中的数据转移到另一台计算机中，需要通过外部存储介质来传输，例如磁带、软盘。而网络技术的出现，使得计算机间可以通过一些传输介质(网线、光纤等)，实现快速的数据传输和信息交互。如今，网络已无处不在，那么，计算机之间究竟是如何通信的呢？下面会通过一些基础的网络知识来简单理解计算机之间的通信过程。</p>
 <hr>
 <h3 id="网络通信模型："><a href="#网络通信模型：" class="headerlink" title="网络通信模型："></a>网络通信模型：</h3><p>网络通信模型是一种概念模型和框架，旨在使各种计算机在世界范围内互连为网络。其中有OSI七层模型和TCP/IP四层模型，现在大部分网络通信都是以TCP/IP四层模型为基础的。它们的对应层次如下图：</p>
-<p><img src="image/607348-20160312201154210-2019193861.jpg" alt=""></p>
+<p><img src="/2016/05/18/networkcomm/image/607348-20160312201154210-2019193861.jpg" alt=""></p>
 <ul>
 <li><p>OSI有七层：从上到下依次为应用层、表示层、会话层、传输层、网络层、数据链路层、物理层</p>
 </li>
@@ -1934,10 +1934,10 @@
 </li>
 </ul>
 <p>因为目前大部分TCP/IP模型，所以就以TCP/IP为例，我们来理解下数据间的通信，下图是两台计算机通信的数据的传输过程：</p>
-<p><img src="image/607348-20160312202413054-848303498.png" alt=""></p>
+<p><img src="/2016/05/18/networkcomm/image/607348-20160312202413054-848303498.png" alt=""></p>
 <hr>
 <h3 id="数据封装："><a href="#数据封装：" class="headerlink" title="数据封装："></a>数据封装：</h3><p>在详细了解TCP/IP每一层各自的作用前，先要理解数据封装的概念，数据在通过网络接口传送出去前，会经过层层封装，每层都会在前面的基础上添加自己的信息，在传输到对方计算机后，又会被层层进行解封装后得到最后的数据。其过程如下图所示：</p>
-<p><img src="image/607348-20160312203516679-1695630421.gif" alt=""></p>
+<p><img src="/2016/05/18/networkcomm/image/607348-20160312203516679-1695630421.gif" alt=""></p>
 <hr>
 <h3 id="TCP-IP参考模型："><a href="#TCP-IP参考模型：" class="headerlink" title="TCP/IP参考模型："></a>TCP/IP参考模型：</h3><p>TCP/IP参考模型是一个抽象的分层模型，这个模型中，所有的TCP/IP系列网络协议都被归类到4个抽象的”层”中。每一抽象层创建在低一层提供的服务上，并且为高一层提供服务。 完成一些特定的任务需要众多的协议协同工作，这些协议分布在参考模型的不同层中的，因此有时称它们为一个协议栈。</p>
 <h5 id="应用层-Application-Layer-："><a href="#应用层-Application-Layer-：" class="headerlink" title="应用层(Application Layer)："></a>应用层(Application Layer)：</h5><ul>
@@ -1950,7 +1950,7 @@
 <li>TCP为两台主机提供高可靠性的数据通信。它所做的工作包括把应用程序交给它的数据分成合适的小块交给下面的网络层，确认接收到的分组，设置发送最后确认分组的超时时钟等,由于运输层提供了高可靠性的端到端的通信，因此应用层可以忽略所有这些细节。</li>
 <li>因为TCP是一种面向连接的协议，所以两个在使用TCP的应用在彼此交换数据前必须先建立一个TCP连接，也就是有名的TCP三次握手，如下图所示：</li>
 </ul>
-<p><img src="image/607348-20160312211241132-1517700594.png" alt=""></p>
+<p><img src="/2016/05/18/networkcomm/image/607348-20160312211241132-1517700594.png" alt=""></p>
 <p>建立连接协议过程：（TCP三次握手协议）</p>
 <ul>
 <li>客户端发送一个SYN段指明客户打算连接的服务器的端口，以及初始序号（ISN）。</li>
@@ -1967,7 +1967,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="image/607348-20160312213647569-286300397.gif" alt=""></p>
+<p><img src="/2016/05/18/networkcomm/image/607348-20160312213647569-286300397.gif" alt=""></p>
 <ul>
 <li><ul>
 <li>其中A、B、C类地址为单播（unicast）地址；D类地址为组播（multicast）地址；E类地址为保留地址，以备将来的特殊用途。目前大量使用中的IP地址属于A、B、C三类地址。</li>
@@ -2025,7 +2025,7 @@
 <li><p>而ARP和RARP协议是为IP地址和MAC地址提供映射的：</p>
 </li>
 </ul>
-<p><img src="image/607348-20160312214932366-1742109445.png" alt=""></p>
+<p><img src="/2016/05/18/networkcomm/image/607348-20160312214932366-1742109445.png" alt=""></p>
 <hr>
 <h4 id="使用："><a href="#使用：" class="headerlink" title="使用："></a>使用：</h4><ul>
 <li><p>我们在判断两台主机应用之间的网络是否正常，通常是判断到对方IP和端口是否能通。</p>
@@ -2039,14 +2039,14 @@
 </ul>
 </li>
 </ul>
-<p><img src="image/607348-20160312220145210-443719950.png" alt=""></p>
+<p><img src="/2016/05/18/networkcomm/image/607348-20160312220145210-443719950.png" alt=""></p>
 <ul>
 <li><ul>
 <li><code>tracert $IP：跟踪路由，即打印出本机到到目的IP，所经过路由。</code></li>
 </ul>
 </li>
 </ul>
-<p><img src="image/607348-20160312220158054-2124916124.png" alt=""></p>
+<p><img src="/2016/05/18/networkcomm/image/607348-20160312220158054-2124916124.png" alt=""></p>
 <ul>
 <li><ul>
 <li><code>telnet $IP $port：可以测试某个IP和应用端口是否能通。</code></li>
@@ -2057,7 +2057,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="image/607348-20160312220227866-1298265423.png" alt=""></p>
+<p><img src="/2016/05/18/networkcomm/image/607348-20160312220227866-1298265423.png" alt=""></p>
 <ul>
 <li><p>Linux：</p>
 </li>
@@ -2074,21 +2074,21 @@
 </ul>
 </li>
 </ul>
-<p><img src="image/607348-20160312221617569-1834112731.png" alt=""></p>
+<p><img src="/2016/05/18/networkcomm/image/607348-20160312221617569-1834112731.png" alt=""></p>
 <ul>
 <li><ul>
 <li><code>nc -vz $IP $PORT：测试到目的IP的应用端口是否能通。</code></li>
 </ul>
 </li>
 </ul>
-<p><img src="image/607348-20160312221825819-331058027.png" alt=""></p>
+<p><img src="/2016/05/18/networkcomm/image/607348-20160312221825819-331058027.png" alt=""></p>
 <ul>
 <li><ul>
 <li><code>netstat -tupln：可以查看本机目前监听的端口</code></li>
 </ul>
 </li>
 </ul>
-<p><img src="image/607348-20160312221946585-1872997601.png" alt=""></p>
+<p><img src="/2016/05/18/networkcomm/image/607348-20160312221946585-1872997601.png" alt=""></p>
 <hr>
 <h4 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h4><p><a href="https://en.wikipedia.org/wiki/Internet_protocol_suite" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Internet_protocol_suite</a></p>
 <p><a href="">《TCP/IP详解卷1:协议》</a></p>
