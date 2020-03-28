@@ -96,31 +96,20 @@
 
 
 
-  <meta name="description" content="写在前面：在计算机刚出现的时候，只能在本机进行一些运算处理，想将一台计算机中的数据转移到另一台计算机中，需要通过外部存储介质来传输，例如磁带、软盘。而网络技术的出现，使得计算机间可以通过一些传输介质(网线、光纤等)，实现快速的数据传输和信息交互。如今，网络已无处不在，那么，计算机之间究竟是如何通信的呢？下面会通过一些基础的网络知识来简单理解计算机之间的通信过程。  网络通信模型：网络通信模型是一种">
-<meta name="keywords" content="network">
+  <meta name="description" content="文件描述符概念wiki解释)，文件描述符在形式上是一个非负整数。实际上，它是一个索引值，指向内核为每一个进程所维护的该进程打开文件的记录表。当程序打开一个现有文件或者创建一个新文件时，内核向进程返回一个文件描述符。在程序设计中，一些涉及底层的程序编写往往会围绕着文件描述符展开。 一个文件描述符是一个数字，唯一标识一个在计算机的操作系统打开的文件。它描述了数据资源，以及如何访问该资源。 当程序要求打">
 <meta property="og:type" content="article">
-<meta property="og:title" content="简单理解计算机通信">
-<meta property="og:url" content="http://cctrip.github.io/2016/05/18/networkcomm/index.html">
+<meta property="og:title" content="CC&#39;s Blog">
+<meta property="og:url" content="http://cctrip.github.io/2020/03/29/filedescriptor/file_descriptor/index.html">
 <meta property="og:site_name" content="CC&#39;s Blog">
-<meta property="og:description" content="写在前面：在计算机刚出现的时候，只能在本机进行一些运算处理，想将一台计算机中的数据转移到另一台计算机中，需要通过外部存储介质来传输，例如磁带、软盘。而网络技术的出现，使得计算机间可以通过一些传输介质(网线、光纤等)，实现快速的数据传输和信息交互。如今，网络已无处不在，那么，计算机之间究竟是如何通信的呢？下面会通过一些基础的网络知识来简单理解计算机之间的通信过程。  网络通信模型：网络通信模型是一种">
+<meta property="og:description" content="文件描述符概念wiki解释)，文件描述符在形式上是一个非负整数。实际上，它是一个索引值，指向内核为每一个进程所维护的该进程打开文件的记录表。当程序打开一个现有文件或者创建一个新文件时，内核向进程返回一个文件描述符。在程序设计中，一些涉及底层的程序编写往往会围绕着文件描述符展开。 一个文件描述符是一个数字，唯一标识一个在计算机的操作系统打开的文件。它描述了数据资源，以及如何访问该资源。 当程序要求打">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://cctrip.github.io/2016/05/18/networkcomm/image/607348-20160312201154210-2019193861.jpg">
-<meta property="og:image" content="http://cctrip.github.io/2016/05/18/networkcomm/image/607348-20160312202413054-848303498.png">
-<meta property="og:image" content="http://cctrip.github.io/2016/05/18/networkcomm/image/607348-20160312203516679-1695630421.gif">
-<meta property="og:image" content="http://cctrip.github.io/2016/05/18/networkcomm/image/607348-20160312211241132-1517700594.png">
-<meta property="og:image" content="http://cctrip.github.io/2016/05/18/networkcomm/image/607348-20160312213647569-286300397.gif">
-<meta property="og:image" content="http://cctrip.github.io/2016/05/18/networkcomm/image/607348-20160312214932366-1742109445.png">
-<meta property="og:image" content="http://cctrip.github.io/2016/05/18/networkcomm/image/607348-20160312220145210-443719950.png">
-<meta property="og:image" content="http://cctrip.github.io/2016/05/18/networkcomm/image/607348-20160312220158054-2124916124.png">
-<meta property="og:image" content="http://cctrip.github.io/2016/05/18/networkcomm/image/607348-20160312220227866-1298265423.png">
-<meta property="og:image" content="http://cctrip.github.io/2016/05/18/networkcomm/image/607348-20160312221617569-1834112731.png">
-<meta property="og:image" content="http://cctrip.github.io/2016/05/18/networkcomm/image/607348-20160312221825819-331058027.png">
-<meta property="og:image" content="http://cctrip.github.io/2016/05/18/networkcomm/image/607348-20160312221946585-1872997601.png">
-<meta property="og:updated_time" content="2019-01-28T06:25:36.000Z">
+<meta property="og:image" content="http://cctrip.github.io/2020/03/29/filedescriptor/file_descriptor/image/fd.png">
+<meta property="og:image" content="http://cctrip.github.io/2020/03/29/filedescriptor/file_descriptor/image/fd_detail.png">
+<meta property="og:updated_time" content="2020-03-28T16:10:39.480Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="简单理解计算机通信">
-<meta name="twitter:description" content="写在前面：在计算机刚出现的时候，只能在本机进行一些运算处理，想将一台计算机中的数据转移到另一台计算机中，需要通过外部存储介质来传输，例如磁带、软盘。而网络技术的出现，使得计算机间可以通过一些传输介质(网线、光纤等)，实现快速的数据传输和信息交互。如今，网络已无处不在，那么，计算机之间究竟是如何通信的呢？下面会通过一些基础的网络知识来简单理解计算机之间的通信过程。  网络通信模型：网络通信模型是一种">
-<meta name="twitter:image" content="http://cctrip.github.io/2016/05/18/networkcomm/image/607348-20160312201154210-2019193861.jpg">
+<meta name="twitter:title" content="CC&#39;s Blog">
+<meta name="twitter:description" content="文件描述符概念wiki解释)，文件描述符在形式上是一个非负整数。实际上，它是一个索引值，指向内核为每一个进程所维护的该进程打开文件的记录表。当程序打开一个现有文件或者创建一个新文件时，内核向进程返回一个文件描述符。在程序设计中，一些涉及底层的程序编写往往会围绕着文件描述符展开。 一个文件描述符是一个数字，唯一标识一个在计算机的操作系统打开的文件。它描述了数据资源，以及如何访问该资源。 当程序要求打">
+<meta name="twitter:image" content="http://cctrip.github.io/2020/03/29/filedescriptor/file_descriptor/image/fd.png">
 
 
 
@@ -129,7 +118,7 @@
 
 
 
-  <link rel="canonical" href="http://cctrip.github.io/2016/05/18/networkcomm/">
+  <link rel="canonical" href="http://cctrip.github.io/2020/03/29/filedescriptor/file_descriptor/">
 
 
 
@@ -139,7 +128,7 @@
   };
 </script>
 
-  <title>简单理解计算机通信 | CC's Blog</title>
+  <title> | CC's Blog</title>
   
 
 
@@ -354,7 +343,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://cctrip.github.io/2016/05/18/networkcomm/">
+    <link itemprop="mainEntityOfPage" href="http://cctrip.github.io/2020/03/29/filedescriptor/file_descriptor/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Code.CC">
@@ -371,7 +360,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">简单理解计算机通信
+          <h1 class="post-title" itemprop="name headline">
 
               
             
@@ -397,46 +386,12 @@
                 
               
 
-              <time title="创建时间：2016-05-18 00:36:31" itemprop="dateCreated datePublished" datetime="2016-05-18T00:36:31+08:00">2016-05-18</time>
+              <time title="创建时间：2020-03-29 00:10:39" itemprop="dateCreated datePublished" datetime="2020-03-29T00:10:39+08:00">2020-03-29</time>
             
 
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-01-28 14:25:36" itemprop="dateModified" datetime="2019-01-28T14:25:36+08:00">2019-01-28</time>
-              
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/technology/" itemprop="url" rel="index"><span itemprop="name">technology</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -466,175 +421,84 @@
       
 
       
-        <h3 id="写在前面："><a href="#写在前面：" class="headerlink" title="写在前面："></a>写在前面：</h3><p>在计算机刚出现的时候，只能在本机进行一些运算处理，想将一台计算机中的数据转移到另一台计算机中，需要通过外部存储介质来传输，例如磁带、软盘。而网络技术的出现，使得计算机间可以通过一些传输介质(网线、光纤等)，实现快速的数据传输和信息交互。如今，网络已无处不在，那么，计算机之间究竟是如何通信的呢？下面会通过一些基础的网络知识来简单理解计算机之间的通信过程。</p>
+        <h1 id="文件描述符"><a href="#文件描述符" class="headerlink" title="文件描述符"></a>文件描述符</h1><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p><a href="[https://zh.wikipedia.org/wiki/%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6](https://zh.wikipedia.org/wiki/文件描述符">wiki解释</a>)，文件描述符在形式上是一个非负整数。实际上，它是一个索引值，指向<a href="https://zh.wikipedia.org/wiki/内核" target="_blank" rel="noopener">内核</a>为每一个<a href="https://zh.wikipedia.org/wiki/进程" target="_blank" rel="noopener">进程</a>所维护的该进程打开文件的记录表。当程序打开一个现有文件或者创建一个新文件时，内核向进程返回一个文件描述符。在程序设计中，一些涉及底层的程序编写往往会围绕着文件描述符展开。</p>
+<p>一个<strong>文件描述符</strong>是一个数字，唯一标识一个在计算机的操作系统打开的文件。它描述了数据资源，以及如何访问该资源。</p>
+<p>当程序要求打开文件（或其他数据资源，例如网络套接字）时，内核：</p>
+<ol>
+<li>授予访问权限。</li>
+<li>在全局文件表中创建一个条目。</li>
+<li>向软件提供该条目的位置。</li>
+</ol>
+<p>该描述符是唯一的非负整数。系统上每个打开的文件至少存在一个文件描述符。</p>
 <hr>
-<h3 id="网络通信模型："><a href="#网络通信模型：" class="headerlink" title="网络通信模型："></a>网络通信模型：</h3><p>网络通信模型是一种概念模型和框架，旨在使各种计算机在世界范围内互连为网络。其中有OSI七层模型和TCP/IP四层模型，现在大部分网络通信都是以TCP/IP四层模型为基础的。它们的对应层次如下图：</p>
-<p><img src="/2016/05/18/networkcomm/image/607348-20160312201154210-2019193861.jpg" alt=""></p>
+<h3 id="细节"><a href="#细节" class="headerlink" title="细节"></a>细节</h3><p>对于内核，所有打开的文件均由文件描述符引用。文件描述符是一个非负数。当我们打开现有文件或创建新文件时，内核将文件描述符返回到进程。当我们想读取或写入文件时，我们用文件描述符标识文件。</p>
+<p>每个Linux进程（也许是守护程序除外）都应该具有三个标准的POSIX文件描述符：</p>
+<table>
+<thead>
+<tr>
+<th>POSIX常数名称</th>
+<th>文件描述符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>STDIN_FILENO</td>
+<td>0</td>
+<td>标准输入</td>
+</tr>
+<tr>
+<td>STDOUT_FILENO</td>
+<td>1</td>
+<td>标准输出</td>
+</tr>
+<tr>
+<td>STDERR_FILENO</td>
+<td>2</td>
+<td>标准误差</td>
+</tr>
+</tbody>
+</table>
+<p>有三个“系统文件表”：有一个文件描述符表，它将文件描述符（小整数）映射到打开的文件表中的条目。打开文件表中的每个条目（除其他事项外）还包含文件偏移量和指向内存中inode表的指针。在打开的文件表中，每个open（）调用都有一个文件表条目，如果文件描述符是dup（）ed或fork（）ed，则共享该条目。</p>
+<p>我们使用来自维基百科的示例来显示这些表的工作方式。这是一张照片： <img src="/2020/03/29/filedescriptor/file_descriptor/image/fd.png" alt="img"></p>
+<p>单个进程的文件描述符，文件表和索引节点表。请注意，多个文件描述符可以引用相同的文件表条目（例如，由于dup系统调用），并且多个文件表条目可以依次引用同一个索引节点（如果已多次打开；则该表之所以仍然简化，是因为它通过文件名来表示索引节点，即使索引节点可以具有多个名称也是如此。文件描述符3没有引用文件表中的任何内容，表明它已关闭。</p>
+<p>理解具体情况，需要了解由内核维护的 3 个数据结构：</p>
 <ul>
-<li><p>OSI有七层：从上到下依次为应用层、表示层、会话层、传输层、网络层、数据链路层、物理层</p>
-</li>
-<li><p>TCP/IP有四层：从上到下依次为应用层、传输层、互连层(网络层)、网络接口层(链路层)。</p>
-</li>
+<li>进程级 <strong>文件描述符表</strong> ( file descriptor table )</li>
+<li>系统级 <strong>打开文件表</strong> ( open file table )</li>
+<li>文件系统 <strong>i-node表</strong> ( i-node table )</li>
 </ul>
-<p>因为目前大部分TCP/IP模型，所以就以TCP/IP为例，我们来理解下数据间的通信，下图是两台计算机通信的数据的传输过程：</p>
-<p><img src="/2016/05/18/networkcomm/image/607348-20160312202413054-848303498.png" alt=""></p>
+<p>这 3 个数据结构之间的关系如 图-1 所示：</p>
+<p>[<img src="/2020/03/29/filedescriptor/file_descriptor/image/fd_detail.png" alt="img"></p>
+<p>图-1：文件描述符、打开文件及 inode 关系</p>
+<h3 id="文件描述符表"><a href="#文件描述符表" class="headerlink" title="文件描述符表"></a>文件描述符表</h3><p>内核为每个进程维护一个 <strong>文件描述符表</strong> ，该表每一条目都记录了单个文件描述符的相关信息，包括：</p>
+<ul>
+<li><strong>控制标志</strong> ( flags )，目前内核仅定义了一个，即 <code>close-on-exec</code></li>
+<li><strong>打开文件描述体指针</strong></li>
+</ul>
+<h3 id="打开文件表"><a href="#打开文件表" class="headerlink" title="打开文件表"></a>打开文件表</h3><p>内核对所有打开的文件维护一个系统级别的 <strong>打开文件描述表</strong> ( open file description table )，简称 <strong>打开文件表</strong> 。 表中条目称为 <strong>打开文件描述体</strong> ( open file description )，存储了与一个打开文件相关的全部信息，包括：</p>
+<ul>
+<li><strong>文件偏移量</strong> ( file offset )，调用 read() 和 write() 更新，调用 lseek() 直接修改</li>
+<li><strong>访问模式</strong> ，由 open() 调用设置，例如：只读、只写或读写等</li>
+<li><strong>i-node 对象指针</strong></li>
+</ul>
+<h3 id="i-node-表"><a href="#i-node-表" class="headerlink" title="i-node 表"></a>i-node 表</h3><p>每个文件系统会为存储于其上的所有文件(包括目录)维护一个 i-node 表，单个 i-node 包含以下信息：</p>
+<ul>
+<li><strong>文件类型</strong> ( file type )，可以是常规文件、目录、套接字或 FIFO</li>
+<li><strong>访问权限</strong></li>
+<li><strong>文件锁列表</strong> ( file locks )</li>
+<li><strong>文件大小</strong></li>
+<li>等等</li>
+</ul>
+<p>i-node 存储在磁盘设备上，内核在内存中维护了一个副本，这里的 i-node 表为后者。 副本除了原有信息，还包括： <strong>引用计数</strong> (从打开文件描述体)、所在 <strong>设备号</strong> 以及一些临时属性，例如文件锁。</p>
 <hr>
-<h3 id="数据封装："><a href="#数据封装：" class="headerlink" title="数据封装："></a>数据封装：</h3><p>在详细了解TCP/IP每一层各自的作用前，先要理解数据封装的概念，数据在通过网络接口传送出去前，会经过层层封装，每层都会在前面的基础上添加自己的信息，在传输到对方计算机后，又会被层层进行解封装后得到最后的数据。其过程如下图所示：</p>
-<p><img src="/2016/05/18/networkcomm/image/607348-20160312203516679-1695630421.gif" alt=""></p>
-<hr>
-<h3 id="TCP-IP参考模型："><a href="#TCP-IP参考模型：" class="headerlink" title="TCP/IP参考模型："></a>TCP/IP参考模型：</h3><p>TCP/IP参考模型是一个抽象的分层模型，这个模型中，所有的TCP/IP系列网络协议都被归类到4个抽象的”层”中。每一抽象层创建在低一层提供的服务上，并且为高一层提供服务。 完成一些特定的任务需要众多的协议协同工作，这些协议分布在参考模型的不同层中的，因此有时称它们为一个协议栈。</p>
-<h5 id="应用层-Application-Layer-："><a href="#应用层-Application-Layer-：" class="headerlink" title="应用层(Application Layer)："></a>应用层(Application Layer)：</h5><ul>
-<li>该层包括所有和应用程序协同工作，利用基础网络交换应用程序专用的数据的协议。 应用层是大多数普通与网络相关的程序为了通过网络与其他程序通信所使用的层。这个层的处理过程是应用特有的；数据从网络相关的程序以这种应用内部使用的格式进行传送，然后被编码成标准协议的格式。</li>
-<li>常见的应用层协议有HTTP、FTP、DNS、SNMP(基于UDP)</li>
-</ul>
-<h5 id="传输层-Transport-Layer-："><a href="#传输层-Transport-Layer-：" class="headerlink" title="传输层(Transport Layer)："></a>传输层(Transport Layer)：</h5><ul>
-<li>主要为两台主机上的应用程序提供端到端的通信，包括TCP协议（传输控制协议）和UDP（用户数据报协议）。<br>端口号由此层提供，且在一台计算机中具有唯一性。</li>
-<li>UDP为应用层提供一种非常简单的服务。它只是把称作数据报的分组从一台主机发送到另一台主机，但并不保证该数据报能到达另一端。任何必需的可靠性必须由应用层来提供。</li>
-<li>TCP为两台主机提供高可靠性的数据通信。它所做的工作包括把应用程序交给它的数据分成合适的小块交给下面的网络层，确认接收到的分组，设置发送最后确认分组的超时时钟等,由于运输层提供了高可靠性的端到端的通信，因此应用层可以忽略所有这些细节。</li>
-<li>因为TCP是一种面向连接的协议，所以两个在使用TCP的应用在彼此交换数据前必须先建立一个TCP连接，也就是有名的TCP三次握手，如下图所示：</li>
-</ul>
-<p><img src="/2016/05/18/networkcomm/image/607348-20160312211241132-1517700594.png" alt=""></p>
-<p>建立连接协议过程：（TCP三次握手协议）</p>
-<ul>
-<li>客户端发送一个SYN段指明客户打算连接的服务器的端口，以及初始序号（ISN）。</li>
-<li>服务器发回包含服务器的初始序号的SYN报文段作为应答。同时，将确认序号设置为客户的ISN加1以对客户的SYN报文段进行确认。一个SYN占用一个序号。</li>
-<li>客户将确认序号设置为服务器的ISN加1以对服务器的SYN报文段进行确认。</li>
-</ul>
-<h4 id="网络层-Internet-Layer-："><a href="#网络层-Internet-Layer-：" class="headerlink" title="网络层(Internet Layer)："></a>网络层(Internet Layer)：</h4><ul>
-<li><p>处理分组在网络中的活动。网络层协议包括IP协议（网际协议），ICPM协议（Internet互联网控制报文协议），以及IGMP协议（Internet组管理协议），其中的IP协议身是TCP/IP协议簇中最为核心的协议。IP提供的是不可靠、无连接的数据包传送服务。</p>
-</li>
-<li><p>IP地址：</p>
-</li>
-<li><ul>
-<li>讲到IP协议就应该讲讲IP地址，IP地址是分配给网络上使用IP协议的设备的数字标签，有IPv4和IPv6两大类，我们目前使用的大部分还是IPv4的地址，以下简称IP地址，IP地址由32位二进制数组成，为便于使用，常以XXX.XXX.XXX.XXX形式表示。IP地址由两个字段组成：网络号(net-id)和主机号(host-id)，为方便IP地址管理，IP地址被分为五类，如下图：</li>
-</ul>
-</li>
-</ul>
-<p><img src="/2016/05/18/networkcomm/image/607348-20160312213647569-286300397.gif" alt=""></p>
-<ul>
-<li><ul>
-<li>其中A、B、C类地址为单播（unicast）地址；D类地址为组播（multicast）地址；E类地址为保留地址，以备将来的特殊用途。目前大量使用中的IP地址属于A、B、C三类地址。</li>
-</ul>
-</li>
-<li><ul>
-<li><ul>
-<li>A类地址范围：0.0.0.0～127.255.255.255</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><ul>
-<li>B类地址范围：128.0.0.0～191.255.255.255</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><ul>
-<li>C类地址范围：192.0.0.0～223.255.255.255</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><ul>
-<li>私网地址范围：10.0.0.0～10.255.255.255 ，172.16.0.0～172.31.255.255 ，192.168.0.0～192.168.255.255，私网地址只能在本地局域网中使用，不在公网中使用。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>子网和掩码：</p>
-</li>
-<li><ul>
-<li>传统的IP地址分配方式，对IP地址的浪费非常严重。为了充分利用已有的IP地址，人们提出了掩码（mask）和子网（subnet）的概念。</li>
-</ul>
-</li>
-<li><ul>
-<li>掩码是一个与IP地址对应的32位数字，这些数字中一些为1，另外一些为0。原则上这些1和0可以任意组合，不过一般在设计掩码时，网络号码和子网号码的比特值为1，主机号码的比特值为0。掩码可以把IP地址分为两个部分：子网地址和主机地址。IP地址与掩码中为1的位对应的部分为子网地址，其他的位对应的部分则是主机地址。当不进行子网划分时，子网掩码即为默认值，此时子网掩码中“1”的长度就是网络号码的长度。即A类地址对应的掩码默认值为255.0.0.0；B类地址的掩码默认值为255.255.0.0；C类地址掩码的默认值为255.255.255.0。</li>
-</ul>
-</li>
-<li><p>IP路由选择：</p>
-</li>
-<li><ul>
-<li>概念：若目的主机与源主机在同一共享网络内，IP数据报直接送达目的主机，否则，主机把数据报发往默认的路由器上，由路由器进行数据报转发。</li>
-</ul>
-</li>
-</ul>
-<h4 id="链路层-Link-Layer-："><a href="#链路层-Link-Layer-：" class="headerlink" title="链路层(Link Layer)："></a>链路层(Link Layer)：</h4><ul>
-<li>通常包括设备驱动程序和网络接口卡。处理与传输媒介的物理接口细节。主要协议有：ARP协议和RARP协议</li>
-<li><p>MAC地址 ：数据链路层具有自己的寻址机制(48bit地址)，当一台主机把以太网数据帧发送到位于同一局域网上得另一台主机时，是根据48bit的以太网地址来确定目的接口的。</p>
-</li>
-<li><p>而ARP和RARP协议是为IP地址和MAC地址提供映射的：</p>
-</li>
-</ul>
-<p><img src="/2016/05/18/networkcomm/image/607348-20160312214932366-1742109445.png" alt=""></p>
-<hr>
-<h4 id="使用："><a href="#使用：" class="headerlink" title="使用："></a>使用：</h4><ul>
-<li><p>我们在判断两台主机应用之间的网络是否正常，通常是判断到对方IP和端口是否能通。</p>
-</li>
-<li><p>常用网络判断命令：</p>
-</li>
-<li><p>Windows：</p>
-</li>
-<li><ul>
-<li><code>ping $IP：最常用的判断网络是否可达的命令。</code></li>
-</ul>
-</li>
-</ul>
-<p><img src="/2016/05/18/networkcomm/image/607348-20160312220145210-443719950.png" alt=""></p>
-<ul>
-<li><ul>
-<li><code>tracert $IP：跟踪路由，即打印出本机到到目的IP，所经过路由。</code></li>
-</ul>
-</li>
-</ul>
-<p><img src="/2016/05/18/networkcomm/image/607348-20160312220158054-2124916124.png" alt=""></p>
-<ul>
-<li><ul>
-<li><code>telnet $IP $port：可以测试某个IP和应用端口是否能通。</code></li>
-</ul>
-</li>
-<li><ul>
-<li><code>netstat：查看本机监听和建立连接的端口。</code></li>
-</ul>
-</li>
-</ul>
-<p><img src="/2016/05/18/networkcomm/image/607348-20160312220227866-1298265423.png" alt=""></p>
-<ul>
-<li><p>Linux：</p>
-</li>
-<li><ul>
-<li><code>ping $IP：最常用的判断网络是否可达的命令</code></li>
-</ul>
-</li>
-<li><ul>
-<li><code>traceroute $IP：跟踪路由，即打印出本机到到目的IP，所经过路由。</code></li>
-</ul>
-</li>
-<li><ul>
-<li><code>或者使用mtr -ni 0.1 $IP，可以实现以上两个共同的效果</code></li>
-</ul>
-</li>
-</ul>
-<p><img src="/2016/05/18/networkcomm/image/607348-20160312221617569-1834112731.png" alt=""></p>
-<ul>
-<li><ul>
-<li><code>nc -vz $IP $PORT：测试到目的IP的应用端口是否能通。</code></li>
-</ul>
-</li>
-</ul>
-<p><img src="/2016/05/18/networkcomm/image/607348-20160312221825819-331058027.png" alt=""></p>
-<ul>
-<li><ul>
-<li><code>netstat -tupln：可以查看本机目前监听的端口</code></li>
-</ul>
-</li>
-</ul>
-<p><img src="/2016/05/18/networkcomm/image/607348-20160312221946585-1872997601.png" alt=""></p>
-<hr>
-<h4 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h4><p><a href="https://en.wikipedia.org/wiki/Internet_protocol_suite" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Internet_protocol_suite</a></p>
-<p><a href="">《TCP/IP详解卷1:协议》</a></p>
+<h3 id="参数优化"><a href="#参数优化" class="headerlink" title="参数优化"></a>参数优化</h3><h4 id="1-系统最大的文件描述符数量"><a href="#1-系统最大的文件描述符数量" class="headerlink" title="1. 系统最大的文件描述符数量"></a>1. 系统最大的文件描述符数量</h4><p>系统文件最大值取决于内存大小，在kernel初始化时定义</p>
+<p><a href="https://github.com/torvalds/linux/blob/master/fs/file_table.c" target="_blank" rel="noopener">代码</a>:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * One file with associated inode and dcache is very roughly 1K. Per default</span></span><br><span class="line"><span class="comment"> * do not use more than 10% of our memory for files.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">void</span> __<span class="function">init <span class="title">files_maxfiles_init</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> n;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> nr_pages = totalram_pages();</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> memreserve = (nr_pages - nr_free_pages()) * <span class="number">3</span>/<span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">	memreserve = min(memreserve, nr_pages - <span class="number">1</span>);</span><br><span class="line">	n = ((nr_pages - memreserve) * (PAGE_SIZE / <span class="number">1024</span>)) / <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">	files_stat.max_files = <span class="keyword">max_t</span>(<span class="keyword">unsigned</span> <span class="keyword">long</span>, n, NR_FILE);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>由代码可知，file-max的值不超过内存的10%</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>获取total ram pages 和 PAGE_SIZE大小</span><br><span class="line"><span class="meta">$</span> getconf -a | grep "PAGE"</span><br><span class="line">PAGESIZE                           4096</span><br><span class="line">PAGE_SIZE                          4096</span><br><span class="line">_AVPHYS_PAGES                      565489</span><br><span class="line">_PHYS_PAGES                        1011579</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>查看系统最大打开文件描述符数</span><br><span class="line"><span class="meta">$</span> cat /proc/sys/fs/file-max</span><br><span class="line">399894</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>查看当前系统使用的打开文件描述符数</span><br><span class="line"><span class="meta">$</span> cat /proc/sys/fs/file-nr</span><br><span class="line">928	  0	 399894</span><br><span class="line">   |  |   |_ Max no. of file descriptors allowed on the system</span><br><span class="line">   |  |      </span><br><span class="line">   |  |__ Total free allocated file descriptors</span><br><span class="line">   |</span><br><span class="line">   |__  Total allocated file descriptors</span><br><span class="line">   </span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>设置系统最大文件描述符</span><br><span class="line"><span class="meta">#</span>临时性</span><br><span class="line"><span class="meta">$</span> echo 1000000 &gt; /proc/sys/fs/file-max</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>永久性 </span><br><span class="line"><span class="meta">#</span>在/etc/sysctl.conf中设置</span><br><span class="line">fs.file-max = 1000000</span><br><span class="line"><span class="meta">$</span> sysctl -p</span><br></pre></td></tr></table></figure>
+<h4 id="2-进程最大描述符"><a href="#2-进程最大描述符" class="headerlink" title="2. 进程最大描述符"></a>2. 进程最大描述符</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 查看某个进程的使用</span><br><span class="line"><span class="meta">$</span> ls -l /proc/2374/fd  | wc -l</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 进程最大打开文件描述符数</span><br><span class="line"><span class="meta">#</span>soft limit</span><br><span class="line"><span class="meta">$</span> ulimit -n</span><br><span class="line">65535</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>hard limit</span><br><span class="line"><span class="meta">$</span> ulimit -Hn</span><br><span class="line">65535</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>soft limit不能大于hard limit</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>设置</span><br><span class="line"><span class="meta">#</span>临时性</span><br><span class="line"><span class="meta">$</span> ulimit -Sn 1600000</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>永久性</span><br><span class="line"><span class="meta">$</span> vim /etc/security/limits.conf</span><br><span class="line">root soft nofile 65535</span><br><span class="line">root hard nofile 65535</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>设置nofile的hard limit还有一点要注意的就是hard limit不能大于/proc/sys/fs/nr_open</span><br></pre></td></tr></table></figure>
+<h4 id="3-总结"><a href="#3-总结" class="headerlink" title="3. 总结"></a>3. 总结</h4><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1. </span>所有进程打开的文件描述符数不能超过/proc/sys/fs/file-max</span><br><span class="line"></span><br><span class="line"><span class="bullet">2. </span>单个进程打开的文件描述符数不能超过user limit中nofile的soft limit</span><br><span class="line"></span><br><span class="line"><span class="bullet">3. </span>nofile的soft limit不能超过其hard limit</span><br><span class="line"></span><br><span class="line"><span class="bullet">4. </span>nofile的hard limit不能超过/proc/sys/fs/nr_open</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -656,12 +520,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/network/" rel="tag"># network</a>
-          
-        </div>
-      
 
       
       
@@ -671,15 +529,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/01/28/2019/" rel="next" title="Hello,2019！">
+                <i class="fa fa-chevron-left"></i> Hello,2019！
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/05/19/tls/" rel="prev" title="理解SSL/TLS协议">
-                理解SSL/TLS协议 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -860,7 +718,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#写在前面："><span class="nav-number">1.</span> <span class="nav-text">写在前面：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络通信模型："><span class="nav-number">2.</span> <span class="nav-text">网络通信模型：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据封装："><span class="nav-number">3.</span> <span class="nav-text">数据封装：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP-IP参考模型："><span class="nav-number">4.</span> <span class="nav-text">TCP/IP参考模型：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#应用层-Application-Layer-："><span class="nav-number">4.0.1.</span> <span class="nav-text">应用层(Application Layer)：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#传输层-Transport-Layer-："><span class="nav-number">4.0.2.</span> <span class="nav-text">传输层(Transport Layer)：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网络层-Internet-Layer-："><span class="nav-number">4.1.</span> <span class="nav-text">网络层(Internet Layer)：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#链路层-Link-Layer-："><span class="nav-number">4.2.</span> <span class="nav-text">链路层(Link Layer)：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用："><span class="nav-number">4.3.</span> <span class="nav-text">使用：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参考："><span class="nav-number">4.4.</span> <span class="nav-text">参考：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#文件描述符"><span class="nav-number">1.</span> <span class="nav-text">文件描述符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概念"><span class="nav-number">1.0.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#细节"><span class="nav-number">1.0.2.</span> <span class="nav-text">细节</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件描述符表"><span class="nav-number">1.0.3.</span> <span class="nav-text">文件描述符表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#打开文件表"><span class="nav-number">1.0.4.</span> <span class="nav-text">打开文件表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#i-node-表"><span class="nav-number">1.0.5.</span> <span class="nav-text">i-node 表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数优化"><span class="nav-number">1.0.6.</span> <span class="nav-text">参数优化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-系统最大的文件描述符数量"><span class="nav-number">1.0.6.1.</span> <span class="nav-text">1. 系统最大的文件描述符数量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-进程最大描述符"><span class="nav-number">1.0.6.2.</span> <span class="nav-text">2. 进程最大描述符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-总结"><span class="nav-number">1.0.6.3.</span> <span class="nav-text">3. 总结</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
