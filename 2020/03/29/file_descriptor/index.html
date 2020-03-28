@@ -106,7 +106,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://cctrip.github.io/2020/03/29/file_descriptor/image/fd.png">
 <meta property="og:image" content="http://cctrip.github.io/2020/03/29/file_descriptor/image/fd_detail.png">
-<meta property="og:updated_time" content="2020-03-28T16:27:15.953Z">
+<meta property="og:updated_time" content="2020-03-28T16:36:19.670Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="文件描述符">
 <meta name="twitter:description" content="概念wiki解释)，文件描述符在形式上是一个非负整数。实际上，它是一个索引值，指向内核为每一个进程所维护的该进程打开文件的记录表。当程序打开一个现有文件或者创建一个新文件时，内核向进程返回一个文件描述符。在程序设计中，一些涉及底层的程序编写往往会围绕着文件描述符展开。 一个文件描述符是一个数字，唯一标识一个在计算机的操作系统打开的文件。它描述了数据资源，以及如何访问该资源。 当程序要求打开文件（或">
@@ -387,7 +387,7 @@
                 
               
 
-              <time title="创建时间：2020-03-29 00:07:03 / 修改时间：00:27:15" itemprop="dateCreated datePublished" datetime="2020-03-29T00:07:03+08:00">2020-03-29</time>
+              <time title="创建时间：2020-03-29 00:07:03 / 修改时间：00:36:19" itemprop="dateCreated datePublished" datetime="2020-03-29T00:07:03+08:00">2020-03-29</time>
             
 
             
@@ -492,7 +492,7 @@
 <li>文件系统 <strong>i-node表</strong> ( i-node table )</li>
 </ul>
 <p>这 3 个数据结构之间的关系如 图-1 所示：</p>
-<p>[<img src="/2020/03/29/file_descriptor/image/fd_detail.png" alt="img"></p>
+<p><img src="/2020/03/29/file_descriptor/image/fd_detail.png" alt="img"></p>
 <p>图-1：文件描述符、打开文件及 inode 关系</p>
 <h3 id="文件描述符表"><a href="#文件描述符表" class="headerlink" title="文件描述符表"></a>文件描述符表</h3><p>内核为每个进程维护一个 <strong>文件描述符表</strong> ，该表每一条目都记录了单个文件描述符的相关信息，包括：</p>
 <ul>
