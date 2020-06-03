@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Series on CC&#39;s Trip</title>
+    <link>http://www.example.com/series/</link>
+    <description>Recent content in Series on CC&#39;s Trip</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 29 Mar 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.example.com/series/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Linux</title>
+      <link>http://www.example.com/series/linux/</link>
+      <pubDate>Sun, 29 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.example.com/series/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Security</title>
+      <link>http://www.example.com/series/security/</link>
+      <pubDate>Sun, 08 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.example.com/series/security/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>network</title>
+      <link>http://www.example.com/series/network/</link>
+      <pubDate>Sun, 29 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.example.com/series/network/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>WEB</title>
+      <link>http://www.example.com/series/web/</link>
+      <pubDate>Sun, 29 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.example.com/series/web/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>System</title>
+      <link>http://www.example.com/series/system/</link>
+      <pubDate>Sat, 21 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.example.com/series/system/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
