@@ -2,13 +2,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>linux on CC&#39;s Trip</title>
-    <link>https://cctrip.github.io/series/linux/</link>
+    <link>https://cctrip.github.io/tags/linux/</link>
     <description>Recent content in linux on CC&#39;s Trip</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sun, 29 Mar 2020 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://cctrip.github.io/series/linux/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cctrip.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>

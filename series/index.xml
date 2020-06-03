@@ -12,7 +12,7 @@
     
     
     <item>
-      <title>Linux</title>
+      <title>linux</title>
       <link>https://cctrip.github.io/series/linux/</link>
       <pubDate>Sun, 29 Mar 2020 00:00:00 +0000</pubDate>
       
@@ -21,7 +21,7 @@
     </item>
     
     <item>
-      <title>Security</title>
+      <title>security</title>
       <link>https://cctrip.github.io/series/security/</link>
       <pubDate>Sun, 08 Jan 2017 00:00:00 +0000</pubDate>
       
@@ -39,20 +39,11 @@
     </item>
     
     <item>
-      <title>WEB</title>
+      <title>web</title>
       <link>https://cctrip.github.io/series/web/</link>
       <pubDate>Sun, 29 May 2016 00:00:00 +0000</pubDate>
       
       <guid>https://cctrip.github.io/series/web/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>System</title>
-      <link>https://cctrip.github.io/series/system/</link>
-      <pubDate>Sat, 21 May 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://cctrip.github.io/series/system/</guid>
       <description></description>
     </item>
     
