@@ -78,10 +78,6 @@
   </url>
   
   <url>
-    <loc>https://cctrip.github.io/about/</loc>
-  </url>
-  
-  <url>
     <loc>https://cctrip.github.io/categories/</loc>
   </url>
   
@@ -107,6 +103,10 @@
   
   <url>
     <loc>https://cctrip.github.io/tags/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/about/</loc>
   </url>
   
 </urlset>
