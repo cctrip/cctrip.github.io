@@ -87,21 +87,21 @@ root (hd0,0) #内核文件所在的设备 kernel /vmlinuz-2.6.18-194.el5PAE ro r
 Kernel，内核，Kernel是Linux系统最主要的程序，实际上，Kernel的文件很小，只保留了最基本的模块，并以压缩的文件形式存储在硬盘中，当GRUB将Kernel读进内存，内存开始解压缩内核文件。讲内核启动，应该先讲下initrd这个文件，
 initrd(Initial RAM Disk)，它在stage2这个步骤就被拷贝到了内存中，这个文件是在安装系统时产生的，是一个临时的根文件系统(rootfs)。因为Kernel为了精简，只保留了最基本的模块，因此，Kernel上并没有各种硬件的驱动程序，也就无法识rootfs所在的设备，故产生了initrd这个文件，该文件装载了必要的驱动模块，当Kernel启动时，可以从initrd文件中装载驱动模块，直到挂载真正的rootfs，然后将initrd从内存中移除。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://www.example.com/posts/systemstart/" />
+<meta property="og:url" content="https://cctrip.github.io/posts/systemstart/" />
 <meta property="article:published_time" content="2016-05-21T00:00:00+00:00" />
 <meta property="article:modified_time" content="2016-05-21T00:00:00+00:00" />
 
 
 
     
-      <base href="http://www.example.com/posts/systemstart/">
+      <base href="https://cctrip.github.io/posts/systemstart/">
     
     <title>
   理解系统启动过程 · CC&#39;s Trip
 </title>
 
     
-      <link rel="canonical" href="http://www.example.com/posts/systemstart/">
+      <link rel="canonical" href="https://cctrip.github.io/posts/systemstart/">
     
 
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
@@ -111,7 +111,7 @@ initrd(Initial RAM Disk)，它在stage2这个步骤就被拷贝到了内存中�
     
       
       
-      <link rel="stylesheet" href="http://www.example.com/css/coder.min.3219ef62ae52679b7a9c19043171c3cd9f523628c2a65f3ef247ee18836bc90b.css" integrity="sha256-MhnvYq5SZ5t6nBkEMXHDzZ9SNijCpl8&#43;8kfuGINryQs=" crossorigin="anonymous" media="screen" />
+      <link rel="stylesheet" href="https://cctrip.github.io/css/coder.min.3219ef62ae52679b7a9c19043171c3cd9f523628c2a65f3ef247ee18836bc90b.css" integrity="sha256-MhnvYq5SZ5t6nBkEMXHDzZ9SNijCpl8&#43;8kfuGINryQs=" crossorigin="anonymous" media="screen" />
     
 
     
@@ -122,8 +122,8 @@ initrd(Initial RAM Disk)，它在stage2这个步骤就被拷贝到了内存中�
 
     
 
-    <link rel="icon" type="image/png" href="http://www.example.com/images/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="http://www.example.com/images/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="https://cctrip.github.io/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://cctrip.github.io/images/favicon-16x16.png" sizes="16x16">
 
     <meta name="generator" content="Hugo 0.72.0" />
   </head>
@@ -136,7 +136,7 @@ initrd(Initial RAM Disk)，它在stage2这个步骤就被拷贝到了内存中�
     <main class="wrapper">
       <nav class="navigation">
   <section class="container">
-    <a class="navigation-title" href="http://www.example.com/">
+    <a class="navigation-title" href="https://cctrip.github.io/">
       CC&#39;s Trip
     </a>
     
@@ -146,19 +146,19 @@ initrd(Initial RAM Disk)，它在stage2这个步骤就被拷贝到了内存中�
       
         
           <li class="navigation-item">
-            <a class="navigation-link" href="http://www.example.com/about/">About</a>
+            <a class="navigation-link" href="https://cctrip.github.io/about/">About</a>
           </li>
         
           <li class="navigation-item">
-            <a class="navigation-link" href="http://www.example.com/posts/">Blog</a>
+            <a class="navigation-link" href="https://cctrip.github.io/posts/">Blog</a>
           </li>
         
           <li class="navigation-item">
-            <a class="navigation-link" href="http://www.example.com/projects/">Projects</a>
+            <a class="navigation-link" href="https://cctrip.github.io/projects/">Projects</a>
           </li>
         
           <li class="navigation-item">
-            <a class="navigation-link" href="http://www.example.com/contact/">Contact me</a>
+            <a class="navigation-link" href="https://cctrip.github.io/contact/">Contact me</a>
           </li>
         
       

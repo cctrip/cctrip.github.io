@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>System on CC&#39;s Trip</title>
-    <link>http://www.example.com/series/system/</link>
+    <link>https://cctrip.github.io/series/system/</link>
     <description>Recent content in System on CC&#39;s Trip</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sat, 21 May 2016 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.example.com/series/system/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cctrip.github.io/series/system/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>理解系统启动过程</title>
-      <link>http://www.example.com/posts/systemstart/</link>
+      <link>https://cctrip.github.io/posts/systemstart/</link>
       <pubDate>Sat, 21 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://www.example.com/posts/systemstart/</guid>
+      <guid>https://cctrip.github.io/posts/systemstart/</guid>
       <description>前言 Linux是一种自由和开放源代码的类UNIX操作系统。该操作系统的内核由林纳斯·托瓦兹在1991年10月5日首次发布。在加上用户空间的应用程序之后，成为Linux操作系统。Linux是自由软件和开放源代码软件发展中最著名的例子。
 接触Linux的时间也不算短了，一直都是直接使用Linux操作系统进行一些工作，很少去了解系统从开机到能使用的整个过程，感觉有需要好好理解下整个系统的启动过程，故写这篇博客加深一下理解。
  启动过程 先通过一张图来简单了解下整个系统启动的流程，整个过程基本可以分为POST&amp;ndash;&amp;gt;BIOS&amp;ndash;&amp;gt;MBR(GRUB)&amp;ndash;&amp;gt;Kernel&amp;ndash;&amp;gt;Init&amp;ndash;&amp;gt;Runlevel。下面会详细说明每个过程的作用。

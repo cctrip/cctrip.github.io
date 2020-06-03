@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>WEB on CC&#39;s Trip</title>
-    <link>http://www.example.com/series/web/</link>
+    <link>https://cctrip.github.io/series/web/</link>
     <description>Recent content in WEB on CC&#39;s Trip</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sun, 29 May 2016 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.example.com/series/web/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cctrip.github.io/series/web/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>谈谈HTTP</title>
-      <link>http://www.example.com/posts/http/</link>
+      <link>https://cctrip.github.io/posts/http/</link>
       <pubDate>Sun, 29 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://www.example.com/posts/http/</guid>
+      <guid>https://cctrip.github.io/posts/http/</guid>
       <description>写在前面 如今网络已经无处不在，人们通过网络获取浏览各种信息，其中，大部分都是通过浏览器访问各种网页来获取我们想要的信息，那么浏览器与网页(服务端)究竟是如何通信的呢？这就得从HTTP协议说起了，浏览器获取网页信息都是基于HTTP协议来处理的。
  概念 HTTP（HyperText Transfer Protocol，超文本传输协议）是互联网上应用最为广泛的一种网络协议。设计HTTP最初的目的是为了提供一种发布和接收HTML页面的方法。通过HTTP或者HTTPS协议请求的资源由统一资源标识符（Uniform Resource Identifiers，URI）来标识。HTTP是一个应用层协议，由请求和响应构成，是一个标准的客户端服务器模型。其具有如下特点：
   支持客户/服务器模式。
@@ -43,10 +43,10 @@ eg：GET /index.html HTTP/1.1
     
     <item>
       <title>WEB安全之CSP</title>
-      <link>http://www.example.com/posts/webcsp/</link>
+      <link>https://cctrip.github.io/posts/webcsp/</link>
       <pubDate>Fri, 20 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://www.example.com/posts/webcsp/</guid>
+      <guid>https://cctrip.github.io/posts/webcsp/</guid>
       <description>概念 内容安全策略(Content-Security-Policy，CSP)：是一种web应用技术用于帮助缓解大部分类型的内容注入攻击，包括XSS攻击和数据注入等，这些攻击可实现数据窃取、网站破坏和作为恶意软件分发版本等行为。该策略可让网站管理员指定客户端允许加载的各类可信任资源。
  浏览器支持 统计来源：caniuse.com/contentsecuritypolicy &amp;amp; Mozilla
  指令参考 Content-Security-Policy 响应头的值可配置一个或多个，多个指令以分号;隔开。
