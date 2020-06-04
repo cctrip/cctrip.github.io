@@ -4,7 +4,7 @@
   
   <url>
     <loc>https://cctrip.github.io/categories/</loc>
-    <lastmod>2020-03-29T00:00:00+00:00</lastmod>
+    <lastmod>2020-06-04T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
@@ -19,7 +19,7 @@
   
   <url>
     <loc>https://cctrip.github.io/</loc>
-    <lastmod>2020-03-29T00:00:00+00:00</lastmod>
+    <lastmod>2020-06-04T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
@@ -33,23 +33,28 @@
   </url>
   
   <url>
-    <loc>https://cctrip.github.io/tags/linux/</loc>
-    <lastmod>2020-03-29T00:00:00+00:00</lastmod>
+    <loc>https://cctrip.github.io/series/linux/</loc>
+    <lastmod>2020-06-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://cctrip.github.io/series/linux/</loc>
-    <lastmod>2020-03-29T00:00:00+00:00</lastmod>
+    <loc>https://cctrip.github.io/posts/linux_pam/</loc>
+    <lastmod>2020-06-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/tags/liunx/</loc>
+    <lastmod>2020-06-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://cctrip.github.io/posts/</loc>
-    <lastmod>2020-03-29T00:00:00+00:00</lastmod>
+    <lastmod>2020-06-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://cctrip.github.io/series/</loc>
-    <lastmod>2020-03-29T00:00:00+00:00</lastmod>
+    <lastmod>2020-06-04T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
@@ -64,7 +69,7 @@
   
   <url>
     <loc>https://cctrip.github.io/tags/</loc>
-    <lastmod>2020-03-29T00:00:00+00:00</lastmod>
+    <lastmod>2020-06-04T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
@@ -79,6 +84,11 @@
   
   <url>
     <loc>https://cctrip.github.io/categories/technology/</loc>
+    <lastmod>2020-06-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/tags/linux/</loc>
     <lastmod>2020-03-29T00:00:00+00:00</lastmod>
   </url>
   
