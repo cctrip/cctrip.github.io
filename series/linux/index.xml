@@ -29,7 +29,7 @@ server { listen 80; server_name example.org www.example.org; ... } server { list
     <item>
       <title>Linux pam模块</title>
       <link>https://cctrip.github.io/posts/linux_pam/</link>
-      <pubDate>Sun, 29 Mar 2020 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 25 Apr 2020 00:00:00 +0000</pubDate>
       
       <guid>https://cctrip.github.io/posts/linux_pam/</guid>
       <description>概念 Linux-PAM（Pluggable Authentication Modules for Linux）是一套共享库,使本地系统管理员可以随意选择程序的认证方式。换句话说，不用(重新编写)重新编译一个包含PAM功能的应用程序，就可以改变它使用的认证机制，这种方式下，就算升级本地认证机制,也不用修改程序。
