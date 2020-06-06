@@ -6,15 +6,29 @@
     <description>Recent content in technology on CC&#39;s Trip</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 04 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 06 Jun 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://cctrip.github.io/categories/technology/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Linux PAM模块</title>
+      <title>Nginx匹配机制总结</title>
+      <link>https://cctrip.github.io/posts/nginx_match/</link>
+      <pubDate>Sat, 06 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/posts/nginx_match/</guid>
+      <description>写在前面 Nginx是一个当前主流的HTTP服务器和反向代理服务器，很多做WEB相关的同学基本都会用到，很多云厂商的七层负载均衡器也基本都是基于nginx实现的，个人在工作过程也算是经常接触，这篇文章主要想总结一下nginx的匹配机制，主要分为两块，一块是server的匹配，一块是location的匹配。
+ Server匹配机制 配置过nginx的都知道，在一个http模块中是可以配置多个server模块的，并且多个server模块是可以配置相同的监听端口的，下面是一个简单的server配置例子：
+server { listen 80; server_name example.org www.example.org; ... } server { listen 80; server_name example.net www.example.net; ... } server { listen 80; server_name example.com www.example.com; ... } 当我们对nginx发起http请求后，nginx会拿到http请求中对应的 &amp;quot;Host&amp;quot; 头部跟server模块中的server_name进行匹配，根据匹配的server结果进入具体的server模块处理http请求。那么，它具体的匹配机制是怎样的呢？
+首先，我们先简单了解下nginx内部server的相关结构，
+其中listen和server_name在配置文件中的写法有：
+ listen(可带default_server标识)  ip:port ip(监听80端口) port(监听所有地址)   server_name  www.example.com(完整域名) *.example.com(带通配符开头的域名) www.example.*(带通配符结尾的域名) ~^(www.)?(.+)$(正则写法的域名)    /************************************************************************************* 伪结构体示例 (port) --&amp;gt; address(ip:port) --&amp;gt; server(example.com) --&amp;gt; server(example.net) 一个server模块的唯一标识是由address(listen配置)和server(server_name配置)组成 *************************************************************************************/ /* address 结构体，具有相同的ip:port */ struct ngx_http_addr_conf_s { /* default_server 存储的是listen配置里带default_server标识的server， 若没有就为顺序中的第一个server */ ngx_http_core_srv_conf_t *default_server; ngx_http_virtual_names_t *virtual_names; unsigned ssl:1; unsigned http2:1; unsigned proxy_protocol:1; }; /* virtual_name结构体，存储hash_combined和正则写法的server_name */ typedef struct { ngx_hash_combined_t names; ngx_uint_t nregex; ngx_http_server_name_t *regex; } ngx_http_virtual_names_t; /* hash_combined结构体，存储完成域名、通配符开头、通配符结尾的server_name */ typedef struct { ngx_hash_t hash; ngx_hash_wildcard_t *wc_head; ngx_hash_wildcard_t *wc_tail; } ngx_hash_combined_t; 通过结构体，我们来说明下server的匹配规则：</description>
+    </item>
+    
+    <item>
+      <title>Linux pam模块</title>
       <link>https://cctrip.github.io/posts/linux_pam/</link>
-      <pubDate>Thu, 04 Jun 2020 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 29 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>https://cctrip.github.io/posts/linux_pam/</guid>
       <description>概念 Linux-PAM（Pluggable Authentication Modules for Linux）是一套共享库,使本地系统管理员可以随意选择程序的认证方式。换句话说，不用(重新编写)重新编译一个包含PAM功能的应用程序，就可以改变它使用的认证机制，这种方式下，就算升级本地认证机制,也不用修改程序。
@@ -35,8 +49,7 @@ type control module-path module-arguments 配置文件分为四列
 控制标记 流程栈（stack）
 它是认证时执行步骤和规则的堆叠。在某个服务的配置文件中，它体现在了配置文件中的自上而下的执行顺序中。栈是可以被引用的，即在一个栈（或者流程）中嵌入另一个栈。
 控制标记 规定如何处理PAM模块鉴别认证的结果，简而言之就是鉴别认证成功或者失败之后会发生什么事，如何进行控制。一般有两种形式，一种是比较常见的“关键字”方式，另一种则是用方括号（[]）包含的“value =action”方式。
-#####关键字方式:
-  required
+关键字方式:   required
 如果本条目没有被满足，那最终本次认证一定失败，但认证过程不因此打断。整个栈运行完毕之后才会返回“认证失败”信号。
   requisite
 如果本条目没有被满足，那本次认证一定失败，而且整个栈立即中止并返回错误信号。

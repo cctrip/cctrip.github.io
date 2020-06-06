@@ -25,8 +25,7 @@ type control module-path module-arguments 配置文件分为四列
 控制标记 流程栈（stack）
 它是认证时执行步骤和规则的堆叠。在某个服务的配置文件中，它体现在了配置文件中的自上而下的执行顺序中。栈是可以被引用的，即在一个栈（或者流程）中嵌入另一个栈。
 控制标记 规定如何处理PAM模块鉴别认证的结果，简而言之就是鉴别认证成功或者失败之后会发生什么事，如何进行控制。一般有两种形式，一种是比较常见的“关键字”方式，另一种则是用方括号（[]）包含的“value =action”方式。
-#####关键字方式:
-  required
+关键字方式:   required
 如果本条目没有被满足，那最终本次认证一定失败，但认证过程不因此打断。整个栈运行完毕之后才会返回“认证失败”信号。
   requisite
 如果本条目没有被满足，那本次认证一定失败，而且整个栈立即中止并返回错误信号。
@@ -39,7 +38,7 @@ type control module-path module-arguments 配置文件分为四列
     
 
     <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Linux PAM模块"/>
+<meta name="twitter:title" content="Linux pam模块"/>
 <meta name="twitter:description" content="概念 Linux-PAM（Pluggable Authentication Modules for Linux）是一套共享库,使本地系统管理员可以随意选择程序的认证方式。换句话说，不用(重新编写)重新编译一个包含PAM功能的应用程序，就可以改变它使用的认证机制，这种方式下，就算升级本地认证机制,也不用修改程序。
  工作机制 当应用程序希望与PAM交互以处理事件时，他们必须包括libpam，该libpam允许通过库提供的API进行通信。 当PAM看到必须处理的新事件时，它将查看/etc/pam.d中的相关配置文件，并确定在某些阶段必须使用哪些模块。
  /etc/pam.d配置文件介绍 配置文件语法
@@ -58,15 +57,14 @@ type control module-path module-arguments 配置文件分为四列
 控制标记 流程栈（stack）
 它是认证时执行步骤和规则的堆叠。在某个服务的配置文件中，它体现在了配置文件中的自上而下的执行顺序中。栈是可以被引用的，即在一个栈（或者流程）中嵌入另一个栈。
 控制标记 规定如何处理PAM模块鉴别认证的结果，简而言之就是鉴别认证成功或者失败之后会发生什么事，如何进行控制。一般有两种形式，一种是比较常见的“关键字”方式，另一种则是用方括号（[]）包含的“value =action”方式。
-#####关键字方式:
-  required
+关键字方式:   required
 如果本条目没有被满足，那最终本次认证一定失败，但认证过程不因此打断。整个栈运行完毕之后才会返回“认证失败”信号。
   requisite
 如果本条目没有被满足，那本次认证一定失败，而且整个栈立即中止并返回错误信号。
   sufficient
   如果本条目的条件被满足，且本条目之前没有任何required条目失败，则立即返回“认证成功”信号；如果对本条目的验证失败，不对结果造成影响。"/>
 
-    <meta property="og:title" content="Linux PAM模块" />
+    <meta property="og:title" content="Linux pam模块" />
 <meta property="og:description" content="概念 Linux-PAM（Pluggable Authentication Modules for Linux）是一套共享库,使本地系统管理员可以随意选择程序的认证方式。换句话说，不用(重新编写)重新编译一个包含PAM功能的应用程序，就可以改变它使用的认证机制，这种方式下，就算升级本地认证机制,也不用修改程序。
  工作机制 当应用程序希望与PAM交互以处理事件时，他们必须包括libpam，该libpam允许通过库提供的API进行通信。 当PAM看到必须处理的新事件时，它将查看/etc/pam.d中的相关配置文件，并确定在某些阶段必须使用哪些模块。
  /etc/pam.d配置文件介绍 配置文件语法
@@ -85,8 +83,7 @@ type control module-path module-arguments 配置文件分为四列
 控制标记 流程栈（stack）
 它是认证时执行步骤和规则的堆叠。在某个服务的配置文件中，它体现在了配置文件中的自上而下的执行顺序中。栈是可以被引用的，即在一个栈（或者流程）中嵌入另一个栈。
 控制标记 规定如何处理PAM模块鉴别认证的结果，简而言之就是鉴别认证成功或者失败之后会发生什么事，如何进行控制。一般有两种形式，一种是比较常见的“关键字”方式，另一种则是用方括号（[]）包含的“value =action”方式。
-#####关键字方式:
-  required
+关键字方式:   required
 如果本条目没有被满足，那最终本次认证一定失败，但认证过程不因此打断。整个栈运行完毕之后才会返回“认证失败”信号。
   requisite
 如果本条目没有被满足，那本次认证一定失败，而且整个栈立即中止并返回错误信号。
@@ -94,8 +91,8 @@ type control module-path module-arguments 配置文件分为四列
   如果本条目的条件被满足，且本条目之前没有任何required条目失败，则立即返回“认证成功”信号；如果对本条目的验证失败，不对结果造成影响。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://cctrip.github.io/posts/linux_pam/" />
-<meta property="article:published_time" content="2020-06-04T00:00:00+00:00" />
-<meta property="article:modified_time" content="2020-06-04T00:00:00+00:00" /><meta property="og:see_also" content="https://cctrip.github.io/posts/file_descriptor/" /><meta property="og:see_also" content="https://cctrip.github.io/posts/systemstart/" />
+<meta property="article:published_time" content="2020-03-29T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-03-29T00:00:00+00:00" /><meta property="og:see_also" content="https://cctrip.github.io/posts/nginx_match/" /><meta property="og:see_also" content="https://cctrip.github.io/posts/file_descriptor/" /><meta property="og:see_also" content="https://cctrip.github.io/posts/systemstart/" />
 
 
 
@@ -103,7 +100,7 @@ type control module-path module-arguments 配置文件分为四列
       <base href="https://cctrip.github.io/posts/linux_pam/">
     
     <title>
-  Linux PAM模块 · CC&#39;s Trip
+  Linux pam模块 · CC&#39;s Trip
 </title>
 
     
@@ -207,14 +204,14 @@ type control module-path module-arguments 配置文件分为四列
     <article>
       <header>
         <div class="post-title">
-          <h1 class="title">Linux PAM模块</h1>
+          <h1 class="title">Linux pam模块</h1>
         </div>
         <div class="post-meta">
           <div class="date">
             <span class="posted-on">
               <i class="fas fa-calendar"></i>
-              <time datetime='2020-06-04T00:00:00Z'>
-                June 4, 2020
+              <time datetime='2020-03-29T00:00:00Z'>
+                March 29, 2020
               </time>
             </span>
             <span class="reading-time">
@@ -278,7 +275,7 @@ type control module-path module-arguments 配置文件分为四列
 <p><strong>流程栈（stack）</strong></p>
 <p>它是认证时执行步骤和规则的堆叠。在某个服务的配置文件中，它体现在了配置文件中的自上而下的执行顺序中。栈是可以被引用的，即在一个栈（或者流程）中嵌入另一个栈。</p>
 <p><em>控制标记</em> 规定如何处理PAM模块鉴别认证的结果，简而言之就是鉴别认证成功或者失败之后会发生什么事，如何进行控制。一般有两种形式，一种是比较常见的“关键字”方式，另一种则是用方括号（<code>[]</code>）包含的“<code>value =action</code>”方式。</p>
-<p>#####关键字方式:</p>
+<h6 id="关键字方式">关键字方式:</h6>
 <ul>
 <li>
 <p>required</p>
@@ -307,7 +304,7 @@ type control module-path module-arguments 配置文件分为四列
 <p>运行其他配置文件中的流程，并将整个运行结果作为该行的结果进行输出。该模式和 <code>include</code> 的不同点在于认证结果的作用域：如果某个流程栈 <code>include</code> 了一个带 <code>requisite</code> 的栈，这个 <code>requisite</code> 失败将直接导致认证失败，同时退出栈；而某个流程栈 <code>substack</code> 了同样的栈时，<code>requisite</code> 的失败只会导致这个子栈返回失败信号，母栈并不会在此退出。</p>
 </li>
 </ul>
-<h5 id="value--action方式">value = action方式:</h5>
+<h6 id="value--action方式">value = action方式:</h6>
 <p>另外还有一种比较复杂的格式为value = action的语法来设置控制标志，标志之间会以空格分开。格式如下：</p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">[value1 = action1 value2 = action2 <span style="color:#f00">……</span>]
 </code></pre></div><p>其中value可以是下列Linux PAM库的返回值：</p>
@@ -345,7 +342,7 @@ type control module-path module-arguments 配置文件分为四列
 <p>清空之前生效的返回值，并且从下面的验证起重新开始。</p>
 </li>
 </ul>
-<p>#####关键字的控制方式也可以用value = action方式来表示</p>
+<h6 id="关键字的控制方式也可以用value--action方式来表示">关键字的控制方式也可以用value = action方式来表示</h6>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"><span style="font-weight:bold">#required
 </span><span style="font-weight:bold"></span>[success=ok new_authtok_reqd=ok ignore=ignore default=bad]
 
@@ -357,9 +354,9 @@ type control module-path module-arguments 配置文件分为四列
 
 <span style="font-weight:bold">#optional
 </span><span style="font-weight:bold"></span>[success=ok new_authtok_reqd=ok default=ignore]
-</code></pre></div><p>####模块路径</p>
+</code></pre></div><h4 id="模块路径">模块路径</h4>
 <p><em>模块路径</em> 是应用程序要使用的PAM的绝对路径，或者是默认模块位置的相对路径名，一般为/lib/security /或/lib64/security/，取决于系统架构。</p>
-<p>####模块参数</p>
+<h4 id="模块参数">模块参数</h4>
 <p><em>模块参数</em> 将只和特定模块相关，因此某个模块的文档中一定包含其参数的信息。如果需要在单个参数中使用空格，可以将整个参数用方括号（<code>[]</code>）包裹起来。</p>
 <hr>
 <h3 id="一个例子">一个例子</h3>
@@ -386,6 +383,12 @@ type control module-path module-arguments 配置文件分为四列
       <nav>
         <ul>
         
+        
+          
+            <li>
+              <a href="https://cctrip.github.io/posts/nginx_match/">Nginx匹配机制总结</a>
+            </li>
+          
         
           
         

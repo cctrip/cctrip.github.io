@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+
+    <meta name="author" content="Hello.CC">
+    <meta name="description" content="写在前面 Nginx是一个当前主流的HTTP服务器和反向代理服务器，很多做WEB相关的同学基本都会用到，很多云厂商的七层负载均衡器也基本都是基于nginx实现的，个人在工作过程也算是经常接触，这篇文章主要想总结一下nginx的匹配机制，主要分为两块，一块是server的匹配，一块是location的匹配。
+ Server匹配机制 配置过nginx的都知道，在一个http模块中是可以配置多个server模块的，并且多个server模块是可以配置相同的监听端口的，下面是一个简单的server配置例子：
+server { listen 80; server_name example.org www.example.org; ... } server { listen 80; server_name example.net www.example.net; ... } server { listen 80; server_name example.com www.example.com; ... } 当我们对nginx发起http请求后，nginx会拿到http请求中对应的 &quot;Host&quot; 头部跟server模块中的server_name进行匹配，根据匹配的server结果进入具体的server模块处理http请求。那么，它具体的匹配机制是怎样的呢？
+首先，我们先简单了解下nginx内部server的相关结构，
+其中listen和server_name在配置文件中的写法有：
+ listen(可带default_server标识)  ip:port ip(监听80端口) port(监听所有地址)   server_name  www.example.com(完整域名) *.example.com(带通配符开头的域名) www.example.*(带通配符结尾的域名) ~^(www.)?(.&#43;)$(正则写法的域名)    /************************************************************************************* 伪结构体示例 (port) --&gt; address(ip:port) --&gt; server(example.com) --&gt; server(example.net) 一个server模块的唯一标识是由address(listen配置)和server(server_name配置)组成 *************************************************************************************/ /* address 结构体，具有相同的ip:port */ struct ngx_http_addr_conf_s { /* default_server 存储的是listen配置里带default_server标识的server， 若没有就为顺序中的第一个server */ ngx_http_core_srv_conf_t *default_server; ngx_http_virtual_names_t *virtual_names; unsigned ssl:1; unsigned http2:1; unsigned proxy_protocol:1; }; /* virtual_name结构体，存储hash_combined和正则写法的server_name */ typedef struct { ngx_hash_combined_t names; ngx_uint_t nregex; ngx_http_server_name_t *regex; } ngx_http_virtual_names_t; /* hash_combined结构体，存储完成域名、通配符开头、通配符结尾的server_name */ typedef struct { ngx_hash_t hash; ngx_hash_wildcard_t *wc_head; ngx_hash_wildcard_t *wc_tail; } ngx_hash_combined_t; 通过结构体，我们来说明下server的匹配规则：">
+    <meta name="keywords" content="blog,developer,personal">
+
+    
+      <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
+    
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Nginx匹配机制总结"/>
+<meta name="twitter:description" content="写在前面 Nginx是一个当前主流的HTTP服务器和反向代理服务器，很多做WEB相关的同学基本都会用到，很多云厂商的七层负载均衡器也基本都是基于nginx实现的，个人在工作过程也算是经常接触，这篇文章主要想总结一下nginx的匹配机制，主要分为两块，一块是server的匹配，一块是location的匹配。
+ Server匹配机制 配置过nginx的都知道，在一个http模块中是可以配置多个server模块的，并且多个server模块是可以配置相同的监听端口的，下面是一个简单的server配置例子：
+server { listen 80; server_name example.org www.example.org; ... } server { listen 80; server_name example.net www.example.net; ... } server { listen 80; server_name example.com www.example.com; ... } 当我们对nginx发起http请求后，nginx会拿到http请求中对应的 &quot;Host&quot; 头部跟server模块中的server_name进行匹配，根据匹配的server结果进入具体的server模块处理http请求。那么，它具体的匹配机制是怎样的呢？
+首先，我们先简单了解下nginx内部server的相关结构，
+其中listen和server_name在配置文件中的写法有：
+ listen(可带default_server标识)  ip:port ip(监听80端口) port(监听所有地址)   server_name  www.example.com(完整域名) *.example.com(带通配符开头的域名) www.example.*(带通配符结尾的域名) ~^(www.)?(.&#43;)$(正则写法的域名)    /************************************************************************************* 伪结构体示例 (port) --&gt; address(ip:port) --&gt; server(example.com) --&gt; server(example.net) 一个server模块的唯一标识是由address(listen配置)和server(server_name配置)组成 *************************************************************************************/ /* address 结构体，具有相同的ip:port */ struct ngx_http_addr_conf_s { /* default_server 存储的是listen配置里带default_server标识的server， 若没有就为顺序中的第一个server */ ngx_http_core_srv_conf_t *default_server; ngx_http_virtual_names_t *virtual_names; unsigned ssl:1; unsigned http2:1; unsigned proxy_protocol:1; }; /* virtual_name结构体，存储hash_combined和正则写法的server_name */ typedef struct { ngx_hash_combined_t names; ngx_uint_t nregex; ngx_http_server_name_t *regex; } ngx_http_virtual_names_t; /* hash_combined结构体，存储完成域名、通配符开头、通配符结尾的server_name */ typedef struct { ngx_hash_t hash; ngx_hash_wildcard_t *wc_head; ngx_hash_wildcard_t *wc_tail; } ngx_hash_combined_t; 通过结构体，我们来说明下server的匹配规则："/>
+
+    <meta property="og:title" content="Nginx匹配机制总结" />
+<meta property="og:description" content="写在前面 Nginx是一个当前主流的HTTP服务器和反向代理服务器，很多做WEB相关的同学基本都会用到，很多云厂商的七层负载均衡器也基本都是基于nginx实现的，个人在工作过程也算是经常接触，这篇文章主要想总结一下nginx的匹配机制，主要分为两块，一块是server的匹配，一块是location的匹配。
+ Server匹配机制 配置过nginx的都知道，在一个http模块中是可以配置多个server模块的，并且多个server模块是可以配置相同的监听端口的，下面是一个简单的server配置例子：
+server { listen 80; server_name example.org www.example.org; ... } server { listen 80; server_name example.net www.example.net; ... } server { listen 80; server_name example.com www.example.com; ... } 当我们对nginx发起http请求后，nginx会拿到http请求中对应的 &quot;Host&quot; 头部跟server模块中的server_name进行匹配，根据匹配的server结果进入具体的server模块处理http请求。那么，它具体的匹配机制是怎样的呢？
+首先，我们先简单了解下nginx内部server的相关结构，
+其中listen和server_name在配置文件中的写法有：
+ listen(可带default_server标识)  ip:port ip(监听80端口) port(监听所有地址)   server_name  www.example.com(完整域名) *.example.com(带通配符开头的域名) www.example.*(带通配符结尾的域名) ~^(www.)?(.&#43;)$(正则写法的域名)    /************************************************************************************* 伪结构体示例 (port) --&gt; address(ip:port) --&gt; server(example.com) --&gt; server(example.net) 一个server模块的唯一标识是由address(listen配置)和server(server_name配置)组成 *************************************************************************************/ /* address 结构体，具有相同的ip:port */ struct ngx_http_addr_conf_s { /* default_server 存储的是listen配置里带default_server标识的server， 若没有就为顺序中的第一个server */ ngx_http_core_srv_conf_t *default_server; ngx_http_virtual_names_t *virtual_names; unsigned ssl:1; unsigned http2:1; unsigned proxy_protocol:1; }; /* virtual_name结构体，存储hash_combined和正则写法的server_name */ typedef struct { ngx_hash_combined_t names; ngx_uint_t nregex; ngx_http_server_name_t *regex; } ngx_http_virtual_names_t; /* hash_combined结构体，存储完成域名、通配符开头、通配符结尾的server_name */ typedef struct { ngx_hash_t hash; ngx_hash_wildcard_t *wc_head; ngx_hash_wildcard_t *wc_tail; } ngx_hash_combined_t; 通过结构体，我们来说明下server的匹配规则：" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cctrip.github.io/posts/nginx_match/" />
+<meta property="article:published_time" content="2020-06-06T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-06-06T00:00:00+00:00" /><meta property="og:see_also" content="https://cctrip.github.io/posts/linux_pam/" /><meta property="og:see_also" content="https://cctrip.github.io/posts/file_descriptor/" /><meta property="og:see_also" content="https://cctrip.github.io/posts/systemstart/" />
+
+
+
+    
+      <base href="https://cctrip.github.io/posts/nginx_match/">
+    
+    <title>
+  Nginx匹配机制总结 · CC&#39;s Trip
+</title>
+
+    
+      <link rel="canonical" href="https://cctrip.github.io/posts/nginx_match/">
+    
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="https://cctrip.github.io/css/coder.min.3219ef62ae52679b7a9c19043171c3cd9f523628c2a65f3ef247ee18836bc90b.css" integrity="sha256-MhnvYq5SZ5t6nBkEMXHDzZ9SNijCpl8&#43;8kfuGINryQs=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="https://cctrip.github.io/css/coder-dark.min.e78e80fc3a585a4d1c8fc7f58623b6ff852411e38431a9cd1792877ecaa160f6.css" integrity="sha256-546A/DpYWk0cj8f1hiO2/4UkEeOEManNF5KHfsqhYPY=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="https://cctrip.github.io/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://cctrip.github.io/images/favicon-16x16.png" sizes="16x16">
+
+    <meta name="generator" content="Hugo 0.72.0" />
+  </head>
+
+  
+  
+    
+  
+  <body class="colorscheme-dark"
+        onload=" twemoji.parse(document.body); "
+  >
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="https://cctrip.github.io/">
+      CC&#39;s Trip
+    </a>
+    
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
+    <ul class="navigation-list">
+      
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://cctrip.github.io/about/">About</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://cctrip.github.io/posts/">Blog</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://cctrip.github.io/tags/">Tags</a>
+          </li>
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://cctrip.github.io/projects/">Projects</a>
+          </li>
+        
+      
+      
+        
+        
+        
+          
+        
+          
+            
+              <li class="navigation-item menu-separator">
+                <span>|</span>
+              </li>
+              
+            
+            <li class="navigation-item">
+              <a href="https://cctrip.github.io/zh/"></a>
+            </li>
+          
+        
+      
+    </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">Nginx匹配机制总结</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fas fa-calendar"></i>
+              <time datetime='2020-06-06T00:00:00Z'>
+                June 6, 2020
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fas fa-clock"></i>
+              2-minute read
+            </span>
+          </div>
+          <div class="categories">
+  <i class="fas fa-folder"></i>
+    <a href="https://cctrip.github.io/categories/technology/">technology</a></div>
+
+          <div class="tags">
+  <i class="fas fa-tag"></i>
+    <a href="https://cctrip.github.io/tags/linux/">linux</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <h3 id="写在前面">写在前面</h3>
+<p>Nginx是一个当前主流的HTTP服务器和反向代理服务器，很多做WEB相关的同学基本都会用到，很多云厂商的七层负载均衡器也基本都是基于nginx实现的，个人在工作过程也算是经常接触，这篇文章主要想总结一下nginx的匹配机制，主要分为两块，一块是server的匹配，一块是location的匹配。</p>
+<hr>
+<h3 id="server匹配机制">Server匹配机制</h3>
+<p>配置过nginx的都知道，在一个http模块中是可以配置多个server模块的，并且多个server模块是可以配置相同的监听端口的，下面是一个简单的server配置例子：</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#fff;font-weight:bold">server</span> {
+    <span style="color:#fff;font-weight:bold">listen</span>      <span style="color:#ff0;font-weight:bold">80</span>;
+    <span style="color:#fff;font-weight:bold">server_name</span> <span style="color:#0ff;font-weight:bold">example.org</span> <span style="color:#0ff;font-weight:bold">www.example.org</span>;
+    <span style="color:#fff;font-weight:bold">...</span>
+<span style="color:#f00">}</span>
+
+<span style="color:#0ff;font-weight:bold">server</span> {
+    <span style="color:#fff;font-weight:bold">listen</span>      <span style="color:#ff0;font-weight:bold">80</span>;
+    <span style="color:#fff;font-weight:bold">server_name</span> <span style="color:#0ff;font-weight:bold">example.net</span> <span style="color:#0ff;font-weight:bold">www.example.net</span>;
+    <span style="color:#fff;font-weight:bold">...</span>
+<span style="color:#f00">}</span>
+
+<span style="color:#0ff;font-weight:bold">server</span> {
+    <span style="color:#fff;font-weight:bold">listen</span>      <span style="color:#ff0;font-weight:bold">80</span>;
+    <span style="color:#fff;font-weight:bold">server_name</span> <span style="color:#0ff;font-weight:bold">example.com</span> <span style="color:#0ff;font-weight:bold">www.example.com</span>;
+    <span style="color:#fff;font-weight:bold">...</span>
+<span style="color:#f00">}</span>
+</code></pre></div><p>当我们对nginx发起http请求后，nginx会拿到http请求中对应的 <code>&quot;Host&quot;</code> 头部跟server模块中的<code>server_name</code>进行匹配，根据匹配的server结果进入具体的server模块处理http请求。那么，它具体的匹配机制是怎样的呢？</p>
+<p>首先，我们先简单了解下nginx内部server的相关结构，</p>
+<p>其中listen和server_name在配置文件中的写法有：</p>
+<ul>
+<li>listen(可带default_server标识)
+<ul>
+<li><code>ip:port</code></li>
+<li><code>ip</code>(监听80端口)</li>
+<li><code>port</code>(监听所有地址)</li>
+</ul>
+</li>
+<li>server_name
+<ul>
+<li><code>www.example.com</code>(完整域名)</li>
+<li><code>*.example.com(</code>带通配符开头的域名)</li>
+<li><code>www.example.*</code>(带通配符结尾的域名)</li>
+<li><code>~^(www.)?(.+)$</code>(正则写法的域名)</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#007f7f">/*************************************************************************************
+</span><span style="color:#007f7f">伪结构体示例
+</span><span style="color:#007f7f">(port) --&gt; address(ip:port) --&gt; server(example.com)
+</span><span style="color:#007f7f">                            --&gt; server(example.net)
+</span><span style="color:#007f7f">                           
+</span><span style="color:#007f7f">一个server模块的唯一标识是由address(listen配置)和server(server_name配置)组成
+</span><span style="color:#007f7f">*************************************************************************************/</span>
+
+<span style="color:#007f7f">/* address 结构体，具有相同的ip:port */</span>
+<span style="color:#fff;font-weight:bold">struct</span> ngx_http_addr_conf_s {
+  <span style="color:#007f7f">/* default_server
+</span><span style="color:#007f7f">  	 存储的是listen配置里带default_server标识的server，
+</span><span style="color:#007f7f">     若没有就为顺序中的第一个server */</span>
+  ngx_http_core_srv_conf_t  *default_server;
+  ngx_http_virtual_names_t  *virtual_names;
+  <span style="color:#fff;font-weight:bold">unsigned</span>                   ssl:<span style="color:#ff0;font-weight:bold">1</span>;
+  <span style="color:#fff;font-weight:bold">unsigned</span>                   http2:<span style="color:#ff0;font-weight:bold">1</span>;
+  <span style="color:#fff;font-weight:bold">unsigned</span>                   proxy_protocol:<span style="color:#ff0;font-weight:bold">1</span>;
+};
+
+<span style="color:#007f7f">/* virtual_name结构体，存储hash_combined和正则写法的server_name */</span>
+<span style="color:#fff;font-weight:bold">typedef</span> <span style="color:#fff;font-weight:bold">struct</span> {
+  ngx_hash_combined_t        names;
+  ngx_uint_t                 nregex;
+  ngx_http_server_name_t    *regex;
+} ngx_http_virtual_names_t;
+
+<span style="color:#007f7f">/* hash_combined结构体，存储完成域名、通配符开头、通配符结尾的server_name */</span>
+<span style="color:#fff;font-weight:bold">typedef</span> <span style="color:#fff;font-weight:bold">struct</span> {
+  ngx_hash_t            hash;
+  ngx_hash_wildcard_t  *wc_head;
+  ngx_hash_wildcard_t  *wc_tail;
+} ngx_hash_combined_t;
+
+</code></pre></div><p>通过结构体，我们来说明下server的匹配规则：</p>
+<ol>
+<li>host是否匹配virtual_names中的names中的names中的完整域名(<code>hash</code>)，若是则返回</li>
+<li>host是否匹配virtual_name中的names中的通配符开头的域名(<code>wc_head</code>)，若是则返回</li>
+<li>host是否匹配virtual_name中的names中的通配符结尾的域名(<code>wc_tail</code>)，若是则返回</li>
+<li>host是否匹配virtual_name中的正则写法的域名(<code>regex</code>)，若是则返回</li>
+<li>返回<code>default_server</code></li>
+</ol>
+<p>具体示例如下：</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#007f7f">#精确匹配，第一优先级
+</span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">server</span> {
+  <span style="color:#fff;font-weight:bold">listen</span> <span style="color:#ff0;font-weight:bold">80</span>;
+  <span style="color:#fff;font-weight:bold">server_name</span> <span style="color:#0ff;font-weight:bold">www.test.com</span>;
+}
+
+<span style="color:#007f7f">#通配符开头匹配，第二优先级，
+</span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">server</span> {
+  <span style="color:#fff;font-weight:bold">listen</span> <span style="color:#ff0;font-weight:bold">80</span>;
+  <span style="color:#fff;font-weight:bold">server_name</span> <span style="color:#0ff;font-weight:bold">*.test.com</span>;
+}
+
+<span style="color:#007f7f">#通配符结尾匹配，第三优先级
+</span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">server</span> {
+  <span style="color:#fff;font-weight:bold">listen</span> <span style="color:#ff0;font-weight:bold">80</span>;
+  <span style="color:#fff;font-weight:bold">server_name</span> <span style="color:#0ff;font-weight:bold">www.test.*</span>;
+}
+
+<span style="color:#007f7f">#正则匹配，第三优先级
+</span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">server</span> {
+  <span style="color:#fff;font-weight:bold">listen</span> <span style="color:#ff0;font-weight:bold">80</span>;
+  <span style="color:#fff;font-weight:bold">server_name</span> ~<span style="color:#0ff;font-weight:bold">^(www.)?(.+)$;</span>
+<span style="color:#f00">}</span>
+
+
+<span style="color:#007f7f">#default，没找到对应host，则以此优先
+</span><span style="color:#007f7f"></span><span style="color:#0ff;font-weight:bold">server</span> {
+  <span style="color:#fff;font-weight:bold">listen</span> <span style="color:#ff0;font-weight:bold">80</span> <span style="color:#0ff;font-weight:bold">defalut_server</span>;
+  <span style="color:#fff;font-weight:bold">server_name</span> <span style="color:#0ff;font-weight:bold">_</span>;
+}
+
+<span style="color:#007f7f">#若没有加defalut_server，则第一个server为defalut_server
+</span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">server</span> {
+  <span style="color:#fff;font-weight:bold">listen</span> <span style="color:#ff0;font-weight:bold">80</span>;
+  <span style="color:#fff;font-weight:bold">server_name</span> <span style="color:#0ff;font-weight:bold">_</span>;
+}
+</code></pre></div><hr>
+<h3 id="location匹配机制">Location匹配机制</h3>
+<p>一个server模块可以配置多个location，nginx根据<code>URI</code>来进行匹配，</p>
+<p>lication的写法有以下几种：</p>
+<ol>
+<li>
+<p><code>= /</code> 精确匹配</p>
+</li>
+<li>
+<p><code>^~ /</code> 优先前缀匹配</p>
+</li>
+<li>
+<p><code>~ / 或者~* /</code> 正则匹配</p>
+</li>
+<li>
+<p><code>/</code> 前缀匹配</p>
+</li>
+</ol>
+<p>整个location匹配机制如下：</p>
+<ol>
+<li>针对所有前缀字符串测试URI(包括精确匹配、优先前缀匹配、前缀匹配中的字符串)</li>
+<li>uri等于精确匹配中的字符串，停止搜索</li>
+<li>最长(最相似)前缀字符串如果为优先前缀匹配(带<code>^~</code>)，则停止正则搜索</li>
+<li>保存最长(最相似)的前缀字符串</li>
+<li>按顺序进行uri和正则匹配测试，有一个匹配成功后就停止搜索</li>
+<li>如果都没有，就使用最长(最相似)的前缀匹配</li>
+</ol>
+<h6 id="额外说明">额外说明：</h6>
+<p>最长(最相似)前缀字符串的测试阶段，优先前缀匹配、前缀匹配的优先级是一致的，谁的长度长，谁优先。优先前缀匹配的前提必须是前缀字符串优先<code>前缀匹配的长度</code>大于<code>前缀匹配的长度</code>，这个很多网站都是直接写成了优先前缀匹配是第二优先级，没有说明前提条件。</p>
+<p>具体示例如下：</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#007f7f">#精确匹配，第一优先级
+</span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">location</span> = <span style="color:#0ff;font-weight:bold">/test</span> {
+  
+}
+<span style="color:#007f7f">#前缀匹配，最低优先级，长度优先
+</span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">location</span> <span style="color:#0ff;font-weight:bold">/test/aa</span> {
+  
+}
+
+<span style="color:#007f7f">#优先前缀匹配，最长前缀下为第二优先级(特殊条件下)
+</span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">location</span> <span style="color:#0ff;font-weight:bold">^~</span> <span style="color:#0ff;font-weight:bold">/test</span> {
+  
+}
+
+<span style="color:#007f7f">#正则匹配，第三优先级,顺序优先
+</span><span style="color:#007f7f"># ~ : 区分大小写
+</span><span style="color:#007f7f"># ~* : 不区分大小写 
+</span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">location</span> ~<span style="color:#0ff;font-weight:bold">*</span> <span style="color:#0ff;font-weight:bold">^/test</span> {
+  
+}
+</code></pre></div><hr>
+<h3 id="参考">参考</h3>
+<p><a href="https://nginx.org/en/docs/http/request_processing.html">https://nginx.org/en/docs/http/request_processing.html</a></p>
+<p><a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#location">https://nginx.org/en/docs/http/ngx_http_core_module.html#location</a></p>
+<p><a href="https://docs.nginx.com/nginx/admin-guide/web-server/web-server/">https://docs.nginx.com/nginx/admin-guide/web-server/web-server/</a></p>
+<p><a href="https://www.codedump.info/post/20190212-nginx-http-config/">https://www.codedump.info/post/20190212-nginx-http-config/</a></p>
+
+      </div>
+
+
+      <footer>
+        
+
+<section class="see-also">
+  
+    
+    
+    
+      <h3>See also in linux</h3>
+      <nav>
+        <ul>
+        
+        
+          
+        
+          
+            <li>
+              <a href="https://cctrip.github.io/posts/linux_pam/">Linux pam模块</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://cctrip.github.io/posts/file_descriptor/">谈谈文件描述符</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://cctrip.github.io/posts/systemstart/">理解系统启动过程</a>
+            </li>
+          
+        
+        </ul>
+      </nav>
+    
+  
+</section>
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      
+  <footer class="footer">
+    <section class="container">
+      
+        <p>人生如逆旅,我亦是行人.</p>
+      
+      
+        ©
+        
+          2019 -
+        
+        2020
+         Hello.CC 
+      
+      
+         · 
+        Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+      
+      
+    </section>
+  </footer>
+
+    </main>
+
+    
+
+    
+
+    <script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//analytics.example.com/tracker.js', 'fathom');
+fathom('set', 'siteId', 'ABCDE');
+fathom('trackPageview');
+</script>
+
+
+  </body>
+
+</html>
