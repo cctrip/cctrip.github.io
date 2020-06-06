@@ -309,29 +309,29 @@ server { listen 80; server_name example.org www.example.org; ... } server { list
 <p>lication的写法有以下几种：</p>
 <ol>
 <li>
-<p><code>= /</code> 精确匹配</p>
+<p><code>= /uri</code> 精确匹配</p>
 </li>
 <li>
-<p><code>^~ /</code> 优先前缀匹配</p>
+<p><code>^~ /uri</code> 非正则前缀匹配</p>
 </li>
 <li>
-<p><code>~ / 或者~* /</code> 正则匹配</p>
+<p><code>~ 或者 ~* /uri</code> 正则匹配</p>
 </li>
 <li>
-<p><code>/</code> 前缀匹配</p>
+<p><code>/uri</code> 前缀匹配</p>
 </li>
 </ol>
 <p>整个location匹配机制如下：</p>
 <ol>
 <li>针对所有前缀字符串测试URI(包括精确匹配、优先前缀匹配、前缀匹配中的字符串)</li>
 <li>uri等于精确匹配中的字符串，停止搜索</li>
-<li>最长(最相似)前缀字符串如果为优先前缀匹配(带<code>^~</code>)，则停止正则搜索</li>
+<li>最长(最相似)前缀字符串如果为非正则前缀匹配(带<code>^~</code>)，则停止正则搜索</li>
 <li>保存最长(最相似)的前缀字符串</li>
 <li>按顺序进行uri和正则匹配测试，有一个匹配成功后就停止搜索</li>
 <li>如果都没有，就使用最长(最相似)的前缀匹配</li>
 </ol>
 <h6 id="额外说明">额外说明：</h6>
-<p>最长(最相似)前缀字符串的测试阶段，优先前缀匹配、前缀匹配的优先级是一致的，谁的长度长，谁优先。优先前缀匹配的前提必须是前缀字符串<code>优先前缀匹配的长度</code>大于<code>前缀匹配的长度</code>，这个很多网站都是直接写成了优先前缀匹配是第二优先级，没有说明前提条件。</p>
+<p>最长(最相似)前缀字符串的测试阶段，优先前缀匹配、前缀匹配的优先级是一致的，谁的长度长，谁优先。优先前缀匹配的前提必须是前缀字符串<code>非正则前缀匹配的长度</code>大于<code>前缀匹配的长度</code>，这个很多网站都是直接写成了非正则前缀匹配是第二优先级，没有说明前提条件。</p>
 <p>具体示例如下：</p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#007f7f">#精确匹配，第一优先级
 </span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">location</span> = <span style="color:#0ff;font-weight:bold">/test</span> {
@@ -342,7 +342,7 @@ server { listen 80; server_name example.org www.example.org; ... } server { list
   
 }
 
-<span style="color:#007f7f">#优先前缀匹配，最长前缀下为第二优先级(特殊条件下)
+<span style="color:#007f7f">#非正则前缀匹配，最长前缀下为第二优先级(特殊条件下)
 </span><span style="color:#007f7f"></span><span style="color:#fff;font-weight:bold">location</span> <span style="color:#0ff;font-weight:bold">^~</span> <span style="color:#0ff;font-weight:bold">/test</span> {
   
 }
