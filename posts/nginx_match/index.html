@@ -260,7 +260,7 @@ server { listen 80; server_name example.org www.example.org; ... } server { list
 
 </code></pre></div><p>通过结构体，我们来说明下server的匹配规则：</p>
 <ol>
-<li>host是否匹配virtual_names中的names中的names中的完整域名(<code>hash</code>)，若是则返回</li>
+<li>host是否匹配virtual_names中的names中的完整域名(<code>hash</code>)，若是则返回</li>
 <li>host是否匹配virtual_name中的names中的通配符开头的域名(<code>wc_head</code>)，若是则返回</li>
 <li>host是否匹配virtual_name中的names中的通配符结尾的域名(<code>wc_tail</code>)，若是则返回</li>
 <li>host是否匹配virtual_name中的正则写法的域名(<code>regex</code>)，若是则返回</li>
