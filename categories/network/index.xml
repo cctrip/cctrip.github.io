@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>network on CC&#39;s Trip</title>
-    <link>http://example.org/categories/network/</link>
+    <link>https://cctrip.github.io/categories/network/</link>
     <description>Recent content in network on CC&#39;s Trip</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 08 Jan 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://example.org/categories/network/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cctrip.github.io/categories/network/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>理解SSL/TLS协议</title>
-      <link>http://example.org/posts/tls/</link>
+      <link>https://cctrip.github.io/posts/tls/</link>
       <pubDate>Sun, 08 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/posts/tls/</guid>
+      <guid>https://cctrip.github.io/posts/tls/</guid>
       <description>背景 早期我们在访问web时使用HTTP协议，该协议在传输数据时使用明文传输，明文传输带来了以下风险：
  信息窃听风险，第三方可以获取通信内容 信息篡改风险，第三方可以篡改通信内容 身份冒充风险，第三方可以冒充他人身份参与通信  为了解决明文传输所带来的风险，网景公司在1994年设计了SSL用于Web的安全传输协议，这是SSL的起源。IETF将SSL进行标准化，1999年公布了第一版TLS标准文件。随后又公布了 RFC 5246（2008年8月）与 RFC 6176 （2011年3月）。该协议在web中被广泛应用。
  SSL/TLS协议 TLS（Transport Layer Security，传输层安全协议），及其前身SSL（Secure Sockets Layer，安全套接层）是一种安全协议，目的是为互联网通信，提供安全及数据完整性保障。
@@ -35,10 +35,10 @@ TLS协议使用以下三种机制为信息通信提供安全传输：
     
     <item>
       <title>谈谈HTTP</title>
-      <link>http://example.org/posts/http/</link>
+      <link>https://cctrip.github.io/posts/http/</link>
       <pubDate>Sun, 29 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/posts/http/</guid>
+      <guid>https://cctrip.github.io/posts/http/</guid>
       <description>写在前面 如今网络已经无处不在，人们通过网络获取浏览各种信息，其中，大部分都是通过浏览器访问各种网页来获取我们想要的信息，那么浏览器与网页(服务端)究竟是如何通信的呢？这就得从HTTP协议说起了，浏览器获取网页信息都是基于HTTP协议来处理的。
  概念 HTTP（HyperText Transfer Protocol，超文本传输协议）是互联网上应用最为广泛的一种网络协议。设计HTTP最初的目的是为了提供一种发布和接收HTML页面的方法。通过HTTP或者HTTPS协议请求的资源由统一资源标识符（Uniform Resource Identifiers，URI）来标识。HTTP是一个应用层协议，由请求和响应构成，是一个标准的客户端服务器模型。其具有如下特点：
   支持客户/服务器模式。
@@ -65,10 +65,10 @@ eg：GET /index.html HTTP/1.1
     
     <item>
       <title>谈谈DNS</title>
-      <link>http://example.org/posts/dns/</link>
+      <link>https://cctrip.github.io/posts/dns/</link>
       <pubDate>Sat, 21 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/posts/dns/</guid>
+      <guid>https://cctrip.github.io/posts/dns/</guid>
       <description>写在前面 目前，我们大部分的网络通信都是基于TCP/IP协议的，而TCP/IP又基于IP地址作为唯一标识进行通信，随着需要记忆的IP地址数量的增多，肯定会超出我们的记忆能力范围，但如果使用一种利于人们的记忆的方式，如域名，例如&amp;quot;www.google.com&amp;rdquo;，我们便可以轻松的记忆这种方式的标识，而不是繁杂的数字。而DNS(域名系统)就是为了可以使用这种方式提供服务的。
  概念 DNS(Domain Name System)，域名系统，它是因特网的一项服务。它作为将域名和IP地址相互映射的一个分布式数据库，能够使人更方便地访问互联网。DNS使用TCP和UDP端口53。当前，对于每一级域名长度的限制是63个字符，域名总长度则不能超过253个字符。
 DNS Domain Namespace，DNS域命名空间，是一种分层树状结构，其格式如下:&amp;ldquo;www.google.com&amp;rdquo;,以点&amp;rdquo;.&amp;ldquo;为分隔。结构如图所示：
@@ -97,10 +97,10 @@ DNS Domain Namespace，DNS域命名空间，是一种分层树状结构，其格
     
     <item>
       <title>WEB安全之CSP</title>
-      <link>http://example.org/posts/webcsp/</link>
+      <link>https://cctrip.github.io/posts/webcsp/</link>
       <pubDate>Fri, 20 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/posts/webcsp/</guid>
+      <guid>https://cctrip.github.io/posts/webcsp/</guid>
       <description>概念 内容安全策略(Content-Security-Policy，CSP)：是一种web应用技术用于帮助缓解大部分类型的内容注入攻击，包括XSS攻击和数据注入等，这些攻击可实现数据窃取、网站破坏和作为恶意软件分发版本等行为。该策略可让网站管理员指定客户端允许加载的各类可信任资源。
  浏览器支持 统计来源：caniuse.com/contentsecuritypolicy &amp;amp; Mozilla
  指令参考 Content-Security-Policy 响应头的值可配置一个或多个，多个指令以分号;隔开。
@@ -109,10 +109,10 @@ DNS Domain Namespace，DNS域命名空间，是一种分层树状结构，其格
     
     <item>
       <title>简单理解计算机通信</title>
-      <link>http://example.org/posts/networkcomm/</link>
+      <link>https://cctrip.github.io/posts/networkcomm/</link>
       <pubDate>Wed, 18 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/posts/networkcomm/</guid>
+      <guid>https://cctrip.github.io/posts/networkcomm/</guid>
       <description>写在前面： 在计算机刚出现的时候，只能在本机进行一些运算处理，想将一台计算机中的数据转移到另一台计算机中，需要通过外部存储介质来传输，例如磁带、软盘。而网络技术的出现，使得计算机间可以通过一些传输介质(网线、光纤等)，实现快速的数据传输和信息交互。如今，网络已无处不在，那么，计算机之间究竟是如何通信的呢？下面会通过一些基础的网络知识来简单理解计算机之间的通信过程。
  网络通信模型： 网络通信模型是一种概念模型和框架，旨在使各种计算机在世界范围内互连为网络。其中有OSI七层模型和TCP/IP四层模型，现在大部分网络通信都是以TCP/IP四层模型为基础的。它们的对应层次如下图：
   OSI有七层：从上到下依次为应用层、表示层、会话层、传输层、网络层、数据链路层、物理层

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>security on CC&#39;s Trip</title>
-    <link>http://example.org/categories/security/</link>
+    <link>https://cctrip.github.io/categories/security/</link>
     <description>Recent content in security on CC&#39;s Trip</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 08 Jan 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://example.org/categories/security/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cctrip.github.io/categories/security/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>理解SSL/TLS协议</title>
-      <link>http://example.org/posts/tls/</link>
+      <link>https://cctrip.github.io/posts/tls/</link>
       <pubDate>Sun, 08 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/posts/tls/</guid>
+      <guid>https://cctrip.github.io/posts/tls/</guid>
       <description>背景 早期我们在访问web时使用HTTP协议，该协议在传输数据时使用明文传输，明文传输带来了以下风险：
  信息窃听风险，第三方可以获取通信内容 信息篡改风险，第三方可以篡改通信内容 身份冒充风险，第三方可以冒充他人身份参与通信  为了解决明文传输所带来的风险，网景公司在1994年设计了SSL用于Web的安全传输协议，这是SSL的起源。IETF将SSL进行标准化，1999年公布了第一版TLS标准文件。随后又公布了 RFC 5246（2008年8月）与 RFC 6176 （2011年3月）。该协议在web中被广泛应用。
  SSL/TLS协议 TLS（Transport Layer Security，传输层安全协议），及其前身SSL（Secure Sockets Layer，安全套接层）是一种安全协议，目的是为互联网通信，提供安全及数据完整性保障。
@@ -35,10 +35,10 @@ TLS协议使用以下三种机制为信息通信提供安全传输：
     
     <item>
       <title>WEB安全之CSP</title>
-      <link>http://example.org/posts/webcsp/</link>
+      <link>https://cctrip.github.io/posts/webcsp/</link>
       <pubDate>Fri, 20 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/posts/webcsp/</guid>
+      <guid>https://cctrip.github.io/posts/webcsp/</guid>
       <description>概念 内容安全策略(Content-Security-Policy，CSP)：是一种web应用技术用于帮助缓解大部分类型的内容注入攻击，包括XSS攻击和数据注入等，这些攻击可实现数据窃取、网站破坏和作为恶意软件分发版本等行为。该策略可让网站管理员指定客户端允许加载的各类可信任资源。
  浏览器支持 统计来源：caniuse.com/contentsecuritypolicy &amp;amp; Mozilla
  指令参考 Content-Security-Policy 响应头的值可配置一个或多个，多个指令以分号;隔开。
