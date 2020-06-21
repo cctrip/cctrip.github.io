@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on CC&#39;s Trip</title>
+    <link>http://example.org/posts/technology/linux/</link>
+    <description>Recent content in Linux on CC&#39;s Trip</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="http://example.org/posts/technology/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+  </channel>
+</rss>

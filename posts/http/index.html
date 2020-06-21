@@ -1,235 +1,92 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Language" content="en">
+    <title>谈谈HTTP</title>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-    <meta name="author" content="Hello.CC">
-    <meta name="description" content="写在前面 如今网络已经无处不在，人们通过网络获取浏览各种信息，其中，大部分都是通过浏览器访问各种网页来获取我们想要的信息，那么浏览器与网页(服务端)究竟是如何通信的呢？这就得从HTTP协议说起了，浏览器获取网页信息都是基于HTTP协议来处理的。
- 概念 HTTP（HyperText Transfer Protocol，超文本传输协议）是互联网上应用最为广泛的一种网络协议。设计HTTP最初的目的是为了提供一种发布和接收HTML页面的方法。通过HTTP或者HTTPS协议请求的资源由统一资源标识符（Uniform Resource Identifiers，URI）来标识。HTTP是一个应用层协议，由请求和响应构成，是一个标准的客户端服务器模型。其具有如下特点：
-  支持客户/服务器模式。
-  简单快速：客户向服务器请求服务时，只需传送请求方法和路径。请求方法常用的有GET、HEAD、POST。每种方法规定了客户与服务器联系的类型不同。由于HTTP协议简单，使得HTTP服务器的程序规模小，因而通信速度很快。
-  灵活：HTTP允许传输任意类型的数据对象。正在传输的类型由Content-Type加以标记。
-  无连接：无连接的含义是限制每次连接只处理一个请求。服务器处理完客户的请求，并收到客户的应答后，即断开连接。采用这种方式可以节省传输时间。
-  无状态：HTTP协议是无状态协议。无状态是指协议对于事务处理没有记忆能力。缺少状态意味着如果后续处理需要前面的信息，则它必须重传，这样可能导致每次连接传送的数据量增大。另一方面，在服务器不需要先前信息时它的应答就较快
-  PS：尽管TCP/IP协议是互联网上最流行的应用，HTTP协议中，并没有规定必须使用它或它支持的层。事实上，HTTP可以在任何互联网协议上，或其他网络上实现。HTTP假定其下层协议提供可靠的传输。因此，任何能够提供这种保证的协议都可以被其使用。因此也就是其在TCP/IP协议族使用TCP作为其传输层。
- 工作流程 HTTP协议的通信过程永远是客户端发起请求(request)，服务器回送响应(respone)，如下图所示：
-一个完整的HTTP操作称为一个事务，其流程可分为四步：
-  建立连接(TCP三次握手)
-  客户端发送一个请求报文给服务器
-  服务器响应对应信息
-  客户端接收信息，然后断开连接
-   请求和响应详解 请求报文   请求行：由请求方法、URL和HTTP版本组成
-eg：GET /index.html HTTP/1.1
-  请求方法
-  GET：请求获取URI所标识的资源
-  HEAD：请求获取URI所标识的资源，但不传回资源的文本部分
-  POST：向指定URI资源提交数据，请求服务器进行处理
-  PUT：向指定URI资源上传其最新内容
-  DELETE：请求服务器删除URI所标识的资源">
-    <meta name="keywords" content="blog,developer,personal">
 
-    
-      <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
-    
+<link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/assets/css/style.css" />
+<link rel="stylesheet" href="/assets/css/navbar.css" />
 
-    <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="谈谈HTTP"/>
-<meta name="twitter:description" content="写在前面 如今网络已经无处不在，人们通过网络获取浏览各种信息，其中，大部分都是通过浏览器访问各种网页来获取我们想要的信息，那么浏览器与网页(服务端)究竟是如何通信的呢？这就得从HTTP协议说起了，浏览器获取网页信息都是基于HTTP协议来处理的。
- 概念 HTTP（HyperText Transfer Protocol，超文本传输协议）是互联网上应用最为广泛的一种网络协议。设计HTTP最初的目的是为了提供一种发布和接收HTML页面的方法。通过HTTP或者HTTPS协议请求的资源由统一资源标识符（Uniform Resource Identifiers，URI）来标识。HTTP是一个应用层协议，由请求和响应构成，是一个标准的客户端服务器模型。其具有如下特点：
-  支持客户/服务器模式。
-  简单快速：客户向服务器请求服务时，只需传送请求方法和路径。请求方法常用的有GET、HEAD、POST。每种方法规定了客户与服务器联系的类型不同。由于HTTP协议简单，使得HTTP服务器的程序规模小，因而通信速度很快。
-  灵活：HTTP允许传输任意类型的数据对象。正在传输的类型由Content-Type加以标记。
-  无连接：无连接的含义是限制每次连接只处理一个请求。服务器处理完客户的请求，并收到客户的应答后，即断开连接。采用这种方式可以节省传输时间。
-  无状态：HTTP协议是无状态协议。无状态是指协议对于事务处理没有记忆能力。缺少状态意味着如果后续处理需要前面的信息，则它必须重传，这样可能导致每次连接传送的数据量增大。另一方面，在服务器不需要先前信息时它的应答就较快
-  PS：尽管TCP/IP协议是互联网上最流行的应用，HTTP协议中，并没有规定必须使用它或它支持的层。事实上，HTTP可以在任何互联网协议上，或其他网络上实现。HTTP假定其下层协议提供可靠的传输。因此，任何能够提供这种保证的协议都可以被其使用。因此也就是其在TCP/IP协议族使用TCP作为其传输层。
- 工作流程 HTTP协议的通信过程永远是客户端发起请求(request)，服务器回送响应(respone)，如下图所示：
-一个完整的HTTP操作称为一个事务，其流程可分为四步：
-  建立连接(TCP三次握手)
-  客户端发送一个请求报文给服务器
-  服务器响应对应信息
-  客户端接收信息，然后断开连接
-   请求和响应详解 请求报文   请求行：由请求方法、URL和HTTP版本组成
-eg：GET /index.html HTTP/1.1
-  请求方法
-  GET：请求获取URI所标识的资源
-  HEAD：请求获取URI所标识的资源，但不传回资源的文本部分
-  POST：向指定URI资源提交数据，请求服务器进行处理
-  PUT：向指定URI资源上传其最新内容
-  DELETE：请求服务器删除URI所标识的资源"/>
 
-    <meta property="og:title" content="谈谈HTTP" />
-<meta property="og:description" content="写在前面 如今网络已经无处不在，人们通过网络获取浏览各种信息，其中，大部分都是通过浏览器访问各种网页来获取我们想要的信息，那么浏览器与网页(服务端)究竟是如何通信的呢？这就得从HTTP协议说起了，浏览器获取网页信息都是基于HTTP协议来处理的。
- 概念 HTTP（HyperText Transfer Protocol，超文本传输协议）是互联网上应用最为广泛的一种网络协议。设计HTTP最初的目的是为了提供一种发布和接收HTML页面的方法。通过HTTP或者HTTPS协议请求的资源由统一资源标识符（Uniform Resource Identifiers，URI）来标识。HTTP是一个应用层协议，由请求和响应构成，是一个标准的客户端服务器模型。其具有如下特点：
-  支持客户/服务器模式。
-  简单快速：客户向服务器请求服务时，只需传送请求方法和路径。请求方法常用的有GET、HEAD、POST。每种方法规定了客户与服务器联系的类型不同。由于HTTP协议简单，使得HTTP服务器的程序规模小，因而通信速度很快。
-  灵活：HTTP允许传输任意类型的数据对象。正在传输的类型由Content-Type加以标记。
-  无连接：无连接的含义是限制每次连接只处理一个请求。服务器处理完客户的请求，并收到客户的应答后，即断开连接。采用这种方式可以节省传输时间。
-  无状态：HTTP协议是无状态协议。无状态是指协议对于事务处理没有记忆能力。缺少状态意味着如果后续处理需要前面的信息，则它必须重传，这样可能导致每次连接传送的数据量增大。另一方面，在服务器不需要先前信息时它的应答就较快
-  PS：尽管TCP/IP协议是互联网上最流行的应用，HTTP协议中，并没有规定必须使用它或它支持的层。事实上，HTTP可以在任何互联网协议上，或其他网络上实现。HTTP假定其下层协议提供可靠的传输。因此，任何能够提供这种保证的协议都可以被其使用。因此也就是其在TCP/IP协议族使用TCP作为其传输层。
- 工作流程 HTTP协议的通信过程永远是客户端发起请求(request)，服务器回送响应(respone)，如下图所示：
-一个完整的HTTP操作称为一个事务，其流程可分为四步：
-  建立连接(TCP三次握手)
-  客户端发送一个请求报文给服务器
-  服务器响应对应信息
-  客户端接收信息，然后断开连接
-   请求和响应详解 请求报文   请求行：由请求方法、URL和HTTP版本组成
-eg：GET /index.html HTTP/1.1
-  请求方法
-  GET：请求获取URI所标识的资源
-  HEAD：请求获取URI所标识的资源，但不传回资源的文本部分
-  POST：向指定URI资源提交数据，请求服务器进行处理
-  PUT：向指定URI资源上传其最新内容
-  DELETE：请求服务器删除URI所标识的资源" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://cctrip.github.io/posts/http/" />
-<meta property="article:published_time" content="2016-05-29T00:00:00+00:00" />
-<meta property="article:modified_time" content="2016-05-29T00:00:00+00:00" /><meta property="og:see_also" content="https://cctrip.github.io/posts/dns/" /><meta property="og:see_also" content="https://cctrip.github.io/posts/networkcomm/" />
-<meta property="og:see_also" content="https://cctrip.github.io/posts/webcsp/" />
+<link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
 
+
+<link rel="icon" type="image/png" href="/assets/images/favicon.png" />
 
 
     
-      <base href="https://cctrip.github.io/posts/http/">
-    
-    <title>
-  谈谈HTTP · CC&#39;s Trip
-</title>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css"
+/>
+<link rel="stylesheet" href="/assets/css/single.css" />
+
 
     
-      <link rel="canonical" href="https://cctrip.github.io/posts/http/">
-    
-
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
-
     
       
-      
-      <link rel="stylesheet" href="https://cctrip.github.io/css/coder.min.3219ef62ae52679b7a9c19043171c3cd9f523628c2a65f3ef247ee18836bc90b.css" integrity="sha256-MhnvYq5SZ5t6nBkEMXHDzZ9SNijCpl8&#43;8kfuGINryQs=" crossorigin="anonymous" media="screen" />
-    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', '\u003cyour google analytics id\u003e', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
     
-
-    
-      
-        
-        
-        <link rel="stylesheet" href="https://cctrip.github.io/css/coder-dark.min.e78e80fc3a585a4d1c8fc7f58623b6ff852411e38431a9cd1792877ecaa160f6.css" integrity="sha256-546A/DpYWk0cj8f1hiO2/4UkEeOEManNF5KHfsqhYPY=" crossorigin="anonymous" media="screen" />
-      
-    
-
-    
-
-    
-
-    <link rel="icon" type="image/png" href="https://cctrip.github.io/images/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="https://cctrip.github.io/images/favicon-16x16.png" sizes="16x16">
-
-    <meta name="generator" content="Hugo 0.72.0" />
   </head>
 
-  
-  
-    
-  
-  <body class="colorscheme-dark"
-        onload=" twemoji.parse(document.body); "
-  >
-    <main class="wrapper">
-      <nav class="navigation">
-  <section class="container">
-    <a class="navigation-title" href="https://cctrip.github.io/">
-      CC&#39;s Trip
-    </a>
-    
-    <input type="checkbox" id="menu-toggle" />
-    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
-    <ul class="navigation-list">
-      
-        
-          <li class="navigation-item">
-            <a class="navigation-link" href="https://cctrip.github.io/about/">About</a>
-          </li>
-        
-          <li class="navigation-item">
-            <a class="navigation-link" href="https://cctrip.github.io/posts/">Blog</a>
-          </li>
-        
-          <li class="navigation-item">
-            <a class="navigation-link" href="https://cctrip.github.io/tags/">Tags</a>
-          </li>
-        
-          <li class="navigation-item">
-            <a class="navigation-link" href="https://cctrip.github.io/projects/">Projects</a>
-          </li>
-        
+  <body>
+    <div class="container-fluid bg-dimmed wrapper">
       
       
-        
-        
-        
-          
-        
-          
-            
-              <li class="navigation-item menu-separator">
-                <span>|</span>
-              </li>
-              
-            
-            <li class="navigation-item">
-              <a href="https://cctrip.github.io/zh/"></a>
-            </li>
-          
-        
-      
-    </ul>
-    
-  </section>
+    <nav class="navbar navbar-expand-lg top-navbar final-navbar shadow">
+    <div class="container">
+      <a class="navbar-brand" href="http://example.org/">
+        <img src="/assets/images/logo.png">CC&#39;s Trip</a>
+      <button class="navbar-toggler navbar-light" type="button" >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="top-nav-items">
+        <ul class="navbar-nav ml-auto">
+        </ul>
+        </ul>
+      </div>
+    </div>
 </nav>
 
 
-      <div class="content">
-        
-  <section class="container post">
-    <article>
-      <header>
-        <div class="post-title">
-          <h1 class="title">谈谈HTTP</h1>
-        </div>
-        <div class="post-meta">
-          <div class="date">
-            <span class="posted-on">
-              <i class="fas fa-calendar"></i>
-              <time datetime='2016-05-29T00:00:00Z'>
-                May 29, 2016
-              </time>
-            </span>
-            <span class="reading-time">
-              <i class="fas fa-clock"></i>
-              1-minute read
-            </span>
-          </div>
-          <div class="categories">
-  <i class="fas fa-folder"></i>
-    <a href="https://cctrip.github.io/categories/technology/">technology</a></div>
 
-          <div class="tags">
-  <i class="fas fa-tag"></i>
-    <a href="https://cctrip.github.io/tags/network/">network</a>
-      <span class="separator">•</span>
-    <a href="https://cctrip.github.io/tags/web/">web</a></div>
+      
+      
+<div class="container p-0 read-area">
+  
+  <div class="hero-area col-sm-12" style='background-image: url(/images/posts/network.jpg);'>
+  </div>
 
-        </div>
-      </header>
+  
+  <div class="page-content">
+    <div class="author-profile ml-auto align-self-lg-center">
+      <img class="rounded-circle" src='/images/cc.jpg'/>
+      <h5 class="author-name">Hello.CC</h5>
+      <p>May 29, 2016</p>
+    </div>
 
-      <div>
-        
-        <h3 id="写在前面">写在前面</h3>
+    <div class="title">
+      <h1>谈谈HTTP</h1>
+    </div>
+
+    <div class="post-content">
+      <h3 id="写在前面">写在前面</h3>
 <p>如今网络已经无处不在，人们通过网络获取浏览各种信息，其中，大部分都是通过浏览器访问各种网页来获取我们想要的信息，那么浏览器与网页(服务端)究竟是如何通信的呢？这就得从HTTP协议说起了，浏览器获取网页信息都是基于HTTP协议来处理的。</p>
 <hr>
 <h3 id="概念">概念</h3>
@@ -389,117 +246,201 @@ eg：GET /index.html HTTP/1.1
 <h3 id="参考">参考</h3>
 <p><a href="https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol">https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol</a></p>
 
+    </div>
+
+    
+    
+      <div class="btn-improve-page">
+          <a href="%3cyour%20site%27s%20Github%20repo%20URL%3e/edit/master/content/posts/http.md">
+            <i class="fas fa-code-branch"></i>
+            Improve This Page
+          </a>
       </div>
+    
 
-
-      <footer>
+    
+  <hr />
+  <div class="row next-prev-navigator">
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
         
-
-<section class="see-also">
+        <div class="col-md-6 previous-article">
+          <a href="/posts/tls/" class="btn btn-outline-info">
+            <span><i class="fas fa-chevron-circle-left"></i> Prev</span>
+            <br />
+            <span>理解SSL/TLS协议</span>
+          </a>
+        </div>
+        
+        
+        <div class="col-md-6 next-article">
+          <a href="/posts/systemstart/" class="btn btn-outline-info">
+            <span>Next <i class="fas fa-chevron-circle-right"></i></span>
+            <br />
+            <span>理解系统启动过程</span>
+          </a>
+        </div>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  <hr />
   
-    
-    
-    
-      <h3>See also in network</h3>
-      <nav>
-        <ul>
-        
-        
-          
-        
-          
-            <li>
-              <a href="https://cctrip.github.io/posts/dns/">谈谈DNS</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://cctrip.github.io/posts/networkcomm/">简单理解计算机通信</a>
-            </li>
-          
-        
-        </ul>
-      </nav>
-    
   
+      <div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function () {
     
     
-    
-      <h3>See also in web</h3>
-      <nav>
-        <ul>
-        
-        
-          
-        
-          
-            <li>
-              <a href="https://cctrip.github.io/posts/webcsp/">WEB安全之CSP</a>
-            </li>
-          
-        
-        </ul>
-      </nav>
-    
+    if (window.location.hostname == "localhost") return;
+
+    var dsq = document.createElement("script");
+    dsq.type = "text/javascript";
+    dsq.async = true;
+    var disqus_shortname = "\u003cyour disqus short code\u003e";
+    dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+    (
+      document.getElementsByTagName("head")[0] ||
+      document.getElementsByTagName("body")[0]
+    ).appendChild(dsq);
+  })();
+</script>
+<noscript
+  >Please enable JavaScript to view the
+  <a href="https://disqus.com/?ref_noscript"
+    >comments powered by Disqus.</a
+  ></noscript
+>
+<a href="https://disqus.com/" class="dsq-brlink"
+  >comments powered by <span class="logo-disqus">Disqus</span></a
+>
+
   
-</section>
+</div>
 
+    </div>
 
+    <footer class="container-fluid text-center align-content-center footer pb-2">
+  <div class="container pt-5">
+    <div class="row text-left">
+      <div class="col-md-4 col-sm-12">
+        <h5>Navigation</h5>
         
+          <ul>
+            
+            <li class="nav-item">
+              <a class="smooth-scroll" href="#home">Home</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="smooth-scroll" href="#about">About</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="smooth-scroll" href="#skills">Skills</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="smooth-scroll" href="#experiences">Experiences</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="smooth-scroll" href="#projects">Projects</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="smooth-scroll" href="#recent-posts">Recent Posts</a>
+            </li>
+            
+          </ul>
         
-        
-      </footer>
-    </article>
-
-    
-  </section>
-
       </div>
-
-      
-  <footer class="footer">
-    <section class="container">
-      
-        <p>人生如逆旅,我亦是行人.</p>
-      
-      
-        ©
+      <div class="col-md-4 col-sm-12">
+        <h5>Contact Me</h5>
+        <ul>
+          
+          <li><span>Email: </span> <span>zcc0388@gmail.com</span></li>
+          
+          <li><span>WeChat: </span> <span>zcc0388</span></li>
+          
+        </ul>
+      </div>
+      <div class="col-md-4 col-sm-12">
         
-          2019 -
-        
-        2020
-         Hello.CC 
-      
-      
-         · 
-        Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
-      
-      
-    </section>
-  </footer>
+        <p>Stay up to date with email notification</p>
+        <form>
+          <div class="form-group">
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              placeholder="Enter email"
+            />
+            <small id="emailHelp" class="form-text text-muted"
+              >We'll never share your email with anyone else.</small
+            >
+          </div>
+          <button type="submit" class="btn btn-info">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <hr />
+  <div class="container">
+    <div class="row text-left">
+      <div class="col-md-4">
+        <a id="theme" href="https://github.com/hossainemruz/toha" target="#">
+          <img src="/assets/images/logo-inverted.png">
+          Toha
+        </a>
+      </div>
+      <div class="col-md-4">© 2019 Copyright.</div>
+      <div class="col-md-4">
+        Powered by <a href="https://gohugo.io/">Hugo
+        <img
+          src="/assets/images/hugo-logo-wide.svg"
+          alt="Hugo Logo"
+          height="18"
+        />
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
 
-    </main>
+    <script src="/assets/js/jquery-3.4.1.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+
+<script src="/assets/js/navbar.js"></script>
+<script src="/assets/js/jquery.filterizr.min.js"></script>
+
 
     
-
     
-
-    <script>
-(function(f, a, t, h, o, m){
-	a[h]=a[h]||function(){
-		(a[h].q=a[h].q||[]).push(arguments)
-	};
-	o=f.createElement('script'),
-	m=f.getElementsByTagName('script')[0];
-	o.async=1; o.src=t; o.id='fathom-script';
-	m.parentNode.insertBefore(o,m)
-})(document, window, '//analytics.example.com/tracker.js', 'fathom');
-fathom('set', 'siteId', 'ABCDE');
-fathom('trackPageview');
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+<script src="/assets/js/single.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
 </script>
 
 
   </body>
-
 </html>
