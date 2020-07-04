@@ -1,26 +1,18 @@
-.experiences {
+#experiences {
   padding-bottom: 1rem;
 }
 
-.experiences .timeline {
+#experiences .timeline {
   margin-top: 1.5rem !important;
 }
 
-.text-muted {
-  color: #e5e9f2;
-}
-
-.experiences ul {
+#experiences ul {
   padding-left: 1rem;
 }
 
-.experiences ul > li {
+#experiences ul > li {
   margin-left: 0;
   color: #3c4858;
-}
-
-.experience-entry-heading h5 {
-  font-weight: 600;
 }
 
 .circle {
@@ -120,4 +112,44 @@
 /* Small devices (landscape phones, 576px and up) */
 
 @media only screen and (max-width: 576px) {
+}
+
+
+/* iPhoneX, iPhone 6,7,8 */
+@media only screen and (max-width: 375px) {
+  .top-left {
+    left: -52%;
+    top: -50%;
+  }
+  
+  .top-right {
+    left: 52%;
+    top: -50%;
+  }
+}
+
+/* Galaxy S5, Moto G4 */
+@media only screen and (max-width: 360px) {
+  .top-left {
+    left: -56%;
+    top: -50%;
+  }
+  
+  .top-right {
+    left: 56%;
+    top: -50%;
+  }
+}
+
+/* iPhone 5 or before */
+@media only screen and (max-width: 320px) {
+  .top-left {
+    left: -64%;
+    top: -50%;
+  }
+  
+  .top-right {
+    left: 64%;
+    top: -50%;
+  }
 }

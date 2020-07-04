@@ -98,7 +98,6 @@
   padding: 0 1em;
   line-height: 2em;
   color: #3c4858;
-  font-weight: 700;
   position: relative;
 }
 
@@ -195,7 +194,7 @@ a.focused {
   margin-top: auto;
 }
 
-.post-summery {
+.post-summary {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;

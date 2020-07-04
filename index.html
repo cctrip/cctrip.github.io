@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="/assets/css/navbar.css" />
 
 
-<link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
 
 
@@ -44,7 +44,8 @@ if (!doNotTrack) {
 
     
   </head>
-  <body data-spy="scroll" data-target="#top-navbar" data-offset="50">
+  <body data-spy="scroll" data-target="#top-navbar" data-offset="100">
+
     <nav class="navbar navbar-expand-lg top-navbar initial-navbar" id="top-navbar">
   <div class="container">
     <a class="navbar-brand" href="https://cctrip.github.io/">
@@ -61,35 +62,53 @@ if (!doNotTrack) {
 
     <div class="collapse navbar-collapse" id="top-nav-items">
       <ul class="navbar-nav ml-auto">
-        
         <li class="nav-item">
           <a class="nav-link smooth-scroll" href="#home">Home</a>
         </li>
+            
+              <li class="nav-item">
+                <a class="nav-link smooth-scroll" href="#about">About</a>
+              </li>
+            
+            
+              <li class="nav-item">
+                <a class="nav-link smooth-scroll" href="#skills">Skills</a>
+              </li>
+            
+            
+              <li class="nav-item">
+                <a class="nav-link smooth-scroll" href="#experiences">Experiences</a>
+              </li>
+            
+            
+              <li class="nav-item">
+                <a class="nav-link smooth-scroll" href="#projects">Projects</a>
+              </li>
+            
+            
+              <li class="nav-item">
+                <a class="nav-link smooth-scroll" href="#recent-posts">Recent Posts</a>
+              </li>
+            
         
-        <li class="nav-item">
-          <a class="nav-link smooth-scroll" href="#about">About</a>
-        </li>
         
-        <li class="nav-item">
-          <a class="nav-link smooth-scroll" href="#skills">Skills</a>
-        </li>
+          
+            
+          
         
-        <li class="nav-item">
-          <a class="nav-link smooth-scroll" href="#experiences">Experiences</a>
-        </li>
         
-        <li class="nav-item">
-          <a class="nav-link smooth-scroll" href="#projects">Projects</a>
-        </li>
+          <div class="dropdown-divider" id="top-navbar-divider"></div>
         
-        <li class="nav-item">
-          <a class="nav-link smooth-scroll" href="#recent-posts">Recent Posts</a>
-        </li>
         
-        <div class="dropdown-divider" id="top-navbar-divider"></div>
-        <li class="nav-item">
-          <a class="nav-link" id="blog-link" href="/posts">Blog</a>
-        </li>
+          <li class="nav-item">
+            <a class="nav-link" id="blog-link" href="/posts">Posts</a>
+          </li>
+        
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://cctrip.github.io/notes">Notes</a>
+          </li>
+        
       </ul>
     </div>
   </div>
@@ -103,7 +122,10 @@ if (!doNotTrack) {
     <img src="images/CC.jpeg"
       class="rounded-circle mx-auto d-block img-fluid"
     />
-    <h1 class="greeting">Hi, I am CC
+    <h1 class="greeting">Hi, I am
+      
+        CC
+      
     </h1>
     <div class="typing-carousel">
       <span id="ityped" class="ityped"></span>
@@ -111,73 +133,97 @@ if (!doNotTrack) {
     </div>
     <ul id="typing-carousel-data">
       
-      <li>I am a DevOps</li>
+      <li>I am a DevOps Engineer</li>
+      
+      <li>I work with Go</li>
       
     </ul>
-    <a href="#about"><i class="arrow bounce fa fa-chevron-down"></i></a>
+    
+      
+        <a href="#about"><i class="arrow bounce fa fa-chevron-down"></i></a>
+      
+    
   </div>
 </div>
-<div class="container-fluid about bg-white anchor p-md-5 d-flex" id="about">
-  <div class="container">
-    <div class="row pt-sm-2 pt-md-4 align-self-center">
+
+    
+      
       
         
-        <div class="col-md-6">
-          <h3 class="p-1">CC</h3>
-          <h5 class="p-1">
-            运维开发工程师 at
-            <a href="https://www.jiayundata.com/"
-              >ClubFactory</a
-            >
-          </h5>
-          <p class="p-1 text-justify">
-            7年运维工作经验，3年运维开发经验，熟悉系统、网络、云服务、容器等
-          </p>
-          <div class="text-container ml-auto">
-            <ul class="social-link d-flex">
-              
-              <li>
-                <a href="zcc0388@gmail.com" target="/"><i class="fas fa-envelope"></i></a>
-              </li>
-              
-              <li>
-                <a href="https://github.com/cctrip" target="/"><i class="fab fa-github"></i></a>
-              </li>
-              
-              <li>
-                <a href="https://twitter.com/zcc0388/" target="/"><i class="fab fa-twitter"></i></a>
-              </li>
-              
-            </ul>
-          </div>
-          <a href="" target="#"
-            ><button class="btn btn-dark">My Resume</button></a
-          >
-        </div>
+          <div class="container-fluid section-holder d-flex bg-white">
+            <div class="container anchor p-md-5 about-section" id="about">
+  <div class="row pt-sm-2 pt-md-4 align-self-center">
+    
+    <div class="col-md-6">
+    <h3 class="p-1">CC</h3>
+      
+      <h5 class="p-1">
+        运维开发工程师
         
-        <div class="col-md-6 pt-5 pl-md-4 pl-sm-3 pt-md-0">
-          <div class="row">
+          at <a href="https://www.jiayundata.com/">ClubFactory</a>
+        
+      </h5>
+      
+      <p class="p-1 text-justify">
+        7年运维工作经验，3年运维开发经验，熟悉系统、网络、云服务、容器等
+      </p>
+      <div class="text-container ml-auto">
+        <ul class="social-link d-flex">
+          
+          <li>
             
-          </div>
-        </div>
+              <a href="mailto:zcc0388@gmail.com" target="/"><i class="fas fa-envelope"></i></a>
+            
+          </li>
+          
+          <li>
+            
+              <a href="https://github.com/cctrip" target="/"><i class="fab fa-github"></i></a>
+            
+          </li>
+          
+          <li>
+            
+              <a href="https://twitter.com/zcc0388/" target="/"><i class="fab fa-twitter"></i></a>
+            
+          </li>
+          
+        </ul>
+      </div>
       
+    </div>
+    
+    <div class="col-md-6 pt-5 pl-md-4 pl-sm-3 pt-md-0">
+      <div class="row">
+        
+      </div>
     </div>
   </div>
 </div>
-<div class="container-fluid skills bg-dimmed anchor pb-5" id="skills">
+
+          </div>
+          
+          
+            
+          
+        
+      
+        
+          <div class="container-fluid section-holder d-flex bg-dimmed">
+            <div class="container-fluid anchor pb-5 skills-section" id="skills">
   
     <h1 class="text-center">Skills</h1>
-
-    <div class="container d-flex-block">
-      <div class="row" id="primary-skills">
-        
-          <div class="col-sm-12 col-md-6 col-lg-4 pt-2">
+  
+  <div class="container d-flex-block">
+    <div class="row" id="primary-skills">
+      
+        <div class="col-sm-12 col-md-6 col-lg-4 pt-2">
   <div class="card">
     <div class="card-head d-flex">
       
-      <img class="card-img-sm" src="images/skills/kubernetes.png" alt="Kubernetes" />
+        <img class="card-img-xs" src="images/skills/kubernetes.png" alt="Kubernetes" />
       
-      <h4 class="card-title">Kubernetes</h4>
+      <h5 class="card-title">Kubernetes</h5>
     </div>
     <div class="card-body">
       <p class="card-text">熟悉原理和操作</p>
@@ -185,14 +231,14 @@ if (!doNotTrack) {
   </div>
 </div>
 
-        
-          <div class="col-sm-12 col-md-6 col-lg-4 pt-2">
+      
+        <div class="col-sm-12 col-md-6 col-lg-4 pt-2">
   <div class="card">
     <div class="card-head d-flex">
       
-      <img class="card-img-sm" src="images/skills/go.png" alt="Go Development" />
+        <img class="card-img-xs" src="images/skills/go.png" alt="Go Development" />
       
-      <h4 class="card-title">Go Development</h4>
+      <h5 class="card-title">Go Development</h5>
     </div>
     <div class="card-body">
       <p class="card-text">主要开发语言，用于编写运维自动化相关软件和平台.</p>
@@ -200,14 +246,14 @@ if (!doNotTrack) {
   </div>
 </div>
 
-        
-          <div class="col-sm-12 col-md-6 col-lg-4 pt-2">
+      
+        <div class="col-sm-12 col-md-6 col-lg-4 pt-2">
   <div class="card">
     <div class="card-head d-flex">
       
-      <img class="card-img-sm" src="images/skills/cloud.png" alt="Cloud Computing" />
+        <img class="card-img-xs" src="images/skills/cloud.png" alt="Cloud Computing" />
       
-      <h4 class="card-title">Cloud Computing</h4>
+      <h5 class="card-title">Cloud Computing</h5>
     </div>
     <div class="card-body">
       <p class="card-text">熟悉阿里云、AWS等云平台</p>
@@ -215,14 +261,14 @@ if (!doNotTrack) {
   </div>
 </div>
 
-        
-          <div class="col-sm-12 col-md-6 col-lg-4 pt-2">
+      
+        <div class="col-sm-12 col-md-6 col-lg-4 pt-2">
   <div class="card">
     <div class="card-head d-flex">
       
-      <img class="card-img-sm" src="images/skills/docker.svg" alt="Docker" />
+        <img class="card-img-xs" src="images/skills/docker.svg" alt="Docker" />
       
-      <h4 class="card-title">Docker</h4>
+      <h5 class="card-title">Docker</h5>
     </div>
     <div class="card-body">
       <p class="card-text">熟悉原理和操作.</p>
@@ -230,14 +276,14 @@ if (!doNotTrack) {
   </div>
 </div>
 
-        
-          <div class="col-sm-12 col-md-6 col-lg-4 pt-2">
+      
+        <div class="col-sm-12 col-md-6 col-lg-4 pt-2">
   <div class="card">
     <div class="card-head d-flex">
       
-      <img class="card-img-sm" src="images/skills/prometheus.png" alt="Prometheus" />
+        <img class="card-img-xs" src="images/skills/prometheus.png" alt="Prometheus" />
       
-      <h4 class="card-title">Prometheus</h4>
+      <h5 class="card-title">Prometheus</h5>
     </div>
     <div class="card-body">
       <p class="card-text">熟练安装配置，熟悉PromQL，能编写exporter.</p>
@@ -245,14 +291,14 @@ if (!doNotTrack) {
   </div>
 </div>
 
-        
-          <div class="col-sm-12 col-md-6 col-lg-4 pt-2">
+      
+        <div class="col-sm-12 col-md-6 col-lg-4 pt-2">
   <div class="card">
     <div class="card-head d-flex">
       
-      <img class="card-img-sm" src="images/skills/linux.png" alt="Linux" />
+        <img class="card-img-xs" src="images/skills/linux.png" alt="Linux" />
       
-      <h4 class="card-title">Linux</h4>
+      <h5 class="card-title">Linux</h5>
     </div>
     <div class="card-body">
       <p class="card-text">熟悉CentOS和Ubuntu，熟悉系统知识，熟练使用各种命令和编写shell脚本.</p>
@@ -260,28 +306,38 @@ if (!doNotTrack) {
   </div>
 </div>
 
-        
-      </div>
+      
     </div>
-  
+  </div>
 </div>
-<div class="container-fluid experiences bg-white anchor" id="experiences">
+
+          </div>
+          
+          
+            
+          
+        
+      
+        
+          <div class="container-fluid section-holder d-flex bg-white">
+            <div class="container-fluid anchor pb-5 experiences-section" id="experiences">
   
     <h1 class="text-center">Experiences</h1>
+  
 
-    <div class="container timeline text-justify">
-      
-      
-        
-          <div class="row align-items-center  d-flex">
-            <div class="col-1 col-lg-2 text-center vertical-line d-inline-flex justify-content-center">
+  <div class="container timeline text-justify">
+   
+   
+     
+       <div class="row align-items-center  d-flex">
+         <div class="col-1 col-lg-2 text-center vertical-line d-inline-flex justify-content-center">
   <div class="circle font-weight-bold">1</div>
 </div>
 
-            <div class="col-10 col-lg-8">
+         <div class="col-10 col-lg-8">
   <div class="experience-entry-heading">
-    <h5>运维开发工程师</h5>
-    <h6><a href="">ClubFactory.</a></h6>
+    <h5><a href="">ClubFactory.</a></h5>
+    <h6>运维开发工程师</h6>
     <p class="text-muted">March 2019 - Present, HangZhou China</p>
   </div>
   <p>海外电商.</p>
@@ -297,9 +353,10 @@ if (!doNotTrack) {
   </ul>
 </div>
 
-          </div>
-          
-            <div class="row horizontal-line">
+       </div>
+     
+     
+       <div class="row horizontal-line">
   <div class="col-1 col-lg-2 timeline-side-div">
     <div class="corner"></div>
   </div>
@@ -311,15 +368,14 @@ if (!doNotTrack) {
   </div>
 </div>
 
-          
-        
-      
-        
-          <div class="row align-items-center justify-content-end d-flex">
-            <div class="col-10 col-lg-8">
+     
+   
+     
+       <div class="row align-items-center justify-content-end d-flex">
+         <div class="col-10 col-lg-8">
   <div class="experience-entry-heading">
-    <h5>技术支持工程师</h5>
-    <h6><a href="">网宿科技.</a></h6>
+    <h5><a href="">网宿科技.</a></h5>
+    <h6>技术支持工程师</h6>
     <p class="text-muted">May 2015 -  December 2018 , XiaMen China</p>
   </div>
   <p>CDN厂商.</p>
@@ -331,13 +387,14 @@ if (!doNotTrack) {
   </ul>
 </div>
 
-            <div class="col-1 col-lg-2 text-center vertical-line d-inline-flex justify-content-center">
+         <div class="col-1 col-lg-2 text-center vertical-line d-inline-flex justify-content-center">
   <div class="circle font-weight-bold">2</div>
 </div>
 
-          </div>
-          
-            <div class="row horizontal-line">
+       </div>
+     
+     
+       <div class="row horizontal-line">
   <div class="col-1 col-lg-2 timeline-side-div">
     <div class="corner"></div>
   </div>
@@ -349,19 +406,18 @@ if (!doNotTrack) {
   </div>
 </div>
 
-          
-        
-      
-        
-          <div class="row align-items-center  d-flex">
-            <div class="col-1 col-lg-2 text-center vertical-line d-inline-flex justify-content-center">
+     
+   
+     
+       <div class="row align-items-center  d-flex">
+         <div class="col-1 col-lg-2 text-center vertical-line d-inline-flex justify-content-center">
   <div class="circle font-weight-bold">3</div>
 </div>
 
-            <div class="col-10 col-lg-8">
+         <div class="col-10 col-lg-8">
   <div class="experience-entry-heading">
-    <h5>运维工程师</h5>
-    <h6><a href="">神州鹰.</a></h6>
+    <h5><a href="">神州鹰.</a></h5>
+    <h6>运维工程师</h6>
     <p class="text-muted">September 2013 -  April 2015 , XiaMen China</p>
   </div>
   <p>视频监控</p>
@@ -373,37 +429,47 @@ if (!doNotTrack) {
   </ul>
 </div>
 
+       </div>
+     
+     
+   
+  </div>
+</div>
+
           </div>
+          
+          
+            
           
         
       
-    </div>
-  
-</div>
-<div class="container-fluid projects bg-dimmed anchor pb-5" id="projects">
+        
+          <div class="container-fluid section-holder d-flex bg-dimmed">
+            <div class="container-fluid anchor pb-5 projects-section" id="projects">
   
     <h1 class="text-center">Projects</h1>
-    <div class="container ml-auto text-center">
-      <div class="btn-group flex-wrap" role="group" id="project-filter-buttons">
-        
-        <button type="button" class="btn btn-dark" data-filter="all">
-          All
-        </button>
-        
-        <button type="button" class="btn btn-dark" data-filter="professional">
-          Professional
-        </button>
-        
-        <button type="button" class="btn btn-dark" data-filter="hobby">
-          Hobby
-        </button>
-        
-      </div>
+  
+  <div class="container ml-auto text-center">
+    <div class="btn-group flex-wrap" role="group" id="project-filter-buttons">
+      
+      <button type="button" class="btn btn-dark" data-filter="all">
+        All
+      </button>
+      
+      <button type="button" class="btn btn-dark" data-filter="professional">
+        Professional
+      </button>
+      
+      <button type="button" class="btn btn-dark" data-filter="hobby">
+        Hobby
+      </button>
+      
     </div>
-    <div class="container filtr-projects">
-      <div class="row" id="project-card-holder">
-        
-          <div
+  </div>
+  <div class="container filtr-projects">
+    <div class="row" id="project-card-holder">
+      
+        <div
   class="col-md-6 col-lg-4 p-2 filtr-item"
   data-category='all, hobby,notes,professional'
 >
@@ -438,13 +504,24 @@ if (!doNotTrack) {
   </div>
 </div>
 
-        
-      </div>
+      
     </div>
-  
+  </div>
 </div>
-<div class="container-fluid recent-posts bg-white anchor pb-5" id="recent-posts">
-  <h1 class="text-center">Recent Posts</h1>
+
+          </div>
+          
+          
+            
+          
+        
+      
+        
+          <div class="container-fluid section-holder d-flex bg-white">
+            <div class="container-fluid anchor pb-5 recent-posts-section" id="recent-posts">
+  
+    <h1 class="text-center">Recent Posts</h1>
+  
   <div class="container">
     <div class="row" id="recent-post-cards">
       
@@ -458,7 +535,7 @@ if (!doNotTrack) {
       </div>
       <div class="card-body">
         <h5 class="card-title">Nginx匹配机制总结</h5>
-        <p class="card-text post-summery"> 写在前面 Nginx是一个当前主流的HTTP服务器和反向代理服务器，很多做WEB相关的同学基本都会用到，很多云厂商的七层负载均衡器也基本都是基于nginx实现的，个人在工作过程也算是经常接触，这篇文章主要想总结一下nginx的匹配机制，主要分为两块，一块是server的匹配，一块是location的匹配。
+        <p class="card-text post-summary"> 写在前面 Nginx是一个当前主流的HTTP服务器和反向代理服务器，很多做WEB相关的同学基本都会用到，很多云厂商的七层负载均衡器也基本都是基于nginx实现的，个人在工作过程也算是经常接触，这篇文章主要想总结一下nginx的匹配机制，主要分为两块，一块是server的匹配，一块是location的匹配。
  Server匹配机制 配置过nginx的都知道，在一个http模块中是可以配置多个server模块的，并且多个server模块是可以配置相同的监听端口的，下面是一个简单的server配置例子：
 server { listen 80; server_name example.org www.example.org; ... } server { listen 80; server_name example.net www.example.net; ... } server { listen 80; server_name example.com www.example.com; ... } 当我们对nginx发起http请求后，nginx会拿到http请求中对应的 &quot;Host&quot; 头部跟server模块中的server_name进行匹配，根据匹配的server结果进入具体的server模块处理http请求。那么，它具体的匹配机制是怎样的呢？
 首先，我们先简单了解下nginx内部server的相关结构，
@@ -485,7 +562,7 @@ server { listen 80; server_name example.org www.example.org; ... } server { list
       </div>
       <div class="card-body">
         <h5 class="card-title">Linux pam模块</h5>
-        <p class="card-text post-summery"> 概念 Linux-PAM（Pluggable Authentication Modules for Linux）是一套共享库,使本地系统管理员可以随意选择程序的认证方式。换句话说，不用(重新编写)重新编译一个包含PAM功能的应用程序，就可以改变它使用的认证机制，这种方式下，就算升级本地认证机制,也不用修改程序。
+        <p class="card-text post-summary"> 概念 Linux-PAM（Pluggable Authentication Modules for Linux）是一套共享库,使本地系统管理员可以随意选择程序的认证方式。换句话说，不用(重新编写)重新编译一个包含PAM功能的应用程序，就可以改变它使用的认证机制，这种方式下，就算升级本地认证机制,也不用修改程序。
  工作机制 当应用程序希望与PAM交互以处理事件时，他们必须包括libpam，该libpam允许通过库提供的API进行通信。 当PAM看到必须处理的新事件时，它将查看/etc/pam.d中的相关配置文件，并确定在某些阶段必须使用哪些模块。
  /etc/pam.d配置文件介绍 配置文件语法
 type control module-path module-arguments 配置文件分为四列
@@ -529,7 +606,7 @@ type control module-path module-arguments 配置文件分为四列
       </div>
       <div class="card-body">
         <h5 class="card-title">谈谈文件描述符</h5>
-        <p class="card-text post-summery"> 概念 wiki解释，文件描述符在形式上是一个非负整数。实际上，它是一个索引值，指向内核为每一个进程所维护的该进程打开文件的记录表。当程序打开一个现有文件或者创建一个新文件时，内核向进程返回一个文件描述符。在程序设计中，一些涉及底层的程序编写往往会围绕着文件描述符展开。
+        <p class="card-text post-summary"> 概念 wiki解释，文件描述符在形式上是一个非负整数。实际上，它是一个索引值，指向内核为每一个进程所维护的该进程打开文件的记录表。当程序打开一个现有文件或者创建一个新文件时，内核向进程返回一个文件描述符。在程序设计中，一些涉及底层的程序编写往往会围绕着文件描述符展开。
 一个文件描述符是一个数字，唯一标识一个在计算机的操作系统打开的文件。它描述了数据资源，以及如何访问该资源。
 当程序要求打开文件（或其他数据资源，例如网络套接字）时，内核：
  授予访问权限。 在全局文件表中创建一个条目。 向软件提供该条目的位置。  该描述符是唯一的非负整数。系统上每个打开的文件至少存在一个文件描述符。
@@ -552,43 +629,51 @@ type control module-path module-arguments 配置文件分为四列
     </div>
   </div>
 </div>
-<div class="container-fluid achievements bg-dimmed anchor pb-5" id="achievements">
-  
-</div>
-<footer class="container-fluid text-center align-content-center footer pb-2">
+
+          </div>
+          
+          
+            
+          
+        
+      
+    
+
+    <footer class="container-fluid text-center align-content-center footer pb-2">
   <div class="container pt-5">
     <div class="row text-left">
       <div class="col-md-4 col-sm-12">
         <h5>Navigation</h5>
         
-          <ul>
-            
-            <li class="nav-item">
-              <a class="smooth-scroll" href="#home">Home</a>
-            </li>
+        <ul>
             
             <li class="nav-item">
               <a class="smooth-scroll" href="#about">About</a>
             </li>
             
+            
             <li class="nav-item">
               <a class="smooth-scroll" href="#skills">Skills</a>
             </li>
+            
             
             <li class="nav-item">
               <a class="smooth-scroll" href="#experiences">Experiences</a>
             </li>
             
+            
             <li class="nav-item">
               <a class="smooth-scroll" href="#projects">Projects</a>
             </li>
+            
             
             <li class="nav-item">
               <a class="smooth-scroll" href="#recent-posts">Recent Posts</a>
             </li>
             
-          </ul>
+        </ul>
         
+
       </div>
       <div class="col-md-4 col-sm-12">
         <h5>Contact Me</h5>
@@ -596,7 +681,7 @@ type control module-path module-arguments 配置文件分为四列
           
           <li><span>Email: </span> <span>zcc0388@gmail.com</span></li>
           
-          <li><span>WeChat: </span> <span>zcc0388</span></li>
+          <li><span>Wechat: </span> <span>zcc0388</span></li>
           
         </ul>
       </div>
@@ -630,7 +715,7 @@ type control module-path module-arguments 配置文件分为四列
           Toha
         </a>
       </div>
-      <div class="col-md-4">© 2019 Copyright.</div>
+      <div class="col-md-4">© 2020 Copyright.</div>
       <div class="col-md-4">
         Powered by <a href="https://gohugo.io/">Hugo
         <img

@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="/assets/css/navbar.css" />
 
 
-<link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
 
 
@@ -50,7 +50,7 @@ if (!doNotTrack) {
       
     <nav class="navbar navbar-expand-lg top-navbar final-navbar shadow">
     <div class="container">
-      <a class="navbar-brand" href="https://cctrip.github.io/">
+      <a class="navbar-brand" href="/posts">
         <img src="/assets/images/logo.png">CC&#39;s Trip</a>
       <button class="navbar-toggler navbar-light" type="button" >
         <span class="navbar-toggler-icon"></span>
@@ -58,7 +58,6 @@ if (!doNotTrack) {
 
       <div class="collapse navbar-collapse" id="top-nav-items">
         <ul class="navbar-nav ml-auto">
-        </ul>
         </ul>
       </div>
     </div>
@@ -70,7 +69,7 @@ if (!doNotTrack) {
       
 <div class="container p-0 read-area">
   
-  <div class="hero-area col-sm-12" style='background-image: url(/images/posts/linux.jpg);'>
+  <div class="hero-area col-sm-12" style='background-image: url(https://cctrip.github.io/images/posts/linux.jpg);'>
   </div>
 
   
@@ -85,7 +84,7 @@ if (!doNotTrack) {
       <h1>Linux pam模块</h1>
     </div>
 
-    <div class="post-content">
+    <div class="post-content" id="post-content">
       <h3 id="概念">概念</h3>
 <p>Linux-PAM（Pluggable Authentication Modules for Linux）是一套共享库,使本地系统管理员可以随意选择程序的认证方式。换句话说，不用(重新编写)重新编译一个包含PAM功能的应用程序，就可以改变它使用的认证机制，这种方式下，就算升级本地认证机制,也不用修改程序。</p>
 <hr>
@@ -236,33 +235,42 @@ if (!doNotTrack) {
 
     
   <hr />
-  <div class="row next-prev-navigator">
-    
+    <div class="row next-prev-navigator">
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
     
       
-    
+      <div class="col-md-6 previous-article">
+        <a href="/posts/nginx_match/" class="btn btn-outline-info">
+          <span><i class="fas fa-chevron-circle-left"></i> Prev</span>
+          <br />
+          <span>Nginx匹配机制总结</span>
+        </a>
+      </div>
       
     
-      
-    
-      
-    
-      
-    
-      
-    
-      
     
       
         
-        <div class="col-md-6 previous-article">
-          <a href="/posts/nginx_match/" class="btn btn-outline-info">
-            <span><i class="fas fa-chevron-circle-left"></i> Prev</span>
-            <br />
-            <span>Nginx匹配机制总结</span>
-          </a>
-        </div>
         
+          
+              
+          
         
         <div class="col-md-6 next-article">
           <a href="/posts/file_descriptor/" class="btn btn-outline-info">
@@ -271,12 +279,14 @@ if (!doNotTrack) {
             <span>谈谈文件描述符</span>
           </a>
         </div>
-        
       
     
-      
-    
-  </div>
+  
+
+  
+
+</div>
+
   <hr />
   
   
@@ -319,34 +329,35 @@ if (!doNotTrack) {
       <div class="col-md-4 col-sm-12">
         <h5>Navigation</h5>
         
-          <ul>
-            
-            <li class="nav-item">
-              <a class="smooth-scroll" href="#home">Home</a>
-            </li>
+        <ul>
             
             <li class="nav-item">
               <a class="smooth-scroll" href="#about">About</a>
             </li>
             
+            
             <li class="nav-item">
               <a class="smooth-scroll" href="#skills">Skills</a>
             </li>
+            
             
             <li class="nav-item">
               <a class="smooth-scroll" href="#experiences">Experiences</a>
             </li>
             
+            
             <li class="nav-item">
               <a class="smooth-scroll" href="#projects">Projects</a>
             </li>
+            
             
             <li class="nav-item">
               <a class="smooth-scroll" href="#recent-posts">Recent Posts</a>
             </li>
             
-          </ul>
+        </ul>
         
+
       </div>
       <div class="col-md-4 col-sm-12">
         <h5>Contact Me</h5>
@@ -354,7 +365,7 @@ if (!doNotTrack) {
           
           <li><span>Email: </span> <span>zcc0388@gmail.com</span></li>
           
-          <li><span>WeChat: </span> <span>zcc0388</span></li>
+          <li><span>Wechat: </span> <span>zcc0388</span></li>
           
         </ul>
       </div>
@@ -388,7 +399,7 @@ if (!doNotTrack) {
           Toha
         </a>
       </div>
-      <div class="col-md-4">© 2019 Copyright.</div>
+      <div class="col-md-4">© 2020 Copyright.</div>
       <div class="col-md-4">
         Powered by <a href="https://gohugo.io/">Hugo
         <img

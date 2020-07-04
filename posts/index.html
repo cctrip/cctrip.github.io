@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="/assets/css/navbar.css" />
 
 
-<link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
 
 
@@ -54,7 +54,6 @@ if (!doNotTrack) {
 
       <div class="collapse navbar-collapse" id="top-nav-items">
         <ul class="navbar-nav ml-auto">
-        </ul>
         </ul>
       </div>
     </div>
@@ -109,7 +108,7 @@ if (!doNotTrack) {
       </div>
       <div class="card-body">
         <h5 class="card-title">Nginx匹配机制总结</h5>
-        <p class="card-text post-summery">写在前面 Nginx是一个当前主流的HTTP服务器和反向代理服务器，很多做WEB相关的同学基本都会用到，很多云厂商的七层负载均衡器也基本都是基于nginx实现的，个人在工作过程也算是经常接触，这篇文章主要想总结一下nginx的匹配机制，主要分为两块，一块是server的匹配，一块是location的匹配。
+        <p class="card-text post-summary">写在前面 Nginx是一个当前主流的HTTP服务器和反向代理服务器，很多做WEB相关的同学基本都会用到，很多云厂商的七层负载均衡器也基本都是基于nginx实现的，个人在工作过程也算是经常接触，这篇文章主要想总结一下nginx的匹配机制，主要分为两块，一块是server的匹配，一块是location的匹配。
  Server匹配机制 配置过nginx的都知道，在一个http模块中是可以配置多个server模块的，并且多个server模块是可以配置相同的监听端口的，下面是一个简单的server配置例子：
 server { listen 80; server_name example.org www.example.org; ... } server { listen 80; server_name example.net www.example.net; ... } server { listen 80; server_name example.com www.example.com; ... } 当我们对nginx发起http请求后，nginx会拿到http请求中对应的 &quot;Host&quot; 头部跟server模块中的server_name进行匹配，根据匹配的server结果进入具体的server模块处理http请求。那么，它具体的匹配机制是怎样的呢？
 首先，我们先简单了解下nginx内部server的相关结构，
@@ -138,7 +137,7 @@ server { listen 80; server_name example.org www.example.org; ... } server { list
       </div>
       <div class="card-body">
         <h5 class="card-title">Linux pam模块</h5>
-        <p class="card-text post-summery">概念 Linux-PAM（Pluggable Authentication Modules for Linux）是一套共享库,使本地系统管理员可以随意选择程序的认证方式。换句话说，不用(重新编写)重新编译一个包含PAM功能的应用程序，就可以改变它使用的认证机制，这种方式下，就算升级本地认证机制,也不用修改程序。
+        <p class="card-text post-summary">概念 Linux-PAM（Pluggable Authentication Modules for Linux）是一套共享库,使本地系统管理员可以随意选择程序的认证方式。换句话说，不用(重新编写)重新编译一个包含PAM功能的应用程序，就可以改变它使用的认证机制，这种方式下，就算升级本地认证机制,也不用修改程序。
  工作机制 当应用程序希望与PAM交互以处理事件时，他们必须包括libpam，该libpam允许通过库提供的API进行通信。 当PAM看到必须处理的新事件时，它将查看/etc/pam.d中的相关配置文件，并确定在某些阶段必须使用哪些模块。
  /etc/pam.d配置文件介绍 配置文件语法
 type control module-path module-arguments 配置文件分为四列
@@ -184,7 +183,7 @@ type control module-path module-arguments 配置文件分为四列
       </div>
       <div class="card-body">
         <h5 class="card-title">谈谈文件描述符</h5>
-        <p class="card-text post-summery">概念 wiki解释，文件描述符在形式上是一个非负整数。实际上，它是一个索引值，指向内核为每一个进程所维护的该进程打开文件的记录表。当程序打开一个现有文件或者创建一个新文件时，内核向进程返回一个文件描述符。在程序设计中，一些涉及底层的程序编写往往会围绕着文件描述符展开。
+        <p class="card-text post-summary">概念 wiki解释，文件描述符在形式上是一个非负整数。实际上，它是一个索引值，指向内核为每一个进程所维护的该进程打开文件的记录表。当程序打开一个现有文件或者创建一个新文件时，内核向进程返回一个文件描述符。在程序设计中，一些涉及底层的程序编写往往会围绕着文件描述符展开。
 一个文件描述符是一个数字，唯一标识一个在计算机的操作系统打开的文件。它描述了数据资源，以及如何访问该资源。
 当程序要求打开文件（或其他数据资源，例如网络套接字）时，内核：
  授予访问权限。 在全局文件表中创建一个条目。 向软件提供该条目的位置。  该描述符是唯一的非负整数。系统上每个打开的文件至少存在一个文件描述符。
@@ -216,7 +215,7 @@ type control module-path module-arguments 配置文件分为四列
       </div>
       <div class="card-body">
         <h5 class="card-title">理解SSL/TLS协议</h5>
-        <p class="card-text post-summery">背景 早期我们在访问web时使用HTTP协议，该协议在传输数据时使用明文传输，明文传输带来了以下风险：
+        <p class="card-text post-summary">背景 早期我们在访问web时使用HTTP协议，该协议在传输数据时使用明文传输，明文传输带来了以下风险：
  信息窃听风险，第三方可以获取通信内容 信息篡改风险，第三方可以篡改通信内容 身份冒充风险，第三方可以冒充他人身份参与通信  为了解决明文传输所带来的风险，网景公司在1994年设计了SSL用于Web的安全传输协议，这是SSL的起源。IETF将SSL进行标准化，1999年公布了第一版TLS标准文件。随后又公布了 RFC 5246（2008年8月）与 RFC 6176 （2011年3月）。该协议在web中被广泛应用。
  SSL/TLS协议 TLS（Transport Layer Security，传输层安全协议），及其前身SSL（Secure Sockets Layer，安全套接层）是一种安全协议，目的是为互联网通信，提供安全及数据完整性保障。
 TLS协议使用以下三种机制为信息通信提供安全传输：
@@ -252,7 +251,7 @@ TLS协议使用以下三种机制为信息通信提供安全传输：
       </div>
       <div class="card-body">
         <h5 class="card-title">谈谈HTTP</h5>
-        <p class="card-text post-summery">写在前面 如今网络已经无处不在，人们通过网络获取浏览各种信息，其中，大部分都是通过浏览器访问各种网页来获取我们想要的信息，那么浏览器与网页(服务端)究竟是如何通信的呢？这就得从HTTP协议说起了，浏览器获取网页信息都是基于HTTP协议来处理的。
+        <p class="card-text post-summary">写在前面 如今网络已经无处不在，人们通过网络获取浏览各种信息，其中，大部分都是通过浏览器访问各种网页来获取我们想要的信息，那么浏览器与网页(服务端)究竟是如何通信的呢？这就得从HTTP协议说起了，浏览器获取网页信息都是基于HTTP协议来处理的。
  概念 HTTP（HyperText Transfer Protocol，超文本传输协议）是互联网上应用最为广泛的一种网络协议。设计HTTP最初的目的是为了提供一种发布和接收HTML页面的方法。通过HTTP或者HTTPS协议请求的资源由统一资源标识符（Uniform Resource Identifiers，URI）来标识。HTTP是一个应用层协议，由请求和响应构成，是一个标准的客户端服务器模型。其具有如下特点：
   支持客户/服务器模式。
   简单快速：客户向服务器请求服务时，只需传送请求方法和路径。请求方法常用的有GET、HEAD、POST。每种方法规定了客户与服务器联系的类型不同。由于HTTP协议简单，使得HTTP服务器的程序规模小，因而通信速度很快。
@@ -296,7 +295,7 @@ eg：GET /index.html HTTP/1.1
       </div>
       <div class="card-body">
         <h5 class="card-title">理解系统启动过程</h5>
-        <p class="card-text post-summery">前言 Linux是一种自由和开放源代码的类UNIX操作系统。该操作系统的内核由林纳斯·托瓦兹在1991年10月5日首次发布。在加上用户空间的应用程序之后，成为Linux操作系统。Linux是自由软件和开放源代码软件发展中最著名的例子。
+        <p class="card-text post-summary">前言 Linux是一种自由和开放源代码的类UNIX操作系统。该操作系统的内核由林纳斯·托瓦兹在1991年10月5日首次发布。在加上用户空间的应用程序之后，成为Linux操作系统。Linux是自由软件和开放源代码软件发展中最著名的例子。
 接触Linux的时间也不算短了，一直都是直接使用Linux操作系统进行一些工作，很少去了解系统从开机到能使用的整个过程，感觉有需要好好理解下整个系统的启动过程，故写这篇博客加深一下理解。
  启动过程 先通过一张图来简单了解下整个系统启动的流程，整个过程基本可以分为POST&ndash;&gt;BIOS&ndash;&gt;MBR(GRUB)&ndash;&gt;Kernel&ndash;&gt;Init&ndash;&gt;Runlevel。下面会详细说明每个过程的作用。
   BIOS
@@ -340,7 +339,7 @@ Kernel，内核，Kernel是Linux系统最主要的程序，实际上，Kernel的
       </div>
       <div class="card-body">
         <h5 class="card-title">谈谈DNS</h5>
-        <p class="card-text post-summery">写在前面 目前，我们大部分的网络通信都是基于TCP/IP协议的，而TCP/IP又基于IP地址作为唯一标识进行通信，随着需要记忆的IP地址数量的增多，肯定会超出我们的记忆能力范围，但如果使用一种利于人们的记忆的方式，如域名，例如&quot;www.google.com&rdquo;，我们便可以轻松的记忆这种方式的标识，而不是繁杂的数字。而DNS(域名系统)就是为了可以使用这种方式提供服务的。
+        <p class="card-text post-summary">写在前面 目前，我们大部分的网络通信都是基于TCP/IP协议的，而TCP/IP又基于IP地址作为唯一标识进行通信，随着需要记忆的IP地址数量的增多，肯定会超出我们的记忆能力范围，但如果使用一种利于人们的记忆的方式，如域名，例如&quot;www.google.com&rdquo;，我们便可以轻松的记忆这种方式的标识，而不是繁杂的数字。而DNS(域名系统)就是为了可以使用这种方式提供服务的。
  概念 DNS(Domain Name System)，域名系统，它是因特网的一项服务。它作为将域名和IP地址相互映射的一个分布式数据库，能够使人更方便地访问互联网。DNS使用TCP和UDP端口53。当前，对于每一级域名长度的限制是63个字符，域名总长度则不能超过253个字符。
 DNS Domain Namespace，DNS域命名空间，是一种分层树状结构，其格式如下:&ldquo;www.google.com&rdquo;,以点&rdquo;.&ldquo;为分隔。结构如图所示：
   根域：绝对域名(FQDN)，以点&rdquo;.&ldquo;结尾的域名
@@ -386,7 +385,7 @@ DNS Domain Namespace，DNS域命名空间，是一种分层树状结构，其格
       </div>
       <div class="card-body">
         <h5 class="card-title">WEB安全之CSP</h5>
-        <p class="card-text post-summery">概念 内容安全策略(Content-Security-Policy，CSP)：是一种web应用技术用于帮助缓解大部分类型的内容注入攻击，包括XSS攻击和数据注入等，这些攻击可实现数据窃取、网站破坏和作为恶意软件分发版本等行为。该策略可让网站管理员指定客户端允许加载的各类可信任资源。
+        <p class="card-text post-summary">概念 内容安全策略(Content-Security-Policy，CSP)：是一种web应用技术用于帮助缓解大部分类型的内容注入攻击，包括XSS攻击和数据注入等，这些攻击可实现数据窃取、网站破坏和作为恶意软件分发版本等行为。该策略可让网站管理员指定客户端允许加载的各类可信任资源。
  浏览器支持 统计来源：caniuse.com/contentsecuritypolicy &amp; Mozilla
  指令参考 Content-Security-Policy 响应头的值可配置一个或多个，多个指令以分号;隔开。
    指令 示例 描述     default-src &lsquo;self&rsquo; cdn.example.com 默认配置，若其他指令没有配置，都以此配置的规则为准   script-src &lsquo;self&rsquo; js.example.com 定义允许加载的JavaScript来源   style-src &lsquo;self&rsquo; css.example.com 定义允许加载的样式表来源   img-src &lsquo;self&rsquo; img.example.com 定义允许加载的图片来源   connect-src &lsquo;self&rsquo; 适用于XMLHttpRequest(AJAX),WebSocket或EventSource，当为不允许的来源，浏览器返回一个400的状态码。   font-src font.example.com 定义允许加载的字体来源   object-src &lsquo;self&rsquo; 定义允许加载的插件来源.eg,&lt;object&gt;,&lt;embed&gt;或&lt;applet&gt;   media-src media.example.com 定义允许加载的audio和video.eg,HTML5,&lt;audio&gt;,&lt;video&gt;元素   frame-src &lsquo;self&rsquo; 定义允许加载的框架来源   sandbox allow-forms allow-scripts 授权一个沙箱用来请求具有iframe sanbox等类似属性的资源,该沙箱默认为同源策略,禁止弹出窗口,执行插件和脚本.</p>
@@ -412,7 +411,7 @@ DNS Domain Namespace，DNS域命名空间，是一种分层树状结构，其格
       </div>
       <div class="card-body">
         <h5 class="card-title">简单理解计算机通信</h5>
-        <p class="card-text post-summery">写在前面： 在计算机刚出现的时候，只能在本机进行一些运算处理，想将一台计算机中的数据转移到另一台计算机中，需要通过外部存储介质来传输，例如磁带、软盘。而网络技术的出现，使得计算机间可以通过一些传输介质(网线、光纤等)，实现快速的数据传输和信息交互。如今，网络已无处不在，那么，计算机之间究竟是如何通信的呢？下面会通过一些基础的网络知识来简单理解计算机之间的通信过程。
+        <p class="card-text post-summary">写在前面： 在计算机刚出现的时候，只能在本机进行一些运算处理，想将一台计算机中的数据转移到另一台计算机中，需要通过外部存储介质来传输，例如磁带、软盘。而网络技术的出现，使得计算机间可以通过一些传输介质(网线、光纤等)，实现快速的数据传输和信息交互。如今，网络已无处不在，那么，计算机之间究竟是如何通信的呢？下面会通过一些基础的网络知识来简单理解计算机之间的通信过程。
  网络通信模型： 网络通信模型是一种概念模型和框架，旨在使各种计算机在世界范围内互连为网络。其中有OSI七层模型和TCP/IP四层模型，现在大部分网络通信都是以TCP/IP四层模型为基础的。它们的对应层次如下图：
   OSI有七层：从上到下依次为应用层、表示层、会话层、传输层、网络层、数据链路层、物理层
   TCP/IP有四层：从上到下依次为应用层、传输层、互连层(网络层)、网络接口层(链路层)。
@@ -451,34 +450,35 @@ DNS Domain Namespace，DNS域命名空间，是一种分层树状结构，其格
       <div class="col-md-4 col-sm-12">
         <h5>Navigation</h5>
         
-          <ul>
-            
-            <li class="nav-item">
-              <a class="smooth-scroll" href="#home">Home</a>
-            </li>
+        <ul>
             
             <li class="nav-item">
               <a class="smooth-scroll" href="#about">About</a>
             </li>
             
+            
             <li class="nav-item">
               <a class="smooth-scroll" href="#skills">Skills</a>
             </li>
+            
             
             <li class="nav-item">
               <a class="smooth-scroll" href="#experiences">Experiences</a>
             </li>
             
+            
             <li class="nav-item">
               <a class="smooth-scroll" href="#projects">Projects</a>
             </li>
+            
             
             <li class="nav-item">
               <a class="smooth-scroll" href="#recent-posts">Recent Posts</a>
             </li>
             
-          </ul>
+        </ul>
         
+
       </div>
       <div class="col-md-4 col-sm-12">
         <h5>Contact Me</h5>
@@ -486,7 +486,7 @@ DNS Domain Namespace，DNS域命名空间，是一种分层树状结构，其格
           
           <li><span>Email: </span> <span>zcc0388@gmail.com</span></li>
           
-          <li><span>WeChat: </span> <span>zcc0388</span></li>
+          <li><span>Wechat: </span> <span>zcc0388</span></li>
           
         </ul>
       </div>
@@ -520,7 +520,7 @@ DNS Domain Namespace，DNS域命名空间，是一种分层树状结构，其格
           Toha
         </a>
       </div>
-      <div class="col-md-4">© 2019 Copyright.</div>
+      <div class="col-md-4">© 2020 Copyright.</div>
       <div class="col-md-4">
         Powered by <a href="https://gohugo.io/">Hugo
         <img

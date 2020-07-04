@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="/assets/css/navbar.css" />
 
 
-<link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
 
 
@@ -50,7 +50,7 @@ if (!doNotTrack) {
       
     <nav class="navbar navbar-expand-lg top-navbar final-navbar shadow">
     <div class="container">
-      <a class="navbar-brand" href="https://cctrip.github.io/">
+      <a class="navbar-brand" href="/posts">
         <img src="/assets/images/logo.png">CC&#39;s Trip</a>
       <button class="navbar-toggler navbar-light" type="button" >
         <span class="navbar-toggler-icon"></span>
@@ -58,7 +58,6 @@ if (!doNotTrack) {
 
       <div class="collapse navbar-collapse" id="top-nav-items">
         <ul class="navbar-nav ml-auto">
-        </ul>
         </ul>
       </div>
     </div>
@@ -70,7 +69,7 @@ if (!doNotTrack) {
       
 <div class="container p-0 read-area">
   
-  <div class="hero-area col-sm-12" style='background-image: url(/images/posts/linux.jpg);'>
+  <div class="hero-area col-sm-12" style='background-image: url(https://cctrip.github.io/images/posts/linux.jpg);'>
   </div>
 
   
@@ -85,7 +84,7 @@ if (!doNotTrack) {
       <h1>谈谈文件描述符</h1>
     </div>
 
-    <div class="post-content">
+    <div class="post-content" id="post-content">
       <h3 id="概念">概念</h3>
 <p><a href="%5Bhttps://zh.wikipedia.org/wiki/%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%5D(https://zh.wikipedia.org/wiki/%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6)">wiki解释</a>，文件描述符在形式上是一个非负整数。实际上，它是一个索引值，指向<a href="https://zh.wikipedia.org/wiki/%E5%86%85%E6%A0%B8">内核</a>为每一个<a href="https://zh.wikipedia.org/wiki/%E8%BF%9B%E7%A8%8B">进程</a>所维护的该进程打开文件的记录表。当程序打开一个现有文件或者创建一个新文件时，内核向进程返回一个文件描述符。在程序设计中，一些涉及底层的程序编写往往会围绕着文件描述符展开。</p>
 <p>一个<strong>文件描述符</strong>是一个数字，唯一标识一个在计算机的操作系统打开的文件。它描述了数据资源，以及如何访问该资源。</p>
@@ -262,31 +261,40 @@ root hard nofile <span style="color:#ae81ff">65535</span>
 
     
   <hr />
-  <div class="row next-prev-navigator">
-    
+    <div class="row next-prev-navigator">
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
     
       
-    
+      <div class="col-md-6 previous-article">
+        <a href="/posts/linux_pam/" class="btn btn-outline-info">
+          <span><i class="fas fa-chevron-circle-left"></i> Prev</span>
+          <br />
+          <span>Linux pam模块</span>
+        </a>
+      </div>
       
     
-      
-    
-      
-    
-      
-    
-      
     
       
         
-        <div class="col-md-6 previous-article">
-          <a href="/posts/linux_pam/" class="btn btn-outline-info">
-            <span><i class="fas fa-chevron-circle-left"></i> Prev</span>
-            <br />
-            <span>Linux pam模块</span>
-          </a>
-        </div>
         
+          
+              
+          
         
         <div class="col-md-6 next-article">
           <a href="/posts/tls/" class="btn btn-outline-info">
@@ -295,14 +303,16 @@ root hard nofile <span style="color:#ae81ff">65535</span>
             <span>理解SSL/TLS协议</span>
           </a>
         </div>
-        
       
     
-      
-    
-      
-    
-  </div>
+  
+
+  
+
+  
+
+</div>
+
   <hr />
   
   
@@ -345,34 +355,35 @@ root hard nofile <span style="color:#ae81ff">65535</span>
       <div class="col-md-4 col-sm-12">
         <h5>Navigation</h5>
         
-          <ul>
-            
-            <li class="nav-item">
-              <a class="smooth-scroll" href="#home">Home</a>
-            </li>
+        <ul>
             
             <li class="nav-item">
               <a class="smooth-scroll" href="#about">About</a>
             </li>
             
+            
             <li class="nav-item">
               <a class="smooth-scroll" href="#skills">Skills</a>
             </li>
+            
             
             <li class="nav-item">
               <a class="smooth-scroll" href="#experiences">Experiences</a>
             </li>
             
+            
             <li class="nav-item">
               <a class="smooth-scroll" href="#projects">Projects</a>
             </li>
+            
             
             <li class="nav-item">
               <a class="smooth-scroll" href="#recent-posts">Recent Posts</a>
             </li>
             
-          </ul>
+        </ul>
         
+
       </div>
       <div class="col-md-4 col-sm-12">
         <h5>Contact Me</h5>
@@ -380,7 +391,7 @@ root hard nofile <span style="color:#ae81ff">65535</span>
           
           <li><span>Email: </span> <span>zcc0388@gmail.com</span></li>
           
-          <li><span>WeChat: </span> <span>zcc0388</span></li>
+          <li><span>Wechat: </span> <span>zcc0388</span></li>
           
         </ul>
       </div>
@@ -414,7 +425,7 @@ root hard nofile <span style="color:#ae81ff">65535</span>
           Toha
         </a>
       </div>
-      <div class="col-md-4">© 2019 Copyright.</div>
+      <div class="col-md-4">© 2020 Copyright.</div>
       <div class="col-md-4">
         Powered by <a href="https://gohugo.io/">Hugo
         <img

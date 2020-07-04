@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="/assets/css/navbar.css" />
 
 
-<link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
 
 
@@ -50,7 +50,7 @@ if (!doNotTrack) {
       
     <nav class="navbar navbar-expand-lg top-navbar final-navbar shadow">
     <div class="container">
-      <a class="navbar-brand" href="https://cctrip.github.io/">
+      <a class="navbar-brand" href="/posts">
         <img src="/assets/images/logo.png">CC&#39;s Trip</a>
       <button class="navbar-toggler navbar-light" type="button" >
         <span class="navbar-toggler-icon"></span>
@@ -58,7 +58,6 @@ if (!doNotTrack) {
 
       <div class="collapse navbar-collapse" id="top-nav-items">
         <ul class="navbar-nav ml-auto">
-        </ul>
         </ul>
       </div>
     </div>
@@ -70,7 +69,7 @@ if (!doNotTrack) {
       
 <div class="container p-0 read-area">
   
-  <div class="hero-area col-sm-12" style='background-image: url(/images/posts/security.jpg);'>
+  <div class="hero-area col-sm-12" style='background-image: url(https://cctrip.github.io/images/posts/security.jpg);'>
   </div>
 
   
@@ -85,7 +84,7 @@ if (!doNotTrack) {
       <h1>WEB安全之CSP</h1>
     </div>
 
-    <div class="post-content">
+    <div class="post-content" id="post-content">
       <h3 id="概念">概念</h3>
 <p>内容安全策略(Content-Security-Policy，CSP)：是一种web应用技术用于帮助缓解大部分类型的内容注入攻击，包括XSS攻击和数据注入等，这些攻击可实现数据窃取、网站破坏和作为恶意软件分发版本等行为。该策略可让网站管理员指定客户端允许加载的各类可信任资源。</p>
 <hr>
@@ -280,21 +279,30 @@ if (!doNotTrack) {
 
     
   <hr />
-  <div class="row next-prev-navigator">
+    <div class="row next-prev-navigator">
+
+
+  
+
+  
+    
+      
+      <div class="col-md-6 previous-article">
+        <a href="/posts/dns/" class="btn btn-outline-info">
+          <span><i class="fas fa-chevron-circle-left"></i> Prev</span>
+          <br />
+          <span>谈谈DNS</span>
+        </a>
+      </div>
+      
     
     
       
-    
-      
         
-        <div class="col-md-6 previous-article">
-          <a href="/posts/dns/" class="btn btn-outline-info">
-            <span><i class="fas fa-chevron-circle-left"></i> Prev</span>
-            <br />
-            <span>谈谈DNS</span>
-          </a>
-        </div>
         
+          
+              
+          
         
         <div class="col-md-6 next-article">
           <a href="/posts/networkcomm/" class="btn btn-outline-info">
@@ -303,24 +311,26 @@ if (!doNotTrack) {
             <span>简单理解计算机通信</span>
           </a>
         </div>
-        
       
     
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</div>
+
   <hr />
   
   
@@ -363,34 +373,35 @@ if (!doNotTrack) {
       <div class="col-md-4 col-sm-12">
         <h5>Navigation</h5>
         
-          <ul>
-            
-            <li class="nav-item">
-              <a class="smooth-scroll" href="#home">Home</a>
-            </li>
+        <ul>
             
             <li class="nav-item">
               <a class="smooth-scroll" href="#about">About</a>
             </li>
             
+            
             <li class="nav-item">
               <a class="smooth-scroll" href="#skills">Skills</a>
             </li>
+            
             
             <li class="nav-item">
               <a class="smooth-scroll" href="#experiences">Experiences</a>
             </li>
             
+            
             <li class="nav-item">
               <a class="smooth-scroll" href="#projects">Projects</a>
             </li>
+            
             
             <li class="nav-item">
               <a class="smooth-scroll" href="#recent-posts">Recent Posts</a>
             </li>
             
-          </ul>
+        </ul>
         
+
       </div>
       <div class="col-md-4 col-sm-12">
         <h5>Contact Me</h5>
@@ -398,7 +409,7 @@ if (!doNotTrack) {
           
           <li><span>Email: </span> <span>zcc0388@gmail.com</span></li>
           
-          <li><span>WeChat: </span> <span>zcc0388</span></li>
+          <li><span>Wechat: </span> <span>zcc0388</span></li>
           
         </ul>
       </div>
@@ -432,7 +443,7 @@ if (!doNotTrack) {
           Toha
         </a>
       </div>
-      <div class="col-md-4">© 2019 Copyright.</div>
+      <div class="col-md-4">© 2020 Copyright.</div>
       <div class="col-md-4">
         Powered by <a href="https://gohugo.io/">Hugo
         <img
