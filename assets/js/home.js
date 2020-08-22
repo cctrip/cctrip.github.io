@@ -43,30 +43,6 @@ var projectCards;
       }
     }
 
-    // ================= Smooth Scroll ===================
-    // Add smooth scrolling to all links
-    $("a").on('click', function (event) {
-
-      // Make sure this.hash has a value before overriding default behavior
-      if (this.hash !== "") {
-        // Prevent default anchor click behavior
-        event.preventDefault();
-
-        // Store hash
-        var hash = this.hash;
-
-        // Using jQuery's animate() method to add smooth page scroll
-        // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
-        $('html, body').animate({
-          scrollTop: $(hash).offset().top
-        }, 800, function () {
-
-          // Add hash (#) to URL when done scrolling (default click behavior)
-          window.location.hash = hash;
-        });
-      } // End if
-    });
-
     // ============== Fix Timelines Horizontal Lines =========
     var hLines = document.getElementsByClassName("horizontal-line");
     for (let i = 0; i < hLines.length; i++) {
@@ -93,20 +69,22 @@ var projectCards;
         // primary skills
         var skillCards = document.getElementById("primary-skills");
         if (skillCards != null) {
-          var el = skillCards.children;
+          var cardElems = skillCards.getElementsByClassName("card");
           var maxHeight = 0;
-          for (let i = 0; i < el.length; i++) {
-            if (el[i].children[0].clientHeight > maxHeight) {
-              maxHeight = el[i].children[0].clientHeight;
+          for (let i = 0; i < cardElems.length; i++) {
+            if (cardElems.item(i).clientHeight > maxHeight) {
+              maxHeight = cardElems.item(i).clientHeight;
             }
           }
-          for (let i = 0; i < el.length; i++) {
-            el[i].children[0].setAttribute("style", "min-height: " + maxHeight + "px;")
+          for (let i = 0; i < cardElems.length; i++) {
+            cardElems.item(i).setAttribute("style", "min-height: " + maxHeight + "px;");
           }
         }
       }
     }
-    adjustSkillCardsHeight();
+    $(window).on("load", function () {
+      adjustSkillCardsHeight();
+    });
 
     // ================== Project cards =====================
     // Add click action on project category selector buttons
@@ -263,14 +241,14 @@ var projectCards;
     }
     function twoColumnRow(gallery, entries, i) {
       let entry1 = document.createElement("div");
-      entry1.classList.add("col-lg-6", "col-md-6", "m-0", "p-0");
+      entry1.classList.add("col-6", "m-0", "p-0");
       entry1.appendChild(entries[i].cloneNode(true));
       entry1.children[0].classList.add("img-type-1");
       gallery.appendChild(entry1);
       i++;
 
       let entry2 = document.createElement("div");
-      entry2.classList.add("col-lg-6", "col-md-6", "m-0", "p-0");
+      entry2.classList.add("col-6", "m-0", "p-0");
       entry2.appendChild(entries[i].cloneNode(true));
       entry2.children[0].classList.add("img-type-1");
       gallery.appendChild(entry2);
@@ -279,7 +257,7 @@ var projectCards;
 
     function singleColumnRow(gallery, entries, i) {
       let entry1 = document.createElement("div");
-      entry1.classList.add("col-lg-6", "col-md-6", "m-0", "p-0");
+      entry1.classList.add("col-12", "m-0", "p-0");
       entry1.appendChild(entries[i].cloneNode(true));
       entry1.children[0].classList.add("img-type-1");
       gallery.appendChild(entry1);

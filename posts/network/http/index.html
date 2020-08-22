@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>谈谈HTTP</title>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/assets/css/layouts/main.css" />
+<link rel="stylesheet" href="/assets/css/style.css" />
+<link rel="stylesheet" href="/assets/css/navigators/navbar.css" />
+
+
+<link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+
+
+<link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+
+
+<link rel="stylesheet" href="/assets/css/style.css" />
+
+    
+<meta name="description" content="谈谈HTTP" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css"
+/>
+<link rel="stylesheet" href="/assets/css/layouts/single.css" />
+<link rel="stylesheet" href="/assets/css/navigators/sidebar.css">
+
+
+    
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', '\u003cyour google analytics id\u003e', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    
+  </head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    <nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+  <div class="container">
+    
+    
+    
+    
+      <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="https://cctrip.github.io/">
+      <img src="/assets/images/main-logo.png">CC&#39;s Trip</a>
+    <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="top-nav-items">
+      <ul class="navbar-nav ml-auto">
+      </ul>
+    </div>
+  </div>
+  
+  <img src="/assets/images/main-logo.png" class="d-none" id="main-logo">
+  <img src="/assets/images/inverted-logo.png" class="d-none" id="inverted-logo">
+</nav>
+
+
+
+      
+      
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <input type="text" value="" placeholder="Search" data-search="" id="search-box" />
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading"><a href="/posts" data-filter="all">Posts</a></li>
+            <div class="subtree">
+                
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/linux/">Linux</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/linux/linux_pam/">Linux pam模块</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/linux/nginx_match/">Nginx匹配机制总结</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/linux/system_start/">理解系统启动过程</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/linux/file_descriptor/">谈谈文件描述符</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+    
+    
+  
+  
+    
+    <li>
+      <i class="fas fa-minus-circle"></i><a class="active" href="/posts/network/">Network</a>
+      
+      <ul class="active">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/network/network_comm/">简单理解计算机通信</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/network/dns/">谈谈DNS</a></li>
+  
+
+  
+  
+  
+  
+    
+    
+  
+  
+    
+    <li><a class="active" href="/posts/network/http/">谈谈HTTP</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/security/">Security</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/security/webcsp/">WEB安全之CSP</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/security/tls/">理解SSL/TLS协议</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content">
+    <div class="container p-0 read-area">
+      
+      <div class="hero-area col-sm-12" id="hero-area" style='background-image: url(https://cctrip.github.io/images/posts/network.jpg);'>
+      </div>
+
+      
+      <div class="page-content">
+        <div class="author-profile ml-auto align-self-lg-center">
+          <img class="rounded-circle" src='/images/cc.jpg'/>
+          <h5 class="author-name">Hello.CC</h5>
+          <p>May 29, 2016</p>
+        </div>
+
+        <div class="title">
+          <h1>谈谈HTTP</h1>
+        </div>
+
+        <div class="post-content" id="post-content">
+          <h3 id="写在前面">写在前面</h3>
+<p>如今网络已经无处不在，人们通过网络获取浏览各种信息，其中，大部分都是通过浏览器访问各种网页来获取我们想要的信息，那么浏览器与网页(服务端)究竟是如何通信的呢？这就得从HTTP协议说起了，浏览器获取网页信息都是基于HTTP协议来处理的。</p>
+<hr>
+<h3 id="概念">概念</h3>
+<p>HTTP（HyperText Transfer Protocol，超文本传输协议）是互联网上应用最为广泛的一种网络协议。设计HTTP最初的目的是为了提供一种发布和接收HTML页面的方法。通过HTTP或者HTTPS协议请求的资源由统一资源标识符（Uniform Resource Identifiers，URI）来标识。HTTP是一个应用层协议，由请求和响应构成，是一个标准的客户端服务器模型。其具有如下特点：</p>
+<ul>
+<li>
+<p>支持客户/服务器模式。</p>
+</li>
+<li>
+<p>简单快速：客户向服务器请求服务时，只需传送请求方法和路径。请求方法常用的有GET、HEAD、POST。每种方法规定了客户与服务器联系的类型不同。由于HTTP协议简单，使得HTTP服务器的程序规模小，因而通信速度很快。</p>
+</li>
+<li>
+<p>灵活：HTTP允许传输任意类型的数据对象。正在传输的类型由Content-Type加以标记。</p>
+</li>
+<li>
+<p>无连接：无连接的含义是限制每次连接只处理一个请求。服务器处理完客户的请求，并收到客户的应答后，即断开连接。采用这种方式可以节省传输时间。</p>
+</li>
+<li>
+<p>无状态：HTTP协议是无状态协议。无状态是指协议对于事务处理没有记忆能力。缺少状态意味着如果后续处理需要前面的信息，则它必须重传，这样可能导致每次连接传送的数据量增大。另一方面，在服务器不需要先前信息时它的应答就较快</p>
+</li>
+</ul>
+<p>PS：尽管TCP/IP协议是互联网上最流行的应用，HTTP协议中，并没有规定必须使用它或它支持的层。事实上，HTTP可以在任何互联网协议上，或其他网络上实现。HTTP假定其下层协议提供可靠的传输。因此，任何能够提供这种保证的协议都可以被其使用。因此也就是其在TCP/IP协议族使用TCP作为其传输层。</p>
+<hr>
+<h3 id="工作流程">工作流程</h3>
+<p>HTTP协议的通信过程永远是客户端发起请求(request)，服务器回送响应(respone)，如下图所示：</p>
+<p><img src="5657919_2.jpg" alt=""></p>
+<p>一个完整的HTTP操作称为一个事务，其流程可分为四步：</p>
+<ul>
+<li>
+<p>建立连接(TCP三次握手)</p>
+</li>
+<li>
+<p>客户端发送一个请求报文给服务器</p>
+</li>
+<li>
+<p>服务器响应对应信息</p>
+</li>
+<li>
+<p>客户端接收信息，然后断开连接</p>
+</li>
+</ul>
+<hr>
+<h3 id="请求和响应详解">请求和响应详解</h3>
+<h4 id="请求报文">请求报文</h4>
+<ul>
+<li>
+<p>请求行：由请求方法、URL和HTTP版本组成</p>
+<p>eg：GET /index.html HTTP/1.1</p>
+<ul>
+<li>
+<p>请求方法</p>
+<ul>
+<li>
+<p>GET：请求获取URI所标识的资源</p>
+</li>
+<li>
+<p>HEAD：请求获取URI所标识的资源，但不传回资源的文本部分</p>
+</li>
+<li>
+<p>POST：向指定URI资源提交数据，请求服务器进行处理</p>
+</li>
+<li>
+<p>PUT：向指定URI资源上传其最新内容</p>
+</li>
+<li>
+<p>DELETE：请求服务器删除URI所标识的资源</p>
+</li>
+<li>
+<p>TRACE：回显服务器收到的请求，主要用于测试或诊断</p>
+</li>
+<li>
+<p>OPTIONS：请求URI资源所支持的HTTP请求方法</p>
+</li>
+<li>
+<p>CONNECT：HTTP/1.1协议中预留给能够将连接改为管道方式的代理服务器。通常用于SSL加密服务器的链接</p>
+</li>
+</ul>
+</li>
+<li>
+<p>URL</p>
+<p>请求的资源路径</p>
+</li>
+<li>
+<p>协议版本</p>
+<p>现在大部分为HTTP/1.0 和 HTTP/1.1</p>
+</li>
+</ul>
+</li>
+<li>
+<p>请求头部</p>
+<p>eg：host:www.google.com</p>
+<p>host为必选，其他都为可选参数</p>
+</li>
+<li>
+<p>空行</p>
+</li>
+<li>
+<p>消息体</p>
+<p>请求所带的文本</p>
+</li>
+</ul>
+<h4 id="响应报文">响应报文</h4>
+<ul>
+<li>
+<p>状态行：由协议版本、状态码和描述信息组成</p>
+<p>eg：HTTP/1.1 200 OK</p>
+<ul>
+<li>
+<p>协议版本</p>
+</li>
+<li>
+<p>状态码：用于告诉客户端，服务器是否产生预期的响应</p>
+<ul>
+<li>
+<p>1XX：提示信息，表示请求已被成功接收，继续处理</p>
+</li>
+<li>
+<p>2XX：成功，表示请求已被成功接收，理解</p>
+</li>
+<li>
+<p>3XX：重定向，要完成请求必须进行更进一步的处理</p>
+</li>
+<li>
+<p>4XX：客户端错误，请求有语法错误或请求无法实现</p>
+</li>
+<li>
+<p>5XX：服务器端错误，服务器未能实现合法的请求</p>
+</li>
+</ul>
+</li>
+<li>
+<p>描述信息</p>
+</li>
+</ul>
+</li>
+<li>
+<p>响应头部</p>
+</li>
+<li>
+<p>空行</p>
+</li>
+<li>
+<p>消息体</p>
+</li>
+</ul>
+<h4 id="一个例子">一个例子</h4>
+<p>访问codecc.xyz首页</p>
+<ul>
+<li>Request，首行为请求行，其余为请求头部</li>
+</ul>
+<p><img src="20160531232545.png" alt=""></p>
+<ul>
+<li>Respone，首行为响应状态行，空行前为响应头部，其余为响应数据</li>
+</ul>
+<p><img src="20160531232617.png" alt=""></p>
+<hr>
+<h3 id="参考">参考</h3>
+<p><a href="https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol">https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol</a></p>
+
+        </div>
+
+        
+        
+          <div class="btn-improve-page">
+              <a href="https://github.com/cctrip/blogs/edit/master/content/posts/network/http.md">
+                <i class="fas fa-code-branch"></i>
+                Improve This Page
+              </a>
+          </div>
+        
+
+        
+      <hr />
+        <div class="row next-prev-navigator">
+
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+      <div class="col-md-6 previous-article">
+        <a href="/posts/security/tls/" class="btn btn-outline-info">
+          <span><i class="fas fa-chevron-circle-left"></i> Prev</span>
+          <br />
+          <span>理解SSL/TLS协议</span>
+        </a>
+      </div>
+      
+    
+    
+      
+        
+        
+          
+              
+          
+        
+        <div class="col-md-6 next-article">
+          <a href="/posts/linux/system_start/" class="btn btn-outline-info">
+            <span>Next <i class="fas fa-chevron-circle-right"></i></span>
+            <br />
+            <span>理解系统启动过程</span>
+          </a>
+        </div>
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+</div>
+
+      <hr />
+      
+      
+          <div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function () {
+    
+    
+    if (window.location.hostname == "localhost") return;
+
+    var dsq = document.createElement("script");
+    dsq.type = "text/javascript";
+    dsq.async = true;
+    var disqus_shortname = "\u003cyour disqus short code\u003e";
+    dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+    (
+      document.getElementsByTagName("head")[0] ||
+      document.getElementsByTagName("body")[0]
+    ).appendChild(dsq);
+  })();
+</script>
+<noscript
+  >Please enable JavaScript to view the
+  <a href="https://disqus.com/?ref_noscript"
+    >comments powered by Disqus.</a
+  ></noscript
+>
+<a href="https://disqus.com/" class="dsq-brlink"
+  >comments powered by <span class="logo-disqus">Disqus</span></a
+>
+
+      
+      </div>
+    </div>
+  </div>
+</section>
+
+
+      
+      
+  <section class="toc-section" id="toc-section">
+    
+    <div class="toc-holder">
+      <h5 class="text-center pl-3">Table of Contents</h5>
+      <hr>
+      <div class="toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#写在前面">写在前面</a></li>
+        <li><a href="#概念">概念</a></li>
+        <li><a href="#工作流程">工作流程</a></li>
+        <li><a href="#请求和响应详解">请求和响应详解</a>
+          <ul>
+            <li><a href="#请求报文">请求报文</a></li>
+            <li><a href="#响应报文">响应报文</a></li>
+            <li><a href="#一个例子">一个例子</a></li>
+          </ul>
+        </li>
+        <li><a href="#参考">参考</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+    </div>
+    
+  </section>
+
+    </div>
+
+    <footer class="container-fluid text-center align-content-center footer pb-2">
+  <div class="container pt-5">
+    <div class="row text-left">
+      <div class="col-md-4 col-sm-12">
+        <h5>Navigation</h5>
+        
+        <ul>
+            
+            <li class="nav-item">
+              <a class="smooth-scroll" href="/#about">About</a>
+            </li>
+            
+            
+            <li class="nav-item">
+              <a class="smooth-scroll" href="/#skills">Skills</a>
+            </li>
+            
+            
+            <li class="nav-item">
+              <a class="smooth-scroll" href="/#experiences">Experiences</a>
+            </li>
+            
+            
+            <li class="nav-item">
+              <a class="smooth-scroll" href="/#projects">Projects</a>
+            </li>
+            
+            
+            <li class="nav-item">
+              <a class="smooth-scroll" href="/#recent-posts">Recent Posts</a>
+            </li>
+            
+        </ul>
+        
+
+      </div>
+      <div class="col-md-4 col-sm-12">
+        <h5>Contact Me</h5>
+        <ul>
+          
+          <li><span>Email: </span> <span>zcc0388@gmail.com</span></li>
+          
+          <li><span>Wechat: </span> <span>zcc0388</span></li>
+          
+        </ul>
+      </div>
+      
+    </div>
+  </div>
+  <hr />
+  <div class="container">
+    <div class="row text-left">
+      <div class="col-md-4">
+        <a id="theme" href="https://github.com/hossainemruz/toha" target="#">
+          <img src="/assets/images/inverted-logo.png">
+          Toha
+        </a>
+      </div>
+      <div class="col-md-4 text-center">© 2020 Copyright.</div>
+      <div class="col-md-4 text-right">
+        <a id="hugo" href="https://gohugo.io/">Powered by Hugo
+        <img
+          src="/assets/images/hugo-logo-wide.svg"
+          alt="Hugo Logo"
+          height="18"
+        />
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <script src="/assets/js/jquery-3.4.1.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+
+<script src="/assets/js/navbar.js"></script>
+<script src="/assets/js/main.js"></script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+<script src="/assets/js/single.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+  </body>
+</html>
