@@ -6,24 +6,10 @@
     <description>Recent content on CC&#39;s Trip</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 25 Aug 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 24 Aug 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://cctrip.github.io/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>直面惨淡的人生</title>
-      <link>https://cctrip.github.io/posts/life/choice/</link>
-      <pubDate>Tue, 25 Aug 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://cctrip.github.io/posts/life/choice/</guid>
-      <description> 人生不如意事常八九，可与语人无二三。
-  困局 时间匆匆 转眼之间，已是而立之年，曾经的少年，已经变成了大叔。
-存款与楼房，挣扎与渴望 焦虑，是当代年轻人的主题曲，当然，我也不意外，甚至属于前列。
-资质平凡，院校平凡，工作履历平凡，这就是我。
- 破局 以史为鉴  向前看  往者不可谏，来者犹可追。——《论语·微子》
- 选择比努力重要  </description>
-    </item>
     
     <item>
       <title>SRE之监控系统</title>
@@ -291,6 +277,15 @@ DNS Domain Namespace，DNS域命名空间，是一种分层树状结构，其格
  IP地址   讲到IP协议就应该讲讲IP地址，IP地址是分配给网络上使用IP协议的设备的数字标签，有IPv4和IPv6两大类，我们目前使用的大部分还是IPv4的地址，以下简称IP地址，IP地址由32位二进制数组成，为便于使用，常以XXX.XXX.XXX.XXX形式表示。
   IP地址由两个字段组成：网络号(net-id)和主机号(host-id)，为方便IP地址管理，IP地址被分为五类，如下图：
   其中A、B、C类地址为单播（unicast）地址；D类地址为组播（multicast）地址；E类地址为保留地址，以备将来的特殊用途。目前大量使用中的IP地址属于A、B、C三类地址。</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/posts/life/choice/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/posts/life/choice/</guid>
+      <description></description>
     </item>
     
   </channel>
