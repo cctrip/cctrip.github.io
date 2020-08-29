@@ -6,10 +6,24 @@
     <description>Recent content on CC&#39;s Trip</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 24 Aug 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 25 Aug 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://cctrip.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>直面惨淡的人生</title>
+      <link>https://cctrip.github.io/posts/life/choice/</link>
+      <pubDate>Tue, 25 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/posts/life/choice/</guid>
+      <description> 人生不如意事常八九，可与语人无二三。
+  困局 时间匆匆 转眼之间，已是而立之年，曾经的少年，已经变成了大叔。
+存款与楼房，挣扎与渴望 焦虑，是当代年轻人的主题曲，当然，我也不意外，甚至属于前列。
+资质平凡，院校平凡，工作履历平凡，这就是我。
+ 破局 以史为鉴  向前看  往者不可谏，来者犹可追。——《论语·微子》
+ 选择比努力重要  </description>
+    </item>
     
     <item>
       <title>SRE之监控系统</title>
