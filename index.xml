@@ -279,14 +279,5 @@ DNS Domain Namespace，DNS域命名空间，是一种分层树状结构，其格
   其中A、B、C类地址为单播（unicast）地址；D类地址为组播（multicast）地址；E类地址为保留地址，以备将来的特殊用途。目前大量使用中的IP地址属于A、B、C三类地址。</description>
     </item>
     
-    <item>
-      <title></title>
-      <link>https://cctrip.github.io/posts/life/choice/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cctrip.github.io/posts/life/choice/</guid>
-      <description></description>
-    </item>
-    
   </channel>
 </rss>
