@@ -1,0 +1,17 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>web - Tag - CC&#39;s Trip</title>
+        <link>https://cctrip.github.io/tags/web/</link>
+        <description>web - Tag - CC&#39;s Trip</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 20 May 2016 17:55:28 &#43;0800</lastBuildDate><atom:link href="https://cctrip.github.io/tags/web/" rel="self" type="application/rss+xml" /><item>
+    <title>WEB安全之CSP</title>
+    <link>https://cctrip.github.io/webcsp/</link>
+    <pubDate>Fri, 20 May 2016 17:55:28 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://cctrip.github.io/webcsp/</guid>
+    <description><![CDATA[概念 内容安全策略(Content-Security-Policy，CSP)：是一种web应用技术用于帮助缓解大部分类型的内容注入攻击，包括XSS攻击和数据注入等，这些攻击可实现数据窃取、网站破坏和作为恶意软件分发版本等行为。该策略可让网站管理员指定客户端允许加载的各类可信任资源。
+ 浏览器支持 统计来源：caniuse.com/contentsecuritypolicy &amp; Mozilla
+ 指令参考 Content-Security-Policy 响应头的值可配置一个或多个，多个指令以分号;隔开。
+   指令 示例 描述     default-src &lsquo;self&rsquo; cdn.example.com 默认配置，若其他指令没有配置，都以此配置的规则为准   script-src &lsquo;self&rsquo; js.example.com 定义允许加载的JavaScript来源   style-src &lsquo;self&rsquo; css.example.com 定义允许加载的样式表来源   img-src &lsquo;self&rsquo; img.example.com 定义允许加载的图片来源   connect-src &lsquo;self&rsquo; 适用于XMLHttpRequest(AJAX),WebSocket或EventSource，当为不允许的来源，浏览器返回一个400的状态码。   font-src font.example.com 定义允许加载的字体来源   object-src &lsquo;self&rsquo; 定义允许加载的插件来源.eg,&lt;object&gt;,&lt;embed&gt;或&lt;applet&gt;   media-src media.example.com 定义允许加载的audio和video.eg,HTML5,&lt;audio&gt;,&lt;video&gt;元素   frame-src &lsquo;self&rsquo; 定义允许加载的框架来源   sandbox allow-forms allow-scripts 授权一个沙箱用来请求具有iframe sanbox等类似属性的资源,该沙箱默认为同源策略,禁止弹出窗口,执行插件和脚本.]]></description>
+</item></channel>
+</rss>

@@ -131,7 +131,7 @@
 请求延迟刚刚大幅增加，有没有其他的现象同时发生？
    建立监控系统 监控系统基本组件 一个监控系统一般包含下面几个组件：</div><div class="post-footer">
         <a href="/monitor/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/devops/">devops</a>,&nbsp;<a href="/tags/sre/">sre</a></div></div>
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/devops/">devops</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
             <a href="/sre/"><img
         class="lazyload"
@@ -160,8 +160,121 @@ Dev/Ops分离团队模型 雇佣系统管理员(sysadmin)运维复杂的计算�
  成为SRE 技能要求  – TCP/IP网络模型 (OSI模型)
 – Unix/Linux 系统</div><div class="post-footer">
         <a href="/sre/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/devops/">devops</a>,&nbsp;<a href="/tags/sre/">sre</a></div></div>
-</article></div></div>
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/devops/">devops</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
+            <a href="/nginx_match/"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/nginx_match/nginx.png"
+        data-srcset="/nginx_match/nginx.png, /nginx_match/nginx.png 1.5x, /nginx_match/nginx.png 2x"
+        data-sizes="auto"
+        alt="/nginx_match/nginx.png"
+        title="Nginx匹配机制总结" /></a>
+        </div><h1 class="single-title" itemprop="name headline">
+        <a href="/nginx_match/">Nginx匹配机制总结</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-06-06">2020-06-06</time></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>Linux</a></span></div><div class="content">写在前面 Nginx是一个当前主流的HTTP服务器和反向代理服务器，很多做WEB相关的同学基本都会用到，很多云厂商的七层负载均衡器也基本都是基于nginx实现的，个人在工作过程也算是经常接触，这篇文章主要想总结一下nginx的匹配机制，主要分为两块，一块是server的匹配，一块是location的匹配。
+ Server匹配机制 配置过nginx的都知道，在一个http模块中是可以配置多个server模块的，并且多个server模块是可以配置相同的监听端口的，下面是一个简单的server配置例子：
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17  server { listen 80; server_name example.org www.example.org; ... } server { listen 80; server_name example.net www.example.net; ... } server { listen 80; server_name example.com www.example.com; ... }   当我们对nginx发起http请求后，nginx会拿到http请求中对应的 &quot;Host&quot; 头部跟server模块中的server_name进行匹配，根据匹配的server结果进入具体的server模块处理http请求。那么，它具体的匹配机制是怎样的呢？
+首先，我们先简单了解下nginx内部server的相关结构，
+其中listen和server_name在配置文件中的写法有：
+ listen(可带default_server标识)  ip:port ip(监听80端口) port(监听所有地址)   server_name  www.example.com(完整域名) *.example.com(带通配符开头的域名) www.example.*(带通配符结尾的域名) ~^(www.</div><div class="post-footer">
+        <a href="/nginx_match/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a>,&nbsp;<a href="/tags/application/">application</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
+            <a href="/linux_pam/"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/linux_pam/linux.jpg"
+        data-srcset="/linux_pam/linux.jpg, /linux_pam/linux.jpg 1.5x, /linux_pam/linux.jpg 2x"
+        data-sizes="auto"
+        alt="/linux_pam/linux.jpg"
+        title="Linux PAM模块" /></a>
+        </div><h1 class="single-title" itemprop="name headline">
+        <a href="/linux_pam/">Linux PAM模块</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-04-05">2020-04-05</time></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>Linux</a></span></div><div class="content">概念 Linux-PAM（Pluggable Authentication Modules for Linux）是一套共享库,使本地系统管理员可以随意选择程序的认证方式。换句话说，不用(重新编写)重新编译一个包含PAM功能的应用程序，就可以改变它使用的认证机制，这种方式下，就算升级本地认证机制,也不用修改程序。
+ 工作机制 当应用程序希望与PAM交互以处理事件时，他们必须包括libpam，该libpam允许通过库提供的API进行通信。 当PAM看到必须处理的新事件时，它将查看/etc/pam.d中的相关配置文件，并确定在某些阶段必须使用哪些模块。
+ /etc/pam.d配置文件介绍 配置文件语法
+1  type control module-path module-arguments   配置文件分为四列
+ 第一列代表模块类型 第二列代表控制标记 第三列代表模块路径 第四列代表模块参数  类型 类型 是规则对应的管理组。它用于指定后续模块要与哪个管理组关联。
+目前有四种类型:
+  account
+此模块类型执行基于非身份验证的帐户管理。 通常用于限制/允许对服务的访问，例如是否允许登录,是否达到最大用户数,或是root用户是否允许在这个终端登录等。
+  auth
+此模块为用户验证提供两方面服务。让应用程序提示用户输入密码或者其他标记，确认用户合法性；通过他的凭证许可权限，设定组成员关系或者其他优先权。
+  password
+此模块用于控制用户更改密码的全过程。
+  session
+此模块处理为用户提供服务之前/后需要做的些事情。包括：开启/关闭交换数据的信息，监视目录等，设置用户会话环境等。也就是说这是在系统正式进行服务提供之前的最后一道关口。
+  如果在类型前加一个短横线 -，就表示如果找不到这个模块，导致无法被加载时，这一事件不会被记录在日志中。这个功能适用于那些认证时非必需的、安装时可能没被安装进系统的模块。
+控制标记 流程栈（stack）
+它是认证时执行步骤和规则的堆叠。在某个服务的配置文件中，它体现在了配置文件中的自上而下的执行顺序中。栈是可以被引用的，即在一个栈（或者流程）中嵌入另一个栈。
+控制标记 规定如何处理PAM模块鉴别认证的结果，简而言之就是鉴别认证成功或者失败之后会发生什么事，如何进行控制。一般有两种形式，一种是比较常见的“关键字”方式，另一种则是用方括号（[]）包含的“value =action”方式。
+关键字方式:   required
+如果本条目没有被满足，那最终本次认证一定失败，但认证过程不因此打断。整个栈运行完毕之后才会返回“认证失败”信号。
+  requisite
+如果本条目没有被满足，那本次认证一定失败，而且整个栈立即中止并返回错误信号。
+  sufficient</div><div class="post-footer">
+        <a href="/linux_pam/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a>,&nbsp;<a href="/tags/security/">security</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
+            <a href="/file_descriptor/"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/file_descriptor/linux.jpg"
+        data-srcset="/file_descriptor/linux.jpg, /file_descriptor/linux.jpg 1.5x, /file_descriptor/linux.jpg 2x"
+        data-sizes="auto"
+        alt="/file_descriptor/linux.jpg"
+        title="谈谈文件描述符" /></a>
+        </div><h1 class="single-title" itemprop="name headline">
+        <a href="/file_descriptor/">谈谈文件描述符</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-03-29">2020-03-29</time></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>Linux</a></span></div><div class="content">概念 wiki解释，文件描述符在形式上是一个非负整数。实际上，它是一个索引值，指向内核为每一个进程所维护的该进程打开文件的记录表。当程序打开一个现有文件或者创建一个新文件时，内核向进程返回一个文件描述符。在程序设计中，一些涉及底层的程序编写往往会围绕着文件描述符展开。
+一个文件描述符是一个数字，唯一标识一个在计算机的操作系统打开的文件。它描述了数据资源，以及如何访问该资源。
+当程序要求打开文件（或其他数据资源，例如网络套接字）时，内核：
+ 授予访问权限。 在全局文件表中创建一个条目。 向软件提供该条目的位置。  该描述符是唯一的非负整数。系统上每个打开的文件至少存在一个文件描述符。
+ 细节 对于内核，所有打开的文件均由文件描述符引用。文件描述符是一个非负数。当我们打开现有文件或创建新文件时，内核将文件描述符返回到进程。当我们想读取或写入文件时，我们用文件描述符标识文件。
+每个Linux进程（也许是守护程序除外）都应该具有三个标准的POSIX文件描述符：
+   POSIX常数名称 文件描述符 描述     STDIN_FILENO 0 标准输入   STDOUT_FILENO 1 标准输出   STDERR_FILENO 2 标准误差    有三个“系统文件表”：有一个文件描述符表，它将文件描述符（小整数）映射到打开的文件表中的条目。打开文件表中的每个条目（除其他事项外）还包含文件偏移量和指向内存中inode表的指针。在打开的文件表中，每个open（）调用都有一个文件表条目，如果文件描述符是dup（）ed或fork（）ed，则共享该条目。
+我们使用来自维基百科的示例来显示这些表的工作方式。这是一张照片： 单个进程的文件描述符，文件表和索引节点表。请注意，多个文件描述符可以引用相同的文件表条目（例如，由于dup系统调用），并且多个文件表条目可以依次引用同一个索引节点（如果已多次打开；则该表之所以仍然简化，是因为它通过文件名来表示索引节点，即使索引节点可以具有多个名称也是如此。文件描述符3没有引用文件表中的任何内容，表明它已关闭。
+理解具体情况，需要了解由内核维护的 3 个数据结构：
+ 进程级 文件描述符表 ( file descriptor table ) 系统级 打开文件表 ( open file table ) 文件系统 i-node表 ( i-node table )  这 3 个数据结构之间的关系如 图-1 所示：</div><div class="post-footer">
+        <a href="/file_descriptor/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
+            <a href="/tls/"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/tls/security.jpg"
+        data-srcset="/tls/security.jpg, /tls/security.jpg 1.5x, /tls/security.jpg 2x"
+        data-sizes="auto"
+        alt="/tls/security.jpg"
+        title="理解SSL/TLS协议" /></a>
+        </div><h1 class="single-title" itemprop="name headline">
+        <a href="/tls/">理解SSL/TLS协议</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2017-01-08">2017-01-08</time></span>&nbsp;<span class="post-category">included in <a href="/categories/security/"><i class="far fa-folder fa-fw"></i>Security</a></span></div><div class="content">背景 早期我们在访问web时使用HTTP协议，该协议在传输数据时使用明文传输，明文传输带来了以下风险：
+ 信息窃听风险，第三方可以获取通信内容 信息篡改风险，第三方可以篡改通信内容 身份冒充风险，第三方可以冒充他人身份参与通信  为了解决明文传输所带来的风险，网景公司在1994年设计了SSL用于Web的安全传输协议，这是SSL的起源。IETF将SSL进行标准化，1999年公布了第一版TLS标准文件。随后又公布了 RFC 5246（2008年8月）与 RFC 6176 （2011年3月）。该协议在web中被广泛应用。
+ SSL/TLS协议 TLS（Transport Layer Security，传输层安全协议），及其前身SSL（Secure Sockets Layer，安全套接层）是一种安全协议，目的是为互联网通信，提供安全及数据完整性保障。
+TLS协议使用以下三种机制为信息通信提供安全传输：
+ 隐秘性，所有通信都通过加密后进行传播 身份认证，通过证书进行认证 可靠性，通过校验数据完整性维护一个可靠的安全连接   工作机制 TLS协议由两部分组成，包括（TLS Record Layer,TLS handshake protocol）
+  Record Layer：
+为每条信息提供一个header和在尾部生成一个从Message Authentication Code (MAC) 得到的hash值，其中header由5 bytes组成，分别是协议说明(1bytes),协议版本(2bytes)和长度(2bytes)，跟在header后面的协议信息长度不得超过16384bytes。　  Handshake Protocol：
+开始一个安全连接需要客户端和服务端经过反复的建立握手。一个TLS握手需要经过如下几个步骤：
+  首先还是要经过TCP三次握手建立连接，然后才是TLS握手的开始：
+  ClientHello：Client端将自己的TLS协议版本，加密套件，压缩方法，随机数，SessionID(未填充)发送给Server端
+  ServerHello：Server端将选择后的SSL协议版本，压缩算法，密码套件，填充SessionID，生成的随机数等信息发送给Client端
+  ServerCertificates：Server端将自己的数字证书(包含公钥)，发送给Client端。(证书需要从数字证书认证机构(CA)申请，证书是对于服务端的一种认证)，若要进行更为安全的数据通信，Server端还可以向Client端发送Cerficate Request来要去客户端发送对方的证书进行合法性的认证。
+  ServerHelloDone：当完成ServerHello后，Server端会发送Server Hello Done的消息给客户端，表示ServerHello 结束了。
+  ClientKeyExchage：当Client端收到Server端的证书等信息后，会先对服务端的证书进行检查，检查证书的完整性以及证书跟服务端域名是否吻合，然后使用加密算法生成一个PreMaster Secret，并通过Server端的公钥进行加密，然后发送给Server端。</div><div class="post-footer">
+        <a href="/tls/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/security/">security</a></div></div>
+</article><ul class="pagination"><li class="page-item active">
+                    <span class="page-link">
+                        <a href="/">1</a>
+                    </span>
+                </li><li class="page-item ">
+                    <span class="page-link">
+                        <a href="/page/2/">2</a>
+                    </span>
+                </li></ul></div></div>
             </main><footer class="footer">
         <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.72.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>

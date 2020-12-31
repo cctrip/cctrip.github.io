@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Linux PAM模块 - CC&#39;s Trip</title><meta name="Description" content="Linux PAM模块"><meta property="og:title" content="Linux PAM模块" />
+<meta property="og:description" content="Linux PAM模块" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cctrip.github.io/linux_pam/" />
+<meta property="og:image" content="https://cctrip.github.io/linux_pam/linux.jpg"/>
+<meta property="article:published_time" content="2020-04-05T17:55:28+08:00" />
+<meta property="article:modified_time" content="2020-04-05T17:55:28+08:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://cctrip.github.io/linux_pam/linux.jpg"/>
+<meta name="twitter:title" content="Linux PAM模块"/>
+<meta name="twitter:description" content="Linux PAM模块"/>
+<meta name="application-name" content="CC&#39;s Trip">
+<meta name="apple-mobile-web-app-title" content="CC&#39;s Trip"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/leo.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://cctrip.github.io/linux_pam/" /><link rel="prev" href="https://cctrip.github.io/file_descriptor/" /><link rel="next" href="https://cctrip.github.io/nginx_match/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Linux PAM模块",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/cctrip.github.io\/linux_pam\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/cctrip.github.io\/linux_pam\/linux.jpg",
+                            "width":  1920 ,
+                            "height":  1080 
+                        }],"genre": "posts","keywords": "linux, security","wordcount":  180 ,
+        "url": "https:\/\/cctrip.github.io\/linux_pam\/","datePublished": "2020-04-05T17:55:28+08:00","dateModified": "2020-04-05T17:55:28+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/cctrip.github.io\/images\/cc.jpg",
+                    "width":  250 ,
+                    "height":  250 
+                }},"author": {
+                "@type": "Person",
+                "name": "Hello.CC"
+            },"description": "Linux PAM模块"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="CC&#39;s Trip">CC&#39;s Trip</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/notes"> Notes </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="CC&#39;s Trip">CC&#39;s Trip</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/notes" title="">Notes</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Linux PAM模块</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>Linux</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-04-05">2020-04-05</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;180 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/linux_pam/linux.jpg"
+        data-srcset="/linux_pam/linux.jpg, /linux_pam/linux.jpg 1.5x, /linux_pam/linux.jpg 2x"
+        data-sizes="auto"
+        alt="/linux_pam/linux.jpg"
+        title="Linux PAM模块" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#概念">概念</a></li>
+        <li><a href="#工作机制">工作机制</a></li>
+        <li><a href="#etcpamd配置文件介绍">/etc/pam.d配置文件介绍</a>
+          <ul>
+            <li><a href="#类型">类型</a></li>
+            <li><a href="#控制标记">控制标记</a>
+              <ul>
+                <li>
+                  <ul>
+                    <li><a href="#关键字方式">关键字方式:</a></li>
+                    <li><a href="#value--action方式">value = action方式:</a></li>
+                    <li><a href="#关键字的控制方式也可以用value--action方式来表示">关键字的控制方式也可以用value = action方式来表示</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><a href="#模块路径">模块路径</a></li>
+            <li><a href="#模块参数">模块参数</a></li>
+          </ul>
+        </li>
+        <li><a href="#一个例子">一个例子</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h3 id="概念">概念</h3>
+<p>Linux-PAM（Pluggable Authentication Modules for Linux）是一套共享库,使本地系统管理员可以随意选择程序的认证方式。换句话说，不用(重新编写)重新编译一个包含PAM功能的应用程序，就可以改变它使用的认证机制，这种方式下，就算升级本地认证机制,也不用修改程序。</p>
+<hr>
+<h3 id="工作机制">工作机制</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="pam_works.png"
+        data-srcset="/linux_pam/pam_works.png, pam_works.png 1.5x, /linux_pam/pam_works.png 2x"
+        data-sizes="auto"
+        alt="/linux_pam/pam_works.png"
+        title="how-to-works" /></p>
+<p>当应用程序希望与PAM交互以处理事件时，他们必须包括libpam，该libpam允许通过库提供的API进行通信。 当PAM看到必须处理的新事件时，它将查看/etc/pam.d中的相关配置文件，并确定在某些阶段必须使用哪些模块。</p>
+<hr>
+<h3 id="etcpamd配置文件介绍">/etc/pam.d配置文件介绍</h3>
+<p>配置文件语法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">type  control  module-path  module-arguments
+</code></pre></td></tr></table>
+</div>
+</div><p>配置文件分为四列</p>
+<ul>
+<li>第一列代表模块类型</li>
+<li>第二列代表控制标记</li>
+<li>第三列代表模块路径</li>
+<li>第四列代表模块参数</li>
+</ul>
+<h4 id="类型">类型</h4>
+<p><em>类型</em> 是规则对应的管理组。它用于指定后续模块要与哪个管理组关联。</p>
+<p>目前有四种类型:</p>
+<ul>
+<li>
+<p>account</p>
+<p>此模块类型执行基于非身份验证的帐户管理。 通常用于限制/允许对服务的访问，例如是否允许登录,是否达到最大用户数,或是root用户是否允许在这个终端登录等。</p>
+</li>
+<li>
+<p>auth</p>
+<p>此模块为用户验证提供两方面服务。让应用程序提示用户输入密码或者其他标记，确认用户合法性；通过他的凭证许可权限，设定组成员关系或者其他优先权。</p>
+</li>
+<li>
+<p>password</p>
+<p>此模块用于控制用户更改密码的全过程。</p>
+</li>
+<li>
+<p>session</p>
+<p>此模块处理为用户提供服务之前/后需要做的些事情。包括：开启/关闭交换数据的信息，监视目录等，设置用户会话环境等。也就是说这是在系统正式进行服务提供之前的最后一道关口。</p>
+</li>
+</ul>
+<p>如果在类型前加一个短横线 <code>-</code>，就表示如果找不到这个模块，导致无法被加载时，这一事件不会被记录在日志中。这个功能适用于那些认证时非必需的、安装时可能没被安装进系统的模块。</p>
+<h4 id="控制标记">控制标记</h4>
+<p><strong>流程栈（stack）</strong></p>
+<p>它是认证时执行步骤和规则的堆叠。在某个服务的配置文件中，它体现在了配置文件中的自上而下的执行顺序中。栈是可以被引用的，即在一个栈（或者流程）中嵌入另一个栈。</p>
+<p><em>控制标记</em> 规定如何处理PAM模块鉴别认证的结果，简而言之就是鉴别认证成功或者失败之后会发生什么事，如何进行控制。一般有两种形式，一种是比较常见的“关键字”方式，另一种则是用方括号（<code>[]</code>）包含的“<code>value =action</code>”方式。</p>
+<h6 id="关键字方式">关键字方式:</h6>
+<ul>
+<li>
+<p>required</p>
+<p>如果本条目没有被满足，那最终本次认证一定失败，但认证过程不因此打断。整个栈运行完毕之后才会返回“认证失败”信号。</p>
+</li>
+<li>
+<p>requisite</p>
+<p>如果本条目没有被满足，那本次认证一定失败，而且整个栈立即中止并返回错误信号。</p>
+</li>
+<li>
+<p>sufficient</p>
+</li>
+<li>
+<p>如果本条目的条件被满足，且本条目之前没有任何<code>required</code>条目失败，则立即返回“认证成功”信号；如果对本条目的验证失败，不对结果造成影响。</p>
+</li>
+<li>
+<p>optional</p>
+<p>该条目仅在整个栈中只有这一个条目时才有决定性作用，否则无论该条验证成功与否都和最终结果无关。</p>
+</li>
+<li>
+<p>include</p>
+<p>将其他配置文件中的流程栈包含在当前的位置，就好像将其他配置文件中的内容复制粘贴到这里一样。</p>
+</li>
+<li>
+<p>substack</p>
+<p>运行其他配置文件中的流程，并将整个运行结果作为该行的结果进行输出。该模式和 <code>include</code> 的不同点在于认证结果的作用域：如果某个流程栈 <code>include</code> 了一个带 <code>requisite</code> 的栈，这个 <code>requisite</code> 失败将直接导致认证失败，同时退出栈；而某个流程栈 <code>substack</code> 了同样的栈时，<code>requisite</code> 的失败只会导致这个子栈返回失败信号，母栈并不会在此退出。</p>
+</li>
+</ul>
+<h6 id="value--action方式">value = action方式:</h6>
+<p>另外还有一种比较复杂的格式为value = action的语法来设置控制标志，标志之间会以空格分开。格式如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="p">[</span><span class="nx">value1</span> <span class="o">=</span> <span class="nx">action1</span> <span class="nx">value2</span> <span class="o">=</span> <span class="nx">action2</span> <span class="err">……</span><span class="p">]</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>其中value可以是下列Linux PAM库的返回值：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">success、open_err、symbol_err、service_err、 system_err、buf_err、perm_denied、auth_err、cred_insufficient、authinfo_unavail、user_unknown、maxtries、new_authtok_reqd、acct_expired、 session_err、cred_unavail、cred_expired、cred_err、no_module_data、conv_err、 authtok_err、authtok_recover_err、authtok_lock_busy、authtok_disable_aging、 try_again、ignore、abort、authtok_expired、module_unknown、bad_item和default。其中，default代表其他所有没有明确说明的返回值。
+</code></pre></td></tr></table>
+</div>
+</div><p>流程栈中很可能有多个验证规则，每条验证的返回值可能不尽相同，那么到底哪一个验证规则能作为最终的结果呢？这就需要 <code>actionN</code> 的值来决定了。<code>actionN</code> 的值有以下几种：</p>
+<ul>
+<li>
+<p>ignore</p>
+<p>在一个栈中有多个认证条目的情况下，如果标记 <code>ignore</code> 的返回值被命中，那么这条返回值不会对最终的认证结果产生影响。</p>
+</li>
+<li>
+<p>bad</p>
+<p>标记 <code>bad</code> 的返回值被命中时，最终的认证结果注定会失败。此外，如果这条 <code>bad</code> 的返回值是整个栈的第一个失败项，那么整个栈的返回值一定是这个返回值，后面的认证无论结果怎样都改变不了现状了。</p>
+</li>
+<li>
+<p>die</p>
+<p>标记 <code>die</code> 的返回值被命中时，马上退出栈并宣告失败。整个返回值为这个 <code>die</code> 的返回值。</p>
+</li>
+<li>
+<p>ok</p>
+<p>在一个栈的运行过程中，如果 <code>ok</code> 前面没有返回值，或者前面的返回值为 <code>PAM_SUCCESS</code>，那么这个标记了 <code>ok</code> 的返回值将覆盖前面的返回值。但如果前面执行过的验证中有最终将导致失败的返回值，那 <code>ok</code> 标记的值将不会起作用。</p>
+</li>
+<li>
+<p>done</p>
+<p>在前面没有 <code>bad</code> 值被命中的情况下，<code>done</code> 值被命中之后将马上被返回，并退出整个栈。</p>
+</li>
+<li>
+<p>N（无符号整数）</p>
+<p>功效和 <code>ok</code> 类似，并且会跳过接下来的 N 个验证步骤。如果 <code>N = 0</code> 则和 <code>ok</code> 完全相同。</p>
+</li>
+<li>
+<p>reset</p>
+<p>清空之前生效的返回值，并且从下面的验证起重新开始。</p>
+</li>
+</ul>
+<h6 id="关键字的控制方式也可以用value--action方式来表示">关键字的控制方式也可以用value = action方式来表示</h6>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh">#required
+</span><span class="gh"></span>[success=ok new_authtok_reqd=ok ignore=ignore default=bad]
+
+<span class="gh">#requisite
+</span><span class="gh"></span>[success=ok new_authtok_reqd=ok ignore=ignore default=die]
+
+<span class="gh">#sufficient
+</span><span class="gh"></span>[success=done new_authtok_reqd=done default=ignore]
+
+<span class="gh">#optional
+</span><span class="gh"></span>[success=ok new_authtok_reqd=ok default=ignore]
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="模块路径">模块路径</h4>
+<p><em>模块路径</em> 是应用程序要使用的PAM的绝对路径，或者是默认模块位置的相对路径名，一般为/lib/security /或/lib64/security/，取决于系统架构。</p>
+<h4 id="模块参数">模块参数</h4>
+<p><em>模块参数</em> 将只和特定模块相关，因此某个模块的文档中一定包含其参数的信息。如果需要在单个参数中使用空格，可以将整个参数用方括号（<code>[]</code>）包裹起来。</p>
+<hr>
+<h3 id="一个例子">一个例子</h3>
+<p>以/etc/pam.d/sshd为例</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="pam_ssh.jpg"
+        data-srcset="/linux_pam/pam_ssh.jpg, pam_ssh.jpg 1.5x, /linux_pam/pam_ssh.jpg 2x"
+        data-sizes="auto"
+        alt="/linux_pam/pam_ssh.jpg"
+        title="sshd" /></p>
+<p>加载/etc/pam.d/password-auth配置文件</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="pam_password_auth.jpg"
+        data-srcset="/linux_pam/pam_password_auth.jpg, pam_password_auth.jpg 1.5x, /linux_pam/pam_password_auth.jpg 2x"
+        data-sizes="auto"
+        alt="/linux_pam/pam_password_auth.jpg"
+        title="password-auth" /></p>
+<p>大部分模块的配置文件可在/etc/security中找到，并进行配置</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="pam_security.jpg"
+        data-srcset="/linux_pam/pam_security.jpg, pam_security.jpg 1.5x, /linux_pam/pam_security.jpg 2x"
+        data-sizes="auto"
+        alt="/linux_pam/pam_security.jpg"
+        title="security" /></p>
+<p>我们比较常进行配置的最大文件数和最大进程数就是在limit.conf中配置，在sshd中会加载到</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2020-04-05</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/linux_pam/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cctrip.github.io/linux_pam/" data-title="Linux PAM模块" data-via="https://twitter.com/zcc0388" data-hashtags="linux,security"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://cctrip.github.io/linux_pam/" data-hashtag="linux"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://cctrip.github.io/linux_pam/" data-title="Linux PAM模块"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://cctrip.github.io/linux_pam/" data-title="Linux PAM模块"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://cctrip.github.io/linux_pam/" data-title="Linux PAM模块"><i class="fab fa-weibo fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a>,&nbsp;<a href="/tags/security/">security</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/file_descriptor/" class="prev" rel="prev" title="谈谈文件描述符"><i class="fas fa-angle-left fa-fw"></i>谈谈文件描述符</a>
+            <a href="/nginx_match/" class="next" rel="next" title="Nginx匹配机制总结">Nginx匹配机制总结<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.72.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"search":{"algoliaAppID":"L6D88CPUCA","algoliaIndex":"hugo","algoliaSearchKey":"994528be64a6348310adaf32dff5bc6c","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

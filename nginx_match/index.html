@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Nginx匹配机制总结 - CC&#39;s Trip</title><meta name="Description" content="Nginx匹配机制总结"><meta property="og:title" content="Nginx匹配机制总结" />
+<meta property="og:description" content="Nginx匹配机制总结" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cctrip.github.io/nginx_match/" />
+<meta property="og:image" content="https://cctrip.github.io/nginx_match/nginx.png"/>
+<meta property="article:published_time" content="2020-06-06T17:55:28+08:00" />
+<meta property="article:modified_time" content="2020-06-06T17:55:28+08:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://cctrip.github.io/nginx_match/nginx.png"/>
+<meta name="twitter:title" content="Nginx匹配机制总结"/>
+<meta name="twitter:description" content="Nginx匹配机制总结"/>
+<meta name="application-name" content="CC&#39;s Trip">
+<meta name="apple-mobile-web-app-title" content="CC&#39;s Trip"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/leo.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://cctrip.github.io/nginx_match/" /><link rel="prev" href="https://cctrip.github.io/linux_pam/" /><link rel="next" href="https://cctrip.github.io/sre/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Nginx匹配机制总结",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/cctrip.github.io\/nginx_match\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/cctrip.github.io\/nginx_match\/nginx.png",
+                            "width":  1024 ,
+                            "height":  512 
+                        }],"genre": "posts","keywords": "linux, application","wordcount":  333 ,
+        "url": "https:\/\/cctrip.github.io\/nginx_match\/","datePublished": "2020-06-06T17:55:28+08:00","dateModified": "2020-06-06T17:55:28+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/cctrip.github.io\/images\/cc.jpg",
+                    "width":  250 ,
+                    "height":  250 
+                }},"author": {
+                "@type": "Person",
+                "name": "Hello.CC"
+            },"description": "Nginx匹配机制总结"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="CC&#39;s Trip">CC&#39;s Trip</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/notes"> Notes </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="CC&#39;s Trip">CC&#39;s Trip</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/notes" title="">Notes</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Nginx匹配机制总结</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>Linux</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-06-06">2020-06-06</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;333 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/nginx_match/nginx.png"
+        data-srcset="/nginx_match/nginx.png, /nginx_match/nginx.png 1.5x, /nginx_match/nginx.png 2x"
+        data-sizes="auto"
+        alt="/nginx_match/nginx.png"
+        title="Nginx匹配机制总结" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#写在前面">写在前面</a></li>
+        <li><a href="#server匹配机制">Server匹配机制</a></li>
+        <li><a href="#location匹配机制">Location匹配机制</a>
+          <ul>
+            <li>
+              <ul>
+                <li>
+                  <ul>
+                    <li><a href="#额外说明">额外说明：</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#参考">参考</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h3 id="写在前面">写在前面</h3>
+<p>Nginx是一个当前主流的HTTP服务器和反向代理服务器，很多做WEB相关的同学基本都会用到，很多云厂商的七层负载均衡器也基本都是基于nginx实现的，个人在工作过程也算是经常接触，这篇文章主要想总结一下nginx的匹配机制，主要分为两块，一块是server的匹配，一块是location的匹配。</p>
+<hr>
+<h3 id="server匹配机制">Server匹配机制</h3>
+<p>配置过nginx的都知道，在一个http模块中是可以配置多个server模块的，并且多个server模块是可以配置相同的监听端口的，下面是一个简单的server配置例子：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="k">server</span> <span class="p">{</span>
+    <span class="kn">listen</span>      <span class="mi">80</span><span class="p">;</span>
+    <span class="kn">server_name</span> <span class="s">example.org</span> <span class="s">www.example.org</span><span class="p">;</span>
+    <span class="kn">...</span>
+<span class="err">}</span>
+
+<span class="s">server</span> <span class="p">{</span>
+    <span class="kn">listen</span>      <span class="mi">80</span><span class="p">;</span>
+    <span class="kn">server_name</span> <span class="s">example.net</span> <span class="s">www.example.net</span><span class="p">;</span>
+    <span class="kn">...</span>
+<span class="err">}</span>
+
+<span class="s">server</span> <span class="p">{</span>
+    <span class="kn">listen</span>      <span class="mi">80</span><span class="p">;</span>
+    <span class="kn">server_name</span> <span class="s">example.com</span> <span class="s">www.example.com</span><span class="p">;</span>
+    <span class="kn">...</span>
+<span class="err">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>当我们对nginx发起http请求后，nginx会拿到http请求中对应的 <code>&quot;Host&quot;</code> 头部跟server模块中的<code>server_name</code>进行匹配，根据匹配的server结果进入具体的server模块处理http请求。那么，它具体的匹配机制是怎样的呢？</p>
+<p>首先，我们先简单了解下nginx内部server的相关结构，</p>
+<p>其中listen和server_name在配置文件中的写法有：</p>
+<ul>
+<li>listen(可带default_server标识)
+<ul>
+<li><code>ip:port</code></li>
+<li><code>ip</code>(监听80端口)</li>
+<li><code>port</code>(监听所有地址)</li>
+</ul>
+</li>
+<li>server_name
+<ul>
+<li><code>www.example.com</code>(完整域名)</li>
+<li><code>*.example.com(</code>带通配符开头的域名)</li>
+<li><code>www.example.*</code>(带通配符结尾的域名)</li>
+<li><code>~^(www.)?(.+)$</code>(正则写法的域名)</li>
+</ul>
+</li>
+</ul>
+<p>代码中的具体结构：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cm">/*************************************************************************************
+</span><span class="cm">伪结构体示例
+</span><span class="cm">(port) --&gt; address(ip:port) --&gt; server(example.com)
+</span><span class="cm">                            --&gt; server(example.net)
+</span><span class="cm">                           
+</span><span class="cm">一个server模块的唯一标识是由address(listen配置)和server(server_name配置)组成
+</span><span class="cm">*************************************************************************************/</span>
+
+<span class="cm">/* address 结构体，具有相同的ip:port */</span>
+<span class="k">struct</span> <span class="n">ngx_http_addr_conf_s</span> <span class="p">{</span>
+  <span class="cm">/* default_server
+</span><span class="cm">  	 存储的是listen配置里带default_server标识的server，
+</span><span class="cm">     若没有就为顺序中的第一个server */</span>
+  <span class="n">ngx_http_core_srv_conf_t</span>  <span class="o">*</span><span class="n">default_server</span><span class="p">;</span>
+  <span class="n">ngx_http_virtual_names_t</span>  <span class="o">*</span><span class="n">virtual_names</span><span class="p">;</span>
+  <span class="kt">unsigned</span>                   <span class="nl">ssl</span><span class="p">:</span><span class="mi">1</span><span class="p">;</span>
+  <span class="kt">unsigned</span>                   <span class="nl">http2</span><span class="p">:</span><span class="mi">1</span><span class="p">;</span>
+  <span class="kt">unsigned</span>                   <span class="nl">proxy_protocol</span><span class="p">:</span><span class="mi">1</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="cm">/* virtual_name结构体，存储hash_combined和正则写法的server_name */</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="p">{</span>
+  <span class="n">ngx_hash_combined_t</span>        <span class="n">names</span><span class="p">;</span>
+  <span class="n">ngx_uint_t</span>                 <span class="n">nregex</span><span class="p">;</span>
+  <span class="n">ngx_http_server_name_t</span>    <span class="o">*</span><span class="n">regex</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">ngx_http_virtual_names_t</span><span class="p">;</span>
+
+<span class="cm">/* hash_combined结构体，存储完成域名、通配符开头、通配符结尾的server_name */</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="p">{</span>
+  <span class="n">ngx_hash_t</span>            <span class="n">hash</span><span class="p">;</span>
+  <span class="n">ngx_hash_wildcard_t</span>  <span class="o">*</span><span class="n">wc_head</span><span class="p">;</span>
+  <span class="n">ngx_hash_wildcard_t</span>  <span class="o">*</span><span class="n">wc_tail</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">ngx_hash_combined_t</span><span class="p">;</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>通过结构体，我们来说明下server的匹配规则：</p>
+<ol>
+<li>host是否匹配virtual_names中的names中的完整域名(<code>hash</code>)，若是则返回</li>
+<li>host是否匹配virtual_name中的names中的通配符开头的域名(<code>wc_head</code>)，若是则返回</li>
+<li>host是否匹配virtual_name中的names中的通配符结尾的域名(<code>wc_tail</code>)，若是则返回</li>
+<li>host是否匹配virtual_name中的正则写法的域名(<code>regex</code>)，若是则返回</li>
+<li>返回<code>default_server</code></li>
+</ol>
+<p>具体示例如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="c1">#精确匹配，第一优先级
+</span><span class="c1"></span><span class="k">server</span> <span class="p">{</span>
+  <span class="kn">listen</span> <span class="mi">80</span><span class="p">;</span>
+  <span class="kn">server_name</span> <span class="s">www.test.com</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">#通配符开头匹配，第二优先级，
+</span><span class="c1"></span><span class="k">server</span> <span class="p">{</span>
+  <span class="kn">listen</span> <span class="mi">80</span><span class="p">;</span>
+  <span class="kn">server_name</span> <span class="s">*.test.com</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">#通配符结尾匹配，第三优先级
+</span><span class="c1"></span><span class="k">server</span> <span class="p">{</span>
+  <span class="kn">listen</span> <span class="mi">80</span><span class="p">;</span>
+  <span class="kn">server_name</span> <span class="s">www.test.*</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">#正则匹配，第三优先级
+</span><span class="c1"></span><span class="k">server</span> <span class="p">{</span>
+  <span class="kn">listen</span> <span class="mi">80</span><span class="p">;</span>
+  <span class="kn">server_name</span> <span class="p">~</span><span class="sr">^(www.)?(.+)$;</span>
+<span class="err">}</span>
+
+
+<span class="c1">#default，没找到对应host，则以此优先
+</span><span class="c1"></span><span class="s">server</span> <span class="p">{</span>
+  <span class="kn">listen</span> <span class="mi">80</span> <span class="s">defalut_server</span><span class="p">;</span>
+  <span class="kn">server_name</span> <span class="s">_</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">#若没有加defalut_server，则第一个server为defalut_server
+</span><span class="c1"></span><span class="kn">server</span> <span class="p">{</span>
+  <span class="kn">listen</span> <span class="mi">80</span><span class="p">;</span>
+  <span class="kn">server_name</span> <span class="s">_</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<h3 id="location匹配机制">Location匹配机制</h3>
+<p>一个server模块可以配置多个location，nginx根据<code>URI</code>来进行匹配，</p>
+<p>lication的写法有以下几种：</p>
+<ol>
+<li>
+<p><code>= /uri</code> 精确匹配</p>
+</li>
+<li>
+<p><code>^~ /uri</code> 非正则前缀匹配</p>
+</li>
+<li>
+<p><code>~ 或者 ~* /uri</code> 正则匹配</p>
+</li>
+<li>
+<p><code>/uri</code> 前缀匹配</p>
+</li>
+</ol>
+<p>整个location匹配机制如下：</p>
+<ol>
+<li>针对所有前缀字符串测试URI(包括精确匹配、非正则前缀匹配、前缀匹配中的字符串)</li>
+<li>uri等于精确匹配中的字符串，停止搜索</li>
+<li>最长(最相似)前缀字符串如果为非正则前缀匹配(带<code>^~</code>)，则停止正则搜索</li>
+<li>保存最长(最相似)的前缀字符串</li>
+<li>按顺序进行uri和正则匹配测试，有一个匹配成功后就停止搜索</li>
+<li>如果都没有，就使用最长(最相似)的前缀匹配</li>
+</ol>
+<h6 id="额外说明">额外说明：</h6>
+<p>最长(最相似)前缀字符串的测试阶段，非正则前缀匹配匹配、前缀匹配的优先级是一致的，谁的长度长，谁优先。优先前缀匹配的前提必须是前缀字符串<code>非正则前缀匹配的长度</code>大于<code>前缀匹配的长度</code>，这个很多网站都是直接写成了非正则前缀匹配是第二优先级，没有说明前提条件。</p>
+<p>具体示例如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-nginx" data-lang="nginx"><span class="c1">#精确匹配，第一优先级
+</span><span class="c1"></span><span class="k">location</span> <span class="p">=</span> <span class="s">/test</span> <span class="p">{</span>
+  
+<span class="p">}</span>
+<span class="c1">#前缀匹配，最低优先级，长度优先
+</span><span class="c1"></span><span class="k">location</span> <span class="s">/test/aa</span> <span class="p">{</span>
+  
+<span class="p">}</span>
+
+<span class="c1">#非正则前缀匹配，最长前缀下为第二优先级(特殊条件下)
+</span><span class="c1"></span><span class="k">location</span> <span class="s">^~</span> <span class="s">/test</span> <span class="p">{</span>
+  
+<span class="p">}</span>
+
+<span class="c1">#正则匹配，第三优先级,顺序优先
+</span><span class="c1"># ~ : 区分大小写
+</span><span class="c1"># ~* : 不区分大小写 
+</span><span class="c1"></span><span class="k">location</span> <span class="p">~</span><span class="sr">*</span> <span class="s">^/test</span> <span class="p">{</span>
+  
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<h3 id="参考">参考</h3>
+<p><a href="https://nginx.org/en/docs/http/request_processing.html" target="_blank" rel="noopener noreffer">https://nginx.org/en/docs/http/request_processing.html</a></p>
+<p><a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#location" target="_blank" rel="noopener noreffer">https://nginx.org/en/docs/http/ngx_http_core_module.html#location</a></p>
+<p><a href="https://docs.nginx.com/nginx/admin-guide/web-server/web-server/" target="_blank" rel="noopener noreffer">https://docs.nginx.com/nginx/admin-guide/web-server/web-server/</a></p>
+<p><a href="https://www.codedump.info/post/20190212-nginx-http-config/" target="_blank" rel="noopener noreffer">https://www.codedump.info/post/20190212-nginx-http-config/</a></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2020-06-06</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/nginx_match/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cctrip.github.io/nginx_match/" data-title="Nginx匹配机制总结" data-via="https://twitter.com/zcc0388" data-hashtags="linux,application"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://cctrip.github.io/nginx_match/" data-hashtag="linux"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://cctrip.github.io/nginx_match/" data-title="Nginx匹配机制总结"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://cctrip.github.io/nginx_match/" data-title="Nginx匹配机制总结"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://cctrip.github.io/nginx_match/" data-title="Nginx匹配机制总结"><i class="fab fa-weibo fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a>,&nbsp;<a href="/tags/application/">application</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/linux_pam/" class="prev" rel="prev" title="Linux PAM模块"><i class="fas fa-angle-left fa-fw"></i>Linux PAM模块</a>
+            <a href="/sre/" class="next" rel="next" title="运维进阶之SRE">运维进阶之SRE<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.72.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"search":{"algoliaAppID":"L6D88CPUCA","algoliaIndex":"hugo","algoliaSearchKey":"994528be64a6348310adaf32dff5bc6c","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

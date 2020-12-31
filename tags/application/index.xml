@@ -1,0 +1,19 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>application - Tag - CC&#39;s Trip</title>
+        <link>https://cctrip.github.io/tags/application/</link>
+        <description>application - Tag - CC&#39;s Trip</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 06 Jun 2020 17:55:28 &#43;0800</lastBuildDate><atom:link href="https://cctrip.github.io/tags/application/" rel="self" type="application/rss+xml" /><item>
+    <title>Nginx匹配机制总结</title>
+    <link>https://cctrip.github.io/nginx_match/</link>
+    <pubDate>Sat, 06 Jun 2020 17:55:28 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://cctrip.github.io/nginx_match/</guid>
+    <description><![CDATA[写在前面 Nginx是一个当前主流的HTTP服务器和反向代理服务器，很多做WEB相关的同学基本都会用到，很多云厂商的七层负载均衡器也基本都是基于nginx实现的，个人在工作过程也算是经常接触，这篇文章主要想总结一下nginx的匹配机制，主要分为两块，一块是server的匹配，一块是location的匹配。
+ Server匹配机制 配置过nginx的都知道，在一个http模块中是可以配置多个server模块的，并且多个server模块是可以配置相同的监听端口的，下面是一个简单的server配置例子：
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17  server { listen 80; server_name example.org www.example.org; ... } server { listen 80; server_name example.net www.example.net; ... } server { listen 80; server_name example.com www.example.com; ... }   当我们对nginx发起http请求后，nginx会拿到http请求中对应的 &quot;Host&quot; 头部跟server模块中的server_name进行匹配，根据匹配的server结果进入具体的server模块处理http请求。那么，它具体的匹配机制是怎样的呢？
+首先，我们先简单了解下nginx内部server的相关结构，
+其中listen和server_name在配置文件中的写法有：
+ listen(可带default_server标识)  ip:port ip(监听80端口) port(监听所有地址)   server_name  www.example.com(完整域名) *.example.com(带通配符开头的域名) www.example.*(带通配符结尾的域名) ~^(www.]]></description>
+</item></channel>
+</rss>

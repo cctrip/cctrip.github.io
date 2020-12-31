@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>理解系统启动过程 - CC&#39;s Trip</title><meta name="Description" content="理解系统启动过程"><meta property="og:title" content="理解系统启动过程" />
+<meta property="og:description" content="理解系统启动过程" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cctrip.github.io/system_start/" />
+<meta property="og:image" content="https://cctrip.github.io/system_start/linux.jpg"/>
+<meta property="article:published_time" content="2016-05-21T17:55:28+08:00" />
+<meta property="article:modified_time" content="2016-05-21T17:55:28+08:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://cctrip.github.io/system_start/linux.jpg"/>
+<meta name="twitter:title" content="理解系统启动过程"/>
+<meta name="twitter:description" content="理解系统启动过程"/>
+<meta name="application-name" content="CC&#39;s Trip">
+<meta name="apple-mobile-web-app-title" content="CC&#39;s Trip"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/leo.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://cctrip.github.io/system_start/" /><link rel="prev" href="https://cctrip.github.io/dns/" /><link rel="next" href="https://cctrip.github.io/http/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "理解系统启动过程",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/cctrip.github.io\/system_start\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/cctrip.github.io\/system_start\/linux.jpg",
+                            "width":  1920 ,
+                            "height":  1080 
+                        }],"genre": "posts","keywords": "linux","wordcount":  110 ,
+        "url": "https:\/\/cctrip.github.io\/system_start\/","datePublished": "2016-05-21T17:55:28+08:00","dateModified": "2016-05-21T17:55:28+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/cctrip.github.io\/images\/cc.jpg",
+                    "width":  250 ,
+                    "height":  250 
+                }},"author": {
+                "@type": "Person",
+                "name": "Hello.CC"
+            },"description": "理解系统启动过程"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="CC&#39;s Trip">CC&#39;s Trip</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/notes"> Notes </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="CC&#39;s Trip">CC&#39;s Trip</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/notes" title="">Notes</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">理解系统启动过程</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>Linux</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2016-05-21">2016-05-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;110 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/system_start/linux.jpg"
+        data-srcset="/system_start/linux.jpg, /system_start/linux.jpg 1.5x, /system_start/linux.jpg 2x"
+        data-sizes="auto"
+        alt="/system_start/linux.jpg"
+        title="理解系统启动过程" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#前言">前言</a></li>
+        <li><a href="#启动过程">启动过程</a></li>
+        <li><a href="#参考">参考</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h3 id="前言">前言</h3>
+<p>Linux是一种自由和开放源代码的类UNIX操作系统。该操作系统的内核由林纳斯·托瓦兹在1991年10月5日首次发布。在加上用户空间的应用程序之后，成为Linux操作系统。Linux是自由软件和开放源代码软件发展中最著名的例子。</p>
+<p>接触Linux的时间也不算短了，一直都是直接使用Linux操作系统进行一些工作，很少去了解系统从开机到能使用的整个过程，感觉有需要好好理解下整个系统的启动过程，故写这篇博客加深一下理解。</p>
+<hr>
+<h3 id="启动过程">启动过程</h3>
+<p>先通过一张图来简单了解下整个系统启动的流程，整个过程基本可以分为<font color=blue>POST&ndash;&gt;BIOS&ndash;&gt;MBR(GRUB)&ndash;&gt;Kernel&ndash;&gt;Init&ndash;&gt;Runlevel</font>。下面会详细说明每个过程的作用。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="system_start.png"
+        data-srcset="/system_start/system_start.png, system_start.png 1.5x, /system_start/system_start.png 2x"
+        data-sizes="auto"
+        alt="/system_start/system_start.png"
+        title="/system_start/system_start.png" /></p>
+<ul>
+<li>
+<p>BIOS</p>
+<p>BIOS(Basic Input/Output System)，基本输入输出系统，该系统存储于主板的ROM芯片上，计算机在开机时，会最先读取该系统，然后会有一个加电自检过程，这个过程其实就是检查CPU和内存，计算机最基本的组成单元(控制器、运算器和存储器)，还会检查其他硬件，若没有异常就开始加载BIOS程序到内存当中。详细的BIOS功能，这边就不说了，BIOS主要的一个功能就是存储了磁盘的启动顺序，BIOS会按照启动顺序去查找第一个磁盘头的MBR信息，并加载和执行MBR中的Bootloader程序，若第一个磁盘不存在MBR，则会继续查找第二个磁盘(PS：启动顺序可以在BIOS的界面中进行设置)，一旦BootLoader程序被检测并加载内存中，BIOS就将控制权交接给了BootLoader程序。</p>
+</li>
+<li>
+<p>MBR</p>
+<p>MBR(Master Boot Record)，主引导记录，MBR存储于磁盘的头部，大小为512bytes，其中，446bytes用于存储BootLoader程序，64bytes用于存储分区表信息，最后2bytes用于MBR的有效性检查。</p>
+</li>
+<li>
+<p>GRUB</p>
+<p>GRUB(Grand Unified Bootloader)，多系统启动程序，其执行过程可分为三个步骤：</p>
+<ul>
+<li>
+<p>Stage1：这个其实就是MBR，它的主要工作就是查找并加载第二段Bootloader程序(stage2)，但系统在没启动时，MBR根本找不到文件系统，也就找不到stage2所存放的位置，因此，就有了stage1_5</p>
+</li>
+<li>
+<p>Stage1_5：该步骤就是为了识别文件系统</p>
+</li>
+<li>
+<p>Stage2：GRUB程序会根据/boot/grub/grub.conf文件查找Kernel的信息，然后开始加载Kernel程序，当Kernel程序被检测并在加载到内存中，GRUB就将控制权交接给了Kernel程序。</p>
+<p>PS：实际上这个步骤/boot还没被挂载，GRUB直接识别grub所在磁盘的文件系统，所以实际上应该是/grub/grub.conf文件，该配置文件的信息如下：</p>
+<p>grub.conf:</p>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">  
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<p>#boot=/dev/sda</p>
+<p>default=0    #设定默认启动的title的编号，从0开始</p>
+<p>timeout=5    #等待用户选择的超时时间</p>
+<p>splashimage=(hd0,0)/boot/grub/splash.xpm.gz  #GRUB的背景图片</p>
+<p>hiddenmenu   #隐藏菜单</p>
+<p>title CentOS (2.6.18-194.el5PAE)    #内核标题</p>
+<pre><code>root (hd0,0)       #内核文件所在的设备
+
+kernel /vmlinuz-2.6.18-194.el5PAE ro root=LABEL=/   #内核文件路径以及传递给内核的参数
+
+initrd /initrd-2.6.18-194.el5PAE.img                #ramdisk文件路径
+```
+</code></pre>
+<ul>
+<li>
+<p>Kernel</p>
+<p>Kernel，内核，Kernel是Linux系统最主要的程序，实际上，Kernel的文件很小，只保留了最基本的模块，并以压缩的文件形式存储在硬盘中，当GRUB将Kernel读进内存，内存开始解压缩内核文件。讲内核启动，应该先讲下initrd这个文件，</p>
+<p>initrd(Initial RAM Disk)，它在stage2这个步骤就被拷贝到了内存中，这个文件是在安装系统时产生的，是一个临时的根文件系统(rootfs)。因为Kernel为了精简，只保留了最基本的模块，因此，Kernel上并没有各种硬件的驱动程序，也就无法识rootfs所在的设备，故产生了initrd这个文件，该文件装载了必要的驱动模块，当Kernel启动时，可以从initrd文件中装载驱动模块，直到挂载真正的rootfs，然后将initrd从内存中移除。</p>
+<p>Kernel会以只读方式挂载根文件系统，当根文件系统被挂载后，开始装载第一个进程(用户空间的进程)，执行/sbin/init，之后就将控制权交接给了init程序。</p>
+</li>
+<li>
+<p>Init</p>
+<p>init，初始化，顾名思义，该程序就是进行OS初始化操作，实际上是根据/etc/inittab(定义了系统默认运行级别)设定的动作进行脚本的执行，第一个被执行的脚本为/etc/rc.d/rc.sysinit，这个是真正的OS初始化脚本，简单讲下这个脚本的任务(可以去看看实际脚本，看看都做了什么)：</p>
+<ul>
+<li>激活udev和selinux;</li>
+<li>根据/etc/sysctl.conf文件，来设定内核参数;</li>
+<li>设定系统时钟;</li>
+<li>装载硬盘映射;</li>
+<li>启用交换分区;</li>
+<li>设置主机名;</li>
+<li>根文件系统检测，并以读写方式重新挂载根文件系统;</li>
+<li>激活RAID和LVM设备;</li>
+<li>启用磁盘配额;</li>
+<li>根据/etc/fstab，检查并挂载其他文件系统;</li>
+<li>清理过期的锁和PID文件</li>
+</ul>
+<p>执行完后，根据配置的启动级别，执行对应目录底下的脚本，最后执行/etc/rc.d/rc.local这个脚本，至此，系统启动完成。</p>
+</li>
+<li>
+<p>Runlevel</p>
+<p>runlevel，运行级别，不同的级别会启动的服务不一样，init会根据定义的级别去执行相应目录下的脚本，Linux的启动级别分为以下几种：</p>
+<p>0：关机模式</p>
+<p>1：单一用户模式(直接以管理员身份进入)</p>
+<p>2：多用户模式（无网络）</p>
+<p>3：多用户模式（命令行）</p>
+<p>4：保留</p>
+<p>5：多用户模式（图形界面）</p>
+<p>6：重启</p>
+<p>在不同的运行级别下，/etc/rc.d/rc这个脚本会分别执行不同目录下的脚本：</p>
+<p>Runlevel 0 – /etc/rc.d/rc0.d/</p>
+<p>Runlevel 1 – /etc/rc.d/rc1.d/</p>
+<p>Runlevel 2 – /etc/rc.d/rc2.d/</p>
+<p>Runlevel 3 – /etc/rc.d/rc3.d/</p>
+<p>Runlevel 4 – /etc/rc.d/rc4.d/</p>
+<p>Runlevel 5 – /etc/rc.d/rc5.d/</p>
+<p>Runlevel 6 – /etc/rc.d/rc6.d/</p>
+<p>这些目录下的脚本只有K*和S*开头的文件，K开头的文件为开机需要执行关闭的服务，S开头的文件为开机需要执行开启的服务。</p>
+</li>
+</ul>
+<hr>
+<h3 id="参考">参考</h3>
+<p><a href="http://www.thegeekstuff.com/2011/02/linux-boot-process/" target="_blank" rel="noopener noreffer">http://www.thegeekstuff.com/2011/02/linux-boot-process/</a></p>
+<p>[http://www.ibm.com/developerworks/library/l-linuxboot/](</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2016-05-21</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/system_start/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cctrip.github.io/system_start/" data-title="理解系统启动过程" data-via="https://twitter.com/zcc0388" data-hashtags="linux"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://cctrip.github.io/system_start/" data-hashtag="linux"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://cctrip.github.io/system_start/" data-title="理解系统启动过程"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://cctrip.github.io/system_start/" data-title="理解系统启动过程"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://cctrip.github.io/system_start/" data-title="理解系统启动过程"><i class="fab fa-weibo fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/dns/" class="prev" rel="prev" title="谈谈DNS"><i class="fas fa-angle-left fa-fw"></i>谈谈DNS</a>
+            <a href="/http/" class="next" rel="next" title="谈谈HTTP">谈谈HTTP<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.72.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"search":{"algoliaAppID":"L6D88CPUCA","algoliaIndex":"hugo","algoliaSearchKey":"994528be64a6348310adaf32dff5bc6c","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
