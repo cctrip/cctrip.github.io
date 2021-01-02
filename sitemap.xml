@@ -2,6 +2,7 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
+            <loc>https://cctrip.github.io/2021_flag/</loc><lastmod>2021-01-02T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://cctrip.github.io/monitor/</loc><lastmod>2020-08-24T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://cctrip.github.io/sre/</loc><lastmod>2020-08-23T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://cctrip.github.io/nginx_match/</loc><lastmod>2020-06-06T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
@@ -13,12 +14,14 @@
             <loc>https://cctrip.github.io/dns/</loc><lastmod>2016-05-21T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://cctrip.github.io/webcsp/</loc><lastmod>2016-05-20T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://cctrip.github.io/network_comm/</loc><lastmod>2016-05-18T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://cctrip.github.io/categories/</loc><lastmod>2020-08-24T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://cctrip.github.io/</loc><lastmod>2020-08-24T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://cctrip.github.io/categories/</loc><lastmod>2021-01-02T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://cctrip.github.io/</loc><lastmod>2021-01-02T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://cctrip.github.io/tags/life/</loc><lastmod>2021-01-02T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://cctrip.github.io/categories/other/</loc><lastmod>2021-01-02T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://cctrip.github.io/posts/</loc><lastmod>2021-01-02T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://cctrip.github.io/tags/</loc><lastmod>2021-01-02T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://cctrip.github.io/categories/devops/</loc><lastmod>2020-08-24T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://cctrip.github.io/tags/devops/</loc><lastmod>2020-08-24T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://cctrip.github.io/posts/</loc><lastmod>2020-08-24T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://cctrip.github.io/tags/</loc><lastmod>2020-08-24T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://cctrip.github.io/tags/application/</loc><lastmod>2020-06-06T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://cctrip.github.io/categories/linux/</loc><lastmod>2020-06-06T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://cctrip.github.io/tags/linux/</loc><lastmod>2020-06-06T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>

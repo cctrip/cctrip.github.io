@@ -1,0 +1,18 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>other - Category - CC&#39;s Trip</title>
+        <link>https://cctrip.github.io/categories/other/</link>
+        <description>other - Category - CC&#39;s Trip</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 02 Jan 2021 17:55:28 &#43;0800</lastBuildDate><atom:link href="https://cctrip.github.io/categories/other/" rel="self" type="application/rss+xml" /><item>
+    <title>2021年flag</title>
+    <link>https://cctrip.github.io/2021_flag/</link>
+    <pubDate>Sat, 02 Jan 2021 17:55:28 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://cctrip.github.io/2021_flag/</guid>
+    <description><![CDATA[2021年已经到来，在这里给自己列一个flag清单。
+习惯成自然   每2周完成一个ARTS(Algorithm|Review|Technique|Share)
+  完成12篇博客(每月一篇)
+  完成4篇英文技术文章翻译(每季度一篇)
+   读书清单  《性能之巅 洞悉系统、企业与云计算》 《Web性能权威指南》   极客时间清单  程序员的数学基础课 MySQL实战45讲   ]]></description>
+</item></channel>
+</rss>
