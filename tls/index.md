@@ -1,7 +1,7 @@
 # 理解SSL/TLS协议
 
 
-### 背景
+## 背景
 
 早期我们在访问web时使用HTTP协议，该协议在传输数据时使用明文传输，明文传输带来了以下风险：
 
@@ -13,7 +13,7 @@
 
 ***
 
-### SSL/TLS协议
+## SSL/TLS协议
 
 TLS（Transport Layer Security，传输层安全协议），及其前身SSL（Secure Sockets Layer，安全套接层）是一种安全协议，目的是为互联网通信，提供安全及数据完整性保障。
 
@@ -25,37 +25,128 @@ TLS协议使用以下三种机制为信息通信提供安全传输：
 
 ***
 
-### 工作机制
+## 以TLS1.2为例说明TLS协议
 
-TLS协议由两部分组成，包括（TLS Record Layer,TLS handshake protocol）
+TLS协议由`TLS Record Protocol`和`TLS Handshake Protocol`两层协议组成
 
-* Record Layer：
+### TLS Record Protocol
 
-  为每条信息提供一个header和在尾部生成一个从Message Authentication Code (MAC) 得到的hash值，其中header由5 bytes组成，分别是协议说明(1bytes),协议版本(2bytes)和长度(2bytes)，跟在header后面的协议信息长度不得超过16384bytes。　
+该协议提供了连接安全的两个基本特性：
 
-* Handshake Protocol：
+- 连接私有
 
-  开始一个安全连接需要客户端和服务端经过反复的建立握手。一个TLS握手需要经过如下几个步骤：
+  对称密码用于数据加密，这种对称加密是为每条连接唯一生成的并基于另一个人协商的秘密协议
 
-  ![](607348-20160224221716880-1764174375.png)
+- 连接可靠
 
- 
+  消息传输包括一条消息 使用密钥MAC进行完整性检查，安全哈希函数（例如， SHA-1等）用于MAC计算。
 
-首先还是要经过TCP三次握手建立连接，然后才是TLS握手的开始：
+***
 
-* ClientHello：Client端将自己的TLS协议版本，加密套件，压缩方法，随机数，SessionID(未填充)发送给Server端
+### TLS Handshake Protocol
 
-* ServerHello：Server端将选择后的SSL协议版本，压缩算法，密码套件，填充SessionID，生成的随机数等信息发送给Client端
+该协议提供了连接安全的三个基本特性：
 
-* ServerCertificates：Server端将自己的数字证书(包含公钥)，发送给Client端。(证书需要从数字证书认证机构(CA)申请，证书是对于服务端的一种认证)，若要进行更为安全的数据通信，Server端还可以向Client端发送Cerficate Request来要去客户端发送对方的证书进行合法性的认证。
+* 可以使用非对称身份验证对等方的身份，或者 公钥，密码学等
+* 共享密钥的协商是安全的
+* 谈判可靠
 
-* ServerHelloDone：当完成ServerHello后，Server端会发送Server Hello Done的消息给客户端，表示ServerHello 结束了。
+***
 
-* ClientKeyExchage：当Client端收到Server端的证书等信息后，会先对服务端的证书进行检查，检查证书的完整性以及证书跟服务端域名是否吻合，然后使用加密算法生成一个PreMaster Secret，并通过Server端的公钥进行加密，然后发送给Server端。
+一个TLS握手协议一般涉及以下步骤：
 
-* ClientFinishd：Client端会发送一个ChangeCipherSpec(一种协议，数据只有一字节)，用于告知Server端已经切换到之前协商好的加密套件的状态，准备使用之前协商好的加密套件加密数据并进行传输了。然后使用Master Secret(通过两个随机数、PreMaster Secret和加密算法计算得出)加密一段Finish的数据传送给服务端，此数据是为了在正式传输应用数据之前对刚刚握手建立起来的加解密通道进行验证。
+* 交换hello信息用于算法协商，交换随机值，并检查会话是否恢复
+* 交换必要的密码信息以允许客户端和服务端同意使用premaster secret
+* 交换证书和密码信息以允许客户端和服务端进行身份验证
+* 通过随机值和premaster secret生成master secret
+* 向record layer提供安全参数
+* 允许客户端和服务器验证其对等方具有计算出的相同安全参数，并且握手发生在没有被攻击者篡改的情况下
 
-* Server Finishd：Sever端在接收到Client端传过来的加密数据后，使用私钥对这段加密数据进行解密，并对数据进行验证，然后会给客户端发送一个ChangeCipherSpec，告知客户端已经切换到协商过的加密套件状态，准备使用加密套件加密数据并传输了。之后，服务端也会使用Master Secret加密一段Finish消息发送给客户端，以验证之前通过握手建立起来的加解密通道是否成功。
+#### TLS握手的完整消息流
+
+![](handshake.jpg)
+
+* ClientHello
+
+  客户端提供了以下内容: 
+
+  * 支持的协议版本
+  * 客户端随机数据(后续用于握手)
+  * 可选的session id
+  * 加密套件列表
+  * 压缩方法列表
+  * 扩展列表
+
+* ServerHello
+
+  服务端提供了以下内容：
+
+  * 选择后的协议版本
+  * 选择后的加密套件
+  * 选择后的压缩方法
+  * 服务端随机数据(后续用于握手)
+  * session id
+  * 扩展列表
+
+* ServerCertificate
+
+  服务端提供了证书，证书包含以下内容：
+
+  * 服务端的hostname
+  * 服务端所使用的公钥
+  * 来自受信任的第三方的证明，证明此hostname的所有者拥有此公钥的私钥
+
+* ServerKeyExchange(可选)
+
+  服务端仅在证书包含的信息不足以使客户端进行premaster secret交换时发送该消息
+
+* CertificateRequest(可选)
+
+  当服务端需要客户端证书时发送，需要加密套件支持
+
+* ServerHelloDone
+
+  服务端表明已经完成了一半的handshake
+
+* ClientCertificate(可选)
+
+  当服务端有需要验证客户端证书时发送，如果加密套件不支持，则消息不包含证书
+
+* ClientKeyExchange
+
+  生成一个48byte的premaster secret，并通过服务端证书包含的公钥进行加密发送给服务端
+
+* CertificateVerify(可选)
+
+  该消息只在客户端证书具有签名能力时发送
+
+* ClientChangeCipherSpec(message)
+
+  一种协议，数据只有一字节，用于告知Server端已经切换到之前协商好的加密套件的状态，准备使用之前协商好的加密套件加密数据并进行传输了。
+
+* ClientFinished
+
+  客户端和服务端现在都拥有3个数值
+
+  * ClientHello.random
+  * ServerHello.random
+  * premaster secret
+
+  master secret由上面三个数值计算而成
+
+  ```
+  master_secret = PRF(pre_master_secret,"master secret",ClientHello.random + ServerHello.random)[0..47];
+  ```
+
+  使用master secret加密finished消息发送给服务端
+
+* ServerChangeCipherSpec(message)
+
+  同上
+
+* ServerFinished
+
+  同上
 
 根据之前的握手信息，如果客户端和服务端都能对Finish信息进行正常加解密且消息正确的被验证，则说明握手通道已经建立成功。
 
@@ -65,8 +156,10 @@ TLS协议由两部分组成，包括（TLS Record Layer,TLS handshake protocol�
 
 ### 参考：
 
-[https://en.wikipedia.org/wiki/Transport_Layer_Security](https://en.wikipedia.org/wiki/Transport_Layer_Security)
+[WIKI/Transport_Layer_Security](https://en.wikipedia.org/wiki/Transport_Layer_Security)
 
-[https://www.sans.org/reading-room/whitepapers/protocols/ssl-tls-beginners-guide-1029](https://www.sans.org/reading-room/whitepapers/protocols/ssl-tls-beginners-guide-1029)
+[RFC 5246](https://tools.ietf.org/html/rfc5246)
 
-[https://support.microsoft.com/en-us/kb/257591](https://support.microsoft.com/en-us/kb/257591)
+[图示TLS连接](https://tls.ulfheim.net/)
+
+

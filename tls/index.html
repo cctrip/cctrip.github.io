@@ -11,7 +11,7 @@
 <meta property="og:url" content="https://cctrip.github.io/tls/" />
 <meta property="og:image" content="https://cctrip.github.io/tls/security.jpg"/>
 <meta property="article:published_time" content="2017-01-08T17:55:28+08:00" />
-<meta property="article:modified_time" content="2017-01-08T17:55:28+08:00" />
+<meta property="article:modified_time" content="2021-01-03T17:55:28+08:00" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://cctrip.github.io/tls/security.jpg"/>
 <meta name="twitter:title" content="理解SSL/TLS协议"/>
@@ -31,8 +31,8 @@
                             "url": "https:\/\/cctrip.github.io\/tls\/security.jpg",
                             "width":  3724 ,
                             "height":  2095 
-                        }],"genre": "posts","keywords": "security","wordcount":  62 ,
-        "url": "https:\/\/cctrip.github.io\/tls\/","datePublished": "2017-01-08T17:55:28+08:00","dateModified": "2017-01-08T17:55:28+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                        }],"genre": "posts","keywords": "security","wordcount":  125 ,
+        "url": "https:\/\/cctrip.github.io\/tls\/","datePublished": "2017-01-08T17:55:28+08:00","dateModified": "2021-01-03T17:55:28+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
                     "@type": "ImageObject",
@@ -113,7 +113,7 @@
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">理解SSL/TLS协议</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-category">included in <a href="/categories/security/"><i class="far fa-folder fa-fw"></i>Security</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2017-01-08">2017-01-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;62 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2017-01-08">2017-01-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;125 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="featured-image"><img
         class="lazyload"
@@ -129,17 +129,22 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li>
+    <li><a href="#背景">背景</a></li>
+    <li><a href="#ssltls协议">SSL/TLS协议</a></li>
+    <li><a href="#以tls12为例说明tls协议">以TLS1.2为例说明TLS协议</a>
       <ul>
-        <li><a href="#背景">背景</a></li>
-        <li><a href="#ssltls协议">SSL/TLS协议</a></li>
-        <li><a href="#工作机制">工作机制</a></li>
+        <li><a href="#tls-record-protocol">TLS Record Protocol</a></li>
+        <li><a href="#tls-handshake-protocol">TLS Handshake Protocol</a>
+          <ul>
+            <li><a href="#tls握手的完整消息流">TLS握手的完整消息流</a></li>
+          </ul>
+        </li>
         <li><a href="#参考">参考：</a></li>
       </ul>
     </li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h3 id="背景">背景</h3>
+            </div><div class="content" id="content"><h2 id="背景">背景</h2>
 <p>早期我们在访问web时使用HTTP协议，该协议在传输数据时使用明文传输，明文传输带来了以下风险：</p>
 <ul>
 <li>信息窃听风险，第三方可以获取通信内容</li>
@@ -148,7 +153,7 @@
 </ul>
 <p>为了解决明文传输所带来的风险，网景公司在1994年设计了SSL用于Web的安全传输协议，这是SSL的起源。IETF将SSL进行标准化，1999年公布了第一版TLS标准文件。随后又公布了 RFC 5246（2008年8月）与 RFC 6176 （2011年3月）。该协议在web中被广泛应用。</p>
 <hr>
-<h3 id="ssltls协议">SSL/TLS协议</h3>
+<h2 id="ssltls协议">SSL/TLS协议</h2>
 <p>TLS（Transport Layer Security，传输层安全协议），及其前身SSL（Secure Sockets Layer，安全套接层）是一种安全协议，目的是为互联网通信，提供安全及数据完整性保障。</p>
 <p>TLS协议使用以下三种机制为信息通信提供安全传输：</p>
 <ul>
@@ -157,62 +162,149 @@
 <li>可靠性，通过校验数据完整性维护一个可靠的安全连接</li>
 </ul>
 <hr>
-<h3 id="工作机制">工作机制</h3>
-<p>TLS协议由两部分组成，包括（TLS Record Layer,TLS handshake protocol）</p>
+<h2 id="以tls12为例说明tls协议">以TLS1.2为例说明TLS协议</h2>
+<p>TLS协议由<code>TLS Record Protocol</code>和<code>TLS Handshake Protocol</code>两层协议组成</p>
+<h3 id="tls-record-protocol">TLS Record Protocol</h3>
+<p>该协议提供了连接安全的两个基本特性：</p>
 <ul>
 <li>
-<p>Record Layer：</p>
-<p>为每条信息提供一个header和在尾部生成一个从Message Authentication Code (MAC) 得到的hash值，其中header由5 bytes组成，分别是协议说明(1bytes),协议版本(2bytes)和长度(2bytes)，跟在header后面的协议信息长度不得超过16384bytes。　</p>
+<p>连接私有</p>
+<p>对称密码用于数据加密，这种对称加密是为每条连接唯一生成的并基于另一个人协商的秘密协议</p>
 </li>
 <li>
-<p>Handshake Protocol：</p>
-<p>开始一个安全连接需要客户端和服务端经过反复的建立握手。一个TLS握手需要经过如下几个步骤：</p>
+<p>连接可靠</p>
+<p>消息传输包括一条消息 使用密钥MAC进行完整性检查，安全哈希函数（例如， SHA-1等）用于MAC计算。</p>
+</li>
+</ul>
+<hr>
+<h3 id="tls-handshake-protocol">TLS Handshake Protocol</h3>
+<p>该协议提供了连接安全的三个基本特性：</p>
+<ul>
+<li>可以使用非对称身份验证对等方的身份，或者 公钥，密码学等</li>
+<li>共享密钥的协商是安全的</li>
+<li>谈判可靠</li>
+</ul>
+<hr>
+<p>一个TLS握手协议一般涉及以下步骤：</p>
+<ul>
+<li>交换hello信息用于算法协商，交换随机值，并检查会话是否恢复</li>
+<li>交换必要的密码信息以允许客户端和服务端同意使用premaster secret</li>
+<li>交换证书和密码信息以允许客户端和服务端进行身份验证</li>
+<li>通过随机值和premaster secret生成master secret</li>
+<li>向record layer提供安全参数</li>
+<li>允许客户端和服务器验证其对等方具有计算出的相同安全参数，并且握手发生在没有被攻击者篡改的情况下</li>
+</ul>
+<h4 id="tls握手的完整消息流">TLS握手的完整消息流</h4>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="607348-20160224221716880-1764174375.png"
-        data-srcset="/tls/607348-20160224221716880-1764174375.png, 607348-20160224221716880-1764174375.png 1.5x, /tls/607348-20160224221716880-1764174375.png 2x"
+        data-src="handshake.jpg"
+        data-srcset="/tls/handshake.jpg, handshake.jpg 1.5x, /tls/handshake.jpg 2x"
         data-sizes="auto"
-        alt="/tls/607348-20160224221716880-1764174375.png"
-        title="/tls/607348-20160224221716880-1764174375.png" /></p>
-</li>
-</ul>
-<p>首先还是要经过TCP三次握手建立连接，然后才是TLS握手的开始：</p>
+        alt="/tls/handshake.jpg"
+        title="/tls/handshake.jpg" /></p>
 <ul>
 <li>
-<p>ClientHello：Client端将自己的TLS协议版本，加密套件，压缩方法，随机数，SessionID(未填充)发送给Server端</p>
+<p>ClientHello</p>
+<p>客户端提供了以下内容:</p>
+<ul>
+<li>支持的协议版本</li>
+<li>客户端随机数据(后续用于握手)</li>
+<li>可选的session id</li>
+<li>加密套件列表</li>
+<li>压缩方法列表</li>
+<li>扩展列表</li>
+</ul>
 </li>
 <li>
-<p>ServerHello：Server端将选择后的SSL协议版本，压缩算法，密码套件，填充SessionID，生成的随机数等信息发送给Client端</p>
+<p>ServerHello</p>
+<p>服务端提供了以下内容：</p>
+<ul>
+<li>选择后的协议版本</li>
+<li>选择后的加密套件</li>
+<li>选择后的压缩方法</li>
+<li>服务端随机数据(后续用于握手)</li>
+<li>session id</li>
+<li>扩展列表</li>
+</ul>
 </li>
 <li>
-<p>ServerCertificates：Server端将自己的数字证书(包含公钥)，发送给Client端。(证书需要从数字证书认证机构(CA)申请，证书是对于服务端的一种认证)，若要进行更为安全的数据通信，Server端还可以向Client端发送Cerficate Request来要去客户端发送对方的证书进行合法性的认证。</p>
+<p>ServerCertificate</p>
+<p>服务端提供了证书，证书包含以下内容：</p>
+<ul>
+<li>服务端的hostname</li>
+<li>服务端所使用的公钥</li>
+<li>来自受信任的第三方的证明，证明此hostname的所有者拥有此公钥的私钥</li>
+</ul>
 </li>
 <li>
-<p>ServerHelloDone：当完成ServerHello后，Server端会发送Server Hello Done的消息给客户端，表示ServerHello 结束了。</p>
+<p>ServerKeyExchange(可选)</p>
+<p>服务端仅在证书包含的信息不足以使客户端进行premaster secret交换时发送该消息</p>
 </li>
 <li>
-<p>ClientKeyExchage：当Client端收到Server端的证书等信息后，会先对服务端的证书进行检查，检查证书的完整性以及证书跟服务端域名是否吻合，然后使用加密算法生成一个PreMaster Secret，并通过Server端的公钥进行加密，然后发送给Server端。</p>
+<p>CertificateRequest(可选)</p>
+<p>当服务端需要客户端证书时发送，需要加密套件支持</p>
 </li>
 <li>
-<p>ClientFinishd：Client端会发送一个ChangeCipherSpec(一种协议，数据只有一字节)，用于告知Server端已经切换到之前协商好的加密套件的状态，准备使用之前协商好的加密套件加密数据并进行传输了。然后使用Master Secret(通过两个随机数、PreMaster Secret和加密算法计算得出)加密一段Finish的数据传送给服务端，此数据是为了在正式传输应用数据之前对刚刚握手建立起来的加解密通道进行验证。</p>
+<p>ServerHelloDone</p>
+<p>服务端表明已经完成了一半的handshake</p>
 </li>
 <li>
-<p>Server Finishd：Sever端在接收到Client端传过来的加密数据后，使用私钥对这段加密数据进行解密，并对数据进行验证，然后会给客户端发送一个ChangeCipherSpec，告知客户端已经切换到协商过的加密套件状态，准备使用加密套件加密数据并传输了。之后，服务端也会使用Master Secret加密一段Finish消息发送给客户端，以验证之前通过握手建立起来的加解密通道是否成功。</p>
+<p>ClientCertificate(可选)</p>
+<p>当服务端有需要验证客户端证书时发送，如果加密套件不支持，则消息不包含证书</p>
+</li>
+<li>
+<p>ClientKeyExchange</p>
+<p>生成一个48byte的premaster secret，并通过服务端证书包含的公钥进行加密发送给服务端</p>
+</li>
+<li>
+<p>CertificateVerify(可选)</p>
+<p>该消息只在客户端证书具有签名能力时发送</p>
+</li>
+<li>
+<p>ClientChangeCipherSpec(message)</p>
+<p>一种协议，数据只有一字节，用于告知Server端已经切换到之前协商好的加密套件的状态，准备使用之前协商好的加密套件加密数据并进行传输了。</p>
+</li>
+<li>
+<p>ClientFinished</p>
+<p>客户端和服务端现在都拥有3个数值</p>
+<ul>
+<li>ClientHello.random</li>
+<li>ServerHello.random</li>
+<li>premaster secret</li>
+</ul>
+<p>master secret由上面三个数值计算而成</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">master_secret = PRF(pre_master_secret,&#34;master secret&#34;,ClientHello.random + ServerHello.random)[0..47];
+</code></pre></td></tr></table>
+</div>
+</div><p>使用master secret加密finished消息发送给服务端</p>
+</li>
+<li>
+<p>ServerChangeCipherSpec(message)</p>
+<p>同上</p>
+</li>
+<li>
+<p>ServerFinished</p>
+<p>同上</p>
 </li>
 </ul>
 <p>根据之前的握手信息，如果客户端和服务端都能对Finish信息进行正常加解密且消息正确的被验证，则说明握手通道已经建立成功。</p>
 <p>接下来，双方所有的通信数据都通过Master Secret进行加密后传输。　　　　</p>
 <hr>
 <h3 id="参考">参考：</h3>
-<p><a href="https://en.wikipedia.org/wiki/Transport_Layer_Security" target="_blank" rel="noopener noreffer">https://en.wikipedia.org/wiki/Transport_Layer_Security</a></p>
-<p><a href="https://www.sans.org/reading-room/whitepapers/protocols/ssl-tls-beginners-guide-1029" target="_blank" rel="noopener noreffer">https://www.sans.org/reading-room/whitepapers/protocols/ssl-tls-beginners-guide-1029</a></p>
-<p><a href="https://support.microsoft.com/en-us/kb/257591" target="_blank" rel="noopener noreffer">https://support.microsoft.com/en-us/kb/257591</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Transport_Layer_Security" target="_blank" rel="noopener noreffer">WIKI/Transport_Layer_Security</a></p>
+<p><a href="https://tools.ietf.org/html/rfc5246" target="_blank" rel="noopener noreffer">RFC 5246</a></p>
+<p><a href="https://tls.ulfheim.net/" target="_blank" rel="noopener noreffer">图示TLS连接</a></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2017-01-08</span>
+                <span>Updated on 2021-01-03</span>
             </div>
             <div class="post-info-license"></div>
         </div>
