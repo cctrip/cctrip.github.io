@@ -1,0 +1,25 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>kubernetes - Tag - CC&#39;s Trip</title>
+        <link>https://cctrip.github.io/tags/kubernetes/</link>
+        <description>kubernetes - Tag - CC&#39;s Trip</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 10 Jan 2021 17:55:28 &#43;0800</lastBuildDate><atom:link href="https://cctrip.github.io/tags/kubernetes/" rel="self" type="application/rss+xml" /><item>
+    <title>Kubernetes系列：开篇</title>
+    <link>https://cctrip.github.io/k8s_series/</link>
+    <pubDate>Sun, 10 Jan 2021 17:55:28 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://cctrip.github.io/k8s_series/</guid>
+    <description><![CDATA[系列目录 《Kubernetes系列：开篇》
+《Kubernetes系列：概述》
+《Kubernetes系列：架构》
+《Kubernetes系列：CRI》
+《Kubernetes系列：CNI》
+《Kubernetes系列：CSI》
+《Kubernetes系列：Service》
+《Kubernetes系列：Ingress》
+《Kubernetes系列：OAM》
+《Kubernetes系列：调度》
+ 1. 介绍 最近整体工作在往云原生和k8s上迁移，想将自己对于k8s的一些学习心得和经验写成一个系列记录下来。
+ ]]></description>
+</item></channel>
+</rss>
