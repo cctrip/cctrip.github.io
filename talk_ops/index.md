@@ -7,11 +7,15 @@
 
 ***
 
+## 背景
+
 两年前，我因为效率低下的领导而获得了耻辱。我的背景是数据科学和机器学习，因此，我当然从我的工程同事那边学习到了DevOps。至少我们认为是这样的。
 
 令人费解的是，即使我们遵循了日常站立会议所有敏捷开发的良好实践，讨论我们的难点，也没有将难题扔给别人的态度。我们紧密合作并且相互友爱。但是开发效率依然缓慢，这令整个团队很沮丧。
 
 两年过后，我终于掌握了DevOps的含义，并且理解了它在数据团队中如此的相同而又如此不同。
+
+## 什么是Ops？
 
 在我们谈论以数据为中心的Ops时，先让我们从软件开始说起，
 
@@ -23,17 +27,23 @@ DevOps实践的目的是简化部署过程。该想法是将自动化视为构�
 
 这种想法彻底改变了这个行业。许多组织开始建立跨职能团队来照顾整个SDLC。该团队将建立基础架构（基础工程师），开发应用程序（软件工程师），构建CI/CD管道（DevOps工程师），部署应用程序（每位工程师），然后连续监视和观察应用程序（站点可靠性工程师）。
 
-在一个大团队里面，一个工程师可能只会有一项主要职能，但是在较小的团队中，一位工程师经常担任许多职务。理想的情况是使许多团队成员能够履行多项职能，从而消除瓶颈和关键人员的依存关系。所以实际上，**DevOps并非是一项工作职能，而是更多的实践或文化。 在开始构建任何软件时都应采用它。**
+在一个大团队里面，一个工程师可能只会有一项主要职能，但是在较小的团队中，一位工程师经常担任许多职务。理想的情况是使许多团队成员能够履行多项职能，从而消除瓶颈和关键人员的依存关系。所以实际上，
+
+> **DevOps并非是一项工作职能，而是更多的实践或文化。 在开始构建任何软件时都应采用它。**
 
 随着DevOps的兴起，各种各样的Ops诞生了。
 
 ![](ops-type.png)
 
-SecOps以安全性为核心，GitOps致力于持续交付，NetOps确保网络可以支持数据流，而ITOps则专注于软件交付之外的操作任务。但是，这些操作的基石共同源自DevOps所承诺的愿景：
+SecOps以安全性为核心，GitOps致力于持续交付，NetOps确保网络可以支持数据流，而ITOps则专注于软件交付之外的操作任务。但是，这些操作的基石都源自DevOps所承诺的愿景：
 
-> **“ To get software out there as fast as possible,** **with minimal errors.”**
+> **在错误最小的情况下尽可能快的发布软件**
 
 ***
+
+## DataOps 🆚 MLOps 🆚 DevOps (and AIOps?)
+
+**注意**：在本文中，分析团队是指使用SQL / PowerBI来生成业务洞察力的传统BI团队。 AI团队是指使用大数据技术构建高级分析和机器学习模型的团队。 有时他们是同一个团队，但我们将它们分开，以便更容易地解释概念。
 
 五年前，“**数据是新石油**”一语成为炒作对象。世界各地的领导者开始倾注资源，建立大数据团队来挖掘这些宝贵的资产。这些团队交付的压力巨大—毕竟，我们如何才能兑现新石油的承诺？随着快速扩展，分析团队也经历了同样的痛苦。
 
@@ -46,10 +56,6 @@ SecOps以安全性为核心，GitOps致力于持续交付，NetOps确保网络�
 因此，以数据为中心的社区团结在一起，保证不会因管理不善的数据流程而造成的效率低下，从那时起，各种以数据为中心的OPS诞生了
 
 ![](role-ops.png)
-
-## DataOps 🆚 MLOps 🆚 DevOps (and AIOps?)
-
-**注意**：在本文中，分析团队是指使用SQL / PowerBI来生成业务洞察力的传统BI团队。 AI团队是指使用大数据技术构建高级分析和机器学习模型的团队。 有时他们是同一支球队，但我们将它们分开，以便更容易地解释概念。
 
 要了解所有这些不同的Ops，让我们来看看数据如何在组织中流动的场景：
 
@@ -100,7 +106,7 @@ SecOps以安全性为核心，GitOps致力于持续交付，NetOps确保网络�
 
 > DataOps，MLOps和DevOps的实践必须与语言，框架，平台和基础架构无关。
 
-每个人都有不同的工作流程，该工作流程应由负责人告知——而不是您想尝试的技术或最受欢迎的技术。首先要去技术的陷阱是，如果您想使用锤子，一切对您来说就像钉子一样。
+每个人都有不同的workflow，该workflow应由负责人告知——而不是你想尝试的技术或最受欢迎的技术。首先要去技术的陷阱是，如果您想使用锤子，一切对您来说就像钉子一样。
 
 所有的Ops都有相同的7个主要原则，但每个Ops都有自己的细微差别：
 
@@ -126,7 +132,7 @@ DevOps通常担心网络和应用程序的安全性。在MLOps领域，金融和
 
 软件测试在于单元测试，集成测试和回归测试。DataOps需要严格的数据测试，其中包括架构更改，数据漂移，功能设计后的数据验证等。从机器学习的角度来看，模型准确性，安全性，偏见/公平性，可解释性都需要进行测试。
 
-🔧 **Tools:** libraries such as [Shap](https://github.com/slundberg/shap) & [Lime](https://github.com/marcotcr/lime) for interpretability, [fiddler](https://www.fiddler.ai/) for explainability monitoring, [great expectation](https://greatexpectations.io/) for data testing.
+🔧 **Tools:** 诸如 [Shap](https://github.com/slundberg/shap) & [Lime](https://github.com/marcotcr/lime) 用于可解释性, [fiddler](https://www.fiddler.ai/) 用于解释性监控, [great expectation](https://greatexpectations.io/) 用于数据测试.
 
 ### 5. 持续部署
 
@@ -136,7 +142,7 @@ DevOps通常担心网络和应用程序的安全性。在MLOps领域，金融和
 * 第二个组件是新模型的实际再培训。导致该模型的脚本，数据和超参数是什么？它们的版本以及如何相互链接。
 * 最后一个组件是模型的实际部署，该部署必须由具有预警功能的部署管道进行编排。
 
-🔧 **Tools:** most workflow management tools have this, such as AWS SageMaker, AzureML, DataRobot, etc. Open-source tools such as [Seldon](https://www.seldon.io/), [Kubeflow KFServing](https://github.com/kubeflow/kfserving).
+🔧 **Tools:** 大多数workflow管理工具都具有此功能，例如AWS SageMaker，AzureML，DataRobot等。开源工具例如[Seldon](https://www.seldon.io/), [Kubeflow KFServing](https://github.com/kubeflow/kfserving).
 
 ### 6. 自动化
 
@@ -149,7 +155,7 @@ DevOps通常担心网络和应用程序的安全性。在MLOps领域，金融和
 
 需要监视软件应用程序，机器学习模型和数据管道也需要监视。对于DataOps，监视新数据的分布是否有任何数据和/或概念漂移很重要。在MLOps方面，除了模型降级之外，如果您的模型具有公共API，监视对抗攻击也至关重要。
 
-🔧 **Tools:** Most workflow management framework has some form of monitoring. Other popular tools include [Prometheus](https://prometheus.io/) for monitoring metrics, [Orbit by Dessa](https://dessa-orbit-team-docs.readthedocs-hosted.com/en/latest/) for data & model monitoring.
+🔧 **Tools:** 大多数workflow管理框架都有某种形式的监控。. 其他流行的工具包括 [Prometheus](https://prometheus.io/) 用于指标监控, [Orbit by Dessa](https://dessa-orbit-team-docs.readthedocs-hosted.com/en/latest/) 用于数据&模型监控.
 
 ***
 
@@ -157,6 +163,8 @@ DevOps通常担心网络和应用程序的安全性。在MLOps领域，金融和
 
 采用正确的X-Ops文化，以加快数据驱动和机器学习驱动的软件产品的交付。请记住，有关技术的原则：
 
-1. **建立跨学科技能:** 培养T型个人和团队 弥合差距并统一问责制
+1. **建立跨学科技能:** 培养T型人才和团队，弥补差距并统一问责制
 2. **尽早实现自动化:** 融合在技术堆栈上并实现自动化，减轻工程费用的流程
-3. **着眼于最终发展:** 预先投资解决方案设计以减少从PoC到生产的摩擦
+3. **着眼于最终方案:** 预先投资解决方案设计以减少从PoC到生产的摩擦
+
+
