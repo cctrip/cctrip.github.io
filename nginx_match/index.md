@@ -1,13 +1,13 @@
 # Nginx匹配机制总结
 
 
-### 写在前面
+## 背景
 
 Nginx是一个当前主流的HTTP服务器和反向代理服务器，很多做WEB相关的同学基本都会用到，很多云厂商的七层负载均衡器也基本都是基于nginx实现的，个人在工作过程也算是经常接触，这篇文章主要想总结一下nginx的匹配机制，主要分为两块，一块是server的匹配，一块是location的匹配。
 
 ***
 
-### Server匹配机制
+## Server匹配机制
 
 配置过nginx的都知道，在一个http模块中是可以配置多个server模块的，并且多个server模块是可以配置相同的监听端口的，下面是一个简单的server配置例子：
 
@@ -141,7 +141,7 @@ server {
 
 ***
 
-### Location匹配机制
+## Location匹配机制
 
 一个server模块可以配置多个location，nginx根据`URI`来进行匹配，
 
@@ -168,11 +168,9 @@ lication的写法有以下几种：
 
 
 
-###### 额外说明：
+**额外说明：**
 
 最长(最相似)前缀字符串的测试阶段，非正则前缀匹配匹配、前缀匹配的优先级是一致的，谁的长度长，谁优先。优先前缀匹配的前提必须是前缀字符串`非正则前缀匹配的长度`大于`前缀匹配的长度`，这个很多网站都是直接写成了非正则前缀匹配是第二优先级，没有说明前提条件。
-
-
 
 具体示例如下：
 
@@ -201,7 +199,7 @@ location ~* ^/test {
 
 ***
 
-### 参考
+## 参考
 
 [https://nginx.org/en/docs/http/request_processing.html](https://nginx.org/en/docs/http/request_processing.html)
 

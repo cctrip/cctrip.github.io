@@ -31,7 +31,7 @@
                             "url": "https:\/\/cctrip.github.io\/file_descriptor\/linux.jpg",
                             "width":  1920 ,
                             "height":  1080 
-                        }],"genre": "posts","keywords": "linux","wordcount":  426 ,
+                        }],"genre": "posts","keywords": "linux","wordcount":  421 ,
         "url": "https:\/\/cctrip.github.io\/file_descriptor\/","datePublished": "2020-03-29T17:55:28+08:00","dateModified": "2020-03-29T17:55:28+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
@@ -113,7 +113,7 @@
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">谈谈文件描述符</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>Linux</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-03-29">2020-03-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;426 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-03-29">2020-03-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;421 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="featured-image"><img
         class="lazyload"
@@ -129,25 +129,24 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li>
+    <li><a href="#概念">概念</a></li>
+    <li><a href="#细节">细节</a>
       <ul>
-        <li><a href="#概念">概念</a></li>
-        <li><a href="#细节">细节</a></li>
         <li><a href="#文件描述符表">文件描述符表</a></li>
         <li><a href="#打开文件表">打开文件表</a></li>
         <li><a href="#i-node-表">i-node 表</a></li>
-        <li><a href="#参数优化">参数优化</a>
-          <ul>
-            <li><a href="#1-系统最大的文件描述符数量">1. 系统最大的文件描述符数量</a></li>
-            <li><a href="#2-进程最大描述符">2. 进程最大描述符</a></li>
-            <li><a href="#3-总结">3. 总结</a></li>
-          </ul>
-        </li>
+      </ul>
+    </li>
+    <li><a href="#参数优化">参数优化</a>
+      <ul>
+        <li><a href="#1-系统最大的文件描述符数量">1. 系统最大的文件描述符数量</a></li>
+        <li><a href="#2-进程最大描述符">2. 进程最大描述符</a></li>
+        <li><a href="#3-总结">3. 总结</a></li>
       </ul>
     </li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h3 id="概念">概念</h3>
+            </div><div class="content" id="content"><h2 id="概念">概念</h2>
 <p><a href="https://zh.wikipedia.org/wiki/%e6%96%87%e4%bb%b6%e6%8f%8f%e8%bf%b0%e7%ac%a6" target="_blank" rel="noopener noreffer">wiki解释</a>，文件描述符在形式上是一个非负整数。实际上，它是一个索引值，指向<a href="https://zh.wikipedia.org/wiki/%e5%86%85%e6%a0%b8" target="_blank" rel="noopener noreffer">内核</a>为每一个<a href="https://zh.wikipedia.org/wiki/%e8%bf%9b%e7%a8%8b" target="_blank" rel="noopener noreffer">进程</a>所维护的该进程打开文件的记录表。当程序打开一个现有文件或者创建一个新文件时，内核向进程返回一个文件描述符。在程序设计中，一些涉及底层的程序编写往往会围绕着文件描述符展开。</p>
 <p>一个<strong>文件描述符</strong>是一个数字，唯一标识一个在计算机的操作系统打开的文件。它描述了数据资源，以及如何访问该资源。</p>
 <p>当程序要求打开文件（或其他数据资源，例如网络套接字）时，内核：</p>
@@ -158,7 +157,7 @@
 </ol>
 <p>该描述符是唯一的非负整数。系统上每个打开的文件至少存在一个文件描述符。</p>
 <hr>
-<h3 id="细节">细节</h3>
+<h2 id="细节">细节</h2>
 <p>对于内核，所有打开的文件均由文件描述符引用。文件描述符是一个非负数。当我们打开现有文件或创建新文件时，内核将文件描述符返回到进程。当我们想读取或写入文件时，我们用文件描述符标识文件。</p>
 <p>每个Linux进程（也许是守护程序除外）都应该具有三个标准的POSIX文件描述符：</p>
 <table>
@@ -203,7 +202,7 @@
 <li>系统级 <strong>打开文件表</strong> ( open file table )</li>
 <li>文件系统 <strong>i-node表</strong> ( i-node table )</li>
 </ul>
-<p>这 3 个数据结构之间的关系如 图-1 所示：</p>
+<p>这 3 个数据结构之间的关系如图所示：</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -212,7 +211,6 @@
         data-sizes="auto"
         alt="/file_descriptor/fd_detail.png"
         title="img" /></p>
-<p>图-1：文件描述符、打开文件及 inode 关系</p>
 <h3 id="文件描述符表">文件描述符表</h3>
 <p>内核为每个进程维护一个 <strong>文件描述符表</strong> ，该表每一条目都记录了单个文件描述符的相关信息，包括：</p>
 <ul>
@@ -237,8 +235,8 @@
 </ul>
 <p>i-node 存储在磁盘设备上，内核在内存中维护了一个副本，这里的 i-node 表为后者。 副本除了原有信息，还包括： <strong>引用计数</strong> (从打开文件描述体)、所在 <strong>设备号</strong> 以及一些临时属性，例如文件锁。</p>
 <hr>
-<h3 id="参数优化">参数优化</h3>
-<h4 id="1-系统最大的文件描述符数量">1. 系统最大的文件描述符数量</h4>
+<h2 id="参数优化">参数优化</h2>
+<h3 id="1-系统最大的文件描述符数量">1. 系统最大的文件描述符数量</h3>
 <p>系统文件最大值取决于内存大小，在kernel初始化时定义</p>
 <p><a href="https://github.com/torvalds/linux/blob/master/fs/file_table.c" target="_blank" rel="noopener noreffer">代码</a>:</p>
 <div class="highlight"><div class="chroma">
@@ -344,7 +342,7 @@ $ sysctl -p
 
 </code></pre></td></tr></table>
 </div>
-</div><h4 id="2-进程最大描述符">2. 进程最大描述符</h4>
+</div><h3 id="2-进程最大描述符">2. 进程最大描述符</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -403,7 +401,7 @@ root hard nofile <span class="m">65535</span>
 
 </code></pre></td></tr></table>
 </div>
-</div><h4 id="3-总结">3. 总结</h4>
+</div><h3 id="3-总结">3. 总结</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1

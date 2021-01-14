@@ -129,32 +129,16 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li>
-      <ul>
-        <li><a href="#写在前面">写在前面</a></li>
-        <li><a href="#server匹配机制">Server匹配机制</a></li>
-        <li><a href="#location匹配机制">Location匹配机制</a>
-          <ul>
-            <li>
-              <ul>
-                <li>
-                  <ul>
-                    <li><a href="#额外说明">额外说明：</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-        <li><a href="#参考">参考</a></li>
-      </ul>
-    </li>
+    <li><a href="#背景">背景</a></li>
+    <li><a href="#server匹配机制">Server匹配机制</a></li>
+    <li><a href="#location匹配机制">Location匹配机制</a></li>
+    <li><a href="#参考">参考</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h3 id="写在前面">写在前面</h3>
+            </div><div class="content" id="content"><h2 id="背景">背景</h2>
 <p>Nginx是一个当前主流的HTTP服务器和反向代理服务器，很多做WEB相关的同学基本都会用到，很多云厂商的七层负载均衡器也基本都是基于nginx实现的，个人在工作过程也算是经常接触，这篇文章主要想总结一下nginx的匹配机制，主要分为两块，一块是server的匹配，一块是location的匹配。</p>
 <hr>
-<h3 id="server匹配机制">Server匹配机制</h3>
+<h2 id="server匹配机制">Server匹配机制</h2>
 <p>配置过nginx的都知道，在一个http模块中是可以配置多个server模块的，并且多个server模块是可以配置相同的监听端口的，下面是一个简单的server配置例子：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -379,7 +363,7 @@
 </code></pre></td></tr></table>
 </div>
 </div><hr>
-<h3 id="location匹配机制">Location匹配机制</h3>
+<h2 id="location匹配机制">Location匹配机制</h2>
 <p>一个server模块可以配置多个location，nginx根据<code>URI</code>来进行匹配，</p>
 <p>lication的写法有以下几种：</p>
 <ol>
@@ -405,7 +389,7 @@
 <li>按顺序进行uri和正则匹配测试，有一个匹配成功后就停止搜索</li>
 <li>如果都没有，就使用最长(最相似)的前缀匹配</li>
 </ol>
-<h6 id="额外说明">额外说明：</h6>
+<p><strong>额外说明：</strong></p>
 <p>最长(最相似)前缀字符串的测试阶段，非正则前缀匹配匹配、前缀匹配的优先级是一致的，谁的长度长，谁优先。优先前缀匹配的前提必须是前缀字符串<code>非正则前缀匹配的长度</code>大于<code>前缀匹配的长度</code>，这个很多网站都是直接写成了非正则前缀匹配是第二优先级，没有说明前提条件。</p>
 <p>具体示例如下：</p>
 <div class="highlight"><div class="chroma">
@@ -455,7 +439,7 @@
 </code></pre></td></tr></table>
 </div>
 </div><hr>
-<h3 id="参考">参考</h3>
+<h2 id="参考">参考</h2>
 <p><a href="https://nginx.org/en/docs/http/request_processing.html" target="_blank" rel="noopener noreffer">https://nginx.org/en/docs/http/request_processing.html</a></p>
 <p><a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#location" target="_blank" rel="noopener noreffer">https://nginx.org/en/docs/http/ngx_http_core_module.html#location</a></p>
 <p><a href="https://docs.nginx.com/nginx/admin-guide/web-server/web-server/" target="_blank" rel="noopener noreffer">https://docs.nginx.com/nginx/admin-guide/web-server/web-server/</a></p>

@@ -1,13 +1,13 @@
 # Linux PAM模块
 
 
-### 概念
+## 概念
 
 Linux-PAM（Pluggable Authentication Modules for Linux）是一套共享库,使本地系统管理员可以随意选择程序的认证方式。换句话说，不用(重新编写)重新编译一个包含PAM功能的应用程序，就可以改变它使用的认证机制，这种方式下，就算升级本地认证机制,也不用修改程序。
 
 ***
 
-### 工作机制
+## 工作机制
 
 ![how-to-works](pam_works.png)
 
@@ -15,7 +15,7 @@ Linux-PAM（Pluggable Authentication Modules for Linux）是一套共享库,使�
 
 ***
 
-### /etc/pam.d配置文件介绍
+## /etc/pam.d配置文件介绍
 
 配置文件语法
 
@@ -30,9 +30,7 @@ type  control  module-path  module-arguments
 * 第三列代表模块路径
 * 第四列代表模块参数
 
-
-
-#### 类型
+### 类型
 
 *类型* 是规则对应的管理组。它用于指定后续模块要与哪个管理组关联。
 
@@ -56,7 +54,7 @@ type  control  module-path  module-arguments
 
 如果在类型前加一个短横线 `-`，就表示如果找不到这个模块，导致无法被加载时，这一事件不会被记录在日志中。这个功能适用于那些认证时非必需的、安装时可能没被安装进系统的模块。
 
-#### 控制标记
+### 控制标记
 
 **流程栈（stack）**
 
@@ -64,7 +62,7 @@ type  control  module-path  module-arguments
 
 *控制标记* 规定如何处理PAM模块鉴别认证的结果，简而言之就是鉴别认证成功或者失败之后会发生什么事，如何进行控制。一般有两种形式，一种是比较常见的“关键字”方式，另一种则是用方括号（`[]`）包含的“`value =action`”方式。
 
-###### 关键字方式:
+**关键字方式:**
 
 - required
 
@@ -92,11 +90,11 @@ type  control  module-path  module-arguments
 
   
 
-###### value = action方式:
+**value = action方式:**
 
 另外还有一种比较复杂的格式为value = action的语法来设置控制标志，标志之间会以空格分开。格式如下：
 
-```javascript
+```markdown
 [value1 = action1 value2 = action2 ……]
 ```
 
@@ -138,7 +136,7 @@ success、open_err、symbol_err、service_err、 system_err、buf_err、perm_den
 
   
 
-###### 关键字的控制方式也可以用value = action方式来表示
+**关键字的控制方式也可以用value = action方式来表示**
 
 ```markdown
 #required
@@ -154,19 +152,17 @@ success、open_err、symbol_err、service_err、 system_err、buf_err、perm_den
 [success=ok new_authtok_reqd=ok default=ignore]
 ```
 
-
-
-#### 模块路径
+### 模块路径
 
 *模块路径* 是应用程序要使用的PAM的绝对路径，或者是默认模块位置的相对路径名，一般为/lib/security /或/lib64/security/，取决于系统架构。
 
-#### 模块参数
+### 模块参数
 
 *模块参数* 将只和特定模块相关，因此某个模块的文档中一定包含其参数的信息。如果需要在单个参数中使用空格，可以将整个参数用方括号（`[]`）包裹起来。
 
 ***
 
-### 一个例子
+## 一个例子
 
 以/etc/pam.d/sshd为例
 
