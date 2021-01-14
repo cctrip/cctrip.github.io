@@ -21,7 +21,7 @@
 
 ![](different-ops.png)
 
-自从[09年DevOps](https://www.atlassian.com/devops/what-is-devops/history-of-devops)普及以来，软件行业就一直痴迷于各种操作术语。十年前，从软件开发到部署的方法已经推陈出新。软件工程师开发应用，然后将其交付给运维工程师。该应用程序在部署期间经常中断，并在团队之间造成很大的摩擦。
+自从[09年DevOps](https://www.atlassian.com/devops/what-is-devops/history-of-devops)普及以来，软件行业就一直痴迷于各种Ops术语。十年前，从软件开发到部署的方法已经推陈出新。软件工程师开发应用，然后将其交付给运维工程师。该应用程序在部署期间经常中断，并在团队之间造成很大的摩擦。
 
 DevOps实践的目的是简化部署过程。该想法是将自动化视为构建和部署软件应用程序的一等公民。
 
