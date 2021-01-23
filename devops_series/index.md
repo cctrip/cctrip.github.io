@@ -3,9 +3,9 @@
 
 ## 系列目录
 
-[《DevOps系列：开篇》]()
+[《DevOps系列：开篇》](https://cctrip.github.io/devops_series/)
 
-[《DevOps系列：概述》]()
+[《DevOps系列：概述》](https://cctrip.github.io/devops_series_intro/)
 
 [《DevOps系列：CMDB》]()
 
