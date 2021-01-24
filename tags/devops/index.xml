@@ -4,6 +4,19 @@
         <link>https://cctrip.github.io/tags/devops/</link>
         <description>devops - Tag - CC&#39;s Trip</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 23 Jan 2021 17:55:28 &#43;0800</lastBuildDate><atom:link href="https://cctrip.github.io/tags/devops/" rel="self" type="application/rss+xml" /><item>
+    <title>DevOps系列：CMDB</title>
+    <link>https://cctrip.github.io/devops_series_cmdb/</link>
+    <pubDate>Sat, 23 Jan 2021 17:55:28 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://cctrip.github.io/devops_series_cmdb/</guid>
+    <description><![CDATA[系列目录 《DevOps系列：开篇》
+《DevOps系列：概述》
+《DevOps系列：CMDB》
+《DevOps系列：CI/CD》
+《DevOps系列：监控》
+《DevOps系列：SRE》
+ ]]></description>
+</item><item>
     <title>DevOps系列：概述</title>
     <link>https://cctrip.github.io/devops_series_intro/</link>
     <pubDate>Sat, 23 Jan 2021 17:55:28 &#43;0800</pubDate>
@@ -15,20 +28,23 @@
 《DevOps系列：CI/CD》
 《DevOps系列：监控》
 《DevOps系列：SRE》
- 1. 介绍 DevOps大概起源于08到09年之间，2010年，The Agile Admin博客发布了《What is DevOps》给出了一个详细的DevOps定义，算是对DevOps有了一个初步的定义。不过，我这里还是引用一下wiki的定义：
+ 1. 介绍 DevOps大概起源于08到09年之间，最初的目的是要打破开发与运维之间的壁垒，2010年，The Agile Admin博客发布了《What is DevOps》给出了一个详细的DevOps定义，算是对DevOps有了一个初步的定义。不过，我这里还是引用一下wiki的定义：
  DevOps（开发 Development 与运维 Operations 的组合词）是一种文化、一场运动或实践，强调在自动化软件交付流程及基础设施变更过程中，软件开发人员与其他信息技术（IT）专业人员彼此之间的协作与沟通。它旨在建立一种文化与环境，使构建、测试、软件发布得以快速、频繁以及更加稳定地进行。
-  2. 优势 传统的瀑布模型会带来很多沟通上的问题，DevOps实际上是要来解决这些问题的。我们分别从工程上和角色上的优势来说一说
-2.1 基于DevOps的工程上的优势  DevOps的主要好处是可以更快地交付质量大大提高的软件。 根据行业的不同，可能还会有其他好处。
-我们知道，DevOps实际上重点在于自动化，通过自动化，可以产生如下优势
-  reliability(可靠)
-  faster updates(更迅速的更新)
-  Reduced time to recover(减少恢复时间)
-  Better user experience(更好的用户体验)
-  Efficiency (高效)
-  fewer failures(更少的失败)
-  lower risk(更低的风险)
-  Higher quality(更高的质量)
-  shorter dev cycle(更短的开发周期)]]></description>
+  2. 优势 传统的瀑布模型会带来很多沟通上的问题和成本，DevOps实际上是要来解决这些问题的。我们分别从工程上和角色上的优势来说一说
+2.1 基于DevOps的工程上的优势  DevOps的主要好处是可以更快地交付质量大大提高的软件。 根据行业的不同，可能还会有其他好处。大部分软件工程采用DevOps具有如下优势：
+  提升了可靠性
+  更快速的软件更新
+  减少故障恢复时间
+  更好的用户体验
+  更加高效
+  减少失败
+  降低风险
+  更好的质量
+  更短的开发周期
+  提升产品交付时间
+  提升稳定性
+  节省成本
+   2.]]></description>
 </item><item>
     <title>DevOps系列：开篇</title>
     <link>https://cctrip.github.io/devops_series/</link>

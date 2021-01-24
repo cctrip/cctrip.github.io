@@ -101,6 +101,38 @@
         alt="/images/cc.jpg"
         title="/images/cc.jpg" /></a></div><h2 class="home-subtitle"><div id="id-1" class="typeit"></div></h2><div class="links"><a href="https://github.com/https://github.com/cctrip" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="https://twitter.com/https://twitter.com/zcc0388" title="Twitter" target="_blank" rel="noopener noreffer me"><i class="fab fa-twitter fa-fw"></i></a><a href="mailto:zcc0388@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
+            <a href="/monitor/"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/monitor/monitor.png"
+        data-srcset="/monitor/monitor.png, /monitor/monitor.png 1.5x, /monitor/monitor.png 2x"
+        data-sizes="auto"
+        alt="/monitor/monitor.png"
+        title="监控系统" /></a>
+        </div><h1 class="single-title" itemprop="name headline">
+        <a href="/monitor/">监控系统</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-08-24">2020-08-24</time></span>&nbsp;<span class="post-category">included in <a href="/categories/devops/"><i class="far fa-folder fa-fw"></i>DevOps</a></span></div><div class="content">为什么需要监控系统？ 两个场景 场景一 技术部门上线了一个新项目，系统宕机了，客户在访问时发现无法访问，客户 A 不知道如何处理，放弃了访问，客户 B 知道客服系统，告知了运营人员，运营人员自己访问后也发现无法访问，于是通知了测试人员，再由测试人员通知线上项目的负责人，由负责人来进行故障恢复。 整个流程中，能处理故障的人成了最后知道故障的人。
+场景二 用户反馈访问某个系统很慢，通知技术人员排查问题，由于系统涉及的组件很多，技术人员没办法立即知道问题出在哪里，于是技术人员只能通过自己把整个数据流走完的方式来排查问题： 1、由入口开始排查问题，先确认网络是否丢包，延时是否过高，发现无异常。 2、于是排查服务所在机器的负载情况，以及服务相关日志 (未必有记录)，也无异常。 3、排查代码发现有做 sql 查询，于是根据 sql 手动到数据库执行，发现 sql 执行很慢。 4、于是排查数据库所在机器的负载情况，发现 cpu 一直处在 100% 状态，是数据库进程造成的。 5、通过查询相关执行 sql 发现有某个 sql 在执行复杂查询导致了 cpu 使用率一直很高，从而影响了其他 sql 查询。
+极端情况下，技术人员可能需要把所有相关组件都排查一遍，才能发现问题出在哪里。
+ 场景解决方案 开头提到的两个场景应该是大部分技术人员都会碰到的问题，场景一是故障出现到故障处理的耗时问题，场景二是故障处理到故障恢复的耗时问题。
+场景一的解决方式，可以由一个脚本或者一个系统，定时收集客户访问的 url 的返回状态码，如果出现错误的状态码达到一定次数，就发送邮件或者短信给到对应的负载人。
+场景二的解决方式，可以由一个系统，定时收集所有组件的相关信息，然后通过聚合和数据展示，来提供一个全局的问题查看功能。
+解决上面两种场景的系统就是监控系统。
+ 为什么要监控 监控一个系统有多个原因，一般包含如下几项
+  分析趋势
+数据库多大，增长速度如何？日活用户的增长速度？
+  数据对比
+增加了 redis 缓存后，访问速度较没增加前如何？这周和上周的访问速度有什么差异？
+  告警
+有东西故障了，或者即将故障，需要有人处理它。
+  构建仪表盘
+仪表盘应该可以回答有关服务的一些基本问题，通常会包含常见的指标
+  临时性回溯分析
+请求延迟刚刚大幅增加，有没有其他的现象同时发生？
+   建立监控系统 监控系统基本组件 一个监控系统一般包含下面几个组件：</div><div class="post-footer">
+        <a href="/monitor/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/devops/">devops</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
             <a href="/sre/"><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -234,41 +266,6 @@ TLS Record Protocol 该协议提供了连接安全的两个基本特性：
  交换hello信息用于算法协商，交换随机值，并检查会话是否恢复 交换必要的密码信息以允许客户端和服务端同意使用premaster secret 交换证书和密码信息以允许客户端和服务端进行身份验证 通过随机值和premaster secret生成master secret 向record layer提供安全参数 允许客户端和服务器验证其对等方具有计算出的相同安全参数，并且握手发生在没有被攻击者篡改的情况下  TLS握手的完整消息流   ClientHello</div><div class="post-footer">
         <a href="/tls/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/security/">security</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
-            <a href="/http/"><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/http/network.jpg"
-        data-srcset="/http/network.jpg, /http/network.jpg 1.5x, /http/network.jpg 2x"
-        data-sizes="auto"
-        alt="/http/network.jpg"
-        title="谈谈HTTP" /></a>
-        </div><h1 class="single-title" itemprop="name headline">
-        <a href="/http/">谈谈HTTP</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2016-05-29">2016-05-29</time></span>&nbsp;<span class="post-category">included in <a href="/categories/network/"><i class="far fa-folder fa-fw"></i>Network</a></span></div><div class="content">写在前面 如今网络已经无处不在，人们通过网络获取浏览各种信息，其中，大部分都是通过浏览器访问各种网页来获取我们想要的信息，那么浏览器与网页(服务端)究竟是如何通信的呢？这就得从HTTP协议说起了，浏览器获取网页信息都是基于HTTP协议来处理的。
- 概念 HTTP（HyperText Transfer Protocol，超文本传输协议）是互联网上应用最为广泛的一种网络协议。设计HTTP最初的目的是为了提供一种发布和接收HTML页面的方法。通过HTTP或者HTTPS协议请求的资源由统一资源标识符（Uniform Resource Identifiers，URI）来标识。HTTP是一个应用层协议，由请求和响应构成，是一个标准的客户端服务器模型。其具有如下特点：
-  支持客户/服务器模式。
-  简单快速：客户向服务器请求服务时，只需传送请求方法和路径。请求方法常用的有GET、HEAD、POST。每种方法规定了客户与服务器联系的类型不同。由于HTTP协议简单，使得HTTP服务器的程序规模小，因而通信速度很快。
-  灵活：HTTP允许传输任意类型的数据对象。正在传输的类型由Content-Type加以标记。
-  无连接：无连接的含义是限制每次连接只处理一个请求。服务器处理完客户的请求，并收到客户的应答后，即断开连接。采用这种方式可以节省传输时间。
-  无状态：HTTP协议是无状态协议。无状态是指协议对于事务处理没有记忆能力。缺少状态意味着如果后续处理需要前面的信息，则它必须重传，这样可能导致每次连接传送的数据量增大。另一方面，在服务器不需要先前信息时它的应答就较快
-  PS：尽管TCP/IP协议是互联网上最流行的应用，HTTP协议中，并没有规定必须使用它或它支持的层。事实上，HTTP可以在任何互联网协议上，或其他网络上实现。HTTP假定其下层协议提供可靠的传输。因此，任何能够提供这种保证的协议都可以被其使用。因此也就是其在TCP/IP协议族使用TCP作为其传输层。
- 工作流程 HTTP协议的通信过程永远是客户端发起请求(request)，服务器回送响应(respone)，如下图所示：
-一个完整的HTTP操作称为一个事务，其流程可分为四步：
-  建立连接(TCP三次握手)
-  客户端发送一个请求报文给服务器
-  服务器响应对应信息
-  客户端接收信息，然后断开连接
-   请求和响应详解 请求报文   请求行：由请求方法、URL和HTTP版本组成
-eg：GET /index.html HTTP/1.1
-  请求方法
-  GET：请求获取URI所标识的资源
-  HEAD：请求获取URI所标识的资源，但不传回资源的文本部分
-  POST：向指定URI资源提交数据，请求服务器进行处理
-  PUT：向指定URI资源上传其最新内容
-  DELETE：请求服务器删除URI所标识的资源</div><div class="post-footer">
-        <a href="/http/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/network/">network</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
