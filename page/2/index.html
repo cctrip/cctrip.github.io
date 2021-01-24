@@ -101,66 +101,48 @@
         alt="/images/cc.jpg"
         title="/images/cc.jpg" /></a></div><h2 class="home-subtitle"><div id="id-1" class="typeit"></div></h2><div class="links"><a href="https://github.com/https://github.com/cctrip" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="https://twitter.com/https://twitter.com/zcc0388" title="Twitter" target="_blank" rel="noopener noreffer me"><i class="fab fa-twitter fa-fw"></i></a><a href="mailto:zcc0388@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
-            <a href="/monitor/"><img
+            <a href="/k8s_series/"><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/monitor/monitor.png"
-        data-srcset="/monitor/monitor.png, /monitor/monitor.png 1.5x, /monitor/monitor.png 2x"
+        data-src="/k8s_series/k8s-images.jpg"
+        data-srcset="/k8s_series/k8s-images.jpg, /k8s_series/k8s-images.jpg 1.5x, /k8s_series/k8s-images.jpg 2x"
         data-sizes="auto"
-        alt="/monitor/monitor.png"
-        title="监控系统" /></a>
+        alt="/k8s_series/k8s-images.jpg"
+        title="开篇" /></a>
         </div><h1 class="single-title" itemprop="name headline">
-        <a href="/monitor/">监控系统</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-08-24">2020-08-24</time></span>&nbsp;<span class="post-category">included in <a href="/categories/devops/"><i class="far fa-folder fa-fw"></i>DevOps</a></span></div><div class="content">为什么需要监控系统？ 两个场景 场景一 技术部门上线了一个新项目，系统宕机了，客户在访问时发现无法访问，客户 A 不知道如何处理，放弃了访问，客户 B 知道客服系统，告知了运营人员，运营人员自己访问后也发现无法访问，于是通知了测试人员，再由测试人员通知线上项目的负责人，由负责人来进行故障恢复。 整个流程中，能处理故障的人成了最后知道故障的人。
-场景二 用户反馈访问某个系统很慢，通知技术人员排查问题，由于系统涉及的组件很多，技术人员没办法立即知道问题出在哪里，于是技术人员只能通过自己把整个数据流走完的方式来排查问题： 1、由入口开始排查问题，先确认网络是否丢包，延时是否过高，发现无异常。 2、于是排查服务所在机器的负载情况，以及服务相关日志 (未必有记录)，也无异常。 3、排查代码发现有做 sql 查询，于是根据 sql 手动到数据库执行，发现 sql 执行很慢。 4、于是排查数据库所在机器的负载情况，发现 cpu 一直处在 100% 状态，是数据库进程造成的。 5、通过查询相关执行 sql 发现有某个 sql 在执行复杂查询导致了 cpu 使用率一直很高，从而影响了其他 sql 查询。
-极端情况下，技术人员可能需要把所有相关组件都排查一遍，才能发现问题出在哪里。
- 场景解决方案 开头提到的两个场景应该是大部分技术人员都会碰到的问题，场景一是故障出现到故障处理的耗时问题，场景二是故障处理到故障恢复的耗时问题。
-场景一的解决方式，可以由一个脚本或者一个系统，定时收集客户访问的 url 的返回状态码，如果出现错误的状态码达到一定次数，就发送邮件或者短信给到对应的负载人。
-场景二的解决方式，可以由一个系统，定时收集所有组件的相关信息，然后通过聚合和数据展示，来提供一个全局的问题查看功能。
-解决上面两种场景的系统就是监控系统。
- 为什么要监控 监控一个系统有多个原因，一般包含如下几项
-  分析趋势
-数据库多大，增长速度如何？日活用户的增长速度？
-  数据对比
-增加了 redis 缓存后，访问速度较没增加前如何？这周和上周的访问速度有什么差异？
-  告警
-有东西故障了，或者即将故障，需要有人处理它。
-  构建仪表盘
-仪表盘应该可以回答有关服务的一些基本问题，通常会包含常见的指标
-  临时性回溯分析
-请求延迟刚刚大幅增加，有没有其他的现象同时发生？
-   建立监控系统 监控系统基本组件 一个监控系统一般包含下面几个组件：</div><div class="post-footer">
-        <a href="/monitor/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/devops/">devops</a></div></div>
+        <a href="/k8s_series/">Kubernetes系列：开篇</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-01-10">2021-01-10</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cloud-native/"><i class="far fa-folder fa-fw"></i>Cloud Native</a></span></div><div class="content">系列目录 《Kubernetes系列：开篇》
+《Kubernetes系列：概述》
+《Kubernetes系列：架构》
+《Kubernetes系列：CRI》
+《Kubernetes系列：CNI》
+《Kubernetes系列：CSI》
+《Kubernetes系列：Service》
+《Kubernetes系列：Ingress》
+《Kubernetes系列：OAM》
+《Kubernetes系列：调度》
+ 1. 介绍 最近整体工作在往云原生和k8s上迁移，想将自己对于k8s的一些学习心得和经验写成一个系列记录下来。
+ </div><div class="post-footer">
+        <a href="/k8s_series/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/kubernetes/">kubernetes</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
-            <a href="/sre/"><img
+            <a href="/2021_flag/"><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/sre/sre-image.jpg"
-        data-srcset="/sre/sre-image.jpg, /sre/sre-image.jpg 1.5x, /sre/sre-image.jpg 2x"
+        data-src="/2021_flag/goal.jpg"
+        data-srcset="/2021_flag/goal.jpg, /2021_flag/goal.jpg 1.5x, /2021_flag/goal.jpg 2x"
         data-sizes="auto"
-        alt="/sre/sre-image.jpg"
-        title="SRE介绍" /></a>
+        alt="/2021_flag/goal.jpg"
+        title="flag" /></a>
         </div><h1 class="single-title" itemprop="name headline">
-        <a href="/sre/">运维进阶之SRE</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-08-23">2020-08-23</time></span>&nbsp;<span class="post-category">included in <a href="/categories/devops/"><i class="far fa-folder fa-fw"></i>DevOps</a></span></div><div class="content">困局 计算机软件系统离开人通常是无法自主运行的，那要如何去运维一个日趋复杂的大型分布式计算机系统呢？
-Dev/Ops分离团队模型 雇佣系统管理员(sysadmin)运维复杂的计算机系统是行业内一直以来的普遍做法，系统管理员的工作主要在于应对系统中产生的各种需要人工干预的事件，以及来自业务部门的变更需求。但随着系统变得复杂，组件越来越多，流量不断上升，相关的事件和变更需求也会越来越多，就需要招聘更多的系统管理员。系统管理员的日常工作和研发工程师的相差甚远，通常归属于两个不同的部门，开发部(Dev)和运维部(Ops)。也就是Dev/Ops分离团队模型。
-但是这个模型存在两个无法避免的问题。
- 直接成本。随着系统复杂度的增加，部署规模的扩大，团队的大小基本与系统负载成线性相关，共同成长。 间接成本。即研发团队和运维团队之间的沟通成本。研发团队想要&quot;随时随地发布新功能，没有任何阻拦&rdquo;，运维团队想要”一旦一个东西在生产环境中正常工作了，就不要再进行任何改动“。本质来说，两个团队的目标是互相矛盾的。   解决之道 DevOps  DevOps（开发 Development 与运维 Operations 的组合词）是一种文化、一场运动或实践，强调在自动化软件交付流程及基础设施变更过程中，软件开发人员与其他信息技术（IT）专业人员彼此之间的协作与沟通。它旨在建立一种文化与环境，使构建、测试、软件发布得以快速、频繁以及更加稳定地进行。
- SRE  SRE可以理解为DevOps的一种实践，SRE基本是在进行由运维团队完成的工作，但是雇佣具有软件专业知识的工程师，通过创造软件系统的方式来维护系统运行并替代传统模型中的人工操作。本质上，SRE是在用软件工程的思维和方法论，通过设计、构建自动化工具来完成以前由系统管理员人工操作完成的任务。
- SRE方法论 1. 确保长期关注研发工作 SRE团队应将运维工作限制在50%以内，并将剩余时间投入到研发项目上
-2. 在保障SLO的前提下最大化迭代速度 错误预算，任何产品都不是，也不应该做到100%可靠，部门建立起一个合理的可靠性目标，错误预算等于”1-可靠性目标“，通过错误预算来最大化新功能上线的速度，同时保障服务质量。
-3. 监控系统 监控系统是SRE团队监控服务质量和可用性的一个主要手段。一个监控系统应该只有三类输出：
- 紧急警报(alert)，意味着收到警报的用户需要立即执行某种操作 工单(ticket)，意味着接受工单的用户应该执行某种操作，但是并发立即执行。 日志(logging)，平时没有人需要关注日志信息，但是日志信息依然被收集起来以备调试和事后分析时使用  4. 应急事件处理 可靠性是MTTF(平均失败时间)和MTTR(平均恢复时间)的函数。评价一个团队将系统恢复到正常情况的最有效的指标，就是MTTR。
-任何需要人工操作的事情都只会延长恢复时间。但有时候人工介入不可避免时，可以通过事先预案并且将最佳方法记录到”运维手册“上来降低MTTR。
-5. 变更管理 变更管理的最佳实践是使用自动化来完成以下几个项目：
- 采用渐进式发布机制 迅速而准确地检测到问题的发生 当问题发生时，安全迅速的回滚  6. 需要预测和容量规划 需要预测和容量规划是保障一个业务有足够的容量和冗余度去服务预测中的未来需要。
-容量规划有几个必需步骤：
- 必须有一个准确的自然增长需求预测模型，需求预测的时间应该超过资源获取的时间 规划中必须有准确的非自然增长的需求来源的统计 必须有周期性压力测试，以便准确地将系统原始资源信息与业务容量对应起来。  7. 效率与性能 高效地利用各种资源是任何赢利性服务都要关心的，一个服务的利用率指标通常依赖于这个服务的工作方式以及对容量的配置与部署上。如果能通过密切关注一个服务的容量配置策略，进而改进其资源利用率，可以有效地降低系统的总成本。
- 成为SRE 技能要求  – TCP/IP网络模型 (OSI模型)
-– Unix/Linux 系统</div><div class="post-footer">
-        <a href="/sre/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/devops/">devops</a></div></div>
+        <a href="/2021_flag/">2021年flag</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-01-02">2021-01-02</time></span>&nbsp;<span class="post-category">included in <a href="/categories/other/"><i class="far fa-folder fa-fw"></i>other</a></span></div><div class="content">2021年已经到来，在这里给自己列一个flag清单。
+习惯成自然   每2周完成一个ARTS(Algorithm|Review|Technique|Share)
+  完成12篇博客(每月一篇)
+  完成4篇英文技术文章翻译(每季度一篇)
+   读书清单  《性能之巅 洞悉系统、企业与云计算》 《Web性能权威指南》   极客时间清单  程序员的数学基础课 MySQL实战45讲   </div><div class="post-footer">
+        <a href="/2021_flag/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/life/">life</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
             <a href="/nginx_match/"><img
         class="lazyload"

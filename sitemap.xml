@@ -3,13 +3,13 @@
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
             <loc>https://cctrip.github.io/devops_series_cmdb/</loc><lastmod>2021-01-23T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://cctrip.github.io/devops_series_sre/</loc><lastmod>2021-01-23T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://cctrip.github.io/devops_series_intro/</loc><lastmod>2021-01-23T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://cctrip.github.io/devops_series_mon/</loc><lastmod>2021-01-23T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://cctrip.github.io/devops_series/</loc><lastmod>2021-01-16T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
             <loc>https://cctrip.github.io/talk_ops/</loc><lastmod>2021-01-14T22:22:22&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
             <loc>https://cctrip.github.io/k8s_series/</loc><lastmod>2021-01-10T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
             <loc>https://cctrip.github.io/2021_flag/</loc><lastmod>2021-01-02T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>https://cctrip.github.io/monitor/</loc><lastmod>2020-08-24T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://cctrip.github.io/sre/</loc><lastmod>2020-08-23T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://cctrip.github.io/nginx_match/</loc><lastmod>2020-06-06T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://cctrip.github.io/linux_pam/</loc><lastmod>2020-04-05T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://cctrip.github.io/file_descriptor/</loc><lastmod>2020-03-29T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
