@@ -3,7 +3,41 @@
         <title>Cloud Native - Category - CC&#39;s Trip</title>
         <link>https://cctrip.github.io/categories/cloud-native/</link>
         <description>Cloud Native - Category - CC&#39;s Trip</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 10 Jan 2021 17:55:28 &#43;0800</lastBuildDate><atom:link href="https://cctrip.github.io/categories/cloud-native/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 28 Jan 2021 17:55:28 &#43;0800</lastBuildDate><atom:link href="https://cctrip.github.io/categories/cloud-native/" rel="self" type="application/rss+xml" /><item>
+    <title>[译]Kubernetes成熟度模型</title>
+    <link>https://cctrip.github.io/k8s_model/</link>
+    <pubDate>Thu, 28 Jan 2021 17:55:28 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://cctrip.github.io/k8s_model/</guid>
+    <description><![CDATA[原文链接：kubernetes maturity model
+水平有限，本文不免存在遗漏或错误之处。如有疑问，请查阅原文。
+ 前言 Kubernetes有很多好处。 同时，当组织采用云原生技术时，它可能变得复杂。 Kubernetes成熟度模型的存在可帮助您确定自己在迁移到原生云的过程中所处的位置，无论您是Kubernetes的新手还是有部署经验的人。 这是一个重要的工具，可帮助您自我确定您所处的阶段，了解环境中的差距并获得有关增强和改善Kubernetes技术栈的见解。
+如何使用Kubernetes成熟度模型 Kubernetes和您的工作负载在不断变化。 使用此成熟度模型时，请知道，如果确实达到某个阶段，则可能仍需要重新访问以前的阶段。 另外，请注意，Kubernetes的成熟并非一朝一夕就能完成，而是需要时间。 Kubernetes成熟度模型应用作工具，以帮助您了解在迁移到云原生过程中需要集中精力或需要帮助的地方。
+ 1. 准备阶段 从哪里开始？如何证明k8s的价值？谁可以信任？
+在该阶段，你将学习/精通以下内容：
+云原生和k8s将如何帮助推动业务和技术目标。它将耗费什么？并就整个组织的目标达成共识。
+ 明白云原生、容器、以及k8s的价值 能够向企业领导者描述该价值 得到团队，领导和整个组织的支持   必要条件 明白你的问题
+为什么要使用kubernetes？想要通过kubernetes解决什么问题？
+同意使用OSS
+转换到kubernetes需要你明白开源软件(OSS)在云原生生态中的角色和能量
+接受投资未来
+kubernetes的旅程将会耗费大量的时间和金钱。你需要面向未来投资。
+ 介绍 在采用Kubernetes时，第一步是准备工作。在这里，理解并能够阐明云原生和Kubernetes为什么对组织很重要至关重要。一些核心概念包括理解云原生计算，容器和Kubernetes的价值和影响。在较高的层次上，我们在这里每个定义。
+Cloud Native
+ 云原生技术有利于各组织在公有云、私有云和混合云等新型动态环境中，构建和运行可弹性扩展的应用。云原生的代表技术包括容器、服务网格、微服务、不可变基础设施和声明式API。
+这些技术能够构建容错性好、易于管理和便于观察的松耦合系统。结合可靠的自动化手段，云原生技术使工程师能够轻松地对系统作出频繁和可预测的重大变更。
+云原生计算基金会（CNCF）致力于培育和维护一个厂商中立的开源生态系统，来推广云原生技术。我们通过将最前沿的模式民主化，让这些创新为大众所用。
+ Source: CNCF definition.
+云原生计算的好处包括更快的发布速度，易于管理，通过容器化和云标准降低了成本，能够构建更可靠的系统，避免了供应商锁定以及改善了客户应用体验。
+Container
+ 一个打包代码及其所有依赖项的标准软件单元，使得应用程序可以从一个计算环境快速可靠地运行到另一个计算环境
+ Source: Docker
+ 在k8s中，你运行的每个容器都是可重复的；通过包含依赖项实现标准化意味着无论您在哪里运行它，都可以得到相同的行为。容器将应用程序与基础主机基础结构分离。这使得在不同的云或OS环境中的部署更加容易
+ Source: CNCF concepts.
+Kubernetes
+ Kubernetes是一个可移植的，可扩展的开源平台，用于管理容器化的工作负载和服务，可促进声明式配置和自动化。 它拥有一个庞大且快速增长的生态系统。 Kubernetes的服务，支持和工具广泛可用。Kubernetes为您提供了一个可弹性运行分布式系统的框架。 它负责应用程序的扩展和故障转移，提供部署模式等。
+ Source: CNCF What is Kubernetes.]]></description>
+</item><item>
     <title>Kubernetes系列：开篇</title>
     <link>https://cctrip.github.io/k8s_series/</link>
     <pubDate>Sun, 10 Jan 2021 17:55:28 &#43;0800</pubDate>

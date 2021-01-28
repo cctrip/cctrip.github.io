@@ -11,7 +11,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://cctrip.github.io/" />
 <meta property="og:image" content="https://cctrip.github.io/logo.png"/>
-<meta property="og:updated_time" content="2021-01-23T17:55:28+08:00" />
+<meta property="og:updated_time" content="2021-01-28T17:55:28+08:00" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://cctrip.github.io/logo.png"/>
 
@@ -101,6 +101,47 @@
         alt="/images/cc.jpg"
         title="/images/cc.jpg" /></a></div><h2 class="home-subtitle"><div id="id-1" class="typeit"></div></h2><div class="links"><a href="https://github.com/https://github.com/cctrip" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="https://twitter.com/https://twitter.com/zcc0388" title="Twitter" target="_blank" rel="noopener noreffer me"><i class="fab fa-twitter fa-fw"></i></a><a href="mailto:zcc0388@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
+            <a href="/k8s_model/"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/k8s_model/k8s-image.png"
+        data-srcset="/k8s_model/k8s-image.png, /k8s_model/k8s-image.png 1.5x, /k8s_model/k8s-image.png 2x"
+        data-sizes="auto"
+        alt="/k8s_model/k8s-image.png"
+        title="Kubernetes成熟度模型" /></a>
+        </div><h1 class="single-title" itemprop="name headline">
+        <a href="/k8s_model/">[译]Kubernetes成熟度模型</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-01-28">2021-01-28</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cloud-native/"><i class="far fa-folder fa-fw"></i>Cloud Native</a></span></div><div class="content">原文链接：kubernetes maturity model
+水平有限，本文不免存在遗漏或错误之处。如有疑问，请查阅原文。
+ 前言 Kubernetes有很多好处。 同时，当组织采用云原生技术时，它可能变得复杂。 Kubernetes成熟度模型的存在可帮助您确定自己在迁移到原生云的过程中所处的位置，无论您是Kubernetes的新手还是有部署经验的人。 这是一个重要的工具，可帮助您自我确定您所处的阶段，了解环境中的差距并获得有关增强和改善Kubernetes技术栈的见解。
+如何使用Kubernetes成熟度模型 Kubernetes和您的工作负载在不断变化。 使用此成熟度模型时，请知道，如果确实达到某个阶段，则可能仍需要重新访问以前的阶段。 另外，请注意，Kubernetes的成熟并非一朝一夕就能完成，而是需要时间。 Kubernetes成熟度模型应用作工具，以帮助您了解在迁移到云原生过程中需要集中精力或需要帮助的地方。
+ 1. 准备阶段 从哪里开始？如何证明k8s的价值？谁可以信任？
+在该阶段，你将学习/精通以下内容：
+云原生和k8s将如何帮助推动业务和技术目标。它将耗费什么？并就整个组织的目标达成共识。
+ 明白云原生、容器、以及k8s的价值 能够向企业领导者描述该价值 得到团队，领导和整个组织的支持   必要条件 明白你的问题
+为什么要使用kubernetes？想要通过kubernetes解决什么问题？
+同意使用OSS
+转换到kubernetes需要你明白开源软件(OSS)在云原生生态中的角色和能量
+接受投资未来
+kubernetes的旅程将会耗费大量的时间和金钱。你需要面向未来投资。
+ 介绍 在采用Kubernetes时，第一步是准备工作。在这里，理解并能够阐明云原生和Kubernetes为什么对组织很重要至关重要。一些核心概念包括理解云原生计算，容器和Kubernetes的价值和影响。在较高的层次上，我们在这里每个定义。
+Cloud Native
+ 云原生技术有利于各组织在公有云、私有云和混合云等新型动态环境中，构建和运行可弹性扩展的应用。云原生的代表技术包括容器、服务网格、微服务、不可变基础设施和声明式API。
+这些技术能够构建容错性好、易于管理和便于观察的松耦合系统。结合可靠的自动化手段，云原生技术使工程师能够轻松地对系统作出频繁和可预测的重大变更。
+云原生计算基金会（CNCF）致力于培育和维护一个厂商中立的开源生态系统，来推广云原生技术。我们通过将最前沿的模式民主化，让这些创新为大众所用。
+ Source: CNCF definition.
+云原生计算的好处包括更快的发布速度，易于管理，通过容器化和云标准降低了成本，能够构建更可靠的系统，避免了供应商锁定以及改善了客户应用体验。
+Container
+ 一个打包代码及其所有依赖项的标准软件单元，使得应用程序可以从一个计算环境快速可靠地运行到另一个计算环境
+ Source: Docker
+ 在k8s中，你运行的每个容器都是可重复的；通过包含依赖项实现标准化意味着无论您在哪里运行它，都可以得到相同的行为。容器将应用程序与基础主机基础结构分离。这使得在不同的云或OS环境中的部署更加容易
+ Source: CNCF concepts.
+Kubernetes
+ Kubernetes是一个可移植的，可扩展的开源平台，用于管理容器化的工作负载和服务，可促进声明式配置和自动化。 它拥有一个庞大且快速增长的生态系统。 Kubernetes的服务，支持和工具广泛可用。Kubernetes为您提供了一个可弹性运行分布式系统的框架。 它负责应用程序的扩展和故障转移，提供部署模式等。
+ Source: CNCF What is Kubernetes.</div><div class="post-footer">
+        <a href="/k8s_model/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/kubernetes/">kubernetes</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
             <a href="/devops_series_cmdb/"><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -254,49 +295,6 @@ Dev/Ops分离团队模型 雇佣系统管理员(sysadmin)运维复杂的计算�
  3. DevOps 3.1 从开发模型的转变说起 3.</div><div class="post-footer">
         <a href="/devops_series/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/devops/">devops</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
-            <a href="/talk_ops/"><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/talk_ops/ops-image.jpg"
-        data-srcset="/talk_ops/ops-image.jpg, /talk_ops/ops-image.jpg 1.5x, /talk_ops/ops-image.jpg 2x"
-        data-sizes="auto"
-        alt="/talk_ops/ops-image.jpg"
-        title="翻译" /></a>
-        </div><h1 class="single-title" itemprop="name headline">
-        <a href="/talk_ops/">[译]当我们谈论Ops，我们在谈论什么</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-01-13">2021-01-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/devops/"><i class="far fa-folder fa-fw"></i>DevOps</a></span></div><div class="content">原文链接：What the Ops are you talking about?
-水平有限，本文不免存在遗漏或错误之处。如有疑问，请查阅原文。
- 背景 两年前，我因为效率低下的领导而获得了耻辱。我的背景是数据科学和机器学习，因此，我当然从我的工程同事那边学习到了DevOps。至少我们认为是这样的。
-令人费解的是，即使我们遵循了日常站立会议所有敏捷开发的良好实践，讨论我们的难点，也没有将难题扔给别人的态度。我们紧密合作并且相互友爱。但是开发效率依然缓慢，这令整个团队很沮丧。
-两年过后，我终于掌握了DevOps的含义，并且理解了它在数据团队中如此的相同而又如此不同。
-什么是Ops？ 在我们谈论以数据为中心的Ops时，先让我们从软件开始说起，
-自从09年DevOps普及以来，软件行业就一直痴迷于各种Ops术语。十年前，从软件开发到部署的方法已经推陈出新。软件工程师开发应用，然后将其交付给运维工程师。该应用程序在部署期间经常中断，并在团队之间造成很大的摩擦。
-DevOps实践的目的是简化部署过程。该想法是将自动化视为构建和部署软件应用程序的一等公民。
-这种想法彻底改变了这个行业。许多组织开始建立跨职能团队来照顾整个SDLC。该团队将建立基础架构（基础工程师），开发应用程序（软件工程师），构建CI/CD管道（DevOps工程师），部署应用程序（每位工程师），然后连续监视和观察应用程序（站点可靠性工程师）。
-在一个大团队里面，一个工程师可能只会有一项主要职能，但是在较小的团队中，一位工程师经常担任许多职务。理想的情况是使许多团队成员能够履行多项职能，从而消除瓶颈和关键人员的依存关系。所以实际上，
- DevOps并非是一项工作职能，而是更多的实践或文化。 在开始构建任何软件时都应采用它。
- 随着DevOps的兴起，各种各样的Ops诞生了。
-SecOps以安全性为核心，GitOps致力于持续交付，NetOps确保网络可以支持数据流，而ITOps则专注于软件交付之外的操作任务。但是，这些操作的基石都源自DevOps所承诺的愿景：
- 在错误最小的情况下尽可能快的发布软件
-  DataOps 🆚 MLOps 🆚 DevOps (and AIOps?) 注意：在本文中，分析团队是指使用SQL / PowerBI来生成业务洞察力的传统BI团队。 AI团队是指使用大数据技术构建高级分析和机器学习模型的团队。 有时他们是同一个团队，但我们将它们分开，以便更容易地解释概念。
-五年前，“数据是新石油”一语成为炒作对象。世界各地的领导者开始倾注资源，建立大数据团队来挖掘这些宝贵的资产。这些团队交付的压力巨大—毕竟，我们如何才能兑现新石油的承诺？随着快速扩展，分析团队也经历了同样的痛苦。
-然后，我们使这一切成为现实。
-数据科学家成为21世纪最吃香的职业。我们正在建立和处于数据和分析的黄金时代。每个执行者都有一个仪表板，具有来自整个组织的数据和嵌入式预测模型的仪表板，每个客户都有基于其行为的个性化推荐。
-但是，现在添加一个新功能需要花费数周甚至数月的时间。数据模型是混乱的并且没有人知道我们是使用信贷团队还是营销团队的活跃客户的定义。我们变得非常警惕将模型推向生成环境，因为我们不知道我们会破坏什么？
-因此，以数据为中心的社区团结在一起，保证不会因管理不善的数据流程而造成的效率低下，从那时起，各种以数据为中心的OPS诞生了
-要了解所有这些不同的Ops，让我们来看看数据如何在组织中流动的场景：
- 数据是由与软件应用程序交互的客户生成的 软件将数据存储在其应用程序数据库中 分析团队从组织中的团队使用这些应用程序数据库构建ETL 然后，数据工程师将原始数据，合并的数据集（来自分析团队）和其他非结构化数据集摄取到某种形式的数据湖中 然后，数据科学家根据这些庞大的数据集建立模型 然后，这些模型采用用户生成的新数据进行预测。 然后，软件工程师将预测结果呈现给用户 并且周期继续  我们知道DevOps的诞生是由于开发团队和运维团队之间的摩擦。因此，想象一下运维，开发，分析和AI团队之间的4向界面所带来的令人头疼的问题。
-为了说明不同的Ops如何解决上述过程，下面的图形绘制了每个作业功能在整个时间轴上执行的一些任务
-理想情况下，应在项目开始时采用X-Ops文化，并在整个过程中实施实践.
-总而言之，这就是每个Ops的意义
-DevOps更快地交付软件 一系列实践旨在消除开发团队和运维团队之间的障碍，以便更快地构建和部署软件。工程团队通常采用它，包括DevOps工程师，基础架构工程师，软件工程师，站点可靠性工程师和数据工程师。
-DataOps更快地交付数据 一系列实践旨在提高数据分析的质量和减少周期时间。DataOps主要的任务包括数据打标、数据测试、数据管道编排、数据版本控制和数据监控。分析和大数据团队是DataOps主要的支撑对象，但是任何生成和使用数据的人都应该采用良好的DataOps做法，其中包括数据分析师，BI分析师，数据科学家，数据工程师，有时还包括软件工程师。
-MLOps更快地提供机器学习模型 一套设计，构建和管理可重现，可测试和可持续的ML支持软件的实践。对于大数据/机器学习团队，MLOps包含大多数DataOps任务和其他特定于ML的任务，例如模型版本控制，测试，验证和监视。
-奖励：AIOps利用AI的功能增强了DevOps工具 有时人们会错误地将MLOps称为AIOps，但它们却大不相同。从Gartner：
- AIOps platforms utilize big data, modern machine learning and other advanced analytics technologies to directly and indirectly enhance IT operations (monitoring, automation and service desk) functions with proactive, personal and dynamic insight.</div><div class="post-footer">
-        <a href="/talk_ops/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/devops/">devops</a>,&nbsp;<a href="/tags/translation/">translation</a></div></div>
 </article><ul class="pagination"><li class="page-item active">
                     <span class="page-link">
                         <a href="/">1</a>

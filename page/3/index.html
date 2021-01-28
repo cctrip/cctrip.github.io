@@ -11,7 +11,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://cctrip.github.io/" />
 <meta property="og:image" content="https://cctrip.github.io/logo.png"/>
-<meta property="og:updated_time" content="2021-01-23T17:55:28+08:00" />
+<meta property="og:updated_time" content="2021-01-28T17:55:28+08:00" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://cctrip.github.io/logo.png"/>
 
@@ -101,6 +101,32 @@
         alt="/images/cc.jpg"
         title="/images/cc.jpg" /></a></div><h2 class="home-subtitle"><div id="id-1" class="typeit"></div></h2><div class="links"><a href="https://github.com/https://github.com/cctrip" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="https://twitter.com/https://twitter.com/zcc0388" title="Twitter" target="_blank" rel="noopener noreffer me"><i class="fab fa-twitter fa-fw"></i></a><a href="mailto:zcc0388@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
+            <a href="/tls/"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/tls/security.jpg"
+        data-srcset="/tls/security.jpg, /tls/security.jpg 1.5x, /tls/security.jpg 2x"
+        data-sizes="auto"
+        alt="/tls/security.jpg"
+        title="理解SSL/TLS协议" /></a>
+        </div><h1 class="single-title" itemprop="name headline">
+        <a href="/tls/">理解SSL/TLS协议</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2017-01-08">2017-01-08</time></span>&nbsp;<span class="post-category">included in <a href="/categories/security/"><i class="far fa-folder fa-fw"></i>Security</a></span></div><div class="content">背景 早期我们在访问web时使用HTTP协议，该协议在传输数据时使用明文传输，明文传输带来了以下风险：
+ 信息窃听风险，第三方可以获取通信内容 信息篡改风险，第三方可以篡改通信内容 身份冒充风险，第三方可以冒充他人身份参与通信  为了解决明文传输所带来的风险，网景公司在1994年设计了SSL用于Web的安全传输协议，这是SSL的起源。IETF将SSL进行标准化，1999年公布了第一版TLS标准文件。随后又公布了 RFC 5246（2008年8月）与 RFC 6176 （2011年3月）。该协议在web中被广泛应用。
+ SSL/TLS协议 TLS（Transport Layer Security，传输层安全协议），及其前身SSL（Secure Sockets Layer，安全套接层）是一种安全协议，目的是为互联网通信，提供安全及数据完整性保障。
+TLS协议使用以下三种机制为信息通信提供安全传输：
+ 隐秘性，所有通信都通过加密后进行传播 身份认证，通过证书进行认证 可靠性，通过校验数据完整性维护一个可靠的安全连接   以TLS1.2为例说明TLS协议 TLS协议由TLS Record Protocol和TLS Handshake Protocol两层协议组成
+TLS Record Protocol 该协议提供了连接安全的两个基本特性：
+  连接私有
+对称密码用于数据加密，这种对称加密是为每条连接唯一生成的并基于另一个人协商的秘密协议
+  连接可靠
+消息传输包括一条消息 使用密钥MAC进行完整性检查，安全哈希函数（例如， SHA-1等）用于MAC计算。
+   TLS Handshake Protocol 该协议提供了连接安全的三个基本特性：
+ 可以使用非对称身份验证对等方的身份，或者 公钥，密码学等 共享密钥的协商是安全的 谈判可靠   一个TLS握手协议一般涉及以下步骤：
+ 交换hello信息用于算法协商，交换随机值，并检查会话是否恢复 交换必要的密码信息以允许客户端和服务端同意使用premaster secret 交换证书和密码信息以允许客户端和服务端进行身份验证 通过随机值和premaster secret生成master secret 向record layer提供安全参数 允许客户端和服务器验证其对等方具有计算出的相同安全参数，并且握手发生在没有被攻击者篡改的情况下  TLS握手的完整消息流   ClientHello</div><div class="post-footer">
+        <a href="/tls/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/security/">security</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
             <a href="/http/"><img
         class="lazyload"
         src="/svg/loading.min.svg"
