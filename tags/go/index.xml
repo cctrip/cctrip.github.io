@@ -1,0 +1,32 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>go - Tag - CC&#39;s Trip</title>
+        <link>https://cctrip.github.io/tags/go/</link>
+        <description>go - Tag - CC&#39;s Trip</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 01 Jan 2021 17:55:28 &#43;0800</lastBuildDate><atom:link href="https://cctrip.github.io/tags/go/" rel="self" type="application/rss+xml" /><item>
+    <title>精选文章阅读</title>
+    <link>https://cctrip.github.io/read_selection/</link>
+    <pubDate>Fri, 01 Jan 2021 17:55:28 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://cctrip.github.io/read_selection/</guid>
+    <description><![CDATA[Golang相关  test   Kubernetes相关  test   DevOps相关  test   Linux相关  test   网络相关  test   其他相关  [译] 现代网络负载均衡与代理导论（2017）  ]]></description>
+</item><item>
+    <title>Go系列：并发</title>
+    <link>https://cctrip.github.io/go_series_conc/</link>
+    <pubDate>Tue, 07 Apr 2020 17:55:28 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://cctrip.github.io/go_series_conc/</guid>
+    <description><![CDATA[系列目录 《Go系列：内存管理》
+《Go系列：并发》
+ ]]></description>
+</item><item>
+    <title>Go系列：内存管理</title>
+    <link>https://cctrip.github.io/go_series_mem/</link>
+    <pubDate>Wed, 01 Apr 2020 17:55:28 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://cctrip.github.io/go_series_mem/</guid>
+    <description><![CDATA[系列目录 《Go系列：内存管理》
+《Go系列：并发》
+ ]]></description>
+</item></channel>
+</rss>

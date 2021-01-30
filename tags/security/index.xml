@@ -3,10 +3,10 @@
         <title>security - Tag - CC&#39;s Trip</title>
         <link>https://cctrip.github.io/tags/security/</link>
         <description>security - Tag - CC&#39;s Trip</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 05 Apr 2020 17:55:28 &#43;0800</lastBuildDate><atom:link href="https://cctrip.github.io/tags/security/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 05 Sep 2019 17:55:28 &#43;0800</lastBuildDate><atom:link href="https://cctrip.github.io/tags/security/" rel="self" type="application/rss+xml" /><item>
     <title>Linux PAM模块</title>
     <link>https://cctrip.github.io/linux_pam/</link>
-    <pubDate>Sun, 05 Apr 2020 17:55:28 &#43;0800</pubDate>
+    <pubDate>Thu, 05 Sep 2019 17:55:28 &#43;0800</pubDate>
     <author>Author</author>
     <guid>https://cctrip.github.io/linux_pam/</guid>
     <description><![CDATA[概念 Linux-PAM（Pluggable Authentication Modules for Linux）是一套共享库,使本地系统管理员可以随意选择程序的认证方式。换句话说，不用(重新编写)重新编译一个包含PAM功能的应用程序，就可以改变它使用的认证机制，这种方式下，就算升级本地认证机制,也不用修改程序。
