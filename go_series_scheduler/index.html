@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Go系列：调度器 - CC&#39;s Trip</title><meta name="Description" content="调度器"><meta property="og:title" content="Go系列：调度器" />
+<meta property="og:description" content="调度器" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cctrip.github.io/go_series_scheduler/" />
+<meta property="og:image" content="https://cctrip.github.io/go_series_scheduler/scheduler-image.png"/>
+<meta property="article:published_time" content="2020-04-07T17:55:28+08:00" />
+<meta property="article:modified_time" content="2020-04-07T17:55:28+08:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://cctrip.github.io/go_series_scheduler/scheduler-image.png"/>
+<meta name="twitter:title" content="Go系列：调度器"/>
+<meta name="twitter:description" content="调度器"/>
+<meta name="application-name" content="CC&#39;s Trip">
+<meta name="apple-mobile-web-app-title" content="CC&#39;s Trip"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/leo.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://cctrip.github.io/go_series_scheduler/" /><link rel="prev" href="https://cctrip.github.io/go_series_mem/" /><link rel="next" href="https://cctrip.github.io/go_series_conc/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Go系列：调度器",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/cctrip.github.io\/go_series_scheduler\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/cctrip.github.io\/go_series_scheduler\/scheduler-image.png",
+                            "width":  2608 ,
+                            "height":  1754 
+                        }],"genre": "posts","keywords": "go","wordcount":  199 ,
+        "url": "https:\/\/cctrip.github.io\/go_series_scheduler\/","datePublished": "2020-04-07T17:55:28+08:00","dateModified": "2020-04-07T17:55:28+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/cctrip.github.io\/images\/cc.jpg",
+                    "width":  250 ,
+                    "height":  250 
+                }},"author": {
+                "@type": "Person",
+                "name": "Hello.CC"
+            },"description": "调度器"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="CC&#39;s Trip">CC&#39;s Trip</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/notes"> Notes </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="CC&#39;s Trip">CC&#39;s Trip</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/notes" title="">Notes</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Go系列：调度器</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-category">included in <a href="/categories/golang/"><i class="far fa-folder fa-fw"></i>Golang</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-04-07">2020-04-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;199 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/go_series_scheduler/scheduler-image.png"
+        data-srcset="/go_series_scheduler/scheduler-image.png, /go_series_scheduler/scheduler-image.png 1.5x, /go_series_scheduler/scheduler-image.png 2x"
+        data-sizes="auto"
+        alt="/go_series_scheduler/scheduler-image.png"
+        title="调度器" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#系列目录">系列目录</a></li>
+    <li><a href="#1-介绍">1. 介绍</a></li>
+    <li><a href="#2-os-scheduler">2. OS Scheduler</a>
+      <ul>
+        <li><a href="#21-执行指令">2.1 执行指令</a></li>
+        <li><a href="#22-thread状态">2.2 Thread状态</a></li>
+        <li><a href="#23-工作类型">2.3 工作类型</a></li>
+        <li><a href="#24-上下文切换">2.4 上下文切换</a></li>
+        <li><a href="#25-少即是多">2.5 少即是多</a></li>
+        <li><a href="#26-寻找平衡">2.6 寻找平衡</a></li>
+        <li><a href="#27-cpu缓存">2.7 CPU缓存</a></li>
+        <li><a href="#28-调度决策方案">2.8 调度决策方案</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-go-scheduler">3. Go Scheduler</a>
+      <ul>
+        <li><a href="#31-进程线程和协程">3.1 进程、线程和协程</a></li>
+        <li><a href="#32-程序开始">3.2 程序开始</a></li>
+        <li><a href="#33-协作式调度">3.3 协作式调度</a></li>
+        <li><a href="#34-goroutine状态">3.4 Goroutine状态</a></li>
+        <li><a href="#35-上下文切换">3.5 上下文切换</a></li>
+        <li><a href="#36-异步系统调用">3.6 异步系统调用</a></li>
+        <li><a href="#37-同步系统调用">3.7 同步系统调用</a></li>
+        <li><a href="#38-工作窃取">3.8 工作窃取</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-结论">4. 结论</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="系列目录">系列目录</h2>
+<p><a href="" rel="">《Go系列：内存管理》</a></p>
+<p><a href="" rel="">《Go系列：调度器》</a></p>
+<p><a href="" rel="">《Go系列：并发》</a></p>
+<hr>
+<h2 id="1-介绍">1. 介绍</h2>
+<p>随着技术的不断发展，CPU也在不断发展，出现了多处理器、多核心、CPU缓存、NUMA架构等概念。为了最大化利用CPU的计算能力，软件也在不断发展，出现了并发和并行等概念。而为了支持并发和并行，就需要调度器，用于处理计算任务在不同CPU上的计算。我们主要从系统调度和语言层面的调度来说明。</p>
+<hr>
+<h2 id="2-os-scheduler">2. OS Scheduler</h2>
+<p>我们的的程序只是一系列机器指令，需要依次执行。为此，操作系统使用了线程的概念，线程的工作就是负责说明并按顺序执行分配给它的指令集。执行将不断进行，直到没有更多指令可以执行。</p>
+<p>在操作系统上，我们运行的每个程序都会创建一个进程，并且为每个进程分配一个初始线程。线程具有创建更多线程的能力。所有这些不同的线程彼此独立运行，并且调度决策是在线程级别而不是在进程级别做出的。线程可以同时运行(并发，每个任务运行在同一个的core上)，也可以并行运行(并行，每个任务运行在不同core上同时运行)。线程还维护自己的状态，以允许在本地安全和独立地执行指令。</p>
+<p>如果存在可以执行的线程时，OS Scheduler负责确保core不处于空闲状态。它还必须产生一种幻想，即所有可以执行的线程正在同时执行。在创建这种幻想的过程中，Scheduler需要优先运行优先级较高的线程，而不是运行优先级较低的线程。但是，具有较低优先级的线程并无法节省执行时间。Scheduler还需要通过做出快速而明智的决策来最大程度地减少调度延迟。</p>
+<hr>
+<h3 id="21-执行指令">2.1 执行指令</h3>
+<p>程序计数器(PC)有时也称为指令指针(IP)，它使线程可以跟踪要执行的下一条指令。在大多数处理器中，PC指向下一条指令，而不是当前指令。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="figure.jpeg"
+        data-srcset="/go_series_scheduler/figure.jpeg, figure.jpeg 1.5x, /go_series_scheduler/figure.jpeg 2x"
+        data-sizes="auto"
+        alt="/go_series_scheduler/figure.jpeg"
+        title="/go_series_scheduler/figure.jpeg" /></p>
+<hr>
+<h3 id="22-thread状态">2.2 Thread状态</h3>
+<ul>
+<li><strong>Waiting</strong>，这意味着线程已经停止执行并需要等待某些操作才能继续。这可能是由于诸如等待硬件(磁盘，网络)，操作系统(系统调用)或同步调用(原子，互斥体)之类的原因。这些类型的延迟是导致性能下降的根本原因。</li>
+<li><strong>Runnable</strong> ，这意味着线程需要获得cpu时间，这样它可以执行其分配的机器指令。如果您有很多需要cpu时间的线程，则线程必须等待更长的时间才能获得cpu时间。而且，随着更多线程争夺cpu时间，任何给定线程获得的cpu时间都将缩短。这种类型的调度延迟也可能是性能下降的原因</li>
+<li><strong>Executing</strong>，这意味着线程已放置在core上并正在执行其机器指令。与应用程序相关的工作已经完成。这是每个人都想要的状态。</li>
+</ul>
+<hr>
+<h3 id="23-工作类型">2.3 工作类型</h3>
+<p><strong>CPU-Bound</strong>，这项工作永远不会造成线程可能处于等待状态的情况。这是不断进行计算的工作。计算Pi到第N位的线程将是CPU-Bound的。</p>
+<p><strong>IO-Bound</strong>，这项工作导致线程进入等待状态。这项工作包括请求通过网络访问资源或对操作系统进行系统调用。需要访问数据库的线程将是IO-Bound。我将包括同步事件(互斥量，原子)等导致线程进入等待状态的事件都归为此类。</p>
+<hr>
+<h3 id="24-上下文切换">2.4 上下文切换</h3>
+<p><strong>抢占式调度</strong></p>
+<p>首先，这意味着在任何给定时间选择要运行的线程时，调度程序都是不可预测的。线程优先级和事件(例如在网络上接收数据)一起使得无法确定调度程序将选择做什么以及何时执行。</p>
+<p>其次，这意味着您绝不能基于自己幸运的经历但不能保证每次都发生的某些感知行为来编写代码。让自己思考很容易，因为我已经看到这种情况以1000次相同的方式发生，这是有保证的行为。如果需要在应用程序中确定性，则必须控制线程的同步和编排。</p>
+<hr>
+<p>在内核上交换线程的物理行为称为上下文切换。当调度程序从core中拉出一个excuting线程并将其替换为可runnable线程时，就会发生上下文切换。从运行队列中选择的线程将进入excuting状态。被拉出的线程可以移回runnable状态(如果它仍具有运行能力)或waitting状态(如果由于IO-Bound类型的请求而被替换)。</p>
+<p>上下文切换被认为是昂贵的，因为在core上和在core外交换线程都需要时间。上下文切换期间的延迟等待时间量取决于不同的因素，但花费约1000到1500纳秒的时间并非没有道理。虑到硬件应该能够合理地(平均)在每核每纳秒执行12条指令，上下文切换可能会花费大约12000至18k的延迟指令。本质上，您的程序在上下文切换期间将失去执行大量指令的能力。</p>
+<p>如果您有一个专注于IO-Bound工作的程序，那么上下文切换将是一个优势。一旦一个线程进入等待状态，另一个处于可运行状态的线程就会代替它。这使核心始终可以工作。这是调度的最重要方面之一。如果有工作要做(线程处于可运行状态)，请不要让core闲置。</p>
+<p>如果您的程序专注于CPU-Bound工作，那么上下文切换将成为性能噩梦。由于Thead总是有工作要做，因此上下文切换将阻止该工作的进行。这种情况与IO-Bound工作负载形成鲜明对比。</p>
+<hr>
+<h3 id="25-少即是多">2.5 少即是多</h3>
+<p>制定调度决策时，scheduler还需要考虑和处理更多的事情。您可以控制在应用程序中使用的线程数。当要考虑的线程更多，并且发生IO-Bound工作时，就会出现更多的混乱和不确定性行为。任务需要更长的时间来计划和执行。</p>
+<p>这就是为什么游戏规则是“少即是多”的原因。处于runnable状态的线程越少，意味着获得调度的时间越少，并且每个线程随着时间的流逝会花费更多的时间。更多线程处于runnable状态意味着每个线程随着时间流逝的时间更少。这意味着随着时间的流逝，您完成的工作也更少了。</p>
+<hr>
+<h3 id="26-寻找平衡">2.6 寻找平衡</h3>
+<p>您需要在拥有的core数量与为应用程序获得最佳吞吐量所需的线程数量之间找到平衡。在管理这种平衡时，线程池是一个很好的答案。</p>
+<p>如果您的服务正在执行许多不同类型的工作该怎么办？这可能会产生不同且不一致的延迟。也许它还会创建许多需要处理的不同的系统级事件。不可能找到一个在所有不同工作负荷下始终有效的魔术数字。当涉及到使用线程池来调整服务的性能时，找到正确的一致配置会变得非常复杂。</p>
+<hr>
+<h3 id="27-cpu缓存">2.7 CPU缓存</h3>
+<p>从主存储器访问数据具有很高的延迟成本（〜100至〜300个时钟周期），以致处理器和内核具有本地缓存，以使数据保持在需要它的硬件线程附近。从缓存访问数据的成本要低得多（约3至40个时钟周期），具体取决于要访问的缓存。今天，性能的一个方面是关于如何有效地将数据输入处理器以减少这些数据访问延迟。编写改变状态的多线程应用程序需要考虑缓存系统的机制。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="cache.png"
+        data-srcset="/go_series_scheduler/cache.png, cache.png 1.5x, /go_series_scheduler/cache.png 2x"
+        data-sizes="auto"
+        alt="/go_series_scheduler/cache.png"
+        title="/go_series_scheduler/cache.png" /></p>
+<p>使用cache line在处理器和主存储器之间交换数据。缓存行是在主内存和缓存系统之间交换的64字节内存块。每个内核都会获得所需的任何高速缓存行的副本，这意味着硬件使用值语义。这就是为什么多线程应用程序中的内存突变会造成性能方面的噩梦。</p>
+<p>当多个并行运行的线程正在访问同一数据值或什至彼此接近的数据值时，它们将在同一高速缓存行上访问数据。在任何内核上运行的任何线程都将获得该同一缓存行的副本。</p>
+<hr>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="cache_share.png"
+        data-srcset="/go_series_scheduler/cache_share.png, cache_share.png 1.5x, /go_series_scheduler/cache_share.png 2x"
+        data-sizes="auto"
+        alt="/go_series_scheduler/cache_share.png"
+        title="/go_series_scheduler/cache_share.png" /></p>
+<p>如果给定核心上的一个线程更改了其缓存行的副本，则必须借助硬件的魔力，将同一缓存行的所有其他副本标记为脏。当线程尝试对脏的缓存行进行读写访问时，需要主存储器访问（〜100至〜300个时钟周期）才能获取缓存行的新副本.</p>
+<p>也许在2核处理器上这没什么大不了，但是如果32核处理器并行运行32个线程，所有访问和变异数据都在同一缓存行上，那又如何呢？带有两个分别具有16个内核的物理处理器的系统又如何呢？由于处理器间通信增加了延迟，因此情况将变得更糟。该应用程序将遍历内存，性能将非常糟糕，并且很可能您将不明白为什么。</p>
+<p>这称为高速缓存一致性问题，还引入了错误共享之类的问题。当编写将改变共享状态的多线程应用程序时，必须考虑缓存系统.</p>
+<hr>
+<h3 id="28-调度决策方案">2.8 调度决策方案</h3>
+<p>想象一下，我要您根据我给您的高级信息编写操作系统调度程序。考虑一下您必须考虑的一种情况。请记住，这是调度程序在做出调度决策时必须考虑的许多有趣的事情之一。</p>
+<p>您启动您的应用程序，并创建了主线程并在核心1上执行该线程。随着该线程开始执行其指令，由于需要数据，因此正在检索缓存行。线程现在决定为某些并发处理创建一个新线程。这是问题。</p>
+<p>创建线程并准备就绪后，调度程序应：</p>
+<ol>
+<li>上下文切换核心1的主线程？这样做可以提高性能，因为此新线程需要与已缓存的数据相同的机会非常好。但是主线程无法获得其全部时间片。</li>
+<li>线程是否等待核心1可用，等待主线程的时间片完成？线程未运行，但是一旦开始，将消除获取数据的延迟。</li>
+<li>线程是否正在等待下一个可用core？这意味着将清除，检索和复制所选核心的缓存行，从而导致延迟。但是，线程将启动得更快，并且主线程可以完成其时间片。</li>
+</ol>
+<p>玩得开心吗？在做出调度决策时，OS调度程序需要考虑这些有趣的问题。幸运的是，对于每个人来说，我都不是一个。我只能告诉您的是，如果有一个空闲的内核，它将被使用。您希望线程可以在运行时运行。</p>
+<hr>
+<h2 id="3-go-scheduler">3. Go Scheduler</h2>
+<h3 id="31-进程线程和协程">3.1 进程、线程和协程</h3>
+<ul>
+<li><strong>进程</strong>，</li>
+<li><strong>线程</strong>，</li>
+<li><strong>协程</strong>，</li>
+</ul>
+<hr>
+<h3 id="32-程序开始">3.2 程序开始</h3>
+<p>Go程序为主机上标识的每个虚拟core分配了逻辑处理器(P)。如果您的处理器每个物理核心具有多个硬件线程(超线程)，则每个硬件线程将作为虚拟core呈现给您的Go程序。</p>
+<p>每个P都分配有一个OS线程(M)。&ldquo;M&quot;代表machine。该线程仍由操作系统管理，并且操作系统仍负责将线程放置在内核上执行。</p>
+<p>每个Go程序还会获得一个初始Goroutine(G)，这是Go程序的“线程”。Goroutine本质上是一个协程，但是它是Go，因此我们将字母&quot;C&quot;替换为&quot;G&rdquo;，然后得到单词Goroutine。您可以将Goroutines视为应用程序级线程，并且它们在许多方面类似于OS线程。就像OS线程在上下文中打开和关闭core一样，Goroutine在上下文中打开和关闭M。</p>
+<p>最后一个难题是运行队列。Go调度程序中有两个不同的运行队列：全局运行队列(GRQ)和本地运行队列(LRQ)。每个P都有一个LRQ，该LRQ管理分配给在P上下文中执行的Goroutine。这些Goroutine轮流在上下文中切换分配给该P的M。GRQ用于尚未分配给P的Goroutine。有一个将Goroutines从GRQ转移到LRQ的过程，我们将在后面讨论。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="gpm.png"
+        data-srcset="/go_series_scheduler/gpm.png, gpm.png 1.5x, /go_series_scheduler/gpm.png 2x"
+        data-sizes="auto"
+        alt="/go_series_scheduler/gpm.png"
+        title="/go_series_scheduler/gpm.png" /></p>
+<hr>
+<h3 id="33-协作式调度">3.3 协作式调度</h3>
+<p>Go Scheduler是Go运行时的一部分，并且Go运行时已内置到您的应用程序中。这意味着Go Scheduler在内核上方的用户空间中运行。 Go Scheduler的当前实现不是抢占式调度器，而是协作式调度器。成为协作调度器味着调度器需要在代码的安全点发生的定义明确的用户空间事件，以制定调度决策。</p>
+<p>Go协作调度器的出色之处在于它看起来和感觉都是抢先的。您无法预测Go Scheduler将要执行的操作。这是因为该协作调度器的决策权不掌握在开发人员手中，而在于Go运行时。Go Scheduler视为抢占式调度器很重要，并且由于该调度器是不确定的，因此这并不是一件容易的事。</p>
+<hr>
+<h3 id="34-goroutine状态">3.4 Goroutine状态</h3>
+<p><strong>Waiting</strong>: 这意味着Goroutine已停止并等待某些东西才能继续。这可能是由于诸如等待操作系统(系统调用)或同步调用(原子和互斥操作)之类的原因。这些类型的延迟是导致性能下降的根本原因。</p>
+<p><strong>Runnable</strong>: 这意味着Goroutine需要获得在M上的执行时间，因此它可以执行其分配的指令。如果您有很多需要M时间的Goroutine，那么Goroutine必须等待更长的时间才能获得时间。而且，随着更多Goroutine争夺时间，任何给定Goroutine所获得的时间都将缩短。这种类型的调度延迟也可能是性能下降的原因。</p>
+<p><strong>Executing</strong>: 这意味着Goroutine已放置在M上并正在执行其指令。与应用程序相关的工作已经完成。这就是每个人都想要的。</p>
+<hr>
+<h3 id="35-上下文切换">3.5 上下文切换</h3>
+<p>Go Scheduler需要定义明确的用户空间事件，这些事件发生在代码中的安全点处，以便从上下文进行切换。函数调用对于Go调度程序的运行状况至关重要。今天(使用Go 1.11或更低版本)，如果运行任何未进行函数调用的紧密循环，则将导致调度程序和垃圾回收中的延迟。在合理的时间内进行函数调用至关重要。</p>
+<p>Go程序中发生了四类事件，这些事件使计划程序可以做出计划决策。这并不意味着它将永远在这些事件之一中发生。这意味着调度器会获得机会。</p>
+<ul>
+<li><strong>使用关键字go</strong>，关键字go是创建Goroutine的方式。一旦创建了新的Goroutine，它将为调度器提供做出调度决策的机会。</li>
+<li><strong>垃圾回收</strong>，由于GC使用自己的Goroutine集合运行，因此这些Goroutine需要M上的时间才能运行。这导致GC造成很多调度混乱。但是，调度器对于Goroutine所做的事情非常聪明，它将利用该情报做出明智的决策。这个明智的决定是在GC中将要触摸堆的Goroutine与不触摸堆的Goroutine进行上下文切换。当GC运行时，将制定许多计划决策。</li>
+<li><strong>系统调用</strong>，如果Goroutine进行了导致Goroutine阻塞M的系统调用，则有时调度器能够将Goroutine上下文切换到M之外，并在上下文中将新Goroutine切换到该M上。但是，有时需要一个新的M来继续执行在P中排队的Goroutine。在下一节中将更详细地说明其工作原理。</li>
+<li><strong>同步与编排</strong>，如果原子，互斥或channel操作调用将导致Goroutine阻塞，则调度器可以进行上下文切换运行新的Goroutine。一旦Goroutine可以再次运行，就可以对其重新排队，并最终在M上进行上下文切换。</li>
+</ul>
+<hr>
+<h3 id="36-异步系统调用">3.6 异步系统调用</h3>
+<p>当您正在运行的OS能够异步处理系统调用时，可以使用称为网络轮询器的东西来更有效地处理系统调用。这是通过在各个操作系统中使用kqueue(MacOS)，epoll(Linux)或iocp(Windows)来完成的。</p>
+<p>我们今天使用的许多操作系统都可以异步处理基于网络的系统调用。这是网络轮询器的名称，这是因为它的主要用途是处理网络操作。通过使用网络轮询器进行网络系统调用，调度器可以防止Goroutine在进行这些系统调用时阻止M。这有助于使M保持可用以执行P的LRQ中的其他Goroutine，而无需创建新的M。这有助于减少OS上的调度负载。</p>
+<p>例子：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="async1.png"
+        data-srcset="/go_series_scheduler/async1.png, async1.png 1.5x, /go_series_scheduler/async1.png 2x"
+        data-sizes="auto"
+        alt="/go_series_scheduler/async1.png"
+        title="/go_series_scheduler/async1.png" /></p>
+<p>基本调度图，Goroutine-1正在M上执行，并且还有3个Goroutine在LRQ中等待以获取其在M上的时间。网络轮询器闲置无事可做</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="async2.png"
+        data-srcset="/go_series_scheduler/async2.png, async2.png 1.5x, /go_series_scheduler/async2.png 2x"
+        data-sizes="auto"
+        alt="/go_series_scheduler/async2.png"
+        title="/go_series_scheduler/async2.png" /></p>
+<p>Goroutine-1希望进行网络系统调用，因此Goroutine-1被移至网络轮询器并处理了异步网络系统调用。将Goroutine-1移至网络轮询器后，M现在可用于执行与LRQ不同的Goroutine。在这种情况下，Goroutine-2在M上进行了上下文切换。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="async3.png"
+        data-srcset="/go_series_scheduler/async3.png, async3.png 1.5x, /go_series_scheduler/async3.png 2x"
+        data-sizes="auto"
+        alt="/go_series_scheduler/async3.png"
+        title="/go_series_scheduler/async3.png" /></p>
+<p>网络轮询器完成了异步网络系统调用，并将Goroutine-1移回了P的LRQ中。一旦Goroutine-1可以在M上上下文切换回去，它负责的Go相关代码就可以再次执行。这里最大的好处是，执行网络系统调用不需要额外的M。</p>
+<hr>
+<h3 id="37-同步系统调用">3.7 同步系统调用</h3>
+<p>当Goroutine想要进行无法异步完成的系统调用时，会发生什么情况？在这种情况下，无法使用网络轮询器，并且进行系统调用的Goroutine将阻止M。不幸的是，但是无法阻止这种情况的发生。无法异步进行的系统调用的一个示例是基于文件的系统调用。如果使用的是CGO，则在其他情况下，调用C函数也会阻塞M。让我们逐一介绍同步系统调用（例如文件I / O）会导致M阻塞的情况。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="sync1.png"
+        data-srcset="/go_series_scheduler/sync1.png, sync1.png 1.5x, /go_series_scheduler/sync1.png 2x"
+        data-sizes="auto"
+        alt="/go_series_scheduler/sync1.png"
+        title="/go_series_scheduler/sync1.png" /></p>
+<p>再次显示了我们的基本调度图，但是这次Goroutine-1将进行一次同步系统调用，该调用将阻塞M1。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="sync2.png"
+        data-srcset="/go_series_scheduler/sync2.png, sync2.png 1.5x, /go_series_scheduler/sync2.png 2x"
+        data-sizes="auto"
+        alt="/go_series_scheduler/sync2.png"
+        title="/go_series_scheduler/sync2.png" /></p>
+<p>调度器可以识别Goroutine-1导致M阻塞。此时，调度器将M1与P分离，而阻塞Goroutine-1仍处于连接状态。然后，调度器会引入一个新的M2来为P服务。这时，可以从LRQ中选择Goroutine-2，并在M2上进行上下文切换。如果由于先前的交换已存在M，则此过渡比必须创建新的M更快。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="sync3.png"
+        data-srcset="/go_series_scheduler/sync3.png, sync3.png 1.5x, /go_series_scheduler/sync3.png 2x"
+        data-sizes="auto"
+        alt="/go_series_scheduler/sync3.png"
+        title="/go_series_scheduler/sync3.png" /></p>
+<p>Goroutine-1进行的阻止系统调用完成。此时，Goroutine-1可以移回LRQ并再次由P服务。如果这种情况需要再次发生，则将M1放在一边以备将来使用。</p>
+<hr>
+<h3 id="38-工作窃取">3.8 工作窃取</h3>
+<p>计划程序的另一个方面是，它是一种可以窃取工作的计划程序。这有助于在某些方面保持调度效率。首先，您想要的最后一件事是M进入等待状态，因为一旦发生这种情况，操作系统将上下文M切换到core。这意味着，即使有一个Goroutine处于可运行状态，P也无法完成任何工作，直到M在上下文中切换回Core为止。窃取工作还有助于在所有P上平衡Goroutine，从而更好地分配工作并更高效地完成工作。</p>
+<p>例子：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="steal1.png"
+        data-srcset="/go_series_scheduler/steal1.png, steal1.png 1.5x, /go_series_scheduler/steal1.png 2x"
+        data-sizes="auto"
+        alt="/go_series_scheduler/steal1.png"
+        title="/go_series_scheduler/steal1.png" /></p>
+<p>我们有一个多线程Go程序，其中两个P分别为四个Goroutine和GRQ中的一个Goroutine提供服务。如果P的服务之一迅速地执行其所有Goroutine，会怎样？</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="steal2.png"
+        data-srcset="/go_series_scheduler/steal2.png, steal2.png 1.5x, /go_series_scheduler/steal2.png 2x"
+        data-sizes="auto"
+        alt="/go_series_scheduler/steal2.png"
+        title="/go_series_scheduler/steal2.png" /></p>
+<p>P1没有更多的Goroutines可以执行。但是在P2的LRQ和GRQ中都有可运行状态的Goroutine。这是P1需要窃取工作的时刻。窃取工作的规则如下。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">runtime.schedule() {
+    // only 1/61 of the time, check the global runnable queue for a G.
+    // if not found, check the local queue.
+    // if not found,
+    //     try to steal from other Ps.
+    //     if not, check the global runnable queue.
+    //     if not found, poll network.
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>因此，根据清单2中的这些规则，P1需要在其LRQ中检查P2中的Goroutines，并取其发现结果的一半。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="steal3.png"
+        data-srcset="/go_series_scheduler/steal3.png, steal3.png 1.5x, /go_series_scheduler/steal3.png 2x"
+        data-sizes="auto"
+        alt="/go_series_scheduler/steal3.png"
+        title="/go_series_scheduler/steal3.png" /></p>
+<p>Goroutine的一半来自P2，现在P1可以执行这些Goroutine。</p>
+<p>如果P2完成其所有Goroutine的服务并且P1的LRQ中没有剩余，该怎么办？</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="steal4.png"
+        data-srcset="/go_series_scheduler/steal4.png, steal4.png 1.5x, /go_series_scheduler/steal4.png 2x"
+        data-sizes="auto"
+        alt="/go_series_scheduler/steal4.png"
+        title="/go_series_scheduler/steal4.png" /></p>
+<p>P2完成了所有工作，现在需要偷一些东西。首先，它将查看P1的LRQ，但找不到任何Goroutine。接下来，将查看GRQ。在那里它将找到Goroutine-9。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="steal5.png"
+        data-srcset="/go_series_scheduler/steal5.png, steal5.png 1.5x, /go_series_scheduler/steal5.png 2x"
+        data-sizes="auto"
+        alt="/go_series_scheduler/steal5.png"
+        title="/go_series_scheduler/steal5.png" /></p>
+<p>P2从GRQ窃取Goroutine-9，并开始执行工作。所有这些偷窃工作的最大好处是，它可以让M保持忙碌而不会闲着。内部，这种窃取工作被认为是在旋转M。这种旋转还有其他好处，JBD在她的<a href="https://rakyll.org/scheduler/" target="_blank" rel="noopener noreffer">工作窃取</a>博客文章中很好地解释了这一点。</p>
+<hr>
+<h2 id="4-结论">4. 结论</h2>
+<p>这里讲了OS Scheduler和Go Scheduler的相关的实现原理。</p>
+<hr>
+<p><strong>参考</strong></p>
+<p><a href="https://www.ardanlabs.com/blog/2018/08/scheduling-in-go-part1.html" target="_blank" rel="noopener noreffer">OS Scheduler</a></p>
+<p><a href="https://www.ardanlabs.com/blog/2018/08/scheduling-in-go-part2.html" target="_blank" rel="noopener noreffer">Go Scheduler</a></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2020-04-07</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/go_series_scheduler/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cctrip.github.io/go_series_scheduler/" data-title="Go系列：调度器" data-via="https://twitter.com/zcc0388" data-hashtags="go"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://cctrip.github.io/go_series_scheduler/" data-hashtag="go"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://cctrip.github.io/go_series_scheduler/" data-title="Go系列：调度器"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://cctrip.github.io/go_series_scheduler/" data-title="Go系列：调度器"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://cctrip.github.io/go_series_scheduler/" data-title="Go系列：调度器"><i class="fab fa-weibo fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/go/">go</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/go_series_mem/" class="prev" rel="prev" title="Go系列：内存管理"><i class="fas fa-angle-left fa-fw"></i>Go系列：内存管理</a>
+            <a href="/go_series_conc/" class="next" rel="next" title="Go系列：并发">Go系列：并发<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.72.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"search":{"algoliaAppID":"L6D88CPUCA","algoliaIndex":"hugo","algoliaSearchKey":"994528be64a6348310adaf32dff5bc6c","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
