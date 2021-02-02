@@ -14,5 +14,12 @@
   完成12篇博客(每月一篇)
   完成4篇英文技术文章翻译(每季度一篇)
    读书清单  《性能之巅 洞悉系统、企业与云计算》 《Web性能权威指南》   极客时间清单  程序员的数学基础课 MySQL实战45讲   ]]></description>
+</item><item>
+    <title>精选文章阅读</title>
+    <link>https://cctrip.github.io/read_selection/</link>
+    <pubDate>Fri, 01 Jan 2021 17:55:28 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://cctrip.github.io/read_selection/</guid>
+    <description><![CDATA[Golang相关  test   Kubernetes相关  test   DevOps相关  test   Linux相关  test   网络相关  test   其他相关  [译] 现代网络负载均衡与代理导论（2017）  ]]></description>
 </item></channel>
 </rss>
