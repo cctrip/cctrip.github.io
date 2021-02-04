@@ -5,34 +5,34 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>Kubernetes系列：开篇 - CC&#39;s Trip</title><meta name="Description" content="开篇"><meta property="og:title" content="Kubernetes系列：开篇" />
-<meta property="og:description" content="开篇" />
+        <title>Kubernetes系列：Ingress - CC&#39;s Trip</title><meta name="Description" content="Ingress"><meta property="og:title" content="Kubernetes系列：Ingress" />
+<meta property="og:description" content="Ingress" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://cctrip.github.io/k8s_series/" />
-<meta property="og:image" content="https://cctrip.github.io/k8s_series/k8s-images.jpg"/>
+<meta property="og:url" content="https://cctrip.github.io/k8s_series_ingress/" />
+<meta property="og:image" content="https://cctrip.github.io/k8s_series_ingress/ingress-image.png"/>
 <meta property="article:published_time" content="2020-10-10T17:55:28+08:00" />
 <meta property="article:modified_time" content="2020-10-10T17:55:28+08:00" />
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://cctrip.github.io/k8s_series/k8s-images.jpg"/>
-<meta name="twitter:title" content="Kubernetes系列：开篇"/>
-<meta name="twitter:description" content="开篇"/>
+<meta name="twitter:image" content="https://cctrip.github.io/k8s_series_ingress/ingress-image.png"/>
+<meta name="twitter:title" content="Kubernetes系列：Ingress"/>
+<meta name="twitter:description" content="Ingress"/>
 <meta name="application-name" content="CC&#39;s Trip">
-<meta name="apple-mobile-web-app-title" content="CC&#39;s Trip"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/leo.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://cctrip.github.io/k8s_series/" /><link rel="prev" href="https://cctrip.github.io/devops_series_sre/" /><link rel="next" href="https://cctrip.github.io/k8s_series_ingress/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+<meta name="apple-mobile-web-app-title" content="CC&#39;s Trip"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/leo.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://cctrip.github.io/k8s_series_ingress/" /><link rel="prev" href="https://cctrip.github.io/k8s_series/" /><link rel="next" href="https://cctrip.github.io/read_selection/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "Kubernetes系列：开篇",
+        "headline": "Kubernetes系列：Ingress",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/cctrip.github.io\/k8s_series\/"
+            "@id": "https:\/\/cctrip.github.io\/k8s_series_ingress\/"
         },"image": [{
                             "@type": "ImageObject",
-                            "url": "https:\/\/cctrip.github.io\/k8s_series\/k8s-images.jpg",
-                            "width":  2199 ,
-                            "height":  999 
-                        }],"genre": "posts","keywords": "kubernetes","wordcount":  14 ,
-        "url": "https:\/\/cctrip.github.io\/k8s_series\/","datePublished": "2020-10-10T17:55:28+08:00","dateModified": "2020-10-10T17:55:28+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                            "url": "https:\/\/cctrip.github.io\/k8s_series_ingress\/ingress-image.png",
+                            "width":  1280 ,
+                            "height":  720 
+                        }],"genre": "posts","keywords": "kubernetes","wordcount":  45 ,
+        "url": "https:\/\/cctrip.github.io\/k8s_series_ingress\/","datePublished": "2020-10-10T17:55:28+08:00","dateModified": "2020-10-10T17:55:28+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
                     "@type": "ImageObject",
@@ -42,7 +42,7 @@
                 }},"author": {
                 "@type": "Person",
                 "name": "Hello.CC"
-            },"description": "开篇"
+            },"description": "Ingress"
     }
     </script></head>
     <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
@@ -111,18 +111,18 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content always-active" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">Kubernetes系列：开篇</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animated flipInX">Kubernetes系列：Ingress</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-category">included in <a href="/categories/cloud-native/"><i class="far fa-folder fa-fw"></i>Cloud Native</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-10-10">2020-10-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;14 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-10-10">2020-10-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;45 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="featured-image"><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/k8s_series/k8s-images.jpg"
-        data-srcset="/k8s_series/k8s-images.jpg, /k8s_series/k8s-images.jpg 1.5x, /k8s_series/k8s-images.jpg 2x"
+        data-src="/k8s_series_ingress/ingress-image.png"
+        data-srcset="/k8s_series_ingress/ingress-image.png, /k8s_series_ingress/ingress-image.png 1.5x, /k8s_series_ingress/ingress-image.png 2x"
         data-sizes="auto"
-        alt="/k8s_series/k8s-images.jpg"
-        title="开篇" /></div><div class="details toc" id="toc-static"  kept="">
+        alt="/k8s_series_ingress/ingress-image.png"
+        title="Ingress" /></div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right"></i></span>
@@ -130,7 +130,13 @@
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
     <li><a href="#系列目录">系列目录</a></li>
-    <li><a href="#1-介绍">1. 介绍</a></li>
+    <li><a href="#1-介绍">1. 介绍</a>
+      <ul>
+        <li><a href="#11-ingress">1.1 Ingress</a></li>
+        <li><a href="#12-ingress-controller">1.2 Ingress Controller</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-ingress-contoller-选择">2. Ingress Contoller 选择</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="系列目录">系列目录</h2>
@@ -146,7 +152,24 @@
 <p><a href="" rel="">《Kubernetes系列：调度》</a></p>
 <hr>
 <h2 id="1-介绍">1. 介绍</h2>
-<p>最近整体工作在往云原生和k8s上迁移，想将自己对于k8s的一些学习心得和经验写成一个系列记录下来。</p>
+<h3 id="11-ingress">1.1 Ingress</h3>
+<blockquote>
+<p><a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.20/#ingress-v1beta1-networking-k8s-io" target="_blank" rel="noopener noreffer">Ingress</a> 公开了从集群外部到集群内<a href="https://kubernetes.io/zh/docs/concepts/services-networking/service/" target="_blank" rel="noopener noreffer">service</a>的 HTTP 和 HTTPS 路由。 流量路由由 Ingress 资源上定义的规则控制。</p>
+</blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="ingress-process.jpg"
+        data-srcset="/k8s_series_ingress/ingress-process.jpg, ingress-process.jpg 1.5x, /k8s_series_ingress/ingress-process.jpg 2x"
+        data-sizes="auto"
+        alt="/k8s_series_ingress/ingress-process.jpg"
+        title="/k8s_series_ingress/ingress-process.jpg" /></p>
+<p>可以将 Ingress 配置为服务提供外部可访问的 URL、负载均衡流量、终止 SSL/TLS，以及提供基于名称的虚拟主机等能力。 <a href="https://kubernetes.io/zh/docs/concepts/services-networking/ingress-controllers" target="_blank" rel="noopener noreffer">Ingress Controller</a> 通常负责通过负载均衡器来实现 Ingress，尽管它也可以配置边缘路由器或其他前端来帮助处理流量。</p>
+<hr>
+<h3 id="12-ingress-controller">1.2 Ingress Controller</h3>
+<p>为了让 Ingress 资源工作，集群必须有一个正在运行的 Ingress Controller。</p>
+<hr>
+<h2 id="2-ingress-contoller-选择">2. Ingress Contoller 选择</h2>
 <hr>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
@@ -158,10 +181,10 @@
         </div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
-                            <a class="link-to-markdown" href="/k8s_series/index.md" target="_blank">Read Markdown</a>
+                            <a class="link-to-markdown" href="/k8s_series_ingress/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cctrip.github.io/k8s_series/" data-title="Kubernetes系列：开篇" data-via="https://twitter.com/zcc0388" data-hashtags="kubernetes"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://cctrip.github.io/k8s_series/" data-hashtag="kubernetes"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://cctrip.github.io/k8s_series/" data-title="Kubernetes系列：开篇"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://cctrip.github.io/k8s_series/" data-title="Kubernetes系列：开篇"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://cctrip.github.io/k8s_series/" data-title="Kubernetes系列：开篇"><i class="fab fa-weibo fa-fw"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cctrip.github.io/k8s_series_ingress/" data-title="Kubernetes系列：Ingress" data-via="https://twitter.com/zcc0388" data-hashtags="kubernetes"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://cctrip.github.io/k8s_series_ingress/" data-hashtag="kubernetes"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://cctrip.github.io/k8s_series_ingress/" data-title="Kubernetes系列：Ingress"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://cctrip.github.io/k8s_series_ingress/" data-title="Kubernetes系列：Ingress"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://cctrip.github.io/k8s_series_ingress/" data-title="Kubernetes系列：Ingress"><i class="fab fa-weibo fa-fw"></i></a></span>
             </div>
         </div>
     </div>
@@ -173,8 +196,8 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/devops_series_sre/" class="prev" rel="prev" title="DevOps系列：SRE"><i class="fas fa-angle-left fa-fw"></i>DevOps系列：SRE</a>
-            <a href="/k8s_series_ingress/" class="next" rel="next" title="Kubernetes系列：Ingress">Kubernetes系列：Ingress<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/k8s_series/" class="prev" rel="prev" title="Kubernetes系列：开篇"><i class="fas fa-angle-left fa-fw"></i>Kubernetes系列：开篇</a>
+            <a href="/read_selection/" class="next" rel="next" title="精选文章阅读">精选文章阅读<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">

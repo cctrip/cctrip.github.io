@@ -1,9 +1,9 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Cloud Native - Category - CC&#39;s Trip</title>
-        <link>https://cctrip.github.io/categories/cloud-native/</link>
-        <description>Cloud Native - Category - CC&#39;s Trip</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 28 Jan 2021 17:55:28 &#43;0800</lastBuildDate><atom:link href="https://cctrip.github.io/categories/cloud-native/" rel="self" type="application/rss+xml" /><item>
+        <title>translate - Tag - CC&#39;s Trip</title>
+        <link>https://cctrip.github.io/tags/translate/</link>
+        <description>translate - Tag - CC&#39;s Trip</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 28 Jan 2021 17:55:28 &#43;0800</lastBuildDate><atom:link href="https://cctrip.github.io/tags/translate/" rel="self" type="application/rss+xml" /><item>
     <title>[译]Kubernetes成熟度模型</title>
     <link>https://cctrip.github.io/k8s_model/</link>
     <pubDate>Thu, 28 Jan 2021 17:55:28 &#43;0800</pubDate>
@@ -37,43 +37,5 @@ Container
 Kubernetes
  Kubernetes是一个可移植的，可扩展的开源平台，用于管理容器化的工作负载和服务，可促进声明式配置和自动化。 它拥有一个庞大且快速增长的生态系统。 Kubernetes的服务，支持和工具广泛可用。Kubernetes为您提供了一个可弹性运行分布式系统的框架。 它负责应用程序的扩展和故障转移，提供部署模式等。
  Source: CNCF What is Kubernetes.]]></description>
-</item><item>
-    <title>Kubernetes系列：Ingress</title>
-    <link>https://cctrip.github.io/k8s_series_ingress/</link>
-    <pubDate>Sat, 10 Oct 2020 17:55:28 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://cctrip.github.io/k8s_series_ingress/</guid>
-    <description><![CDATA[系列目录 《Kubernetes系列：开篇》
-《Kubernetes系列：概述》
-《Kubernetes系列：架构》
-《Kubernetes系列：CRI》
-《Kubernetes系列：CNI》
-《Kubernetes系列：CSI》
-《Kubernetes系列：Service》
-《Kubernetes系列：Ingress》
-《Kubernetes系列：OAM》
-《Kubernetes系列：调度》
- 1. 介绍 1.1 Ingress  Ingress 公开了从集群外部到集群内service的 HTTP 和 HTTPS 路由。 流量路由由 Ingress 资源上定义的规则控制。
- 可以将 Ingress 配置为服务提供外部可访问的 URL、负载均衡流量、终止 SSL/TLS，以及提供基于名称的虚拟主机等能力。 Ingress Controller 通常负责通过负载均衡器来实现 Ingress，尽管它也可以配置边缘路由器或其他前端来帮助处理流量。
- 1.2 Ingress Controller 为了让 Ingress 资源工作，集群必须有一个正在运行的 Ingress Controller。
- 2. Ingress Contoller 选择  ]]></description>
-</item><item>
-    <title>Kubernetes系列：开篇</title>
-    <link>https://cctrip.github.io/k8s_series/</link>
-    <pubDate>Sat, 10 Oct 2020 17:55:28 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://cctrip.github.io/k8s_series/</guid>
-    <description><![CDATA[系列目录 《Kubernetes系列：开篇》
-《Kubernetes系列：概述》
-《Kubernetes系列：架构》
-《Kubernetes系列：CRI》
-《Kubernetes系列：CNI》
-《Kubernetes系列：CSI》
-《Kubernetes系列：Service》
-《Kubernetes系列：Ingress》
-《Kubernetes系列：OAM》
-《Kubernetes系列：调度》
- 1. 介绍 最近整体工作在往云原生和k8s上迁移，想将自己对于k8s的一些学习心得和经验写成一个系列记录下来。
- ]]></description>
 </item></channel>
 </rss>

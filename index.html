@@ -154,7 +154,7 @@ Kubernetes
  Kubernetes是一个可移植的，可扩展的开源平台，用于管理容器化的工作负载和服务，可促进声明式配置和自动化。 它拥有一个庞大且快速增长的生态系统。 Kubernetes的服务，支持和工具广泛可用。Kubernetes为您提供了一个可弹性运行分布式系统的框架。 它负责应用程序的扩展和故障转移，提供部署模式等。
  Source: CNCF What is Kubernetes.</div><div class="post-footer">
         <a href="/k8s_model/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/kubernetes/">kubernetes</a></div></div>
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/kubernetes/">kubernetes</a>,&nbsp;<a href="/tags/translate/">translate</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
             <a href="/talk_ops/"><img
         class="lazyload"
@@ -231,16 +231,16 @@ MLOps更快地提供机器学习模型 一套设计，构建和管理可重现�
         <a href="/read_selection/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/other/">other</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
-            <a href="/k8s_series/"><img
+            <a href="/k8s_series_ingress/"><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/k8s_series/k8s-images.jpg"
-        data-srcset="/k8s_series/k8s-images.jpg, /k8s_series/k8s-images.jpg 1.5x, /k8s_series/k8s-images.jpg 2x"
+        data-src="/k8s_series_ingress/ingress-image.png"
+        data-srcset="/k8s_series_ingress/ingress-image.png, /k8s_series_ingress/ingress-image.png 1.5x, /k8s_series_ingress/ingress-image.png 2x"
         data-sizes="auto"
-        alt="/k8s_series/k8s-images.jpg"
-        title="开篇" /></a>
+        alt="/k8s_series_ingress/ingress-image.png"
+        title="Ingress" /></a>
         </div><h1 class="single-title" itemprop="name headline">
-        <a href="/k8s_series/">Kubernetes系列：开篇</a>
+        <a href="/k8s_series_ingress/">Kubernetes系列：Ingress</a>
     </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-10-10">2020-10-10</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cloud-native/"><i class="far fa-folder fa-fw"></i>Cloud Native</a></span></div><div class="content">系列目录 《Kubernetes系列：开篇》
 《Kubernetes系列：概述》
 《Kubernetes系列：架构》
@@ -251,9 +251,11 @@ MLOps更快地提供机器学习模型 一套设计，构建和管理可重现�
 《Kubernetes系列：Ingress》
 《Kubernetes系列：OAM》
 《Kubernetes系列：调度》
- 1. 介绍 最近整体工作在往云原生和k8s上迁移，想将自己对于k8s的一些学习心得和经验写成一个系列记录下来。
- </div><div class="post-footer">
-        <a href="/k8s_series/">Read More</a><div class="post-tags">
+ 1. 介绍 1.1 Ingress  Ingress 公开了从集群外部到集群内service的 HTTP 和 HTTPS 路由。 流量路由由 Ingress 资源上定义的规则控制。
+ 可以将 Ingress 配置为服务提供外部可访问的 URL、负载均衡流量、终止 SSL/TLS，以及提供基于名称的虚拟主机等能力。 Ingress Controller 通常负责通过负载均衡器来实现 Ingress，尽管它也可以配置边缘路由器或其他前端来帮助处理流量。
+ 1.2 Ingress Controller 为了让 Ingress 资源工作，集群必须有一个正在运行的 Ingress Controller。
+ 2. Ingress Contoller 选择  </div><div class="post-footer">
+        <a href="/k8s_series_ingress/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/kubernetes/">kubernetes</a></div></div>
 </article><ul class="pagination"><li class="page-item active">
                     <span class="page-link">
@@ -268,8 +270,10 @@ MLOps更快地提供机器学习模型 一套设计，构建和管理可重现�
                         <a href="/page/3/">3</a>
                     </span>
                 </li><li class="page-item ">
+                    <span class="page-link" aria-hidden="true">&hellip;</span>
+                </li><li class="page-item ">
                     <span class="page-link">
-                        <a href="/page/4/">4</a>
+                        <a href="/page/5/">5</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">

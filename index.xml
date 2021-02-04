@@ -101,6 +101,26 @@ MLOps更快地提供机器学习模型 一套设计，构建和管理可重现�
     <guid>https://cctrip.github.io/read_selection/</guid>
     <description><![CDATA[Golang相关  test   Kubernetes相关  test   DevOps相关  test   Linux相关  test   网络相关  test   其他相关  [译] 现代网络负载均衡与代理导论（2017）  ]]></description>
 </item><item>
+    <title>Kubernetes系列：Ingress</title>
+    <link>https://cctrip.github.io/k8s_series_ingress/</link>
+    <pubDate>Sat, 10 Oct 2020 17:55:28 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://cctrip.github.io/k8s_series_ingress/</guid>
+    <description><![CDATA[系列目录 《Kubernetes系列：开篇》
+《Kubernetes系列：概述》
+《Kubernetes系列：架构》
+《Kubernetes系列：CRI》
+《Kubernetes系列：CNI》
+《Kubernetes系列：CSI》
+《Kubernetes系列：Service》
+《Kubernetes系列：Ingress》
+《Kubernetes系列：OAM》
+《Kubernetes系列：调度》
+ 1. 介绍 1.1 Ingress  Ingress 公开了从集群外部到集群内service的 HTTP 和 HTTPS 路由。 流量路由由 Ingress 资源上定义的规则控制。
+ 可以将 Ingress 配置为服务提供外部可访问的 URL、负载均衡流量、终止 SSL/TLS，以及提供基于名称的虚拟主机等能力。 Ingress Controller 通常负责通过负载均衡器来实现 Ingress，尽管它也可以配置边缘路由器或其他前端来帮助处理流量。
+ 1.2 Ingress Controller 为了让 Ingress 资源工作，集群必须有一个正在运行的 Ingress Controller。
+ 2. Ingress Contoller 选择  ]]></description>
+</item><item>
     <title>Kubernetes系列：开篇</title>
     <link>https://cctrip.github.io/k8s_series/</link>
     <pubDate>Sat, 10 Oct 2020 17:55:28 &#43;0800</pubDate>
@@ -177,19 +197,6 @@ Dev/Ops分离团队模型 雇佣系统管理员(sysadmin)运维复杂的计算�
     <pubDate>Wed, 15 Jul 2020 17:55:28 &#43;0800</pubDate>
     <author>Author</author>
     <guid>https://cctrip.github.io/devops_series_cicd/</guid>
-    <description><![CDATA[系列目录 《DevOps系列：开篇》
-《DevOps系列：概述》
-《DevOps系列：CMDB》
-《DevOps系列：CI/CD》
-《DevOps系列：监控》
-《DevOps系列：SRE》
- ]]></description>
-</item><item>
-    <title>DevOps系列：CMDB</title>
-    <link>https://cctrip.github.io/devops_series_cmdb/</link>
-    <pubDate>Fri, 10 Jul 2020 17:55:28 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://cctrip.github.io/devops_series_cmdb/</guid>
     <description><![CDATA[系列目录 《DevOps系列：开篇》
 《DevOps系列：概述》
 《DevOps系列：CMDB》
