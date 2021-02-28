@@ -101,191 +101,165 @@
         alt="/images/cc.jpg"
         title="/images/cc.jpg" /></a></div><h2 class="home-subtitle"><div id="id-1" class="typeit"></div></h2><div class="links"><a href="https://github.com/https://github.com/cctrip" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="https://twitter.com/https://twitter.com/zcc0388" title="Twitter" target="_blank" rel="noopener noreffer me"><i class="fab fa-twitter fa-fw"></i></a><a href="mailto:zcc0388@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
-            <a href="/linux_pam/"><img
+            <a href="/devops_series_intro/"><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/linux_pam/pam-image.jpg"
-        data-srcset="/linux_pam/pam-image.jpg, /linux_pam/pam-image.jpg 1.5x, /linux_pam/pam-image.jpg 2x"
+        data-src="/devops_series_intro/devops-image.png"
+        data-srcset="/devops_series_intro/devops-image.png, /devops_series_intro/devops-image.png 1.5x, /devops_series_intro/devops-image.png 2x"
         data-sizes="auto"
-        alt="/linux_pam/pam-image.jpg"
-        title="Linux PAM模块" /></a>
+        alt="/devops_series_intro/devops-image.png"
+        title="概述" /></a>
         </div><h1 class="single-title" itemprop="name headline">
-        <a href="/linux_pam/">Linux PAM模块</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2019-09-05">2019-09-05</time></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>Linux</a></span></div><div class="content">概念 Linux-PAM（Pluggable Authentication Modules for Linux）是一套共享库,使本地系统管理员可以随意选择程序的认证方式。换句话说，不用(重新编写)重新编译一个包含PAM功能的应用程序，就可以改变它使用的认证机制，这种方式下，就算升级本地认证机制,也不用修改程序。
- 工作机制 当应用程序希望与PAM交互以处理事件时，他们必须包括libpam，该libpam允许通过库提供的API进行通信。 当PAM看到必须处理的新事件时，它将查看/etc/pam.d中的相关配置文件，并确定在某些阶段必须使用哪些模块。
- /etc/pam.d配置文件介绍 配置文件语法
-1  type control module-path module-arguments   配置文件分为四列
- 第一列代表模块类型 第二列代表控制标记 第三列代表模块路径 第四列代表模块参数  类型 类型 是规则对应的管理组。它用于指定后续模块要与哪个管理组关联。
-目前有四种类型:
-  account
-此模块类型执行基于非身份验证的帐户管理。 通常用于限制/允许对服务的访问，例如是否允许登录,是否达到最大用户数,或是root用户是否允许在这个终端登录等。
-  auth
-此模块为用户验证提供两方面服务。让应用程序提示用户输入密码或者其他标记，确认用户合法性；通过他的凭证许可权限，设定组成员关系或者其他优先权。
-  password
-此模块用于控制用户更改密码的全过程。
-  session
-此模块处理为用户提供服务之前/后需要做的些事情。包括：开启/关闭交换数据的信息，监视目录等，设置用户会话环境等。也就是说这是在系统正式进行服务提供之前的最后一道关口。
-  如果在类型前加一个短横线 -，就表示如果找不到这个模块，导致无法被加载时，这一事件不会被记录在日志中。这个功能适用于那些认证时非必需的、安装时可能没被安装进系统的模块。
-控制标记 流程栈（stack）
-它是认证时执行步骤和规则的堆叠。在某个服务的配置文件中，它体现在了配置文件中的自上而下的执行顺序中。栈是可以被引用的，即在一个栈（或者流程）中嵌入另一个栈。
-控制标记 规定如何处理PAM模块鉴别认证的结果，简而言之就是鉴别认证成功或者失败之后会发生什么事，如何进行控制。一般有两种形式，一种是比较常见的“关键字”方式，另一种则是用方括号（[]）包含的“value =action”方式。
-关键字方式:
-  required
-如果本条目没有被满足，那最终本次认证一定失败，但认证过程不因此打断。整个栈运行完毕之后才会返回“认证失败”信号。
-  requisite
-如果本条目没有被满足，那本次认证一定失败，而且整个栈立即中止并返回错误信号。
-  sufficient</div><div class="post-footer">
-        <a href="/linux_pam/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a>,&nbsp;<a href="/tags/security/">security</a></div></div>
+        <a href="/devops_series_intro/">DevOps系列：概述</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-07-05">2020-07-05</time></span>&nbsp;<span class="post-category">included in <a href="/categories/devops/"><i class="far fa-folder fa-fw"></i>DevOps</a></span></div><div class="content">系列目录 《DevOps系列：开篇》
+《DevOps系列：概述》
+《DevOps系列：CMDB》
+《DevOps系列：CI/CD》
+《DevOps系列：监控》
+《DevOps系列：SRE》
+ 1. 介绍 DevOps大概起源于08到09年之间，最初的目的是要打破开发与运维之间的壁垒，2010年，The Agile Admin博客发布了《What is DevOps》给出了一个详细的DevOps定义，算是对DevOps有了一个初步的定义。不过，我这里还是引用一下wiki的定义：
+ DevOps（开发 Development 与运维 Operations 的组合词）是一种文化、一场运动或实践，强调在自动化软件交付流程及基础设施变更过程中，软件开发人员与其他信息技术（IT）专业人员彼此之间的协作与沟通。它旨在建立一种文化与环境，使构建、测试、软件发布得以快速、频繁以及更加稳定地进行。
+  2. 优势 传统的瀑布模型会带来很多沟通上的问题和成本，DevOps实际上是要来解决这些问题的。我们分别从工程上和角色上的优势来说一说
+2.1 基于DevOps的工程上的优势  DevOps的主要好处是可以更快地交付质量大大提高的软件。 根据行业的不同，可能还会有其他好处。大部分软件工程采用DevOps具有如下优势：
+  提升了可靠性
+  更快速的软件更新
+  减少故障恢复时间
+  更好的用户体验
+  更加高效
+  减少失败
+  降低风险
+  更好的质量
+  更短的开发周期
+  提升产品交付时间
+  提升稳定性
+  节省成本
+   2.</div><div class="post-footer">
+        <a href="/devops_series_intro/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/devops/">devops</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
-            <a href="/tls/"><img
+            <a href="/devops_series/"><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/tls/security.jpg"
-        data-srcset="/tls/security.jpg, /tls/security.jpg 1.5x, /tls/security.jpg 2x"
+        data-src="/devops_series/devops-image.jpg"
+        data-srcset="/devops_series/devops-image.jpg, /devops_series/devops-image.jpg 1.5x, /devops_series/devops-image.jpg 2x"
         data-sizes="auto"
-        alt="/tls/security.jpg"
-        title="理解SSL/TLS协议" /></a>
+        alt="/devops_series/devops-image.jpg"
+        title="开篇" /></a>
         </div><h1 class="single-title" itemprop="name headline">
-        <a href="/tls/">理解SSL/TLS协议</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2017-01-08">2017-01-08</time></span>&nbsp;<span class="post-category">included in <a href="/categories/security/"><i class="far fa-folder fa-fw"></i>Security</a></span></div><div class="content">背景 早期我们在访问web时使用HTTP协议，该协议在传输数据时使用明文传输，明文传输带来了以下风险：
- 信息窃听风险，第三方可以获取通信内容 信息篡改风险，第三方可以篡改通信内容 身份冒充风险，第三方可以冒充他人身份参与通信  为了解决明文传输所带来的风险，网景公司在1994年设计了SSL用于Web的安全传输协议，这是SSL的起源。IETF将SSL进行标准化，1999年公布了第一版TLS标准文件。随后又公布了 RFC 5246（2008年8月）与 RFC 6176 （2011年3月）。该协议在web中被广泛应用。
- SSL/TLS协议 TLS（Transport Layer Security，传输层安全协议），及其前身SSL（Secure Sockets Layer，安全套接层）是一种安全协议，目的是为互联网通信，提供安全及数据完整性保障。
-TLS协议使用以下三种机制为信息通信提供安全传输：
- 隐秘性，所有通信都通过加密后进行传播 身份认证，通过证书进行认证 可靠性，通过校验数据完整性维护一个可靠的安全连接   以TLS1.2为例说明TLS协议 TLS协议由TLS Record Protocol和TLS Handshake Protocol两层协议组成
-TLS Record Protocol 该协议提供了连接安全的两个基本特性：
-  连接私有
-对称密码用于数据加密，这种对称加密是为每条连接唯一生成的并基于另一个人协商的秘密协议
-  连接可靠
-消息传输包括一条消息 使用密钥MAC进行完整性检查，安全哈希函数（例如， SHA-1等）用于MAC计算。
-   TLS Handshake Protocol 该协议提供了连接安全的三个基本特性：
- 可以使用非对称身份验证对等方的身份，或者 公钥，密码学等 共享密钥的协商是安全的 谈判可靠   一个TLS握手协议一般涉及以下步骤：
- 交换hello信息用于算法协商，交换随机值，并检查会话是否恢复 交换必要的密码信息以允许客户端和服务端同意使用premaster secret 交换证书和密码信息以允许客户端和服务端进行身份验证 通过随机值和premaster secret生成master secret 向record layer提供安全参数 允许客户端和服务器验证其对等方具有计算出的相同安全参数，并且握手发生在没有被攻击者篡改的情况下  TLS握手的完整消息流   ClientHello</div><div class="post-footer">
-        <a href="/tls/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/security/">security</a></div></div>
+        <a href="/devops_series/">DevOps系列：开篇</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-07-01">2020-07-01</time></span>&nbsp;<span class="post-category">included in <a href="/categories/devops/"><i class="far fa-folder fa-fw"></i>DevOps</a></span></div><div class="content">系列目录 《DevOps系列：开篇》
+《DevOps系列：概述》
+《DevOps系列：CMDB》
+《DevOps系列：CI/CD》
+《DevOps系列：监控》
+《DevOps系列：SRE》
+ 1. 介绍 在Ops领域工作也接近8年了，个人也经历了从人工Ops&ndash;&gt;工具Ops&ndash;&gt;平台Ops的转变，最近想把自己的一些DevOps相关的学习和经验记录下来，整理成一个系列，算是对自己这么多年的工作经验的一个总结，也想对之后的发展想法做下自己的规划和判断。
+ 2. 当我们谈论Ops，我们在谈论什么 2.1 从开发模型说起 早期的软件开发模型一般采用瀑布式开发模型，该模型将软件过程划分成几个阶段，从需求到设计、开发、测试和运维，它的理念是软件开发的规模越来越大，必须以一种工程管理的方式来定义每个阶段，以及相应的交付产物和交付标准，以期通过一种重流程，重管控，按照计划一步步推进整个项目的交付过程。Ops处于软件交付的末端。那么，具体的Ops是什么呢？
+2.2 什么是运维(Ops)  运维(Ops)， 通常指IT运维（IT Operations）， 是指通过一系列步骤和方法，管理与维护线上服务（Online Service）或者产品 （Product）的过程。
+ 运维有着非常广泛的定义，在不同的公司不同的阶段代表不同的职责与定位，没有一个统一的标准。尤其是随着互联网的发展，运维的含义也在逐渐互联网化。互联网运维通常属于技术部门，与研发、测试、系统管理同为互联网产品的技术支撑，这种划分在国内和国外以及大小公司之间都会多少有一些不同。运维的重点在于系统运行的各种环境，从机房、网络、存储、物理机、虚拟机这些基础的架构，到数据库、中间件平台、云平台、大数据平台，偏重的也不是编程，而是对这类平台的使用和管理。运维的水平可以成为衡量一个公司（IT公司）技术实力的标准。随着软件行业和规模的不断发展，Ops也在不断的改进。
+2.3 Ops的发展历程 2.3.1 人工阶段 在这个阶段，所有运维问题，基本靠人工操作完成。这种情况下，系统规模不大，遇到的问题相对简单，大多集中在硬件、网络和系统层面，所以有一定操作系统或网络维护经验的人就可以搞定。
+2.3.2 脚本&amp;工具阶段 一般绝大多数企业都会很快从第一阶段过渡到第二阶段，因为上一阶段的大量重复繁琐的操作，完全可以转化为脚本来实现，而不是每次都去敲一堆类似的命令。
+早期的运维主要以各种 shell 为主，所以很多运维如果会 shell 编写一些批处理脚本，就会很有竞争力了。再往后，我们大家所熟知的 Perl、Ruby、Python 等动态语言也被广泛应用于脚本工具的实现，特别是一些逻辑和场景相对复杂的自动化实现。不同的工具也被开发出现，例如ansible、chef、puppet等。
+2.3.3 流程&amp;工具阶段 在该阶段，要面临更加复杂化的场景实现，比如做一次业务部署，运维同学可能要安装服务器，做系统配置变更，安装软件包、启停进程，然后再负载均衡上配置服务等等。这时，就需要有一个流程将一个个的脚本功能串联起来，同时还要有一些脚本执行结果校验及判断的过程。
+所以，这就对流程和工具平台有了更大的诉求。同时，在一些 IT 化比较早的行业，如电信运营商和金融行业，由于对变更过程的严格控制，这就需要更加科学和规范的管理措施，所以会引入 ITIL 这样 IT 服务管理体系，对整个 IT 系统及其变更进行管控。
+2.3.4 运维平台阶段(DevOps) 从该阶段开始，随着业务复杂度和体量的增加，为了完成企业对于效率、稳定和成本的要求，倒逼着整个业务和技术架构发生转变，例如服务化和分布式等技术，而在这样新的技术体系下，运维所面临的场景复杂度也急剧上升，原有的运维技能如操作系统维护、系统配置、脚本编写已经完全满足不了要求。同时，由于软件系统复杂度的提升，也需要运维投入更多的精力去关注业务软件架构和应用服务上。也正是在这种要求下，运维人员不再是运维工作唯一参与的角色，每个在软件交付过程中需要参与的角色都将参与到DevOps中来，用于提升效率。
+2.3.5 智能运维阶段(AIOps) 个人理解这个是未来阶段，需要大厂来完成，因为从 AI 的角度，AIOps 有三个方面的充要条件：机器学习算法、计算能力如 GPU、海量数据。那么海量数据这个条件基本是只有大厂才能具备了。
+ 3. DevOps 3.1 从开发模型的转变说起 3.</div><div class="post-footer">
+        <a href="/devops_series/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/devops/">devops</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
-            <a href="/http/"><img
+            <a href="/go_series_conc/"><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/http/network.jpg"
-        data-srcset="/http/network.jpg, /http/network.jpg 1.5x, /http/network.jpg 2x"
+        data-src="/go_series_conc/conc-image.png"
+        data-srcset="/go_series_conc/conc-image.png, /go_series_conc/conc-image.png 1.5x, /go_series_conc/conc-image.png 2x"
         data-sizes="auto"
-        alt="/http/network.jpg"
-        title="谈谈HTTP" /></a>
+        alt="/go_series_conc/conc-image.png"
+        title="并发" /></a>
         </div><h1 class="single-title" itemprop="name headline">
-        <a href="/http/">谈谈HTTP</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2016-05-29">2016-05-29</time></span>&nbsp;<span class="post-category">included in <a href="/categories/network/"><i class="far fa-folder fa-fw"></i>Network</a></span></div><div class="content">写在前面 如今网络已经无处不在，人们通过网络获取浏览各种信息，其中，大部分都是通过浏览器访问各种网页来获取我们想要的信息，那么浏览器与网页(服务端)究竟是如何通信的呢？这就得从HTTP协议说起了，浏览器获取网页信息都是基于HTTP协议来处理的。
- 概念 HTTP（HyperText Transfer Protocol，超文本传输协议）是互联网上应用最为广泛的一种网络协议。设计HTTP最初的目的是为了提供一种发布和接收HTML页面的方法。通过HTTP或者HTTPS协议请求的资源由统一资源标识符（Uniform Resource Identifiers，URI）来标识。HTTP是一个应用层协议，由请求和响应构成，是一个标准的客户端服务器模型。其具有如下特点：
-  支持客户/服务器模式。
-  简单快速：客户向服务器请求服务时，只需传送请求方法和路径。请求方法常用的有GET、HEAD、POST。每种方法规定了客户与服务器联系的类型不同。由于HTTP协议简单，使得HTTP服务器的程序规模小，因而通信速度很快。
-  灵活：HTTP允许传输任意类型的数据对象。正在传输的类型由Content-Type加以标记。
-  无连接：无连接的含义是限制每次连接只处理一个请求。服务器处理完客户的请求，并收到客户的应答后，即断开连接。采用这种方式可以节省传输时间。
-  无状态：HTTP协议是无状态协议。无状态是指协议对于事务处理没有记忆能力。缺少状态意味着如果后续处理需要前面的信息，则它必须重传，这样可能导致每次连接传送的数据量增大。另一方面，在服务器不需要先前信息时它的应答就较快
-  PS：尽管TCP/IP协议是互联网上最流行的应用，HTTP协议中，并没有规定必须使用它或它支持的层。事实上，HTTP可以在任何互联网协议上，或其他网络上实现。HTTP假定其下层协议提供可靠的传输。因此，任何能够提供这种保证的协议都可以被其使用。因此也就是其在TCP/IP协议族使用TCP作为其传输层。
- 工作流程 HTTP协议的通信过程永远是客户端发起请求(request)，服务器回送响应(respone)，如下图所示：
-一个完整的HTTP操作称为一个事务，其流程可分为四步：
-  建立连接(TCP三次握手)
-  客户端发送一个请求报文给服务器
-  服务器响应对应信息
-  客户端接收信息，然后断开连接
-   请求和响应详解 请求报文   请求行：由请求方法、URL和HTTP版本组成
-eg：GET /index.html HTTP/1.1
-  请求方法
-  GET：请求获取URI所标识的资源
-  HEAD：请求获取URI所标识的资源，但不传回资源的文本部分
-  POST：向指定URI资源提交数据，请求服务器进行处理
-  PUT：向指定URI资源上传其最新内容
-  DELETE：请求服务器删除URI所标识的资源</div><div class="post-footer">
-        <a href="/http/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/network/">network</a></div></div>
+        <a href="/go_series_conc/">Go系列：并发</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-04-07">2020-04-07</time></span>&nbsp;<span class="post-category">included in <a href="/categories/golang/"><i class="far fa-folder fa-fw"></i>Golang</a></span></div><div class="content">系列目录 《Go系列：内存管理》
+《Go系列：调度器》
+《Go系列：并发》
+ </div><div class="post-footer">
+        <a href="/go_series_conc/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/go/">go</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
-            <a href="/system_start/"><img
+            <a href="/go_series_scheduler/"><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/system_start/linux.jpg"
-        data-srcset="/system_start/linux.jpg, /system_start/linux.jpg 1.5x, /system_start/linux.jpg 2x"
+        data-src="/go_series_scheduler/scheduler-image.png"
+        data-srcset="/go_series_scheduler/scheduler-image.png, /go_series_scheduler/scheduler-image.png 1.5x, /go_series_scheduler/scheduler-image.png 2x"
         data-sizes="auto"
-        alt="/system_start/linux.jpg"
-        title="理解系统启动过程" /></a>
+        alt="/go_series_scheduler/scheduler-image.png"
+        title="调度器" /></a>
         </div><h1 class="single-title" itemprop="name headline">
-        <a href="/system_start/">理解系统启动过程</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2016-05-21">2016-05-21</time></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>Linux</a></span></div><div class="content">前言 Linux是一种自由和开放源代码的类UNIX操作系统。该操作系统的内核由林纳斯·托瓦兹在1991年10月5日首次发布。在加上用户空间的应用程序之后，成为Linux操作系统。Linux是自由软件和开放源代码软件发展中最著名的例子。
-接触Linux的时间也不算短了，一直都是直接使用Linux操作系统进行一些工作，很少去了解系统从开机到能使用的整个过程，感觉有需要好好理解下整个系统的启动过程，故写这篇博客加深一下理解。
- 启动过程 先通过一张图来简单了解下整个系统启动的流程，整个过程基本可以分为POST&ndash;&gt;BIOS&ndash;&gt;MBR(GRUB)&ndash;&gt;Kernel&ndash;&gt;Init&ndash;&gt;Runlevel。下面会详细说明每个过程的作用。
-  BIOS
-BIOS(Basic Input/Output System)，基本输入输出系统，该系统存储于主板的ROM芯片上，计算机在开机时，会最先读取该系统，然后会有一个加电自检过程，这个过程其实就是检查CPU和内存，计算机最基本的组成单元(控制器、运算器和存储器)，还会检查其他硬件，若没有异常就开始加载BIOS程序到内存当中。详细的BIOS功能，这边就不说了，BIOS主要的一个功能就是存储了磁盘的启动顺序，BIOS会按照启动顺序去查找第一个磁盘头的MBR信息，并加载和执行MBR中的Bootloader程序，若第一个磁盘不存在MBR，则会继续查找第二个磁盘(PS：启动顺序可以在BIOS的界面中进行设置)，一旦BootLoader程序被检测并加载内存中，BIOS就将控制权交接给了BootLoader程序。
-  MBR
-MBR(Master Boot Record)，主引导记录，MBR存储于磁盘的头部，大小为512bytes，其中，446bytes用于存储BootLoader程序，64bytes用于存储分区表信息，最后2bytes用于MBR的有效性检查。
-  GRUB
-GRUB(Grand Unified Bootloader)，多系统启动程序，其执行过程可分为三个步骤：
-  Stage1：这个其实就是MBR，它的主要工作就是查找并加载第二段Bootloader程序(stage2)，但系统在没启动时，MBR根本找不到文件系统，也就找不到stage2所存放的位置，因此，就有了stage1_5
-  Stage1_5：该步骤就是为了识别文件系统
-  Stage2：GRUB程序会根据/boot/grub/grub.conf文件查找Kernel的信息，然后开始加载Kernel程序，当Kernel程序被检测并在加载到内存中，GRUB就将控制权交接给了Kernel程序。
-PS：实际上这个步骤/boot还没被挂载，GRUB直接识别grub所在磁盘的文件系统，所以实际上应该是/grub/grub.conf文件，该配置文件的信息如下：
-grub.conf:
-  1      #boot=/dev/sda
-default=0 #设定默认启动的title的编号，从0开始
-timeout=5 #等待用户选择的超时时间
-splashimage=(hd0,0)/boot/grub/splash.xpm.gz #GRUB的背景图片
-hiddenmenu #隐藏菜单
-title CentOS (2.6.18-194.el5PAE) #内核标题
-root (hd0,0) #内核文件所在的设备 kernel /vmlinuz-2.6.18-194.el5PAE ro root=LABEL=/ #内核文件路径以及传递给内核的参数 initrd /initrd-2.6.18-194.el5PAE.img #ramdisk文件路径 ```    Kernel</div><div class="post-footer">
-        <a href="/system_start/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a></div></div>
+        <a href="/go_series_scheduler/">Go系列：调度器</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-04-07">2020-04-07</time></span>&nbsp;<span class="post-category">included in <a href="/categories/golang/"><i class="far fa-folder fa-fw"></i>Golang</a></span></div><div class="content">系列目录 《Go系列：内存管理》
+《Go系列：调度器》
+《Go系列：并发》
+ 1. 介绍 随着技术的不断发展，CPU也在不断发展，出现了多处理器、多核心、CPU缓存、NUMA架构等概念。为了最大化利用CPU的计算能力，软件也在不断发展，出现了并发和并行等概念。而为了支持并发和并行，就需要调度器，用于处理计算任务在不同CPU上的计算。我们主要从系统调度和语言层面的调度来说明。
+ 2. OS Scheduler 我们的的程序只是一系列机器指令，需要依次执行。为此，操作系统使用了线程的概念，线程的工作就是负责说明并按顺序执行分配给它的指令集。执行将不断进行，直到没有更多指令可以执行。
+在操作系统上，我们运行的每个程序都会创建一个进程，并且为每个进程分配一个初始线程。线程具有创建更多线程的能力。所有这些不同的线程彼此独立运行，并且调度决策是在线程级别而不是在进程级别做出的。线程可以同时运行(并发，每个任务运行在同一个的core上)，也可以并行运行(并行，每个任务运行在不同core上同时运行)。线程还维护自己的状态，以允许在本地安全和独立地执行指令。
+如果存在可以执行的线程时，OS Scheduler负责确保core不处于空闲状态。它还必须产生一种幻想，即所有可以执行的线程正在同时执行。在创建这种幻想的过程中，Scheduler需要优先运行优先级较高的线程，而不是运行优先级较低的线程。但是，具有较低优先级的线程并无法节省执行时间。Scheduler还需要通过做出快速而明智的决策来最大程度地减少调度延迟。
+ 2.1 执行指令 程序计数器(PC)有时也称为指令指针(IP)，它使线程可以跟踪要执行的下一条指令。在大多数处理器中，PC指向下一条指令，而不是当前指令。
+ 2.2 Thread状态  Waiting，这意味着线程已经停止执行并需要等待某些操作才能继续。这可能是由于诸如等待硬件(磁盘，网络)，操作系统(系统调用)或同步调用(原子，互斥体)之类的原因。这些类型的延迟是导致性能下降的根本原因。 Runnable ，这意味着线程需要获得cpu时间，这样它可以执行其分配的机器指令。如果您有很多需要cpu时间的线程，则线程必须等待更长的时间才能获得cpu时间。而且，随着更多线程争夺cpu时间，任何给定线程获得的cpu时间都将缩短。这种类型的调度延迟也可能是性能下降的原因 Executing，这意味着线程已放置在core上并正在执行其机器指令。与应用程序相关的工作已经完成。这是每个人都想要的状态。   2.3 工作类型 CPU-Bound，这项工作永远不会造成线程可能处于等待状态的情况。这是不断进行计算的工作。计算Pi到第N位的线程将是CPU-Bound的。
+IO-Bound，这项工作导致线程进入等待状态。这项工作包括请求通过网络访问资源或对操作系统进行系统调用。需要访问数据库的线程将是IO-Bound。我将包括同步事件(互斥量，原子)等导致线程进入等待状态的事件都归为此类。
+ 2.4 上下文切换 抢占式调度
+首先，这意味着在任何给定时间选择要运行的线程时，调度程序都是不可预测的。线程优先级和事件(例如在网络上接收数据)一起使得无法确定调度程序将选择做什么以及何时执行。
+其次，这意味着您绝不能基于自己幸运的经历但不能保证每次都发生的某些感知行为来编写代码。让自己思考很容易，因为我已经看到这种情况以1000次相同的方式发生，这是有保证的行为。如果需要在应用程序中确定性，则必须控制线程的同步和编排。
+ 在内核上交换线程的物理行为称为上下文切换。当调度程序从core中拉出一个excuting线程并将其替换为可runnable线程时，就会发生上下文切换。从运行队列中选择的线程将进入excuting状态。被拉出的线程可以移回runnable状态(如果它仍具有运行能力)或waitting状态(如果由于IO-Bound类型的请求而被替换)。
+上下文切换被认为是昂贵的，因为在core上和在core外交换线程都需要时间。上下文切换期间的延迟等待时间量取决于不同的因素，但花费约1000到1500纳秒的时间并非没有道理。虑到硬件应该能够合理地(平均)在每核每纳秒执行12条指令，上下文切换可能会花费大约12000至18k的延迟指令。本质上，您的程序在上下文切换期间将失去执行大量指令的能力。
+如果您有一个专注于IO-Bound工作的程序，那么上下文切换将是一个优势。一旦一个线程进入等待状态，另一个处于可运行状态的线程就会代替它。这使核心始终可以工作。这是调度的最重要方面之一。如果有工作要做(线程处于可运行状态)，请不要让core闲置。
+如果您的程序专注于CPU-Bound工作，那么上下文切换将成为性能噩梦。由于Thead总是有工作要做，因此上下文切换将阻止该工作的进行。这种情况与IO-Bound工作负载形成鲜明对比。
+ 2.5 少即是多 制定调度决策时，scheduler还需要考虑和处理更多的事情。您可以控制在应用程序中使用的线程数。当要考虑的线程更多，并且发生IO-Bound工作时，就会出现更多的混乱和不确定性行为。任务需要更长的时间来计划和执行。
+这就是为什么游戏规则是“少即是多”的原因。处于runnable状态的线程越少，意味着获得调度的时间越少，并且每个线程随着时间的流逝会花费更多的时间。更多线程处于runnable状态意味着每个线程随着时间流逝的时间更少。这意味着随着时间的流逝，您完成的工作也更少了。
+ 2.6 寻找平衡 您需要在拥有的core数量与为应用程序获得最佳吞吐量所需的线程数量之间找到平衡。在管理这种平衡时，线程池是一个很好的答案。
+如果您的服务正在执行许多不同类型的工作该怎么办？这可能会产生不同且不一致的延迟。也许它还会创建许多需要处理的不同的系统级事件。不可能找到一个在所有不同工作负荷下始终有效的魔术数字。当涉及到使用线程池来调整服务的性能时，找到正确的一致配置会变得非常复杂。
+ 2.7 CPU缓存 从主存储器访问数据具有很高的延迟成本（〜100至〜300个时钟周期），以致处理器和内核具有本地缓存，以使数据保持在需要它的硬件线程附近。从缓存访问数据的成本要低得多（约3至40个时钟周期），具体取决于要访问的缓存。今天，性能的一个方面是关于如何有效地将数据输入处理器以减少这些数据访问延迟。编写改变状态的多线程应用程序需要考虑缓存系统的机制。
+使用cache line在处理器和主存储器之间交换数据。缓存行是在主内存和缓存系统之间交换的64字节内存块。每个内核都会获得所需的任何高速缓存行的副本，这意味着硬件使用值语义。这就是为什么多线程应用程序中的内存突变会造成性能方面的噩梦。
+当多个并行运行的线程正在访问同一数据值或什至彼此接近的数据值时，它们将在同一高速缓存行上访问数据。在任何内核上运行的任何线程都将获得该同一缓存行的副本。
+ 如果给定核心上的一个线程更改了其缓存行的副本，则必须借助硬件的魔力，将同一缓存行的所有其他副本标记为脏。当线程尝试对脏的缓存行进行读写访问时，需要主存储器访问（〜100至〜300个时钟周期）才能获取缓存行的新副本.
+也许在2核处理器上这没什么大不了，但是如果32核处理器并行运行32个线程，所有访问和变异数据都在同一缓存行上，那又如何呢？带有两个分别具有16个内核的物理处理器的系统又如何呢？由于处理器间通信增加了延迟，因此情况将变得更糟。该应用程序将遍历内存，性能将非常糟糕，并且很可能您将不明白为什么。
+这称为高速缓存一致性问题，还引入了错误共享之类的问题。当编写将改变共享状态的多线程应用程序时，必须考虑缓存系统.
+ 2.8 调度决策方案 想象一下，我要您根据我给您的高级信息编写操作系统调度程序。考虑一下您必须考虑的一种情况。请记住，这是调度程序在做出调度决策时必须考虑的许多有趣的事情之一。</div><div class="post-footer">
+        <a href="/go_series_scheduler/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/go/">go</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
-            <a href="/dns/"><img
+            <a href="/go_series_mem/"><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/dns/network.jpg"
-        data-srcset="/dns/network.jpg, /dns/network.jpg 1.5x, /dns/network.jpg 2x"
+        data-src="/go_series_mem/memory-image.png"
+        data-srcset="/go_series_mem/memory-image.png, /go_series_mem/memory-image.png 1.5x, /go_series_mem/memory-image.png 2x"
         data-sizes="auto"
-        alt="/dns/network.jpg"
-        title="谈谈DNS" /></a>
+        alt="/go_series_mem/memory-image.png"
+        title="内存管理" /></a>
         </div><h1 class="single-title" itemprop="name headline">
-        <a href="/dns/">谈谈DNS</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2016-05-21">2016-05-21</time></span>&nbsp;<span class="post-category">included in <a href="/categories/network/"><i class="far fa-folder fa-fw"></i>Network</a></span></div><div class="content">写在前面 目前，我们大部分的网络通信都是基于TCP/IP协议的，而TCP/IP又基于IP地址作为唯一标识进行通信，随着需要记忆的IP地址数量的增多，肯定会超出我们的记忆能力范围，但如果使用一种利于人们的记忆的方式，如域名，例如&quot;www.google.com&rdquo;，我们便可以轻松的记忆这种方式的标识，而不是繁杂的数字。而DNS(域名系统)就是为了可以使用这种方式提供服务的。
- 概念 DNS(Domain Name System)，域名系统，它是因特网的一项服务。它作为将域名和IP地址相互映射的一个分布式数据库，能够使人更方便地访问互联网。DNS使用TCP和UDP端口53。当前，对于每一级域名长度的限制是63个字符，域名总长度则不能超过253个字符。
-DNS Domain Namespace，DNS域命名空间，是一种分层树状结构，其格式如下:&ldquo;www.google.com&rdquo;,以点&rdquo;.&ldquo;为分隔。结构如图所示：
-  根域：绝对域名(FQDN)，以点&rdquo;.&ldquo;结尾的域名
-  顶级域：用来指示某个国家/地区或组织使用的名称的类型名称，例如.com
-  二级域：个人或组织在因特网上使用的注册名称，例如google.com
-  子域：已注册的二级域名派生的域名，一般就是网站名，例如www.google.com
-  主机名：标识网络上的特定计算机，例如h1.www.google.com
-  DNS资源记录：(即映射关系，通常由域名管理员进行配置)，常见类型如下：
-  SOA：起始授权机构
-  NS：名称服务器
-  MX：邮件服务器
-  A：IP地址(最常用，映射IP地址)
-  CNAME：别名(较常用，映射到其他域名)
-   DNS工作原理 当我们请求一个域名时，会通过DNS服务器将域名解析成IP访问最终的主机，那么，DNS是如何查询到域名所对应的IP并返回给我们的呢？请工作机制如图所示：
-当我们请求一个域名时，直到获取到IP地址，整个过程是如何工作的？以请求www.codecc.xyz为例：
-  首先，我们的主机会去查找本地的hosts文件和本地DNS解析器缓存，如果hosts文件和本地DNS缓存存在www.codecc.xyz和IP的映射关系，则完成域名解析，请求该IP地址，否则进入第二步。
-  当hosts和本地DNS解析器缓存都没有对应的网址映射关系，则会根据机器(/etc/reslove.conf)配置的本地DNS服务器进行查询，此服务器收到查询时，如果要查询的域名在本地配置区域资源或者缓存中存在映射关系，则跳到步骤9，将解析结果直接返回给客户机。
-  PS：一二步骤为递归查询，其余步骤为迭代查询
- 若本地DNS服务器不存在该域名的映射关系，就把请求发送至13台根DNS服务器。
-  根DNS服务器会判断这个域名(.xyz)由谁来授权管理，并返回一个负责该顶级域的DNS服务器的一个IP给本地DNS服务器。
-  本地DNS服务器收到该IP后，会再将查询请求发送至(.xyz)所在的DNS服务器。
-  如果(.xyz)的DNS服务器无法解析该域名，就会去判断这个二级域名(codecc.xyz)的管理者，返回一个负责该二级域的DNS服务器的IP给本地DNS服务器。
-  本地DNS服务器收到该IP后，会再次将查询请求发送至(codecc.</div><div class="post-footer">
-        <a href="/dns/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/network/">network</a></div></div>
+        <a href="/go_series_mem/">Go系列：内存管理</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-04-01">2020-04-01</time></span>&nbsp;<span class="post-category">included in <a href="/categories/golang/"><i class="far fa-folder fa-fw"></i>Golang</a></span></div><div class="content">系列目录 《Go系列：内存管理》
+《Go系列：并发》
+ </div><div class="post-footer">
+        <a href="/go_series_mem/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/go/">go</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
-            <a href="/webcsp/"><img
+            <a href="/nginx_match/"><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/webcsp/security.jpg"
-        data-srcset="/webcsp/security.jpg, /webcsp/security.jpg 1.5x, /webcsp/security.jpg 2x"
+        data-src="/nginx_match/nginx.png"
+        data-srcset="/nginx_match/nginx.png, /nginx_match/nginx.png 1.5x, /nginx_match/nginx.png 2x"
         data-sizes="auto"
-        alt="/webcsp/security.jpg"
-        title="WEB安全之CSP" /></a>
+        alt="/nginx_match/nginx.png"
+        title="Nginx匹配机制总结" /></a>
         </div><h1 class="single-title" itemprop="name headline">
-        <a href="/webcsp/">WEB安全之CSP</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2016-05-20">2016-05-20</time></span>&nbsp;<span class="post-category">included in <a href="/categories/security/"><i class="far fa-folder fa-fw"></i>Security</a></span></div><div class="content">概念 内容安全策略(Content-Security-Policy，CSP)：是一种web应用技术用于帮助缓解大部分类型的内容注入攻击，包括XSS攻击和数据注入等，这些攻击可实现数据窃取、网站破坏和作为恶意软件分发版本等行为。该策略可让网站管理员指定客户端允许加载的各类可信任资源。
- 浏览器支持 统计来源：caniuse.com/contentsecuritypolicy &amp; Mozilla
- 指令参考 Content-Security-Policy 响应头的值可配置一个或多个，多个指令以分号;隔开。
-   指令 示例 描述     default-src &lsquo;self&rsquo; cdn.example.com 默认配置，若其他指令没有配置，都以此配置的规则为准   script-src &lsquo;self&rsquo; js.example.com 定义允许加载的JavaScript来源   style-src &lsquo;self&rsquo; css.example.com 定义允许加载的样式表来源   img-src &lsquo;self&rsquo; img.example.com 定义允许加载的图片来源   connect-src &lsquo;self&rsquo; 适用于XMLHttpRequest(AJAX),WebSocket或EventSource，当为不允许的来源，浏览器返回一个400的状态码。   font-src font.example.com 定义允许加载的字体来源   object-src &lsquo;self&rsquo; 定义允许加载的插件来源.eg,&lt;object&gt;,&lt;embed&gt;或&lt;applet&gt;   media-src media.example.com 定义允许加载的audio和video.eg,HTML5,&lt;audio&gt;,&lt;video&gt;元素   frame-src &lsquo;self&rsquo; 定义允许加载的框架来源   sandbox allow-forms allow-scripts 授权一个沙箱用来请求具有iframe sanbox等类似属性的资源,该沙箱默认为同源策略,禁止弹出窗口,执行插件和脚本.</div><div class="post-footer">
-        <a href="/webcsp/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/security/">security</a>,&nbsp;<a href="/tags/web/">web</a></div></div>
+        <a href="/nginx_match/">Nginx匹配机制总结</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-02-06">2020-02-06</time></span>&nbsp;<span class="post-category">included in <a href="/categories/nginx/"><i class="far fa-folder fa-fw"></i>Nginx</a></span></div><div class="content">背景 Nginx是一个当前主流的HTTP服务器和反向代理服务器，很多做WEB相关的同学基本都会用到，很多云厂商的七层负载均衡器也基本都是基于nginx实现的，个人在工作过程也算是经常接触，这篇文章主要想总结一下nginx的匹配机制，主要分为两块，一块是server的匹配，一块是location的匹配。
+ Server匹配机制 配置过nginx的都知道，在一个http模块中是可以配置多个server模块的，并且多个server模块是可以配置相同的监听端口的，下面是一个简单的server配置例子：
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17  server { listen 80; server_name example.org www.example.org; ... } server { listen 80; server_name example.net www.example.net; ... } server { listen 80; server_name example.com www.example.com; ... }   当我们对nginx发起http请求后，nginx会拿到http请求中对应的 &quot;Host&quot; 头部跟server模块中的server_name进行匹配，根据匹配的server结果进入具体的server模块处理http请求。那么，它具体的匹配机制是怎样的呢？
+首先，我们先简单了解下nginx内部server的相关结构，
+其中listen和server_name在配置文件中的写法有：
+ listen(可带default_server标识)  ip:port ip(监听80端口) port(监听所有地址)   server_name  www.example.com(完整域名) *.example.com(带通配符开头的域名) www.example.*(带通配符结尾的域名) ~^(www.</div><div class="post-footer">
+        <a href="/nginx_match/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/nginx/">nginx</a>,&nbsp;<a href="/tags/linux/">linux</a>,&nbsp;<a href="/tags/application/">application</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
@@ -305,6 +279,10 @@ DNS Domain Namespace，DNS域命名空间，是一种分层树状结构，其格
                 </li><li class="page-item ">
                     <span class="page-link">
                         <a href="/page/5/">5</a>
+                    </span>
+                </li><li class="page-item ">
+                    <span class="page-link">
+                        <a href="/page/6/">6</a>
                     </span>
                 </li></ul></div></div>
             </main><footer class="footer">

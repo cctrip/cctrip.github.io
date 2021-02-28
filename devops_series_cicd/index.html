@@ -31,7 +31,7 @@
                             "url": "https:\/\/cctrip.github.io\/devops_series_cicd\/cicd-image.png",
                             "width":  2479 ,
                             "height":  1211 
-                        }],"genre": "posts","keywords": "devops","wordcount":  7 ,
+                        }],"genre": "posts","keywords": "devops","wordcount":  303 ,
         "url": "https:\/\/cctrip.github.io\/devops_series_cicd\/","datePublished": "2020-07-15T17:55:28+08:00","dateModified": "2021-07-15T17:55:28+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
@@ -113,8 +113,8 @@
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">DevOps系列：CI/CD</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-category">included in <a href="/categories/devops/"><i class="far fa-folder fa-fw"></i>DevOps</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-07-15">2020-07-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;7 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-07-15">2020-07-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;303 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="featured-image"><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -130,6 +130,39 @@
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
     <li><a href="#系列目录">系列目录</a></li>
+    <li><a href="#1-介绍">1. 介绍</a>
+      <ul>
+        <li><a href="#11--ci-是什么ci-和-cd-有什么区别">1.1  CI 是什么？CI 和 CD 有什么区别？</a></li>
+        <li><a href="#12-ci-持续集成continuous-integration">1.2 CI 持续集成（Continuous Integration）</a></li>
+        <li><a href="#13-cd-持续交付continuous-delivery">1.3 CD 持续交付（Continuous Delivery）</a></li>
+        <li><a href="#14-cd-持续部署continuous-deployment">1.4 CD 持续部署（Continuous Deployment）</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-构建cicd">2. 构建CI/CD</a></li>
+    <li><a href="#cicd-与-devops-学习笔记">CI/CD 与 DevOps 学习笔记</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#cicd-基本流程">CI/CD 基本流程</a></li>
+            <li><a href="#ci-具体分析">CI 具体分析</a></li>
+            <li><a href="#cd-具体分析">CD 具体分析</a></li>
+            <li><a href="#cicd-工具">CI/CD 工具</a></li>
+            <li><a href="#总结">总结</a></li>
+            <li><a href="#构建cicd工具链">构建CICD工具链</a>
+              <ul>
+                <li>
+                  <ul>
+                    <li><a href="#资料及扩展">资料及扩展</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#22-工具">2.2 工具</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-结论">3. 结论</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="系列目录">系列目录</h2>
@@ -140,6 +173,116 @@
 <p><a href="" rel="">《DevOps系列：监控》</a></p>
 <p><a href="" rel="">《DevOps系列：SRE》</a></p>
 <hr>
+<h2 id="1-介绍">1. 介绍</h2>
+<p>CI/CD 是一种通过在应用开发阶段引入<a href="https://www.redhat.com/zh/topics/automation/whats-it-automation" target="_blank" rel="noopener noreffer">自动化</a>来频繁向客户交付应用的方法。CI/CD 的核心概念是持续集成、持续交付和持续部署。作为一个面向开发和运营团队的解决方案，CI/CD 主要针对在集成新代码时所引发的问题（亦称：“<a href="https://www.solutionsiq.com/agile-glossary/integration-hell/" target="_blank" rel="noopener noreffer">集成地狱</a>”）。</p>
+<p>具体而言，CI/CD 可让持续自动化和持续监控贯穿于应用的整个生命周期（从集成和测试阶段，到交付和部署）。这些关联的事务通常被统称为“CI/CD 管道”，由<a href="https://www.redhat.com/zh/topics/devops" target="_blank" rel="noopener noreffer">开发和运维团队</a>以敏捷方式协同支持。</p>
+<h3 id="11--ci-是什么ci-和-cd-有什么区别">1.1  CI 是什么？CI 和 CD 有什么区别？</h3>
+<p>缩略词 CI / CD 具有几个不同的含义。CI/CD 中的“CI”始终指持续集成，它属于开发人员的自动化流程。成功的 CI 意味着应用代码的新更改会定期构建、测试并合并到共享存储库中。该解决方案可以解决在一次开发中有太多应用分支，从而导致相互冲突的问题。</p>
+<p>CI/CD 中的“CD”指的是持续交付和/或持续部署，这些相关概念有时会交叉使用。两者都事关管道后续阶段的自动化，但它们有时也会单独使用，用于说明自动化程度。</p>
+<p>持续<em>交付</em>通常是指开发人员对应用的更改会自动进行错误测试并上传到存储库（如 <a href="https://redhatofficial.github.io/#!/main" target="_blank" rel="noopener noreffer">GitHub</a> 或容器注册表），然后由运维团队将其部署到实时生产环境中。这旨在解决开发和运维团队之间可见性及沟通较差的问题。因此，持续交付的目的就是确保尽可能减少部署新代码时所需的工作量。</p>
+<p>持续<em>部署</em>（另一种“CD”）指的是自动将开发人员的更改从存储库发布到生产环境，以供客户使用。它主要为了解决因手动流程降低应用交付速度，从而使运维团队超负荷的问题。持续部署以持续交付的优势为根基，实现了管道后续阶段的自动化。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://www.redhat.com/cms/managed-files/ci-cd-flow-desktop_1.png"
+        data-srcset="https://www.redhat.com/cms/managed-files/ci-cd-flow-desktop_1.png, https://www.redhat.com/cms/managed-files/ci-cd-flow-desktop_1.png 1.5x, https://www.redhat.com/cms/managed-files/ci-cd-flow-desktop_1.png 2x"
+        data-sizes="auto"
+        alt="https://www.redhat.com/cms/managed-files/ci-cd-flow-desktop_1.png"
+        title="CI/CD 流程" /></p>
+<p>CI/CD 既可能仅指持续集成和持续交付构成的关联环节，也可以指持续集成、持续交付和持续部署这三项构成的关联环节。更为复杂的是，有时“持续交付”也包含了持续部署流程。</p>
+<p>归根结底，我们没必要纠结于这些语义，您只需记得 CI/CD 其实就是一个流程（通常形象地表述为管道），用于实现应用开发中的高度持续自动化和持续监控。因案例而异，该术语的具体含义取决于 CI/CD 管道的自动化程度。许多企业最开始先添加 CI，然后逐步实现交付和部署的自动化（例如作为<a href="https://www.redhat.com/zh/topics/cloud-native-apps" target="_blank" rel="noopener noreffer">云原生应用</a>的一部分）。</p>
+<h3 id="12-ci-持续集成continuous-integration">1.2 CI 持续集成（Continuous Integration）</h3>
+<p><a href="https://www.redhat.com/zh/solutions/cloud-native-development" target="_blank" rel="noopener noreffer">现代应用开发</a>的目标是让多位开发人员同时处理同一应用的不同功能。但是，如果企业安排在一天内将所有分支源代码合并在一起（称为“<a href="https://thedailywtf.com/articles/Happy_Merge_Day!" target="_blank" rel="noopener noreffer">合并日</a>”），最终可能造成工作繁琐、耗时，而且需要手动完成。这是因为当一位独立工作的开发人员对应用进行更改时，有可能会与其他开发人员同时进行的更改发生冲突。如果每个开发人员都自定义自己的本地<a href="https://www.redhat.com/zh/topics/middleware/what-is-ide" target="_blank" rel="noopener noreffer">集成开发环境（IDE）</a>，而不是让团队就一个基于云的 IDE 达成一致，那么就会让问题更加雪上加霜。</p>
+<p>持续集成（CI）可以帮助开发人员更加频繁地（有时甚至每天）将代码更改合并到共享分支或“主干”中。一旦开发人员对应用所做的更改被合并，系统就会通过自动构建应用并运行不同级别的自动化测试（通常是单元测试和集成测试）来验证这些更改，确保这些更改没有对应用造成破坏。这意味着测试内容涵盖了从类和函数到构成整个应用的不同模块。如果自动化测试发现新代码和现有代码之间存在冲突，CI 可以更加轻松地快速修复这些错误。</p>
+<p><a href="https://developers.redhat.com/blog/2017/09/06/continuous-integration-a-typical-process/" target="_blank" rel="noopener noreffer">进一步了解技术细节</a></p>
+<h3 id="13-cd-持续交付continuous-delivery">1.3 CD 持续交付（Continuous Delivery）</h3>
+<p>完成 CI 中构建及单元测试和集成测试的自动化流程后，持续交付可自动将已验证的代码发布到存储库。为了实现高效的持续交付流程，务必要确保 CI 已内置于开发管道。持续交付的目标是拥有一个可随时部署到生产环境的代码库。</p>
+<p>在持续交付中，每个阶段（从代码更改的合并，到生产就绪型构建版本的交付）都涉及测试自动化和代码发布自动化。在流程结束时，运维团队可以快速、轻松地将应用部署到生产环境中。</p>
+<h3 id="14-cd-持续部署continuous-deployment">1.4 CD 持续部署（Continuous Deployment）</h3>
+<p>对于一个成熟的 CI/CD 管道来说，最后的阶段是持续部署。作为持续交付——自动将生产就绪型构建版本发布到代码存储库——的延伸，持续部署可以自动将应用发布到生产环境。由于在生产之前的管道阶段没有手动门控，因此持续部署在很大程度上都得依赖精心设计的测试自动化。</p>
+<p>实际上，持续部署意味着开发人员对应用的更改在编写后的几分钟内就能生效（假设它通过了自动化测试）。这更加便于持续接收和整合用户反馈。总而言之，所有这些 CI/CD 的关联步骤都有助于降低应用的部署风险，因此更便于以小件的方式（而非一次性）发布对应用的更改。不过，由于还需要编写自动化测试以适应 CI/CD 管道中的各种测试和发布阶段，因此前期投资还是会很大。</p>
+<hr>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://blog.jjonline.cn/Upload/image/201901/20190122160600.png"
+        data-srcset="https://blog.jjonline.cn/Upload/image/201901/20190122160600.png, https://blog.jjonline.cn/Upload/image/201901/20190122160600.png 1.5x, https://blog.jjonline.cn/Upload/image/201901/20190122160600.png 2x"
+        data-sizes="auto"
+        alt="https://blog.jjonline.cn/Upload/image/201901/20190122160600.png"
+        title="https://blog.jjonline.cn/Upload/image/201901/20190122160600.png" /></p>
+<hr>
+<h2 id="2-构建cicd">2. 构建CI/CD</h2>
+<p><a href="https://www.infoq.cn/article/wht0wfmdrrbu-dtkh1xp" target="_blank" rel="noopener noreffer">https://www.infoq.cn/article/wht0wfmdrrbu-dtkh1xp</a></p>
+<p><a href="https://gitbook.cn/gitchat/column/5aa795539c3cf94d49162f03/topic/5aaa1abe0bb9e857450e7a9e">https://gitbook.cn/gitchat/column/5aa795539c3cf94d49162f03/topic/5aaa1abe0bb9e857450e7a9e</a></p>
+<h2 id="cicd-与-devops-学习笔记">CI/CD 与 DevOps 学习笔记</h2>
+<p>DevOps 是为了应对软件发布频率越来越高与传统的“瀑布型”开发模式之间的矛盾提出的，CI/CD 是 Devops 的基础。CI/CD 将 Dev、QA、Ops 连接在一起，就是所谓的“开发运维一体化”，通过高度自动化的流程保证频繁且可靠的发布。</p>
+<h4 id="cicd-基本流程">CI/CD 基本流程</h4>
+<p>从开发提交代码，到上线，整个过程都是属于 CI/CD 的范畴。</p>
+<p>CI 意思是 <code>持续构建</code>，指的是从提交代码到最终生成的可以发布的应用，应用可以是 jar 包，也可以指 tar 包，甚至是 docker 镜像。 CI 的基本流程包括，提交代码、对代码的监控、编译打包、基本测试，发布包。</p>
+<p>CD 意思是 <code>持续交付/持续部署</code>，持续部署比持续交付多强调了一点，即<code>deploy</code>的自动化。两者的区别实践起来并不重要，主要流程指将持续构建的产物，快速部署到测试环境进行测试，测试完毕后进行评审后即可自动化发布、部署到现网。</p>
+<h4 id="ci-具体分析">CI 具体分析</h4>
+<p>CI——<code>Confinuous Integration</code>，持续集成。</p>
+<p>集成的意思是，将开发者的代码迅速集成到整个代码项目中，与历史的代码、他人的代码集成。传统的开发模式中，一个项目，分成几部分，大家分别开发，最后发布前，将所有的代码合到一起然后进行迭代测试直到发布。在 CI 流程中，每个人随时将自己的代码合入到主干，并且合入能够很快得到反馈，这种反馈不止是基于修改部分的代码，而是基于整个代码仓库的测试。这种模式下，问题可以被更早的发现，尤其是那些在集成测试中容易出现的问题。</p>
+<p>持续的意思，可以理解为，强调的是整个过程是持续不断的。提交代码 <code>-&gt;</code> 监控到代码提交并触发测试（也可能是定时的，比如每天一次）<code>-&gt;</code>反馈结果到开发，整个过程持续贯穿在代码开发的整个流程中。</p>
+<p>CI 流程中的测试，一般不同于 CD 流程中的测试。在 CI 流程中，比如在提交代码阶段，一般会有 commit hook，对提交的代码进行基本的静态检查，代码提交之后，一般会有产物的构建流程。在测试中，常常包含的是基本的自动化测试、单元测试以及基本的集成测试。</p>
+<p>但是这些也取决于具体的场景的决策，这种决策需要兼顾的是两个方面：</p>
+<ul>
+<li>时效性，在 CI 阶段的测试一般来讲应该是可以比较快的反馈到开发者的，否则就会降低开发的效率</li>
+<li>问题出现的可能性，应该思考在 CI 阶段比较容易出现、常出现的问题是哪些，这些问题可以尽量放到该阶段，但是一般是一些基础的测试，复杂的测试可以放到 CD 中去做。</li>
+</ul>
+<h4 id="cd-具体分析">CD 具体分析</h4>
+<p>CD 的输入是 CI 的输出，也叫 CI 的产物（Artifact），它可能是 jar 包、war包、tar包、image 等等，CD 流程从归档地址（Artifact Repository） 获取产物。</p>
+<p>CD 的主要过程是部署产出物到测试环境，进行集成的全面的测试，并且最终得到一个通过了所有测试的、可以被评审发布的产物。</p>
+<p>在 CD 的测试中，尽管各个厂商叫法不同，但是可以将其基本分为三种环境，分别是测试环境、预发环境、生产环境。团队可以根据自身实际情况，定义三个环境的部署基准。</p>
+<p>在 CD 流程中的测试应该是全面覆盖的，包括但不限于单元测试、接口自动化测试、集成自动化测试、UI测试、性能压测以及整个的端到端的测试。</p>
+<p>经过了所有的测试的发布包，经过评审发布，就可以部署到现网，如果部署到现网也做到自动化，这个就叫 Continuous Deployment，也就是 持续部署。</p>
+<p>持续部署必须拥有回滚的能力。</p>
+<h4 id="cicd-工具">CI/CD 工具</h4>
+<p>CI/CD 整体是自动化的，同时由于多个任务并行/串行构成了流水线，Jenkins 提供的就是自动化流水线的能力以及丰富的插件的能力。</p>
+<p>Jenkins 基本是事实上的标准，容器化目前可以作为补充来完善或者加速整个流程。但是同时也有一些容器化的工具开始挑战 Jenkins，比如 Drone。</p>
+<p>Jenkins 主要在于它强大的生态，几乎可以搞定整个 CI/CD 流程的各个方面。Jenkins 可以安装很多插件，必要时写一个插件也不算太难——比如通过插件可以监控代码仓库的提交。</p>
+<p>Jenkins 1.0 中开发者基本就是依靠 shell 脚本来构建一条流水线，在 Jenkins 2.0 中有了 pipeline as code，从而可以将发布的流程也纳入到版本管理中，可以很方便的复制迁移工程。</p>
+<p>除了 Jenkins 之外，也可以使用 gitlab 的 CI/CD 流程工具，学会了使用其中一个，另一个也就比较容易上手了，比如知道了如何在 Jenkins 中添加 slave，那么自然就知道 gitlab 中添加 Runner 是干啥的了。gitlab 对代码的托管的集成肯定是更好的，但是 Jenkins 的源码管理插件也已经足够好用了。</p>
+<p>Docker 提供了另外一种产物的可能，比如之前发布的包是 jar 包，使用了 docker 之后，可以发布一个 docker 镜像。将产物从打包好了的代码变成处理好了的镜像，就可以解决“测试环境明明运行的好好的，现网却挂了”这种环境导致的问题。</p>
+<p>当然，也可以在其它具体的任务场景下使用 docker，比如使用 docker 作为构建机器，好处依旧是配置更加简单，启动停止销毁也变得容易。</p>
+<p>另外，kubernates 也可以在 CI/CD 中发挥巨大的作用，比如使用 Jenkins 对接 Kubernates 集群，可以完成 master 挂掉立即重启一个 master的操作，也可以 解决slave 需求峰值低谷差异大造成资源浪费的问题。</p>
+<p>但是比较明显的是，容器化能做的远远不止这些，未来的 CI/CD 会跟容器化会联系地更加紧密，几乎是毫无疑问的事情。</p>
+<h4 id="总结">总结</h4>
+<p>CI/CD 可以认为是 DevOps 工作流的基础，它完成了应用的快速且高质量的发布。</p>
+<p>持续集成 完成了提交代码到产出物的快速迭代。</p>
+<p>持续交付 完成了整个测试流程的快速迭代。</p>
+<p>持续部署 自动化了生产环境的部署，并且定义了灰度发布、回滚等能力及策略。</p>
+<p>持续集成和持续交付的分界点是 Artiface Repository 中的产出物。</p>
+<p>持续交付和持续部署的分界点是评审后的 Release 的产出物。</p>
+<p>整个流程是一直在不断 running 的，因此叫做“持续”。</p>
+<h4 id="构建cicd工具链">构建CICD工具链</h4>
+<ul>
+<li>源码管理： git、svn</li>
+<li>CI 平台：Jenkins、gitlab ci</li>
+<li>代码静态分析工具：比如 pylint</li>
+<li>单元测试：开发者应该写单元测试</li>
+<li>集成测试：集成自动化用例</li>
+<li>测试环境：最好可以自动化，支持多版本部署验证</li>
+<li>软件发布平台</li>
+<li>全覆盖测试工具，UI测试工具、压测工具等</li>
+<li>预发环境</li>
+<li>自动化部署工具</li>
+</ul>
+<h6 id="资料及扩展">资料及扩展</h6>
+<ol>
+<li><a href="https://www.infoq.cn/article/432eDCqBIU5je_dQj3Zx" target="_blank" rel="noopener noreffer">阿里巴巴如何基于 Kubernetes 实践 CI/CD</a></li>
+<li><a href="https://jenkins.io/zh/doc/" target="_blank" rel="noopener noreffer">Jenkins 用户手册</a></li>
+<li><a href="https://docs.gitlab.com/ee/ci/quick_start/" target="_blank" rel="noopener noreffer">Getting started with Gitlab CI/CD</a></li>
+<li><a href="http://cloudnoter.com/2018/07/13/CI-CD%e6%96%b9%e6%a1%88%e5%88%86%e6%9e%90/" target="_blank" rel="noopener noreffer">CICD 方案分析</a></li>
+<li><a href="https://www.alibabacloud.com/zh/getting-started/projects/setup-jenkins-based-continuous-delivery-pipeline-with-docker" target="_blank" rel="noopener noreffer">基于 Jenkins 和 Docker 搭建持续交付流水线</a></li>
+<li><a href="https://www.alibabacloud.com/zh/solutions/devops/CI-CD" target="_blank" rel="noopener noreffer">持续集成与交付解决方案</a></li>
+<li><a href="https://yq.aliyun.com/articles/224811" target="_blank" rel="noopener noreffer">基于 Docker 的 CI/CD 流水线实践</a></li>
+<li><a href="https://yq.aliyun.com/articles/68883" target="_blank" rel="noopener noreffer">解读阿里 CI/CD、DevOps、分层自动化技术</a></li>
+</ol>
+<h3 id="22-工具">2.2 工具</h3>
+<p><a href="https://jenkins-zh.cn/wechat/articles/2020/01/2020-01-10-the-complete-ci-cd-collection-tutorials/">https://jenkins-zh.cn/wechat/articles/2020/01/2020-01-10-the-complete-ci-cd-collection-tutorials/</a></p>
+<hr>
+<h2 id="3-结论">3. 结论</h2>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
