@@ -21,8 +21,6 @@
 
 [《Kubernetes系列：OAM》]()
 
-[《Kubernetes系列：调度》]()
-
 ***
 
 ## 1. 介绍

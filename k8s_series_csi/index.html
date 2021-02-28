@@ -5,30 +5,34 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>Kubernetes系列：开篇 - CC&#39;s Trip</title><meta name="Description" content="开篇"><meta property="og:title" content="Kubernetes系列：开篇" />
-<meta property="og:description" content="开篇" />
+        <title>Kubernetes系列：CSI - CC&#39;s Trip</title><meta name="Description" content="存储"><meta property="og:title" content="Kubernetes系列：CSI" />
+<meta property="og:description" content="存储" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://cctrip.github.io/k8s_series_csi/" />
-<meta property="og:image" content="https://cctrip.github.io/logo.png"/>
-<meta property="article:published_time" content="2020-10-10T17:55:28+08:00" />
-<meta property="article:modified_time" content="2020-10-10T17:55:28+08:00" />
+<meta property="og:image" content="https://cctrip.github.io/k8s_series_csi/k8s-image.jpg"/>
+<meta property="article:published_time" content="2020-11-05T17:55:28+08:00" />
+<meta property="article:modified_time" content="2020-11-05T17:55:28+08:00" />
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://cctrip.github.io/logo.png"/>
-
-<meta name="twitter:title" content="Kubernetes系列：开篇"/>
-<meta name="twitter:description" content="开篇"/>
+<meta name="twitter:image" content="https://cctrip.github.io/k8s_series_csi/k8s-image.jpg"/>
+<meta name="twitter:title" content="Kubernetes系列：CSI"/>
+<meta name="twitter:description" content="存储"/>
 <meta name="application-name" content="CC&#39;s Trip">
-<meta name="apple-mobile-web-app-title" content="CC&#39;s Trip"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/leo.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://cctrip.github.io/k8s_series_csi/" /><link rel="prev" href="https://cctrip.github.io/k8s_series_intro/" /><link rel="next" href="https://cctrip.github.io/k8s_series_cri/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+<meta name="apple-mobile-web-app-title" content="CC&#39;s Trip"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/leo.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://cctrip.github.io/k8s_series_csi/" /><link rel="prev" href="https://cctrip.github.io/k8s_series_cni/" /><link rel="next" href="https://cctrip.github.io/k8s_series_service/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "Kubernetes系列：开篇",
+        "headline": "Kubernetes系列：CSI",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/cctrip.github.io\/k8s_series_csi\/"
-        },"genre": "posts","keywords": "kubernetes","wordcount":  11 ,
-        "url": "https:\/\/cctrip.github.io\/k8s_series_csi\/","datePublished": "2020-10-10T17:55:28+08:00","dateModified": "2020-10-10T17:55:28+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/cctrip.github.io\/k8s_series_csi\/k8s-image.jpg",
+                            "width":  900 ,
+                            "height":  505 
+                        }],"genre": "posts","keywords": "kubernetes","wordcount":  10 ,
+        "url": "https:\/\/cctrip.github.io\/k8s_series_csi\/","datePublished": "2020-11-05T17:55:28+08:00","dateModified": "2020-11-05T17:55:28+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
                     "@type": "ImageObject",
@@ -38,7 +42,7 @@
                 }},"author": {
                 "@type": "Person",
                 "name": "Hello.CC"
-            },"description": "开篇"
+            },"description": "存储"
     }
     </script></head>
     <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
@@ -107,11 +111,18 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content always-active" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">Kubernetes系列：开篇</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animated flipInX">Kubernetes系列：CSI</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-category">included in <a href="/categories/cloud-native/"><i class="far fa-folder fa-fw"></i>Cloud Native</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-10-10">2020-10-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;11 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-11-05">2020-11-05</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;10 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
-        </div><div class="details toc" id="toc-static"  kept="">
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/k8s_series_csi/k8s-image.jpg"
+        data-srcset="/k8s_series_csi/k8s-image.jpg, /k8s_series_csi/k8s-image.jpg 1.5x, /k8s_series_csi/k8s-image.jpg 2x"
+        data-sizes="auto"
+        alt="/k8s_series_csi/k8s-image.jpg"
+        title="存储" /></div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right"></i></span>
@@ -131,13 +142,12 @@
 <p><a href="" rel="">《Kubernetes系列：Service》</a></p>
 <p><a href="" rel="">《Kubernetes系列：Ingress》</a></p>
 <p><a href="" rel="">《Kubernetes系列：OAM》</a></p>
-<p><a href="" rel="">《Kubernetes系列：调度》</a></p>
 <hr>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2020-10-10</span>
+                <span>Updated on 2020-11-05</span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -146,7 +156,7 @@
                             <a class="link-to-markdown" href="/k8s_series_csi/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cctrip.github.io/k8s_series_csi/" data-title="Kubernetes系列：开篇" data-via="https://twitter.com/zcc0388" data-hashtags="kubernetes"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://cctrip.github.io/k8s_series_csi/" data-hashtag="kubernetes"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://cctrip.github.io/k8s_series_csi/" data-title="Kubernetes系列：开篇"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://cctrip.github.io/k8s_series_csi/" data-title="Kubernetes系列：开篇"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://cctrip.github.io/k8s_series_csi/" data-title="Kubernetes系列：开篇"><i class="fab fa-weibo fa-fw"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cctrip.github.io/k8s_series_csi/" data-title="Kubernetes系列：CSI" data-via="https://twitter.com/zcc0388" data-hashtags="kubernetes"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://cctrip.github.io/k8s_series_csi/" data-hashtag="kubernetes"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://cctrip.github.io/k8s_series_csi/" data-title="Kubernetes系列：CSI"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://cctrip.github.io/k8s_series_csi/" data-title="Kubernetes系列：CSI"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://cctrip.github.io/k8s_series_csi/" data-title="Kubernetes系列：CSI"><i class="fab fa-weibo fa-fw"></i></a></span>
             </div>
         </div>
     </div>
@@ -158,8 +168,8 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/k8s_series_intro/" class="prev" rel="prev" title="Kubernetes系列：开篇"><i class="fas fa-angle-left fa-fw"></i>Kubernetes系列：开篇</a>
-            <a href="/k8s_series_cri/" class="next" rel="next" title="Kubernetes系列：开篇">Kubernetes系列：开篇<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/k8s_series_cni/" class="prev" rel="prev" title="Kubernetes系列：CNI"><i class="fas fa-angle-left fa-fw"></i>Kubernetes系列：CNI</a>
+            <a href="/k8s_series_service/" class="next" rel="next" title="Kubernetes系列：Service">Kubernetes系列：Service<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">

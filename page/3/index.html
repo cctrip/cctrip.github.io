@@ -100,8 +100,17 @@
         data-sizes="auto"
         alt="/images/cc.jpg"
         title="/images/cc.jpg" /></a></div><h2 class="home-subtitle"><div id="id-1" class="typeit"></div></h2><div class="links"><a href="https://github.com/https://github.com/cctrip" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="https://twitter.com/https://twitter.com/zcc0388" title="Twitter" target="_blank" rel="noopener noreffer me"><i class="fab fa-twitter fa-fw"></i></a><a href="mailto:zcc0388@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
-<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/k8s_series_scheduler/">Kubernetes系列：开篇</a>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
+            <a href="/k8s_series/"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/k8s_series/k8s-images.jpg"
+        data-srcset="/k8s_series/k8s-images.jpg, /k8s_series/k8s-images.jpg 1.5x, /k8s_series/k8s-images.jpg 2x"
+        data-sizes="auto"
+        alt="/k8s_series/k8s-images.jpg"
+        title="开篇" /></a>
+        </div><h1 class="single-title" itemprop="name headline">
+        <a href="/k8s_series/">Kubernetes系列：开篇</a>
     </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-10-10">2020-10-10</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cloud-native/"><i class="far fa-folder fa-fw"></i>Cloud Native</a></span></div><div class="content">系列目录 《Kubernetes系列：开篇》
 《Kubernetes系列：概述》
 《Kubernetes系列：架构》
@@ -111,24 +120,23 @@
 《Kubernetes系列：Service》
 《Kubernetes系列：Ingress》
 《Kubernetes系列：OAM》
-《Kubernetes系列：调度》
- </div><div class="post-footer">
-        <a href="/k8s_series_scheduler/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/kubernetes/">kubernetes</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
-        <a href="/k8s_series_service/">Kubernetes系列：开篇</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-10-10">2020-10-10</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cloud-native/"><i class="far fa-folder fa-fw"></i>Cloud Native</a></span></div><div class="content">系列目录 《Kubernetes系列：开篇》
-《Kubernetes系列：概述》
-《Kubernetes系列：架构》
-《Kubernetes系列：CRI》
-《Kubernetes系列：CNI》
-《Kubernetes系列：CSI》
-《Kubernetes系列：Service》
-《Kubernetes系列：Ingress》
-《Kubernetes系列：OAM》
-《Kubernetes系列：调度》
- </div><div class="post-footer">
-        <a href="/k8s_series_service/">Read More</a><div class="post-tags">
+ 1. 介绍 最近整体工作在往云原生和k8s上迁移，想将自己对于k8s的一些学习心得和经验写成一个系列记录下来。
+ 2. 云计算 云计算是一种按使用量付费的模式，这种模式提供可用的、便捷的、按需的网络访问， 进入可配置的计算资源共享池（资源包括网络，服务器，存储，应用软件，服务），这些资源能够被快速提供，只需投入很少的管理工作，或与服务供应商进行很少的交互。
+云计算最基本的特性是：“按使用量付费”、“资源共享池”和多租户隔离。
+1.2 云计算的特点
+ 超大规模  云具有相当的规模，Google 云计算已经拥有 100 多万台服务器， Amazon、IBM、微软、Yahoo 等的云均拥有几十万台服务器。企业私有云一般拥有数百上千台服务器。云能赋予用户前所未有的计算能力。
+ 虚拟化  云计算支持用户在任意位置、使用各种终端获取应用服务。所请求的资源来自云，而不是固定的有形的实体。应用在云中某处运行，但实际上用户无需了解、也不用担心应用运行的具体位置。只需要一台笔记本或者一个手机，就可以通过网络服务来实现我们需要的一切，甚至包括超级计算这样的任务。
+ 高可靠性  云使用了数据多副本容错、计算节点同构可互换等措施来保障服务的高可靠性，使用云计算比使用本地计算机可靠。
+ 通用性  云计算不针对特定的应用，在云的支撑下可以构造出千变万化的应用，同一个云可以同时支撑不同的应用运行。
+ 高可扩展性  云的规模可以动态伸缩，满足应用和用户规模增长的需要。
+ 按需服务  云是一个庞大的资源池，你按需购买;云可以像自来水，电，煤气那样计费。
+ 极其廉价  由于云的特殊容错措施可以采用极其廉价的节点来构成云，云的自动化集中式管理使大量企业无需负担日益高昂的数据中心管理成本，云的通用性使资源的利用率较之传统系统大幅提升，因此用户可以充分享受云的低成本优势，经常只要花费几百美元、几天时间就能完成以前需要数万美元、数月时间才能完成的任务。
+ 潜在的危险性  云计算服务除了提供计算服务外，还必然提供了存储服务。但是云计算服务当前垄断在私人机构(企业)手中，而他们仅仅能够提供商业信用。对于政府机构、商业机构(特别像银行这样持有敏感数据的商业机构)对于选择云计算服务应保持足够的警惕。一旦商业用户大规模使用私人机构提供的云计算服务，无论其技术优势有多强，都不可避免地让这些私人机构以数据(信息)的重要性挟制整个社会。
+对于信息社会而言，信息是至关重要的。另一方面，云计算中的数据对于数据所有者以外的其他用户云计算用户是保密的，但是对于提供云计算的商业机构而言确实毫无秘密可言。所有这些潜在的危险，是商业机构和政府机构选择云计算服务、特别是国外机构提供的云计算服务时，不得不考虑的一个重要的前提。
+1.3 云计算的分类
+ 公有云：只有使用权，使用的时候进行按需付费。但数据放在别人家。数据安全没有保障。而且银行不会使用公有云，金融行业不要使用公有云。公有云的核心属性是共享资源服务。 私有云：自己的机房搭建的云，私有云有局限性，资源固定；数据比较安全。私有云的核心属性是专有资源。 混合云：主要任务放到私有云，临时需要时利用混合云，它将公有云和私有云进行混合匹配，以获得最佳的效果，这种个性的解决方案，达到二既省钱又安全的目的。  1.4 云计算分层
+云计算也是层的，大概有以下几种：</div><div class="post-footer">
+        <a href="/k8s_series/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/kubernetes/">kubernetes</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
             <a href="/devops_series_sre/"><img
@@ -263,6 +271,42 @@ CI/CD 既可能仅指持续集成和持续交付构成的关联环节，也可�
 之所以说应用名和应用名-IP 关联关系非常重要，是因为它的影响力不仅仅在运维内部，而是会一直延伸整个技术架构上，后面的文章，我们介绍到的所有的平台和系统建设，都会跟这两个概念有关。
 CMDB 是 IP 为标示的资源管理维度，有了应用名之后，我们后面就是以应用为视角的管理维度了。首先看一下应用会涉及到的信息：</div><div class="post-footer">
         <a href="/devops_series_cmdb/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/devops/">devops</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
+            <a href="/devops_series_intro/"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/devops_series_intro/devops-image.png"
+        data-srcset="/devops_series_intro/devops-image.png, /devops_series_intro/devops-image.png 1.5x, /devops_series_intro/devops-image.png 2x"
+        data-sizes="auto"
+        alt="/devops_series_intro/devops-image.png"
+        title="概述" /></a>
+        </div><h1 class="single-title" itemprop="name headline">
+        <a href="/devops_series_intro/">DevOps系列：概述</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-07-05">2020-07-05</time></span>&nbsp;<span class="post-category">included in <a href="/categories/devops/"><i class="far fa-folder fa-fw"></i>DevOps</a></span></div><div class="content">系列目录 《DevOps系列：开篇》
+《DevOps系列：概述》
+《DevOps系列：CMDB》
+《DevOps系列：CI/CD》
+《DevOps系列：监控》
+《DevOps系列：SRE》
+ 1. 介绍 DevOps大概起源于08到09年之间，最初的目的是要打破开发与运维之间的壁垒，2010年，The Agile Admin博客发布了《What is DevOps》给出了一个详细的DevOps定义，算是对DevOps有了一个初步的定义。不过，我这里还是引用一下wiki的定义：
+ DevOps（开发 Development 与运维 Operations 的组合词）是一种文化、一场运动或实践，强调在自动化软件交付流程及基础设施变更过程中，软件开发人员与其他信息技术（IT）专业人员彼此之间的协作与沟通。它旨在建立一种文化与环境，使构建、测试、软件发布得以快速、频繁以及更加稳定地进行。
+  2. 优势 传统的瀑布模型会带来很多沟通上的问题和成本，DevOps实际上是要来解决这些问题的。我们分别从工程上和角色上的优势来说一说
+2.1 基于DevOps的工程上的优势  DevOps的主要好处是可以更快地交付质量大大提高的软件。 根据行业的不同，可能还会有其他好处。大部分软件工程采用DevOps具有如下优势：
+  提升了可靠性
+  更快速的软件更新
+  减少故障恢复时间
+  更好的用户体验
+  更加高效
+  减少失败
+  降低风险
+  更好的质量
+  更短的开发周期
+  提升产品交付时间
+  提升稳定性
+  节省成本
+   2.</div><div class="post-footer">
+        <a href="/devops_series_intro/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/devops/">devops</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">

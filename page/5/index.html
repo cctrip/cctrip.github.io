@@ -101,29 +101,6 @@
         alt="/images/cc.jpg"
         title="/images/cc.jpg" /></a></div><h2 class="home-subtitle"><div id="id-1" class="typeit"></div></h2><div class="links"><a href="https://github.com/https://github.com/cctrip" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="https://twitter.com/https://twitter.com/zcc0388" title="Twitter" target="_blank" rel="noopener noreffer me"><i class="fab fa-twitter fa-fw"></i></a><a href="mailto:zcc0388@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
-            <a href="/file_descriptor/"><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/file_descriptor/linux.jpg"
-        data-srcset="/file_descriptor/linux.jpg, /file_descriptor/linux.jpg 1.5x, /file_descriptor/linux.jpg 2x"
-        data-sizes="auto"
-        alt="/file_descriptor/linux.jpg"
-        title="谈谈文件描述符" /></a>
-        </div><h1 class="single-title" itemprop="name headline">
-        <a href="/file_descriptor/">谈谈文件描述符</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2019-12-29">2019-12-29</time></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>Linux</a></span></div><div class="content">概念 wiki解释，文件描述符在形式上是一个非负整数。实际上，它是一个索引值，指向内核为每一个进程所维护的该进程打开文件的记录表。当程序打开一个现有文件或者创建一个新文件时，内核向进程返回一个文件描述符。在程序设计中，一些涉及底层的程序编写往往会围绕着文件描述符展开。
-一个文件描述符是一个数字，唯一标识一个在计算机的操作系统打开的文件。它描述了数据资源，以及如何访问该资源。
-当程序要求打开文件（或其他数据资源，例如网络套接字）时，内核：
- 授予访问权限。 在全局文件表中创建一个条目。 向软件提供该条目的位置。  该描述符是唯一的非负整数。系统上每个打开的文件至少存在一个文件描述符。
- 细节 对于内核，所有打开的文件均由文件描述符引用。文件描述符是一个非负数。当我们打开现有文件或创建新文件时，内核将文件描述符返回到进程。当我们想读取或写入文件时，我们用文件描述符标识文件。
-每个Linux进程（也许是守护程序除外）都应该具有三个标准的POSIX文件描述符：
-   POSIX常数名称 文件描述符 描述     STDIN_FILENO 0 标准输入   STDOUT_FILENO 1 标准输出   STDERR_FILENO 2 标准误差    有三个“系统文件表”：有一个文件描述符表，它将文件描述符（小整数）映射到打开的文件表中的条目。打开文件表中的每个条目（除其他事项外）还包含文件偏移量和指向内存中inode表的指针。在打开的文件表中，每个open（）调用都有一个文件表条目，如果文件描述符是dup（）ed或fork（）ed，则共享该条目。
-我们使用来自维基百科的示例来显示这些表的工作方式。这是一张照片： 单个进程的文件描述符，文件表和索引节点表。请注意，多个文件描述符可以引用相同的文件表条目（例如，由于dup系统调用），并且多个文件表条目可以依次引用同一个索引节点（如果已多次打开；则该表之所以仍然简化，是因为它通过文件名来表示索引节点，即使索引节点可以具有多个名称也是如此。文件描述符3没有引用文件表中的任何内容，表明它已关闭。
-理解具体情况，需要了解由内核维护的 3 个数据结构：
- 进程级 文件描述符表 ( file descriptor table ) 系统级 打开文件表 ( open file table ) 文件系统 i-node表 ( i-node table )  这 3 个数据结构之间的关系如图所示：</div><div class="post-footer">
-        <a href="/file_descriptor/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
             <a href="/linux_pam/"><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -292,6 +269,23 @@ DNS Domain Namespace，DNS域命名空间，是一种分层树状结构，其格
   本地DNS服务器收到该IP后，会再次将查询请求发送至(codecc.</div><div class="post-footer">
         <a href="/dns/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/network/">network</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
+            <a href="/webcsp/"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/webcsp/security.jpg"
+        data-srcset="/webcsp/security.jpg, /webcsp/security.jpg 1.5x, /webcsp/security.jpg 2x"
+        data-sizes="auto"
+        alt="/webcsp/security.jpg"
+        title="WEB安全之CSP" /></a>
+        </div><h1 class="single-title" itemprop="name headline">
+        <a href="/webcsp/">WEB安全之CSP</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2016-05-20">2016-05-20</time></span>&nbsp;<span class="post-category">included in <a href="/categories/security/"><i class="far fa-folder fa-fw"></i>Security</a></span></div><div class="content">概念 内容安全策略(Content-Security-Policy，CSP)：是一种web应用技术用于帮助缓解大部分类型的内容注入攻击，包括XSS攻击和数据注入等，这些攻击可实现数据窃取、网站破坏和作为恶意软件分发版本等行为。该策略可让网站管理员指定客户端允许加载的各类可信任资源。
+ 浏览器支持 统计来源：caniuse.com/contentsecuritypolicy &amp; Mozilla
+ 指令参考 Content-Security-Policy 响应头的值可配置一个或多个，多个指令以分号;隔开。
+   指令 示例 描述     default-src &lsquo;self&rsquo; cdn.example.com 默认配置，若其他指令没有配置，都以此配置的规则为准   script-src &lsquo;self&rsquo; js.example.com 定义允许加载的JavaScript来源   style-src &lsquo;self&rsquo; css.example.com 定义允许加载的样式表来源   img-src &lsquo;self&rsquo; img.example.com 定义允许加载的图片来源   connect-src &lsquo;self&rsquo; 适用于XMLHttpRequest(AJAX),WebSocket或EventSource，当为不允许的来源，浏览器返回一个400的状态码。   font-src font.example.com 定义允许加载的字体来源   object-src &lsquo;self&rsquo; 定义允许加载的插件来源.eg,&lt;object&gt;,&lt;embed&gt;或&lt;applet&gt;   media-src media.example.com 定义允许加载的audio和video.eg,HTML5,&lt;audio&gt;,&lt;video&gt;元素   frame-src &lsquo;self&rsquo; 定义允许加载的框架来源   sandbox allow-forms allow-scripts 授权一个沙箱用来请求具有iframe sanbox等类似属性的资源,该沙箱默认为同源策略,禁止弹出窗口,执行插件和脚本.</div><div class="post-footer">
+        <a href="/webcsp/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/security/">security</a>,&nbsp;<a href="/tags/web/">web</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>

@@ -6,16 +6,15 @@
             <loc>https://cctrip.github.io/k8s_model/</loc><lastmod>2021-01-28T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
             <loc>https://cctrip.github.io/talk_ops/</loc><lastmod>2021-01-14T22:22:22&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://cctrip.github.io/2021_flag/</loc><lastmod>2021-01-02T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://cctrip.github.io/k8s_series_ingress/</loc><lastmod>2020-10-10T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://cctrip.github.io/k8s_series_oam/</loc><lastmod>2020-11-15T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://cctrip.github.io/k8s_series_ingress/</loc><lastmod>2020-11-11T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://cctrip.github.io/k8s_series_service/</loc><lastmod>2020-11-10T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://cctrip.github.io/k8s_series_csi/</loc><lastmod>2020-11-05T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://cctrip.github.io/k8s_series_cni/</loc><lastmod>2020-10-30T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://cctrip.github.io/k8s_series_cri/</loc><lastmod>2020-10-25T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://cctrip.github.io/k8s_series_arch/</loc><lastmod>2020-10-20T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://cctrip.github.io/k8s_series_intro/</loc><lastmod>2020-10-15T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://cctrip.github.io/k8s_series/</loc><lastmod>2020-10-10T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://cctrip.github.io/k8s_series_arch/</loc><lastmod>2020-10-10T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://cctrip.github.io/k8s_series_cni/</loc><lastmod>2020-10-10T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://cctrip.github.io/k8s_series_cri/</loc><lastmod>2020-10-10T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://cctrip.github.io/k8s_series_csi/</loc><lastmod>2020-10-10T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://cctrip.github.io/k8s_series_intro/</loc><lastmod>2020-10-10T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://cctrip.github.io/k8s_series_oam/</loc><lastmod>2020-10-10T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://cctrip.github.io/k8s_series_scheduler/</loc><lastmod>2020-10-10T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://cctrip.github.io/k8s_series_service/</loc><lastmod>2020-10-10T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://cctrip.github.io/devops_series_sre/</loc><lastmod>2020-07-29T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://cctrip.github.io/devops_series_mon/</loc><lastmod>2020-07-20T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://cctrip.github.io/devops_series_cicd/</loc><lastmod>2021-07-15T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>2.9</priority></url><url>

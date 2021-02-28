@@ -1,4 +1,4 @@
-# Kubernetes系列：开篇
+# Kubernetes系列：Service
 
 
 ## 系列目录
@@ -20,8 +20,6 @@
 [《Kubernetes系列：Ingress》]()
 
 [《Kubernetes系列：OAM》]()
-
-[《Kubernetes系列：调度》]()
 
 ***
 

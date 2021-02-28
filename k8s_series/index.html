@@ -17,7 +17,7 @@
 <meta name="twitter:title" content="Kubernetes系列：开篇"/>
 <meta name="twitter:description" content="开篇"/>
 <meta name="application-name" content="CC&#39;s Trip">
-<meta name="apple-mobile-web-app-title" content="CC&#39;s Trip"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/leo.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://cctrip.github.io/k8s_series/" /><link rel="prev" href="https://cctrip.github.io/k8s_series_arch/" /><link rel="next" href="https://cctrip.github.io/k8s_series_ingress/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+<meta name="apple-mobile-web-app-title" content="CC&#39;s Trip"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/leo.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://cctrip.github.io/k8s_series/" /><link rel="prev" href="https://cctrip.github.io/devops_series_sre/" /><link rel="next" href="https://cctrip.github.io/k8s_series_intro/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -31,7 +31,7 @@
                             "url": "https:\/\/cctrip.github.io\/k8s_series\/k8s-images.jpg",
                             "width":  2199 ,
                             "height":  999 
-                        }],"genre": "posts","keywords": "kubernetes","wordcount":  238 ,
+                        }],"genre": "posts","keywords": "kubernetes","wordcount":  237 ,
         "url": "https:\/\/cctrip.github.io\/k8s_series\/","datePublished": "2020-10-10T17:55:28+08:00","dateModified": "2020-10-10T17:55:28+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
@@ -113,7 +113,7 @@
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Kubernetes系列：开篇</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-category">included in <a href="/categories/cloud-native/"><i class="far fa-folder fa-fw"></i>Cloud Native</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-10-10">2020-10-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;238 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-10-10">2020-10-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;237 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="featured-image"><img
         class="lazyload"
@@ -156,7 +156,6 @@
 <p><a href="" rel="">《Kubernetes系列：Service》</a></p>
 <p><a href="" rel="">《Kubernetes系列：Ingress》</a></p>
 <p><a href="" rel="">《Kubernetes系列：OAM》</a></p>
-<p><a href="" rel="">《Kubernetes系列：调度》</a></p>
 <hr>
 <h2 id="1-介绍">1. 介绍</h2>
 <p>最近整体工作在往云原生和k8s上迁移，想将自己对于k8s的一些学习心得和经验写成一个系列记录下来。</p>
@@ -209,10 +208,10 @@
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="https://images2015.cnblogs.com/blog/936003/201612/936003-20161213225505511-661553597.png"
-        data-srcset="https://images2015.cnblogs.com/blog/936003/201612/936003-20161213225505511-661553597.png, https://images2015.cnblogs.com/blog/936003/201612/936003-20161213225505511-661553597.png 1.5x, https://images2015.cnblogs.com/blog/936003/201612/936003-20161213225505511-661553597.png 2x"
+        data-src="cloud-computer-layer.png"
+        data-srcset="/k8s_series/cloud-computer-layer.png, cloud-computer-layer.png 1.5x, /k8s_series/cloud-computer-layer.png 2x"
         data-sizes="auto"
-        alt="https://images2015.cnblogs.com/blog/936003/201612/936003-20161213225505511-661553597.png"
+        alt="/k8s_series/cloud-computer-layer.png"
         title="img" /></p>
 <ul>
 <li>传统 IT</li>
@@ -253,10 +252,10 @@
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="https://images2015.cnblogs.com/blog/936003/201612/936003-20161214132509308-445646843.png"
-        data-srcset="https://images2015.cnblogs.com/blog/936003/201612/936003-20161214132509308-445646843.png, https://images2015.cnblogs.com/blog/936003/201612/936003-20161214132509308-445646843.png 1.5x, https://images2015.cnblogs.com/blog/936003/201612/936003-20161214132509308-445646843.png 2x"
+        data-src="compare-virtual.png"
+        data-srcset="/k8s_series/compare-virtual.png, compare-virtual.png 1.5x, /k8s_series/compare-virtual.png 2x"
         data-sizes="auto"
-        alt="https://images2015.cnblogs.com/blog/936003/201612/936003-20161214132509308-445646843.png"
+        alt="/k8s_series/compare-virtual.png"
         title="img" /></p>
 <ul>
 <li>全虚拟化</li>
@@ -314,10 +313,10 @@ Docker官方构建了一个镜像仓库，组织和管理形式类似于GitHub,�
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="https://www.redhat.com/cms/managed-files/kubernetes-diagram-902x416.png"
-        data-srcset="https://www.redhat.com/cms/managed-files/kubernetes-diagram-902x416.png, https://www.redhat.com/cms/managed-files/kubernetes-diagram-902x416.png 1.5x, https://www.redhat.com/cms/managed-files/kubernetes-diagram-902x416.png 2x"
+        data-src="kubernetes-diagram.png"
+        data-srcset="/k8s_series/kubernetes-diagram.png, kubernetes-diagram.png 1.5x, /k8s_series/kubernetes-diagram.png 2x"
         data-sizes="auto"
-        alt="https://www.redhat.com/cms/managed-files/kubernetes-diagram-902x416.png"
+        alt="/k8s_series/kubernetes-diagram.png"
         title="Kubernetes explained - diagram" /></p>
 <p>当然，这取决于您如何在您的环境中使用容器。Linux 容器中的基本应用将它们视作高效、快速的虚拟机。一旦把它部署到生产环境或扩展为多个应用，您显然需要许多托管在相同位置的容器来协同提供各种服务。随着这些容器的累积，您运行环境中容器的数量会急剧增加，复杂度也随之增长。</p>
 <p>Kubernetes 通过将容器分类组成 &ldquo;容器集&rdquo; （pod），解决了容器增殖带来的许多常见问题容器集为分组容器增加了一个抽象层，可帮助您调用工作负载，并为这些容器提供所需的联网和存储等服务。Kubernetes 的其它部分可帮助您在这些容器集之间达成负载平衡，同时确保运行正确数量的容器，充分支持您的工作负载。</p>
@@ -350,8 +349,8 @@ Docker官方构建了一个镜像仓库，组织和管理形式类似于GitHub,�
         </section>
     </div>
 
-    <div class="post-nav"><a href="/k8s_series_arch/" class="prev" rel="prev" title="Kubernetes系列：开篇"><i class="fas fa-angle-left fa-fw"></i>Kubernetes系列：开篇</a>
-            <a href="/k8s_series_ingress/" class="next" rel="next" title="Kubernetes系列：Ingress">Kubernetes系列：Ingress<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/devops_series_sre/" class="prev" rel="prev" title="DevOps系列：SRE"><i class="fas fa-angle-left fa-fw"></i>DevOps系列：SRE</a>
+            <a href="/k8s_series_intro/" class="next" rel="next" title="Kubernetes系列：概述">Kubernetes系列：概述<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
