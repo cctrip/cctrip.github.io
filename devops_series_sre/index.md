@@ -3,17 +3,17 @@
 
 ## 系列目录
 
-[《DevOps系列：开篇》](https://cctrip.github.io/devops_series/)
+[《DevOps系列：开篇》](../devops_series)
 
-[《DevOps系列：概述》](https://cctrip.github.io/devops_series_intro/)
+[《DevOps系列：概述》](../devops_series_intro)
 
-[《DevOps系列：CMDB》]()
+[《DevOps系列：CMDB》](../devops_series_cmdb)
 
-[《DevOps系列：CI/CD》]()
+[《DevOps系列：CI/CD》](../devops_series_cicd)
 
-[《DevOps系列：监控》]()
+[《DevOps系列：监控》](../devops_series_mon)
 
-[《DevOps系列：SRE》]()
+[《DevOps系列：SRE》](../devops_series_sre)
 
 ***
 
