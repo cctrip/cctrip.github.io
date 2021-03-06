@@ -448,39 +448,39 @@
 </span><span class="lnt">33
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh"># 以aws为例,cluster ip为10.100.254.226，endpoint为172.31.178.122:80,172.31.178.161:80,172.31.179.80:80,nodeport为30028
-</span><span class="gh"></span>
-<span class="gh"># pod or node --&gt; cluster ip --&gt; endpoint
-</span><span class="gh"></span>*nat
--A PREROUTING -m comment --comment &#34;kubernetes service portals&#34; -j KUBE-SERVICES <span class="ni">#pod所有流量先进入KUBE</span>-SERVICES检查
--A OUTPUT -m comment --comment &#34;kubernetes service portals&#34; -j KUBE-SERVICES  <span class="ni">#node流量通过OUTPUT进入KUBE</span>-SERVICES
--A KUBE-SERVICES -d 10.100.254.226/32 -p tcp -m comment --comment &#34;ops-test/nginx-service: cluster IP&#34; -m tcp --dport 80 -j KUBE-SVC-473SUSYUDXM6XRRH    <span class="ni">#匹配目的ip为10</span>.100.254.226
-<span class="gh">#随机选择后端
-</span><span class="gh"></span>-A KUBE-SVC-473SUSYUDXM6XRRH -m statistic --mode random --probability 0.33333333349 -j KUBE-SEP-WWIE6AZWAXCTMCNN
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 以aws为例,cluster ip为10.100.254.226，endpoint为172.31.178.122:80,172.31.178.161:80,172.31.179.80:80,nodeport为30028</span>
+
+<span class="c1"># pod or node --&gt; cluster ip --&gt; endpoint</span>
+*nat
+-A PREROUTING -m comment --comment <span class="s2">&#34;kubernetes service portals&#34;</span> -j KUBE-SERVICES <span class="c1">#pod所有流量先进入KUBE-SERVICES检查</span>
+-A OUTPUT -m comment --comment <span class="s2">&#34;kubernetes service portals&#34;</span> -j KUBE-SERVICES  <span class="c1">#node流量通过OUTPUT进入KUBE-SERVICES</span>
+-A KUBE-SERVICES -d 10.100.254.226/32 -p tcp -m comment --comment <span class="s2">&#34;ops-test/nginx-service: cluster IP&#34;</span> -m tcp --dport <span class="m">80</span> -j KUBE-SVC-473SUSYUDXM6XRRH    <span class="c1">#匹配目的ip为10.100.254.226</span>
+<span class="c1">#随机选择后端</span>
+-A KUBE-SVC-473SUSYUDXM6XRRH -m statistic --mode random --probability 0.33333333349 -j KUBE-SEP-WWIE6AZWAXCTMCNN
 -A KUBE-SVC-473SUSYUDXM6XRRH -m statistic --mode random --probability 0.50000000000 -j KUBE-SEP-ZBMAWDEBUXPXQHDH
 -A KUBE-SVC-473SUSYUDXM6XRRH -j KUBE-SEP-VPHXZB6KBMWRSLML
-<span class="gh">#将目标地址转换为172.31.178.243:9300
-</span><span class="gh"></span>-A KUBE-SEP-VPHXZB6KBMWRSLML -s 172.31.179.80/32 -j KUBE-MARK-MASQ
+<span class="c1">#将目标地址转换为172.31.178.243:9300</span>
+-A KUBE-SEP-VPHXZB6KBMWRSLML -s 172.31.179.80/32 -j KUBE-MARK-MASQ
 -A KUBE-SEP-VPHXZB6KBMWRSLML -p tcp -m tcp -j DNAT --to-destination 172.31.179.80:80
 
-通过路由规则找对应的pod(pod到pod间通信)
+通过路由规则找对应的pod<span class="o">(</span>pod到pod间通信<span class="o">)</span>
 
-<span class="gh"># endpoint --&gt; cluster ip --&gt; pod or node
-</span><span class="gh"></span>回来的包经过conntrack模块直接做SNAT操作
+<span class="c1"># endpoint --&gt; cluster ip --&gt; pod or node</span>
+回来的包经过conntrack模块直接做SNAT操作
 
 
-<span class="gh"># externel --&gt; nodeport --&gt; endpoint
-</span><span class="gh"></span>*nat
--A PREROUTING -m comment --comment &#34;kubernetes service portals&#34; -j KUBE-SERVICES <span class="ni">#外部所有流量先进入KUBE</span>-SERVICES检查
--A KUBE-SERVICES -m comment --comment &#34;kubernetes service nodeports; NOTE: this must be the last rule in this chain&#34; -m addrtype --dst-type LOCAL -j KUBE-NODEPORTS   <span class="ni">#KUBE</span>-SERVICES最后一条进入KUBE-NODEPORTS
--A KUBE-NODEPORTS -p tcp -m comment --comment &#34;ops-test/nginx-service:&#34; -m tcp --dport 30028 -j KUBE-MARK-MASQ <span class="ni">#打标</span>
--A KUBE-NODEPORTS -p tcp -m comment --comment &#34;ops-test/nginx-service:&#34; -m tcp --dport 30028 -j KUBE-SVC-473SUSYUDXM6XRRH  <span class="ni">#后续的DNAT跟cluster</span> ip类似
+<span class="c1"># externel --&gt; nodeport --&gt; endpoint</span>
+*nat
+-A PREROUTING -m comment --comment <span class="s2">&#34;kubernetes service portals&#34;</span> -j KUBE-SERVICES <span class="c1">#外部所有流量先进入KUBE-SERVICES检查</span>
+-A KUBE-SERVICES -m comment --comment <span class="s2">&#34;kubernetes service nodeports; NOTE: this must be the last rule in this chain&#34;</span> -m addrtype --dst-type LOCAL -j KUBE-NODEPORTS   <span class="c1">#KUBE-SERVICES最后一条进入KUBE-NODEPORTS</span>
+-A KUBE-NODEPORTS -p tcp -m comment --comment <span class="s2">&#34;ops-test/nginx-service:&#34;</span> -m tcp --dport <span class="m">30028</span> -j KUBE-MARK-MASQ <span class="c1">#打标</span>
+-A KUBE-NODEPORTS -p tcp -m comment --comment <span class="s2">&#34;ops-test/nginx-service:&#34;</span> -m tcp --dport <span class="m">30028</span> -j KUBE-SVC-473SUSYUDXM6XRRH  <span class="c1">#后续的DNAT跟cluster ip类似</span>
 
-<span class="gh"># endpoint --&gt; nodeport
-</span><span class="gh"></span>回来的包经过conntrack模块直接做SNAT操作，转换成nodeport
+<span class="c1"># endpoint --&gt; nodeport</span>
+回来的包经过conntrack模块直接做SNAT操作，转换成nodeport
 
-<span class="gh"># nodeport --&gt; externel
-</span><span class="gh"></span>-A KUBE-POSTROUTING -m comment --comment &#34;kubernetes service traffic requiring SNAT&#34; -m mark --mark 0x4000/0x4000 -j MASQUERADE --random-fully   <span class="ni">#跟外部交互需要做SNAT</span>
+<span class="c1"># nodeport --&gt; externel</span>
+-A KUBE-POSTROUTING -m comment --comment <span class="s2">&#34;kubernetes service traffic requiring SNAT&#34;</span> -m mark --mark 0x4000/0x4000 -j MASQUERADE --random-fully   <span class="c1">#跟外部交互需要做SNAT</span>
 </code></pre></td></tr></table>
 </div>
 </div><hr>
@@ -538,31 +538,31 @@
 </span><span class="lnt">25
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-markdown" data-lang="markdown"><span class="gh"># pod or node --&gt; cluster ip --&gt; endpoint
-</span><span class="gh"></span>-A PREROUTING -m comment --comment &#34;kubernetes service portals&#34; -j KUBE-SERVICES
--A OUTPUT -m comment --comment &#34;kubernetes service portals&#34; -j KUBE-SERVICES
--A KUBE-SERVICES -m set --match-set KUBE-CLUSTER-IP dst,dst -j ACCEPT
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># pod or node --&gt; cluster ip --&gt; endpoint</span>
+-A PREROUTING -m comment --comment <span class="s2">&#34;kubernetes service portals&#34;</span> -j KUBE-SERVICES
+-A OUTPUT -m comment --comment <span class="s2">&#34;kubernetes service portals&#34;</span> -j KUBE-SERVICES
+-A KUBE-SERVICES -m <span class="nb">set</span> --match-set KUBE-CLUSTER-IP dst,dst -j ACCEPT
 
 ipvs处理dnat，进入POSTROUTING链
-<span class="gh"># endpoint --&gt; cluster ip --&gt; pod or node
-</span><span class="gh"></span>回来的包经过conntrack模块直接做SNAT操作
+<span class="c1"># endpoint --&gt; cluster ip --&gt; pod or node</span>
+回来的包经过conntrack模块直接做SNAT操作
 
 
-<span class="gh"># externel --&gt; nodeport --&gt; endpoint
-</span><span class="gh"></span>*nat
--A PREROUTING -m comment --comment &#34;kubernetes service portals&#34; -j KUBE-SERVICES
+<span class="c1"># externel --&gt; nodeport --&gt; endpoint</span>
+*nat
+-A PREROUTING -m comment --comment <span class="s2">&#34;kubernetes service portals&#34;</span> -j KUBE-SERVICES
 -A KUBE-SERVICES -m addrtype --dst-type LOCAL -j KUBE-NODE-PORT
--A KUBE-NODE-PORT -p tcp -m comment --comment &#34;Kubernetes nodeport TCP port with externalTrafficPolicy=local&#34; -m set --match-set KUBE-NODE-PORT-LOCAL-TCP dst -j RETURN
--A KUBE-NODE-PORT -p tcp -m comment --comment &#34;Kubernetes nodeport TCP port for masquerade purpose&#34; -m set --match-set KUBE-NODE-PORT-TCP dst -j KUBE-MARK-MASQ
+-A KUBE-NODE-PORT -p tcp -m comment --comment <span class="s2">&#34;Kubernetes nodeport TCP port with externalTrafficPolicy=local&#34;</span> -m <span class="nb">set</span> --match-set KUBE-NODE-PORT-LOCAL-TCP dst -j RETURN
+-A KUBE-NODE-PORT -p tcp -m comment --comment <span class="s2">&#34;Kubernetes nodeport TCP port for masquerade purpose&#34;</span> -m <span class="nb">set</span> --match-set KUBE-NODE-PORT-TCP dst -j KUBE-MARK-MASQ
 
 ipvs处理dnat，进入POSTROUTING链
-<span class="gh"># endpoint --&gt; nodeport
-</span><span class="gh"></span>回来的包经过conntrack模块直接做SNAT操作，转换成nodeport
+<span class="c1"># endpoint --&gt; nodeport</span>
+回来的包经过conntrack模块直接做SNAT操作，转换成nodeport
 
--A POSTROUTING -m comment --comment &#34;kubernetes postrouting rules&#34; -j KUBE-POSTROUTING
+-A POSTROUTING -m comment --comment <span class="s2">&#34;kubernetes postrouting rules&#34;</span> -j KUBE-POSTROUTING
 -A POSTROUTING -s 169.254.123.0/24 ! -o docker0 -j MASQUERADE
--A KUBE-POSTROUTING -m comment --comment &#34;kubernetes service traffic requiring SNAT&#34; -m mark --mark 0x4000/0x4000 -j MASQUERADE
--A KUBE-POSTROUTING -m comment --comment &#34;Kubernetes endpoints dst ip:port, source ip for solving hairpin purpose&#34; -m set --match-set KUBE-LOOP-BACK dst,dst,src -j MASQUERADE
+-A KUBE-POSTROUTING -m comment --comment <span class="s2">&#34;kubernetes service traffic requiring SNAT&#34;</span> -m mark --mark 0x4000/0x4000 -j MASQUERADE
+-A KUBE-POSTROUTING -m comment --comment <span class="s2">&#34;Kubernetes endpoints dst ip:port, source ip for solving hairpin purpose&#34;</span> -m <span class="nb">set</span> --match-set KUBE-LOOP-BACK dst,dst,src -j MASQUERADE
 </code></pre></td></tr></table>
 </div>
 </div><p>ipvs 会使用 iptables 进行包过滤、SNAT、masquared(伪装)。具体来说，ipvs 将使用<code>ipset</code>来存储需要<code>DROP</code>或<code>masquared</code>的流量的源或目标地址，以确保 iptables 规则的数量是恒定的，这样我们就不需要关心我们有多少服务了</p>

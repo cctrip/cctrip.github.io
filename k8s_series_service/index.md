@@ -195,7 +195,7 @@ status:
 
 **例子**
 
-```markdown
+```shell
 # 以aws为例,cluster ip为10.100.254.226，endpoint为172.31.178.122:80,172.31.178.161:80,172.31.179.80:80,nodeport为30028
 
 # pod or node --> cluster ip --> endpoint
@@ -256,7 +256,7 @@ IPVS 提供了更多选项来平衡后端 Pod 的流量。 这些是：
 
 ![](ipvs.svg)
 
-```markdown
+```shell
 # pod or node --> cluster ip --> endpoint
 -A PREROUTING -m comment --comment "kubernetes service portals" -j KUBE-SERVICES
 -A OUTPUT -m comment --comment "kubernetes service portals" -j KUBE-SERVICES
