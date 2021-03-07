@@ -235,7 +235,7 @@ CNI 插件的详细说明请参考：[CNI SPEC](https://github.com/containernetw
 
 ***
 
-**Inside a Pod **
+**Inside a Pod**
 
 IP address
 
