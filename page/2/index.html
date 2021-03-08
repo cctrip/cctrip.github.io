@@ -114,9 +114,9 @@
     </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-11-10">2020-11-10</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cloud-native/"><i class="far fa-folder fa-fw"></i>Cloud Native</a></span></div><div class="content">系列目录 《Kubernetes系列：开篇》
 《Kubernetes系列：概述》
 《Kubernetes系列：架构》
-《Kubernetes系列：CRI》
-《Kubernetes系列：CNI》
-《Kubernetes系列：CSI》
+《Kubernetes系列：容器》
+《Kubernetes系列：网络》
+《Kubernetes系列：存储》
 《Kubernetes系列：Service》
 《Kubernetes系列：Ingress》
 《Kubernetes系列：OAM》
@@ -129,45 +129,51 @@
         <a href="/k8s_series_service/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/kubernetes/">kubernetes</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
-            <a href="/k8s_series_csi/"><img
+            <a href="/k8s_series_storage/"><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/k8s_series_csi/k8s-image.jpg"
-        data-srcset="/k8s_series_csi/k8s-image.jpg, /k8s_series_csi/k8s-image.jpg 1.5x, /k8s_series_csi/k8s-image.jpg 2x"
+        data-src="/k8s_series_storage/k8s-image.jpg"
+        data-srcset="/k8s_series_storage/k8s-image.jpg, /k8s_series_storage/k8s-image.jpg 1.5x, /k8s_series_storage/k8s-image.jpg 2x"
         data-sizes="auto"
-        alt="/k8s_series_csi/k8s-image.jpg"
+        alt="/k8s_series_storage/k8s-image.jpg"
         title="存储" /></a>
         </div><h1 class="single-title" itemprop="name headline">
-        <a href="/k8s_series_csi/">Kubernetes系列：CSI</a>
+        <a href="/k8s_series_storage/">Kubernetes系列：CSI</a>
     </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-11-05">2020-11-05</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cloud-native/"><i class="far fa-folder fa-fw"></i>Cloud Native</a></span></div><div class="content">系列目录 《Kubernetes系列：开篇》
 《Kubernetes系列：概述》
 《Kubernetes系列：架构》
-《Kubernetes系列：CRI》
-《Kubernetes系列：CNI》
-《Kubernetes系列：CSI》
+《Kubernetes系列：容器》
+《Kubernetes系列：网络》
+《Kubernetes系列：存储》
 《Kubernetes系列：Service》
 《Kubernetes系列：Ingress》
 《Kubernetes系列：OAM》
- </div><div class="post-footer">
-        <a href="/k8s_series_csi/">Read More</a><div class="post-tags">
+ 1. 介绍 容器中的文件在磁盘上是临时存放的，这给容器中运行的较重要的应用程序带来一些问题：
+ 当容器崩溃时文件丢失。kubelet 会重新启动容器， 但容器会以干净的状态重启。 在 Pod 中同时运行多个容器时，这些容器之间通常需要共享文件。  Kubernetes 中的 Volume 抽象很好的解决了这些问题。
+Kubernetes 支持很多类型的卷。 Pod 可以同时使用任意数目的卷类型。 临时卷类型的生命周期与 Pod 相同，但持久卷可以比 Pod 的存活期长。 因此，卷的存在时间会超出 Pod 中运行的所有容器，并且在容器重新启动时数据也会得到保留。 当 Pod 不再存在时，卷也将不再存在。
+卷的核心是包含一些数据的一个目录，Pod 中的容器可以访问该目录。 所采用的特定的卷类型将决定该目录如何形成的、使用何种介质保存数据以及目录中存放 的内容。
+使用卷时, 在 .spec.volumes 字段中设置为 Pod 提供的卷，并在 .spec.containers[*].volumeMounts 字段中声明卷在容器中的挂载位置。 容器中的进程看到的是由它们的 Docker 镜像和卷组成的文件系统视图。 Docker 镜像 位于文件系统层次结构的根部。各个卷则挂载在镜像内的指定路径上。 卷不能挂载到其他卷之上，也不能与其他卷有硬链接。 Pod 配置中的每个容器必须独立指定各个卷的挂载位置。
+ 2. 存储 为了管理存储，Kubernetes提供了Secret用于管理敏感信息，ConfigMap存储配置，Volume、PV、PVC、StorageClass等用来管理存储卷。
+2.1 ConfigMap ConfigMap 是一种 API 对象，用来将非机密性的数据保存到键值对中。使用时， Pods 可以将其用作环境变量、命令行参数或者存储卷中的配置文件。</div><div class="post-footer">
+        <a href="/k8s_series_storage/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/kubernetes/">kubernetes</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
-            <a href="/k8s_series_cni/"><img
+            <a href="/k8s_series_network/"><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/k8s_series_cni/k8s-image.jpg"
-        data-srcset="/k8s_series_cni/k8s-image.jpg, /k8s_series_cni/k8s-image.jpg 1.5x, /k8s_series_cni/k8s-image.jpg 2x"
+        data-src="/k8s_series_network/k8s-image.jpg"
+        data-srcset="/k8s_series_network/k8s-image.jpg, /k8s_series_network/k8s-image.jpg 1.5x, /k8s_series_network/k8s-image.jpg 2x"
         data-sizes="auto"
-        alt="/k8s_series_cni/k8s-image.jpg"
+        alt="/k8s_series_network/k8s-image.jpg"
         title="网络" /></a>
         </div><h1 class="single-title" itemprop="name headline">
-        <a href="/k8s_series_cni/">Kubernetes系列：CNI</a>
+        <a href="/k8s_series_network/">Kubernetes系列：CNI</a>
     </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-10-30">2020-10-30</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cloud-native/"><i class="far fa-folder fa-fw"></i>Cloud Native</a></span></div><div class="content">系列目录 《Kubernetes系列：开篇》
 《Kubernetes系列：概述》
 《Kubernetes系列：架构》
-《Kubernetes系列：CRI》
-《Kubernetes系列：CNI》
-《Kubernetes系列：CSI》
+《Kubernetes系列：容器》
+《Kubernetes系列：网络》
+《Kubernetes系列：存储》
 《Kubernetes系列：Service》
 《Kubernetes系列：Ingress》
 《Kubernetes系列：OAM》
@@ -177,25 +183,25 @@
  节点上的 Pod 可以不通过 NAT 和其他任何节点上的 Pod 通信 节点上的代理(比如：系统守护进程、kubelet)可以和节点上的所有Pod通信 Pod自己的IP就是其他人看到的IP  因此，一个kubernetes网络插件必须要解决下面五个问题：
  Container-to-Container 网络通信 Pod-to-Pod 网络通信 Pod-to-Service 网络通信 Internet-to-Service 网络通信 Pod IP在集群内唯一   2. 基本原理 2.1 Container-to-Container 在kubernetes中，一个Pod是一组Container的组合，并且，Pod内的Container是共享network namespace的，因此该Pod内的Container的ip和mac地址都是相同的，所以它们只需要通过localhost就能跟Pod内其他Container通信了，不过，因为是共享network namespace，因此该Pod内的端口必须是唯一的，不能冲突。
  2.2 Pod-to-Pod 在容器中，容器可以通过network namespace的技术将不同的容器的网络隔离起来，并通过veth pair技术将两个namespace连接起来以进行通信。如下图所示，每个pod都有自己的netns，通过veth pair跟节点的root netns连接起来，这样一来，pod就能直接跟node进行通信了</div><div class="post-footer">
-        <a href="/k8s_series_cni/">Read More</a><div class="post-tags">
+        <a href="/k8s_series_network/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/kubernetes/">kubernetes</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
-            <a href="/k8s_series_cri/"><img
+            <a href="/k8s_series_container/"><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/k8s_series_cri/k8s-image.png"
-        data-srcset="/k8s_series_cri/k8s-image.png, /k8s_series_cri/k8s-image.png 1.5x, /k8s_series_cri/k8s-image.png 2x"
+        data-src="/k8s_series_container/k8s-image.png"
+        data-srcset="/k8s_series_container/k8s-image.png, /k8s_series_container/k8s-image.png 1.5x, /k8s_series_container/k8s-image.png 2x"
         data-sizes="auto"
-        alt="/k8s_series_cri/k8s-image.png"
+        alt="/k8s_series_container/k8s-image.png"
         title="容器运行时" /></a>
         </div><h1 class="single-title" itemprop="name headline">
-        <a href="/k8s_series_cri/">Kubernetes系列：CRI</a>
+        <a href="/k8s_series_container/">Kubernetes系列：CRI</a>
     </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-10-25">2020-10-25</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cloud-native/"><i class="far fa-folder fa-fw"></i>Cloud Native</a></span></div><div class="content">系列目录 《Kubernetes系列：开篇》
 《Kubernetes系列：概述》
 《Kubernetes系列：架构》
-《Kubernetes系列：CRI》
-《Kubernetes系列：CNI》
-《Kubernetes系列：CSI》
+《Kubernetes系列：容器》
+《Kubernetes系列：网络》
+《Kubernetes系列：存储》
 《Kubernetes系列：Service》
 《Kubernetes系列：Ingress》
 《Kubernetes系列：OAM》
@@ -213,7 +219,7 @@ CRI由规范/要求(待添加)、protobuf API和用于容器运行时的库组�
 一致的环境
 容器让开发者可以创建与其他应用相隔离的可预测环境。容器还可以包含应用所需的软件依赖项，比如具体的编程语言运行时版本和其他软件库。从开发者的角度看，无论应用最终部署在什么地方，都可以保证这些条件一致。这一切将转化为生产力的提升：开发者和 IT 运营团队可以减少调试和诊断环境差异所需的时间，将更多的时间用于为用户提供新的功能。而且这也意味着 bug 更少，因为开发者现可在开发和测试环境中做出在生产环境中也适用的假设。
 在任何地方运行</div><div class="post-footer">
-        <a href="/k8s_series_cri/">Read More</a><div class="post-tags">
+        <a href="/k8s_series_container/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/kubernetes/">kubernetes</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
             <a href="/k8s_series_arch/"><img
@@ -229,9 +235,9 @@ CRI由规范/要求(待添加)、protobuf API和用于容器运行时的库组�
     </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-10-20">2020-10-20</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cloud-native/"><i class="far fa-folder fa-fw"></i>Cloud Native</a></span></div><div class="content">系列目录 《Kubernetes系列：开篇》
 《Kubernetes系列：概述》
 《Kubernetes系列：架构》
-《Kubernetes系列：CRI》
-《Kubernetes系列：CNI》
-《Kubernetes系列：CSI》
+《Kubernetes系列：容器》
+《Kubernetes系列：网络》
+《Kubernetes系列：存储》
 《Kubernetes系列：Service》
 《Kubernetes系列：Ingress》
 《Kubernetes系列：OAM》
@@ -261,9 +267,9 @@ etcd etcd 是兼具一致性和高可用性的键值数据库，可以作为保�
     </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-10-15">2020-10-15</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cloud-native/"><i class="far fa-folder fa-fw"></i>Cloud Native</a></span></div><div class="content">系列目录 《Kubernetes系列：开篇》
 《Kubernetes系列：概述》
 《Kubernetes系列：架构》
-《Kubernetes系列：CRI》
-《Kubernetes系列：CNI》
-《Kubernetes系列：CSI》
+《Kubernetes系列：容器》
+《Kubernetes系列：网络》
+《Kubernetes系列：存储》
 《Kubernetes系列：Service》
 《Kubernetes系列：Ingress》
 《Kubernetes系列：OAM》

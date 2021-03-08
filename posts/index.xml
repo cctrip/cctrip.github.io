@@ -100,9 +100,9 @@ MLOps更快地提供机器学习模型 一套设计，构建和管理可重现�
     <description><![CDATA[系列目录 《Kubernetes系列：开篇》
 《Kubernetes系列：概述》
 《Kubernetes系列：架构》
-《Kubernetes系列：CRI》
-《Kubernetes系列：CNI》
-《Kubernetes系列：CSI》
+《Kubernetes系列：容器》
+《Kubernetes系列：网络》
+《Kubernetes系列：存储》
 《Kubernetes系列：Service》
 《Kubernetes系列：Ingress》
 《Kubernetes系列：OAM》
@@ -116,9 +116,9 @@ MLOps更快地提供机器学习模型 一套设计，构建和管理可重现�
     <description><![CDATA[系列目录 《Kubernetes系列：开篇》
 《Kubernetes系列：概述》
 《Kubernetes系列：架构》
-《Kubernetes系列：CRI》
-《Kubernetes系列：CNI》
-《Kubernetes系列：CSI》
+《Kubernetes系列：容器》
+《Kubernetes系列：网络》
+《Kubernetes系列：存储》
 《Kubernetes系列：Service》
 《Kubernetes系列：Ingress》
 《Kubernetes系列：OAM》
@@ -135,9 +135,9 @@ MLOps更快地提供机器学习模型 一套设计，构建和管理可重现�
     <description><![CDATA[系列目录 《Kubernetes系列：开篇》
 《Kubernetes系列：概述》
 《Kubernetes系列：架构》
-《Kubernetes系列：CRI》
-《Kubernetes系列：CNI》
-《Kubernetes系列：CSI》
+《Kubernetes系列：容器》
+《Kubernetes系列：网络》
+《Kubernetes系列：存储》
 《Kubernetes系列：Service》
 《Kubernetes系列：Ingress》
 《Kubernetes系列：OAM》
@@ -149,32 +149,38 @@ MLOps更快地提供机器学习模型 一套设计，构建和管理可重现�
 2.1 一般配置 一个例子，有一组 Pod，它们对外暴露了 9376 端口，同时还被打上 app=MyApp 标签：]]></description>
 </item><item>
     <title>Kubernetes系列：CSI</title>
-    <link>https://cctrip.github.io/k8s_series_csi/</link>
+    <link>https://cctrip.github.io/k8s_series_storage/</link>
     <pubDate>Thu, 05 Nov 2020 17:55:28 &#43;0800</pubDate>
     <author>Author</author>
-    <guid>https://cctrip.github.io/k8s_series_csi/</guid>
+    <guid>https://cctrip.github.io/k8s_series_storage/</guid>
     <description><![CDATA[系列目录 《Kubernetes系列：开篇》
 《Kubernetes系列：概述》
 《Kubernetes系列：架构》
-《Kubernetes系列：CRI》
-《Kubernetes系列：CNI》
-《Kubernetes系列：CSI》
+《Kubernetes系列：容器》
+《Kubernetes系列：网络》
+《Kubernetes系列：存储》
 《Kubernetes系列：Service》
 《Kubernetes系列：Ingress》
 《Kubernetes系列：OAM》
- ]]></description>
+ 1. 介绍 容器中的文件在磁盘上是临时存放的，这给容器中运行的较重要的应用程序带来一些问题：
+ 当容器崩溃时文件丢失。kubelet 会重新启动容器， 但容器会以干净的状态重启。 在 Pod 中同时运行多个容器时，这些容器之间通常需要共享文件。  Kubernetes 中的 Volume 抽象很好的解决了这些问题。
+Kubernetes 支持很多类型的卷。 Pod 可以同时使用任意数目的卷类型。 临时卷类型的生命周期与 Pod 相同，但持久卷可以比 Pod 的存活期长。 因此，卷的存在时间会超出 Pod 中运行的所有容器，并且在容器重新启动时数据也会得到保留。 当 Pod 不再存在时，卷也将不再存在。
+卷的核心是包含一些数据的一个目录，Pod 中的容器可以访问该目录。 所采用的特定的卷类型将决定该目录如何形成的、使用何种介质保存数据以及目录中存放 的内容。
+使用卷时, 在 .spec.volumes 字段中设置为 Pod 提供的卷，并在 .spec.containers[*].volumeMounts 字段中声明卷在容器中的挂载位置。 容器中的进程看到的是由它们的 Docker 镜像和卷组成的文件系统视图。 Docker 镜像 位于文件系统层次结构的根部。各个卷则挂载在镜像内的指定路径上。 卷不能挂载到其他卷之上，也不能与其他卷有硬链接。 Pod 配置中的每个容器必须独立指定各个卷的挂载位置。
+ 2. 存储 为了管理存储，Kubernetes提供了Secret用于管理敏感信息，ConfigMap存储配置，Volume、PV、PVC、StorageClass等用来管理存储卷。
+2.1 ConfigMap ConfigMap 是一种 API 对象，用来将非机密性的数据保存到键值对中。使用时， Pods 可以将其用作环境变量、命令行参数或者存储卷中的配置文件。]]></description>
 </item><item>
     <title>Kubernetes系列：CNI</title>
-    <link>https://cctrip.github.io/k8s_series_cni/</link>
+    <link>https://cctrip.github.io/k8s_series_network/</link>
     <pubDate>Fri, 30 Oct 2020 17:55:28 &#43;0800</pubDate>
     <author>Author</author>
-    <guid>https://cctrip.github.io/k8s_series_cni/</guid>
+    <guid>https://cctrip.github.io/k8s_series_network/</guid>
     <description><![CDATA[系列目录 《Kubernetes系列：开篇》
 《Kubernetes系列：概述》
 《Kubernetes系列：架构》
-《Kubernetes系列：CRI》
-《Kubernetes系列：CNI》
-《Kubernetes系列：CSI》
+《Kubernetes系列：容器》
+《Kubernetes系列：网络》
+《Kubernetes系列：存储》
 《Kubernetes系列：Service》
 《Kubernetes系列：Ingress》
 《Kubernetes系列：OAM》
@@ -186,16 +192,16 @@ MLOps更快地提供机器学习模型 一套设计，构建和管理可重现�
  2.2 Pod-to-Pod 在容器中，容器可以通过network namespace的技术将不同的容器的网络隔离起来，并通过veth pair技术将两个namespace连接起来以进行通信。如下图所示，每个pod都有自己的netns，通过veth pair跟节点的root netns连接起来，这样一来，pod就能直接跟node进行通信了]]></description>
 </item><item>
     <title>Kubernetes系列：CRI</title>
-    <link>https://cctrip.github.io/k8s_series_cri/</link>
+    <link>https://cctrip.github.io/k8s_series_container/</link>
     <pubDate>Sun, 25 Oct 2020 17:55:28 &#43;0800</pubDate>
     <author>Author</author>
-    <guid>https://cctrip.github.io/k8s_series_cri/</guid>
+    <guid>https://cctrip.github.io/k8s_series_container/</guid>
     <description><![CDATA[系列目录 《Kubernetes系列：开篇》
 《Kubernetes系列：概述》
 《Kubernetes系列：架构》
-《Kubernetes系列：CRI》
-《Kubernetes系列：CNI》
-《Kubernetes系列：CSI》
+《Kubernetes系列：容器》
+《Kubernetes系列：网络》
+《Kubernetes系列：存储》
 《Kubernetes系列：Service》
 《Kubernetes系列：Ingress》
 《Kubernetes系列：OAM》

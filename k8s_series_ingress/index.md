@@ -9,11 +9,11 @@
 
 [《Kubernetes系列：架构》](../k8s_series_arch)
 
-[《Kubernetes系列：CRI》](../k8s_series_cri)
+[《Kubernetes系列：容器》](../k8s_series_container)
 
-[《Kubernetes系列：CNI》](../k8s_series_cni)
+[《Kubernetes系列：网络》](../k8s_series_network)
 
-[《Kubernetes系列：CSI》](../k8s_series_csi)
+[《Kubernetes系列：存储》](../k8s_series_storage)
 
 [《Kubernetes系列：Service》](../k8s_series_service)
 
