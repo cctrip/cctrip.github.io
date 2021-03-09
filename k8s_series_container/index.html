@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>Kubernetes系列：CRI - CC&#39;s Trip</title><meta name="Description" content="容器运行时"><meta property="og:title" content="Kubernetes系列：CRI" />
+        <title>Kubernetes系列：容器 - CC&#39;s Trip</title><meta name="Description" content="容器运行时"><meta property="og:title" content="Kubernetes系列：容器" />
 <meta property="og:description" content="容器运行时" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://cctrip.github.io/k8s_series_container/" />
@@ -14,14 +14,14 @@
 <meta property="article:modified_time" content="2020-10-25T17:55:28+08:00" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://cctrip.github.io/k8s_series_container/k8s-image.png"/>
-<meta name="twitter:title" content="Kubernetes系列：CRI"/>
+<meta name="twitter:title" content="Kubernetes系列：容器"/>
 <meta name="twitter:description" content="容器运行时"/>
 <meta name="application-name" content="CC&#39;s Trip">
 <meta name="apple-mobile-web-app-title" content="CC&#39;s Trip"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/leo.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://cctrip.github.io/k8s_series_container/" /><link rel="prev" href="https://cctrip.github.io/k8s_series_arch/" /><link rel="next" href="https://cctrip.github.io/k8s_series_network/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "Kubernetes系列：CRI",
+        "headline": "Kubernetes系列：容器",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
@@ -111,7 +111,7 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">Kubernetes系列：CRI</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animated flipInX">Kubernetes系列：容器</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-category">included in <a href="/categories/cloud-native/"><i class="far fa-folder fa-fw"></i>Cloud Native</a></span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-10-25">2020-10-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;827 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;4 minutes&nbsp;</div>
@@ -722,7 +722,7 @@ suspend和restore一个cgroup中的所有进程。</li>
                             <a class="link-to-markdown" href="/k8s_series_container/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cctrip.github.io/k8s_series_container/" data-title="Kubernetes系列：CRI" data-via="https://twitter.com/zcc0388" data-hashtags="kubernetes"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://cctrip.github.io/k8s_series_container/" data-hashtag="kubernetes"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://cctrip.github.io/k8s_series_container/" data-title="Kubernetes系列：CRI"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://cctrip.github.io/k8s_series_container/" data-title="Kubernetes系列：CRI"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://cctrip.github.io/k8s_series_container/" data-title="Kubernetes系列：CRI"><i class="fab fa-weibo fa-fw"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cctrip.github.io/k8s_series_container/" data-title="Kubernetes系列：容器" data-via="https://twitter.com/zcc0388" data-hashtags="kubernetes"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://cctrip.github.io/k8s_series_container/" data-hashtag="kubernetes"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://cctrip.github.io/k8s_series_container/" data-title="Kubernetes系列：容器"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://cctrip.github.io/k8s_series_container/" data-title="Kubernetes系列：容器"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://cctrip.github.io/k8s_series_container/" data-title="Kubernetes系列：容器"><i class="fab fa-weibo fa-fw"></i></a></span>
             </div>
         </div>
     </div>
@@ -735,7 +735,7 @@ suspend和restore一个cgroup中的所有进程。</li>
     </div>
 
     <div class="post-nav"><a href="/k8s_series_arch/" class="prev" rel="prev" title="Kubernetes系列：架构"><i class="fas fa-angle-left fa-fw"></i>Kubernetes系列：架构</a>
-            <a href="/k8s_series_network/" class="next" rel="next" title="Kubernetes系列：CNI">Kubernetes系列：CNI<i class="fas fa-angle-right fa-fw"></i></a></div>
+            <a href="/k8s_series_network/" class="next" rel="next" title="Kubernetes系列：网络">Kubernetes系列：网络<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">

@@ -138,7 +138,7 @@
         alt="/k8s_series_storage/k8s-image.jpg"
         title="存储" /></a>
         </div><h1 class="single-title" itemprop="name headline">
-        <a href="/k8s_series_storage/">Kubernetes系列：CSI</a>
+        <a href="/k8s_series_storage/">Kubernetes系列：存储</a>
     </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-11-05">2020-11-05</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cloud-native/"><i class="far fa-folder fa-fw"></i>Cloud Native</a></span></div><div class="content">系列目录 《Kubernetes系列：开篇》
 《Kubernetes系列：概述》
 《Kubernetes系列：架构》
@@ -150,11 +150,11 @@
 《Kubernetes系列：OAM》
  1. 介绍 容器中的文件在磁盘上是临时存放的，这给容器中运行的较重要的应用程序带来一些问题：
  当容器崩溃时文件丢失。kubelet 会重新启动容器， 但容器会以干净的状态重启。 在 Pod 中同时运行多个容器时，这些容器之间通常需要共享文件。  Kubernetes 中的 Volume 抽象很好的解决了这些问题。
-Kubernetes 支持很多类型的卷。 Pod 可以同时使用任意数目的卷类型。 临时卷类型的生命周期与 Pod 相同，但持久卷可以比 Pod 的存活期长。 因此，卷的存在时间会超出 Pod 中运行的所有容器，并且在容器重新启动时数据也会得到保留。 当 Pod 不再存在时，卷也将不再存在。
+ 2. 存储 为了管理存储，Kubernetes提供了Secret用于管理敏感信息，ConfigMap存储配置，Volume、PV、PVC、StorageClass等用来管理存储卷。
+2.1 Volume Kubernetes 支持很多类型的卷。 Pod 可以同时使用任意数目的卷类型。 临时卷类型的生命周期与 Pod 相同，但持久卷可以比 Pod 的存活期长。 因此，卷的存在时间会超出 Pod 中运行的所有容器，并且在容器重新启动时数据也会得到保留。 当 Pod 不再存在时，卷也将不再存在。
 卷的核心是包含一些数据的一个目录，Pod 中的容器可以访问该目录。 所采用的特定的卷类型将决定该目录如何形成的、使用何种介质保存数据以及目录中存放 的内容。
 使用卷时, 在 .spec.volumes 字段中设置为 Pod 提供的卷，并在 .spec.containers[*].volumeMounts 字段中声明卷在容器中的挂载位置。 容器中的进程看到的是由它们的 Docker 镜像和卷组成的文件系统视图。 Docker 镜像 位于文件系统层次结构的根部。各个卷则挂载在镜像内的指定路径上。 卷不能挂载到其他卷之上，也不能与其他卷有硬链接。 Pod 配置中的每个容器必须独立指定各个卷的挂载位置。
- 2. 存储 为了管理存储，Kubernetes提供了Secret用于管理敏感信息，ConfigMap存储配置，Volume、PV、PVC、StorageClass等用来管理存储卷。
-2.1 ConfigMap ConfigMap 是一种 API 对象，用来将非机密性的数据保存到键值对中。使用时， Pods 可以将其用作环境变量、命令行参数或者存储卷中的配置文件。</div><div class="post-footer">
+2.1.1 卷类型 Kubernetes 支持下列类型的卷：详细</div><div class="post-footer">
         <a href="/k8s_series_storage/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/kubernetes/">kubernetes</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
@@ -167,7 +167,7 @@ Kubernetes 支持很多类型的卷。 Pod 可以同时使用任意数目的卷�
         alt="/k8s_series_network/k8s-image.jpg"
         title="网络" /></a>
         </div><h1 class="single-title" itemprop="name headline">
-        <a href="/k8s_series_network/">Kubernetes系列：CNI</a>
+        <a href="/k8s_series_network/">Kubernetes系列：网络</a>
     </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-10-30">2020-10-30</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cloud-native/"><i class="far fa-folder fa-fw"></i>Cloud Native</a></span></div><div class="content">系列目录 《Kubernetes系列：开篇》
 《Kubernetes系列：概述》
 《Kubernetes系列：架构》
@@ -195,7 +195,7 @@ Kubernetes 支持很多类型的卷。 Pod 可以同时使用任意数目的卷�
         alt="/k8s_series_container/k8s-image.png"
         title="容器运行时" /></a>
         </div><h1 class="single-title" itemprop="name headline">
-        <a href="/k8s_series_container/">Kubernetes系列：CRI</a>
+        <a href="/k8s_series_container/">Kubernetes系列：容器</a>
     </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-10-25">2020-10-25</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cloud-native/"><i class="far fa-folder fa-fw"></i>Cloud Native</a></span></div><div class="content">系列目录 《Kubernetes系列：开篇》
 《Kubernetes系列：概述》
 《Kubernetes系列：架构》
