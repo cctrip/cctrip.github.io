@@ -236,17 +236,33 @@ MLOps更快地提供机器学习模型 一套设计，构建和管理可重现�
 《Kubernetes系列：Service》
 《Kubernetes系列：Ingress》
 《Kubernetes系列：OAM》
- </div><div class="post-footer">
+ 1. 介绍  开放应用程序模型(OAM)是与运行时无关的规范，用于定义云原生应用程序。
+ OAM专注于应用程序，而不是容器或协调器。
+OAM带来了模块化，可扩展和可移植的设计，可用于对云原生应用程序建模，并以统一的方式将应用程序交付给Kubernetes，云或IoT设备等任何运行时。
+ 2. KubeVela 2.1 是什么 云原生技术的趋势正在朝着使用Kubernetes作为通用抽象层跨云和本地基础架构追求一致的应用程序交付的趋势。
+对于平台构建者而言，KubeVela是一个框架，使他们能够轻松创建用户友好但高度可扩展的平台。详细地说，KubeVela通过执行以下操作减轻了构建此类平台的麻烦：
+ 以应用为中心。 KubeVela强制采用一种应用程序概念作为其主要API，并且所有KubeVela的功能仅可满足应用程序的需求。这是通过采用开放应用程序模型作为KubeVela的核心API来实现的。 本地扩展。KubeVela中的应用程序由各种模块化组件（称为：服务）组成。 Kubernetes生态系统的功能可以随时通过Kubernetes CRD注册机制作为新的工作负载类型或特征添加到KubeVela中。 简单但可扩展的抽象机制。KubeVela引入了一个模板引擎（支持CUELang等），用于从下划线的Kubernetes资源中提取面向用户的模式。KubeVela提供了一组内置的抽象作为起点，并且平台构建者可以随时自由地对其进行修改。抽象更改在运行时生效，无需重新编译或重新部署KubeVela。  借助KubeVela，平台构建者现在终于获得了工具支持，以高信心和低周转时间设计并向其最终用户交付任何新功能。
+对于开发人员而言，使用KubeVela构建的此类平台将使他们能够以最小的努力设计并将其应用程序发布到Kubernetes。他们只需要一个简单的应用程序定义，而不是管理少量的基础结构细节，而是遵循以开发人员为中心的工作流，该工作流可以轻松地与任何CI / CD管道集成。
+ 2.2 对比 PaaS 它们提供了完整的应用程序管理功能，旨在改善开发人员的体验和效率。KubeVela可以提供类似的体验，但是与大多数现有的PaaS产品相比，其内置功能轻巧得多，并且易于维护。KubeVela核心组件不过是一组Kubernetes控制器/插件。
+KubeVela被设计为核心引擎，其主要目标是使平台团队能够通过简单地注册CRD和定义模板来创建“类似PaaS”的体验。与此经验相比，大多数现有的PaaS系统要么不可扩展，要么具有自己的附加系统。因此，对他们来说，在受支持的应用程序类型和受支持的功能上强加约束是很常见的，而这在基于KubeVela的体验中是不会发生的。
+Serverless Platforms 无服务器平台（例如AWS Lambda）可提供非凡的用户体验和敏捷性，以部署无服务器应用程序。但是，这些平台在可扩展性方面施加了更多限制。它们可以说是“硬编码” PaaS。
+通过将自己注册为新的工作负载类型和特征，可以轻松地将基于Kubernetes的Knative，OpenFaaS等无服务器平台与KubeVela集成。即使对于AWS Lambda，也有成功的故事，可以通过Crossplane开发的工具将其与KubeVela集成。
+与平台无关的开发人员工具 典型的例子是Hashicorp的Waypoint。 Waypoint是面向开发人员的工具，它引入了一致的工作流程（即构建，部署，发布），以在不同平台之上发布应用程序。
+KubeVela可以像任何其他受支持的平台一样集成到Waypoint中。在这种情况下，开发人员将使用Waypoint工作流而不是KubeVela Appfile / CLI来管理应用程序，并且该集成中仍然可以使用KubeVela的所有功能，包括抽象。
+Helm Helm是Kubernetes的软件包管理器，它为Kubernetes作为一个单元提供打包，安装和升级一组YAML文件。 KubeVela充分利用Helm作为功能和依赖项的软件包格式。
+尽管KubeVela本身不是包管理器，但它是平台构建者以简单且可重复的方式创建上层平台的核心引擎。
+Kubernetes KubeVela是用于构建上层平台的Kubernetes插件。它利用Kubernetes的本机可扩展性和功能解决了一个棘手的问题-使运输应用程序在Kubernetes上令人愉悦。
+ 2.3 安装配置 2.3.1 KubeVale安装   添加 helm chart repo</div><div class="post-footer">
         <a href="/k8s_series_oam/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/kubernetes/">kubernetes</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
             <a href="/k8s_series_ingress/"><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="/k8s_series_ingress/ingress-image.png"
-        data-srcset="/k8s_series_ingress/ingress-image.png, /k8s_series_ingress/ingress-image.png 1.5x, /k8s_series_ingress/ingress-image.png 2x"
+        data-src="/k8s_series_ingress/ingress-choose.png"
+        data-srcset="/k8s_series_ingress/ingress-choose.png, /k8s_series_ingress/ingress-choose.png 1.5x, /k8s_series_ingress/ingress-choose.png 2x"
         data-sizes="auto"
-        alt="/k8s_series_ingress/ingress-image.png"
+        alt="/k8s_series_ingress/ingress-choose.png"
         title="Ingress" /></a>
         </div><h1 class="single-title" itemprop="name headline">
         <a href="/k8s_series_ingress/">Kubernetes系列：Ingress</a>
@@ -262,7 +278,9 @@ MLOps更快地提供机器学习模型 一套设计，构建和管理可重现�
  1. 介绍 1.1 Ingress  Ingress 公开了从集群外部到集群内service的 HTTP 和 HTTPS 路由。 流量路由由 Ingress 资源上定义的规则控制。
  可以将 Ingress 配置为服务提供外部可访问的 URL、负载均衡流量、终止 SSL/TLS，以及提供基于名称的虚拟主机等能力。 Ingress Controller 通常负责通过负载均衡器来实现 Ingress，尽管它也可以配置边缘路由器或其他前端来帮助处理流量。
  1.2 Ingress Controller 为了让 Ingress 资源工作，集群必须有一个正在运行的 Ingress Controller。
- 2. Ingress Contoller 选择  </div><div class="post-footer">
+与作为 kube-controller-manager 可执行文件的一部分运行的其他类型的控制器不同，Ingress 控制器不是随集群自动启动的。
+ 2. Ingress Contoller 选择 下表是一些常用的Contoller对比：
+   control plane data plane backend service discovery protocols ssl termination websocket routing scope resiliency lb algorithms auth Tracing canary/shadow istio integration state Paid support Linkaaaaaaaaaaaaaa dashboard sticky sessions lua     ingress-nginx nginx dynamic http,https,tcp (separate lb),udp,grpc,fastcgi,IPC socket yes yes host,path(with regex) cross-namespace rate limit, retries rr,ewma,ip_hash basic, digest, external auth yes canary  kubernetes  https://kubernetes.</div><div class="post-footer">
         <a href="/k8s_series_ingress/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/kubernetes/">kubernetes</a></div></div>
 </article><ul class="pagination"><li class="page-item active">
