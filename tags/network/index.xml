@@ -37,9 +37,9 @@ eg：GET /index.html HTTP/1.1
     <pubDate>Sat, 21 May 2016 17:55:28 &#43;0800</pubDate>
     <author>Author</author>
     <guid>https://cctrip.github.io/dns/</guid>
-    <description><![CDATA[写在前面 目前，我们大部分的网络通信都是基于TCP/IP协议的，而TCP/IP又基于IP地址作为唯一标识进行通信，随着需要记忆的IP地址数量的增多，肯定会超出我们的记忆能力范围，但如果使用一种利于人们的记忆的方式，如域名，例如&quot;www.google.com&rdquo;，我们便可以轻松的记忆这种方式的标识，而不是繁杂的数字。而DNS(域名系统)就是为了可以使用这种方式提供服务的。
+    <description><![CDATA[写在前面 目前，我们大部分的网络通信都是基于TCP/IP协议的，而TCP/IP又基于IP地址作为唯一标识进行通信，随着需要记忆的IP地址数量的增多，肯定会超出我们的记忆能力范围，但如果使用一种利于人们的记忆的方式，如域名，例如&quot;www.google.com&quot;，我们便可以轻松的记忆这种方式的标识，而不是繁杂的数字。而DNS(域名系统)就是为了可以使用这种方式提供服务的。
  概念 DNS(Domain Name System)，域名系统，它是因特网的一项服务。它作为将域名和IP地址相互映射的一个分布式数据库，能够使人更方便地访问互联网。DNS使用TCP和UDP端口53。当前，对于每一级域名长度的限制是63个字符，域名总长度则不能超过253个字符。
-DNS Domain Namespace，DNS域命名空间，是一种分层树状结构，其格式如下:&ldquo;www.google.com&rdquo;,以点&rdquo;.&ldquo;为分隔。结构如图所示：
+DNS Domain Namespace，DNS域命名空间，是一种分层树状结构，其格式如下:&ldquo;www.google.com&rdquo;,以点&quot;.&ldquo;为分隔。结构如图所示：
   根域：绝对域名(FQDN)，以点&rdquo;.&ldquo;结尾的域名
   顶级域：用来指示某个国家/地区或组织使用的名称的类型名称，例如.com
   二级域：个人或组织在因特网上使用的注册名称，例如google.com

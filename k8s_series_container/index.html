@@ -8,10 +8,10 @@
         <title>Kubernetes系列：容器 - CC&#39;s Trip</title><meta name="Description" content="容器运行时"><meta property="og:title" content="Kubernetes系列：容器" />
 <meta property="og:description" content="容器运行时" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://cctrip.github.io/k8s_series_container/" />
-<meta property="og:image" content="https://cctrip.github.io/k8s_series_container/k8s-image.png"/>
-<meta property="article:published_time" content="2020-10-25T17:55:28+08:00" />
-<meta property="article:modified_time" content="2020-10-25T17:55:28+08:00" />
+<meta property="og:url" content="https://cctrip.github.io/k8s_series_container/" /><meta property="og:image" content="https://cctrip.github.io/k8s_series_container/k8s-image.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-10-25T17:55:28&#43;08:00" />
+<meta property="article:modified_time" content="2020-10-25T17:55:28&#43;08:00" />
+
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://cctrip.github.io/k8s_series_container/k8s-image.png"/>
 <meta name="twitter:title" content="Kubernetes系列：容器"/>
@@ -229,31 +229,31 @@
 <table>
 <thead>
 <tr>
-<th align="left"></th>
-<th align="left">容器的优势</th>
-<th align="left">虚拟机的优势</th>
+<th style="text-align:left"></th>
+<th style="text-align:left">容器的优势</th>
+<th style="text-align:left">虚拟机的优势</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">一致的运行时环境</td>
-<td align="left"><em>true</em></td>
-<td align="left"><em>true</em></td>
+<td style="text-align:left">一致的运行时环境</td>
+<td style="text-align:left"><em>true</em></td>
+<td style="text-align:left"><em>true</em></td>
 </tr>
 <tr>
-<td align="left">应用沙盒化</td>
-<td align="left"><em>true</em></td>
-<td align="left"><em>true</em></td>
+<td style="text-align:left">应用沙盒化</td>
+<td style="text-align:left"><em>true</em></td>
+<td style="text-align:left"><em>true</em></td>
 </tr>
 <tr>
-<td align="left">占用的存储空间少</td>
-<td align="left"><em>true</em></td>
-<td align="left"></td>
+<td style="text-align:left">占用的存储空间少</td>
+<td style="text-align:left"><em>true</em></td>
+<td style="text-align:left"></td>
 </tr>
 <tr>
-<td align="left">开销低</td>
-<td align="left"><em>true</em></td>
-<td align="left"></td>
+<td style="text-align:left">开销低</td>
+<td style="text-align:left"><em>true</em></td>
+<td style="text-align:left"></td>
 </tr>
 </tbody>
 </table>
@@ -425,7 +425,7 @@ lrwxrwxrwx <span class="m">1</span> dev dev <span class="m">0</span> 7月 <span 
 <p>术语cgroup在不同的上下文中代表不同的意思，可以指整个Linux的cgroup技术，也可以指一个具体进程组。</p>
 <p>cgroup是Linux下的一种将进程按组进行管理的机制，在用户层看来，cgroup技术就是把系统中的所有进程组织成一颗一颗独立的树，每棵树都包含系统的所有进程，树的每个节点是一个进程组，而每颗树又和一个或者多个subsystem关联，树的作用是将进程分组，而subsystem的作用就是对这些组进行操作。cgroup主要包括下面两部分：</p>
 <ul>
-<li><strong>subsystem</strong> 一个subsystem就是一个内核模块，他被关联到一颗cgroup树之后，就会在树的每个节点（进程组）上做具体的操作。subsystem经常被称作&quot;resource controller&rdquo;，因为它主要被用来调度或者限制每个进程组的资源，但是这个说法不完全准确，因为有时我们将进程分组只是为了做一些监控，观察一下他们的状态，比如perf_event subsystem。到目前为止，Linux支持12种subsystem，比如限制CPU的使用时间，限制使用的内存，统计CPU的使用情况，冻结和恢复一组进程等，后续会对它们一一进行介绍。</li>
+<li><strong>subsystem</strong> 一个subsystem就是一个内核模块，他被关联到一颗cgroup树之后，就会在树的每个节点（进程组）上做具体的操作。subsystem经常被称作&quot;resource controller&quot;，因为它主要被用来调度或者限制每个进程组的资源，但是这个说法不完全准确，因为有时我们将进程分组只是为了做一些监控，观察一下他们的状态，比如perf_event subsystem。到目前为止，Linux支持12种subsystem，比如限制CPU的使用时间，限制使用的内存，统计CPU的使用情况，冻结和恢复一组进程等，后续会对它们一一进行介绍。</li>
 <li><strong>hierarchy</strong> 一个hierarchy可以理解为一棵cgroup树，树的每个节点就是一个进程组，每棵树都会与零到多个subsystem关联。在一颗树里面，会包含Linux系统中的所有进程，但每个进程只能属于一个节点（进程组）。系统中可以有很多颗cgroup树，每棵树都和不同的subsystem关联，一个进程可以属于多颗树，即一个进程可以属于多个进程组，只是这些进程组和不同的subsystem关联。目前Linux支持12种subsystem，如果不考虑不与任何subsystem关联的情况（systemd就属于这种情况），Linux里面最多可以建12颗cgroup树，每棵树关联一个subsystem，当然也可以只建一棵树，然后让这棵树关联所有的subsystem。当一颗cgroup树不和任何subsystem关联的时候，意味着这棵树只是将进程进行分组，至于要在分组的基础上做些什么，将由应用程序自己决定，systemd就是一个这样的例子。</li>
 </ul>
 <h4 id="321-查看cgroup">3.2.1 查看cgroup</h4>
@@ -602,7 +602,7 @@ suspend和restore一个cgroup中的所有进程。</li>
 <h4 id="331-remount">3.3.1 (re)mount</h4>
 <p>我们知道，namespace可以对系统资源进行隔离，而mount namespace是隔离各个挂载点的，因此在容器内部对文件系统进行mount和umount对其他进程并不影响。但是，新创建的容器是会直接继承宿主机的各个挂载点，因此我们会看到之前宿主机的各个挂载目录。但是对于用户来讲，当我们启动一个新的容器的时候，应该是一个干净的文件系统，不应该把宿主机的文件系统挂载进来，因此，我们在操作mount时应该做一个重新挂载整个根目录的操作。</p>
 <h4 id="332-rootfs">3.3.2 rootfs</h4>
-<p>在linux中，可以由<strong>chroot</strong>或者<strong>pivot_root</strong>来实现根目录的&quot;挂载&rdquo;。</p>
+<p>在linux中，可以由<strong>chroot</strong>或者<strong>pivot_root</strong>来实现根目录的&quot;挂载&quot;。</p>
 <p><strong>chroot</strong>顾名思义，它的作用就是帮你“change root file system”，即改变进程的根目录到你指定的位置。不过chroot是只改变即将运行的某进程的根目录。</p>
 <p><strong>pivot_root</strong>主要是把整个系统切换到一个新的root目录，然后去掉对之前rootfs的依赖，以便于可以<strong>umount</strong>    之前的文件系统（pivot_root需要root权限）</p>
 <p>为了能够让容器的这个根目录看起来更“真实”，我们一般会在这个容器的根目录下挂载一个完整操作系统的文件系统，比如 Ubuntu16.04 的 ISO。这样，在容器启动之后，我们在容器里通过执行 &ldquo;ls /&rdquo; 查看根目录下的内容，就是 Ubuntu 16.04 的所有目录和文件。</p>
@@ -739,7 +739,7 @@ suspend和restore一个cgroup中的所有进程。</li>
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.72.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.81.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>

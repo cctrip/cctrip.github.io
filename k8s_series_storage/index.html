@@ -8,10 +8,10 @@
         <title>Kubernetes系列：存储 - CC&#39;s Trip</title><meta name="Description" content="存储"><meta property="og:title" content="Kubernetes系列：存储" />
 <meta property="og:description" content="存储" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://cctrip.github.io/k8s_series_storage/" />
-<meta property="og:image" content="https://cctrip.github.io/k8s_series_storage/k8s-image.jpg"/>
-<meta property="article:published_time" content="2020-11-05T17:55:28+08:00" />
-<meta property="article:modified_time" content="2020-11-05T17:55:28+08:00" />
+<meta property="og:url" content="https://cctrip.github.io/k8s_series_storage/" /><meta property="og:image" content="https://cctrip.github.io/k8s_series_storage/k8s-image.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-11-05T17:55:28&#43;08:00" />
+<meta property="article:modified_time" content="2020-11-05T17:55:28&#43;08:00" />
+
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://cctrip.github.io/k8s_series_storage/k8s-image.jpg"/>
 <meta name="twitter:title" content="Kubernetes系列：存储"/>
@@ -31,7 +31,7 @@
                             "url": "https:\/\/cctrip.github.io\/k8s_series_storage\/k8s-image.jpg",
                             "width":  900 ,
                             "height":  505 
-                        }],"genre": "posts","keywords": "kubernetes","wordcount":  2352 ,
+                        }],"genre": "posts","keywords": "kubernetes","wordcount":  2354 ,
         "url": "https:\/\/cctrip.github.io\/k8s_series_storage\/","datePublished": "2020-11-05T17:55:28+08:00","dateModified": "2020-11-05T17:55:28+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
@@ -113,7 +113,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Kubernetes系列：存储</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-category">included in <a href="/categories/cloud-native/"><i class="far fa-folder fa-fw"></i>Cloud Native</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-11-05">2020-11-05</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2352 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-11-05">2020-11-05</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2354 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;12 minutes&nbsp;</div>
         </div><div class="featured-image"><img
         class="lazyload"
@@ -262,24 +262,24 @@
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">apiVersion</span><span class="p">:</span><span class="w"> </span>v1<span class="w">
-</span><span class="w"></span><span class="k">kind</span><span class="p">:</span><span class="w"> </span>Pod<span class="w">
-</span><span class="w"></span><span class="k">metadata</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>configmap-pod<span class="w">
-</span><span class="w"></span><span class="k">spec</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">containers</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>test<span class="w">
-</span><span class="w">      </span><span class="k">image</span><span class="p">:</span><span class="w"> </span>busybox<span class="w">
-</span><span class="w">      </span><span class="k">volumeMounts</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>config-vol<span class="w">
-</span><span class="w">          </span><span class="k">mountPath</span><span class="p">:</span><span class="w"> </span>/etc/config<span class="w">
-</span><span class="w">  </span><span class="k">volumes</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>config-vol<span class="w">
-</span><span class="w">      </span><span class="k">configMap</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>log-config<span class="w">
-</span><span class="w">        </span><span class="k">items</span><span class="p">:</span><span class="w">
-</span><span class="w">          </span>- <span class="k">key</span><span class="p">:</span><span class="w"> </span>log_level<span class="w">
-</span><span class="w">            </span><span class="k">path</span><span class="p">:</span><span class="w"> </span>log_level<span class="w">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
+</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Pod</span><span class="w">
+</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">configmap-pod</span><span class="w">
+</span><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">containers</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">test</span><span class="w">
+</span><span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">busybox</span><span class="w">
+</span><span class="w">      </span><span class="nt">volumeMounts</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">config-vol</span><span class="w">
+</span><span class="w">          </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l">/etc/config</span><span class="w">
+</span><span class="w">  </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">config-vol</span><span class="w">
+</span><span class="w">      </span><span class="nt">configMap</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">log-config</span><span class="w">
+</span><span class="w">        </span><span class="nt">items</span><span class="p">:</span><span class="w">
+</span><span class="w">          </span>- <span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l">log_level</span><span class="w">
+</span><span class="w">            </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l">log_level</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
 </div><p><code>log-config</code> ConfigMap 以卷的形式挂载，并且存储在 <code>log_level</code> 条目中的所有内容 都被挂载到 Pod 的 <code>/etc/config/log_level</code> 路径下。 请注意，这个路径来源于卷的 <code>mountPath</code> 和 <code>log_level</code> 键对应的 <code>path</code>。</p>
@@ -331,20 +331,20 @@
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">apiVersion</span><span class="p">:</span><span class="w"> </span>v1<span class="w">
-</span><span class="w"></span><span class="k">kind</span><span class="p">:</span><span class="w"> </span>Pod<span class="w">
-</span><span class="w"></span><span class="k">metadata</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>test-pd<span class="w">
-</span><span class="w"></span><span class="k">spec</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">containers</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span>- <span class="k">image</span><span class="p">:</span><span class="w"> </span>k8s.gcr.io/test-webserver<span class="w">
-</span><span class="w">    </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>test-container<span class="w">
-</span><span class="w">    </span><span class="k">volumeMounts</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span>- <span class="k">mountPath</span><span class="p">:</span><span class="w"> </span>/cache<span class="w">
-</span><span class="w">      </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>cache-volume<span class="w">
-</span><span class="w">  </span><span class="k">volumes</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>cache-volume<span class="w">
-</span><span class="w">    </span><span class="k">emptyDir</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
+</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Pod</span><span class="w">
+</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">test-pd</span><span class="w">
+</span><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">containers</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">k8s.gcr.io/test-webserver</span><span class="w">
+</span><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">test-container</span><span class="w">
+</span><span class="w">    </span><span class="nt">volumeMounts</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- <span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l">/cache</span><span class="w">
+</span><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">cache-volume</span><span class="w">
+</span><span class="w">  </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">cache-volume</span><span class="w">
+</span><span class="w">    </span><span class="nt">emptyDir</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
 </span></code></pre></td></tr></table>
 </div>
 </div><p><strong>fc (光纤通道)</strong></p>
@@ -384,42 +384,42 @@
 <table>
 <thead>
 <tr>
-<th align="left">取值</th>
-<th align="left">行为</th>
+<th style="text-align:left">取值</th>
+<th style="text-align:left">行为</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left"></td>
-<td align="left">空字符串（默认）用于向后兼容，这意味着在安装 hostPath 卷之前不会执行任何检查。</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">空字符串（默认）用于向后兼容，这意味着在安装 hostPath 卷之前不会执行任何检查。</td>
 </tr>
 <tr>
-<td align="left"><code>DirectoryOrCreate</code></td>
-<td align="left">如果在给定路径上什么都不存在，那么将根据需要创建空目录，权限设置为 0755，具有与 kubelet 相同的组和属主信息。</td>
+<td style="text-align:left"><code>DirectoryOrCreate</code></td>
+<td style="text-align:left">如果在给定路径上什么都不存在，那么将根据需要创建空目录，权限设置为 0755，具有与 kubelet 相同的组和属主信息。</td>
 </tr>
 <tr>
-<td align="left"><code>Directory</code></td>
-<td align="left">在给定路径上必须存在的目录。</td>
+<td style="text-align:left"><code>Directory</code></td>
+<td style="text-align:left">在给定路径上必须存在的目录。</td>
 </tr>
 <tr>
-<td align="left"><code>FileOrCreate</code></td>
-<td align="left">如果在给定路径上什么都不存在，那么将在那里根据需要创建空文件，权限设置为 0644，具有与 kubelet 相同的组和所有权。</td>
+<td style="text-align:left"><code>FileOrCreate</code></td>
+<td style="text-align:left">如果在给定路径上什么都不存在，那么将在那里根据需要创建空文件，权限设置为 0644，具有与 kubelet 相同的组和所有权。</td>
 </tr>
 <tr>
-<td align="left"><code>File</code></td>
-<td align="left">在给定路径上必须存在的文件。</td>
+<td style="text-align:left"><code>File</code></td>
+<td style="text-align:left">在给定路径上必须存在的文件。</td>
 </tr>
 <tr>
-<td align="left"><code>Socket</code></td>
-<td align="left">在给定路径上必须存在的 UNIX 套接字。</td>
+<td style="text-align:left"><code>Socket</code></td>
+<td style="text-align:left">在给定路径上必须存在的 UNIX 套接字。</td>
 </tr>
 <tr>
-<td align="left"><code>CharDevice</code></td>
-<td align="left">在给定路径上必须存在的字符设备。</td>
+<td style="text-align:left"><code>CharDevice</code></td>
+<td style="text-align:left">在给定路径上必须存在的字符设备。</td>
 </tr>
 <tr>
-<td align="left"><code>BlockDevice</code></td>
-<td align="left">在给定路径上必须存在的块设备。</td>
+<td style="text-align:left"><code>BlockDevice</code></td>
+<td style="text-align:left">在给定路径上必须存在的块设备。</td>
 </tr>
 </tbody>
 </table>
@@ -451,24 +451,24 @@
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">apiVersion</span><span class="p">:</span><span class="w"> </span>v1<span class="w">
-</span><span class="w"></span><span class="k">kind</span><span class="p">:</span><span class="w"> </span>Pod<span class="w">
-</span><span class="w"></span><span class="k">metadata</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>test-pd<span class="w">
-</span><span class="w"></span><span class="k">spec</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">containers</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span>- <span class="k">image</span><span class="p">:</span><span class="w"> </span>k8s.gcr.io/test-webserver<span class="w">
-</span><span class="w">    </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>test-container<span class="w">
-</span><span class="w">    </span><span class="k">volumeMounts</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span>- <span class="k">mountPath</span><span class="p">:</span><span class="w"> </span>/test-pd<span class="w">
-</span><span class="w">      </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>test-volume<span class="w">
-</span><span class="w">  </span><span class="k">volumes</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>test-volume<span class="w">
-</span><span class="w">    </span><span class="k">hostPath</span><span class="p">:</span><span class="w">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
+</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Pod</span><span class="w">
+</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">test-pd</span><span class="w">
+</span><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">containers</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">k8s.gcr.io/test-webserver</span><span class="w">
+</span><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">test-container</span><span class="w">
+</span><span class="w">    </span><span class="nt">volumeMounts</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- <span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l">/test-pd</span><span class="w">
+</span><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">test-volume</span><span class="w">
+</span><span class="w">  </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">test-volume</span><span class="w">
+</span><span class="w">    </span><span class="nt">hostPath</span><span class="p">:</span><span class="w">
 </span><span class="w">      </span><span class="c"># 宿主上目录位置</span><span class="w">
-</span><span class="w">      </span><span class="k">path</span><span class="p">:</span><span class="w"> </span>/data<span class="w">
+</span><span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l">/data</span><span class="w">
 </span><span class="w">      </span><span class="c"># 此字段为可选</span><span class="w">
-</span><span class="w">      </span><span class="k">type</span><span class="p">:</span><span class="w"> </span>Directory<span class="w">
+</span><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">Directory</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
@@ -502,29 +502,29 @@
 </span><span class="lnt">23
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">apiVersion</span><span class="p">:</span><span class="w"> </span>v1<span class="w">
-</span><span class="w"></span><span class="k">kind</span><span class="p">:</span><span class="w"> </span>Pod<span class="w">
-</span><span class="w"></span><span class="k">metadata</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>test-webserver<span class="w">
-</span><span class="w"></span><span class="k">spec</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">containers</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>test-webserver<span class="w">
-</span><span class="w">    </span><span class="k">image</span><span class="p">:</span><span class="w"> </span>k8s.gcr.io/test-webserver<span class="p">:</span>latest<span class="w">
-</span><span class="w">    </span><span class="k">volumeMounts</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span>- <span class="k">mountPath</span><span class="p">:</span><span class="w"> </span>/var/local/aaa<span class="w">
-</span><span class="w">      </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>mydir<span class="w">
-</span><span class="w">    </span>- <span class="k">mountPath</span><span class="p">:</span><span class="w"> </span>/var/local/aaa/<span class="m">1.</span>txt<span class="w">
-</span><span class="w">      </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>myfile<span class="w">
-</span><span class="w">  </span><span class="k">volumes</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>mydir<span class="w">
-</span><span class="w">    </span><span class="k">hostPath</span><span class="p">:</span><span class="w">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
+</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Pod</span><span class="w">
+</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">test-webserver</span><span class="w">
+</span><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">containers</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">test-webserver</span><span class="w">
+</span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">k8s.gcr.io/test-webserver:latest</span><span class="w">
+</span><span class="w">    </span><span class="nt">volumeMounts</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- <span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l">/var/local/aaa</span><span class="w">
+</span><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">mydir</span><span class="w">
+</span><span class="w">    </span>- <span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l">/var/local/aaa/1.txt</span><span class="w">
+</span><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">myfile</span><span class="w">
+</span><span class="w">  </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">mydir</span><span class="w">
+</span><span class="w">    </span><span class="nt">hostPath</span><span class="p">:</span><span class="w">
 </span><span class="w">      </span><span class="c"># 确保文件所在目录成功创建。</span><span class="w">
-</span><span class="w">      </span><span class="k">path</span><span class="p">:</span><span class="w"> </span>/var/local/aaa<span class="w">
-</span><span class="w">      </span><span class="k">type</span><span class="p">:</span><span class="w"> </span>DirectoryOrCreate<span class="w">
-</span><span class="w">  </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>myfile<span class="w">
-</span><span class="w">    </span><span class="k">hostPath</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="k">path</span><span class="p">:</span><span class="w"> </span>/var/local/aaa/<span class="m">1.</span>txt<span class="w">
-</span><span class="w">      </span><span class="k">type</span><span class="p">:</span><span class="w"> </span>FileOrCreate<span class="w">
+</span><span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l">/var/local/aaa</span><span class="w">
+</span><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">DirectoryOrCreate</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">myfile</span><span class="w">
+</span><span class="w">    </span><span class="nt">hostPath</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l">/var/local/aaa/1.txt</span><span class="w">
+</span><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">FileOrCreate</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
 </div><p><strong>iscsi</strong></p>
@@ -566,28 +566,28 @@
 </span><span class="lnt">22
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">apiVersion</span><span class="p">:</span><span class="w"> </span>v1<span class="w">
-</span><span class="w"></span><span class="k">kind</span><span class="p">:</span><span class="w"> </span>PersistentVolume<span class="w">
-</span><span class="w"></span><span class="k">metadata</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>example-pv<span class="w">
-</span><span class="w"></span><span class="k">spec</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">capacity</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">storage</span><span class="p">:</span><span class="w"> </span>100Gi<span class="w">
-</span><span class="w">  </span><span class="k">volumeMode</span><span class="p">:</span><span class="w"> </span>Filesystem<span class="w">
-</span><span class="w">  </span><span class="k">accessModes</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span>- ReadWriteOnce<span class="w">
-</span><span class="w">  </span><span class="k">persistentVolumeReclaimPolicy</span><span class="p">:</span><span class="w"> </span>Delete<span class="w">
-</span><span class="w">  </span><span class="k">storageClassName</span><span class="p">:</span><span class="w"> </span>local-storage<span class="w">
-</span><span class="w">  </span><span class="k">local</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">path</span><span class="p">:</span><span class="w"> </span>/mnt/disks/ssd1<span class="w">
-</span><span class="w">  </span><span class="k">nodeAffinity</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">required</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="k">nodeSelectorTerms</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span>- <span class="k">matchExpressions</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span>- <span class="k">key</span><span class="p">:</span><span class="w"> </span>kubernetes.io/hostname<span class="w">
-</span><span class="w">          </span><span class="k">operator</span><span class="p">:</span><span class="w"> </span>In<span class="w">
-</span><span class="w">          </span><span class="k">values</span><span class="p">:</span><span class="w">
-</span><span class="w">          </span>- example-node<span class="w">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
+</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">PersistentVolume</span><span class="w">
+</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">example-pv</span><span class="w">
+</span><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">capacity</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">storage</span><span class="p">:</span><span class="w"> </span><span class="l">100Gi</span><span class="w">
+</span><span class="w">  </span><span class="nt">volumeMode</span><span class="p">:</span><span class="w"> </span><span class="l">Filesystem</span><span class="w">
+</span><span class="w">  </span><span class="nt">accessModes</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span>- <span class="l">ReadWriteOnce</span><span class="w">
+</span><span class="w">  </span><span class="nt">persistentVolumeReclaimPolicy</span><span class="p">:</span><span class="w"> </span><span class="l">Delete</span><span class="w">
+</span><span class="w">  </span><span class="nt">storageClassName</span><span class="p">:</span><span class="w"> </span><span class="l">local-storage</span><span class="w">
+</span><span class="w">  </span><span class="nt">local</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l">/mnt/disks/ssd1</span><span class="w">
+</span><span class="w">  </span><span class="nt">nodeAffinity</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">nodeSelectorTerms</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="nt">matchExpressions</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span>- <span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l">kubernetes.io/hostname</span><span class="w">
+</span><span class="w">          </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l">In</span><span class="w">
+</span><span class="w">          </span><span class="nt">values</span><span class="p">:</span><span class="w">
+</span><span class="w">          </span>- <span class="l">example-node</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
 </div><p>使用 <code>local</code> 卷时，你需要设置 PersistentVolume 对象的 <code>nodeAffinity</code> 字段。 Kubernetes 调度器使用 PersistentVolume 的 <code>nodeAffinity</code> 信息来将使用 <code>local</code> 卷的 Pod 调度到正确的节点。</p>
@@ -659,41 +659,41 @@
 </span><span class="lnt">35
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">apiVersion</span><span class="p">:</span><span class="w"> </span>v1<span class="w">
-</span><span class="w"></span><span class="k">kind</span><span class="p">:</span><span class="w"> </span>Pod<span class="w">
-</span><span class="w"></span><span class="k">metadata</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>volume-test<span class="w">
-</span><span class="w"></span><span class="k">spec</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">containers</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>container-test<span class="w">
-</span><span class="w">    </span><span class="k">image</span><span class="p">:</span><span class="w"> </span>busybox<span class="w">
-</span><span class="w">    </span><span class="k">volumeMounts</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>all-in-one<span class="w">
-</span><span class="w">      </span><span class="k">mountPath</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;/projected-volume&#34;</span><span class="w">
-</span><span class="w">      </span><span class="k">readOnly</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span><span class="w">  </span><span class="k">volumes</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>all-in-one<span class="w">
-</span><span class="w">    </span><span class="k">projected</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="k">sources</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span>- <span class="k">secret</span><span class="p">:</span><span class="w">
-</span><span class="w">          </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>mysecret<span class="w">
-</span><span class="w">          </span><span class="k">items</span><span class="p">:</span><span class="w">
-</span><span class="w">            </span>- <span class="k">key</span><span class="p">:</span><span class="w"> </span>username<span class="w">
-</span><span class="w">              </span><span class="k">path</span><span class="p">:</span><span class="w"> </span>my-group/my-username<span class="w">
-</span><span class="w">      </span>- <span class="k">downwardAPI</span><span class="p">:</span><span class="w">
-</span><span class="w">          </span><span class="k">items</span><span class="p">:</span><span class="w">
-</span><span class="w">            </span>- <span class="k">path</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;labels&#34;</span><span class="w">
-</span><span class="w">              </span><span class="k">fieldRef</span><span class="p">:</span><span class="w">
-</span><span class="w">                </span><span class="k">fieldPath</span><span class="p">:</span><span class="w"> </span>metadata.labels<span class="w">
-</span><span class="w">            </span>- <span class="k">path</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;cpu_limit&#34;</span><span class="w">
-</span><span class="w">              </span><span class="k">resourceFieldRef</span><span class="p">:</span><span class="w">
-</span><span class="w">                </span><span class="k">containerName</span><span class="p">:</span><span class="w"> </span>container-test<span class="w">
-</span><span class="w">                </span><span class="k">resource</span><span class="p">:</span><span class="w"> </span>limits.cpu<span class="w">
-</span><span class="w">      </span>- <span class="k">configMap</span><span class="p">:</span><span class="w">
-</span><span class="w">          </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>myconfigmap<span class="w">
-</span><span class="w">          </span><span class="k">items</span><span class="p">:</span><span class="w">
-</span><span class="w">            </span>- <span class="k">key</span><span class="p">:</span><span class="w"> </span>config<span class="w">
-</span><span class="w">              </span><span class="k">path</span><span class="p">:</span><span class="w"> </span>my-group/my-config<span class="w">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
+</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Pod</span><span class="w">
+</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">volume-test</span><span class="w">
+</span><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">containers</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">container-test</span><span class="w">
+</span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">busybox</span><span class="w">
+</span><span class="w">    </span><span class="nt">volumeMounts</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">all-in-one</span><span class="w">
+</span><span class="w">      </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;/projected-volume&#34;</span><span class="w">
+</span><span class="w">      </span><span class="nt">readOnly</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">  </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">all-in-one</span><span class="w">
+</span><span class="w">    </span><span class="nt">projected</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">sources</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="nt">secret</span><span class="p">:</span><span class="w">
+</span><span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">mysecret</span><span class="w">
+</span><span class="w">          </span><span class="nt">items</span><span class="p">:</span><span class="w">
+</span><span class="w">            </span>- <span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l">username</span><span class="w">
+</span><span class="w">              </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l">my-group/my-username</span><span class="w">
+</span><span class="w">      </span>- <span class="nt">downwardAPI</span><span class="p">:</span><span class="w">
+</span><span class="w">          </span><span class="nt">items</span><span class="p">:</span><span class="w">
+</span><span class="w">            </span>- <span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;labels&#34;</span><span class="w">
+</span><span class="w">              </span><span class="nt">fieldRef</span><span class="p">:</span><span class="w">
+</span><span class="w">                </span><span class="nt">fieldPath</span><span class="p">:</span><span class="w"> </span><span class="l">metadata.labels</span><span class="w">
+</span><span class="w">            </span>- <span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;cpu_limit&#34;</span><span class="w">
+</span><span class="w">              </span><span class="nt">resourceFieldRef</span><span class="p">:</span><span class="w">
+</span><span class="w">                </span><span class="nt">containerName</span><span class="p">:</span><span class="w"> </span><span class="l">container-test</span><span class="w">
+</span><span class="w">                </span><span class="nt">resource</span><span class="p">:</span><span class="w"> </span><span class="l">limits.cpu</span><span class="w">
+</span><span class="w">      </span>- <span class="nt">configMap</span><span class="p">:</span><span class="w">
+</span><span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">myconfigmap</span><span class="w">
+</span><span class="w">          </span><span class="nt">items</span><span class="p">:</span><span class="w">
+</span><span class="w">            </span>- <span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l">config</span><span class="w">
+</span><span class="w">              </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l">my-group/my-config</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
 </div><p>下面是一个带有非默认访问权限设置的多个 secret 的 Pod 示例：</p>
@@ -728,33 +728,33 @@
 </span><span class="lnt">27
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">apiVersion</span><span class="p">:</span><span class="w"> </span>v1<span class="w">
-</span><span class="w"></span><span class="k">kind</span><span class="p">:</span><span class="w"> </span>Pod<span class="w">
-</span><span class="w"></span><span class="k">metadata</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>volume-test<span class="w">
-</span><span class="w"></span><span class="k">spec</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">containers</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>container-test<span class="w">
-</span><span class="w">    </span><span class="k">image</span><span class="p">:</span><span class="w"> </span>busybox<span class="w">
-</span><span class="w">    </span><span class="k">volumeMounts</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>all-in-one<span class="w">
-</span><span class="w">      </span><span class="k">mountPath</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;/projected-volume&#34;</span><span class="w">
-</span><span class="w">      </span><span class="k">readOnly</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span><span class="w">  </span><span class="k">volumes</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>all-in-one<span class="w">
-</span><span class="w">    </span><span class="k">projected</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="k">sources</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span>- <span class="k">secret</span><span class="p">:</span><span class="w">
-</span><span class="w">          </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>mysecret<span class="w">
-</span><span class="w">          </span><span class="k">items</span><span class="p">:</span><span class="w">
-</span><span class="w">            </span>- <span class="k">key</span><span class="p">:</span><span class="w"> </span>username<span class="w">
-</span><span class="w">              </span><span class="k">path</span><span class="p">:</span><span class="w"> </span>my-group/my-username<span class="w">
-</span><span class="w">      </span>- <span class="k">secret</span><span class="p">:</span><span class="w">
-</span><span class="w">          </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>mysecret2<span class="w">
-</span><span class="w">          </span><span class="k">items</span><span class="p">:</span><span class="w">
-</span><span class="w">            </span>- <span class="k">key</span><span class="p">:</span><span class="w"> </span>password<span class="w">
-</span><span class="w">              </span><span class="k">path</span><span class="p">:</span><span class="w"> </span>my-group/my-password<span class="w">
-</span><span class="w">              </span><span class="k">mode</span><span class="p">:</span><span class="w"> </span><span class="m">511</span><span class="w">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
+</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Pod</span><span class="w">
+</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">volume-test</span><span class="w">
+</span><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">containers</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">container-test</span><span class="w">
+</span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">busybox</span><span class="w">
+</span><span class="w">    </span><span class="nt">volumeMounts</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">all-in-one</span><span class="w">
+</span><span class="w">      </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;/projected-volume&#34;</span><span class="w">
+</span><span class="w">      </span><span class="nt">readOnly</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">  </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">all-in-one</span><span class="w">
+</span><span class="w">    </span><span class="nt">projected</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">sources</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="nt">secret</span><span class="p">:</span><span class="w">
+</span><span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">mysecret</span><span class="w">
+</span><span class="w">          </span><span class="nt">items</span><span class="p">:</span><span class="w">
+</span><span class="w">            </span>- <span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l">username</span><span class="w">
+</span><span class="w">              </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l">my-group/my-username</span><span class="w">
+</span><span class="w">      </span>- <span class="nt">secret</span><span class="p">:</span><span class="w">
+</span><span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">mysecret2</span><span class="w">
+</span><span class="w">          </span><span class="nt">items</span><span class="p">:</span><span class="w">
+</span><span class="w">            </span>- <span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l">password</span><span class="w">
+</span><span class="w">              </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l">my-group/my-password</span><span class="w">
+</span><span class="w">              </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="m">511</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
 </div><p>每个被投射的卷来源都在规约中的 <code>sources</code> 内列出。参数几乎相同，除了两处例外：</p>
@@ -787,26 +787,26 @@
 </span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">apiVersion</span><span class="p">:</span><span class="w"> </span>v1<span class="w">
-</span><span class="w"></span><span class="k">kind</span><span class="p">:</span><span class="w"> </span>Pod<span class="w">
-</span><span class="w"></span><span class="k">metadata</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>sa-token-test<span class="w">
-</span><span class="w"></span><span class="k">spec</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">containers</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>container-test<span class="w">
-</span><span class="w">    </span><span class="k">image</span><span class="p">:</span><span class="w"> </span>busybox<span class="w">
-</span><span class="w">    </span><span class="k">volumeMounts</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>token-vol<span class="w">
-</span><span class="w">      </span><span class="k">mountPath</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;/service-account&#34;</span><span class="w">
-</span><span class="w">      </span><span class="k">readOnly</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span><span class="w">  </span><span class="k">volumes</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>token-vol<span class="w">
-</span><span class="w">    </span><span class="k">projected</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="k">sources</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span>- <span class="k">serviceAccountToken</span><span class="p">:</span><span class="w">
-</span><span class="w">          </span><span class="k">audience</span><span class="p">:</span><span class="w"> </span>api<span class="w">
-</span><span class="w">          </span><span class="k">expirationSeconds</span><span class="p">:</span><span class="w"> </span><span class="m">3600</span><span class="w">
-</span><span class="w">          </span><span class="k">path</span><span class="p">:</span><span class="w"> </span>token<span class="w">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
+</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Pod</span><span class="w">
+</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">sa-token-test</span><span class="w">
+</span><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">containers</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">container-test</span><span class="w">
+</span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">busybox</span><span class="w">
+</span><span class="w">    </span><span class="nt">volumeMounts</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">token-vol</span><span class="w">
+</span><span class="w">      </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;/service-account&#34;</span><span class="w">
+</span><span class="w">      </span><span class="nt">readOnly</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">  </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">token-vol</span><span class="w">
+</span><span class="w">    </span><span class="nt">projected</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">sources</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="nt">serviceAccountToken</span><span class="p">:</span><span class="w">
+</span><span class="w">          </span><span class="nt">audience</span><span class="p">:</span><span class="w"> </span><span class="l">api</span><span class="w">
+</span><span class="w">          </span><span class="nt">expirationSeconds</span><span class="p">:</span><span class="w"> </span><span class="m">3600</span><span class="w">
+</span><span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l">token</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
 </div><p>示例 Pod 具有包含注入服务帐户令牌的映射卷。 该令牌可以被 Pod 中的容器用来访问 Kubernetes API 服务器。 <code>audience</code> 字段包含令牌的预期受众。 令牌的接收者必须使用令牌的受众中指定的标识符来标识自己，否则应拒绝令牌。 此字段是可选的，默认值是 API 服务器的标识符。</p>
@@ -880,31 +880,31 @@
 </span><span class="lnt">25
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">apiVersion</span><span class="p">:</span><span class="w"> </span>v1<span class="w">
-</span><span class="w"></span><span class="k">kind</span><span class="p">:</span><span class="w"> </span>Pod<span class="w">
-</span><span class="w"></span><span class="k">metadata</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>my-lamp-site<span class="w">
-</span><span class="w"></span><span class="k">spec</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">containers</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>mysql<span class="w">
-</span><span class="w">      </span><span class="k">image</span><span class="p">:</span><span class="w"> </span>mysql<span class="w">
-</span><span class="w">      </span><span class="k">env</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>MYSQL_ROOT_PASSWORD<span class="w">
-</span><span class="w">        </span><span class="k">value</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;rootpasswd&#34;</span><span class="w">
-</span><span class="w">      </span><span class="k">volumeMounts</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span>- <span class="k">mountPath</span><span class="p">:</span><span class="w"> </span>/var/lib/mysql<span class="w">
-</span><span class="w">        </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>site-data<span class="w">
-</span><span class="w">        </span><span class="k">subPath</span><span class="p">:</span><span class="w"> </span>mysql<span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>php<span class="w">
-</span><span class="w">      </span><span class="k">image</span><span class="p">:</span><span class="w"> </span>php<span class="p">:</span><span class="m">7.0</span>-apache<span class="w">
-</span><span class="w">      </span><span class="k">volumeMounts</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span>- <span class="k">mountPath</span><span class="p">:</span><span class="w"> </span>/var/www/html<span class="w">
-</span><span class="w">        </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>site-data<span class="w">
-</span><span class="w">        </span><span class="k">subPath</span><span class="p">:</span><span class="w"> </span>html<span class="w">
-</span><span class="w">    </span><span class="k">volumes</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>site-data<span class="w">
-</span><span class="w">      </span><span class="k">persistentVolumeClaim</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="k">claimName</span><span class="p">:</span><span class="w"> </span>my-lamp-site-data<span class="w">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
+</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Pod</span><span class="w">
+</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">my-lamp-site</span><span class="w">
+</span><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">containers</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">mysql</span><span class="w">
+</span><span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">mysql</span><span class="w">
+</span><span class="w">      </span><span class="nt">env</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">MYSQL_ROOT_PASSWORD</span><span class="w">
+</span><span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;rootpasswd&#34;</span><span class="w">
+</span><span class="w">      </span><span class="nt">volumeMounts</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l">/var/lib/mysql</span><span class="w">
+</span><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">site-data</span><span class="w">
+</span><span class="w">        </span><span class="nt">subPath</span><span class="p">:</span><span class="w"> </span><span class="l">mysql</span><span class="w">
+</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">php</span><span class="w">
+</span><span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">php:7.0-apache</span><span class="w">
+</span><span class="w">      </span><span class="nt">volumeMounts</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l">/var/www/html</span><span class="w">
+</span><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">site-data</span><span class="w">
+</span><span class="w">        </span><span class="nt">subPath</span><span class="p">:</span><span class="w"> </span><span class="l">html</span><span class="w">
+</span><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">site-data</span><span class="w">
+</span><span class="w">      </span><span class="nt">persistentVolumeClaim</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="nt">claimName</span><span class="p">:</span><span class="w"> </span><span class="l">my-lamp-site-data</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
 </div><p><strong>使用带有扩展环境变量的 subPath</strong></p>
@@ -939,30 +939,30 @@
 </span><span class="lnt">24
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">apiVersion</span><span class="p">:</span><span class="w"> </span>v1<span class="w">
-</span><span class="w"></span><span class="k">kind</span><span class="p">:</span><span class="w"> </span>Pod<span class="w">
-</span><span class="w"></span><span class="k">metadata</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>pod1<span class="w">
-</span><span class="w"></span><span class="k">spec</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">containers</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>container1<span class="w">
-</span><span class="w">    </span><span class="k">env</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>POD_NAME<span class="w">
-</span><span class="w">      </span><span class="k">valueFrom</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="k">fieldRef</span><span class="p">:</span><span class="w">
-</span><span class="w">          </span><span class="k">apiVersion</span><span class="p">:</span><span class="w"> </span>v1<span class="w">
-</span><span class="w">          </span><span class="k">fieldPath</span><span class="p">:</span><span class="w"> </span>metadata.name<span class="w">
-</span><span class="w">    </span><span class="k">image</span><span class="p">:</span><span class="w"> </span>busybox<span class="w">
-</span><span class="w">    </span><span class="k">command</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&#34;sh&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;-c&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;while [ true ]; do echo &#39;Hello&#39;; sleep 10; done | tee -a /logs/hello.txt&#34;</span><span class="w"> </span><span class="p">]</span><span class="w">
-</span><span class="w">    </span><span class="k">volumeMounts</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>workdir1<span class="w">
-</span><span class="w">      </span><span class="k">mountPath</span><span class="p">:</span><span class="w"> </span>/logs<span class="w">
-</span><span class="w">      </span><span class="k">subPathExpr</span><span class="p">:</span><span class="w"> </span>$(POD_NAME)<span class="w">
-</span><span class="w">  </span><span class="k">restartPolicy</span><span class="p">:</span><span class="w"> </span>Never<span class="w">
-</span><span class="w">  </span><span class="k">volumes</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>workdir1<span class="w">
-</span><span class="w">    </span><span class="k">hostPath</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="k">path</span><span class="p">:</span><span class="w"> </span>/var/log/pods<span class="w">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
+</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Pod</span><span class="w">
+</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">pod1</span><span class="w">
+</span><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">containers</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">container1</span><span class="w">
+</span><span class="w">    </span><span class="nt">env</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">POD_NAME</span><span class="w">
+</span><span class="w">      </span><span class="nt">valueFrom</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="nt">fieldRef</span><span class="p">:</span><span class="w">
+</span><span class="w">          </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
+</span><span class="w">          </span><span class="nt">fieldPath</span><span class="p">:</span><span class="w"> </span><span class="l">metadata.name</span><span class="w">
+</span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">busybox</span><span class="w">
+</span><span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&#34;sh&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;-c&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;while [ true ]; do echo &#39;Hello&#39;; sleep 10; done | tee -a /logs/hello.txt&#34;</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="w">    </span><span class="nt">volumeMounts</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">workdir1</span><span class="w">
+</span><span class="w">      </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l">/logs</span><span class="w">
+</span><span class="w">      </span><span class="nt">subPathExpr</span><span class="p">:</span><span class="w"> </span><span class="l">$(POD_NAME)</span><span class="w">
+</span><span class="w">  </span><span class="nt">restartPolicy</span><span class="p">:</span><span class="w"> </span><span class="l">Never</span><span class="w">
+</span><span class="w">  </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">workdir1</span><span class="w">
+</span><span class="w">    </span><span class="nt">hostPath</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l">/var/log/pods</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
 </div><h4 id="213-资源">2.1.3 资源</h4>
@@ -1076,23 +1076,23 @@
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">apiVersion</span><span class="p">:</span><span class="w"> </span>v1<span class="w">
-</span><span class="w"></span><span class="k">kind</span><span class="p">:</span><span class="w"> </span>ConfigMap<span class="w">
-</span><span class="w"></span><span class="k">metadata</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>myconfigmap<span class="w">
-</span><span class="w"></span><span class="k">data</span><span class="p">:</span><span class="w">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
+</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">ConfigMap</span><span class="w">
+</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">myconfigmap</span><span class="w">
+</span><span class="w"></span><span class="nt">data</span><span class="p">:</span><span class="w">
 </span><span class="w">  </span><span class="c"># 类属性键；每一个键都映射到一个简单的值</span><span class="w">
-</span><span class="w">  </span><span class="k">player_initial_lives</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;3&#34;</span><span class="w">
-</span><span class="w">  </span><span class="k">ui_properties_file_name</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;user-interface.properties&#34;</span><span class="w">
+</span><span class="w">  </span><span class="nt">player_initial_lives</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;3&#34;</span><span class="w">
+</span><span class="w">  </span><span class="nt">ui_properties_file_name</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;user-interface.properties&#34;</span><span class="w">
 </span><span class="w">
 </span><span class="w">  </span><span class="c"># 类文件键</span><span class="w">
-</span><span class="w">  </span><span class="k">game.properties</span><span class="p">:</span><span class="w"> </span><span class="sd">|
-</span><span class="sd">    enemy.types=aliens,monsters</span><span class="w">
-</span><span class="w">    </span>player.maximum-lives=<span class="m">5</span><span class="w">    
-</span><span class="w">  </span><span class="k">user-interface.properties</span><span class="p">:</span><span class="w"> </span><span class="sd">|
-</span><span class="sd">    color.good=purple</span><span class="w">
-</span><span class="w">    </span>color.bad=yellow<span class="w">
-</span><span class="w">    </span>allow.textmode=<span class="kc">true</span><span class="w">    
+</span><span class="w">  </span><span class="nt">game.properties</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span><span class="sd">    enemy.types=aliens,monsters
+</span><span class="sd">    player.maximum-lives=5    </span><span class="w">    
+</span><span class="w">  </span><span class="nt">user-interface.properties</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span><span class="sd">    color.good=purple
+</span><span class="sd">    color.bad=yellow
+</span><span class="sd">    allow.textmode=true    </span><span class="w">    
 </span></code></pre></td></tr></table>
 </div>
 </div><h4 id="223-使用configmap">2.2.3 使用ConfigMap</h4>
@@ -1116,22 +1116,22 @@
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">apiVersion</span><span class="p">:</span><span class="w"> </span>v1<span class="w">
-</span><span class="w"></span><span class="k">kind</span><span class="p">:</span><span class="w"> </span>Pod<span class="w">
-</span><span class="w"></span><span class="k">metadata</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>mypod<span class="w">
-</span><span class="w"></span><span class="k">spec</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">containers</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>mypod<span class="w">
-</span><span class="w">    </span><span class="k">image</span><span class="p">:</span><span class="w"> </span>redis<span class="w">
-</span><span class="w">    </span><span class="k">volumeMounts</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>foo<span class="w">
-</span><span class="w">      </span><span class="k">mountPath</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;/etc/foo&#34;</span><span class="w">
-</span><span class="w">      </span><span class="k">readOnly</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span><span class="w">  </span><span class="k">volumes</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>foo<span class="w">
-</span><span class="w">    </span><span class="k">configMap</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>myconfigmap<span class="w">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
+</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Pod</span><span class="w">
+</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">mypod</span><span class="w">
+</span><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">containers</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">mypod</span><span class="w">
+</span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">redis</span><span class="w">
+</span><span class="w">    </span><span class="nt">volumeMounts</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">foo</span><span class="w">
+</span><span class="w">      </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;/etc/foo&#34;</span><span class="w">
+</span><span class="w">      </span><span class="nt">readOnly</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">  </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">foo</span><span class="w">
+</span><span class="w">    </span><span class="nt">configMap</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">myconfigmap</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
 </div><hr>
@@ -1223,14 +1223,14 @@ MWYyZDFlMmU2N2Rm
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">apiVersion</span><span class="p">:</span><span class="w"> </span>v1<span class="w">
-</span><span class="w"></span><span class="k">kind</span><span class="p">:</span><span class="w"> </span>Secret<span class="w">
-</span><span class="w"></span><span class="k">metadata</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>mysecret<span class="w">
-</span><span class="w"></span><span class="k">type</span><span class="p">:</span><span class="w"> </span>Opaque<span class="w">
-</span><span class="w"></span><span class="k">data</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">username</span><span class="p">:</span><span class="w"> </span>YWRtaW4=<span class="w">
-</span><span class="w">  </span><span class="k">password</span><span class="p">:</span><span class="w"> </span>MWYyZDFlMmU2N2Rm<span class="w">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
+</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Secret</span><span class="w">
+</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">mysecret</span><span class="w">
+</span><span class="w"></span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">Opaque</span><span class="w">
+</span><span class="w"></span><span class="nt">data</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l">YWRtaW4=</span><span class="w">
+</span><span class="w">  </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l">MWYyZDFlMmU2N2Rm</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
 </div><h4 id="234-使用secret">2.3.4 使用Secret</h4>
@@ -1254,22 +1254,22 @@ MWYyZDFlMmU2N2Rm
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">apiVersion</span><span class="p">:</span><span class="w"> </span>v1<span class="w">
-</span><span class="w"></span><span class="k">kind</span><span class="p">:</span><span class="w"> </span>Pod<span class="w">
-</span><span class="w"></span><span class="k">metadata</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>mypod<span class="w">
-</span><span class="w"></span><span class="k">spec</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">containers</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>mypod<span class="w">
-</span><span class="w">    </span><span class="k">image</span><span class="p">:</span><span class="w"> </span>redis<span class="w">
-</span><span class="w">    </span><span class="k">volumeMounts</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>foo<span class="w">
-</span><span class="w">      </span><span class="k">mountPath</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;/etc/foo&#34;</span><span class="w">
-</span><span class="w">      </span><span class="k">readOnly</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span><span class="w">  </span><span class="k">volumes</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>foo<span class="w">
-</span><span class="w">    </span><span class="k">secret</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="k">secretName</span><span class="p">:</span><span class="w"> </span>mysecret<span class="w">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
+</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Pod</span><span class="w">
+</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">mypod</span><span class="w">
+</span><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">containers</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">mypod</span><span class="w">
+</span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">redis</span><span class="w">
+</span><span class="w">    </span><span class="nt">volumeMounts</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">foo</span><span class="w">
+</span><span class="w">      </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;/etc/foo&#34;</span><span class="w">
+</span><span class="w">      </span><span class="nt">readOnly</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">  </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">foo</span><span class="w">
+</span><span class="w">    </span><span class="nt">secret</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">secretName</span><span class="p">:</span><span class="w"> </span><span class="l">mysecret</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
 </div><hr>
@@ -1324,18 +1324,18 @@ MWYyZDFlMmU2N2Rm
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">apiVersion</span><span class="p">:</span><span class="w"> </span>storage.k8s.io/v1<span class="w">
-</span><span class="w"></span><span class="k">kind</span><span class="p">:</span><span class="w"> </span>StorageClass<span class="w">
-</span><span class="w"></span><span class="k">metadata</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>standard<span class="w">
-</span><span class="w"></span><span class="k">provisioner</span><span class="p">:</span><span class="w"> </span>kubernetes.io/aws-ebs<span class="w">
-</span><span class="w"></span><span class="k">parameters</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">type</span><span class="p">:</span><span class="w"> </span>gp2<span class="w">
-</span><span class="w"></span><span class="k">reclaimPolicy</span><span class="p">:</span><span class="w"> </span>Retain<span class="w">
-</span><span class="w"></span><span class="k">allowVolumeExpansion</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span><span class="w"></span><span class="k">mountOptions</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span>- debug<span class="w">
-</span><span class="w"></span><span class="k">volumeBindingMode</span><span class="p">:</span><span class="w"> </span>Immediate<span class="w">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">storage.k8s.io/v1</span><span class="w">
+</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">StorageClass</span><span class="w">
+</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">standard</span><span class="w">
+</span><span class="w"></span><span class="nt">provisioner</span><span class="p">:</span><span class="w"> </span><span class="l">kubernetes.io/aws-ebs</span><span class="w">
+</span><span class="w"></span><span class="nt">parameters</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">gp2</span><span class="w">
+</span><span class="w"></span><span class="nt">reclaimPolicy</span><span class="p">:</span><span class="w"> </span><span class="l">Retain</span><span class="w">
+</span><span class="w"></span><span class="nt">allowVolumeExpansion</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w"></span><span class="nt">mountOptions</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span>- <span class="l">debug</span><span class="w">
+</span><span class="w"></span><span class="nt">volumeBindingMode</span><span class="p">:</span><span class="w"> </span><span class="l">Immediate</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
 </div><hr>
@@ -1440,7 +1440,7 @@ MWYyZDFlMmU2N2Rm
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.72.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.81.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>

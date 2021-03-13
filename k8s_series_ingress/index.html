@@ -8,10 +8,10 @@
         <title>Kubernetes系列：Ingress - CC&#39;s Trip</title><meta name="Description" content="Ingress"><meta property="og:title" content="Kubernetes系列：Ingress" />
 <meta property="og:description" content="Ingress" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://cctrip.github.io/k8s_series_ingress/" />
-<meta property="og:image" content="https://cctrip.github.io/k8s_series_ingress/ingress-choose.png"/>
-<meta property="article:published_time" content="2020-11-11T17:55:28+08:00" />
-<meta property="article:modified_time" content="2020-11-11T17:55:28+08:00" />
+<meta property="og:url" content="https://cctrip.github.io/k8s_series_ingress/" /><meta property="og:image" content="https://cctrip.github.io/k8s_series_ingress/ingress-choose.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-11-11T17:55:28&#43;08:00" />
+<meta property="article:modified_time" content="2020-11-11T17:55:28&#43;08:00" />
+
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://cctrip.github.io/k8s_series_ingress/ingress-choose.png"/>
 <meta name="twitter:title" content="Kubernetes系列：Ingress"/>
@@ -334,23 +334,23 @@
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">apiVersion</span><span class="p">:</span><span class="w"> </span>networking.k8s.io/v1<span class="w">
-</span><span class="w"></span><span class="k">kind</span><span class="p">:</span><span class="w"> </span>Ingress<span class="w">
-</span><span class="w"></span><span class="k">metadata</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>minimal-ingress<span class="w">
-</span><span class="w">  </span><span class="k">annotations</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">nginx.ingress.kubernetes.io/rewrite-target</span><span class="p">:</span><span class="w"> </span>/<span class="w">
-</span><span class="w"></span><span class="k">spec</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">rules</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span>- <span class="k">http</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="k">paths</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span>- <span class="k">path</span><span class="p">:</span><span class="w"> </span>/testpath<span class="w">
-</span><span class="w">        </span><span class="k">pathType</span><span class="p">:</span><span class="w"> </span>Prefix<span class="w">
-</span><span class="w">        </span><span class="k">backend</span><span class="p">:</span><span class="w">
-</span><span class="w">          </span><span class="k">service</span><span class="p">:</span><span class="w">
-</span><span class="w">            </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>test<span class="w">
-</span><span class="w">            </span><span class="k">port</span><span class="p">:</span><span class="w">
-</span><span class="w">              </span><span class="k">number</span><span class="p">:</span><span class="w"> </span><span class="m">80</span><span class="w">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">networking.k8s.io/v1</span><span class="w">
+</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Ingress</span><span class="w">
+</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">minimal-ingress</span><span class="w">
+</span><span class="w">  </span><span class="nt">annotations</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">nginx.ingress.kubernetes.io/rewrite-target</span><span class="p">:</span><span class="w"> </span><span class="l">/</span><span class="w">
+</span><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">rules</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span>- <span class="nt">http</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">paths</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l">/testpath</span><span class="w">
+</span><span class="w">        </span><span class="nt">pathType</span><span class="p">:</span><span class="w"> </span><span class="l">Prefix</span><span class="w">
+</span><span class="w">        </span><span class="nt">backend</span><span class="p">:</span><span class="w">
+</span><span class="w">          </span><span class="nt">service</span><span class="p">:</span><span class="w">
+</span><span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">test</span><span class="w">
+</span><span class="w">            </span><span class="nt">port</span><span class="p">:</span><span class="w">
+</span><span class="w">              </span><span class="nt">number</span><span class="p">:</span><span class="w"> </span><span class="m">80</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
 </div><p>与所有其他 Kubernetes 资源一样，Ingress 需要使用 <code>apiVersion</code>、<code>kind</code> 和 <code>metadata</code> 字段。 Ingress 对象的命名必须是合法的 <a href="https://kubernetes.io/zh/docs/concepts/overview/working-with-objects/names#dns-subdomain-names" target="_blank" rel="noopener noreffer">DNS 子域名名称</a>。 有关使用配置文件的一般信息，请参见<a href="https://kubernetes.io/zh/docs/tasks/run-application/run-stateless-application-deployment/" target="_blank" rel="noopener noreffer">部署应用</a>、 <a href="https://kubernetes.io/zh/docs/tasks/configure-pod-container/configure-pod-configmap/" target="_blank" rel="noopener noreffer">配置容器</a>、 <a href="https://kubernetes.io/zh/docs/concepts/cluster-administration/manage-deployment/" target="_blank" rel="noopener noreffer">管理资源</a>。 Ingress 经常使用注解（annotations）来配置一些选项，具体取决于 Ingress 控制器，例如 <a href="https://github.com/kubernetes/ingress-nginx/blob/master/docs/examples/rewrite/README.md" target="_blank" rel="noopener noreffer">重写目标注解</a>。 不同的 <a href="https://kubernetes.io/zh/docs/concepts/services-networking/ingress-controllers" target="_blank" rel="noopener noreffer">Ingress 控制器</a> 支持不同的注解。查看文档以供你选择 Ingress 控制器，以了解支持哪些注解。</p>
@@ -400,26 +400,26 @@
 </span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">apiVersion</span><span class="p">:</span><span class="w"> </span>networking.k8s.io/v1<span class="w">
-</span><span class="w"></span><span class="k">kind</span><span class="p">:</span><span class="w"> </span>Ingress<span class="w">
-</span><span class="w"></span><span class="k">metadata</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>ingress-resource-backend<span class="w">
-</span><span class="w"></span><span class="k">spec</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">defaultBackend</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">resource</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="k">apiGroup</span><span class="p">:</span><span class="w"> </span>k8s.example.com<span class="w">
-</span><span class="w">      </span><span class="k">kind</span><span class="p">:</span><span class="w"> </span>StorageBucket<span class="w">
-</span><span class="w">      </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>static-assets<span class="w">
-</span><span class="w">  </span><span class="k">rules</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span>- <span class="k">http</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="k">paths</span><span class="p">:</span><span class="w">
-</span><span class="w">          </span>- <span class="k">path</span><span class="p">:</span><span class="w"> </span>/icons<span class="w">
-</span><span class="w">            </span><span class="k">pathType</span><span class="p">:</span><span class="w"> </span>ImplementationSpecific<span class="w">
-</span><span class="w">            </span><span class="k">backend</span><span class="p">:</span><span class="w">
-</span><span class="w">              </span><span class="k">resource</span><span class="p">:</span><span class="w">
-</span><span class="w">                </span><span class="k">apiGroup</span><span class="p">:</span><span class="w"> </span>k8s.example.com<span class="w">
-</span><span class="w">                </span><span class="k">kind</span><span class="p">:</span><span class="w"> </span>StorageBucket<span class="w">
-</span><span class="w">                </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>icon-assets<span class="w">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">networking.k8s.io/v1</span><span class="w">
+</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Ingress</span><span class="w">
+</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">ingress-resource-backend</span><span class="w">
+</span><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">defaultBackend</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">resource</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">apiGroup</span><span class="p">:</span><span class="w"> </span><span class="l">k8s.example.com</span><span class="w">
+</span><span class="w">      </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">StorageBucket</span><span class="w">
+</span><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">static-assets</span><span class="w">
+</span><span class="w">  </span><span class="nt">rules</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- <span class="nt">http</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="nt">paths</span><span class="p">:</span><span class="w">
+</span><span class="w">          </span>- <span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l">/icons</span><span class="w">
+</span><span class="w">            </span><span class="nt">pathType</span><span class="p">:</span><span class="w"> </span><span class="l">ImplementationSpecific</span><span class="w">
+</span><span class="w">            </span><span class="nt">backend</span><span class="p">:</span><span class="w">
+</span><span class="w">              </span><span class="nt">resource</span><span class="p">:</span><span class="w">
+</span><span class="w">                </span><span class="nt">apiGroup</span><span class="p">:</span><span class="w"> </span><span class="l">k8s.example.com</span><span class="w">
+</span><span class="w">                </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">StorageBucket</span><span class="w">
+</span><span class="w">                </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">icon-assets</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
 </div><p>创建了如上的 Ingress 之后，你可以使用下面的命令查看它：</p>
@@ -527,7 +527,7 @@ Events:       &lt;none&gt;
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.72.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.81.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
                 </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
