@@ -100,6 +100,34 @@
         alt="/images/cc.jpg"
         title="/images/cc.jpg" /></a></div><h2 class="home-subtitle"><div id="id-1" class="typeit"></div></h2><div class="links"><a href="https://github.com/https://github.com/cctrip" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="https://twitter.com/https://twitter.com/zcc0388" title="Twitter" target="_blank" rel="noopener noreffer me"><i class="fab fa-twitter fa-fw"></i></a><a href="mailto:zcc0388@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
+            <a href="/k8s_series_ingress/"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/k8s_series_ingress/ingress-choose.png"
+        data-srcset="/k8s_series_ingress/ingress-choose.png, /k8s_series_ingress/ingress-choose.png 1.5x, /k8s_series_ingress/ingress-choose.png 2x"
+        data-sizes="auto"
+        alt="/k8s_series_ingress/ingress-choose.png"
+        title="Ingress" /></a>
+        </div><h1 class="single-title" itemprop="name headline">
+        <a href="/k8s_series_ingress/">Kubernetes系列：Ingress</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-11-11">2020-11-11</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cloud-native/"><i class="far fa-folder fa-fw"></i>Cloud Native</a></span></div><div class="content">系列目录 《Kubernetes系列：开篇》
+《Kubernetes系列：概述》
+《Kubernetes系列：架构》
+《Kubernetes系列：容器》
+《Kubernetes系列：网络》
+《Kubernetes系列：存储》
+《Kubernetes系列：Service》
+《Kubernetes系列：Ingress》
+《Kubernetes系列：OAM》
+ 1. 介绍 1.1 Ingress  Ingress 公开了从集群外部到集群内service的 HTTP 和 HTTPS 路由。 流量路由由 Ingress 资源上定义的规则控制。
+ 可以将 Ingress 配置为服务提供外部可访问的 URL、负载均衡流量、终止 SSL/TLS，以及提供基于名称的虚拟主机等能力。 Ingress Controller 通常负责通过负载均衡器来实现 Ingress，尽管它也可以配置边缘路由器或其他前端来帮助处理流量。
+ 1.2 Ingress Controller 为了让 Ingress 资源工作，集群必须有一个正在运行的 Ingress Controller。
+与作为 kube-controller-manager 可执行文件的一部分运行的其他类型的控制器不同，Ingress 控制器不是随集群自动启动的。
+ 2. Ingress Contoller 选择 下表是一些常用的Contoller对比：
+   control plane data plane backend service discovery protocols ssl termination websocket routing scope resiliency lb algorithms auth Tracing canary/shadow istio integration state Paid support Linkaaaaaaaaaaaaaa dashboard sticky sessions lua     ingress-nginx nginx dynamic http,https,tcp (separate lb),udp,grpc,fastcgi,IPC socket yes yes host,path(with regex) cross-namespace rate limit, retries rr,ewma,ip_hash basic, digest, external auth yes canary  kubernetes  https://kubernetes.</div><div class="post-footer">
+        <a href="/k8s_series_ingress/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/kubernetes/">kubernetes</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
             <a href="/k8s_series_service/"><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -251,41 +279,6 @@ Kubernetes API 服务器的主要实现是 kube-apiserver。 kube-apiserver 设�
 etcd etcd 是兼具一致性和高可用性的键值数据库，可以作为保存 Kubernetes 所有集群数据的后台数据库。
 您的 Kubernetes 集群的 etcd 数据库通常需要有个备份计划。</div><div class="post-footer">
         <a href="/k8s_series_arch/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/kubernetes/">kubernetes</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
-            <a href="/k8s_series_intro/"><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/k8s_series_intro/k8s-images.png"
-        data-srcset="/k8s_series_intro/k8s-images.png, /k8s_series_intro/k8s-images.png 1.5x, /k8s_series_intro/k8s-images.png 2x"
-        data-sizes="auto"
-        alt="/k8s_series_intro/k8s-images.png"
-        title="概述" /></a>
-        </div><h1 class="single-title" itemprop="name headline">
-        <a href="/k8s_series_intro/">Kubernetes系列：概述</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-10-15">2020-10-15</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cloud-native/"><i class="far fa-folder fa-fw"></i>Cloud Native</a></span></div><div class="content">系列目录 《Kubernetes系列：开篇》
-《Kubernetes系列：概述》
-《Kubernetes系列：架构》
-《Kubernetes系列：容器》
-《Kubernetes系列：网络》
-《Kubernetes系列：存储》
-《Kubernetes系列：Service》
-《Kubernetes系列：Ingress》
-《Kubernetes系列：OAM》
- 1. 介绍 Kubernetes 是一个可移植的、可扩展的开源平台，用于管理容器化的工作负载和服务，可促进声明式配置和自动化。 Kubernetes 拥有一个庞大且快速增长的生态系统。Kubernetes 的服务、支持和工具广泛可用。
-名称 Kubernetes 源于希腊语，意为“舵手”或“飞行员”。Google 在 2014 年开源了 Kubernetes 项目。 Kubernetes 建立在 Google 在大规模运行生产工作负载方面拥有十几年的经验 的基础上，结合了社区中最好的想法和实践。
- 2. 部署模式的发展史 让我们回顾一下为什么 Kubernetes 如此有用。
-传统部署时代：
-早期，各个组织机构在物理服务器上运行应用程序。无法为物理服务器中的应用程序定义资源边界，这会导致资源分配问题。 例如，如果在物理服务器上运行多个应用程序，则可能会出现一个应用程序占用大部分资源的情况， 结果可能导致其他应用程序的性能下降。 一种解决方案是在不同的物理服务器上运行每个应用程序，但是由于资源利用不足而无法扩展， 并且维护许多物理服务器的成本很高。
-虚拟化部署时代：
-作为解决方案，引入了虚拟化。虚拟化技术允许你在单个物理服务器的 CPU 上运行多个虚拟机（VM）。 虚拟化允许应用程序在 VM 之间隔离，并提供一定程度的安全，因为一个应用程序的信息 不能被另一应用程序随意访问。
-虚拟化技术能够更好地利用物理服务器上的资源，并且因为可轻松地添加或更新应用程序 而可以实现更好的可伸缩性，降低硬件成本等等。
-每个 VM 是一台完整的计算机，在虚拟化硬件之上运行所有组件，包括其自己的操作系统。
-容器部署时代：
-容器类似于 VM，但是它们具有被放宽的隔离属性，可以在应用程序之间共享操作系统（OS）。 因此，容器被认为是轻量级的。容器与 VM 类似，具有自己的文件系统、CPU、内存、进程空间等。 由于它们与基础架构分离，因此可以跨云和 OS 发行版本进行移植。
-容器因具有许多优势而变得流行起来。下面列出的是容器的一些好处：
- 敏捷应用程序的创建和部署：与使用 VM 镜像相比，提高了容器镜像创建的简便性和效率。 持续开发、集成和部署：通过快速简单的回滚（由于镜像不可变性），支持可靠且频繁的 容器镜像构建和部署。 关注开发与运维的分离：在构建/发布时而不是在部署时创建应用程序容器镜像， 从而将应用程序与基础架构分离。 可观察性不仅可以显示操作系统级别的信息和指标，还可以显示应用程序的运行状况和其他指标信号。 跨开发、测试和生产的环境一致性：在便携式计算机上与在云中相同地运行。 跨云和操作系统发行版本的可移植性：可在 Ubuntu、RHEL、CoreOS、本地、 Google Kubernetes Engine 和其他任何地方运行。 以应用程序为中心的管理：提高抽象级别，从在虚拟硬件上运行 OS 到使用逻辑资源在 OS 上运行应用程序。 松散耦合、分布式、弹性、解放的微服务：应用程序被分解成较小的独立部分， 并且可以动态部署和管理 - 而不是在一台大型单机上整体运行。 资源隔离：可预测的应用程序性能。 资源利用：高效率和高密度。   3.</div><div class="post-footer">
-        <a href="/k8s_series_intro/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/kubernetes/">kubernetes</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">

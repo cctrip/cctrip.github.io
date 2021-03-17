@@ -3,7 +3,25 @@
         <title>All Posts - CC&#39;s Trip</title>
         <link>https://cctrip.github.io/posts/</link>
         <description>All Posts | CC&#39;s Trip</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 30 Jan 2021 17:55:28 &#43;0800</lastBuildDate><atom:link href="https://cctrip.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 17 Mar 2021 17:55:28 &#43;0800</lastBuildDate><atom:link href="https://cctrip.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>写一个DevOps管理系统(一)</title>
+    <link>https://cctrip.github.io/oops_series_one/</link>
+    <pubDate>Wed, 17 Mar 2021 17:55:28 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://cctrip.github.io/oops_series_one/</guid>
+    <description><![CDATA[系列目录 《写一个DevOps管理系统(一)》
+ 1. 介绍 做了那么的久的运维，了解、运维和开发过各种各样的发布系统、运维系统、监控系统，经历了服务器从物理时代、到云时代再到容器时代的变革，服务器规模也经历从十几台到几千台甚至几万台规模的管理，管理手段也经历从手工到工具再到平台的演变。做过那么些的管理系统，因为各种各样的原因，可能是历史包袱，可能是人言式微，可能是早期技术没有那么的好，很多时候做出来的管理系统不是自己理想中的管理系统，因此，想花一些业余时间，写一个自己理解的DevOps管理系统。
+ 2. 目标 个人理解，一个DevOps管理系统应该具备以下功能：
+ 元数据管理，包括物理资源、云资源、容器资源、中间件资源、应用资源等 CI/CD，包括应用的打包、编译以及发布，服务器资源的创建、更新、删除等 监控告警，能实现不同指标的采集监控，监控数据可视化以及告警自定义等。 机器操作，可能是SSH登录，或者远程操作命令等。   3. 系统设计 完整的一套DevOps系统肯定是功能复杂、组件繁多的，不大可能自己造轮子，因此，底层会采用一些开源方案，然后在各个开源组件上构建自己的管理平台。
+3.1 元数据管理 说到底，我们要做的是一套能完整接入软件工程生命周期的工具平台，一个软件最终的目的是要发布到线上环境供用户使用，服务器资源只是软件的载体。那么，我们把软件叫做应用，从软件层面上来讲，一个应用应该是唯一的，而从&quot;硬件&quot;层面来说，一台&quot;服务器&quot;也是唯一的。那么，我们就可以将这两个&quot;唯一&quot;建立一种联系，然后再通过这两个唯一延伸出各种关联信息，比如，一个应用可能需要关联它的代码仓库，对应的负责人，归属部门等等，而一台服务器可能需要知道它的机房、机柜，或者是云平台，区域等信息。下图是一个我自己构建的元数据关联图：
+在设计元数据的表的时候，我们就可以根据这种关联关系来设计表。
+ 3.2 CI/CD 一个应用的生命周期一般包含以下步骤：
+ Design，接收需求，产品设计，沟通等，这边可能需要接入一些项目管理的工具，比如JIRA等、 Develop，程序员进行代码开发、架构设计等 Test，开发人员进行代码测试，测试人员进行功能测试等，这边可以引入一些自动化测试工具。 Deploy，各种人员可能会进行各种环境的部署，这边可以引入类似Jenkins的打包发布工具提高效率。 Monitor，进行监控数据的收集，通过平台输出可视化页面，配置告警、告警通知等功能。   3.3 监控告警 一个业务应用上线后，需要有工具来知道业务是否出现了问题，这时候就需要提供监控告警的一些工具。一个监控系统一般是如下图所示的架构
+ Agent，监控数据的收集器，可能是自研的跑在服务器上的采集客户端，也可能是嵌入到应用的收集器等待 Server，接收监控数据，进行存储的服务 Data，对数据进行整合、解析，告警触发、发送告警等操作的服务 Display，展示平台，供用户查看监控数据，配置告警规则的服务   3.4 机器操作 当整个DevOps平台完善的话，其实用户是可以不需要进入机器进行操作的，但是现实往往是不完美的，因此还需要类似堡垒机这样的服务来供用户登录机器进行一些日志查看，debug等操作。
+ 4. 初步实现想法  管理页面的话，目前的话想基于go-admin来做，一个用vue+go实现的管理系统脚手架 整个元数据的表设计和管理页面设计，目前的话，应该是要自己写，会参考一些例如bk-cmdb、nightingale等开源方案的设计。 CI/CD的话，代码仓库会采用gitlab组件，发布的话可能采用Jenkins、Argo-CD等开源组件，这个之前做的不多，需要再做点调研，载体的话，现在是容器化时代，可能会直接对接k8s来操作。 监控的话，考虑到Kubernetes，直接会在Prometheus+grafana进行二次开发，日志监控选取ELK或者Loki 堡垒机现在还没有进行研究，后续再进行调研。  基础服务资源
+上面的话，都是针对软件层面的，而应用依赖载体，因此，还需要有一些功能是用来做资源申请的，整体会考虑到兼容物理资源、云服务器资源、容器资源。除了物理资源以为，另外两个其实都可以通过自动化来实现按需创建，即要用的时候再申请。不过，我们还是保留人工审核创建的功能。因此需要做如下事情。
+ 提供工单系统，用于资源的申请和下架，当然，一些事务处理，比如故障处理也可以放在这里做记录 对接物理资源，可能需要录入资源的页面，人工操作，优先需要把字段规范好，高端点，也可以做些自动发现功能。 对接各个云平台，可能采用terrform或者操作云平台API来构建基础设施，包括EC2、RDS、Redis、LB、消息队列、云存储等。 对接k8s集群，包括集群的创建，管理、以及各种k8s资源的操作   5. 总结 目前的话，暂时就以上这些想法，开发的话，后续会写成一个系列，来深入的说下各个功能的实现。]]></description>
+</item><item>
     <title>Openresty执行阶段</title>
     <link>https://cctrip.github.io/openresty_phases/</link>
     <pubDate>Sat, 30 Jan 2021 17:55:28 &#43;0800</pubDate>
@@ -208,34 +226,5 @@ Kubernetes KubeVela是用于构建上层平台的Kubernetes插件。它利用Kub
  节点上的 Pod 可以不通过 NAT 和其他任何节点上的 Pod 通信 节点上的代理(比如：系统守护进程、kubelet)可以和节点上的所有Pod通信 Pod自己的IP就是其他人看到的IP  因此，一个kubernetes网络插件必须要解决下面五个问题：
  Container-to-Container 网络通信 Pod-to-Pod 网络通信 Pod-to-Service 网络通信 Internet-to-Service 网络通信 Pod IP在集群内唯一   2. 基本原理 2.1 Container-to-Container 在kubernetes中，一个Pod是一组Container的组合，并且，Pod内的Container是共享network namespace的，因此该Pod内的Container的ip和mac地址都是相同的，所以它们只需要通过localhost就能跟Pod内其他Container通信了，不过，因为是共享network namespace，因此该Pod内的端口必须是唯一的，不能冲突。
  2.2 Pod-to-Pod 在容器中，容器可以通过network namespace的技术将不同的容器的网络隔离起来，并通过veth pair技术将两个namespace连接起来以进行通信。如下图所示，每个pod都有自己的netns，通过veth pair跟节点的root netns连接起来，这样一来，pod就能直接跟node进行通信了]]></description>
-</item><item>
-    <title>Kubernetes系列：容器</title>
-    <link>https://cctrip.github.io/k8s_series_container/</link>
-    <pubDate>Sun, 25 Oct 2020 17:55:28 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://cctrip.github.io/k8s_series_container/</guid>
-    <description><![CDATA[系列目录 《Kubernetes系列：开篇》
-《Kubernetes系列：概述》
-《Kubernetes系列：架构》
-《Kubernetes系列：容器》
-《Kubernetes系列：网络》
-《Kubernetes系列：存储》
-《Kubernetes系列：Service》
-《Kubernetes系列：Ingress》
-《Kubernetes系列：OAM》
- 1. 介绍 1.1 容器技术  LXC（Linux容器）是一种操作系统级虚拟化技术，用于使用单个Linux内核在控制主机上运行多个隔离的Linux系统（容器）。
- 每个运行的容器都是可重复的； 包含依赖环境在内的标准，意味着无论您在哪里运行它，您都会得到相同的行为。容器将应用程序从底层的主机设施中解耦。 这使得在不同的云或 OS 环境中部署更加容易。
-1.2 容器镜像  容器镜像是一个随时可以运行的软件包， 包含运行应用程序所需的一切：代码和它需要的所有运行时、应用程序和系统库，以及一些基本设置的默认值。
- 根据设计，容器是不可变的：你不能更改已经运行的容器的代码。 如果有一个容器化的应用程序需要修改，则需要构建包含更改的新镜像，然后再基于新构建的镜像重新运行容器。
-1.3 容器运行时  容器运行环境是负责运行容器的软件。
- Kubernetes 支持多个容器运行环境: Docker、 containerd、CRI-O 以及任何实现 Kubernetes CRI (容器运行环境接口)。
-1.4 CRI(容器运行时接口)  CRI，一个插件接口，使kubelet可以使用各种容器运行时，而无需重新编译。
-CRI由规范/要求(待添加)、protobuf API和用于容器运行时的库组成，以与节点上的kubelet集成。
-  2. 为什么使用容器？ 容器提供了一种逻辑打包机制，以这种机制打包的应用可以脱离其实际运行的环境。利用这种脱离，不管目标环境是私有数据中心、公有云，还是开发者的个人笔记本电脑，您都可以轻松、一致地部署基于容器的应用。容器化使开发者和 IT 运营团队的关注点泾渭分明 - 开发者专注于应用逻辑和依赖项，而 IT 运营团队可以专注于部署和管理，不必为具体的软件版本和应用特有的配置等应用细节分心。
-我们通过与虚拟机的对比来看下容器的优势
-与虚拟机的硬件栈虚拟化不同，容器在操作系统级别进行虚拟化，且可以直接在操作系统内核上运行多个容器。也就是说，容器更轻巧：它们共享操作系统内核，启动速度更快，且与启动整个操作系统相比其占用的内存微乎其微。
-一致的环境
-容器让开发者可以创建与其他应用相隔离的可预测环境。容器还可以包含应用所需的软件依赖项，比如具体的编程语言运行时版本和其他软件库。从开发者的角度看，无论应用最终部署在什么地方，都可以保证这些条件一致。这一切将转化为生产力的提升：开发者和 IT 运营团队可以减少调试和诊断环境差异所需的时间，将更多的时间用于为用户提供新的功能。而且这也意味着 bug 更少，因为开发者现可在开发和测试环境中做出在生产环境中也适用的假设。
-在任何地方运行]]></description>
 </item></channel>
 </rss>

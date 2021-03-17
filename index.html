@@ -100,6 +100,31 @@
         alt="/images/cc.jpg"
         title="/images/cc.jpg" /></a></div><h2 class="home-subtitle"><div id="id-1" class="typeit"></div></h2><div class="links"><a href="https://github.com/https://github.com/cctrip" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="https://twitter.com/https://twitter.com/zcc0388" title="Twitter" target="_blank" rel="noopener noreffer me"><i class="fab fa-twitter fa-fw"></i></a><a href="mailto:zcc0388@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
+            <a href="/oops_series_one/"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/oops_series_one/oops-image.jpg"
+        data-srcset="/oops_series_one/oops-image.jpg, /oops_series_one/oops-image.jpg 1.5x, /oops_series_one/oops-image.jpg 2x"
+        data-sizes="auto"
+        alt="/oops_series_one/oops-image.jpg"
+        title="开篇" /></a>
+        </div><h1 class="single-title" itemprop="name headline">
+        <a href="/oops_series_one/">写一个DevOps管理系统(一)</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-03-17">2021-03-17</time></span>&nbsp;<span class="post-category">included in <a href="/categories/devops/"><i class="far fa-folder fa-fw"></i>DevOps</a></span></div><div class="content">系列目录 《写一个DevOps管理系统(一)》
+ 1. 介绍 做了那么的久的运维，了解、运维和开发过各种各样的发布系统、运维系统、监控系统，经历了服务器从物理时代、到云时代再到容器时代的变革，服务器规模也经历从十几台到几千台甚至几万台规模的管理，管理手段也经历从手工到工具再到平台的演变。做过那么些的管理系统，因为各种各样的原因，可能是历史包袱，可能是人言式微，可能是早期技术没有那么的好，很多时候做出来的管理系统不是自己理想中的管理系统，因此，想花一些业余时间，写一个自己理解的DevOps管理系统。
+ 2. 目标 个人理解，一个DevOps管理系统应该具备以下功能：
+ 元数据管理，包括物理资源、云资源、容器资源、中间件资源、应用资源等 CI/CD，包括应用的打包、编译以及发布，服务器资源的创建、更新、删除等 监控告警，能实现不同指标的采集监控，监控数据可视化以及告警自定义等。 机器操作，可能是SSH登录，或者远程操作命令等。   3. 系统设计 完整的一套DevOps系统肯定是功能复杂、组件繁多的，不大可能自己造轮子，因此，底层会采用一些开源方案，然后在各个开源组件上构建自己的管理平台。
+3.1 元数据管理 说到底，我们要做的是一套能完整接入软件工程生命周期的工具平台，一个软件最终的目的是要发布到线上环境供用户使用，服务器资源只是软件的载体。那么，我们把软件叫做应用，从软件层面上来讲，一个应用应该是唯一的，而从&quot;硬件&quot;层面来说，一台&quot;服务器&quot;也是唯一的。那么，我们就可以将这两个&quot;唯一&quot;建立一种联系，然后再通过这两个唯一延伸出各种关联信息，比如，一个应用可能需要关联它的代码仓库，对应的负责人，归属部门等等，而一台服务器可能需要知道它的机房、机柜，或者是云平台，区域等信息。下图是一个我自己构建的元数据关联图：
+在设计元数据的表的时候，我们就可以根据这种关联关系来设计表。
+ 3.2 CI/CD 一个应用的生命周期一般包含以下步骤：
+ Design，接收需求，产品设计，沟通等，这边可能需要接入一些项目管理的工具，比如JIRA等、 Develop，程序员进行代码开发、架构设计等 Test，开发人员进行代码测试，测试人员进行功能测试等，这边可以引入一些自动化测试工具。 Deploy，各种人员可能会进行各种环境的部署，这边可以引入类似Jenkins的打包发布工具提高效率。 Monitor，进行监控数据的收集，通过平台输出可视化页面，配置告警、告警通知等功能。   3.3 监控告警 一个业务应用上线后，需要有工具来知道业务是否出现了问题，这时候就需要提供监控告警的一些工具。一个监控系统一般是如下图所示的架构
+ Agent，监控数据的收集器，可能是自研的跑在服务器上的采集客户端，也可能是嵌入到应用的收集器等待 Server，接收监控数据，进行存储的服务 Data，对数据进行整合、解析，告警触发、发送告警等操作的服务 Display，展示平台，供用户查看监控数据，配置告警规则的服务   3.4 机器操作 当整个DevOps平台完善的话，其实用户是可以不需要进入机器进行操作的，但是现实往往是不完美的，因此还需要类似堡垒机这样的服务来供用户登录机器进行一些日志查看，debug等操作。
+ 4. 初步实现想法  管理页面的话，目前的话想基于go-admin来做，一个用vue+go实现的管理系统脚手架 整个元数据的表设计和管理页面设计，目前的话，应该是要自己写，会参考一些例如bk-cmdb、nightingale等开源方案的设计。 CI/CD的话，代码仓库会采用gitlab组件，发布的话可能采用Jenkins、Argo-CD等开源组件，这个之前做的不多，需要再做点调研，载体的话，现在是容器化时代，可能会直接对接k8s来操作。 监控的话，考虑到Kubernetes，直接会在Prometheus+grafana进行二次开发，日志监控选取ELK或者Loki 堡垒机现在还没有进行研究，后续再进行调研。  基础服务资源
+上面的话，都是针对软件层面的，而应用依赖载体，因此，还需要有一些功能是用来做资源申请的，整体会考虑到兼容物理资源、云服务器资源、容器资源。除了物理资源以为，另外两个其实都可以通过自动化来实现按需创建，即要用的时候再申请。不过，我们还是保留人工审核创建的功能。因此需要做如下事情。
+ 提供工单系统，用于资源的申请和下架，当然，一些事务处理，比如故障处理也可以放在这里做记录 对接物理资源，可能需要录入资源的页面，人工操作，优先需要把字段规范好，高端点，也可以做些自动发现功能。 对接各个云平台，可能采用terrform或者操作云平台API来构建基础设施，包括EC2、RDS、Redis、LB、消息队列、云存储等。 对接k8s集群，包括集群的创建，管理、以及各种k8s资源的操作   5. 总结 目前的话，暂时就以上这些想法，开发的话，后续会写成一个系列，来深入的说下各个功能的实现。</div><div class="post-footer">
+        <a href="/oops_series_one/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/devops/">devops</a>,&nbsp;<a href="/tags/platform/">platform</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
             <a href="/openresty_phases/"><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -253,34 +278,6 @@ Helm Helm是Kubernetes的软件包管理器，它为Kubernetes作为一个单元
 Kubernetes KubeVela是用于构建上层平台的Kubernetes插件。它利用Kubernetes的本机可扩展性和功能解决了一个棘手的问题-使运输应用程序在Kubernetes上令人愉悦。
  2.3 安装配置 2.3.1 KubeVale安装   添加 helm chart repo</div><div class="post-footer">
         <a href="/k8s_series_oam/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/kubernetes/">kubernetes</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
-            <a href="/k8s_series_ingress/"><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/k8s_series_ingress/ingress-choose.png"
-        data-srcset="/k8s_series_ingress/ingress-choose.png, /k8s_series_ingress/ingress-choose.png 1.5x, /k8s_series_ingress/ingress-choose.png 2x"
-        data-sizes="auto"
-        alt="/k8s_series_ingress/ingress-choose.png"
-        title="Ingress" /></a>
-        </div><h1 class="single-title" itemprop="name headline">
-        <a href="/k8s_series_ingress/">Kubernetes系列：Ingress</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-11-11">2020-11-11</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cloud-native/"><i class="far fa-folder fa-fw"></i>Cloud Native</a></span></div><div class="content">系列目录 《Kubernetes系列：开篇》
-《Kubernetes系列：概述》
-《Kubernetes系列：架构》
-《Kubernetes系列：容器》
-《Kubernetes系列：网络》
-《Kubernetes系列：存储》
-《Kubernetes系列：Service》
-《Kubernetes系列：Ingress》
-《Kubernetes系列：OAM》
- 1. 介绍 1.1 Ingress  Ingress 公开了从集群外部到集群内service的 HTTP 和 HTTPS 路由。 流量路由由 Ingress 资源上定义的规则控制。
- 可以将 Ingress 配置为服务提供外部可访问的 URL、负载均衡流量、终止 SSL/TLS，以及提供基于名称的虚拟主机等能力。 Ingress Controller 通常负责通过负载均衡器来实现 Ingress，尽管它也可以配置边缘路由器或其他前端来帮助处理流量。
- 1.2 Ingress Controller 为了让 Ingress 资源工作，集群必须有一个正在运行的 Ingress Controller。
-与作为 kube-controller-manager 可执行文件的一部分运行的其他类型的控制器不同，Ingress 控制器不是随集群自动启动的。
- 2. Ingress Contoller 选择 下表是一些常用的Contoller对比：
-   control plane data plane backend service discovery protocols ssl termination websocket routing scope resiliency lb algorithms auth Tracing canary/shadow istio integration state Paid support Linkaaaaaaaaaaaaaa dashboard sticky sessions lua     ingress-nginx nginx dynamic http,https,tcp (separate lb),udp,grpc,fastcgi,IPC socket yes yes host,path(with regex) cross-namespace rate limit, retries rr,ewma,ip_hash basic, digest, external auth yes canary  kubernetes  https://kubernetes.</div><div class="post-footer">
-        <a href="/k8s_series_ingress/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/kubernetes/">kubernetes</a></div></div>
 </article><ul class="pagination"><li class="page-item active">
                     <span class="page-link">

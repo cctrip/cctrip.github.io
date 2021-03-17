@@ -100,6 +100,40 @@
         alt="/images/cc.jpg"
         title="/images/cc.jpg" /></a></div><h2 class="home-subtitle"><div id="id-1" class="typeit"></div></h2><div class="links"><a href="https://github.com/https://github.com/cctrip" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="https://twitter.com/https://twitter.com/zcc0388" title="Twitter" target="_blank" rel="noopener noreffer me"><i class="fab fa-twitter fa-fw"></i></a><a href="mailto:zcc0388@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
+            <a href="/devops_series_cmdb/"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/devops_series_cmdb/cmbd_diagram.png"
+        data-srcset="/devops_series_cmdb/cmbd_diagram.png, /devops_series_cmdb/cmbd_diagram.png 1.5x, /devops_series_cmdb/cmbd_diagram.png 2x"
+        data-sizes="auto"
+        alt="/devops_series_cmdb/cmbd_diagram.png"
+        title="CMDB" /></a>
+        </div><h1 class="single-title" itemprop="name headline">
+        <a href="/devops_series_cmdb/">DevOps系列：CMDB</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-07-10">2020-07-10</time></span>&nbsp;<span class="post-category">included in <a href="/categories/devops/"><i class="far fa-folder fa-fw"></i>DevOps</a></span></div><div class="content">系列目录 《DevOps系列：开篇》
+《DevOps系列：概述》
+《DevOps系列：CMDB》
+《DevOps系列：CI/CD》
+《DevOps系列：监控》
+《DevOps系列：SRE》
+ 1. 介绍  CMDB是组织使用的ITIL术语，用于组织存储有关硬件和软件资产的信息（通常称为配置项[CI]）。CMDB提供了一种了解组织的关键资产及其关系的方法，例如信息系统，资产的上游来源或依存关系以及资产的下游目标。
+ 用比较通俗的语言解释，CMDB可以存储并自动发现整个IT网络上的各种信息，比如一个IT网络上有多少台服务器、多少存储、设备的品牌、资产编号、维护人员、所属部门、服务器上运营什么操作系统、操作系统的版本、操作系统上有哪些应用、每个应用的版本等等，此外，CMDB还有一个非常重要的功能，即存储不同资源之间的依赖关系，如果网络上某个节点出现问题，通过CMDB，可以判断因此受到影响的业务。
+ 2. 云原生时代的CMDB设计 2.1 传统时代的CMDB 通常，我们在建设运维的基础管理平台时，通常要做的事情：
+1、把服务器、网络、IDC、机柜、存储、配件等这几大维度先定下来；
+2、这些硬件的属性确定下来，比如服务器就会有 SN 序列号、IP 地址、厂商、硬件配置（如 CPU、内存、硬盘、网卡、PCIE、BIOS）、维保信息等等；网络设备如交换机也会有厂商、型号、带宽等等；
+3、以上信息之间的关联关系，或者叫拓扑关系。比如服务器所在机柜，虚拟机所在的宿主机、机柜所在 IDC 等简单关系，复杂一点就会有核心交换机、汇聚交换机、接入交换机以及机柜和服务器之间的级联关系，这个就相对复杂一些
+4、其实应该是 3.5 步，在上面信息的梳理过程中肯定就会遇到一些规划问题，比如，IP 地址段的规划，xx 网段用于 DB，xx 网段用于大数据、xx 网段用于业务应用等等，再比如同步要做的还有 xx 机柜用于做虚拟化宿主机、xx 机柜只放 DB 机器等等。
+以上信息梳理清楚，通过 ER 建模工具进行数据建模，再将以上的信息固化到 DB 中，一个资源层面的信息管理平台就基本成型了。但是，信息固化不是目的，也没有价值，只有信息动态流转起来才有价值（跟货币一样）。接下来我们可以做的事情：
+1、基于这些信息进行流程规范的建设，比如服务器的上线、下线、维修、装机等流程。同时，流程过程中状态的变更要同步管理起来。
+2、拓扑关系的可视化和动态展示，比如交换机与服务器之间的级联关系、状态（正常 or 故障）的展示等，这样可以很直观的关注到资源节点的状态。
+至此，从资源维度的信息梳理，以及基于这些信息的平台和流程规范建设也算是基本成型了。这个时候，以服务器简单示例，我们的视角是下面这样的：
+ 2.2 云时代的CMDB 云和k8s的出现以及DevOps的普及，开始了以应用为中心的CMDB构建
+上面说明了 CMDB 的基础信息部分，如果从传统的 SA 运维模式，这些信息已经足够，但是从应用运维的角度，这些就远远不够了。这时我们就需要一个非常非常重要的句柄——应用名，*或者叫应用标示。这时，应用运维里面最最重要的一条联系也就产生了——*“应用名—IP“的关联关系。（注：这里也可以是定义的其它的唯一主机标示，如主机名、容器 ID 等等，因为我们使用的方式是 IP，所以这里就以 IP 示例）
+之所以说应用名和应用名-IP 关联关系非常重要，是因为它的影响力不仅仅在运维内部，而是会一直延伸整个技术架构上，后面的文章，我们介绍到的所有的平台和系统建设，都会跟这两个概念有关。
+CMDB 是 IP 为标示的资源管理维度，有了应用名之后，我们后面就是以应用为视角的管理维度了。首先看一下应用会涉及到的信息：</div><div class="post-footer">
+        <a href="/devops_series_cmdb/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/devops/">devops</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
             <a href="/devops_series_intro/"><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -256,25 +290,6 @@ IO-Bound，这项工作导致线程进入等待状态。这项工作包括请求
  Mark &amp; Sweep GC: 也称为跟踪GC。它通常采用两阶段算法，首先将仍被引用为“活动”的对象标记为标记，然后在下一个阶段中释放未激活的对象的内存。 Reference counting GC:在这种方法中，每个对象都获得一个引用计数，该引用计数随对它的引用的更改而增加或减少，并且当计数变为零时将进行垃圾回收。它不是首选，因为它不能处理循环引用。  3.</div><div class="post-footer">
         <a href="/go_series_mem/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/go/">go</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
-            <a href="/nginx_match/"><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/nginx_match/nginx.png"
-        data-srcset="/nginx_match/nginx.png, /nginx_match/nginx.png 1.5x, /nginx_match/nginx.png 2x"
-        data-sizes="auto"
-        alt="/nginx_match/nginx.png"
-        title="Nginx匹配机制总结" /></a>
-        </div><h1 class="single-title" itemprop="name headline">
-        <a href="/nginx_match/">Nginx匹配机制总结</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-02-06">2020-02-06</time></span>&nbsp;<span class="post-category">included in <a href="/categories/nginx/"><i class="far fa-folder fa-fw"></i>Nginx</a></span></div><div class="content">背景 Nginx是一个当前主流的HTTP服务器和反向代理服务器，很多做WEB相关的同学基本都会用到，很多云厂商的七层负载均衡器也基本都是基于nginx实现的，个人在工作过程也算是经常接触，这篇文章主要想总结一下nginx的匹配机制，主要分为两块，一块是server的匹配，一块是location的匹配。
- Server匹配机制 配置过nginx的都知道，在一个http模块中是可以配置多个server模块的，并且多个server模块是可以配置相同的监听端口的，下面是一个简单的server配置例子：
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17  server { listen 80; server_name example.org www.example.org; ... } server { listen 80; server_name example.net www.example.net; ... } server { listen 80; server_name example.com www.example.com; ... }   当我们对nginx发起http请求后，nginx会拿到http请求中对应的 &quot;Host&quot; 头部跟server模块中的server_name进行匹配，根据匹配的server结果进入具体的server模块处理http请求。那么，它具体的匹配机制是怎样的呢？
-首先，我们先简单了解下nginx内部server的相关结构，
-其中listen和server_name在配置文件中的写法有：
- listen(可带default_server标识)  ip:port ip(监听80端口) port(监听所有地址)   server_name  www.example.com(完整域名) *.example.com(带通配符开头的域名) www.example.*(带通配符结尾的域名) ~^(www.</div><div class="post-footer">
-        <a href="/nginx_match/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/nginx/">nginx</a>,&nbsp;<a href="/tags/linux/">linux</a>,&nbsp;<a href="/tags/application/">application</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>

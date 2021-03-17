@@ -100,6 +100,43 @@
         alt="/images/cc.jpg"
         title="/images/cc.jpg" /></a></div><h2 class="home-subtitle"><div id="id-1" class="typeit"></div></h2><div class="links"><a href="https://github.com/https://github.com/cctrip" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="https://twitter.com/https://twitter.com/zcc0388" title="Twitter" target="_blank" rel="noopener noreffer me"><i class="fab fa-twitter fa-fw"></i></a><a href="mailto:zcc0388@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
+            <a href="/dns/"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/dns/network.jpg"
+        data-srcset="/dns/network.jpg, /dns/network.jpg 1.5x, /dns/network.jpg 2x"
+        data-sizes="auto"
+        alt="/dns/network.jpg"
+        title="谈谈DNS" /></a>
+        </div><h1 class="single-title" itemprop="name headline">
+        <a href="/dns/">谈谈DNS</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2016-05-21">2016-05-21</time></span>&nbsp;<span class="post-category">included in <a href="/categories/network/"><i class="far fa-folder fa-fw"></i>Network</a></span></div><div class="content">写在前面 目前，我们大部分的网络通信都是基于TCP/IP协议的，而TCP/IP又基于IP地址作为唯一标识进行通信，随着需要记忆的IP地址数量的增多，肯定会超出我们的记忆能力范围，但如果使用一种利于人们的记忆的方式，如域名，例如&quot;www.google.com&quot;，我们便可以轻松的记忆这种方式的标识，而不是繁杂的数字。而DNS(域名系统)就是为了可以使用这种方式提供服务的。
+ 概念 DNS(Domain Name System)，域名系统，它是因特网的一项服务。它作为将域名和IP地址相互映射的一个分布式数据库，能够使人更方便地访问互联网。DNS使用TCP和UDP端口53。当前，对于每一级域名长度的限制是63个字符，域名总长度则不能超过253个字符。
+DNS Domain Namespace，DNS域命名空间，是一种分层树状结构，其格式如下:&ldquo;www.google.com&rdquo;,以点&quot;.&ldquo;为分隔。结构如图所示：
+  根域：绝对域名(FQDN)，以点&rdquo;.&ldquo;结尾的域名
+  顶级域：用来指示某个国家/地区或组织使用的名称的类型名称，例如.com
+  二级域：个人或组织在因特网上使用的注册名称，例如google.com
+  子域：已注册的二级域名派生的域名，一般就是网站名，例如www.google.com
+  主机名：标识网络上的特定计算机，例如h1.www.google.com
+  DNS资源记录：(即映射关系，通常由域名管理员进行配置)，常见类型如下：
+  SOA：起始授权机构
+  NS：名称服务器
+  MX：邮件服务器
+  A：IP地址(最常用，映射IP地址)
+  CNAME：别名(较常用，映射到其他域名)
+   DNS工作原理 当我们请求一个域名时，会通过DNS服务器将域名解析成IP访问最终的主机，那么，DNS是如何查询到域名所对应的IP并返回给我们的呢？请工作机制如图所示：
+当我们请求一个域名时，直到获取到IP地址，整个过程是如何工作的？以请求www.codecc.xyz为例：
+  首先，我们的主机会去查找本地的hosts文件和本地DNS解析器缓存，如果hosts文件和本地DNS缓存存在www.codecc.xyz和IP的映射关系，则完成域名解析，请求该IP地址，否则进入第二步。
+  当hosts和本地DNS解析器缓存都没有对应的网址映射关系，则会根据机器(/etc/reslove.conf)配置的本地DNS服务器进行查询，此服务器收到查询时，如果要查询的域名在本地配置区域资源或者缓存中存在映射关系，则跳到步骤9，将解析结果直接返回给客户机。
+  PS：一二步骤为递归查询，其余步骤为迭代查询
+ 若本地DNS服务器不存在该域名的映射关系，就把请求发送至13台根DNS服务器。
+  根DNS服务器会判断这个域名(.xyz)由谁来授权管理，并返回一个负责该顶级域的DNS服务器的一个IP给本地DNS服务器。
+  本地DNS服务器收到该IP后，会再将查询请求发送至(.xyz)所在的DNS服务器。
+  如果(.xyz)的DNS服务器无法解析该域名，就会去判断这个二级域名(codecc.xyz)的管理者，返回一个负责该二级域的DNS服务器的IP给本地DNS服务器。
+  本地DNS服务器收到该IP后，会再次将查询请求发送至(codecc.</div><div class="post-footer">
+        <a href="/dns/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/network/">network</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
             <a href="/webcsp/"><img
         class="lazyload"
         src="/svg/loading.min.svg"
