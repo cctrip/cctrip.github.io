@@ -1,9 +1,11 @@
-# 写一个DevOps管理系统(一)
+# Oops管理系统(一)
 
 
 ## 系列目录
 
-[《写一个DevOps管理系统(一)》]()
+[《Oops管理系统(一)》](../oops_series_one)
+
+[《Oops管理系统(二)》](../oops_series_two)
 
 ***
 

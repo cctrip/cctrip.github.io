@@ -100,6 +100,39 @@
         alt="/images/cc.jpg"
         title="/images/cc.jpg" /></a></div><h2 class="home-subtitle"><div id="id-1" class="typeit"></div></h2><div class="links"><a href="https://github.com/https://github.com/cctrip" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="https://twitter.com/https://twitter.com/zcc0388" title="Twitter" target="_blank" rel="noopener noreffer me"><i class="fab fa-twitter fa-fw"></i></a><a href="mailto:zcc0388@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
+            <a href="/devops_series_cicd/"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/devops_series_cicd/cicd-image.png"
+        data-srcset="/devops_series_cicd/cicd-image.png, /devops_series_cicd/cicd-image.png 1.5x, /devops_series_cicd/cicd-image.png 2x"
+        data-sizes="auto"
+        alt="/devops_series_cicd/cicd-image.png"
+        title="CI/CD" /></a>
+        </div><h1 class="single-title" itemprop="name headline">
+        <a href="/devops_series_cicd/">DevOps系列：CI/CD</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-07-15">2020-07-15</time></span>&nbsp;<span class="post-category">included in <a href="/categories/devops/"><i class="far fa-folder fa-fw"></i>DevOps</a></span></div><div class="content">系列目录 《DevOps系列：开篇》
+《DevOps系列：概述》
+《DevOps系列：CMDB》
+《DevOps系列：CI/CD》
+《DevOps系列：监控》
+《DevOps系列：SRE》
+ 1. 介绍 CI/CD 是一种通过在应用开发阶段引入自动化来频繁向客户交付应用的方法。CI/CD 的核心概念是持续集成、持续交付和持续部署。作为一个面向开发和运营团队的解决方案，CI/CD 主要针对在集成新代码时所引发的问题（亦称：“集成地狱”）。
+具体而言，CI/CD 可让持续自动化和持续监控贯穿于应用的整个生命周期（从集成和测试阶段，到交付和部署）。这些关联的事务通常被统称为“CI/CD 管道”，由开发和运维团队以敏捷方式协同支持。
+1.1 CI 是什么？CI 和 CD 有什么区别？ 缩略词 CI / CD 具有几个不同的含义。CI/CD 中的“CI”始终指持续集成，它属于开发人员的自动化流程。成功的 CI 意味着应用代码的新更改会定期构建、测试并合并到共享存储库中。该解决方案可以解决在一次开发中有太多应用分支，从而导致相互冲突的问题。
+CI/CD 中的“CD”指的是持续交付和/或持续部署，这些相关概念有时会交叉使用。两者都事关管道后续阶段的自动化，但它们有时也会单独使用，用于说明自动化程度。
+持续交付通常是指开发人员对应用的更改会自动进行错误测试并上传到存储库（如 GitHub 或容器注册表），然后由运维团队将其部署到实时生产环境中。这旨在解决开发和运维团队之间可见性及沟通较差的问题。因此，持续交付的目的就是确保尽可能减少部署新代码时所需的工作量。
+持续部署（另一种“CD”）指的是自动将开发人员的更改从存储库发布到生产环境，以供客户使用。它主要为了解决因手动流程降低应用交付速度，从而使运维团队超负荷的问题。持续部署以持续交付的优势为根基，实现了管道后续阶段的自动化。
+CI/CD 既可能仅指持续集成和持续交付构成的关联环节，也可以指持续集成、持续交付和持续部署这三项构成的关联环节。更为复杂的是，有时“持续交付”也包含了持续部署流程。
+归根结底，我们没必要纠结于这些语义，您只需记得 CI/CD 其实就是一个流程（通常形象地表述为管道），用于实现应用开发中的高度持续自动化和持续监控。因案例而异，该术语的具体含义取决于 CI/CD 管道的自动化程度。许多企业最开始先添加 CI，然后逐步实现交付和部署的自动化（例如作为云原生应用的一部分）。
+1.2 CI 持续集成（Continuous Integration） 现代应用开发的目标是让多位开发人员同时处理同一应用的不同功能。但是，如果企业安排在一天内将所有分支源代码合并在一起（称为“合并日”），最终可能造成工作繁琐、耗时，而且需要手动完成。这是因为当一位独立工作的开发人员对应用进行更改时，有可能会与其他开发人员同时进行的更改发生冲突。如果每个开发人员都自定义自己的本地集成开发环境（IDE），而不是让团队就一个基于云的 IDE 达成一致，那么就会让问题更加雪上加霜。
+持续集成（CI）可以帮助开发人员更加频繁地（有时甚至每天）将代码更改合并到共享分支或“主干”中。一旦开发人员对应用所做的更改被合并，系统就会通过自动构建应用并运行不同级别的自动化测试（通常是单元测试和集成测试）来验证这些更改，确保这些更改没有对应用造成破坏。这意味着测试内容涵盖了从类和函数到构成整个应用的不同模块。如果自动化测试发现新代码和现有代码之间存在冲突，CI 可以更加轻松地快速修复这些错误。
+进一步了解技术细节
+1.3 CD 持续交付（Continuous Delivery） 完成 CI 中构建及单元测试和集成测试的自动化流程后，持续交付可自动将已验证的代码发布到存储库。为了实现高效的持续交付流程，务必要确保 CI 已内置于开发管道。持续交付的目标是拥有一个可随时部署到生产环境的代码库。
+在持续交付中，每个阶段（从代码更改的合并，到生产就绪型构建版本的交付）都涉及测试自动化和代码发布自动化。在流程结束时，运维团队可以快速、轻松地将应用部署到生产环境中。
+1.4 CD 持续部署（Continuous Deployment） 对于一个成熟的 CI/CD 管道来说，最后的阶段是持续部署。作为持续交付——自动将生产就绪型构建版本发布到代码存储库——的延伸，持续部署可以自动将应用发布到生产环境。由于在生产之前的管道阶段没有手动门控，因此持续部署在很大程度上都得依赖精心设计的测试自动化。</div><div class="post-footer">
+        <a href="/devops_series_cicd/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/devops/">devops</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
             <a href="/devops_series_cmdb/"><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -265,30 +298,6 @@ IO-Bound，这项工作导致线程进入等待状态。这项工作包括请求
 这称为高速缓存一致性问题，还引入了错误共享之类的问题。当编写将改变共享状态的多线程应用程序时，必须考虑缓存系统.
  2.8 调度决策方案 想象一下，我要您根据我给您的高级信息编写操作系统调度程序。考虑一下您必须考虑的一种情况。请记住，这是调度程序在做出调度决策时必须考虑的许多有趣的事情之一。</div><div class="post-footer">
         <a href="/go_series_scheduler/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/go/">go</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
-            <a href="/go_series_mem/"><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/go_series_mem/memory-image.png"
-        data-srcset="/go_series_mem/memory-image.png, /go_series_mem/memory-image.png 1.5x, /go_series_mem/memory-image.png 2x"
-        data-sizes="auto"
-        alt="/go_series_mem/memory-image.png"
-        title="内存管理" /></a>
-        </div><h1 class="single-title" itemprop="name headline">
-        <a href="/go_series_mem/">Go系列：内存管理</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-04-01">2020-04-01</time></span>&nbsp;<span class="post-category">included in <a href="/categories/golang/"><i class="far fa-folder fa-fw"></i>Golang</a></span></div><div class="content">系列目录 《Go系列：内存管理》
-《Go系列：并发》
- 1.介绍  内存管理是控制和协调软件应用程序访问计算机内存的方式的过程。
- 这是软件工程中一个严肃的话题，它使一些人感到困惑，并且对某些人来说是一个黑盒。
-2. 内存管理 当软件在计算机上的目标操作系统上运行时，它需要访问计算机RAM（随机存取存储器）以执行以下操作：
- 加载自己需要执行的字节码 存储执行的程序使用的数据值和数据结构 加载程序执行所需的所有运行时系统  当软件程序使用内存时，除了用于加载字节码的空间外，还有两个内存区域，即stack内存和heap内存。
-2.1 Stack Stack用于静态内存分配，顾名思义，它是一个后进先出（LIFO）堆栈（将其视为盒子堆栈）。
- 由于这种性质，由于不需要查找，因此从堆栈中存储和检索数据的过程非常快，您只需从其最上面的块中存储和检索数据即可。 但这意味着存储在堆栈中的任何数据都必须是有限且静态的（数据大小在编译时是已知的）。 这是函数的执行数据作为堆栈帧存储的位置（因此，这是实际的执行堆栈）。每个帧都是一个空间块，用于存储该功能所需的数据。例如，每当一个函数声明一个新变量时，它就被“压入”到栈顶块中。然后，每次退出函数时，都会清除最顶层的块，从而清除该函数压入堆栈的所有变量。由于此处存储的数据的静态性质，可以在编译时确定这些值。 多线程应用程序每个线程可以有一个堆栈。 堆栈的内存管理非常简单明了，并且由操作系统完成。 存储在堆栈中的典型数据是局部变量（值类型或原语，原语常量），指针和函数框。 这是您会遇到堆栈溢出错误的地方，因为与堆相比，堆栈的大小受到限制。 对于大多数语言，可以存储在堆栈中的值的大小是有限制的。   2.2 Heap 堆用于动态内存分配，与堆栈不同，程序需要使用指针在堆中查找数据（将其视为大型的多级库）。
- 它比堆栈慢，因为查找数据的过程涉及更多，但它可以存储比堆栈更多的数据。 这意味着可以在此处存储具有动态大小的数据。 堆在应用程序的线程之间共享。 由于其动态特性，堆管理起来比较棘手，这是大多数内存管理问题的起因，这也是该语言自动内存管理解决方案的起因。 存储在堆中的典型数据是全局变量，引用类型（如对象，字符串，映射和其他复杂数据结构）。 如果您的应用程序尝试使用比分配的堆更多的内存，这就是您遇到内存不足错误的地方（尽管这里还有许多其他因素在起作用，例如GC，压缩）。 通常，对堆中可以存储的值的大小没有限制。当然，为应用程序分配多少内存是有上限的。   2.3 为什么如此重要 与硬盘驱动器不同，RAM不是无限的。 如果程序继续消耗内存而不释放内存，最终它将耗尽内存并崩溃，甚至使操作系统崩溃。 因此，软件程序不仅会继续使用自己喜欢的RAM，还会导致其他程序和进程的内存不足。 因此，大多数编程语言都没有提供让软件开发人员解决此问题的方法，而是提供了执行自动内存管理的方法。 当我们谈论内存管理时，我们主要是在谈论管理堆内存。
- 2.4 垃圾回收 通过释放未使用的内存分配来自动管理堆内存。 GC是现代语言中最常见的内存管理之一，该过程通常以一定的间隔运行，因此可能会导致较小的开销，称为暂停时间。JVM（Java / Scala / Groovy / Kotlin），JavaScript，C＃，Golang，OCaml和Ruby是默认情况下使用垃圾回收进行内存管理的一些语言。
- Mark &amp; Sweep GC: 也称为跟踪GC。它通常采用两阶段算法，首先将仍被引用为“活动”的对象标记为标记，然后在下一个阶段中释放未激活的对象的内存。 Reference counting GC:在这种方法中，每个对象都获得一个引用计数，该引用计数随对它的引用的更改而增加或减少，并且当计数变为零时将进行垃圾回收。它不是首选，因为它不能处理循环引用。  3.</div><div class="post-footer">
-        <a href="/go_series_mem/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/go/">go</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
