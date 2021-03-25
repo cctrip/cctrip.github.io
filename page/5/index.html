@@ -100,6 +100,47 @@
         alt="/images/cc.jpg"
         title="/images/cc.jpg" /></a></div><h2 class="home-subtitle"><div id="id-1" class="typeit"></div></h2><div class="links"><a href="https://github.com/https://github.com/cctrip" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="https://twitter.com/https://twitter.com/zcc0388" title="Twitter" target="_blank" rel="noopener noreffer me"><i class="fab fa-twitter fa-fw"></i></a><a href="mailto:zcc0388@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
+            <a href="/go_series_scheduler/"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/go_series_scheduler/scheduler-image.png"
+        data-srcset="/go_series_scheduler/scheduler-image.png, /go_series_scheduler/scheduler-image.png 1.5x, /go_series_scheduler/scheduler-image.png 2x"
+        data-sizes="auto"
+        alt="/go_series_scheduler/scheduler-image.png"
+        title="调度器" /></a>
+        </div><h1 class="single-title" itemprop="name headline">
+        <a href="/go_series_scheduler/">Go系列：调度器</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-04-07">2020-04-07</time></span>&nbsp;<span class="post-category">included in <a href="/categories/golang/"><i class="far fa-folder fa-fw"></i>Golang</a></span></div><div class="content">系列目录 《Go系列：内存管理》
+《Go系列：调度器》
+《Go系列：并发》
+ 1. 介绍 随着技术的不断发展，CPU也在不断发展，出现了多处理器、多核心、CPU缓存、NUMA架构等概念。为了最大化利用CPU的计算能力，软件也在不断发展，出现了并发和并行等概念。而为了支持并发和并行，就需要调度器，用于处理计算任务在不同CPU上的计算。我们主要从系统调度和语言层面的调度来说明。
+ 2. OS Scheduler 我们的的程序只是一系列机器指令，需要依次执行。为此，操作系统使用了线程的概念，线程的工作就是负责说明并按顺序执行分配给它的指令集。执行将不断进行，直到没有更多指令可以执行。
+在操作系统上，我们运行的每个程序都会创建一个进程，并且为每个进程分配一个初始线程。线程具有创建更多线程的能力。所有这些不同的线程彼此独立运行，并且调度决策是在线程级别而不是在进程级别做出的。线程可以同时运行(并发，每个任务运行在同一个的core上)，也可以并行运行(并行，每个任务运行在不同core上同时运行)。线程还维护自己的状态，以允许在本地安全和独立地执行指令。
+如果存在可以执行的线程时，OS Scheduler负责确保core不处于空闲状态。它还必须产生一种幻想，即所有可以执行的线程正在同时执行。在创建这种幻想的过程中，Scheduler需要优先运行优先级较高的线程，而不是运行优先级较低的线程。但是，具有较低优先级的线程并无法节省执行时间。Scheduler还需要通过做出快速而明智的决策来最大程度地减少调度延迟。
+ 2.1 执行指令 程序计数器(PC)有时也称为指令指针(IP)，它使线程可以跟踪要执行的下一条指令。在大多数处理器中，PC指向下一条指令，而不是当前指令。
+ 2.2 Thread状态  Waiting，这意味着线程已经停止执行并需要等待某些操作才能继续。这可能是由于诸如等待硬件(磁盘，网络)，操作系统(系统调用)或同步调用(原子，互斥体)之类的原因。这些类型的延迟是导致性能下降的根本原因。 Runnable ，这意味着线程需要获得cpu时间，这样它可以执行其分配的机器指令。如果您有很多需要cpu时间的线程，则线程必须等待更长的时间才能获得cpu时间。而且，随着更多线程争夺cpu时间，任何给定线程获得的cpu时间都将缩短。这种类型的调度延迟也可能是性能下降的原因 Executing，这意味着线程已放置在core上并正在执行其机器指令。与应用程序相关的工作已经完成。这是每个人都想要的状态。   2.3 工作类型 CPU-Bound，这项工作永远不会造成线程可能处于等待状态的情况。这是不断进行计算的工作。计算Pi到第N位的线程将是CPU-Bound的。
+IO-Bound，这项工作导致线程进入等待状态。这项工作包括请求通过网络访问资源或对操作系统进行系统调用。需要访问数据库的线程将是IO-Bound。我将包括同步事件(互斥量，原子)等导致线程进入等待状态的事件都归为此类。
+ 2.4 上下文切换 抢占式调度
+首先，这意味着在任何给定时间选择要运行的线程时，调度程序都是不可预测的。线程优先级和事件(例如在网络上接收数据)一起使得无法确定调度程序将选择做什么以及何时执行。
+其次，这意味着您绝不能基于自己幸运的经历但不能保证每次都发生的某些感知行为来编写代码。让自己思考很容易，因为我已经看到这种情况以1000次相同的方式发生，这是有保证的行为。如果需要在应用程序中确定性，则必须控制线程的同步和编排。
+ 在内核上交换线程的物理行为称为上下文切换。当调度程序从core中拉出一个excuting线程并将其替换为可runnable线程时，就会发生上下文切换。从运行队列中选择的线程将进入excuting状态。被拉出的线程可以移回runnable状态(如果它仍具有运行能力)或waitting状态(如果由于IO-Bound类型的请求而被替换)。
+上下文切换被认为是昂贵的，因为在core上和在core外交换线程都需要时间。上下文切换期间的延迟等待时间量取决于不同的因素，但花费约1000到1500纳秒的时间并非没有道理。虑到硬件应该能够合理地(平均)在每核每纳秒执行12条指令，上下文切换可能会花费大约12000至18k的延迟指令。本质上，您的程序在上下文切换期间将失去执行大量指令的能力。
+如果您有一个专注于IO-Bound工作的程序，那么上下文切换将是一个优势。一旦一个线程进入等待状态，另一个处于可运行状态的线程就会代替它。这使核心始终可以工作。这是调度的最重要方面之一。如果有工作要做(线程处于可运行状态)，请不要让core闲置。
+如果您的程序专注于CPU-Bound工作，那么上下文切换将成为性能噩梦。由于Thead总是有工作要做，因此上下文切换将阻止该工作的进行。这种情况与IO-Bound工作负载形成鲜明对比。
+ 2.5 少即是多 制定调度决策时，scheduler还需要考虑和处理更多的事情。您可以控制在应用程序中使用的线程数。当要考虑的线程更多，并且发生IO-Bound工作时，就会出现更多的混乱和不确定性行为。任务需要更长的时间来计划和执行。
+这就是为什么游戏规则是“少即是多”的原因。处于runnable状态的线程越少，意味着获得调度的时间越少，并且每个线程随着时间的流逝会花费更多的时间。更多线程处于runnable状态意味着每个线程随着时间流逝的时间更少。这意味着随着时间的流逝，您完成的工作也更少了。
+ 2.6 寻找平衡 您需要在拥有的core数量与为应用程序获得最佳吞吐量所需的线程数量之间找到平衡。在管理这种平衡时，线程池是一个很好的答案。
+如果您的服务正在执行许多不同类型的工作该怎么办？这可能会产生不同且不一致的延迟。也许它还会创建许多需要处理的不同的系统级事件。不可能找到一个在所有不同工作负荷下始终有效的魔术数字。当涉及到使用线程池来调整服务的性能时，找到正确的一致配置会变得非常复杂。
+ 2.7 CPU缓存 从主存储器访问数据具有很高的延迟成本（〜100至〜300个时钟周期），以致处理器和内核具有本地缓存，以使数据保持在需要它的硬件线程附近。从缓存访问数据的成本要低得多（约3至40个时钟周期），具体取决于要访问的缓存。今天，性能的一个方面是关于如何有效地将数据输入处理器以减少这些数据访问延迟。编写改变状态的多线程应用程序需要考虑缓存系统的机制。
+使用cache line在处理器和主存储器之间交换数据。缓存行是在主内存和缓存系统之间交换的64字节内存块。每个内核都会获得所需的任何高速缓存行的副本，这意味着硬件使用值语义。这就是为什么多线程应用程序中的内存突变会造成性能方面的噩梦。
+当多个并行运行的线程正在访问同一数据值或什至彼此接近的数据值时，它们将在同一高速缓存行上访问数据。在任何内核上运行的任何线程都将获得该同一缓存行的副本。
+ 如果给定核心上的一个线程更改了其缓存行的副本，则必须借助硬件的魔力，将同一缓存行的所有其他副本标记为脏。当线程尝试对脏的缓存行进行读写访问时，需要主存储器访问（〜100至〜300个时钟周期）才能获取缓存行的新副本.
+也许在2核处理器上这没什么大不了，但是如果32核处理器并行运行32个线程，所有访问和变异数据都在同一缓存行上，那又如何呢？带有两个分别具有16个内核的物理处理器的系统又如何呢？由于处理器间通信增加了延迟，因此情况将变得更糟。该应用程序将遍历内存，性能将非常糟糕，并且很可能您将不明白为什么。
+这称为高速缓存一致性问题，还引入了错误共享之类的问题。当编写将改变共享状态的多线程应用程序时，必须考虑缓存系统.
+ 2.8 调度决策方案 想象一下，我要您根据我给您的高级信息编写操作系统调度程序。考虑一下您必须考虑的一种情况。请记住，这是调度程序在做出调度决策时必须考虑的许多有趣的事情之一。</div><div class="post-footer">
+        <a href="/go_series_scheduler/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/go/">go</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
             <a href="/go_series_mem/"><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -228,41 +269,6 @@ TLS Record Protocol 该协议提供了连接安全的两个基本特性：
  交换hello信息用于算法协商，交换随机值，并检查会话是否恢复 交换必要的密码信息以允许客户端和服务端同意使用premaster secret 交换证书和密码信息以允许客户端和服务端进行身份验证 通过随机值和premaster secret生成master secret 向record layer提供安全参数 允许客户端和服务器验证其对等方具有计算出的相同安全参数，并且握手发生在没有被攻击者篡改的情况下  TLS握手的完整消息流   ClientHello</div><div class="post-footer">
         <a href="/tls/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/security/">security</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
-            <a href="/http/"><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/http/network.jpg"
-        data-srcset="/http/network.jpg, /http/network.jpg 1.5x, /http/network.jpg 2x"
-        data-sizes="auto"
-        alt="/http/network.jpg"
-        title="谈谈HTTP" /></a>
-        </div><h1 class="single-title" itemprop="name headline">
-        <a href="/http/">谈谈HTTP</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2016-05-29">2016-05-29</time></span>&nbsp;<span class="post-category">included in <a href="/categories/network/"><i class="far fa-folder fa-fw"></i>Network</a></span></div><div class="content">写在前面 如今网络已经无处不在，人们通过网络获取浏览各种信息，其中，大部分都是通过浏览器访问各种网页来获取我们想要的信息，那么浏览器与网页(服务端)究竟是如何通信的呢？这就得从HTTP协议说起了，浏览器获取网页信息都是基于HTTP协议来处理的。
- 概念 HTTP（HyperText Transfer Protocol，超文本传输协议）是互联网上应用最为广泛的一种网络协议。设计HTTP最初的目的是为了提供一种发布和接收HTML页面的方法。通过HTTP或者HTTPS协议请求的资源由统一资源标识符（Uniform Resource Identifiers，URI）来标识。HTTP是一个应用层协议，由请求和响应构成，是一个标准的客户端服务器模型。其具有如下特点：
-  支持客户/服务器模式。
-  简单快速：客户向服务器请求服务时，只需传送请求方法和路径。请求方法常用的有GET、HEAD、POST。每种方法规定了客户与服务器联系的类型不同。由于HTTP协议简单，使得HTTP服务器的程序规模小，因而通信速度很快。
-  灵活：HTTP允许传输任意类型的数据对象。正在传输的类型由Content-Type加以标记。
-  无连接：无连接的含义是限制每次连接只处理一个请求。服务器处理完客户的请求，并收到客户的应答后，即断开连接。采用这种方式可以节省传输时间。
-  无状态：HTTP协议是无状态协议。无状态是指协议对于事务处理没有记忆能力。缺少状态意味着如果后续处理需要前面的信息，则它必须重传，这样可能导致每次连接传送的数据量增大。另一方面，在服务器不需要先前信息时它的应答就较快
-  PS：尽管TCP/IP协议是互联网上最流行的应用，HTTP协议中，并没有规定必须使用它或它支持的层。事实上，HTTP可以在任何互联网协议上，或其他网络上实现。HTTP假定其下层协议提供可靠的传输。因此，任何能够提供这种保证的协议都可以被其使用。因此也就是其在TCP/IP协议族使用TCP作为其传输层。
- 工作流程 HTTP协议的通信过程永远是客户端发起请求(request)，服务器回送响应(respone)，如下图所示：
-一个完整的HTTP操作称为一个事务，其流程可分为四步：
-  建立连接(TCP三次握手)
-  客户端发送一个请求报文给服务器
-  服务器响应对应信息
-  客户端接收信息，然后断开连接
-   请求和响应详解 请求报文   请求行：由请求方法、URL和HTTP版本组成
-eg：GET /index.html HTTP/1.1
-  请求方法
-  GET：请求获取URI所标识的资源
-  HEAD：请求获取URI所标识的资源，但不传回资源的文本部分
-  POST：向指定URI资源提交数据，请求服务器进行处理
-  PUT：向指定URI资源上传其最新内容
-  DELETE：请求服务器删除URI所标识的资源</div><div class="post-footer">
-        <a href="/http/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/network/">network</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>

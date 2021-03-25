@@ -100,6 +100,42 @@
         alt="/images/cc.jpg"
         title="/images/cc.jpg" /></a></div><h2 class="home-subtitle"><div id="id-1" class="typeit"></div></h2><div class="links"><a href="https://github.com/https://github.com/cctrip" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="https://twitter.com/https://twitter.com/zcc0388" title="Twitter" target="_blank" rel="noopener noreffer me"><i class="fab fa-twitter fa-fw"></i></a><a href="mailto:zcc0388@gmail.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
+            <a href="/k8s_series_container/"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/k8s_series_container/k8s-image.png"
+        data-srcset="/k8s_series_container/k8s-image.png, /k8s_series_container/k8s-image.png 1.5x, /k8s_series_container/k8s-image.png 2x"
+        data-sizes="auto"
+        alt="/k8s_series_container/k8s-image.png"
+        title="容器运行时" /></a>
+        </div><h1 class="single-title" itemprop="name headline">
+        <a href="/k8s_series_container/">Kubernetes系列：容器</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-10-25">2020-10-25</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cloud-native/"><i class="far fa-folder fa-fw"></i>Cloud Native</a></span></div><div class="content">系列目录 《Kubernetes系列：开篇》
+《Kubernetes系列：概述》
+《Kubernetes系列：架构》
+《Kubernetes系列：容器》
+《Kubernetes系列：网络》
+《Kubernetes系列：存储》
+《Kubernetes系列：Service》
+《Kubernetes系列：Ingress》
+《Kubernetes系列：OAM》
+ 1. 介绍 1.1 容器技术  LXC（Linux容器）是一种操作系统级虚拟化技术，用于使用单个Linux内核在控制主机上运行多个隔离的Linux系统（容器）。
+ 每个运行的容器都是可重复的； 包含依赖环境在内的标准，意味着无论您在哪里运行它，您都会得到相同的行为。容器将应用程序从底层的主机设施中解耦。 这使得在不同的云或 OS 环境中部署更加容易。
+1.2 容器镜像  容器镜像是一个随时可以运行的软件包， 包含运行应用程序所需的一切：代码和它需要的所有运行时、应用程序和系统库，以及一些基本设置的默认值。
+ 根据设计，容器是不可变的：你不能更改已经运行的容器的代码。 如果有一个容器化的应用程序需要修改，则需要构建包含更改的新镜像，然后再基于新构建的镜像重新运行容器。
+1.3 容器运行时  容器运行环境是负责运行容器的软件。
+ Kubernetes 支持多个容器运行环境: Docker、 containerd、CRI-O 以及任何实现 Kubernetes CRI (容器运行环境接口)。
+1.4 CRI(容器运行时接口)  CRI，一个插件接口，使kubelet可以使用各种容器运行时，而无需重新编译。
+CRI由规范/要求(待添加)、protobuf API和用于容器运行时的库组成，以与节点上的kubelet集成。
+  2. 为什么使用容器？ 容器提供了一种逻辑打包机制，以这种机制打包的应用可以脱离其实际运行的环境。利用这种脱离，不管目标环境是私有数据中心、公有云，还是开发者的个人笔记本电脑，您都可以轻松、一致地部署基于容器的应用。容器化使开发者和 IT 运营团队的关注点泾渭分明 - 开发者专注于应用逻辑和依赖项，而 IT 运营团队可以专注于部署和管理，不必为具体的软件版本和应用特有的配置等应用细节分心。
+我们通过与虚拟机的对比来看下容器的优势
+与虚拟机的硬件栈虚拟化不同，容器在操作系统级别进行虚拟化，且可以直接在操作系统内核上运行多个容器。也就是说，容器更轻巧：它们共享操作系统内核，启动速度更快，且与启动整个操作系统相比其占用的内存微乎其微。
+一致的环境
+容器让开发者可以创建与其他应用相隔离的可预测环境。容器还可以包含应用所需的软件依赖项，比如具体的编程语言运行时版本和其他软件库。从开发者的角度看，无论应用最终部署在什么地方，都可以保证这些条件一致。这一切将转化为生产力的提升：开发者和 IT 运营团队可以减少调试和诊断环境差异所需的时间，将更多的时间用于为用户提供新的功能。而且这也意味着 bug 更少，因为开发者现可在开发和测试环境中做出在生产环境中也适用的假设。
+在任何地方运行</div><div class="post-footer">
+        <a href="/k8s_series_container/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/kubernetes/">kubernetes</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
             <a href="/k8s_series_arch/"><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -275,40 +311,6 @@ DevOps成熟度设计通过双方和组织方面的不断培训来管理增长�
 组织范围内的变化始于既定的规则和安全的自动化。</div><div class="post-footer">
         <a href="/devops_model/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/devops/">devops</a>,&nbsp;<a href="/tags/translation/">translation</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
-            <a href="/devops_series_mon/"><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/devops_series_mon/monitor.png"
-        data-srcset="/devops_series_mon/monitor.png, /devops_series_mon/monitor.png 1.5x, /devops_series_mon/monitor.png 2x"
-        data-sizes="auto"
-        alt="/devops_series_mon/monitor.png"
-        title="监控系统" /></a>
-        </div><h1 class="single-title" itemprop="name headline">
-        <a href="/devops_series_mon/">DevOps系列：监控</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-07-20">2020-07-20</time></span>&nbsp;<span class="post-category">included in <a href="/categories/devops/"><i class="far fa-folder fa-fw"></i>DevOps</a></span></div><div class="content">系列目录 《DevOps系列：开篇》
-《DevOps系列：概述》
-《DevOps系列：CMDB》
-《DevOps系列：CI/CD》
-《DevOps系列：监控》
-《DevOps系列：SRE》
- 为什么需要监控系统？ 两个场景 场景一 技术部门上线了一个新项目，系统宕机了，客户在访问时发现无法访问，客户 A 不知道如何处理，放弃了访问，客户 B 知道客服系统，告知了运营人员，运营人员自己访问后也发现无法访问，于是通知了测试人员，再由测试人员通知线上项目的负责人，由负责人来进行故障恢复。 整个流程中，能处理故障的人成了最后知道故障的人。
-场景二 用户反馈访问某个系统很慢，通知技术人员排查问题，由于系统涉及的组件很多，技术人员没办法立即知道问题出在哪里，于是技术人员只能通过自己把整个数据流走完的方式来排查问题： 1、由入口开始排查问题，先确认网络是否丢包，延时是否过高，发现无异常。 2、于是排查服务所在机器的负载情况，以及服务相关日志 (未必有记录)，也无异常。 3、排查代码发现有做 sql 查询，于是根据 sql 手动到数据库执行，发现 sql 执行很慢。 4、于是排查数据库所在机器的负载情况，发现 cpu 一直处在 100% 状态，是数据库进程造成的。 5、通过查询相关执行 sql 发现有某个 sql 在执行复杂查询导致了 cpu 使用率一直很高，从而影响了其他 sql 查询。
-极端情况下，技术人员可能需要把所有相关组件都排查一遍，才能发现问题出在哪里。
- 场景解决方案 开头提到的两个场景应该是大部分技术人员都会碰到的问题，场景一是故障出现到故障处理的耗时问题，场景二是故障处理到故障恢复的耗时问题。
-场景一的解决方式，可以由一个脚本或者一个系统，定时收集客户访问的 url 的返回状态码，如果出现错误的状态码达到一定次数，就发送邮件或者短信给到对应的负载人。
-场景二的解决方式，可以由一个系统，定时收集所有组件的相关信息，然后通过聚合和数据展示，来提供一个全局的问题查看功能。
-解决上面两种场景的系统就是监控系统。
- 为什么要监控 监控一个系统有多个原因，一般包含如下几项
-  分析趋势
-数据库多大，增长速度如何？日活用户的增长速度？
-  数据对比
-增加了 redis 缓存后，访问速度较没增加前如何？这周和上周的访问速度有什么差异？
-  告警
-有东西故障了，或者即将故障，需要有人处理它。
-  构建仪表盘</div><div class="post-footer">
-        <a href="/devops_series_mon/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/devops/">devops</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>

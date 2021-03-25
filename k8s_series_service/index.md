@@ -181,6 +181,8 @@ status:
 
 ### 3.3 iptables模式
 
+iptables相关原理可以看下[这篇](../deep_iptables/)文章
+
 这种模式，`kube-proxy` 会监视 Kubernetes 控制节点对 Service 对象和 Endpoints 对象的添加和移除。 对每个 Service，它会配置 iptables 规则，从而捕获到达该 Service 的 `clusterIP` 和端口的请求，进而将请求重定向到 Service 的一组后端中的某个 Pod 上面。 对于每个 Endpoints 对象，它也会配置 iptables 规则，这个规则会选择一个后端组合。
 
 默认的策略是，kube-proxy 在 iptables 模式下随机选择一个后端。

@@ -202,26 +202,18 @@ Kubernetes KubeVela是用于构建上层平台的Kubernetes插件。它利用Kub
  2. 配置 Service 在 Kubernetes 中是一个 REST 对象，和 Pod 类似。 像所有的 REST 对象一样，Service 定义可以基于 POST 方式，请求 API server 创建新的实例。 Service 对象的名称必须是合法的 DNS 标签名称。
 2.1 一般配置 一个例子，有一组 Pod，它们对外暴露了 9376 端口，同时还被打上 app=MyApp 标签：]]></description>
 </item><item>
-    <title>Kubernetes系列：存储</title>
-    <link>https://cctrip.github.io/k8s_series_storage/</link>
-    <pubDate>Thu, 05 Nov 2020 17:55:28 &#43;0800</pubDate>
+    <title>深入理解iptables</title>
+    <link>https://cctrip.github.io/deep_iptables/</link>
+    <pubDate>Sat, 07 Nov 2020 17:55:28 &#43;0800</pubDate>
     <author>Author</author>
-    <guid>https://cctrip.github.io/k8s_series_storage/</guid>
-    <description><![CDATA[系列目录 《Kubernetes系列：开篇》
-《Kubernetes系列：概述》
-《Kubernetes系列：架构》
-《Kubernetes系列：容器》
-《Kubernetes系列：网络》
-《Kubernetes系列：存储》
-《Kubernetes系列：Service》
-《Kubernetes系列：Ingress》
-《Kubernetes系列：OAM》
- 1. 介绍 容器中的文件在磁盘上是临时存放的，这给容器中运行的较重要的应用程序带来一些问题：
- 当容器崩溃时文件丢失。kubelet 会重新启动容器， 但容器会以干净的状态重启。 在 Pod 中同时运行多个容器时，这些容器之间通常需要共享文件。  Kubernetes 中的 Volume 抽象很好的解决了这些问题。
- 2. 存储 为了管理存储，Kubernetes提供了Secret用于管理敏感信息，ConfigMap存储配置，Volume、PV、PVC、StorageClass等用来管理存储卷。
-2.1 Volume Kubernetes 支持很多类型的卷。 Pod 可以同时使用任意数目的卷类型。 临时卷类型的生命周期与 Pod 相同，但持久卷可以比 Pod 的存活期长。 因此，卷的存在时间会超出 Pod 中运行的所有容器，并且在容器重新启动时数据也会得到保留。 当 Pod 不再存在时，卷也将不再存在。
-卷的核心是包含一些数据的一个目录，Pod 中的容器可以访问该目录。 所采用的特定的卷类型将决定该目录如何形成的、使用何种介质保存数据以及目录中存放 的内容。
-使用卷时, 在 .spec.volumes 字段中设置为 Pod 提供的卷，并在 .spec.containers[*].volumeMounts 字段中声明卷在容器中的挂载位置。 容器中的进程看到的是由它们的 Docker 镜像和卷组成的文件系统视图。 Docker 镜像 位于文件系统层次结构的根部。各个卷则挂载在镜像内的指定路径上。 卷不能挂载到其他卷之上，也不能与其他卷有硬链接。 Pod 配置中的每个容器必须独立指定各个卷的挂载位置。
-2.1.1 卷类型 Kubernetes 支持下列类型的卷：详细]]></description>
+    <guid>https://cctrip.github.io/deep_iptables/</guid>
+    <description><![CDATA[1. 介绍 最近在刚好在看Kubernetes的service相关内容，里面用到了iptables和ipvs技术，好久没看iptables了，快忘记了，刚好复习重新记忆一下。
+讲iptables，有个东西就一定得清楚，那就是netfilter
+ 2. netfilter  netfilter是一个数据包处理框架。
+ netfilter具备以下几个功能：
+ 数据包过滤 网络地址(端口)转换 数据包日志记录 用户空间数据包排队 其他数据包处理功能  2.1 netfilter架构 netfilter 提供了 5 个 hook 点。包经过协议栈时会触发内核模块注册在这里的处理函数 。触发哪个 hook 取决于包的方向（是发送还是接收）、包的目的地址、以及包在上一个 hook 点是被丢弃还是拒绝等等。
+下面几个 hook 是内核协议栈中已经定义好的：
+ NF_IP_PRE_ROUTING: 接收到的包进入协议栈后立即触发此 hook，在进行任何路由判断 （将包发往哪里）之前 NF_IP_LOCAL_IN: 接收到的包经过路由判断，如果目的是本机，将触发此 hook NF_IP_FORWARD: 接收到的包经过路由判断，如果目的是其他机器，将触发此 hook NF_IP_LOCAL_OUT: 本机产生的准备发送的包，在进入协议栈后立即触发此 hook NF_IP_POST_ROUTING: 本机产生的准备发送的包或者转发的包，在经过路由判断之后， 将触发此 hook  注册处理函数时必须提供优先级，以便 hook 触发时能按照 优先级高低调用处理函数。这使得多个模块（或者同一内核模块的多个实例）可以在同一 hook 点注册，并且有确定的处理顺序。内核模块会依次被调用，每次返回一个结果给 netfilter 框架，提示该对这个包做以下几个操作之一：
+ NF_ACCEPT: 继续正常遍历 NF_DROP: 丢弃数据包，不再进行遍历 NF_STOLEN: 该模块接收了该包，不再进行遍历 NF_QUEUE: 将数据包排队（通常用于用户空间处理） NF_REPEAT: 再次调用此hook   3.]]></description>
 </item></channel>
 </rss>

@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>深入理解iptables - CC&#39;s Trip</title><meta name="Description" content="深入理解iptables"><meta property="og:title" content="深入理解iptables" />
+<meta property="og:description" content="深入理解iptables" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cctrip.github.io/deep_iptables/" /><meta property="og:image" content="https://cctrip.github.io/deep_iptables/iptables-image.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-11-07T17:55:28&#43;08:00" />
+<meta property="article:modified_time" content="2020-11-07T17:55:28&#43;08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://cctrip.github.io/deep_iptables/iptables-image.jpg"/>
+<meta name="twitter:title" content="深入理解iptables"/>
+<meta name="twitter:description" content="深入理解iptables"/>
+<meta name="application-name" content="CC&#39;s Trip">
+<meta name="apple-mobile-web-app-title" content="CC&#39;s Trip"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/leo.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://cctrip.github.io/deep_iptables/" /><link rel="prev" href="https://cctrip.github.io/k8s_series_storage/" /><link rel="next" href="https://cctrip.github.io/k8s_series_service/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "深入理解iptables",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/cctrip.github.io\/deep_iptables\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/cctrip.github.io\/deep_iptables\/iptables-image.jpg",
+                            "width":  712 ,
+                            "height":  400 
+                        }],"genre": "posts","keywords": "linux, kubernets, security","wordcount":  1231 ,
+        "url": "https:\/\/cctrip.github.io\/deep_iptables\/","datePublished": "2020-11-07T17:55:28+08:00","dateModified": "2020-11-07T17:55:28+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "xxxx","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/cctrip.github.io\/images\/cc.jpg",
+                    "width":  250 ,
+                    "height":  250 
+                }},"author": {
+                "@type": "Person",
+                "name": "Hello.CC"
+            },"description": "深入理解iptables"
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="CC&#39;s Trip">CC&#39;s Trip</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/notes"> Notes </a><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/resume/" title="Resume"><i class='fas fa-user-tie'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="CC&#39;s Trip">CC&#39;s Trip</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/notes" title="">Notes</a><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/resume/" title="Resume"><i class='fas fa-user-tie'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">深入理解iptables</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>Linux</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-11-07">2020-11-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1231 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;6 minutes&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/deep_iptables/iptables-image.jpg"
+        data-srcset="/deep_iptables/iptables-image.jpg, /deep_iptables/iptables-image.jpg 1.5x, /deep_iptables/iptables-image.jpg 2x"
+        data-sizes="auto"
+        alt="/deep_iptables/iptables-image.jpg"
+        title="深入理解iptables" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-介绍">1. 介绍</a></li>
+    <li><a href="#2-netfilter">2. netfilter</a>
+      <ul>
+        <li><a href="#21-netfilter架构">2.1 netfilter架构</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-iptables">3. iptables</a>
+      <ul>
+        <li><a href="#31-表和链tables-and-chains">3.1 表和链（Tables and Chains）</a></li>
+        <li><a href="#32-优先级">3.2 优先级</a>
+          <ul>
+            <li><a href="#chain遍历优先级">Chain遍历优先级</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#4-规则">4. 规则</a>
+      <ul>
+        <li><a href="#41-匹配">4.1 匹配</a></li>
+        <li><a href="#42-目标">4.2 目标</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-自定义-chain">5. 自定义 chain</a></li>
+    <li><a href="#6-连接跟踪">6. 连接跟踪</a>
+      <ul>
+        <li><a href="#连接的状态">连接的状态</a></li>
+      </ul>
+    </li>
+    <li><a href="#7-总结">7. 总结</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="1-介绍">1. 介绍</h2>
+<p>最近在刚好在看Kubernetes的service相关内容，里面用到了iptables和ipvs技术，好久没看iptables了，快忘记了，刚好复习重新记忆一下。</p>
+<p>讲iptables，有个东西就一定得清楚，那就是<code>netfilter</code></p>
+<hr>
+<h2 id="2-netfilter">2. netfilter</h2>
+<blockquote>
+<p>netfilter是一个数据包处理框架。</p>
+</blockquote>
+<p><a href="https://www.netfilter.org/" target="_blank" rel="noopener noreffer">netfilter</a>具备以下几个功能：</p>
+<ul>
+<li>数据包过滤</li>
+<li>网络地址(端口)转换</li>
+<li>数据包日志记录</li>
+<li>用户空间数据包排队</li>
+<li>其他数据包处理功能</li>
+</ul>
+<h3 id="21-netfilter架构">2.1 netfilter架构</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="netfilter-arch.png"
+        data-srcset="/deep_iptables/netfilter-arch.png, netfilter-arch.png 1.5x, /deep_iptables/netfilter-arch.png 2x"
+        data-sizes="auto"
+        alt="/deep_iptables/netfilter-arch.png"
+        title="/deep_iptables/netfilter-arch.png" /></p>
+<p>netfilter 提供了 5 个 hook 点。包经过协议栈时会触发<strong>内核模块注册在这里的处理函数</strong> 。触发哪个 hook 取决于包的方向（是发送还是接收）、包的目的地址、以及包在上一个 hook 点是被丢弃还是拒绝等等。</p>
+<p>下面几个 hook 是内核协议栈中已经定义好的：</p>
+<ul>
+<li><code>NF_IP_PRE_ROUTING</code>: 接收到的包进入协议栈后立即触发此 hook，在进行任何路由判断 （将包发往哪里）之前</li>
+<li><code>NF_IP_LOCAL_IN</code>: 接收到的包经过路由判断，如果目的是本机，将触发此 hook</li>
+<li><code>NF_IP_FORWARD</code>: 接收到的包经过路由判断，如果目的是其他机器，将触发此 hook</li>
+<li><code>NF_IP_LOCAL_OUT</code>: 本机产生的准备发送的包，在进入协议栈后立即触发此 hook</li>
+<li><code>NF_IP_POST_ROUTING</code>: 本机产生的准备发送的包或者转发的包，在经过路由判断之后， 将触发此 hook</li>
+</ul>
+<p><strong>注册处理函数时必须提供优先级</strong>，以便 hook 触发时能按照 优先级高低调用处理函数。这使得<strong>多个模块（或者同一内核模块的多个实例）可以在同一 hook 点注册，并且有确定的处理顺序</strong>。内核模块会依次被调用，每次返回一个结果给 netfilter 框架，提示该对这个包做以下几个操作之一：</p>
+<ul>
+<li><code>NF_ACCEPT</code>: 继续正常遍历</li>
+<li><code>NF_DROP</code>: 丢弃数据包，不再进行遍历</li>
+<li><code>NF_STOLEN</code>: 该模块接收了该包，不再进行遍历</li>
+<li><code>NF_QUEUE</code>: 将数据包排队（通常用于用户空间处理）</li>
+<li><code>NF_REPEAT</code>: 再次调用此hook</li>
+</ul>
+<hr>
+<h2 id="3-iptables">3. iptables</h2>
+<blockquote>
+<p>iptables是建立在netfilter框架上的数据包选择系统。可以用于配置数据包过滤规则集。</p>
+</blockquote>
+<h3 id="31-表和链tables-and-chains">3.1 表和链（Tables and Chains）</h3>
+<p>iptables 使用 table 来组织规则，根据<strong>用来做什么类型的判断</strong>（the type of decisions they are used to make）标准，将规则分为不同 table。</p>
+<ul>
+<li><code>filter</code>： 最常用的 table 之一，用于<strong>判断是否允许一个包通过</strong>。</li>
+<li><code>nat</code>：用于实现网络地址转换规则。当包进入协议栈的时候，这些规则决定是否以及如何修改包的源/目的地址，以改变包被 路由时的行为。<code>nat</code> table 通常用于将包路由到无法直接访问的网络。</li>
+<li><code>mangle</code>：用于<strong>修改包的 IP 头</strong>。例如，可以修改包的 TTL，增加或减少包可以经过的跳数。这个 table 还可以对包打<strong>只在内核内有效的</strong>“标记”（internal kernel “mark”），后 续的 table 或工具处理的时候可以用到这些标记。标记不会修改包本身，只是在包的内核 表示上做标记。</li>
+<li><code>raw</code>：<strong>iptables 防火墙是有状态的</strong>：对每个包进行判断的时候是<strong>依赖已经判断过的包</strong>。建立在 netfilter 之上的连接跟踪（connection tracking）特性<strong>使得 iptables 将包 看作已有的连接或会话的一部分</strong>，而不是一个由独立、不相关的包组成的流。连接跟踪逻 辑在包到达网络接口之后很快就应用了。<code>raw </code> table <strong>唯一目的就是提供一个让包绕过连接跟踪的框架</strong>。</li>
+<li><code>security</code> table 的作用是给包打上 SELinux 标记，以此影响 SELinux 或其他可以解读 SELinux 安全上下文的系统处理包的行为。这些标记可以基于单个包，也可以基于连接。</li>
+</ul>
+<p>在每个 table 内部，规则被进一步组织成 chain，<strong>内置的 chain 是由内置的 hook 触发 的</strong>。chain 基本上能决定（basically determin）规则<strong>何时</strong>被匹配。</p>
+<p>下面可以看出，内置的 chain 名字和 netfilter hook 名字是一一对应的：</p>
+<ul>
+<li><code>PREROUTING</code>: 由 <code>NF_IP_PRE_ROUTING</code> hook 触发</li>
+<li><code>INPUT</code>: 由 <code>NF_IP_LOCAL_IN</code> hook 触发</li>
+<li><code>FORWARD</code>: 由 <code>NF_IP_FORWARD</code> hook 触发</li>
+<li><code>OUTPUT</code>: 由 <code>NF_IP_LOCAL_OUT</code> hook 触发</li>
+<li><code>POSTROUTING</code>: 由 <code>NF_IP_POST_ROUTING</code> hook 触发</li>
+</ul>
+<p>chain 使管理员可以控制在<strong>包的传输路径上哪个点</strong>（where in a packet’s delivery path）应用策略。因为每个 table 有多个 chain，因此一个 table 可以在处理过程中的多 个地方施加影响。<strong>特定类型的规则只在协议栈的特定点有意义，因此并不是每个 table 都 会在内核的每个 hook 注册 chain</strong>。</p>
+<p>内核一共只有 5 个 netfilter hook，因此不同 table 的 chain 最终都是注册到这几个点 。例如，有三个 table 有 <code>PRETOUTING</code> chain。当这些 chain 注册到对应的 <code>NF_IP_PRE_ROUTING</code> hook 点时，它们需要指定优先级，应该依次调用哪个 table 的 <code>PRETOUTING</code> chain，优先级从高到低。我们一会就会看到 chain 的优先级问题。</p>
+<hr>
+<h3 id="32-优先级">3.2 优先级</h3>
+<p>前面已经分别讨论了 table 和 chain，接下来看每个 table 里各有哪些 chain。另外，我 们还将讨论注册到同一 hook 的不同 chain 的优先级问题。</p>
+<p>首先我们拉<a href="https://github.com/torvalds/linux" target="_blank" rel="noopener noreffer">linux源码</a>的定义来看一下</p>
+<p><strong><a href="https://github.com/torvalds/linux/blob/master/net/ipv4/netfilter/iptable_filter.c" target="_blank" rel="noopener noreffer">iptable_filter.c</a></strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="p">...</span>
+<span class="cm">/** filter表挂载在LOCAL_IN、FORWORD、LOCAL_OUT hook点上 **/</span>
+<span class="cp">#define FILTER_VALID_HOOKS ((1 &lt;&lt; NF_INET_LOCAL_IN) | \
+</span><span class="cp">			    (1 &lt;&lt; NF_INET_FORWARD) | \
+</span><span class="cp">			    (1 &lt;&lt; NF_INET_LOCAL_OUT))
+</span><span class="cp"></span>
+<span class="p">...</span>
+
+<span class="k">static</span> <span class="k">const</span> <span class="k">struct</span> <span class="n">xt_table</span> <span class="n">packet_filter</span> <span class="o">=</span> <span class="p">{</span>
+	<span class="p">.</span><span class="n">name</span>		<span class="o">=</span> <span class="s">&#34;filter&#34;</span><span class="p">,</span>
+	<span class="p">.</span><span class="n">valid_hooks</span>	<span class="o">=</span> <span class="n">FILTER_VALID_HOOKS</span><span class="p">,</span>
+	<span class="p">.</span><span class="n">me</span>		<span class="o">=</span> <span class="n">THIS_MODULE</span><span class="p">,</span>
+	<span class="p">.</span><span class="n">af</span>		<span class="o">=</span> <span class="n">NFPROTO_IPV4</span><span class="p">,</span>
+	<span class="p">.</span><span class="n">priority</span>	<span class="o">=</span> <span class="n">NF_IP_PRI_FILTER</span><span class="p">,</span>
+	<span class="p">.</span><span class="n">table_init</span>	<span class="o">=</span> <span class="n">iptable_filter_table_init</span><span class="p">,</span>
+<span class="p">};</span>
+<span class="p">...</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong><a href="https://github.com/torvalds/linux/blob/master/net/ipv4/netfilter/iptable_mangle.c" target="_blank" rel="noopener noreffer">iptable_mangle.c</a></strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="p">...</span>
+<span class="cm">/** mangle表挂载在所有的hook点上 **/</span>
+<span class="cp">#define MANGLE_VALID_HOOKS ((1 &lt;&lt; NF_INET_PRE_ROUTING) | \
+</span><span class="cp">			    (1 &lt;&lt; NF_INET_LOCAL_IN) | \
+</span><span class="cp">			    (1 &lt;&lt; NF_INET_FORWARD) | \
+</span><span class="cp">			    (1 &lt;&lt; NF_INET_LOCAL_OUT) | \
+</span><span class="cp">			    (1 &lt;&lt; NF_INET_POST_ROUTING))
+</span><span class="cp"></span>
+<span class="p">...</span>
+
+<span class="k">static</span> <span class="k">const</span> <span class="k">struct</span> <span class="n">xt_table</span> <span class="n">packet_mangler</span> <span class="o">=</span> <span class="p">{</span>
+	<span class="p">.</span><span class="n">name</span>		<span class="o">=</span> <span class="s">&#34;mangle&#34;</span><span class="p">,</span>
+	<span class="p">.</span><span class="n">valid_hooks</span>	<span class="o">=</span> <span class="n">MANGLE_VALID_HOOKS</span><span class="p">,</span>
+	<span class="p">.</span><span class="n">me</span>		<span class="o">=</span> <span class="n">THIS_MODULE</span><span class="p">,</span>
+	<span class="p">.</span><span class="n">af</span>		<span class="o">=</span> <span class="n">NFPROTO_IPV4</span><span class="p">,</span>
+	<span class="p">.</span><span class="n">priority</span>	<span class="o">=</span> <span class="n">NF_IP_PRI_MANGLE</span><span class="p">,</span>
+	<span class="p">.</span><span class="n">table_init</span>	<span class="o">=</span> <span class="n">iptable_mangle_table_init</span><span class="p">,</span>
+<span class="p">};</span>
+<span class="p">...</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong><a href="https://github.com/torvalds/linux/blob/master/net/ipv4/netfilter/iptable_nat.c" target="_blank" rel="noopener noreffer">iptable_nat.c</a></strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="p">...</span>
+<span class="cm">/** nat表挂载在PRE_ROUTING、POST_ROUTING、LOCAL_OUT和LOCAL_IN hook点上**/</span>
+<span class="k">static</span> <span class="k">const</span> <span class="k">struct</span> <span class="n">xt_table</span> <span class="n">nf_nat_ipv4_table</span> <span class="o">=</span> <span class="p">{</span>
+	<span class="p">.</span><span class="n">name</span>		<span class="o">=</span> <span class="s">&#34;nat&#34;</span><span class="p">,</span>
+	<span class="p">.</span><span class="n">valid_hooks</span>	<span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">NF_INET_PRE_ROUTING</span><span class="p">)</span> <span class="o">|</span>
+			  <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">NF_INET_POST_ROUTING</span><span class="p">)</span> <span class="o">|</span>
+			  <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">NF_INET_LOCAL_OUT</span><span class="p">)</span> <span class="o">|</span>
+			  <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">NF_INET_LOCAL_IN</span><span class="p">),</span>
+	<span class="p">.</span><span class="n">me</span>		<span class="o">=</span> <span class="n">THIS_MODULE</span><span class="p">,</span>
+	<span class="p">.</span><span class="n">af</span>		<span class="o">=</span> <span class="n">NFPROTO_IPV4</span><span class="p">,</span>
+	<span class="p">.</span><span class="n">table_init</span>	<span class="o">=</span> <span class="n">iptable_nat_table_init</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="p">...</span>
+
+<span class="cm">/** 
+</span><span class="cm">nat表又细分为dnat和snat，具备不同的优先级，
+</span><span class="cm">dnat挂载在PRE_ROUTING和OUTPUT hook点上
+</span><span class="cm">snat挂载在INPUT和POSTROUTING hook点上
+</span><span class="cm">**/</span>
+<span class="k">static</span> <span class="k">const</span> <span class="k">struct</span> <span class="n">nf_hook_ops</span> <span class="n">nf_nat_ipv4_ops</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+	<span class="p">{</span>
+		<span class="p">.</span><span class="n">hook</span>		<span class="o">=</span> <span class="n">iptable_nat_do_chain</span><span class="p">,</span>
+		<span class="p">.</span><span class="n">pf</span>		<span class="o">=</span> <span class="n">NFPROTO_IPV4</span><span class="p">,</span>
+		<span class="p">.</span><span class="n">hooknum</span>	<span class="o">=</span> <span class="n">NF_INET_PRE_ROUTING</span><span class="p">,</span>
+		<span class="p">.</span><span class="n">priority</span>	<span class="o">=</span> <span class="n">NF_IP_PRI_NAT_DST</span><span class="p">,</span>
+	<span class="p">},</span>
+	<span class="p">{</span>
+		<span class="p">.</span><span class="n">hook</span>		<span class="o">=</span> <span class="n">iptable_nat_do_chain</span><span class="p">,</span>
+		<span class="p">.</span><span class="n">pf</span>		<span class="o">=</span> <span class="n">NFPROTO_IPV4</span><span class="p">,</span>
+		<span class="p">.</span><span class="n">hooknum</span>	<span class="o">=</span> <span class="n">NF_INET_POST_ROUTING</span><span class="p">,</span>
+		<span class="p">.</span><span class="n">priority</span>	<span class="o">=</span> <span class="n">NF_IP_PRI_NAT_SRC</span><span class="p">,</span>
+	<span class="p">},</span>
+	<span class="p">{</span>
+		<span class="p">.</span><span class="n">hook</span>		<span class="o">=</span> <span class="n">iptable_nat_do_chain</span><span class="p">,</span>
+		<span class="p">.</span><span class="n">pf</span>		<span class="o">=</span> <span class="n">NFPROTO_IPV4</span><span class="p">,</span>
+		<span class="p">.</span><span class="n">hooknum</span>	<span class="o">=</span> <span class="n">NF_INET_LOCAL_OUT</span><span class="p">,</span>
+		<span class="p">.</span><span class="n">priority</span>	<span class="o">=</span> <span class="n">NF_IP_PRI_NAT_DST</span><span class="p">,</span>
+	<span class="p">},</span>
+	<span class="p">{</span>
+		<span class="p">.</span><span class="n">hook</span>		<span class="o">=</span> <span class="n">iptable_nat_do_chain</span><span class="p">,</span>
+		<span class="p">.</span><span class="n">pf</span>		<span class="o">=</span> <span class="n">NFPROTO_IPV4</span><span class="p">,</span>
+		<span class="p">.</span><span class="n">hooknum</span>	<span class="o">=</span> <span class="n">NF_INET_LOCAL_IN</span><span class="p">,</span>
+		<span class="p">.</span><span class="n">priority</span>	<span class="o">=</span> <span class="n">NF_IP_PRI_NAT_SRC</span><span class="p">,</span>
+	<span class="p">},</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong><a href="https://github.com/torvalds/linux/blob/master/net/ipv4/netfilter/iptable_raw.c" target="_blank" rel="noopener noreffer">iptable_raw.c</a></strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="p">...</span>
+<span class="cm">/** raw表挂载在PRE_ROUTING和LOCAL_OUT hook点上 **/</span>
+<span class="cp">#define RAW_VALID_HOOKS ((1 &lt;&lt; NF_INET_PRE_ROUTING) | (1 &lt;&lt; NF_INET_LOCAL_OUT))
+</span><span class="cp"></span>
+<span class="p">...</span>
+<span class="k">static</span> <span class="k">const</span> <span class="k">struct</span> <span class="n">xt_table</span> <span class="n">packet_raw</span> <span class="o">=</span> <span class="p">{</span>
+	<span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;raw&#34;</span><span class="p">,</span>
+	<span class="p">.</span><span class="n">valid_hooks</span> <span class="o">=</span>  <span class="n">RAW_VALID_HOOKS</span><span class="p">,</span>
+	<span class="p">.</span><span class="n">me</span> <span class="o">=</span> <span class="n">THIS_MODULE</span><span class="p">,</span>
+	<span class="p">.</span><span class="n">af</span> <span class="o">=</span> <span class="n">NFPROTO_IPV4</span><span class="p">,</span>
+	<span class="p">.</span><span class="n">priority</span> <span class="o">=</span> <span class="n">NF_IP_PRI_RAW</span><span class="p">,</span>
+	<span class="p">.</span><span class="n">table_init</span> <span class="o">=</span> <span class="n">iptable_raw_table_init</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="k">static</span> <span class="k">const</span> <span class="k">struct</span> <span class="n">xt_table</span> <span class="n">packet_raw_before_defrag</span> <span class="o">=</span> <span class="p">{</span>
+	<span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#34;raw&#34;</span><span class="p">,</span>
+	<span class="p">.</span><span class="n">valid_hooks</span> <span class="o">=</span>  <span class="n">RAW_VALID_HOOKS</span><span class="p">,</span>
+	<span class="p">.</span><span class="n">me</span> <span class="o">=</span> <span class="n">THIS_MODULE</span><span class="p">,</span>
+	<span class="p">.</span><span class="n">af</span> <span class="o">=</span> <span class="n">NFPROTO_IPV4</span><span class="p">,</span>
+	<span class="p">.</span><span class="n">priority</span> <span class="o">=</span> <span class="n">NF_IP_PRI_RAW_BEFORE_DEFRAG</span><span class="p">,</span>
+	<span class="p">.</span><span class="n">table_init</span> <span class="o">=</span> <span class="n">iptable_raw_table_init</span><span class="p">,</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong><a href="https://github.com/torvalds/linux/blob/master/net/ipv4/netfilter/iptable_security.c" target="_blank" rel="noopener noreffer">iptable_security.c</a></strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="p">...</span>
+<span class="cm">/** security表挂载在LOCAL_IN、FORWARD和LOCAL_OUT hook点上 **/</span>
+<span class="cp">#define SECURITY_VALID_HOOKS	(1 &lt;&lt; NF_INET_LOCAL_IN) | \
+</span><span class="cp">				(1 &lt;&lt; NF_INET_FORWARD) | \
+</span><span class="cp">				(1 &lt;&lt; NF_INET_LOCAL_OUT)
+</span><span class="cp"></span>
+<span class="p">...</span>
+
+<span class="k">static</span> <span class="k">const</span> <span class="k">struct</span> <span class="n">xt_table</span> <span class="n">security_table</span> <span class="o">=</span> <span class="p">{</span>
+	<span class="p">.</span><span class="n">name</span>		<span class="o">=</span> <span class="s">&#34;security&#34;</span><span class="p">,</span>
+	<span class="p">.</span><span class="n">valid_hooks</span>	<span class="o">=</span> <span class="n">SECURITY_VALID_HOOKS</span><span class="p">,</span>
+	<span class="p">.</span><span class="n">me</span>		<span class="o">=</span> <span class="n">THIS_MODULE</span><span class="p">,</span>
+	<span class="p">.</span><span class="n">af</span>		<span class="o">=</span> <span class="n">NFPROTO_IPV4</span><span class="p">,</span>
+	<span class="p">.</span><span class="n">priority</span>	<span class="o">=</span> <span class="n">NF_IP_PRI_SECURITY</span><span class="p">,</span>
+	<span class="p">.</span><span class="n">table_init</span>	<span class="o">=</span> <span class="n">iptable_security_table_init</span><span class="p">,</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong><a href="https://github.com/torvalds/linux/blob/master/include/uapi/linux/netfilter_ipv4.h" target="_blank" rel="noopener noreffer">netfilter_ipv4.h</a></strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="p">...</span>
+<span class="cm">/* IP Hooks */</span>
+<span class="cm">/* After promisc drops, checksum checks. */</span>
+<span class="cp">#define NF_IP_PRE_ROUTING	0
+</span><span class="cp"></span><span class="cm">/* If the packet is destined for this box. */</span>
+<span class="cp">#define NF_IP_LOCAL_IN		1
+</span><span class="cp"></span><span class="cm">/* If the packet is destined for another interface. */</span>
+<span class="cp">#define NF_IP_FORWARD		2
+</span><span class="cp"></span><span class="cm">/* Packets coming from a local process. */</span>
+<span class="cp">#define NF_IP_LOCAL_OUT		3
+</span><span class="cp"></span><span class="cm">/* Packets about to hit the wire. */</span>
+<span class="cp">#define NF_IP_POST_ROUTING	4
+</span><span class="cp">#define NF_IP_NUMHOOKS		5
+</span><span class="cp">#endif </span><span class="cm">/* ! __KERNEL__ */</span><span class="cp">
+</span><span class="cp"></span>
+<span class="cm">/* 定义了各表的优先级 */</span>
+<span class="k">enum</span> <span class="n">nf_ip_hook_priorities</span> <span class="p">{</span>
+	<span class="n">NF_IP_PRI_FIRST</span> <span class="o">=</span> <span class="n">INT_MIN</span><span class="p">,</span>
+	<span class="n">NF_IP_PRI_RAW_BEFORE_DEFRAG</span> <span class="o">=</span> <span class="o">-</span><span class="mi">450</span><span class="p">,</span>
+	<span class="n">NF_IP_PRI_CONNTRACK_DEFRAG</span> <span class="o">=</span> <span class="o">-</span><span class="mi">400</span><span class="p">,</span>
+	<span class="n">NF_IP_PRI_RAW</span> <span class="o">=</span> <span class="o">-</span><span class="mi">300</span><span class="p">,</span>
+	<span class="n">NF_IP_PRI_SELINUX_FIRST</span> <span class="o">=</span> <span class="o">-</span><span class="mi">225</span><span class="p">,</span>
+	<span class="n">NF_IP_PRI_CONNTRACK</span> <span class="o">=</span> <span class="o">-</span><span class="mi">200</span><span class="p">,</span>
+	<span class="n">NF_IP_PRI_MANGLE</span> <span class="o">=</span> <span class="o">-</span><span class="mi">150</span><span class="p">,</span>
+	<span class="n">NF_IP_PRI_NAT_DST</span> <span class="o">=</span> <span class="o">-</span><span class="mi">100</span><span class="p">,</span>
+	<span class="n">NF_IP_PRI_FILTER</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="n">David</span> <span class="n">Howells</span><span class="p">,</span> <span class="mi">8</span> <span class="n">years</span> <span class="nl">ago</span><span class="p">:</span> <span class="err">•</span> <span class="nl">UAPI</span><span class="p">:</span> <span class="p">(</span><span class="n">Scripted</span><span class="p">)</span> <span class="n">Disintegrate</span> <span class="n">include</span><span class="o">/</span><span class="n">linux</span>
+	<span class="n">NF_IP_PRI_SECURITY</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
+	<span class="n">NF_IP_PRI_NAT_SRC</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+	<span class="n">NF_IP_PRI_SELINUX_LAST</span> <span class="o">=</span> <span class="mi">225</span><span class="p">,</span>
+	<span class="n">NF_IP_PRI_CONNTRACK_HELPER</span> <span class="o">=</span> <span class="mi">300</span><span class="p">,</span>
+	<span class="n">NF_IP_PRI_CONNTRACK_CONFIRM</span> <span class="o">=</span> <span class="n">INT_MAX</span><span class="p">,</span>
+	<span class="n">NF_IP_PRI_LAST</span> <span class="o">=</span> <span class="n">INT_MAX</span><span class="p">,</span>
+<span class="p">};</span>
+<span class="p">...</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>优先级的定义为值越小，优先级越高</strong>，我们用下面的表格来展示了 table 和 chain 的关系。横向是 table， 纵向是 chain，Y 表示 这个 table 里面有这个 chain。例如，第二行表示 <code>raw</code> table 有 <code>PRETOUTING</code> 和 <code>OUTPUT</code> 两 个 chain。具体到每列，从上倒下的顺序就是 netfilter hook 触发的时候，（对应 table 的）chain 被调用的顺序。</p>
+<p>有几点需要说明一下。在下面的图中，<code>nat</code> table 被细分成了 <code>DNAT</code> （修改目的地址） 和 <code>SNAT</code>（修改源地址），以更方便地展示他们的优先级。另外，我们添加了路由决策点 和连接跟踪点，以使得整个过程更完整全面：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Tables/Chains</th>
+<th style="text-align:left">PREROUTING</th>
+<th style="text-align:left">INPUT</th>
+<th style="text-align:left">FORWARD</th>
+<th style="text-align:left">OUTPUT</th>
+<th style="text-align:left">POSTROUTING</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">(路由判断)</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>raw</strong></td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">(连接跟踪）</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>mangle</strong></td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Y</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>nat (DNAT)</strong></td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">(路由判断)</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>filter</strong></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>security</strong></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>nat (SNAT)</strong></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">Y</td>
+</tr>
+</tbody>
+</table>
+<p><strong>当一个包触发 netfilter hook 时，处理过程将沿着列从上向下执行。</strong> 触发哪个 hook （列）和包的方向（ingress/egress）、路由判断、过滤条件等相关。</p>
+<p>特定事件会导致 table 的 chain 被跳过。例如，只有每个连接的第一个包会去匹配 NAT 规则，对这个包的动作会应用于此连接后面的所有包。到这个连接的应答包会被自动应用反 方向的 NAT 规则。</p>
+<h4 id="chain遍历优先级">Chain遍历优先级</h4>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="iptables-flow.png"
+        data-srcset="/deep_iptables/iptables-flow.png, iptables-flow.png 1.5x, /deep_iptables/iptables-flow.png 2x"
+        data-sizes="auto"
+        alt="/deep_iptables/iptables-flow.png"
+        title="/deep_iptables/iptables-flow.png" /></p>
+<p>假设服务器知道如何路由数据包，而且防火墙允许数据包传输，下面就是不同场景下包的游 走流程：</p>
+<ul>
+<li>收到的、目的是本机的包：<code>PRETOUTING</code> -&gt; <code>INPUT</code></li>
+<li>收到的、目的是其他主机的包：<code>PRETOUTING</code> -&gt; <code>FORWARD</code> -&gt; <code>POSTROUTING</code></li>
+<li>本地产生的包：<code>OUTPUT</code> -&gt; <code>POSTROUTING</code></li>
+</ul>
+<p><strong>综合前面讨论的 table 顺序问题，我们可以看到对于一个收到的、目的是本机的包</strong>： 首先依次经过 <code>PRETOUTING</code> chain 上面的 <code>raw</code>、<code>mangle</code>、<code>nat</code> table；然后依次经 过 <code>INPUT</code> chain 的 <code>mangle</code>、<code>filter</code>、<code>security</code>、<code>nat</code> table，然后才会到达本机 的某个 socket。</p>
+<p><strong>一点疑问和解答</strong></p>
+<blockquote>
+<p>snat到底能不能在INPUT上配置？网上很多文档都没把nat放在INPUT chain上，iptables的man文档看着也没说支持。</p>
+<p>nat:
+This  table  is  consulted when a packet that creates a new connection is encountered.  It consists of three built-ins: PREROUTING (for altering packets as soon as they come in), OUTPUT (for altering locally-generated packets before routing), and POSTROUTING (for altering packets as they are about to go  out). IPv6 NAT support is available since kernel 3.7.</p>
+</blockquote>
+<blockquote>
+<p>答案：从<a href="https://github.com/torvalds/linux/blob/master/net/ipv4/netfilter/iptable_nat.c" target="_blank" rel="noopener noreffer">iptable_nat.c</a>可以看到snat是可以在LOCAL_IN hook上配置的，查看了相关文档发现该feature是在kernel 2.6.34版本后才支持的，详细的信息可以看下<a href="https://github.com/torvalds/linux/commit/c68cd6cc21eb329c47ff020ff7412bf58176984e" target="_blank" rel="noopener noreffer">commit</a>信息。</p>
+</blockquote>
+<hr>
+<h2 id="4-规则">4. 规则</h2>
+<p>规则放置在特定 table 的特定 chain 里面。当 chain 被调用的时候，包会依次匹配 chain 里面的规则。每条规则都有一个匹配部分和一个动作部分。</p>
+<h3 id="41-匹配">4.1 匹配</h3>
+<p>规则的匹配部分指定了一些条件，包必须满足这些条件才会和相应的将要执行的动作（“ target”）进行关联。</p>
+<p>匹配系统非常灵活，还可以通过 iptables extension 大大扩展其功能。规则可以匹配<strong>协 议类型、目的或源地址、目的或源端口、目的或源网段、接收或发送的接口（网卡）、协议 头、连接状态</strong>等等条件。这些综合起来，能够组合成非常复杂的规则来区分不同的网络流 量。</p>
+<h3 id="42-目标">4.2 目标</h3>
+<p>包符合某种规则的条件而触发的动作（action）叫做目标（target）。目标分为两种类型：</p>
+<ul>
+<li><strong>终止目标</strong>（terminating targets）：这种 target 会终止 chain 的匹配，将控制权 转移回 netfilter hook。根据返回值的不同，hook 或者将包丢弃，或者允许包进行下一 阶段的处理</li>
+<li><strong>非终止目标</strong>（non-terminating targets）：非终止目标执行动作，然后继续 chain 的执行。虽然每个 chain 最终都会回到一个终止目标，但是在这之前，可以执行任意多 个非终止目标</li>
+</ul>
+<p>每个规则可以跳转到哪个 target 依上下文而定，例如，table 和 chain 可能会设置 target 可用或不可用。规则里激活的 extensions 和匹配条件也影响 target 的可用性。</p>
+<hr>
+<h2 id="5-自定义-chain">5. 自定义 chain</h2>
+<p>这里要介绍一种特殊的非终止目标：跳转目标（jump target）。jump target 是跳转到其 他 chain 继续处理的动作。我们已经讨论了很多内置的 chain，它们和调用它们的 netfilter hook 紧密联系在一起。然而，iptables 也支持管理员创建他们自己的用于管理 目的的 chain。</p>
+<p>向用户自定义 chain 添加规则和向内置的 chain 添加规则的方式是相同的。<strong>不同的地方 在于，用户定义的 chain 只能通过从另一个规则跳转（jump）到它，因为它们没有注册到 netfilter hook</strong>。</p>
+<p>用户定义的 chain 可以看作是对调用它的 chain 的扩展。例如，用户定义的 chain 在结 束的时候，可以返回 netfilter hook，也可以继续跳转到其他自定义 chain。</p>
+<p>这种设计使框架具有强大的分支功能，使得管理员可以组织更大更复杂的网络规则。</p>
+<h2 id="6-连接跟踪">6. 连接跟踪</h2>
+<p>在讨论 <code>raw</code> table 和 匹配连接状态的时候，我们介绍了构建在 netfilter 之上的连 接跟踪系统。连接跟踪系统使得 iptables 基于连接上下文而不是单个包来做出规则判 断，给 iptables 提供了有状态操作的功能。</p>
+<p>连接跟踪在包进入协议栈之后很快（very soon）就开始工作了。在给包分配连接之前所做 的工作非常少，只有检查 <code>raw</code> table 和一些基本的完整性检查。</p>
+<p>跟踪系统将包和已有的连接进行比较，如果包所属的连接已经存在就更新连接状态，否则就创建一个新连接。如果 <code>raw</code> table 的某个chain对包标记为目标是 <code>NOTRACK</code>，那这 个包会跳过连接跟踪系统。</p>
+<h3 id="连接的状态">连接的状态</h3>
+<p>连接跟踪系统中的连接状态有：</p>
+<ul>
+<li><code>NEW</code>：如果到达的包关连不到任何已有的连接，但包是合法的，就为这个包创建一个新连接。对 面向连接的（connection-aware）的协议例如 TCP 以及非面向连接的（connectionless ）的协议例如 UDP 都适用</li>
+<li><code>ESTABLISHED</code>：当一个连接收到应答方向的合法包时，状态从 <code>NEW</code> 变成 <code>ESTABLISHED</code>。对 TCP 这个合法包其实就是 <code>SYN/ACK</code> 包；对 UDP 和 ICMP 是源和目 的 IP 与原包相反的包</li>
+<li><code>RELATED</code>：包不属于已有的连接，但是和已有的连接有一定关系。这可能是辅助连接（ helper connection），例如 FTP 数据传输连接，或者是其他协议试图建立连接时的 ICMP 应答包</li>
+<li><code>INVALID</code>：包不属于已有连接，并且因为某些原因不能用来创建一个新连接，例如无法 识别、无法路由等等</li>
+<li><code>UNTRACKED</code>：如果在 <code>raw</code> table 中标记为目标是 <code>UNTRACKED</code>，这个包将不会进入连 接跟踪系统</li>
+<li><code>SNAT</code>：包的源地址被 NAT 修改之后会进入的虚拟状态。连接跟踪系统据此在收到 反向包时对地址做反向转换</li>
+<li><code>DNAT</code>：包的目的地址被 NAT 修改之后会进入的虚拟状态。连接跟踪系统据此在收到 反向包时对地址做反向转换</li>
+</ul>
+<p>这些状态可以定位到连接生命周期内部，管理员可以编写出更加细粒度、适用范围更大、更 安全的规则。</p>
+<hr>
+<h2 id="7-总结">7. 总结</h2>
+<p>netfilter 包过滤框架和 iptables 防火墙是 Linux 服务器上大部分防火墙解决方案的基础。netfilter 的内核 hook 和协议栈足够紧密，提供了包经过系统时的强大控制功能。 iptables 防火墙基于这些功能提供了一个灵活的、可扩展的、将策略需求转化到内核的方 法。而k8s的service使用到的一种方式就是通过iptables加自定义chain来实现的。最后，再提供一张<a href="https://upload.wikimedia.org/wikipedia/commons/3/37/Netfilter-packet-flow.svg" target="_blank" rel="noopener noreffer">wiki</a>上面的内核协议栈各 hook 点位置和 iptables 规则优先级的经典配图</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="Netfilter-packet-flow.svg"
+        data-srcset="/deep_iptables/Netfilter-packet-flow.svg, Netfilter-packet-flow.svg 1.5x, /deep_iptables/Netfilter-packet-flow.svg 2x"
+        data-sizes="auto"
+        alt="/deep_iptables/Netfilter-packet-flow.svg"
+        title="/deep_iptables/Netfilter-packet-flow.svg" /></p>
+<hr>
+<p><strong>参考</strong></p>
+<p><a href="https://www.digitalocean.com/community/tutorials/a-deep-dive-into-iptables-and-netfilter-architecture" target="_blank" rel="noopener noreffer">https://www.digitalocean.com/community/tutorials/a-deep-dive-into-iptables-and-netfilter-architecture</a></p>
+<p><a href="https://www.netfilter.org/documentation/HOWTO/netfilter-hacking-HOWTO-3.html" target="_blank" rel="noopener noreffer">https://www.netfilter.org/documentation/HOWTO/netfilter-hacking-HOWTO-3.html</a></p>
+<p><a href="https://github.com/torvalds/linux" target="_blank" rel="noopener noreffer">linux kernel source code</a></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2020-11-07</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/deep_iptables/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cctrip.github.io/deep_iptables/" data-title="深入理解iptables" data-via="https://twitter.com/zcc0388" data-hashtags="linux,kubernets,security"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://cctrip.github.io/deep_iptables/" data-hashtag="linux"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://cctrip.github.io/deep_iptables/" data-title="深入理解iptables"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://cctrip.github.io/deep_iptables/" data-title="深入理解iptables"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://cctrip.github.io/deep_iptables/" data-title="深入理解iptables"><i class="fab fa-weibo fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a>,&nbsp;<a href="/tags/kubernets/">kubernets</a>,&nbsp;<a href="/tags/security/">security</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/k8s_series_storage/" class="prev" rel="prev" title="Kubernetes系列：存储"><i class="fas fa-angle-left fa-fw"></i>Kubernetes系列：存储</a>
+            <a href="/k8s_series_service/" class="next" rel="next" title="Kubernetes系列：Service">Kubernetes系列：Service<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.81.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"search":{"algoliaAppID":"L6D88CPUCA","algoliaIndex":"hugo","algoliaSearchKey":"994528be64a6348310adaf32dff5bc6c","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

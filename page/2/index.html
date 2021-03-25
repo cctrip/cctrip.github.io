@@ -195,6 +195,27 @@ Kubernetes KubeVela是用于构建上层平台的Kubernetes插件。它利用Kub
         <a href="/k8s_series_service/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/kubernetes/">kubernetes</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
+            <a href="/deep_iptables/"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/deep_iptables/iptables-image.jpg"
+        data-srcset="/deep_iptables/iptables-image.jpg, /deep_iptables/iptables-image.jpg 1.5x, /deep_iptables/iptables-image.jpg 2x"
+        data-sizes="auto"
+        alt="/deep_iptables/iptables-image.jpg"
+        title="深入理解iptables" /></a>
+        </div><h1 class="single-title" itemprop="name headline">
+        <a href="/deep_iptables/">深入理解iptables</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-11-07">2020-11-07</time></span>&nbsp;<span class="post-category">included in <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>Linux</a></span></div><div class="content">1. 介绍 最近在刚好在看Kubernetes的service相关内容，里面用到了iptables和ipvs技术，好久没看iptables了，快忘记了，刚好复习重新记忆一下。
+讲iptables，有个东西就一定得清楚，那就是netfilter
+ 2. netfilter  netfilter是一个数据包处理框架。
+ netfilter具备以下几个功能：
+ 数据包过滤 网络地址(端口)转换 数据包日志记录 用户空间数据包排队 其他数据包处理功能  2.1 netfilter架构 netfilter 提供了 5 个 hook 点。包经过协议栈时会触发内核模块注册在这里的处理函数 。触发哪个 hook 取决于包的方向（是发送还是接收）、包的目的地址、以及包在上一个 hook 点是被丢弃还是拒绝等等。
+下面几个 hook 是内核协议栈中已经定义好的：
+ NF_IP_PRE_ROUTING: 接收到的包进入协议栈后立即触发此 hook，在进行任何路由判断 （将包发往哪里）之前 NF_IP_LOCAL_IN: 接收到的包经过路由判断，如果目的是本机，将触发此 hook NF_IP_FORWARD: 接收到的包经过路由判断，如果目的是其他机器，将触发此 hook NF_IP_LOCAL_OUT: 本机产生的准备发送的包，在进入协议栈后立即触发此 hook NF_IP_POST_ROUTING: 本机产生的准备发送的包或者转发的包，在经过路由判断之后， 将触发此 hook  注册处理函数时必须提供优先级，以便 hook 触发时能按照 优先级高低调用处理函数。这使得多个模块（或者同一内核模块的多个实例）可以在同一 hook 点注册，并且有确定的处理顺序。内核模块会依次被调用，每次返回一个结果给 netfilter 框架，提示该对这个包做以下几个操作之一：
+ NF_ACCEPT: 继续正常遍历 NF_DROP: 丢弃数据包，不再进行遍历 NF_STOLEN: 该模块接收了该包，不再进行遍历 NF_QUEUE: 将数据包排队（通常用于用户空间处理） NF_REPEAT: 再次调用此hook   3.</div><div class="post-footer">
+        <a href="/deep_iptables/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a>,&nbsp;<a href="/tags/kubernets/">kubernets</a>,&nbsp;<a href="/tags/security/">security</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
             <a href="/k8s_series_storage/"><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -250,42 +271,6 @@ Kubernetes KubeVela是用于构建上层平台的Kubernetes插件。它利用Kub
  Container-to-Container 网络通信 Pod-to-Pod 网络通信 Pod-to-Service 网络通信 Internet-to-Service 网络通信 Pod IP在集群内唯一   2. 基本原理 2.1 Container-to-Container 在kubernetes中，一个Pod是一组Container的组合，并且，Pod内的Container是共享network namespace的，因此该Pod内的Container的ip和mac地址都是相同的，所以它们只需要通过localhost就能跟Pod内其他Container通信了，不过，因为是共享network namespace，因此该Pod内的端口必须是唯一的，不能冲突。
  2.2 Pod-to-Pod 在容器中，容器可以通过network namespace的技术将不同的容器的网络隔离起来，并通过veth pair技术将两个namespace连接起来以进行通信。如下图所示，每个pod都有自己的netns，通过veth pair跟节点的root netns连接起来，这样一来，pod就能直接跟node进行通信了</div><div class="post-footer">
         <a href="/k8s_series_network/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/kubernetes/">kubernetes</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
-            <a href="/k8s_series_container/"><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/k8s_series_container/k8s-image.png"
-        data-srcset="/k8s_series_container/k8s-image.png, /k8s_series_container/k8s-image.png 1.5x, /k8s_series_container/k8s-image.png 2x"
-        data-sizes="auto"
-        alt="/k8s_series_container/k8s-image.png"
-        title="容器运行时" /></a>
-        </div><h1 class="single-title" itemprop="name headline">
-        <a href="/k8s_series_container/">Kubernetes系列：容器</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-10-25">2020-10-25</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cloud-native/"><i class="far fa-folder fa-fw"></i>Cloud Native</a></span></div><div class="content">系列目录 《Kubernetes系列：开篇》
-《Kubernetes系列：概述》
-《Kubernetes系列：架构》
-《Kubernetes系列：容器》
-《Kubernetes系列：网络》
-《Kubernetes系列：存储》
-《Kubernetes系列：Service》
-《Kubernetes系列：Ingress》
-《Kubernetes系列：OAM》
- 1. 介绍 1.1 容器技术  LXC（Linux容器）是一种操作系统级虚拟化技术，用于使用单个Linux内核在控制主机上运行多个隔离的Linux系统（容器）。
- 每个运行的容器都是可重复的； 包含依赖环境在内的标准，意味着无论您在哪里运行它，您都会得到相同的行为。容器将应用程序从底层的主机设施中解耦。 这使得在不同的云或 OS 环境中部署更加容易。
-1.2 容器镜像  容器镜像是一个随时可以运行的软件包， 包含运行应用程序所需的一切：代码和它需要的所有运行时、应用程序和系统库，以及一些基本设置的默认值。
- 根据设计，容器是不可变的：你不能更改已经运行的容器的代码。 如果有一个容器化的应用程序需要修改，则需要构建包含更改的新镜像，然后再基于新构建的镜像重新运行容器。
-1.3 容器运行时  容器运行环境是负责运行容器的软件。
- Kubernetes 支持多个容器运行环境: Docker、 containerd、CRI-O 以及任何实现 Kubernetes CRI (容器运行环境接口)。
-1.4 CRI(容器运行时接口)  CRI，一个插件接口，使kubelet可以使用各种容器运行时，而无需重新编译。
-CRI由规范/要求(待添加)、protobuf API和用于容器运行时的库组成，以与节点上的kubelet集成。
-  2. 为什么使用容器？ 容器提供了一种逻辑打包机制，以这种机制打包的应用可以脱离其实际运行的环境。利用这种脱离，不管目标环境是私有数据中心、公有云，还是开发者的个人笔记本电脑，您都可以轻松、一致地部署基于容器的应用。容器化使开发者和 IT 运营团队的关注点泾渭分明 - 开发者专注于应用逻辑和依赖项，而 IT 运营团队可以专注于部署和管理，不必为具体的软件版本和应用特有的配置等应用细节分心。
-我们通过与虚拟机的对比来看下容器的优势
-与虚拟机的硬件栈虚拟化不同，容器在操作系统级别进行虚拟化，且可以直接在操作系统内核上运行多个容器。也就是说，容器更轻巧：它们共享操作系统内核，启动速度更快，且与启动整个操作系统相比其占用的内存微乎其微。
-一致的环境
-容器让开发者可以创建与其他应用相隔离的可预测环境。容器还可以包含应用所需的软件依赖项，比如具体的编程语言运行时版本和其他软件库。从开发者的角度看，无论应用最终部署在什么地方，都可以保证这些条件一致。这一切将转化为生产力的提升：开发者和 IT 运营团队可以减少调试和诊断环境差异所需的时间，将更多的时间用于为用户提供新的功能。而且这也意味着 bug 更少，因为开发者现可在开发和测试环境中做出在生产环境中也适用的假设。
-在任何地方运行</div><div class="post-footer">
-        <a href="/k8s_series_container/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/kubernetes/">kubernetes</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
                     <span class="page-link">
