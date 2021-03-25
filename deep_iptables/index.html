@@ -672,14 +672,14 @@
 <p><strong>当一个包触发 netfilter hook 时，处理过程将沿着列从上向下执行。</strong> 触发哪个 hook （列）和包的方向（ingress/egress）、路由判断、过滤条件等相关。</p>
 <p>特定事件会导致 table 的 chain 被跳过。例如，只有每个连接的第一个包会去匹配 NAT 规则，对这个包的动作会应用于此连接后面的所有包。到这个连接的应答包会被自动应用反 方向的 NAT 规则。</p>
 <h4 id="chain遍历优先级">Chain遍历优先级</h4>
-<p><img
+<p><a href="/deep_iptables/iptables-flow.png" rel=""><img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="iptables-flow.png"
         data-srcset="/deep_iptables/iptables-flow.png, iptables-flow.png 1.5x, /deep_iptables/iptables-flow.png 2x"
         data-sizes="auto"
         alt="/deep_iptables/iptables-flow.png"
-        title="/deep_iptables/iptables-flow.png" /></p>
+        title="iptables-flow" /></a></p>
 <p>假设服务器知道如何路由数据包，而且防火墙允许数据包传输，下面就是不同场景下包的游 走流程：</p>
 <ul>
 <li>收到的、目的是本机的包：<code>PRETOUTING</code> -&gt; <code>INPUT</code></li>

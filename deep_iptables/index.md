@@ -287,7 +287,7 @@ enum nf_ip_hook_priorities {
 
 #### Chain遍历优先级
 
-![](iptables-flow.png)
+[![iptables-flow](iptables-flow.png)](iptables-flow.png)
 
 假设服务器知道如何路由数据包，而且防火墙允许数据包传输，下面就是不同场景下包的游 走流程：
 
