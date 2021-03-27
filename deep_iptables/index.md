@@ -5,7 +5,7 @@
 
 最近在刚好在看Kubernetes的service相关内容，里面用到了iptables和ipvs技术，好久没看iptables了，快忘记了，刚好复习重新记忆一下。
 
-讲iptables，有个东西就一定得清楚，那就是`netfilter`
+讲iptables和ipvs，有个东西就一定得清楚，那就是`netfilter`
 
 ***
 
@@ -254,7 +254,7 @@ enum nf_ip_hook_priorities {
 	NF_IP_PRI_CONNTRACK = -200,
 	NF_IP_PRI_MANGLE = -150,
 	NF_IP_PRI_NAT_DST = -100,
-	NF_IP_PRI_FILTER = 0,David Howells, 8 years ago: • UAPI: (Scripted) Disintegrate include/linux
+	NF_IP_PRI_FILTER = 0,
 	NF_IP_PRI_SECURITY = 50,
 	NF_IP_PRI_NAT_SRC = 100,
 	NF_IP_PRI_SELINUX_LAST = 225,
@@ -378,5 +378,4 @@ netfilter 包过滤框架和 iptables 防火墙是 Linux 服务器上大部分�
 [https://www.netfilter.org/documentation/HOWTO/netfilter-hacking-HOWTO-3.html](https://www.netfilter.org/documentation/HOWTO/netfilter-hacking-HOWTO-3.html)
 
 [linux kernel source code](https://github.com/torvalds/linux)
-
 

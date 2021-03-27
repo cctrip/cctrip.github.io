@@ -208,7 +208,7 @@ Kubernetes KubeVela是用于构建上层平台的Kubernetes插件。它利用Kub
     <author>Author</author>
     <guid>https://cctrip.github.io/deep_iptables/</guid>
     <description><![CDATA[1. 介绍 最近在刚好在看Kubernetes的service相关内容，里面用到了iptables和ipvs技术，好久没看iptables了，快忘记了，刚好复习重新记忆一下。
-讲iptables，有个东西就一定得清楚，那就是netfilter
+讲iptables和ipvs，有个东西就一定得清楚，那就是netfilter
  2. netfilter  netfilter是一个数据包处理框架。
  netfilter具备以下几个功能：
  数据包过滤 网络地址(端口)转换 数据包日志记录 用户空间数据包排队 其他数据包处理功能  2.1 netfilter架构 netfilter 提供了 5 个 hook 点。包经过协议栈时会触发内核模块注册在这里的处理函数 。触发哪个 hook 取决于包的方向（是发送还是接收）、包的目的地址、以及包在上一个 hook 点是被丢弃还是拒绝等等。
