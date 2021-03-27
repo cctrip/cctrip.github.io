@@ -110,17 +110,7 @@
         title="开篇" /></a>
         </div><h1 class="single-title" itemprop="name headline">
         <a href="/oops_series_two/">Oops管理系统(二)</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-03-20">2021-03-20</time></span>&nbsp;<span class="post-category">included in <a href="/categories/devops/"><i class="far fa-folder fa-fw"></i>DevOps</a></span></div><div class="content">系列目录 《Oops管理系统(一)》
-《Oops管理系统(二)》
- 1. 介绍 本篇，要先讲下整体的技术框架。
-因为我们是基于go-admin这个脚手架来做前后端框架的，所以，先来说明下整个代码架构。
-在这之前，我们先简单说明下go程序的代码执行顺序
-1.1 Go程序执行顺序  执行go run或者编译后binary文件时，会先加载main package main package一般会import其他package，其他package也会import其依赖的package，这边会有一个递归的初始化操作。 package会执行global variables和init()的初始化 main package执行本身的global variables和init()的初始化 执行main()   2. 目录结构 Oops基于project-layout和go-admin构建了如下图所示的目录结构
- 3. 源码解析 这边只说明应用相关的源码逻辑。
-3.1 系统初始化 main.go
-1 2 3 4 5 6 7 8 9  package main import ( &#34;oops/cmd&#34; ) func main() { cmd.Execute() }   main函数只有一个逻辑，加载cmd包以及执行cmd包中的Execute()函数。
-cmd package
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29  package cmd import ( .</div><div class="post-footer">
+    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-03-20">2021-03-20</time></span>&nbsp;<span class="post-category">included in <a href="/categories/devops/"><i class="far fa-folder fa-fw"></i>DevOps</a></span></div><div class="content">系列目录 《Oops管理系统(一)》 《Oops管理系统(二)》 1. 介绍 本篇，要先讲下整体的技术框架。 因为我们是基于go-admin这个脚手架来做</div><div class="post-footer">
         <a href="/oops_series_two/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/devops/">devops</a>,&nbsp;<a href="/tags/platform/">platform</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
@@ -134,19 +124,7 @@ cmd package
         title="开篇" /></a>
         </div><h1 class="single-title" itemprop="name headline">
         <a href="/oops_series_one/">Oops管理系统(一)</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-03-17">2021-03-17</time></span>&nbsp;<span class="post-category">included in <a href="/categories/devops/"><i class="far fa-folder fa-fw"></i>DevOps</a></span></div><div class="content">系列目录 《Oops管理系统(一)》
-《Oops管理系统(二)》
- 1. 介绍 做了那么的久的运维，了解、运维和开发过各种各样的发布系统、运维系统、监控系统，经历了服务器从物理时代、到云时代再到容器时代的变革，服务器规模也经历从十几台到几千台甚至几万台规模的管理，管理手段也经历从手工到工具再到平台的演变。做过那么些的管理系统，因为各种各样的原因，可能是历史包袱，可能是人言式微，可能是早期技术没有那么的好，很多时候做出来的管理系统不是自己理想中的管理系统，因此，想花一些业余时间，写一个自己理解的DevOps管理系统。
- 2. 目标 个人理解，一个DevOps管理系统应该具备以下功能：
- 元数据管理，包括物理资源、云资源、容器资源、中间件资源、应用资源等 CI/CD，包括应用的打包、编译以及发布，服务器资源的创建、更新、删除等 监控告警，能实现不同指标的采集监控，监控数据可视化以及告警自定义等。 机器操作，可能是SSH登录，或者远程操作命令等。   3. 系统设计 完整的一套DevOps系统肯定是功能复杂、组件繁多的，不大可能自己造轮子，因此，底层会采用一些开源方案，然后在各个开源组件上构建自己的管理平台。
-3.1 元数据管理 说到底，我们要做的是一套能完整接入软件工程生命周期的工具平台，一个软件最终的目的是要发布到线上环境供用户使用，服务器资源只是软件的载体。那么，我们把软件叫做应用，从软件层面上来讲，一个应用应该是唯一的，而从&quot;硬件&quot;层面来说，一台&quot;服务器&quot;也是唯一的。那么，我们就可以将这两个&quot;唯一&quot;建立一种联系，然后再通过这两个唯一延伸出各种关联信息，比如，一个应用可能需要关联它的代码仓库，对应的负责人，归属部门等等，而一台服务器可能需要知道它的机房、机柜，或者是云平台，区域等信息。下图是一个我自己构建的元数据关联图：
-在设计元数据的表的时候，我们就可以根据这种关联关系来设计表。
- 3.2 CI/CD 一个应用的生命周期一般包含以下步骤：
- Design，接收需求，产品设计，沟通等，这边可能需要接入一些项目管理的工具，比如JIRA等、 Develop，程序员进行代码开发、架构设计等 Test，开发人员进行代码测试，测试人员进行功能测试等，这边可以引入一些自动化测试工具。 Deploy，各种人员可能会进行各种环境的部署，这边可以引入类似Jenkins的打包发布工具提高效率。 Monitor，进行监控数据的收集，通过平台输出可视化页面，配置告警、告警通知等功能。   3.3 监控告警 一个业务应用上线后，需要有工具来知道业务是否出现了问题，这时候就需要提供监控告警的一些工具。一个监控系统一般是如下图所示的架构
- Agent，监控数据的收集器，可能是自研的跑在服务器上的采集客户端，也可能是嵌入到应用的收集器等待 Server，接收监控数据，进行存储的服务 Data，对数据进行整合、解析，告警触发、发送告警等操作的服务 Display，展示平台，供用户查看监控数据，配置告警规则的服务   3.4 机器操作 当整个DevOps平台完善的话，其实用户是可以不需要进入机器进行操作的，但是现实往往是不完美的，因此还需要类似堡垒机这样的服务来供用户登录机器进行一些日志查看，debug等操作。
- 4. 初步实现想法  管理页面的话，目前的话想基于go-admin来做，一个用vue+go实现的管理系统脚手架 整个元数据的表设计和管理页面设计，目前的话，应该是要自己写，会参考一些例如bk-cmdb、nightingale等开源方案的设计。 CI/CD的话，代码仓库会采用gitlab组件，发布的话可能采用Jenkins、Argo-CD等开源组件，这个之前做的不多，需要再做点调研，载体的话，现在是容器化时代，可能会直接对接k8s来操作。 监控的话，考虑到Kubernetes，直接会在Prometheus+grafana进行二次开发，日志监控选取ELK或者Loki 堡垒机现在还没有进行研究，后续再进行调研。  基础服务资源
-上面的话，都是针对软件层面的，而应用依赖载体，因此，还需要有一些功能是用来做资源申请的，整体会考虑到兼容物理资源、云服务器资源、容器资源。除了物理资源以为，另外两个其实都可以通过自动化来实现按需创建，即要用的时候再申请。不过，我们还是保留人工审核创建的功能。因此需要做如下事情。
- 提供工单系统，用于资源的申请和下架，当然，一些事务处理，比如故障处理也可以放在这里做记录 对接物理资源，可能需要录入资源的页面，人工操作，优先需要把字段规范好，高端点，也可以做些自动发现功能。 对接各个云平台，可能采用terrform或者操作云平台API来构建基础设施，包括EC2、RDS、Redis、LB、消息队列、云存储等。 对接k8s集群，包括集群的创建，管理、以及各种k8s资源的操作   5. 总结 目前的话，暂时就以上这些想法，开发的话，后续会写成一个系列，来深入的说下各个功能的实现。</div><div class="post-footer">
+    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-03-17">2021-03-17</time></span>&nbsp;<span class="post-category">included in <a href="/categories/devops/"><i class="far fa-folder fa-fw"></i>DevOps</a></span></div><div class="content">系列目录 《Oops管理系统(一)》 《Oops管理系统(二)》 1. 介绍 做了那么的久的运维，了解、运维和开发过各种各样的发布系统、运维系统、监控系</div><div class="post-footer">
         <a href="/oops_series_one/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/devops/">devops</a>,&nbsp;<a href="/tags/platform/">platform</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
@@ -160,7 +138,7 @@ cmd package
         title="执行阶段" /></a>
         </div><h1 class="single-title" itemprop="name headline">
         <a href="/openresty_phases/">Openresty执行阶段</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-01-30">2021-01-30</time></span>&nbsp;<span class="post-category">included in <a href="/categories/nginx/"><i class="far fa-folder fa-fw"></i>Nginx</a></span></div><div class="content">Nginx执行阶段  NGX_HTTP_POST_READ_PHASE — 第一阶段， ngx_http_realip_module 在此阶段注册其处理程序，以允许在调用任何其他模块之前替换客户端地址。 NGX_HTTP_SERVER_REWRITE_PHASE — 该阶段处理server块(location块除外)定义的rewrite指令。 ngx_http_rewrite_module 在此阶段安装其处理程序。 NGX_HTTP_FIND_CONFIG_PHASE — 根据请求URI选择位置的特殊阶段。在此阶段之前，将相关虚拟服务器的默认位置分配给请求，并且任何请求位置配置的模块都将接收默认服务器位置的配置。该阶段为请求分配一个新位置。该阶段无法注册其他处理程序。 NGX_HTTP_REWRITE_PHASE — 同 NGX_HTTP_SERVER_REWRITE_PHASE, 但处理的是上一个阶段选择的location块内的定义的rewrite规则指令。 NGX_HTTP_POST_REWRITE_PHASE — 特殊阶段，如果请求的URI在rewirte期间更改，则将请求重定向到新的location块。这是通过再次请求 NGX_HTTP_FIND_CONFIG_PHASE 来完成的。此阶段无法注册其他处理程序。 NGX_HTTP_PREACCESS_PHASE — 与访问控制无关的用于不同类型的处理程序的公共阶段。标准nginx模块 ngx_http_limit_conn_module 和 ngx_http_limit_req_module 在此阶段注册其处理程序。 NGX_HTTP_ACCESS_PHASE — 验证客户端请求是否合法的阶段。例如ngx_http_access_module 和 ngx_http_auth_basic_module 等标准nginx模块在此阶段注册其处理程序。默认情况下，客户端必须通过该阶段所有处理程序的合法验证才能继续请求下一个阶段。 通过satisfy 指令，则可以允许客户端在通过该阶段任何一个处理程序的合法验证后直接进入下一个阶段。 NGX_HTTP_POST_ACCESS_PHASE — 特殊阶段，处理满足 satisfy any 指令的阶段。如果某些访问阶段处理程序拒绝了访问并且没有显式允许访问，则该请求完成。此阶段无法注册其他处理程序。 NGX_HTTP_PRECONTENT_PHASE — 在生成内容之前调用处理程序的阶段。一些标准nginx模块如 ngx_http_try_files_module 和 ngx_http_mirror_module 在此阶段注册其处理程序。 NGX_HTTP_CONTENT_PHASE — 正常生成响应的阶段. 多个Nginx标准模块在此阶段注册其处理程序, 包括 ngx_http_index_module 和 ngx_http_static_module。它们按顺序被调用直到某一个模块产生输出。也可以按location设置内容处理程序，如果 ngx_http_core_module的location配置已设置处理程序，则将其称为内容处理程序，并且在此阶段安装的处理程序将被忽略。 NGX_HTTP_LOG_PHASE — 执行请求日志记录的阶段。当前，只有 ngx_http_log_module 在此阶段注册其处理程序以进行访问日志记录。在释放请求之前，在请求处理的最后阶段调用日志阶段处理程序。   Lua执行阶段  init_by_lua* — 在Nginx master 进程加载配置时候时，在全局LuaVM 级别上运行指定的lua代码。通常在该阶段注册全局变量或者预加载lua模块。 init_worker_by_lua* — 启用master进程后，在每次Nginx worker进程启动时运行指定的Lua代码。当禁用master进程时，此hook将仅在init_by_lua *之后运行。通常用于创建每个worker的重复计时器（通过Lua API的ngx.</div><div class="post-footer">
+    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-01-30">2021-01-30</time></span>&nbsp;<span class="post-category">included in <a href="/categories/nginx/"><i class="far fa-folder fa-fw"></i>Nginx</a></span></div><div class="content">Nginx执行阶段 NGX_HTTP_POST_READ_PHASE — 第一阶段， ngx_http_realip_module 在此阶段注册其处理程序，以允许在调用任何其他模块之前替换客户端地址。 NGX_HTTP_SERVER_REWRITE_PHASE — 该阶段处理server块(loca</div><div class="post-footer">
         <a href="/openresty_phases/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/nginx/">nginx</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
@@ -174,34 +152,7 @@ cmd package
         title="Kubernetes成熟度模型" /></a>
         </div><h1 class="single-title" itemprop="name headline">
         <a href="/k8s_model/">[译]Kubernetes成熟度模型</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-01-28">2021-01-28</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cloud-native/"><i class="far fa-folder fa-fw"></i>Cloud Native</a></span></div><div class="content">原文链接：kubernetes maturity model
-水平有限，本文不免存在遗漏或错误之处。如有疑问，请查阅原文。
- 前言 Kubernetes有很多好处。 同时，当组织采用云原生技术时，它可能变得复杂。 Kubernetes成熟度模型的存在可帮助您确定自己在迁移到原生云的过程中所处的位置，无论您是Kubernetes的新手还是有部署经验的人。 这是一个重要的工具，可帮助您自我确定您所处的阶段，了解环境中的差距并获得有关增强和改善Kubernetes技术栈的见解。
-如何使用Kubernetes成熟度模型 Kubernetes和您的工作负载在不断变化。 使用此成熟度模型时，请知道，如果确实达到某个阶段，则可能仍需要重新访问以前的阶段。 另外，请注意，Kubernetes的成熟并非一朝一夕就能完成，而是需要时间。 Kubernetes成熟度模型应用作工具，以帮助您了解在迁移到云原生过程中需要集中精力或需要帮助的地方。
- 1. 准备阶段 从哪里开始？如何证明k8s的价值？谁可以信任？
-在该阶段，你将学习/精通以下内容：
-云原生和k8s将如何帮助推动业务和技术目标。它将耗费什么？并就整个组织的目标达成共识。
- 明白云原生、容器、以及k8s的价值 能够向企业领导者描述该价值 得到团队，领导和整个组织的支持   必要条件 明白你的问题
-为什么要使用kubernetes？想要通过kubernetes解决什么问题？
-同意使用OSS
-转换到kubernetes需要你明白开源软件(OSS)在云原生生态中的角色和能量
-接受投资未来
-kubernetes的旅程将会耗费大量的时间和金钱。你需要面向未来投资。
- 介绍 在采用Kubernetes时，第一步是准备工作。在这里，理解并能够阐明云原生和Kubernetes为什么对组织很重要至关重要。一些核心概念包括理解云原生计算，容器和Kubernetes的价值和影响。在较高的层次上，我们在这里每个定义。
-Cloud Native
- 云原生技术有利于各组织在公有云、私有云和混合云等新型动态环境中，构建和运行可弹性扩展的应用。云原生的代表技术包括容器、服务网格、微服务、不可变基础设施和声明式API。
-这些技术能够构建容错性好、易于管理和便于观察的松耦合系统。结合可靠的自动化手段，云原生技术使工程师能够轻松地对系统作出频繁和可预测的重大变更。
-云原生计算基金会（CNCF）致力于培育和维护一个厂商中立的开源生态系统，来推广云原生技术。我们通过将最前沿的模式民主化，让这些创新为大众所用。
- Source: CNCF definition.
-云原生计算的好处包括更快的发布速度，易于管理，通过容器化和云标准降低了成本，能够构建更可靠的系统，避免了供应商锁定以及改善了客户应用体验。
-Container
- 一个打包代码及其所有依赖项的标准软件单元，使得应用程序可以从一个计算环境快速可靠地运行到另一个计算环境
- Source: Docker
- 在k8s中，你运行的每个容器都是可重复的；通过包含依赖项实现标准化意味着无论您在哪里运行它，都可以得到相同的行为。容器将应用程序与基础主机基础结构分离。这使得在不同的云或OS环境中的部署更加容易
- Source: CNCF concepts.
-Kubernetes
- Kubernetes是一个可移植的，可扩展的开源平台，用于管理容器化的工作负载和服务，可促进声明式配置和自动化。 它拥有一个庞大且快速增长的生态系统。 Kubernetes的服务，支持和工具广泛可用。Kubernetes为您提供了一个可弹性运行分布式系统的框架。 它负责应用程序的扩展和故障转移，提供部署模式等。
- Source: CNCF What is Kubernetes.</div><div class="post-footer">
+    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-01-28">2021-01-28</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cloud-native/"><i class="far fa-folder fa-fw"></i>Cloud Native</a></span></div><div class="content">原文链接：kubernetes maturity model 水平有限，本文不免存在遗漏或错误之处。如有疑问，请查阅原文。 前言 Kubernetes有很多好处。 同时，当组</div><div class="post-footer">
         <a href="/k8s_model/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/kubernetes/">kubernetes</a>,&nbsp;<a href="/tags/translate/">translate</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
@@ -215,36 +166,7 @@ Kubernetes
         title="翻译" /></a>
         </div><h1 class="single-title" itemprop="name headline">
         <a href="/talk_ops/">[译]当我们谈论Ops，我们在谈论什么</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-01-13">2021-01-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/devops/"><i class="far fa-folder fa-fw"></i>DevOps</a></span></div><div class="content">原文链接：What the Ops are you talking about?
-水平有限，本文不免存在遗漏或错误之处。如有疑问，请查阅原文。
- 背景 两年前，我因为效率低下的领导而获得了耻辱。我的背景是数据科学和机器学习，因此，我当然从我的工程同事那边学习到了DevOps。至少我们认为是这样的。
-令人费解的是，即使我们遵循了日常站立会议所有敏捷开发的良好实践，讨论我们的难点，也没有将难题扔给别人的态度。我们紧密合作并且相互友爱。但是开发效率依然缓慢，这令整个团队很沮丧。
-两年过后，我终于掌握了DevOps的含义，并且理解了它在数据团队中如此的相同而又如此不同。
-什么是Ops？ 在我们谈论以数据为中心的Ops时，先让我们从软件开始说起，
-自从09年DevOps普及以来，软件行业就一直痴迷于各种Ops术语。十年前，从软件开发到部署的方法已经推陈出新。软件工程师开发应用，然后将其交付给运维工程师。该应用程序在部署期间经常中断，并在团队之间造成很大的摩擦。
-DevOps实践的目的是简化部署过程。该想法是将自动化视为构建和部署软件应用程序的一等公民。
-这种想法彻底改变了这个行业。许多组织开始建立跨职能团队来照顾整个SDLC。该团队将建立基础架构（基础工程师），开发应用程序（软件工程师），构建CI/CD管道（DevOps工程师），部署应用程序（每位工程师），然后连续监视和观察应用程序（站点可靠性工程师）。
-在一个大团队里面，一个工程师可能只会有一项主要职能，但是在较小的团队中，一位工程师经常担任许多职务。理想的情况是使许多团队成员能够履行多项职能，从而消除瓶颈和关键人员的依存关系。所以实际上，
- DevOps并非是一项工作职能，而是更多的实践或文化。 在开始构建任何软件时都应采用它。
- 随着DevOps的兴起，各种各样的Ops诞生了。
-SecOps以安全性为核心，GitOps致力于持续交付，NetOps确保网络可以支持数据流，而ITOps则专注于软件交付之外的操作任务。但是，这些操作的基石都源自DevOps所承诺的愿景：
- 在错误最小的情况下尽可能快的发布软件
-  DataOps 🆚 MLOps 🆚 DevOps (and AIOps?) 注意：在本文中，分析团队是指使用SQL / PowerBI来生成业务洞察力的传统BI团队。 AI团队是指使用大数据技术构建高级分析和机器学习模型的团队。 有时他们是同一个团队，但我们将它们分开，以便更容易地解释概念。
-五年前，“数据是新石油”一语成为炒作对象。世界各地的领导者开始倾注资源，建立大数据团队来挖掘这些宝贵的资产。这些团队交付的压力巨大—毕竟，我们如何才能兑现新石油的承诺？随着快速扩展，分析团队也经历了同样的痛苦。
-然后，我们使这一切成为现实。
-数据科学家成为21世纪最吃香的职业。我们正在建立和处于数据和分析的黄金时代。每个执行者都有一个仪表板，具有来自整个组织的数据和嵌入式预测模型的仪表板，每个客户都有基于其行为的个性化推荐。
-但是，现在添加一个新功能需要花费数周甚至数月的时间。数据模型是混乱的并且没有人知道我们是使用信贷团队还是营销团队的活跃客户的定义。我们变得非常警惕将模型推向生成环境，因为我们不知道我们会破坏什么？
-因此，以数据为中心的社区团结在一起，保证不会因管理不善的数据流程而造成的效率低下，从那时起，各种以数据为中心的OPS诞生了
-要了解所有这些不同的Ops，让我们来看看数据如何在组织中流动的场景：
- 数据是由与软件应用程序交互的客户生成的 软件将数据存储在其应用程序数据库中 分析团队从组织中的团队使用这些应用程序数据库构建ETL 然后，数据工程师将原始数据，合并的数据集（来自分析团队）和其他非结构化数据集摄取到某种形式的数据湖中 然后，数据科学家根据这些庞大的数据集建立模型 然后，这些模型采用用户生成的新数据进行预测。 然后，软件工程师将预测结果呈现给用户 并且周期继续  我们知道DevOps的诞生是由于开发团队和运维团队之间的摩擦。因此，想象一下运维，开发，分析和AI团队之间的4向界面所带来的令人头疼的问题。
-为了说明不同的Ops如何解决上述过程，下面的图形绘制了每个作业功能在整个时间轴上执行的一些任务
-理想情况下，应在项目开始时采用X-Ops文化，并在整个过程中实施实践.
-总而言之，这就是每个Ops的意义
-DevOps更快地交付软件 一系列实践旨在消除开发团队和运维团队之间的障碍，以便更快地构建和部署软件。工程团队通常采用它，包括DevOps工程师，基础架构工程师，软件工程师，站点可靠性工程师和数据工程师。
-DataOps更快地交付数据 一系列实践旨在提高数据分析的质量和减少周期时间。DataOps主要的任务包括数据打标、数据测试、数据管道编排、数据版本控制和数据监控。分析和大数据团队是DataOps主要的支撑对象，但是任何生成和使用数据的人都应该采用良好的DataOps做法，其中包括数据分析师，BI分析师，数据科学家，数据工程师，有时还包括软件工程师。
-MLOps更快地提供机器学习模型 一套设计，构建和管理可重现，可测试和可持续的ML支持软件的实践。对于大数据/机器学习团队，MLOps包含大多数DataOps任务和其他特定于ML的任务，例如模型版本控制，测试，验证和监视。
-奖励：AIOps利用AI的功能增强了DevOps工具 有时人们会错误地将MLOps称为AIOps，但它们却大不相同。从Gartner：
- AIOps platforms utilize big data, modern machine learning and other advanced analytics technologies to directly and indirectly enhance IT operations (monitoring, automation and service desk) functions with proactive, personal and dynamic insight.</div><div class="post-footer">
+    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-01-13">2021-01-13</time></span>&nbsp;<span class="post-category">included in <a href="/categories/devops/"><i class="far fa-folder fa-fw"></i>DevOps</a></span></div><div class="content">原文链接：What the Ops are you talking about? 水平有限，本文不免存在遗漏或错误之处。如有疑问，请查阅原文。 背景 两年前，我因为效率低下的领导而获得了耻辱。我的</div><div class="post-footer">
         <a href="/talk_ops/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/devops/">devops</a>,&nbsp;<a href="/tags/translation/">translation</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
@@ -258,11 +180,7 @@ MLOps更快地提供机器学习模型 一套设计，构建和管理可重现�
         title="flag" /></a>
         </div><h1 class="single-title" itemprop="name headline">
         <a href="/2021_flag/">2021年flag</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-01-02">2021-01-02</time></span>&nbsp;<span class="post-category">included in <a href="/categories/other/"><i class="far fa-folder fa-fw"></i>Other</a></span></div><div class="content">2021年已经到来，在这里给自己列一个flag清单。
-习惯成自然   每2周完成一个ARTS(Algorithm|Review|Technique|Share)
-  完成12篇博客(每月一篇)
-  完成4篇英文技术文章翻译(每季度一篇)
-   读书清单  《性能之巅 洞悉系统、企业与云计算》 《Web性能权威指南》   极客时间清单  程序员的数学基础课 MySQL实战45讲   </div><div class="post-footer">
+    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2021-01-02">2021-01-02</time></span>&nbsp;<span class="post-category">included in <a href="/categories/other/"><i class="far fa-folder fa-fw"></i>Other</a></span></div><div class="content">2021年已经到来，在这里给自己列一个flag清单。 习惯成自然 每2周完成一个ARTS(Algorithm|Review|Technique|</div><div class="post-footer">
         <a href="/2021_flag/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/life/">life</a></div></div>
 </article><ul class="pagination"><li class="page-item active">

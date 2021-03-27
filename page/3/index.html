@@ -110,21 +110,7 @@
         title="网络" /></a>
         </div><h1 class="single-title" itemprop="name headline">
         <a href="/k8s_series_network/">Kubernetes系列：网络</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-10-30">2020-10-30</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cloud-native/"><i class="far fa-folder fa-fw"></i>Cloud Native</a></span></div><div class="content">系列目录 《Kubernetes系列：开篇》
-《Kubernetes系列：概述》
-《Kubernetes系列：架构》
-《Kubernetes系列：容器》
-《Kubernetes系列：网络》
-《Kubernetes系列：存储》
-《Kubernetes系列：Service》
-《Kubernetes系列：Ingress》
-《Kubernetes系列：OAM》
- 1. 介绍 网络是 Kubernetes 的核心部分，不过，Kubernetes本身并不提供网络功能，只是把网络接口开放出来，通过插件的形式实现。这就是CNI(Container Network Interface)。
- CNI（Container Network Interface）是 CNCF 旗下的一个项目，由一组用于配置 Linux 容器的网络接口的规范和库组成，同时还包含了一些插件。CNI 仅关心容器创建时的网络分配，和当容器被删除时释放网络资源。通过此链接浏览该项目：https://github.com/containernetworking/cni。
- Kubernetes 对所有网络设施的实施，都需要满足以下的基本要求：
- 节点上的 Pod 可以不通过 NAT 和其他任何节点上的 Pod 通信 节点上的代理(比如：系统守护进程、kubelet)可以和节点上的所有Pod通信 Pod自己的IP就是其他人看到的IP  因此，一个kubernetes网络插件必须要解决下面五个问题：
- Container-to-Container 网络通信 Pod-to-Pod 网络通信 Pod-to-Service 网络通信 Internet-to-Service 网络通信 Pod IP在集群内唯一   2. 基本原理 2.1 Container-to-Container 在kubernetes中，一个Pod是一组Container的组合，并且，Pod内的Container是共享network namespace的，因此该Pod内的Container的ip和mac地址都是相同的，所以它们只需要通过localhost就能跟Pod内其他Container通信了，不过，因为是共享network namespace，因此该Pod内的端口必须是唯一的，不能冲突。
- 2.2 Pod-to-Pod 在容器中，容器可以通过network namespace的技术将不同的容器的网络隔离起来，并通过veth pair技术将两个namespace连接起来以进行通信。如下图所示，每个pod都有自己的netns，通过veth pair跟节点的root netns连接起来，这样一来，pod就能直接跟node进行通信了</div><div class="post-footer">
+    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-10-30">2020-10-30</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cloud-native/"><i class="far fa-folder fa-fw"></i>Cloud Native</a></span></div><div class="content">系列目录 《Kubernetes系列：开篇》 《Kubernetes系列：概述》 《Kubernetes系列：架构》 《Kubernetes系列：容</div><div class="post-footer">
         <a href="/k8s_series_network/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/kubernetes/">kubernetes</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
@@ -138,29 +124,7 @@
         title="容器运行时" /></a>
         </div><h1 class="single-title" itemprop="name headline">
         <a href="/k8s_series_container/">Kubernetes系列：容器</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-10-25">2020-10-25</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cloud-native/"><i class="far fa-folder fa-fw"></i>Cloud Native</a></span></div><div class="content">系列目录 《Kubernetes系列：开篇》
-《Kubernetes系列：概述》
-《Kubernetes系列：架构》
-《Kubernetes系列：容器》
-《Kubernetes系列：网络》
-《Kubernetes系列：存储》
-《Kubernetes系列：Service》
-《Kubernetes系列：Ingress》
-《Kubernetes系列：OAM》
- 1. 介绍 1.1 容器技术  LXC（Linux容器）是一种操作系统级虚拟化技术，用于使用单个Linux内核在控制主机上运行多个隔离的Linux系统（容器）。
- 每个运行的容器都是可重复的； 包含依赖环境在内的标准，意味着无论您在哪里运行它，您都会得到相同的行为。容器将应用程序从底层的主机设施中解耦。 这使得在不同的云或 OS 环境中部署更加容易。
-1.2 容器镜像  容器镜像是一个随时可以运行的软件包， 包含运行应用程序所需的一切：代码和它需要的所有运行时、应用程序和系统库，以及一些基本设置的默认值。
- 根据设计，容器是不可变的：你不能更改已经运行的容器的代码。 如果有一个容器化的应用程序需要修改，则需要构建包含更改的新镜像，然后再基于新构建的镜像重新运行容器。
-1.3 容器运行时  容器运行环境是负责运行容器的软件。
- Kubernetes 支持多个容器运行环境: Docker、 containerd、CRI-O 以及任何实现 Kubernetes CRI (容器运行环境接口)。
-1.4 CRI(容器运行时接口)  CRI，一个插件接口，使kubelet可以使用各种容器运行时，而无需重新编译。
-CRI由规范/要求(待添加)、protobuf API和用于容器运行时的库组成，以与节点上的kubelet集成。
-  2. 为什么使用容器？ 容器提供了一种逻辑打包机制，以这种机制打包的应用可以脱离其实际运行的环境。利用这种脱离，不管目标环境是私有数据中心、公有云，还是开发者的个人笔记本电脑，您都可以轻松、一致地部署基于容器的应用。容器化使开发者和 IT 运营团队的关注点泾渭分明 - 开发者专注于应用逻辑和依赖项，而 IT 运营团队可以专注于部署和管理，不必为具体的软件版本和应用特有的配置等应用细节分心。
-我们通过与虚拟机的对比来看下容器的优势
-与虚拟机的硬件栈虚拟化不同，容器在操作系统级别进行虚拟化，且可以直接在操作系统内核上运行多个容器。也就是说，容器更轻巧：它们共享操作系统内核，启动速度更快，且与启动整个操作系统相比其占用的内存微乎其微。
-一致的环境
-容器让开发者可以创建与其他应用相隔离的可预测环境。容器还可以包含应用所需的软件依赖项，比如具体的编程语言运行时版本和其他软件库。从开发者的角度看，无论应用最终部署在什么地方，都可以保证这些条件一致。这一切将转化为生产力的提升：开发者和 IT 运营团队可以减少调试和诊断环境差异所需的时间，将更多的时间用于为用户提供新的功能。而且这也意味着 bug 更少，因为开发者现可在开发和测试环境中做出在生产环境中也适用的假设。
-在任何地方运行</div><div class="post-footer">
+    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-10-25">2020-10-25</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cloud-native/"><i class="far fa-folder fa-fw"></i>Cloud Native</a></span></div><div class="content">系列目录 《Kubernetes系列：开篇》 《Kubernetes系列：概述》 《Kubernetes系列：架构》 《Kubernetes系列：容</div><div class="post-footer">
         <a href="/k8s_series_container/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/kubernetes/">kubernetes</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
@@ -174,25 +138,7 @@ CRI由规范/要求(待添加)、protobuf API和用于容器运行时的库组�
         title="架构" /></a>
         </div><h1 class="single-title" itemprop="name headline">
         <a href="/k8s_series_arch/">Kubernetes系列：架构</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-10-20">2020-10-20</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cloud-native/"><i class="far fa-folder fa-fw"></i>Cloud Native</a></span></div><div class="content">系列目录 《Kubernetes系列：开篇》
-《Kubernetes系列：概述》
-《Kubernetes系列：架构》
-《Kubernetes系列：容器》
-《Kubernetes系列：网络》
-《Kubernetes系列：存储》
-《Kubernetes系列：Service》
-《Kubernetes系列：Ingress》
-《Kubernetes系列：OAM》
- 一个 Kubernetes 集群由一组被称作节点的机器组成。这些节点上运行 Kubernetes 所管理的容器化应用。集群具有至少一个工作节点。
-工作节点托管作为应用负载的组件的 Pod 。控制平面管理集群中的工作节点和 Pod 。 为集群提供故障转移和高可用性，这些控制平面一般跨多主机运行，集群跨多个节点运行。
-本文档概述了交付正常运行的 Kubernetes 集群所需的各种组件。
-这张图表展示了包含所有相互关联组件的 Kubernetes 集群。
-控制平面组件（Control Plane Components） 控制平面的组件对集群做出全局决策(比如调度)，以及检测和响应集群事件（例如，当不满足部署的 replicas 字段时，启动新的 pod）。
-控制平面组件可以在集群中的任何节点上运行。 然而，为了简单起见，设置脚本通常会在同一个计算机上启动所有控制平面组件，并且不会在此计算机上运行用户容器。 请参阅构建高可用性集群 中对于多主机 VM 的设置示例。
-kube-apiserver API 服务器是 Kubernetes 控制面的组件， 该组件公开了 Kubernetes API。 API 服务器是 Kubernetes 控制面的前端。
-Kubernetes API 服务器的主要实现是 kube-apiserver。 kube-apiserver 设计上考虑了水平伸缩，也就是说，它可通过部署多个实例进行伸缩。 你可以运行 kube-apiserver 的多个实例，并在这些实例之间平衡流量。
-etcd etcd 是兼具一致性和高可用性的键值数据库，可以作为保存 Kubernetes 所有集群数据的后台数据库。
-您的 Kubernetes 集群的 etcd 数据库通常需要有个备份计划。</div><div class="post-footer">
+    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-10-20">2020-10-20</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cloud-native/"><i class="far fa-folder fa-fw"></i>Cloud Native</a></span></div><div class="content">系列目录 《Kubernetes系列：开篇》 《Kubernetes系列：概述》 《Kubernetes系列：架构》 《Kubernetes系列：容</div><div class="post-footer">
         <a href="/k8s_series_arch/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/kubernetes/">kubernetes</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
@@ -206,28 +152,7 @@ etcd etcd 是兼具一致性和高可用性的键值数据库，可以作为保�
         title="概述" /></a>
         </div><h1 class="single-title" itemprop="name headline">
         <a href="/k8s_series_intro/">Kubernetes系列：概述</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-10-15">2020-10-15</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cloud-native/"><i class="far fa-folder fa-fw"></i>Cloud Native</a></span></div><div class="content">系列目录 《Kubernetes系列：开篇》
-《Kubernetes系列：概述》
-《Kubernetes系列：架构》
-《Kubernetes系列：容器》
-《Kubernetes系列：网络》
-《Kubernetes系列：存储》
-《Kubernetes系列：Service》
-《Kubernetes系列：Ingress》
-《Kubernetes系列：OAM》
- 1. 介绍 Kubernetes 是一个可移植的、可扩展的开源平台，用于管理容器化的工作负载和服务，可促进声明式配置和自动化。 Kubernetes 拥有一个庞大且快速增长的生态系统。Kubernetes 的服务、支持和工具广泛可用。
-名称 Kubernetes 源于希腊语，意为“舵手”或“飞行员”。Google 在 2014 年开源了 Kubernetes 项目。 Kubernetes 建立在 Google 在大规模运行生产工作负载方面拥有十几年的经验 的基础上，结合了社区中最好的想法和实践。
- 2. 部署模式的发展史 让我们回顾一下为什么 Kubernetes 如此有用。
-传统部署时代：
-早期，各个组织机构在物理服务器上运行应用程序。无法为物理服务器中的应用程序定义资源边界，这会导致资源分配问题。 例如，如果在物理服务器上运行多个应用程序，则可能会出现一个应用程序占用大部分资源的情况， 结果可能导致其他应用程序的性能下降。 一种解决方案是在不同的物理服务器上运行每个应用程序，但是由于资源利用不足而无法扩展， 并且维护许多物理服务器的成本很高。
-虚拟化部署时代：
-作为解决方案，引入了虚拟化。虚拟化技术允许你在单个物理服务器的 CPU 上运行多个虚拟机（VM）。 虚拟化允许应用程序在 VM 之间隔离，并提供一定程度的安全，因为一个应用程序的信息 不能被另一应用程序随意访问。
-虚拟化技术能够更好地利用物理服务器上的资源，并且因为可轻松地添加或更新应用程序 而可以实现更好的可伸缩性，降低硬件成本等等。
-每个 VM 是一台完整的计算机，在虚拟化硬件之上运行所有组件，包括其自己的操作系统。
-容器部署时代：
-容器类似于 VM，但是它们具有被放宽的隔离属性，可以在应用程序之间共享操作系统（OS）。 因此，容器被认为是轻量级的。容器与 VM 类似，具有自己的文件系统、CPU、内存、进程空间等。 由于它们与基础架构分离，因此可以跨云和 OS 发行版本进行移植。
-容器因具有许多优势而变得流行起来。下面列出的是容器的一些好处：
- 敏捷应用程序的创建和部署：与使用 VM 镜像相比，提高了容器镜像创建的简便性和效率。 持续开发、集成和部署：通过快速简单的回滚（由于镜像不可变性），支持可靠且频繁的 容器镜像构建和部署。 关注开发与运维的分离：在构建/发布时而不是在部署时创建应用程序容器镜像， 从而将应用程序与基础架构分离。 可观察性不仅可以显示操作系统级别的信息和指标，还可以显示应用程序的运行状况和其他指标信号。 跨开发、测试和生产的环境一致性：在便携式计算机上与在云中相同地运行。 跨云和操作系统发行版本的可移植性：可在 Ubuntu、RHEL、CoreOS、本地、 Google Kubernetes Engine 和其他任何地方运行。 以应用程序为中心的管理：提高抽象级别，从在虚拟硬件上运行 OS 到使用逻辑资源在 OS 上运行应用程序。 松散耦合、分布式、弹性、解放的微服务：应用程序被分解成较小的独立部分， 并且可以动态部署和管理 - 而不是在一台大型单机上整体运行。 资源隔离：可预测的应用程序性能。 资源利用：高效率和高密度。   3.</div><div class="post-footer">
+    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-10-15">2020-10-15</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cloud-native/"><i class="far fa-folder fa-fw"></i>Cloud Native</a></span></div><div class="content">系列目录 《Kubernetes系列：开篇》 《Kubernetes系列：概述》 《Kubernetes系列：架构》 《Kubernetes系列：容</div><div class="post-footer">
         <a href="/k8s_series_intro/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/kubernetes/">kubernetes</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
@@ -241,31 +166,7 @@ etcd etcd 是兼具一致性和高可用性的键值数据库，可以作为保�
         title="开篇" /></a>
         </div><h1 class="single-title" itemprop="name headline">
         <a href="/k8s_series/">Kubernetes系列：开篇</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-10-10">2020-10-10</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cloud-native/"><i class="far fa-folder fa-fw"></i>Cloud Native</a></span></div><div class="content">系列目录 《Kubernetes系列：开篇》
-《Kubernetes系列：概述》
-《Kubernetes系列：架构》
-《Kubernetes系列：容器》
-《Kubernetes系列：网络》
-《Kubernetes系列：存储》
-《Kubernetes系列：Service》
-《Kubernetes系列：Ingress》
-《Kubernetes系列：OAM》
- 1. 介绍 最近整体工作在往云原生和k8s上迁移，想将自己对于k8s的一些学习心得和经验写成一个系列记录下来。
- 2. 云计算 云计算是一种按使用量付费的模式，这种模式提供可用的、便捷的、按需的网络访问， 进入可配置的计算资源共享池（资源包括网络，服务器，存储，应用软件，服务），这些资源能够被快速提供，只需投入很少的管理工作，或与服务供应商进行很少的交互。
-云计算最基本的特性是：“按使用量付费”、“资源共享池”和多租户隔离。
-1.2 云计算的特点
- 超大规模  云具有相当的规模，Google 云计算已经拥有 100 多万台服务器， Amazon、IBM、微软、Yahoo 等的云均拥有几十万台服务器。企业私有云一般拥有数百上千台服务器。云能赋予用户前所未有的计算能力。
- 虚拟化  云计算支持用户在任意位置、使用各种终端获取应用服务。所请求的资源来自云，而不是固定的有形的实体。应用在云中某处运行，但实际上用户无需了解、也不用担心应用运行的具体位置。只需要一台笔记本或者一个手机，就可以通过网络服务来实现我们需要的一切，甚至包括超级计算这样的任务。
- 高可靠性  云使用了数据多副本容错、计算节点同构可互换等措施来保障服务的高可靠性，使用云计算比使用本地计算机可靠。
- 通用性  云计算不针对特定的应用，在云的支撑下可以构造出千变万化的应用，同一个云可以同时支撑不同的应用运行。
- 高可扩展性  云的规模可以动态伸缩，满足应用和用户规模增长的需要。
- 按需服务  云是一个庞大的资源池，你按需购买;云可以像自来水，电，煤气那样计费。
- 极其廉价  由于云的特殊容错措施可以采用极其廉价的节点来构成云，云的自动化集中式管理使大量企业无需负担日益高昂的数据中心管理成本，云的通用性使资源的利用率较之传统系统大幅提升，因此用户可以充分享受云的低成本优势，经常只要花费几百美元、几天时间就能完成以前需要数万美元、数月时间才能完成的任务。
- 潜在的危险性  云计算服务除了提供计算服务外，还必然提供了存储服务。但是云计算服务当前垄断在私人机构(企业)手中，而他们仅仅能够提供商业信用。对于政府机构、商业机构(特别像银行这样持有敏感数据的商业机构)对于选择云计算服务应保持足够的警惕。一旦商业用户大规模使用私人机构提供的云计算服务，无论其技术优势有多强，都不可避免地让这些私人机构以数据(信息)的重要性挟制整个社会。
-对于信息社会而言，信息是至关重要的。另一方面，云计算中的数据对于数据所有者以外的其他用户云计算用户是保密的，但是对于提供云计算的商业机构而言确实毫无秘密可言。所有这些潜在的危险，是商业机构和政府机构选择云计算服务、特别是国外机构提供的云计算服务时，不得不考虑的一个重要的前提。
-1.3 云计算的分类
- 公有云：只有使用权，使用的时候进行按需付费。但数据放在别人家。数据安全没有保障。而且银行不会使用公有云，金融行业不要使用公有云。公有云的核心属性是共享资源服务。 私有云：自己的机房搭建的云，私有云有局限性，资源固定；数据比较安全。私有云的核心属性是专有资源。 混合云：主要任务放到私有云，临时需要时利用混合云，它将公有云和私有云进行混合匹配，以获得最佳的效果，这种个性的解决方案，达到二既省钱又安全的目的。  1.4 云计算分层
-云计算也是层的，大概有以下几种：</div><div class="post-footer">
+    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-10-10">2020-10-10</time></span>&nbsp;<span class="post-category">included in <a href="/categories/cloud-native/"><i class="far fa-folder fa-fw"></i>Cloud Native</a></span></div><div class="content">系列目录 《Kubernetes系列：开篇》 《Kubernetes系列：概述》 《Kubernetes系列：架构》 《Kubernetes系列：容</div><div class="post-footer">
         <a href="/k8s_series/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/kubernetes/">kubernetes</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
@@ -279,26 +180,7 @@ etcd etcd 是兼具一致性和高可用性的键值数据库，可以作为保�
         title="SRE介绍" /></a>
         </div><h1 class="single-title" itemprop="name headline">
         <a href="/devops_series_sre/">DevOps系列：SRE</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-07-29">2020-07-29</time></span>&nbsp;<span class="post-category">included in <a href="/categories/devops/"><i class="far fa-folder fa-fw"></i>DevOps</a></span></div><div class="content">系列目录 《DevOps系列：开篇》
-《DevOps系列：概述》
-《DevOps系列：CMDB》
-《DevOps系列：CI/CD》
-《DevOps系列：监控》
-《DevOps系列：SRE》
- 困局 计算机软件系统离开人通常是无法自主运行的，那要如何去运维一个日趋复杂的大型分布式计算机系统呢？
-Dev/Ops分离团队模型 雇佣系统管理员(sysadmin)运维复杂的计算机系统是行业内一直以来的普遍做法，系统管理员的工作主要在于应对系统中产生的各种需要人工干预的事件，以及来自业务部门的变更需求。但随着系统变得复杂，组件越来越多，流量不断上升，相关的事件和变更需求也会越来越多，就需要招聘更多的系统管理员。系统管理员的日常工作和研发工程师的相差甚远，通常归属于两个不同的部门，开发部(Dev)和运维部(Ops)。也就是Dev/Ops分离团队模型。
-但是这个模型存在两个无法避免的问题。
- 直接成本。随着系统复杂度的增加，部署规模的扩大，团队的大小基本与系统负载成线性相关，共同成长。 间接成本。即研发团队和运维团队之间的沟通成本。研发团队想要&quot;随时随地发布新功能，没有任何阻拦&quot;，运维团队想要”一旦一个东西在生产环境中正常工作了，就不要再进行任何改动“。本质来说，两个团队的目标是互相矛盾的。   解决之道 DevOps  DevOps（开发 Development 与运维 Operations 的组合词）是一种文化、一场运动或实践，强调在自动化软件交付流程及基础设施变更过程中，软件开发人员与其他信息技术（IT）专业人员彼此之间的协作与沟通。它旨在建立一种文化与环境，使构建、测试、软件发布得以快速、频繁以及更加稳定地进行。
- SRE  SRE可以理解为DevOps的一种实践，SRE基本是在进行由运维团队完成的工作，但是雇佣具有软件专业知识的工程师，通过创造软件系统的方式来维护系统运行并替代传统模型中的人工操作。本质上，SRE是在用软件工程的思维和方法论，通过设计、构建自动化工具来完成以前由系统管理员人工操作完成的任务。
- SRE方法论 1. 确保长期关注研发工作 SRE团队应将运维工作限制在50%以内，并将剩余时间投入到研发项目上
-2. 在保障SLO的前提下最大化迭代速度 错误预算，任何产品都不是，也不应该做到100%可靠，部门建立起一个合理的可靠性目标，错误预算等于”1-可靠性目标“，通过错误预算来最大化新功能上线的速度，同时保障服务质量。
-3. 监控系统 监控系统是SRE团队监控服务质量和可用性的一个主要手段。一个监控系统应该只有三类输出：
- 紧急警报(alert)，意味着收到警报的用户需要立即执行某种操作 工单(ticket)，意味着接受工单的用户应该执行某种操作，但是并发立即执行。 日志(logging)，平时没有人需要关注日志信息，但是日志信息依然被收集起来以备调试和事后分析时使用  4. 应急事件处理 可靠性是MTTF(平均失败时间)和MTTR(平均恢复时间)的函数。评价一个团队将系统恢复到正常情况的最有效的指标，就是MTTR。
-任何需要人工操作的事情都只会延长恢复时间。但有时候人工介入不可避免时，可以通过事先预案并且将最佳方法记录到”运维手册“上来降低MTTR。
-5. 变更管理 变更管理的最佳实践是使用自动化来完成以下几个项目：
- 采用渐进式发布机制 迅速而准确地检测到问题的发生 当问题发生时，安全迅速的回滚  6. 需要预测和容量规划 需要预测和容量规划是保障一个业务有足够的容量和冗余度去服务预测中的未来需要。
-容量规划有几个必需步骤：
- 必须有一个准确的自然增长需求预测模型，需求预测的时间应该超过资源获取的时间 规划中必须有准确的非自然增长的需求来源的统计 必须有周期性压力测试，以便准确地将系统原始资源信息与业务容量对应起来。  7. 效率与性能 高效地利用各种资源是任何赢利性服务都要关心的，一个服务的利用率指标通常依赖于这个服务的工作方式以及对容量的配置与部署上。如果能通过密切关注一个服务的容量配置策略，进而改进其资源利用率，可以有效地降低系统的总成本。</div><div class="post-footer">
+    </h1><div class="post-meta"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-publish">published on <time datetime="2020-07-29">2020-07-29</time></span>&nbsp;<span class="post-category">included in <a href="/categories/devops/"><i class="far fa-folder fa-fw"></i>DevOps</a></span></div><div class="content">系列目录 《DevOps系列：开篇》 《DevOps系列：概述》 《DevOps系列：CMDB》 《DevOps系列：CI/CD》 《DevOps系列</div><div class="post-footer">
         <a href="/devops_series_sre/">Read More</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/devops/">devops</a></div></div>
 </article><ul class="pagination"><li class="page-item ">
