@@ -11,8 +11,8 @@
             <loc>https://cctrip.github.io/k8s_series_oam/</loc><lastmod>2020-11-15T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://cctrip.github.io/k8s_series_ingress/</loc><lastmod>2020-11-11T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://cctrip.github.io/k8s_series_service/</loc><lastmod>2020-11-10T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://cctrip.github.io/deep_lvs/</loc><lastmod>2020-11-09T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://cctrip.github.io/deep_iptables/</loc><lastmod>2020-11-07T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://cctrip.github.io/deep_lvs/</loc><lastmod>2020-11-07T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://cctrip.github.io/k8s_series_storage/</loc><lastmod>2020-11-05T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://cctrip.github.io/k8s_series_network/</loc><lastmod>2020-10-30T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://cctrip.github.io/k8s_series_container/</loc><lastmod>2020-10-25T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
@@ -53,9 +53,9 @@
             <loc>https://cctrip.github.io/tags/translation/</loc><lastmod>2021-01-14T22:22:22&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://cctrip.github.io/tags/life/</loc><lastmod>2021-01-02T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://cctrip.github.io/categories/other/</loc><lastmod>2021-01-02T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://cctrip.github.io/tags/kubernets/</loc><lastmod>2020-11-07T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://cctrip.github.io/categories/linux/</loc><lastmod>2020-11-07T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://cctrip.github.io/tags/linux/</loc><lastmod>2020-11-07T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://cctrip.github.io/tags/kubernets/</loc><lastmod>2020-11-09T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://cctrip.github.io/categories/linux/</loc><lastmod>2020-11-09T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://cctrip.github.io/tags/linux/</loc><lastmod>2020-11-09T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://cctrip.github.io/tags/security/</loc><lastmod>2021-01-03T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://cctrip.github.io/tags/go/</loc><lastmod>2020-04-07T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://cctrip.github.io/categories/golang/</loc><lastmod>2020-04-07T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
