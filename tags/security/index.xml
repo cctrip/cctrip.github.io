@@ -12,7 +12,7 @@
     <description><![CDATA[1. 介绍 接上一篇深入理解iptables，kubernetes service技术还用到ipvs技术，讲到ipvs，那就得说说LVS了，这篇我们来了解下LVS具体的实现机制。
  2. IPVS  IPVS（IP虚拟服务器）实现传输层负载均衡，通常称为第4层LAN交换。
  负载均衡器的概念可以看这篇文章，或者翻译版本。
-通常来说，负载均衡器和代理是一个概念，所谓的代理，简单来说，就是接收客户端的数据包再转发到对应的后端服务器上。
+大多数情况下，负载均衡器和代理这两个术语会被混用在一起，所谓的代理，简单来说，就是接收客户端的数据包再转发到对应的后端服务器上。
 ipvs就在这样的软件，它依赖netfilter的功能来实现数据包的转发，我们还是先拉源码定义来看下。
 ip_vs_core.c
 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47  static const struct nf_hook_ops ip_vs_ops4[] = { /* After packet filtering, change source only for VS/NAT */ { .]]></description>

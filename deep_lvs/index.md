@@ -13,7 +13,7 @@
 
 负载均衡器的概念可以看[这篇](https://blog.envoyproxy.io/introduction-to-modern-network-load-balancing-and-proxying-a57f6ff80236)文章，或者[翻译版本](http://arthurchiao.art/blog/intro-to-modern-lb-and-proxy-zh/)。
 
-通常来说，负载均衡器和代理是一个概念，所谓的代理，简单来说，就是接收客户端的数据包再转发到对应的后端服务器上。
+大多数情况下，负载均衡器和代理这两个术语会被混用在一起，所谓的代理，简单来说，就是接收客户端的数据包再转发到对应的后端服务器上。
 
 `ipvs`就在这样的软件，它依赖`netfilter`的功能来实现数据包的转发，我们还是先拉源码定义来看下。
 

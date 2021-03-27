@@ -157,7 +157,7 @@
 <p>IPVS（IP虚拟服务器）实现传输层负载均衡，通常称为第4层LAN交换。</p>
 </blockquote>
 <p>负载均衡器的概念可以看<a href="https://blog.envoyproxy.io/introduction-to-modern-network-load-balancing-and-proxying-a57f6ff80236" target="_blank" rel="noopener noreffer">这篇</a>文章，或者<a href="http://arthurchiao.art/blog/intro-to-modern-lb-and-proxy-zh/" target="_blank" rel="noopener noreffer">翻译版本</a>。</p>
-<p>通常来说，负载均衡器和代理是一个概念，所谓的代理，简单来说，就是接收客户端的数据包再转发到对应的后端服务器上。</p>
+<p>大多数情况下，负载均衡器和代理这两个术语会被混用在一起，所谓的代理，简单来说，就是接收客户端的数据包再转发到对应的后端服务器上。</p>
 <p><code>ipvs</code>就在这样的软件，它依赖<code>netfilter</code>的功能来实现数据包的转发，我们还是先拉源码定义来看下。</p>
 <p><strong><a href="https://github.com/torvalds/linux/blob/master/net/netfilter/ipvs/ip_vs_core.c" target="_blank" rel="noopener noreffer">ip_vs_core.c</a></strong></p>
 <div class="highlight"><div class="chroma">
