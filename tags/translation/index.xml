@@ -3,7 +3,14 @@
         <title>translation - Tag - CC&#39;s Trip</title>
         <link>https://cctrip.github.io/tags/translation/</link>
         <description>translation - Tag - CC&#39;s Trip</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 13 Jan 2021 17:55:28 &#43;0800</lastBuildDate><atom:link href="https://cctrip.github.io/tags/translation/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 28 Jan 2021 17:55:28 &#43;0800</lastBuildDate><atom:link href="https://cctrip.github.io/tags/translation/" rel="self" type="application/rss+xml" /><item>
+    <title>[译]Kubernetes成熟度模型</title>
+    <link>https://cctrip.github.io/k8s_model/</link>
+    <pubDate>Thu, 28 Jan 2021 17:55:28 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://cctrip.github.io/k8s_model/</guid>
+    <description><![CDATA[原文链接：kubernetes maturity model 水平有限，本文不免存在遗漏或错误之处。如有疑问，请查阅原文。 前言 Kubernetes有很多好处。 同时，当组]]></description>
+</item><item>
     <title>[译]当我们谈论Ops，我们在谈论什么</title>
     <link>https://cctrip.github.io/talk_ops/</link>
     <pubDate>Wed, 13 Jan 2021 17:55:28 &#43;0800</pubDate>
