@@ -1,4 +1,4 @@
-# [译]DevOps成熟度模型——讲解
+# [译]DevOps成熟度模型
 
 
 原文链接：[DevOps Maturity Model – Explained](https://www.invensislearning.com/blog/devops-maturity-model/)
