@@ -3,7 +3,14 @@
         <title>Network - Category - CC&#39;s Trip</title>
         <link>https://cctrip.github.io/categories/network/</link>
         <description>Network - Category - CC&#39;s Trip</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 29 May 2016 17:55:28 &#43;0800</lastBuildDate><atom:link href="https://cctrip.github.io/categories/network/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 08 Aug 2018 17:55:28 &#43;0800</lastBuildDate><atom:link href="https://cctrip.github.io/categories/network/" rel="self" type="application/rss+xml" /><item>
+    <title>理解TCP协议</title>
+    <link>https://cctrip.github.io/deep_tcp/</link>
+    <pubDate>Wed, 08 Aug 2018 17:55:28 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://cctrip.github.io/deep_tcp/</guid>
+    <description><![CDATA[1. 介绍 TCP协议是个复杂的东西，但是对学习网络知识也好，排查网络问题也好，优化网络性能也是，又是一个不得不啃的东西。自己也反反复复的看了不少]]></description>
+</item><item>
     <title>谈谈HTTP</title>
     <link>https://cctrip.github.io/http/</link>
     <pubDate>Sun, 29 May 2016 17:55:28 &#43;0800</pubDate>

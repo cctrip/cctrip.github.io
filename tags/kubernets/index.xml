@@ -17,12 +17,5 @@
     <author>Author</author>
     <guid>https://cctrip.github.io/deep_iptables/</guid>
     <description><![CDATA[1. 介绍 最近在刚好在看Kubernetes的service相关内容，里面用到了iptables和ipvs技术，好久没看iptables了，快忘]]></description>
-</item><item>
-    <title>理解TCP协议</title>
-    <link>https://cctrip.github.io/deep_tcp/</link>
-    <pubDate>Wed, 08 Aug 2018 17:55:28 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://cctrip.github.io/deep_tcp/</guid>
-    <description><![CDATA[1. 介绍 TCP协议是个复杂的东西，但是对学习网络知识也好，排查网络问题也好，优化网络性能也是，又是一个不得不啃的东西。自己也反反复复的看了不少]]></description>
 </item></channel>
 </rss>

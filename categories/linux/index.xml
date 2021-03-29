@@ -32,13 +32,6 @@
     <guid>https://cctrip.github.io/linux_pam/</guid>
     <description><![CDATA[概念 Linux-PAM（Pluggable Authentication Modules for Linux）是一套共享库,使本地系统管理员可以随意选择程序的认证方式。换句话说，不用(重新编]]></description>
 </item><item>
-    <title>理解TCP协议</title>
-    <link>https://cctrip.github.io/deep_tcp/</link>
-    <pubDate>Wed, 08 Aug 2018 17:55:28 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://cctrip.github.io/deep_tcp/</guid>
-    <description><![CDATA[1. 介绍 TCP协议是个复杂的东西，但是对学习网络知识也好，排查网络问题也好，优化网络性能也是，又是一个不得不啃的东西。自己也反反复复的看了不少]]></description>
-</item><item>
     <title>理解系统启动过程</title>
     <link>https://cctrip.github.io/system_start/</link>
     <pubDate>Sat, 21 May 2016 17:55:28 &#43;0800</pubDate>
