@@ -3,7 +3,14 @@
         <title>Cloud Native - Category - CC&#39;s Trip</title>
         <link>https://cctrip.github.io/categories/cloud-native/</link>
         <description>Cloud Native - Category - CC&#39;s Trip</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 28 Jan 2021 17:55:28 &#43;0800</lastBuildDate><atom:link href="https://cctrip.github.io/categories/cloud-native/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 30 Mar 2021 17:55:28 &#43;0800</lastBuildDate><atom:link href="https://cctrip.github.io/categories/cloud-native/" rel="self" type="application/rss+xml" /><item>
+    <title>K8S设计系列：开篇</title>
+    <link>https://cctrip.github.io/k8s_design/</link>
+    <pubDate>Tue, 30 Mar 2021 17:55:28 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://cctrip.github.io/k8s_design/</guid>
+    <description><![CDATA[系列目录 《K8S设计系列：开篇》 1. 介绍 个人觉得，k8s包含着许多运维理念，理解了k8s的设计，就基本理解了运维。并且，一个优秀的系统是值得深]]></description>
+</item><item>
     <title>[译]Kubernetes成熟度模型</title>
     <link>https://cctrip.github.io/k8s_model/</link>
     <pubDate>Thu, 28 Jan 2021 17:55:28 &#43;0800</pubDate>
@@ -65,13 +72,6 @@
     <pubDate>Thu, 15 Oct 2020 17:55:28 &#43;0800</pubDate>
     <author>Author</author>
     <guid>https://cctrip.github.io/k8s_series_intro/</guid>
-    <description><![CDATA[系列目录 《Kubernetes系列：开篇》 《Kubernetes系列：概述》 《Kubernetes系列：架构》 《Kubernetes系列：容]]></description>
-</item><item>
-    <title>Kubernetes系列：开篇</title>
-    <link>https://cctrip.github.io/k8s_series/</link>
-    <pubDate>Sat, 10 Oct 2020 17:55:28 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://cctrip.github.io/k8s_series/</guid>
     <description><![CDATA[系列目录 《Kubernetes系列：开篇》 《Kubernetes系列：概述》 《Kubernetes系列：架构》 《Kubernetes系列：容]]></description>
 </item></channel>
 </rss>

@@ -3,7 +3,14 @@
         <title>All Posts - CC&#39;s Trip</title>
         <link>https://cctrip.github.io/posts/</link>
         <description>All Posts | CC&#39;s Trip</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 20 Mar 2021 17:55:28 &#43;0800</lastBuildDate><atom:link href="https://cctrip.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 30 Mar 2021 17:55:28 &#43;0800</lastBuildDate><atom:link href="https://cctrip.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>K8S设计系列：开篇</title>
+    <link>https://cctrip.github.io/k8s_design/</link>
+    <pubDate>Tue, 30 Mar 2021 17:55:28 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://cctrip.github.io/k8s_design/</guid>
+    <description><![CDATA[系列目录 《K8S设计系列：开篇》 1. 介绍 个人觉得，k8s包含着许多运维理念，理解了k8s的设计，就基本理解了运维。并且，一个优秀的系统是值得深]]></description>
+</item><item>
     <title>Oops管理系统(二)</title>
     <link>https://cctrip.github.io/oops_series_two/</link>
     <pubDate>Sat, 20 Mar 2021 17:55:28 &#43;0800</pubDate>
@@ -66,12 +73,5 @@
     <author>Author</author>
     <guid>https://cctrip.github.io/k8s_series_service/</guid>
     <description><![CDATA[系列目录 《Kubernetes系列：开篇》 《Kubernetes系列：概述》 《Kubernetes系列：架构》 《Kubernetes系列：容]]></description>
-</item><item>
-    <title>深入理解LVS</title>
-    <link>https://cctrip.github.io/deep_lvs/</link>
-    <pubDate>Mon, 09 Nov 2020 17:55:28 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://cctrip.github.io/deep_lvs/</guid>
-    <description><![CDATA[1. 介绍 接上一篇深入理解iptables，kubernetes service技术还用到ipvs技术，讲到ipvs，那就得说说LVS了，这篇我们]]></description>
 </item></channel>
 </rss>
