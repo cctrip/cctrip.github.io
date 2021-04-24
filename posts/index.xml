@@ -3,10 +3,10 @@
         <title>All Posts - CC&#39;s Trip</title>
         <link>https://cctrip.github.io/posts/</link>
         <description>All Posts | CC&#39;s Trip</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 31 Mar 2021 17:55:28 &#43;0800</lastBuildDate><atom:link href="https://cctrip.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 05 Apr 2021 17:55:28 &#43;0800</lastBuildDate><atom:link href="https://cctrip.github.io/posts/" rel="self" type="application/rss+xml" /><item>
     <title>K8S设计系列：架构</title>
     <link>https://cctrip.github.io/k8s_design_arch/</link>
-    <pubDate>Wed, 31 Mar 2021 17:55:28 &#43;0800</pubDate>
+    <pubDate>Mon, 05 Apr 2021 17:55:28 &#43;0800</pubDate>
     <author>Author</author>
     <guid>https://cctrip.github.io/k8s_design_arch/</guid>
     <description><![CDATA[系列目录 《K8S设计系列：开篇》 《K8S设计系列：架构》 1. 介绍 本篇要介绍的是k8s的整体架构，以及为什么要这么设计。 Kubernetes是生]]></description>
