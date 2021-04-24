@@ -17,7 +17,7 @@
 <meta name="twitter:title" content="K8S设计系列：开篇"/>
 <meta name="twitter:description" content="开篇"/>
 <meta name="application-name" content="CC&#39;s Trip">
-<meta name="apple-mobile-web-app-title" content="CC&#39;s Trip"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/leo.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://cctrip.github.io/k8s_design/" /><link rel="prev" href="https://cctrip.github.io/oops_series_two/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+<meta name="apple-mobile-web-app-title" content="CC&#39;s Trip"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/leo.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://cctrip.github.io/k8s_design/" /><link rel="prev" href="https://cctrip.github.io/oops_series_two/" /><link rel="next" href="https://cctrip.github.io/k8s_design_arch/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -31,7 +31,7 @@
                             "url": "https:\/\/cctrip.github.io\/k8s_design\/k8s-image.jpeg",
                             "width":  1024 ,
                             "height":  534 
-                        }],"genre": "posts","keywords": "kubernetes, design","wordcount":  450 ,
+                        }],"genre": "posts","keywords": "kubernetes, design","wordcount":  469 ,
         "url": "https:\/\/cctrip.github.io\/k8s_design\/","datePublished": "2021-03-30T17:55:28+08:00","dateModified": "2021-03-30T17:55:28+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "xxxx","logo": {
@@ -113,7 +113,7 @@
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">K8S设计系列：开篇</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://cctrip.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Hello.CC</a></span>&nbsp;<span class="post-category">included in <a href="/categories/cloud-native/"><i class="far fa-folder fa-fw"></i>Cloud Native</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-30">2021-03-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;450 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-03-30">2021-03-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;469 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
         </div><div class="featured-image"><img
         class="lazyload"
@@ -138,7 +138,7 @@
 <p><a href="../k8s_design" rel="">《K8S设计系列：开篇》</a></p>
 <hr>
 <h2 id="1-介绍">1. 介绍</h2>
-<p>个人觉得，k8s包含着许多运维理念，理解了k8s的设计，就基本理解了运维。并且，一个优秀的系统是值得深入了解和学习的。本系列将通过阅读k8s的<a href="https://github.com/kubernetes/community/tree/master/contributors/design-proposals" target="_blank" rel="noopener noreffer">设计文档</a>来加深对k8s的理解，并输出自己的一些看法。</p>
+<p>个人觉得，k8s包含着许多运维理念，理解了k8s的功能设计，就基本理解了运维。并且，一个优秀的系统是值得深入了解和学习的，这样对自身的系统架构也有很大帮助。本系列将通过阅读k8s的<a href="https://github.com/kubernetes/community/tree/master/contributors/design-proposals" target="_blank" rel="noopener noreffer">设计文档</a>来加深对k8s的理解，并输出自己的一些看法。</p>
 <hr>
 <p>软件服务于业务。随着业务规模的扩大，软件的中断的时间越长，对业务的影响面越大。所以，<strong>稳定</strong>大于一切。</p>
 <p>永远不变的就是变化，变更的速度在互联网时代决定着业务存活的时长。因此，<strong>效率</strong>很重要。</p>
@@ -190,7 +190,8 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/oops_series_two/" class="prev" rel="prev" title="Oops管理系统(二)"><i class="fas fa-angle-left fa-fw"></i>Oops管理系统(二)</a></div>
+    <div class="post-nav"><a href="/oops_series_two/" class="prev" rel="prev" title="Oops管理系统(二)"><i class="fas fa-angle-left fa-fw"></i>Oops管理系统(二)</a>
+            <a href="/k8s_design_arch/" class="next" rel="next" title="K8S设计系列：架构">K8S设计系列：架构<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 <div id="comments"><div id="gitalk" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.

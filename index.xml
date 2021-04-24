@@ -3,15 +3,22 @@
         <title>CC&#39;s Trip</title>
         <link>https://cctrip.github.io/</link>
         <description>About LoveIt Theme</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 30 Mar 2021 17:55:28 &#43;0800</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 31 Mar 2021 17:55:28 &#43;0800</lastBuildDate>
             <atom:link href="https://cctrip.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>K8S设计系列：架构</title>
+    <link>https://cctrip.github.io/k8s_design_arch/</link>
+    <pubDate>Wed, 31 Mar 2021 17:55:28 &#43;0800</pubDate>
+    <author>Author</author>
+    <guid>https://cctrip.github.io/k8s_design_arch/</guid>
+    <description><![CDATA[系列目录 《K8S设计系列：开篇》 《K8S设计系列：架构》 1. 介绍 本篇要介绍的是k8s的整体架构，以及为什么要这么设计。 Kubernetes是生]]></description>
+</item><item>
     <title>K8S设计系列：开篇</title>
     <link>https://cctrip.github.io/k8s_design/</link>
     <pubDate>Tue, 30 Mar 2021 17:55:28 &#43;0800</pubDate>
     <author>Author</author>
     <guid>https://cctrip.github.io/k8s_design/</guid>
-    <description><![CDATA[系列目录 《K8S设计系列：开篇》 1. 介绍 个人觉得，k8s包含着许多运维理念，理解了k8s的设计，就基本理解了运维。并且，一个优秀的系统是值得深]]></description>
+    <description><![CDATA[系列目录 《K8S设计系列：开篇》 1. 介绍 个人觉得，k8s包含着许多运维理念，理解了k8s的功能设计，就基本理解了运维。并且，一个优秀的系统是值]]></description>
 </item><item>
     <title>Oops管理系统(二)</title>
     <link>https://cctrip.github.io/oops_series_two/</link>
@@ -67,13 +74,6 @@
     <pubDate>Wed, 11 Nov 2020 17:55:28 &#43;0800</pubDate>
     <author>Author</author>
     <guid>https://cctrip.github.io/k8s_series_ingress/</guid>
-    <description><![CDATA[系列目录 《Kubernetes系列：开篇》 《Kubernetes系列：概述》 《Kubernetes系列：架构》 《Kubernetes系列：容]]></description>
-</item><item>
-    <title>Kubernetes系列：Service</title>
-    <link>https://cctrip.github.io/k8s_series_service/</link>
-    <pubDate>Tue, 10 Nov 2020 17:55:28 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://cctrip.github.io/k8s_series_service/</guid>
     <description><![CDATA[系列目录 《Kubernetes系列：开篇》 《Kubernetes系列：概述》 《Kubernetes系列：架构》 《Kubernetes系列：容]]></description>
 </item></channel>
 </rss>

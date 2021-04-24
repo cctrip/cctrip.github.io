@@ -9,7 +9,7 @@
 
 ## 1. 介绍
 
-个人觉得，k8s包含着许多运维理念，理解了k8s的设计，就基本理解了运维。并且，一个优秀的系统是值得深入了解和学习的。本系列将通过阅读k8s的[设计文档](https://github.com/kubernetes/community/tree/master/contributors/design-proposals)来加深对k8s的理解，并输出自己的一些看法。
+个人觉得，k8s包含着许多运维理念，理解了k8s的功能设计，就基本理解了运维。并且，一个优秀的系统是值得深入了解和学习的，这样对自身的系统架构也有很大帮助。本系列将通过阅读k8s的[设计文档](https://github.com/kubernetes/community/tree/master/contributors/design-proposals)来加深对k8s的理解，并输出自己的一些看法。
 
 ***
 
