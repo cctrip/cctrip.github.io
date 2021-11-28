@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="color-scheme" content="light dark">
+
+    
+      <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests; block-all-mixed-content; default-src 'self'; child-src 'self'; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net/; form-action 'self'; frame-src 'self'; img-src 'self'; object-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com/ https://cdn.jsdelivr.net/; script-src 'self' 'unsafe-inline' https://www.google-analytics.com; prefetch-src 'self'; connect-src 'self' https://www.google-analytics.com;">
+
+    
+
+    <meta name="author" content="Hello.CC">
+    <meta name="description" content="并发">
+    <meta name="keywords" content="blog,developer,personal">
+
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://cctrip.tech/posts/go_series_conc/conc-image.png"/>
+<meta name="twitter:title" content="Go系列：并发"/>
+<meta name="twitter:description" content="并发"/>
+
+    <meta property="og:title" content="Go系列：并发" />
+<meta property="og:description" content="并发" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cctrip.tech/posts/go_series_conc/" /><meta property="og:image" content="https://cctrip.tech/posts/go_series_conc/conc-image.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-04-07T17:55:28&#43;08:00" />
+<meta property="article:modified_time" content="2020-04-07T17:55:28&#43;08:00" />
+
+
+
+    <title>
+  Go系列：并发 · CC&#39;s Trip
+</title>
+
+    
+      <link rel="canonical" href="https://cctrip.tech/posts/go_series_conc/">
+    
+
+    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.543dc3579b222ee2eec7bc52e75060428d931ade1c0263624cf4be95f0f467a2.css" integrity="sha256-VD3DV5siLuLux7xS51BgQo2TGt4cAmNiTPS&#43;lfD0Z6I=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="/css/coder-dark.min.92eafdad7963af697840da26de3829cd3610aa623b917f6c37fb3f81e404b693.css" integrity="sha256-kur9rXljr2l4QNom3jgpzTYQqmI7kX9sN/s/geQEtpM=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/leo.png" sizes="32x32">
+    
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    <meta name="generator" content="Hugo 0.81.0" />
+  </head>
+
+  
+  
+    
+  
+  <body class="preload-transitions colorscheme-auto">
+    
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      CC&#39;s Trip
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">Blog</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/projects/">Projects</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/contact/">Contact me</a>
+            </li>
+          
+        
+        
+          
+          
+          
+            
+          
+            
+              
+                <li class="navigation-item menu-separator">
+                  <span>|</span>
+                </li>
+                
+              
+              <li class="navigation-item">
+                <a href="https://cctrip.tech/zh-cn/">🇨🇳</a>
+              </li>
+            
+          
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://cctrip.tech/posts/go_series_conc/">
+              Go系列：并发
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2020-04-07T17:55:28&#43;08:00'>
+                April 7, 2020
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              One-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/golang/">Golang</a></div>
+
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/go/">go</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <h2 id="系列目录">
+  系列目录
+  <a class="heading-link" href="#%e7%b3%bb%e5%88%97%e7%9b%ae%e5%bd%95">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p><a href="">《Go系列：内存管理》</a></p>
+<p><a href="">《Go系列：调度器》</a></p>
+<p><a href="">《Go系列：并发》</a></p>
+<hr>
+<h2 id="1-介绍">
+  1. 介绍
+  <a class="heading-link" href="#1-%e4%bb%8b%e7%bb%8d">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<h2 id="2-面向并发的内存模型">
+  2. 面向并发的内存模型
+  <a class="heading-link" href="#2-%e9%9d%a2%e5%90%91%e5%b9%b6%e5%8f%91%e7%9a%84%e5%86%85%e5%ad%98%e6%a8%a1%e5%9e%8b">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<blockquote>
+<p>Go内存模型指定了一种条件，在这种条件下，可以保证在一个goroutine中读取变量可以观察到在不同goroutine中写入同一变量所产生的值。</p>
+</blockquote>
+<p>程序如果修改被多个协程同时访问的数据，那么必须串行化这些访问操作。</p>
+<p>为了保证串行化访问，可以使用golang的channel操作或者使用sync和sync/atomic包中的同步原语来保护数据。</p>
+<h3 id="21-happens-before">
+  2.1 Happens Before
+  <a class="heading-link" href="#21-happens-before">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>在单个goroutine中，读取和写入的行为必须像它们按照程序指定的顺序执行一样。也就是说，仅当重新排序不会改变语言规范所定义的该goroutine中的行为时，编译器和处理器才可以对单个goroutine中执行的读取和写入进行重新排序。由于此重新排序，一个goroutine观察到的执行顺序可能不同于另一个goroutine所察觉到的执行顺序。例如，如果一个goroutine执行a = 1； b = 2；另一个可能会在b的更新值之前观察b的更新值。</p>
+<p>为了指定读取和写入的要求，我们定义<code>happens Before</code>，Go程序中执行内存操作的部分顺序。如果事件e1<code>happens before</code>事件e2，那么我们说e2<code>happens after</code>e1。同样的，如果e1不<code>happens before</code>e2并且e1也不<code>happens after</code>e2，那么我们说e1和e2<code>happens concurrently</code>。</p>
+<p>在单个goroutine中，事前发生顺序是程序表示的顺序。</p>
+<p>如果同时满足以下两个条件，则允许对变量v的读r观察对v的写w：</p>
+<ol>
+<li><em>r</em> does not happen before <em>w</em>.</li>
+<li>There is no other write <em>w'</em> to <code>v</code> that happens after <em>w</em> but before <em>r</em>.</li>
+</ol>
+<p>为了保证变量v的读取r观察到对v的特定写入w，请确保w是唯一允许r观察的写入。也就是说，如果同时满足以下两个条件，则保证r遵守w：</p>
+<ol>
+<li><em>w</em> happens before <em>r</em>.</li>
+<li>Any other write to the shared variable <code>v</code> either happens before <em>w</em> or after <em>r</em>.</li>
+</ol>
+<p>这对条件比第一个条件强。它要求没有其他写入与w或r同时发生。</p>
+<p>在单个goroutine中，没有并发性，因此这两个定义是等效的：read r观察最近写入w到v的值。当多个goroutine访问共享变量v时，它们必须使用同步事件来建立事件发生-在确保读取遵守期望的写入的条件之前。</p>
+<p>用v的类型的零值初始化变量v的行为与在内存模型中的写操作相同。</p>
+<p>大于单个机器字的值的读取和写入将以未指定的顺序充当多个机器字大小的操作。</p>
+<hr>
+<h3 id="22-同步">
+  2.2 同步
+  <a class="heading-link" href="#22-%e5%90%8c%e6%ad%a5">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<h4 id="221-initialization">
+  2.2.1 Initialization
+  <a class="heading-link" href="#221-initialization">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>程序初始化在单个goroutine中运行，但是该goroutine可能会创建其他同时运行的goroutine。</p>
+<p>如果包p导入了包q，则完成q的init函数<code>happen before</code>p的任何一个的开始。</p>
+<p>函数main.main的启动 <code>happen after</code>所有init函数均已完成。</p>
+<h4 id="222-goroutine-creation">
+  2.2.2 Goroutine creation
+  <a class="heading-link" href="#222-goroutine-creation">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>开始新goroutine的go语句 <code>happen before</code>该goroutine的执行开始。</p>
+<h4 id="223-goroutine-destruction">
+  2.2.3 Goroutine destruction
+  <a class="heading-link" href="#223-goroutine-destruction">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>无法保证goroutine的退出 <code>happen before</code>	程序中的任何事件</p>
+<h4 id="224-channel-communication">
+  2.2.4 Channel communication
+  <a class="heading-link" href="#224-channel-communication">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>channel通信是goroutine之间同步的主要方法。通常在不同的goroutine中，将特定通道上的每个发送与该通道上的相应接收进行匹配。</p>
+<p>一个在channel上的发送<code>happen before</code>他从该频道收到的相应信息完成。</p>
+<p>channel关闭<code>happen before</code>由于通道关闭，接收返回零值的接收</p>
+<p>来自无缓冲channel的接收<code>happen before</code>他在该channel上的发送完成了。</p>
+<p>第k次从初始化空间为C的channel的接收<code>happens before</code>第k+C次往channel完成发送。</p>
+<h4 id="225-locks">
+  2.2.5 Locks
+  <a class="heading-link" href="#225-locks">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>sync包实现了两种锁数据类型，sync.Mutex和sync.RWMutex。</p>
+<p>对于任何sync.Mutex或sync.RWMutex的锁变量l和两个描述次数的n和m（<code>n &lt; m</code>），调用第n次l.Unlock()<code>happens before</code>调用第m次l.Lock()的返回。</p>
+<p>对于sync.RWMutex变量l的任意调用<code>l.RLock</code>，<code>l.RLock</code>阻塞直到n次调用<code>l.UnLock</code>，并且n次<code>l.RUnlock</code> <code>happens before</code> 第n+1次调用<code>l.Lock</code>。</p>
+<h4 id="226-once">
+  2.2.6 Once
+  <a class="heading-link" href="#226-once">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>同步包为使用一次类型的多个goroutines进行初始化提供了一种安全的机制。多个线程可以执行一次。对于一个特定的f执行Do（f），但是只有一个将运行f（），而另一个调用将阻塞直到f（）返回。</p>
+<p>单个从once.Do(f)调用f() <code>happen before</code>任何调用once.Do(f)的返回</p>
+<hr>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    ©
+    
+      2019 -
+    
+    2021
+     Hello.CC 
+    ·
+    Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">CCoder</a>.
+    
+  </section>
+</footer>
+
+    </main>
+
+    
+      
+      <script src="/js/coder.min.03b17769f4f91ae35667e1f2a1ca8c16f50562576cf90ff32b3179926914daa5.js" integrity="sha256-A7F3afT5GuNWZ&#43;HyocqMFvUFYlds&#43;Q/zKzF5kmkU2qU="></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </body>
+
+</html>

@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="color-scheme" content="light dark">
+
+    
+      <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests; block-all-mixed-content; default-src 'self'; child-src 'self'; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net/; form-action 'self'; frame-src 'self'; img-src 'self'; object-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com/ https://cdn.jsdelivr.net/; script-src 'self' 'unsafe-inline' https://www.google-analytics.com; prefetch-src 'self'; connect-src 'self' https://www.google-analytics.com;">
+
+    
+
+    <meta name="author" content="Hello.CC">
+    <meta name="description" content="开篇">
+    <meta name="keywords" content="blog,developer,personal">
+
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://cctrip.tech/posts/oops_series_two/oops-image.jpg"/>
+<meta name="twitter:title" content="Oops管理系统(二)"/>
+<meta name="twitter:description" content="开篇"/>
+
+    <meta property="og:title" content="Oops管理系统(二)" />
+<meta property="og:description" content="开篇" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cctrip.tech/posts/oops_series_two/" /><meta property="og:image" content="https://cctrip.tech/posts/oops_series_two/oops-image.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-03-20T17:55:28&#43;08:00" />
+<meta property="article:modified_time" content="2021-03-20T17:55:28&#43;08:00" />
+
+
+
+    <title>
+  Oops管理系统(二) · CC&#39;s Trip
+</title>
+
+    
+      <link rel="canonical" href="https://cctrip.tech/posts/oops_series_two/">
+    
+
+    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.543dc3579b222ee2eec7bc52e75060428d931ade1c0263624cf4be95f0f467a2.css" integrity="sha256-VD3DV5siLuLux7xS51BgQo2TGt4cAmNiTPS&#43;lfD0Z6I=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="/css/coder-dark.min.92eafdad7963af697840da26de3829cd3610aa623b917f6c37fb3f81e404b693.css" integrity="sha256-kur9rXljr2l4QNom3jgpzTYQqmI7kX9sN/s/geQEtpM=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/leo.png" sizes="32x32">
+    
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    <meta name="generator" content="Hugo 0.81.0" />
+  </head>
+
+  
+  
+    
+  
+  <body class="preload-transitions colorscheme-auto">
+    
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      CC&#39;s Trip
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">Blog</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/projects/">Projects</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/contact/">Contact me</a>
+            </li>
+          
+        
+        
+          
+          
+          
+            
+          
+            
+              
+                <li class="navigation-item menu-separator">
+                  <span>|</span>
+                </li>
+                
+              
+              <li class="navigation-item">
+                <a href="https://cctrip.tech/zh-cn/">🇨🇳</a>
+              </li>
+            
+          
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://cctrip.tech/posts/oops_series_two/">
+              Oops管理系统(二)
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2021-03-20T17:55:28&#43;08:00'>
+                March 20, 2021
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              9-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/devops/">DevOps</a></div>
+
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/devops/">devops</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/platform/">platform</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <h2 id="系列目录">
+  系列目录
+  <a class="heading-link" href="#%e7%b3%bb%e5%88%97%e7%9b%ae%e5%bd%95">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p><a href="../oops_series_one">《Oops管理系统(一)》</a></p>
+<p><a href="../oops_series_two">《Oops管理系统(二)》</a></p>
+<hr>
+<h2 id="1-介绍">
+  1. 介绍
+  <a class="heading-link" href="#1-%e4%bb%8b%e7%bb%8d">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>本篇，要先讲下整体的技术框架。</p>
+<p>因为我们是基于go-admin这个脚手架来做前后端框架的，所以，先来说明下整个代码架构。</p>
+<p>在这之前，我们先简单说明下go程序的代码执行顺序</p>
+<h3 id="11-go程序执行顺序">
+  1.1 Go程序执行顺序
+  <a class="heading-link" href="#11-go%e7%a8%8b%e5%ba%8f%e6%89%a7%e8%a1%8c%e9%a1%ba%e5%ba%8f">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p><img src="go-order.jpg" alt=""></p>
+<ul>
+<li>执行<code>go run</code>或者编译后<code>binary</code>文件时，会先加载<code>main package</code></li>
+<li><code>main package</code>一般会<code>import</code>其他<code>package</code>，其他<code>package</code>也会<code>import</code>其依赖的<code>package</code>，这边会有一个递归的初始化操作。</li>
+<li><code>package</code>会执行<code>global variables</code>和<code>init()</code>的初始化</li>
+<li><code>main package</code>执行本身的<code>global variables</code>和<code>init()</code>的初始化</li>
+<li>执行<code>main()</code></li>
+</ul>
+<hr>
+<h2 id="2-目录结构">
+  2. 目录结构
+  <a class="heading-link" href="#2-%e7%9b%ae%e5%bd%95%e7%bb%93%e6%9e%84">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>Oops基于<a href="https://github.com/golang-standards/project-layout">project-layout</a>和<a href="">go-admin</a>构建了如下图所示的目录结构</p>
+<p><img src="project-layout.jpg" alt=""></p>
+<hr>
+<h2 id="3-源码解析">
+  3. 源码解析
+  <a class="heading-link" href="#3-%e6%ba%90%e7%a0%81%e8%a7%a3%e6%9e%90">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>这边只说明应用相关的源码逻辑。</p>
+<h3 id="31-系统初始化">
+  3.1 系统初始化
+  <a class="heading-link" href="#31-%e7%b3%bb%e7%bb%9f%e5%88%9d%e5%a7%8b%e5%8c%96">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p><strong>main.go</strong></p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#719e07">package</span> main
+
+<span style="color:#719e07">import</span> (
+	<span style="color:#2aa198">&#34;oops/cmd&#34;</span>
+)
+
+<span style="color:#268bd2">func</span> <span style="color:#268bd2">main</span>() {
+	cmd.<span style="color:#268bd2">Execute</span>()
+}
+</code></pre></div><p>main函数只有一个逻辑，加载cmd包以及执行cmd包中的Execute()函数。</p>
+<p><strong>cmd package</strong></p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#719e07">package</span> cmd
+
+<span style="color:#719e07">import</span> (
+	<span style="color:#719e07">...</span>
+	<span style="color:#2aa198">&#34;oops/internal/common/global&#34;</span>
+	<span style="color:#2aa198">&#34;github.com/spf13/cobra&#34;</span>
+	<span style="color:#2aa198">&#34;oops/cmd/api&#34;</span>
+	<span style="color:#719e07">...</span>
+)
+
+<span style="color:#268bd2">var</span> rootCmd = <span style="color:#719e07">&amp;</span>cobra.Command{
+	<span style="color:#719e07">...</span>
+}
+
+<span style="color:#719e07">...</span>
+
+<span style="color:#268bd2">func</span> <span style="color:#268bd2">init</span>() {
+  <span style="color:#719e07">...</span>
+	rootCmd.<span style="color:#268bd2">AddCommand</span>(api.StartCmd)
+	<span style="color:#719e07">...</span>
+}
+
+<span style="color:#586e75">//Execute : apply commands
+</span><span style="color:#586e75"></span><span style="color:#268bd2">func</span> <span style="color:#268bd2">Execute</span>() {
+	<span style="color:#719e07">if</span> err <span style="color:#719e07">:=</span> rootCmd.<span style="color:#268bd2">Execute</span>(); err <span style="color:#719e07">!=</span> <span style="color:#cb4b16">nil</span> {
+		os.<span style="color:#268bd2">Exit</span>(<span style="color:#719e07">-</span><span style="color:#2aa198">1</span>)
+	}
+}
+
+</code></pre></div><p>这边用到了一个cobra的命令行框架，以及加载api的相关逻辑。</p>
+<p><strong>cmd/api</strong></p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#719e07">package</span> api
+
+<span style="color:#719e07">import</span> (
+	<span style="color:#719e07">...</span>
+	<span style="color:#2aa198">&#34;github.com/spf13/cobra&#34;</span>
+	<span style="color:#2aa198">&#34;oops/internal/app/admin/router&#34;</span>
+	<span style="color:#719e07">...</span>
+)
+
+<span style="color:#268bd2">var</span> (
+	configYml <span style="color:#dc322f">string</span>
+	StartCmd  = <span style="color:#719e07">&amp;</span>cobra.Command{
+		Use:          <span style="color:#2aa198">&#34;server&#34;</span>,
+		Short:        <span style="color:#2aa198">&#34;Start API server&#34;</span>,
+		Example:      <span style="color:#2aa198">&#34;go-admin server -c config/settings.yml&#34;</span>,
+		SilenceUsage: <span style="color:#cb4b16">true</span>,
+		PreRun: <span style="color:#268bd2">func</span>(cmd <span style="color:#719e07">*</span>cobra.Command, args []<span style="color:#dc322f">string</span>) {
+			<span style="color:#268bd2">setup</span>()
+		},
+		RunE: <span style="color:#268bd2">func</span>(cmd <span style="color:#719e07">*</span>cobra.Command, args []<span style="color:#dc322f">string</span>) <span style="color:#dc322f">error</span> {
+			<span style="color:#719e07">return</span> <span style="color:#268bd2">run</span>()
+		},
+	}
+)
+
+<span style="color:#268bd2">var</span> AppRouters = <span style="color:#b58900">make</span>([]<span style="color:#268bd2">func</span>(), <span style="color:#2aa198">0</span>)
+
+<span style="color:#268bd2">func</span> <span style="color:#268bd2">init</span>() {
+	<span style="color:#719e07">...</span>
+	<span style="color:#586e75">//注册路由 fixme 其他应用的路由，在本目录新建文件放在init方法
+</span><span style="color:#586e75"></span>	AppRouters = <span style="color:#b58900">append</span>(AppRouters, router.InitRouter)
+}
+
+<span style="color:#268bd2">func</span> <span style="color:#268bd2">setup</span>() {
+
+	<span style="color:#586e75">//1. 读取配置
+</span><span style="color:#586e75"></span>	<span style="color:#719e07">...</span>
+	<span style="color:#586e75">//2. 设置日志
+</span><span style="color:#586e75"></span>	<span style="color:#719e07">...</span>
+	<span style="color:#586e75">//3. 初始化数据库链接
+</span><span style="color:#586e75"></span>	<span style="color:#719e07">...</span>
+}
+
+<span style="color:#268bd2">func</span> <span style="color:#268bd2">run</span>() <span style="color:#dc322f">error</span> {
+	<span style="color:#586e75">//运行http服务
+</span><span style="color:#586e75"></span>  <span style="color:#719e07">...</span>
+	<span style="color:#719e07">return</span> <span style="color:#cb4b16">nil</span>
+}
+
+</code></pre></div><p>这里进行了注册路由的操作，并读取配置，对日志、数据库以及http server进行初始化。</p>
+<p><strong>internal/app/admin/router</strong></p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#719e07">package</span> router
+
+<span style="color:#719e07">import</span> (
+	<span style="color:#719e07">...</span>
+	<span style="color:#2aa198">&#34;github.com/gin-gonic/gin&#34;</span>
+	log <span style="color:#2aa198">&#34;github.com/go-admin-team/go-admin-core/logger&#34;</span>
+
+	<span style="color:#2aa198">&#34;oops/internal/app/admin/middleware&#34;</span>
+	<span style="color:#2aa198">&#34;oops/internal/app/admin/middleware/handler&#34;</span>
+	common <span style="color:#2aa198">&#34;oops/internal/common/middleware&#34;</span>
+
+	<span style="color:#719e07">...</span>
+)
+
+<span style="color:#586e75">// InitRouter 路由初始化，不要怀疑，这里用到了
+</span><span style="color:#586e75"></span><span style="color:#268bd2">func</span> <span style="color:#268bd2">InitRouter</span>() {
+	<span style="color:#719e07">...</span>
+	middleware.<span style="color:#268bd2">InitMiddleware</span>(r)
+	<span style="color:#586e75">// the jwt middleware
+</span><span style="color:#586e75"></span>	authMiddleware, err <span style="color:#719e07">:=</span> middleware.<span style="color:#268bd2">AuthInit</span>()
+	<span style="color:#719e07">if</span> err <span style="color:#719e07">!=</span> <span style="color:#cb4b16">nil</span> {
+		log.<span style="color:#268bd2">Fatalf</span>(<span style="color:#2aa198">&#34;JWT Init Error, %s&#34;</span>, err.<span style="color:#268bd2">Error</span>())
+	}
+
+	<span style="color:#586e75">// 注册系统路由
+</span><span style="color:#586e75"></span>	<span style="color:#268bd2">InitSysRouter</span>(r, authMiddleware)
+
+	<span style="color:#586e75">// 注册业务路由
+</span><span style="color:#586e75"></span>	<span style="color:#586e75">// TODO: 这里可存放业务路由，里边并无实际路由只有演示代码
+</span><span style="color:#586e75"></span>	<span style="color:#268bd2">InitExamplesRouter</span>(r, authMiddleware)
+}
+
+
+<span style="color:#268bd2">var</span> (
+	routerNoCheckRole = <span style="color:#b58900">make</span>([]<span style="color:#268bd2">func</span>(<span style="color:#719e07">*</span>gin.RouterGroup), <span style="color:#2aa198">0</span>)
+	routerCheckRole   = <span style="color:#b58900">make</span>([]<span style="color:#268bd2">func</span>(v1 <span style="color:#719e07">*</span>gin.RouterGroup, authMiddleware <span style="color:#719e07">*</span>jwt.GinJWTMiddleware), <span style="color:#2aa198">0</span>)
+)
+
+<span style="color:#586e75">// 路由示例
+</span><span style="color:#586e75"></span><span style="color:#268bd2">func</span> <span style="color:#268bd2">InitExamplesRouter</span>(r <span style="color:#719e07">*</span>gin.Engine, authMiddleware <span style="color:#719e07">*</span>jwt.GinJWTMiddleware) <span style="color:#719e07">*</span>gin.Engine {
+
+	<span style="color:#586e75">// 无需认证的路由
+</span><span style="color:#586e75"></span>	<span style="color:#268bd2">examplesNoCheckRoleRouter</span>(r)
+	<span style="color:#586e75">// 需要认证的路由
+</span><span style="color:#586e75"></span>	<span style="color:#268bd2">examplesCheckRoleRouter</span>(r, authMiddleware)
+
+	<span style="color:#719e07">return</span> r
+}
+
+<span style="color:#586e75">// 无需认证的路由示例
+</span><span style="color:#586e75"></span><span style="color:#268bd2">func</span> <span style="color:#268bd2">examplesNoCheckRoleRouter</span>(r <span style="color:#719e07">*</span>gin.Engine) {
+	<span style="color:#586e75">// 可根据业务需求来设置接口版本
+</span><span style="color:#586e75"></span>	v1 <span style="color:#719e07">:=</span> r.<span style="color:#268bd2">Group</span>(<span style="color:#2aa198">&#34;/api/v1&#34;</span>)
+	<span style="color:#586e75">// 空接口防止v1定义无使用报错
+</span><span style="color:#586e75"></span>	v1.<span style="color:#268bd2">GET</span>(<span style="color:#2aa198">&#34;/nilcheckrole&#34;</span>, <span style="color:#cb4b16">nil</span>)
+
+	<span style="color:#719e07">for</span> _, f <span style="color:#719e07">:=</span> <span style="color:#719e07">range</span> routerNoCheckRole {
+		<span style="color:#268bd2">f</span>(v1)
+	}
+
+	<span style="color:#586e75">// {{无需认证路由自动补充在此处请勿删除}}
+</span><span style="color:#586e75"></span>	<span style="color:#586e75">//registerSysFileInfoRouter(v1)
+</span><span style="color:#586e75"></span>}
+
+<span style="color:#586e75">// 需要认证的路由示例
+</span><span style="color:#586e75"></span><span style="color:#268bd2">func</span> <span style="color:#268bd2">examplesCheckRoleRouter</span>(r <span style="color:#719e07">*</span>gin.Engine, authMiddleware <span style="color:#719e07">*</span>jwtauth.GinJWTMiddleware) {
+	<span style="color:#586e75">// 可根据业务需求来设置接口版本
+</span><span style="color:#586e75"></span>	v1 <span style="color:#719e07">:=</span> r.<span style="color:#268bd2">Group</span>(<span style="color:#2aa198">&#34;/api/v1&#34;</span>)
+	<span style="color:#586e75">// 空接口防止v1定义无使用报错
+</span><span style="color:#586e75"></span>	v1.<span style="color:#268bd2">GET</span>(<span style="color:#2aa198">&#34;/checkrole&#34;</span>, <span style="color:#cb4b16">nil</span>)
+
+	<span style="color:#719e07">for</span> _, f <span style="color:#719e07">:=</span> <span style="color:#719e07">range</span> routerCheckRole {
+		<span style="color:#268bd2">f</span>(v1, authMiddleware)
+	}
+}
+
+</code></pre></div><p>这里面实现了具体的路由注册接口逻辑，后续新增的业务路由注册只需要往<code>routerCheckRole</code>和<code>routerNoCheckRole</code>变量中插入数据即可。</p>
+<p>一个例子：</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">
+<span style="color:#268bd2">func</span> <span style="color:#268bd2">init</span>() {
+	routerCheckRole = <span style="color:#b58900">append</span>(routerCheckRole, registerApplicationRouter)
+}
+
+<span style="color:#586e75">// 需认证的路由代码
+</span><span style="color:#586e75"></span><span style="color:#268bd2">func</span> <span style="color:#268bd2">registerApplicationRouter</span>(v1 <span style="color:#719e07">*</span>gin.RouterGroup, authMiddleware <span style="color:#719e07">*</span>jwt.GinJWTMiddleware) {
+	api <span style="color:#719e07">:=</span> <span style="color:#719e07">&amp;</span>cmdb.Application{}
+	r <span style="color:#719e07">:=</span> v1.<span style="color:#268bd2">Group</span>(<span style="color:#2aa198">&#34;/cmdb/application&#34;</span>).<span style="color:#268bd2">Use</span>(authMiddleware.<span style="color:#268bd2">MiddlewareFunc</span>()).<span style="color:#268bd2">Use</span>(middleware2.<span style="color:#268bd2">AuthCheckRole</span>()).<span style="color:#268bd2">Use</span>(actions.<span style="color:#268bd2">PermissionAction</span>())
+	{
+		r.<span style="color:#268bd2">GET</span>(<span style="color:#2aa198">&#34;&#34;</span>, api.GetApplicationList)
+		r.<span style="color:#268bd2">GET</span>(<span style="color:#2aa198">&#34;/:id&#34;</span>, api.GetApplication)
+		r.<span style="color:#268bd2">POST</span>(<span style="color:#2aa198">&#34;&#34;</span>, api.InsertApplication)
+		r.<span style="color:#268bd2">PUT</span>(<span style="color:#2aa198">&#34;&#34;</span>, api.UpdateApplication)
+		r.<span style="color:#268bd2">DELETE</span>(<span style="color:#2aa198">&#34;&#34;</span>, api.DeleteApplication)
+	}
+}
+</code></pre></div><p>该例子将应用相关的路由信息添加到了<code>routerCheckRole</code>里面。</p>
+<hr>
+<h3 id="32-定义一个业务">
+  3.2 定义一个业务
+  <a class="heading-link" href="#32-%e5%ae%9a%e4%b9%89%e4%b8%80%e4%b8%aa%e4%b8%9a%e5%8a%a1">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p><strong>internal/app</strong></p>
+<p>目录结构说明</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">.
+├── admin
+│   ├── apis
+│   │   ├── cmdb
+│   │   │   └── application.go
+│   ├── middleware
+│   ├── models
+│   │   ├── cmdb
+│   │   │   └── application.go
+│   ├── router
+│   │   ├── cmdb.go
+│   │   ├── router.go
+│   └── service
+│       ├── cmdb
+│       │   ├── application.go
+│       │   ├── dto
+│       │   │		├── application.go
+</code></pre></div><p>admin：可以理解成一个project</p>
+<p>apis.cmdb：是project的api文件</p>
+<p>middleware：是project的中间件</p>
+<p>models.cmdb：是project的数据库层的模型</p>
+<p>router：是project的路由</p>
+<p>service.cmdb：是project的业务逻辑处理</p>
+<p>service.cmdb.dto：是project的api对应的数据接收以及解析模型</p>
+<p>现在，我们按照 models、service.dto、service、apis、router这个顺序来说明；</p>
+<p><strong>models</strong></p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#719e07">package</span> cmdb
+
+<span style="color:#719e07">import</span> (
+	<span style="color:#2aa198">&#34;oops/internal/app/admin/models/system&#34;</span>
+	<span style="color:#2aa198">&#34;oops/internal/common/models&#34;</span>
+)
+
+<span style="color:#268bd2">type</span> Application <span style="color:#268bd2">struct</span> {
+	models.ControlBy
+	models.ModelTime
+	AppId    <span style="color:#dc322f">int</span>             <span style="color:#2aa198">`gorm:&#34;primaryKey;autoIncrement;comment:应用ID&#34;  json:&#34;appId&#34;`</span>
+	AppName  <span style="color:#dc322f">string</span>          <span style="color:#2aa198">`json:&#34;appName&#34; gorm:&#34;type:varchar(64);comment:应用名称&#34;`</span>
+	Language <span style="color:#dc322f">string</span>          <span style="color:#2aa198">`json:&#34;language&#34; gorm:&#34;type:varchar(128);comment:语言&#34;`</span>
+	Repo     <span style="color:#dc322f">string</span>          <span style="color:#2aa198">`json:&#34;repo&#34; gorm:&#34;type:varchar(128);comment:代码仓库&#34;`</span>
+	DeptId   <span style="color:#dc322f">int</span>             <span style="color:#2aa198">`json:&#34;deptId&#34; gorm:&#34;type:bigint(20);comment:部门&#34;`</span>
+	UserId   <span style="color:#dc322f">int</span>             <span style="color:#2aa198">`json:&#34;userId&#34; gorm:&#34;type:bigint(20);comment:用户&#34;`</span>
+	Remark   <span style="color:#dc322f">string</span>          <span style="color:#2aa198">`json:&#34;remark&#34; gorm:&#34;type:varchar(255);comment:备注&#34;`</span>
+	Status   <span style="color:#dc322f">string</span>          <span style="color:#2aa198">`json:&#34;status&#34; gorm:&#34;type:varchar(4);comment:状态&#34;`</span>
+	Dept     <span style="color:#719e07">*</span>system.SysDept <span style="color:#2aa198">`json:&#34;dept&#34;`</span>
+	User     <span style="color:#719e07">*</span>system.SysUser <span style="color:#2aa198">`json:&#34;user&#34;`</span>
+}
+
+<span style="color:#268bd2">func</span> (Application) <span style="color:#268bd2">TableName</span>() <span style="color:#dc322f">string</span> {
+	<span style="color:#719e07">return</span> <span style="color:#2aa198">&#34;application&#34;</span>
+}
+
+<span style="color:#268bd2">func</span> (e <span style="color:#719e07">*</span>Application) <span style="color:#268bd2">Generate</span>() models.ActiveRecord {
+	o <span style="color:#719e07">:=</span> <span style="color:#719e07">*</span>e
+	<span style="color:#719e07">return</span> <span style="color:#719e07">&amp;</span>o
+}
+
+<span style="color:#268bd2">func</span> (e <span style="color:#719e07">*</span>Application) <span style="color:#268bd2">GetId</span>() <span style="color:#268bd2">interface</span>{} {
+	<span style="color:#719e07">return</span> e.AppId
+}
+
+</code></pre></div><p>首先，是一个结构体<code>Application</code>里边含有正常的数据库表字段，但是其中又包含了三个结构体：</p>
+<p>1、<code>models.Model</code> 表id 默认主键是固定的ID和自增长的int类型</p>
+<p>2、<code>models.ControlBy</code> 表创建人和修改人 数据库表默认必有字段</p>
+<p>3、<code>models.ModelTime</code> 表创建时间和修改时间、删除时间的字段默认必有字段</p>
+<p><strong>dto</strong></p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#719e07">package</span> dto
+
+<span style="color:#719e07">import</span> (
+	<span style="color:#2aa198">&#34;oops/internal/common/apis&#34;</span>
+
+	<span style="color:#2aa198">&#34;github.com/gin-gonic/gin&#34;</span>
+
+	<span style="color:#2aa198">&#34;oops/internal/app/admin/models/cmdb&#34;</span>
+	<span style="color:#2aa198">&#34;oops/internal/common/dto&#34;</span>
+	common <span style="color:#2aa198">&#34;oops/internal/common/models&#34;</span>
+)
+<span style="color:#586e75">// ApplicationSearch 搜索列表对应的数据接收模型 主要针对分页、列表；
+</span><span style="color:#586e75"></span><span style="color:#268bd2">type</span> ApplicationSearch <span style="color:#268bd2">struct</span> {
+	dto.Pagination <span style="color:#2aa198">`search:&#34;-&#34;`</span>
+	AppId          <span style="color:#dc322f">int</span>    <span style="color:#2aa198">`form:&#34;AppId&#34; search:&#34;type:exact;column:app_id;table:application&#34; comment:&#34;应用ID&#34;`</span>
+	AppName        <span style="color:#dc322f">string</span> <span style="color:#2aa198">`form:&#34;appName&#34; search:&#34;type:contains;column:app_name;table:application&#34; comment:&#34;应用名称&#34;`</span>
+	Language       <span style="color:#dc322f">string</span> <span style="color:#2aa198">`form:&#34;language&#34; search:&#34;type:contains;column:language;table:application&#34; comment:&#34;语言&#34;`</span>
+	Repo           <span style="color:#dc322f">string</span> <span style="color:#2aa198">`form:&#34;repo&#34; search:&#34;type:contains;column:repo;table:application&#34; comment:&#34;仓库地址&#34;`</span>
+	DeptId         <span style="color:#dc322f">string</span> <span style="color:#2aa198">`form:&#34;deptId&#34; search:&#34;type:exact;column:dept_id;table:application&#34; comment:&#34;部门&#34;`</span>
+	UserId         <span style="color:#dc322f">string</span> <span style="color:#2aa198">`form:&#34;userId&#34; search:&#34;type:exact;column:user_id;table:application&#34; comment:&#34;用户&#34;`</span>
+	Status         <span style="color:#dc322f">string</span> <span style="color:#2aa198">`form:&#34;status&#34; search:&#34;type:exact;column:status;table:application&#34; comment:&#34;状态&#34;`</span>
+}
+
+<span style="color:#586e75">// GetNeedSearch 将search 转化为interface
+</span><span style="color:#586e75"></span><span style="color:#268bd2">func</span> (m <span style="color:#719e07">*</span>ApplicationSearch) <span style="color:#268bd2">GetNeedSearch</span>() <span style="color:#268bd2">interface</span>{} {
+	<span style="color:#719e07">return</span> <span style="color:#719e07">*</span>m
+}
+
+<span style="color:#586e75">// Bind 从上下文中解析数据
+</span><span style="color:#586e75"></span><span style="color:#268bd2">func</span> (m <span style="color:#719e07">*</span>ApplicationSearch) <span style="color:#268bd2">Bind</span>(ctx <span style="color:#719e07">*</span>gin.Context) <span style="color:#dc322f">error</span> {
+	log <span style="color:#719e07">:=</span> apis.<span style="color:#268bd2">GetRequestLogger</span>(ctx)
+	err <span style="color:#719e07">:=</span> ctx.<span style="color:#268bd2">ShouldBind</span>(m)
+	<span style="color:#719e07">if</span> err <span style="color:#719e07">!=</span> <span style="color:#cb4b16">nil</span> {
+		log.<span style="color:#268bd2">Debugf</span>(<span style="color:#2aa198">&#34;ShouldBind error: %s&#34;</span>, err.<span style="color:#268bd2">Error</span>())
+	}
+	<span style="color:#719e07">return</span> err
+}
+<span style="color:#586e75">// Generate 将数据转化成数据库使用的结构体
+</span><span style="color:#586e75"></span><span style="color:#268bd2">func</span> (m <span style="color:#719e07">*</span>ApplicationSearch) <span style="color:#268bd2">Generate</span>() dto.Index {
+	o <span style="color:#719e07">:=</span> <span style="color:#719e07">*</span>m
+	<span style="color:#719e07">return</span> <span style="color:#719e07">&amp;</span>o
+}
+
+<span style="color:#586e75">// ApplicationControl 创建、修改使用的数据接收模型
+</span><span style="color:#586e75"></span><span style="color:#268bd2">type</span> ApplicationControl <span style="color:#268bd2">struct</span> {
+	AppId    <span style="color:#dc322f">int</span>    <span style="color:#2aa198">`json:&#34;appId&#34; comment:应用ID&#34;`</span>
+	AppName  <span style="color:#dc322f">string</span> <span style="color:#2aa198">`json:&#34;appName&#34; comment:应用名称&#34;`</span>
+	Language <span style="color:#dc322f">string</span> <span style="color:#2aa198">`json:&#34;language&#34; comment:语言&#34;`</span>
+	Repo     <span style="color:#dc322f">string</span> <span style="color:#2aa198">`json:&#34;repo&#34; comment:代码仓库&#34;`</span>
+	DeptId   <span style="color:#dc322f">int</span>    <span style="color:#2aa198">`json:&#34;deptId&#34; comment:部门&#34;`</span>
+	UserId   <span style="color:#dc322f">int</span>    <span style="color:#2aa198">`json:&#34;userId&#34; comment:用户&#34;`</span>
+	Remark   <span style="color:#dc322f">string</span> <span style="color:#2aa198">`json:&#34;remark&#34; comment:备注&#34;`</span>
+	Status   <span style="color:#dc322f">string</span> <span style="color:#2aa198">`json:&#34;status&#34; comment:状态&#34;`</span>
+}
+
+<span style="color:#586e75">// Bind 从上下文中解析数据
+</span><span style="color:#586e75"></span><span style="color:#268bd2">func</span> (a <span style="color:#719e07">*</span>ApplicationControl) <span style="color:#268bd2">Bind</span>(ctx <span style="color:#719e07">*</span>gin.Context) <span style="color:#dc322f">error</span> {
+	log <span style="color:#719e07">:=</span> apis.<span style="color:#268bd2">GetRequestLogger</span>(ctx)
+	<span style="color:#586e75">//err := ctx.ShouldBindUri(s)
+</span><span style="color:#586e75"></span>	<span style="color:#586e75">//if err != nil {
+</span><span style="color:#586e75"></span>	<span style="color:#586e75">//	log.Debugf(&#34;ShouldBindUri error: %s&#34;, err.Error())
+</span><span style="color:#586e75"></span>	<span style="color:#586e75">//	return err
+</span><span style="color:#586e75"></span>	<span style="color:#586e75">//}
+</span><span style="color:#586e75"></span>	err <span style="color:#719e07">:=</span> ctx.<span style="color:#268bd2">ShouldBind</span>(a)
+	<span style="color:#719e07">if</span> err <span style="color:#719e07">!=</span> <span style="color:#cb4b16">nil</span> {
+		log.<span style="color:#268bd2">Debugf</span>(<span style="color:#2aa198">&#34;ShouldBind error: %s&#34;</span>, err.<span style="color:#268bd2">Error</span>())
+	}
+	<span style="color:#719e07">return</span> err
+}
+
+<span style="color:#586e75">// Generate 将数据转化成数据库使用的结构体
+</span><span style="color:#586e75"></span><span style="color:#268bd2">func</span> (a <span style="color:#719e07">*</span>ApplicationControl) <span style="color:#268bd2">Generate</span>() dto.Control {
+	cp <span style="color:#719e07">:=</span> <span style="color:#719e07">*</span>a
+	<span style="color:#719e07">return</span> <span style="color:#719e07">&amp;</span>cp
+}
+
+<span style="color:#268bd2">func</span> (a <span style="color:#719e07">*</span>ApplicationControl) <span style="color:#268bd2">GenerateM</span>() (common.ActiveRecord, <span style="color:#dc322f">error</span>) {
+	<span style="color:#719e07">return</span> <span style="color:#719e07">&amp;</span>cmdb.Application{
+		AppId:    a.AppId,
+		AppName:  a.AppName,
+		Language: a.Language,
+		Repo:     a.Repo,
+		DeptId:   a.DeptId,
+		UserId:   a.UserId,
+		Remark:   a.Remark,
+		Status:   a.Status,
+	}, <span style="color:#cb4b16">nil</span>
+}
+
+<span style="color:#586e75">// GetId 获取id
+</span><span style="color:#586e75"></span><span style="color:#268bd2">func</span> (s <span style="color:#719e07">*</span>ApplicationControl) <span style="color:#268bd2">GetId</span>() <span style="color:#268bd2">interface</span>{} {
+	<span style="color:#719e07">return</span> s.AppId
+}
+
+<span style="color:#586e75">// ApplicationById 通过id查询、删除等使用的模型
+</span><span style="color:#586e75"></span><span style="color:#268bd2">type</span> ApplicationById <span style="color:#268bd2">struct</span> {
+	dto.ObjectById
+}
+
+<span style="color:#268bd2">func</span> (s <span style="color:#719e07">*</span>ApplicationById) <span style="color:#268bd2">Generate</span>() dto.Control {
+	cp <span style="color:#719e07">:=</span> <span style="color:#719e07">*</span>s
+	<span style="color:#719e07">return</span> <span style="color:#719e07">&amp;</span>cp
+}
+
+<span style="color:#268bd2">func</span> (s <span style="color:#719e07">*</span>ApplicationById) <span style="color:#268bd2">GenerateM</span>() (common.ActiveRecord, <span style="color:#dc322f">error</span>) {
+	<span style="color:#719e07">return</span> <span style="color:#719e07">&amp;</span>cmdb.Application{}, <span style="color:#cb4b16">nil</span>
+}
+</code></pre></div><p><strong>service</strong></p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-golang" data-lang="golang"><span style="color:#719e07">package</span> cmdb
+
+<span style="color:#719e07">import</span> (
+	<span style="color:#2aa198">&#34;errors&#34;</span>
+
+	<span style="color:#2aa198">&#34;gorm.io/gorm&#34;</span>
+
+	<span style="color:#2aa198">&#34;oops/internal/app/admin/models/cmdb&#34;</span>
+	<span style="color:#2aa198">&#34;oops/internal/common/actions&#34;</span>
+	cDto <span style="color:#2aa198">&#34;oops/internal/common/dto&#34;</span>
+	common <span style="color:#2aa198">&#34;oops/internal/common/models&#34;</span>
+	<span style="color:#2aa198">&#34;oops/internal/common/service&#34;</span>
+)
+
+<span style="color:#268bd2">type</span> Application <span style="color:#268bd2">struct</span> {
+	service.Service
+}
+
+<span style="color:#586e75">// GetApplicationPage 获取Application列表
+</span><span style="color:#586e75"></span><span style="color:#268bd2">func</span> (e <span style="color:#719e07">*</span>Application) <span style="color:#268bd2">GetApplicationPage</span>(c cDto.Index, p <span style="color:#719e07">*</span>actions.DataPermission, list <span style="color:#719e07">*</span>[]cmdb.Application, count <span style="color:#719e07">*</span><span style="color:#dc322f">int64</span>) <span style="color:#dc322f">error</span> {
+	<span style="color:#268bd2">var</span> err <span style="color:#dc322f">error</span>
+	<span style="color:#268bd2">var</span> data cmdb.Application
+
+	err = e.Orm.<span style="color:#268bd2">Model</span>(<span style="color:#719e07">&amp;</span>data).
+		<span style="color:#268bd2">Scopes</span>(
+			cDto.<span style="color:#268bd2">MakeCondition</span>(c.<span style="color:#268bd2">GetNeedSearch</span>()),
+			cDto.<span style="color:#268bd2">Paginate</span>(c.<span style="color:#268bd2">GetPageSize</span>(), c.<span style="color:#268bd2">GetPageIndex</span>()),
+			actions.<span style="color:#268bd2">Permission</span>(data.<span style="color:#268bd2">TableName</span>(), p),
+		).
+		<span style="color:#586e75">//Preload(&#34;Dept&#34;).
+</span><span style="color:#586e75"></span>		<span style="color:#268bd2">Find</span>(list).<span style="color:#268bd2">Limit</span>(<span style="color:#719e07">-</span><span style="color:#2aa198">1</span>).<span style="color:#268bd2">Offset</span>(<span style="color:#719e07">-</span><span style="color:#2aa198">1</span>).
+		<span style="color:#268bd2">Count</span>(count).Error
+	<span style="color:#719e07">if</span> err <span style="color:#719e07">!=</span> <span style="color:#cb4b16">nil</span> {
+		e.Log.<span style="color:#268bd2">Errorf</span>(<span style="color:#2aa198">&#34;db error: %s&#34;</span>, err)
+		<span style="color:#719e07">return</span> err
+	}
+	<span style="color:#719e07">return</span> <span style="color:#cb4b16">nil</span>
+}
+
+<span style="color:#586e75">// GetApplication 获取Application对象
+</span><span style="color:#586e75"></span><span style="color:#268bd2">func</span> (e <span style="color:#719e07">*</span>Application) <span style="color:#268bd2">GetApplication</span>(d cDto.Control, p <span style="color:#719e07">*</span>actions.DataPermission, model <span style="color:#719e07">*</span>cmdb.Application) <span style="color:#dc322f">error</span> {
+	<span style="color:#268bd2">var</span> err <span style="color:#dc322f">error</span>
+	<span style="color:#268bd2">var</span> data cmdb.Application
+
+	db <span style="color:#719e07">:=</span> e.Orm.<span style="color:#268bd2">Model</span>(<span style="color:#719e07">&amp;</span>data).
+		<span style="color:#268bd2">Scopes</span>(
+			actions.<span style="color:#268bd2">Permission</span>(data.<span style="color:#268bd2">TableName</span>(), p),
+		).
+		<span style="color:#268bd2">First</span>(model, d.<span style="color:#268bd2">GetId</span>())
+	err = db.Error
+	<span style="color:#719e07">if</span> err <span style="color:#719e07">!=</span> <span style="color:#cb4b16">nil</span> <span style="color:#719e07">&amp;&amp;</span> errors.<span style="color:#268bd2">Is</span>(err, gorm.ErrRecordNotFound) {
+		err = errors.<span style="color:#268bd2">New</span>(<span style="color:#2aa198">&#34;查看对象不存在或无权查看&#34;</span>)
+		e.Log.<span style="color:#268bd2">Errorf</span>(<span style="color:#2aa198">&#34;db error: %s&#34;</span>, err)
+		<span style="color:#719e07">return</span> err
+	}
+	<span style="color:#719e07">if</span> db.Error <span style="color:#719e07">!=</span> <span style="color:#cb4b16">nil</span> {
+		e.Log.<span style="color:#268bd2">Errorf</span>(<span style="color:#2aa198">&#34;db error: %s&#34;</span>, err)
+		<span style="color:#719e07">return</span> err
+	}
+	<span style="color:#719e07">return</span> <span style="color:#cb4b16">nil</span>
+}
+
+<span style="color:#586e75">// InsertApplication 创建Application对象
+</span><span style="color:#586e75"></span><span style="color:#268bd2">func</span> (e <span style="color:#719e07">*</span>Application) <span style="color:#268bd2">InsertApplication</span>(model common.ActiveRecord) <span style="color:#dc322f">error</span> {
+	<span style="color:#268bd2">var</span> err <span style="color:#dc322f">error</span>
+	<span style="color:#268bd2">var</span> data cmdb.Application
+
+	err = e.Orm.<span style="color:#268bd2">Model</span>(<span style="color:#719e07">&amp;</span>data).
+		<span style="color:#268bd2">Create</span>(model).Error
+	<span style="color:#719e07">if</span> err <span style="color:#719e07">!=</span> <span style="color:#cb4b16">nil</span> {
+		e.Log.<span style="color:#268bd2">Errorf</span>(<span style="color:#2aa198">&#34;db error: %s&#34;</span>, err)
+		<span style="color:#719e07">return</span> err
+	}
+	<span style="color:#719e07">return</span> <span style="color:#cb4b16">nil</span>
+}
+
+<span style="color:#586e75">// UpdateApplication 修改Application对象
+</span><span style="color:#586e75"></span><span style="color:#268bd2">func</span> (e <span style="color:#719e07">*</span>Application) <span style="color:#268bd2">UpdateApplication</span>(c common.ActiveRecord, p <span style="color:#719e07">*</span>actions.DataPermission) <span style="color:#dc322f">error</span> {
+	<span style="color:#268bd2">var</span> err <span style="color:#dc322f">error</span>
+
+	db <span style="color:#719e07">:=</span> e.Orm.<span style="color:#268bd2">Model</span>(c).
+		<span style="color:#268bd2">Scopes</span>(
+			actions.<span style="color:#268bd2">Permission</span>(c.<span style="color:#268bd2">TableName</span>(), p),
+		).<span style="color:#268bd2">Where</span>(c.<span style="color:#268bd2">GetId</span>()).<span style="color:#268bd2">Updates</span>(c)
+	<span style="color:#719e07">if</span> db.Error <span style="color:#719e07">!=</span> <span style="color:#cb4b16">nil</span> {
+		e.Log.<span style="color:#268bd2">Errorf</span>(<span style="color:#2aa198">&#34;db error: %s&#34;</span>, err)
+		<span style="color:#719e07">return</span> err
+	}
+	<span style="color:#719e07">if</span> db.RowsAffected <span style="color:#719e07">==</span> <span style="color:#2aa198">0</span> {
+		<span style="color:#719e07">return</span> errors.<span style="color:#268bd2">New</span>(<span style="color:#2aa198">&#34;无权更新该数据&#34;</span>)
+
+	}
+	<span style="color:#719e07">return</span> <span style="color:#cb4b16">nil</span>
+}
+
+<span style="color:#586e75">// RemoveApplication 删除Application
+</span><span style="color:#586e75"></span><span style="color:#268bd2">func</span> (e <span style="color:#719e07">*</span>Application) <span style="color:#268bd2">RemoveApplication</span>(d cDto.Control, c common.ActiveRecord, p <span style="color:#719e07">*</span>actions.DataPermission) <span style="color:#dc322f">error</span> {
+	<span style="color:#268bd2">var</span> err <span style="color:#dc322f">error</span>
+	<span style="color:#268bd2">var</span> data cmdb.Application
+
+	db <span style="color:#719e07">:=</span> e.Orm.<span style="color:#268bd2">Model</span>(<span style="color:#719e07">&amp;</span>data).
+		<span style="color:#268bd2">Scopes</span>(
+			actions.<span style="color:#268bd2">Permission</span>(data.<span style="color:#268bd2">TableName</span>(), p),
+		).<span style="color:#268bd2">Where</span>(d.<span style="color:#268bd2">GetId</span>()).<span style="color:#268bd2">Delete</span>(c)
+	<span style="color:#719e07">if</span> db.Error <span style="color:#719e07">!=</span> <span style="color:#cb4b16">nil</span> {
+		err = db.Error
+		e.Log.<span style="color:#268bd2">Errorf</span>(<span style="color:#2aa198">&#34;Delete error: %s&#34;</span>, err)
+		<span style="color:#719e07">return</span> err
+	}
+	<span style="color:#719e07">if</span> db.RowsAffected <span style="color:#719e07">==</span> <span style="color:#2aa198">0</span> {
+		err = errors.<span style="color:#268bd2">New</span>(<span style="color:#2aa198">&#34;无权删除该数据&#34;</span>)
+		<span style="color:#719e07">return</span> err
+	}
+	<span style="color:#719e07">return</span> <span style="color:#cb4b16">nil</span>
+}
+</code></pre></div><p>service中包含了对数据的一个数据操作</p>
+<p><strong>apis</strong></p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#719e07">package</span> cmdb
+
+<span style="color:#719e07">import</span> (
+	<span style="color:#2aa198">&#34;net/http&#34;</span>
+
+	<span style="color:#2aa198">&#34;github.com/gin-gonic/gin&#34;</span>
+	<span style="color:#2aa198">&#34;github.com/go-admin-team/go-admin-core/sdk/pkg/jwtauth/user&#34;</span>
+
+	<span style="color:#2aa198">&#34;oops/internal/app/admin/models/cmdb&#34;</span>
+	service <span style="color:#2aa198">&#34;oops/internal/app/admin/service/cmdb&#34;</span>
+	<span style="color:#2aa198">&#34;oops/internal/app/admin/service/cmdb/dto&#34;</span>
+	<span style="color:#2aa198">&#34;oops/internal/common/actions&#34;</span>
+	<span style="color:#2aa198">&#34;oops/internal/common/apis&#34;</span>
+	common <span style="color:#2aa198">&#34;oops/internal/common/models&#34;</span>
+)
+
+<span style="color:#268bd2">type</span> Application <span style="color:#268bd2">struct</span> {
+	apis.Api
+}
+
+<span style="color:#586e75">// @Summary 列表应用信息数据
+</span><span style="color:#586e75">// @Description 获取JSON
+</span><span style="color:#586e75">// @Tags 应用
+</span><span style="color:#586e75">// @Param appName query string false &#34;appName&#34;
+</span><span style="color:#586e75">// @Success 200 {string} string &#34;{&#34;code&#34;: 200, &#34;data&#34;: [...]}&#34;
+</span><span style="color:#586e75">// @Success 200 {string} string &#34;{&#34;code&#34;: -1, &#34;message&#34;: &#34;抱歉未找到相关信息&#34;}&#34;
+</span><span style="color:#586e75">// @Router /api/v1/cmdb/application [get]
+</span><span style="color:#586e75">// @Security Bearer
+</span><span style="color:#586e75"></span><span style="color:#268bd2">func</span> (e <span style="color:#719e07">*</span>Application) <span style="color:#268bd2">GetApplicationList</span>(c <span style="color:#719e07">*</span>gin.Context) {
+	log <span style="color:#719e07">:=</span> e.<span style="color:#268bd2">GetLogger</span>(c)
+	d <span style="color:#719e07">:=</span> <span style="color:#b58900">new</span>(dto.ApplicationSearch)
+	db, err <span style="color:#719e07">:=</span> e.<span style="color:#268bd2">GetOrm</span>(c)
+	<span style="color:#719e07">if</span> err <span style="color:#719e07">!=</span> <span style="color:#cb4b16">nil</span> {
+		log.<span style="color:#268bd2">Error</span>(err)
+		<span style="color:#719e07">return</span>
+	}
+
+	req <span style="color:#719e07">:=</span> d.<span style="color:#268bd2">Generate</span>()
+
+	<span style="color:#586e75">//查询列表
+</span><span style="color:#586e75"></span>	err = req.<span style="color:#268bd2">Bind</span>(c)
+	<span style="color:#719e07">if</span> err <span style="color:#719e07">!=</span> <span style="color:#cb4b16">nil</span> {
+		log.<span style="color:#268bd2">Warnf</span>(<span style="color:#2aa198">&#34;Bind error: %s&#34;</span>, err.<span style="color:#268bd2">Error</span>())
+		e.<span style="color:#268bd2">Error</span>(c, http.StatusUnprocessableEntity, err, <span style="color:#2aa198">&#34;参数验证失败&#34;</span>)
+		<span style="color:#719e07">return</span>
+	}
+
+	<span style="color:#586e75">//数据权限检查
+</span><span style="color:#586e75"></span>	p <span style="color:#719e07">:=</span> actions.<span style="color:#268bd2">GetPermissionFromContext</span>(c)
+
+	list <span style="color:#719e07">:=</span> <span style="color:#b58900">make</span>([]cmdb.Application, <span style="color:#2aa198">0</span>)
+	<span style="color:#268bd2">var</span> count <span style="color:#dc322f">int64</span>
+	serviceStudent <span style="color:#719e07">:=</span> service.Application{}
+	serviceStudent.Log = log
+	serviceStudent.Orm = db
+	err = serviceStudent.<span style="color:#268bd2">GetApplicationPage</span>(req, p, <span style="color:#719e07">&amp;</span>list, <span style="color:#719e07">&amp;</span>count)
+	<span style="color:#719e07">if</span> err <span style="color:#719e07">!=</span> <span style="color:#cb4b16">nil</span> {
+		e.<span style="color:#268bd2">Error</span>(c, http.StatusInternalServerError, err, <span style="color:#2aa198">&#34;查询失败&#34;</span>)
+		<span style="color:#719e07">return</span>
+	}
+
+	e.<span style="color:#268bd2">PageOK</span>(c, list, <span style="color:#b58900">int</span>(count), req.<span style="color:#268bd2">GetPageIndex</span>(), req.<span style="color:#268bd2">GetPageSize</span>(), <span style="color:#2aa198">&#34;查询成功&#34;</span>)
+}
+
+<span style="color:#586e75">// @Summary 获取应用
+</span><span style="color:#586e75">// @Description 获取JSON
+</span><span style="color:#586e75">// @Tags 应用
+</span><span style="color:#586e75">// @Param appId path int true &#34;应用编码&#34;
+</span><span style="color:#586e75">// @Success 200 {object} app.Response &#34;{&#34;code&#34;: 200, &#34;data&#34;: [...]}&#34;
+</span><span style="color:#586e75">// @Router /api/v1/cmdb/application/{appId} [get]
+</span><span style="color:#586e75">// @Security Bearer
+</span><span style="color:#586e75"></span><span style="color:#268bd2">func</span> (e <span style="color:#719e07">*</span>Application) <span style="color:#268bd2">GetApplication</span>(c <span style="color:#719e07">*</span>gin.Context) {
+	log <span style="color:#719e07">:=</span> e.<span style="color:#268bd2">GetLogger</span>(c)
+	control <span style="color:#719e07">:=</span> <span style="color:#b58900">new</span>(dto.ApplicationById)
+	db, err <span style="color:#719e07">:=</span> e.<span style="color:#268bd2">GetOrm</span>(c)
+	<span style="color:#719e07">if</span> err <span style="color:#719e07">!=</span> <span style="color:#cb4b16">nil</span> {
+		log.<span style="color:#268bd2">Error</span>(err)
+		<span style="color:#719e07">return</span>
+	}
+
+	<span style="color:#586e75">//查看详情
+</span><span style="color:#586e75"></span>	req <span style="color:#719e07">:=</span> control.<span style="color:#268bd2">Generate</span>()
+	err = req.<span style="color:#268bd2">Bind</span>(c)
+	<span style="color:#719e07">if</span> err <span style="color:#719e07">!=</span> <span style="color:#cb4b16">nil</span> {
+		e.<span style="color:#268bd2">Error</span>(c, http.StatusUnprocessableEntity, err, <span style="color:#2aa198">&#34;参数验证失败&#34;</span>)
+		<span style="color:#719e07">return</span>
+	}
+	<span style="color:#268bd2">var</span> object cmdb.Application
+
+	<span style="color:#586e75">//数据权限检查
+</span><span style="color:#586e75"></span>	p <span style="color:#719e07">:=</span> actions.<span style="color:#268bd2">GetPermissionFromContext</span>(c)
+
+	serviceApplication <span style="color:#719e07">:=</span> service.Application{}
+	serviceApplication.Log = log
+	serviceApplication.Orm = db
+	err = serviceApplication.<span style="color:#268bd2">GetApplication</span>(req, p, <span style="color:#719e07">&amp;</span>object)
+	<span style="color:#719e07">if</span> err <span style="color:#719e07">!=</span> <span style="color:#cb4b16">nil</span> {
+		e.<span style="color:#268bd2">Error</span>(c, http.StatusUnprocessableEntity, err, <span style="color:#2aa198">&#34;查询失败&#34;</span>)
+		<span style="color:#719e07">return</span>
+	}
+
+	e.<span style="color:#268bd2">OK</span>(c, object, <span style="color:#2aa198">&#34;查看成功&#34;</span>)
+}
+
+<span style="color:#586e75">// @Summary 创建应用
+</span><span style="color:#586e75">// @Description 获取JSON
+</span><span style="color:#586e75">// @Tags 应用
+</span><span style="color:#586e75">// @Accept  application/json
+</span><span style="color:#586e75">// @Product application/json
+</span><span style="color:#586e75">// @Param data body models.SysUser true &#34;应用数据&#34;
+</span><span style="color:#586e75">// @Success 200 {string} string	&#34;{&#34;code&#34;: 200, &#34;message&#34;: &#34;添加成功&#34;}&#34;
+</span><span style="color:#586e75">// @Success 200 {string} string	&#34;{&#34;code&#34;: -1, &#34;message&#34;: &#34;添加失败&#34;}&#34;
+</span><span style="color:#586e75">// @Router /api/v1/cmdb/application [post]
+</span><span style="color:#586e75"></span><span style="color:#268bd2">func</span> (e <span style="color:#719e07">*</span>Application) <span style="color:#268bd2">InsertApplication</span>(c <span style="color:#719e07">*</span>gin.Context) {
+	log <span style="color:#719e07">:=</span> e.<span style="color:#268bd2">GetLogger</span>(c)
+	control <span style="color:#719e07">:=</span> <span style="color:#b58900">new</span>(dto.ApplicationControl)
+	db, err <span style="color:#719e07">:=</span> e.<span style="color:#268bd2">GetOrm</span>(c)
+	<span style="color:#719e07">if</span> err <span style="color:#719e07">!=</span> <span style="color:#cb4b16">nil</span> {
+		log.<span style="color:#268bd2">Error</span>(err)
+		<span style="color:#719e07">return</span>
+	}
+
+	<span style="color:#586e75">//新增操作
+</span><span style="color:#586e75"></span>	req <span style="color:#719e07">:=</span> control.<span style="color:#268bd2">Generate</span>()
+	err = req.<span style="color:#268bd2">Bind</span>(c)
+	<span style="color:#719e07">if</span> err <span style="color:#719e07">!=</span> <span style="color:#cb4b16">nil</span> {
+		e.<span style="color:#268bd2">Error</span>(c, http.StatusUnprocessableEntity, err, <span style="color:#2aa198">&#34;参数验证失败&#34;</span>)
+		<span style="color:#719e07">return</span>
+	}
+	<span style="color:#268bd2">var</span> object common.ActiveRecord
+	object, err = req.<span style="color:#268bd2">GenerateM</span>()
+	<span style="color:#719e07">if</span> err <span style="color:#719e07">!=</span> <span style="color:#cb4b16">nil</span> {
+		e.<span style="color:#268bd2">Error</span>(c, http.StatusInternalServerError, err, <span style="color:#2aa198">&#34;模型生成失败&#34;</span>)
+		<span style="color:#719e07">return</span>
+	}
+	<span style="color:#586e75">// 设置创建人
+</span><span style="color:#586e75"></span>	object.<span style="color:#268bd2">SetCreateBy</span>(user.<span style="color:#268bd2">GetUserId</span>(c))
+
+	serviceApplication <span style="color:#719e07">:=</span> service.Application{}
+	serviceApplication.Orm = db
+	serviceApplication.Log = log
+	err = serviceApplication.<span style="color:#268bd2">InsertApplication</span>(object)
+	<span style="color:#719e07">if</span> err <span style="color:#719e07">!=</span> <span style="color:#cb4b16">nil</span> {
+		log.<span style="color:#268bd2">Error</span>(err)
+		e.<span style="color:#268bd2">Error</span>(c, http.StatusInternalServerError, err, <span style="color:#2aa198">&#34;创建失败&#34;</span>)
+		<span style="color:#719e07">return</span>
+	}
+
+	e.<span style="color:#268bd2">OK</span>(c, object.<span style="color:#268bd2">GetId</span>(), <span style="color:#2aa198">&#34;创建成功&#34;</span>)
+}
+
+<span style="color:#586e75">// @Summary 修改应用数据
+</span><span style="color:#586e75">// @Description 获取JSON
+</span><span style="color:#586e75">// @Tags 应用
+</span><span style="color:#586e75">// @Accept  application/json
+</span><span style="color:#586e75">// @Product application/json
+</span><span style="color:#586e75">// @Param data body models.SysUser true &#34;body&#34;
+</span><span style="color:#586e75">// @Success 200 {string} string	&#34;{&#34;code&#34;: 200, &#34;message&#34;: &#34;修改成功&#34;}&#34;
+</span><span style="color:#586e75">// @Success 200 {string} string	&#34;{&#34;code&#34;: -1, &#34;message&#34;: &#34;修改失败&#34;}&#34;
+</span><span style="color:#586e75">// @Router /api/v1/cmdb/application/{appId} [put]
+</span><span style="color:#586e75"></span><span style="color:#268bd2">func</span> (e <span style="color:#719e07">*</span>Application) <span style="color:#268bd2">UpdateApplication</span>(c <span style="color:#719e07">*</span>gin.Context) {
+	control <span style="color:#719e07">:=</span> <span style="color:#b58900">new</span>(dto.ApplicationControl)
+
+	log <span style="color:#719e07">:=</span> e.<span style="color:#268bd2">GetLogger</span>(c)
+	db, err <span style="color:#719e07">:=</span> e.<span style="color:#268bd2">GetOrm</span>(c)
+	<span style="color:#719e07">if</span> err <span style="color:#719e07">!=</span> <span style="color:#cb4b16">nil</span> {
+		log.<span style="color:#268bd2">Error</span>(err)
+		<span style="color:#719e07">return</span>
+	}
+
+	req <span style="color:#719e07">:=</span> control.<span style="color:#268bd2">Generate</span>()
+	<span style="color:#586e75">//更新操作
+</span><span style="color:#586e75"></span>	err = req.<span style="color:#268bd2">Bind</span>(c)
+	<span style="color:#719e07">if</span> err <span style="color:#719e07">!=</span> <span style="color:#cb4b16">nil</span> {
+		e.<span style="color:#268bd2">Error</span>(c, http.StatusUnprocessableEntity, err, <span style="color:#2aa198">&#34;参数验证失败&#34;</span>)
+		<span style="color:#719e07">return</span>
+	}
+	<span style="color:#268bd2">var</span> object common.ActiveRecord
+	object, err = req.<span style="color:#268bd2">GenerateM</span>()
+	<span style="color:#719e07">if</span> err <span style="color:#719e07">!=</span> <span style="color:#cb4b16">nil</span> {
+		e.<span style="color:#268bd2">Error</span>(c, http.StatusInternalServerError, err, <span style="color:#2aa198">&#34;模型生成失败&#34;</span>)
+		<span style="color:#719e07">return</span>
+	}
+	object.<span style="color:#268bd2">SetUpdateBy</span>(user.<span style="color:#268bd2">GetUserId</span>(c))
+
+	<span style="color:#586e75">//数据权限检查
+</span><span style="color:#586e75"></span>	p <span style="color:#719e07">:=</span> actions.<span style="color:#268bd2">GetPermissionFromContext</span>(c)
+
+	serviceApplication <span style="color:#719e07">:=</span> service.Application{}
+	serviceApplication.Orm = db
+	serviceApplication.Log = log
+	err = serviceApplication.<span style="color:#268bd2">UpdateApplication</span>(object, p)
+	<span style="color:#719e07">if</span> err <span style="color:#719e07">!=</span> <span style="color:#cb4b16">nil</span> {
+		log.<span style="color:#268bd2">Error</span>(err)
+		<span style="color:#719e07">return</span>
+	}
+	e.<span style="color:#268bd2">OK</span>(c, object.<span style="color:#268bd2">GetId</span>(), <span style="color:#2aa198">&#34;更新成功&#34;</span>)
+}
+
+<span style="color:#586e75">// @Summary 删除应用数据
+</span><span style="color:#586e75">// @Description 删除数据
+</span><span style="color:#586e75">// @Tags 应用
+</span><span style="color:#586e75">// @Param appId path int true &#34;appId&#34;
+</span><span style="color:#586e75">// @Success 200 {string} string	&#34;{&#34;code&#34;: 200, &#34;message&#34;: &#34;删除成功&#34;}&#34;
+</span><span style="color:#586e75">// @Success 200 {string} string	&#34;{&#34;code&#34;: -1, &#34;message&#34;: &#34;删除失败&#34;}&#34;
+</span><span style="color:#586e75">// @Router /api/v1/cmdb/application/{appId} [delete]
+</span><span style="color:#586e75"></span><span style="color:#268bd2">func</span> (e <span style="color:#719e07">*</span>Application) <span style="color:#268bd2">DeleteApplication</span>(c <span style="color:#719e07">*</span>gin.Context) {
+	log <span style="color:#719e07">:=</span> e.<span style="color:#268bd2">GetLogger</span>(c)
+	control <span style="color:#719e07">:=</span> <span style="color:#b58900">new</span>(dto.ApplicationById)
+
+	db, err <span style="color:#719e07">:=</span> e.<span style="color:#268bd2">GetOrm</span>(c)
+	<span style="color:#719e07">if</span> err <span style="color:#719e07">!=</span> <span style="color:#cb4b16">nil</span> {
+		log.<span style="color:#268bd2">Error</span>(err)
+		<span style="color:#719e07">return</span>
+	}
+
+	<span style="color:#586e75">//删除操作
+</span><span style="color:#586e75"></span>	req <span style="color:#719e07">:=</span> control.<span style="color:#268bd2">Generate</span>()
+	err = req.<span style="color:#268bd2">Bind</span>(c)
+	<span style="color:#719e07">if</span> err <span style="color:#719e07">!=</span> <span style="color:#cb4b16">nil</span> {
+		log.<span style="color:#268bd2">Errorf</span>(<span style="color:#2aa198">&#34;Bind error: %s&#34;</span>, err)
+		e.<span style="color:#268bd2">Error</span>(c, http.StatusUnprocessableEntity, err, <span style="color:#2aa198">&#34;参数验证失败&#34;</span>)
+		<span style="color:#719e07">return</span>
+	}
+	<span style="color:#268bd2">var</span> object common.ActiveRecord
+	object, err = req.<span style="color:#268bd2">GenerateM</span>()
+	<span style="color:#719e07">if</span> err <span style="color:#719e07">!=</span> <span style="color:#cb4b16">nil</span> {
+		e.<span style="color:#268bd2">Error</span>(c, http.StatusInternalServerError, err, <span style="color:#2aa198">&#34;模型生成失败&#34;</span>)
+		<span style="color:#719e07">return</span>
+	}
+
+	<span style="color:#586e75">// 设置编辑人
+</span><span style="color:#586e75"></span>	object.<span style="color:#268bd2">SetUpdateBy</span>(user.<span style="color:#268bd2">GetUserId</span>(c))
+
+	<span style="color:#586e75">// 数据权限检查
+</span><span style="color:#586e75"></span>	p <span style="color:#719e07">:=</span> actions.<span style="color:#268bd2">GetPermissionFromContext</span>(c)
+
+	serviceApplication <span style="color:#719e07">:=</span> service.Application{}
+	serviceApplication.Orm = db
+	serviceApplication.Log = log
+	err = serviceApplication.<span style="color:#268bd2">RemoveApplication</span>(req, object, p)
+	<span style="color:#719e07">if</span> err <span style="color:#719e07">!=</span> <span style="color:#cb4b16">nil</span> {
+		log.<span style="color:#268bd2">Error</span>(err)
+		<span style="color:#719e07">return</span>
+	}
+	e.<span style="color:#268bd2">OK</span>(c, object.<span style="color:#268bd2">GetId</span>(), <span style="color:#2aa198">&#34;删除成功&#34;</span>)
+}
+
+</code></pre></div><p><strong>routes</strong></p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#719e07">package</span> router
+
+<span style="color:#719e07">import</span> (
+	<span style="color:#2aa198">&#34;oops/internal/app/admin/apis/cmdb&#34;</span>
+	<span style="color:#2aa198">&#34;oops/internal/common/actions&#34;</span>
+	middleware2 <span style="color:#2aa198">&#34;oops/internal/common/middleware&#34;</span>
+
+	<span style="color:#2aa198">&#34;github.com/gin-gonic/gin&#34;</span>
+	jwt <span style="color:#2aa198">&#34;github.com/go-admin-team/go-admin-core/sdk/pkg/jwtauth&#34;</span>
+)
+
+<span style="color:#268bd2">func</span> <span style="color:#268bd2">init</span>() {
+	routerCheckRole = <span style="color:#b58900">append</span>(routerCheckRole, registerApplicationRouter)
+}
+
+<span style="color:#586e75">// 需认证的路由代码
+</span><span style="color:#586e75"></span><span style="color:#268bd2">func</span> <span style="color:#268bd2">registerApplicationRouter</span>(v1 <span style="color:#719e07">*</span>gin.RouterGroup, authMiddleware <span style="color:#719e07">*</span>jwt.GinJWTMiddleware) {
+	api <span style="color:#719e07">:=</span> <span style="color:#719e07">&amp;</span>cmdb.Application{}
+	r <span style="color:#719e07">:=</span> v1.<span style="color:#268bd2">Group</span>(<span style="color:#2aa198">&#34;/cmdb/application&#34;</span>).<span style="color:#268bd2">Use</span>(authMiddleware.<span style="color:#268bd2">MiddlewareFunc</span>()).<span style="color:#268bd2">Use</span>(middleware2.<span style="color:#268bd2">AuthCheckRole</span>()).<span style="color:#268bd2">Use</span>(actions.<span style="color:#268bd2">PermissionAction</span>())
+	{
+		r.<span style="color:#268bd2">GET</span>(<span style="color:#2aa198">&#34;&#34;</span>, api.GetApplicationList)
+		r.<span style="color:#268bd2">GET</span>(<span style="color:#2aa198">&#34;/:id&#34;</span>, api.GetApplication)
+		r.<span style="color:#268bd2">POST</span>(<span style="color:#2aa198">&#34;&#34;</span>, api.InsertApplication)
+		r.<span style="color:#268bd2">PUT</span>(<span style="color:#2aa198">&#34;&#34;</span>, api.UpdateApplication)
+		r.<span style="color:#268bd2">DELETE</span>(<span style="color:#2aa198">&#34;&#34;</span>, api.DeleteApplication)
+	}
+}
+</code></pre></div><p>创建一个空的go文件，设置init初始化接口方法，根据业务定义好路由注册函数名称，并且正确配置正确的权限控制中间件，一套业务就结束了;</p>
+<hr>
+<h2 id="4-总结">
+  4. 总结
+  <a class="heading-link" href="#4-%e6%80%bb%e7%bb%93">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>本章说明了oops项目的后端代码结构，以及实现一个业务的逻辑操作。整个项目会用到的主流框架如下：</p>
+<ul>
+<li>go-admin</li>
+<li>cobra</li>
+<li>gorm</li>
+<li>gin</li>
+<li>casbin</li>
+<li>swagger</li>
+<li>viper(后续考虑加入)</li>
+</ul>
+<hr>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    ©
+    
+      2019 -
+    
+    2021
+     Hello.CC 
+    ·
+    Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">CCoder</a>.
+    
+  </section>
+</footer>
+
+    </main>
+
+    
+      
+      <script src="/js/coder.min.03b17769f4f91ae35667e1f2a1ca8c16f50562576cf90ff32b3179926914daa5.js" integrity="sha256-A7F3afT5GuNWZ&#43;HyocqMFvUFYlds&#43;Q/zKzF5kmkU2qU="></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </body>
+
+</html>

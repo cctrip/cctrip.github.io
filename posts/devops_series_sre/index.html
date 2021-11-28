@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="color-scheme" content="light dark">
+
+    
+      <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests; block-all-mixed-content; default-src 'self'; child-src 'self'; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net/; form-action 'self'; frame-src 'self'; img-src 'self'; object-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com/ https://cdn.jsdelivr.net/; script-src 'self' 'unsafe-inline' https://www.google-analytics.com; prefetch-src 'self'; connect-src 'self' https://www.google-analytics.com;">
+
+    
+
+    <meta name="author" content="Hello.CC">
+    <meta name="description" content="SRE介绍">
+    <meta name="keywords" content="blog,developer,personal">
+
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://cctrip.tech/posts/devops_series_sre/sre-image.jpg"/>
+<meta name="twitter:title" content="DevOps系列：SRE"/>
+<meta name="twitter:description" content="SRE介绍"/>
+
+    <meta property="og:title" content="DevOps系列：SRE" />
+<meta property="og:description" content="SRE介绍" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cctrip.tech/posts/devops_series_sre/" /><meta property="og:image" content="https://cctrip.tech/posts/devops_series_sre/sre-image.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-07-29T17:55:28&#43;08:00" />
+<meta property="article:modified_time" content="2020-07-29T17:55:28&#43;08:00" />
+
+
+
+    <title>
+  DevOps系列：SRE · CC&#39;s Trip
+</title>
+
+    
+      <link rel="canonical" href="https://cctrip.tech/posts/devops_series_sre/">
+    
+
+    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.543dc3579b222ee2eec7bc52e75060428d931ade1c0263624cf4be95f0f467a2.css" integrity="sha256-VD3DV5siLuLux7xS51BgQo2TGt4cAmNiTPS&#43;lfD0Z6I=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="/css/coder-dark.min.92eafdad7963af697840da26de3829cd3610aa623b917f6c37fb3f81e404b693.css" integrity="sha256-kur9rXljr2l4QNom3jgpzTYQqmI7kX9sN/s/geQEtpM=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/leo.png" sizes="32x32">
+    
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    <meta name="generator" content="Hugo 0.81.0" />
+  </head>
+
+  
+  
+    
+  
+  <body class="preload-transitions colorscheme-auto">
+    
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      CC&#39;s Trip
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">Blog</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/projects/">Projects</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/contact/">Contact me</a>
+            </li>
+          
+        
+        
+          
+          
+          
+            
+          
+            
+              
+                <li class="navigation-item menu-separator">
+                  <span>|</span>
+                </li>
+                
+              
+              <li class="navigation-item">
+                <a href="https://cctrip.tech/zh-cn/">🇨🇳</a>
+              </li>
+            
+          
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://cctrip.tech/posts/devops_series_sre/">
+              DevOps系列：SRE
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2020-07-29T17:55:28&#43;08:00'>
+                July 29, 2020
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              One-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/devops/">DevOps</a></div>
+
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/devops/">devops</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <h2 id="系列目录">
+  系列目录
+  <a class="heading-link" href="#%e7%b3%bb%e5%88%97%e7%9b%ae%e5%bd%95">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p><a href="../devops_series">《DevOps系列：开篇》</a></p>
+<p><a href="../devops_series_intro">《DevOps系列：概述》</a></p>
+<p><a href="../devops_series_cmdb">《DevOps系列：CMDB》</a></p>
+<p><a href="../devops_series_cicd">《DevOps系列：CI/CD》</a></p>
+<p><a href="../devops_series_mon">《DevOps系列：监控》</a></p>
+<p><a href="../devops_series_sre">《DevOps系列：SRE》</a></p>
+<hr>
+<h2 id="困局">
+  困局
+  <a class="heading-link" href="#%e5%9b%b0%e5%b1%80">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>计算机软件系统离开人通常是无法自主运行的，那要如何去运维一个日趋复杂的大型分布式计算机系统呢？</p>
+<h3 id="devops分离团队模型">
+  Dev/Ops分离团队模型
+  <a class="heading-link" href="#devops%e5%88%86%e7%a6%bb%e5%9b%a2%e9%98%9f%e6%a8%a1%e5%9e%8b">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>雇佣系统管理员(sysadmin)运维复杂的计算机系统是行业内一直以来的普遍做法，系统管理员的工作主要在于应对系统中产生的各种需要人工干预的事件，以及来自业务部门的变更需求。但随着系统变得复杂，组件越来越多，流量不断上升，相关的事件和变更需求也会越来越多，就需要招聘更多的系统管理员。系统管理员的日常工作和研发工程师的相差甚远，通常归属于两个不同的部门，开发部(Dev)和运维部(Ops)。也就是Dev/Ops分离团队模型。</p>
+<p>但是这个模型存在两个无法避免的问题。</p>
+<ol>
+<li><strong>直接成本</strong>。随着系统复杂度的增加，部署规模的扩大，团队的大小基本与系统负载成线性相关，共同成长。</li>
+<li><strong>间接成本</strong>。即研发团队和运维团队之间的沟通成本。研发团队想要&quot;随时随地发布新功能，没有任何阻拦&quot;，运维团队想要”一旦一个东西在生产环境中正常工作了，就不要再进行任何改动“。本质来说，两个团队的目标是互相矛盾的。</li>
+</ol>
+<hr>
+<h2 id="解决之道">
+  解决之道
+  <a class="heading-link" href="#%e8%a7%a3%e5%86%b3%e4%b9%8b%e9%81%93">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<h3 id="devops">
+  DevOps
+  <a class="heading-link" href="#devops">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<blockquote>
+<p>DevOps（开发 Development 与运维 Operations 的组合词）是一种文化、一场运动或实践，强调在自动化软件交付流程及基础设施变更过程中，软件开发人员与其他信息技术（IT）专业人员彼此之间的协作与沟通。它旨在建立一种文化与环境，使构建、测试、软件发布得以快速、频繁以及更加稳定地进行。</p>
+</blockquote>
+<h3 id="sre">
+  SRE
+  <a class="heading-link" href="#sre">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<blockquote>
+<p>SRE可以理解为DevOps的一种实践，SRE基本是在进行由运维团队完成的工作，但是雇佣具有软件专业知识的工程师，通过创造软件系统的方式来维护系统运行并替代传统模型中的人工操作。本质上，SRE是在用软件工程的思维和方法论，通过设计、构建自动化工具来完成以前由系统管理员人工操作完成的任务。</p>
+</blockquote>
+<h4 id="sre方法论">
+  SRE方法论
+  <a class="heading-link" href="#sre%e6%96%b9%e6%b3%95%e8%ae%ba">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<h5 id="1-确保长期关注研发工作">
+  1. 确保长期关注研发工作
+  <a class="heading-link" href="#1-%e7%a1%ae%e4%bf%9d%e9%95%bf%e6%9c%9f%e5%85%b3%e6%b3%a8%e7%a0%94%e5%8f%91%e5%b7%a5%e4%bd%9c">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h5>
+<p>SRE团队应将运维工作限制在50%以内，并将剩余时间投入到研发项目上</p>
+<h5 id="2-在保障slo的前提下最大化迭代速度">
+  2. 在保障SLO的前提下最大化迭代速度
+  <a class="heading-link" href="#2-%e5%9c%a8%e4%bf%9d%e9%9a%9cslo%e7%9a%84%e5%89%8d%e6%8f%90%e4%b8%8b%e6%9c%80%e5%a4%a7%e5%8c%96%e8%bf%ad%e4%bb%a3%e9%80%9f%e5%ba%a6">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h5>
+<p><strong>错误预算</strong>，任何产品都不是，也不应该做到100%可靠，部门建立起一个合理的可靠性目标，错误预算等于”1-可靠性目标“，通过错误预算来最大化新功能上线的速度，同时保障服务质量。</p>
+<h5 id="3-监控系统">
+  3. 监控系统
+  <a class="heading-link" href="#3-%e7%9b%91%e6%8e%a7%e7%b3%bb%e7%bb%9f">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h5>
+<p>监控系统是SRE团队监控服务质量和可用性的一个主要手段。一个监控系统应该只有三类输出：</p>
+<ol>
+<li><strong>紧急警报(alert)</strong>，意味着收到警报的用户需要立即执行某种操作</li>
+<li><strong>工单(ticket)</strong>，意味着接受工单的用户应该执行某种操作，但是并发立即执行。</li>
+<li><strong>日志(logging)</strong>，平时没有人需要关注日志信息，但是日志信息依然被收集起来以备调试和事后分析时使用</li>
+</ol>
+<h5 id="4-应急事件处理">
+  4. 应急事件处理
+  <a class="heading-link" href="#4-%e5%ba%94%e6%80%a5%e4%ba%8b%e4%bb%b6%e5%a4%84%e7%90%86">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h5>
+<p>可靠性是MTTF(平均失败时间)和MTTR(平均恢复时间)的函数。评价一个团队将系统恢复到正常情况的最有效的指标，就是MTTR。</p>
+<p>任何需要人工操作的事情都只会延长恢复时间。但有时候人工介入不可避免时，可以通过事先预案并且将最佳方法记录到”运维手册“上来降低MTTR。</p>
+<h5 id="5-变更管理">
+  5. 变更管理
+  <a class="heading-link" href="#5-%e5%8f%98%e6%9b%b4%e7%ae%a1%e7%90%86">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h5>
+<p>变更管理的最佳实践是使用自动化来完成以下几个项目：</p>
+<ol>
+<li>采用渐进式发布机制</li>
+<li>迅速而准确地检测到问题的发生</li>
+<li>当问题发生时，安全迅速的回滚</li>
+</ol>
+<h5 id="6-需要预测和容量规划">
+  6. 需要预测和容量规划
+  <a class="heading-link" href="#6-%e9%9c%80%e8%a6%81%e9%a2%84%e6%b5%8b%e5%92%8c%e5%ae%b9%e9%87%8f%e8%a7%84%e5%88%92">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h5>
+<p>需要预测和容量规划是保障一个业务有足够的容量和冗余度去服务预测中的未来需要。</p>
+<p>容量规划有几个必需步骤：</p>
+<ol>
+<li>必须有一个准确的自然增长需求预测模型，需求预测的时间应该超过资源获取的时间</li>
+<li>规划中必须有准确的非自然增长的需求来源的统计</li>
+<li>必须有周期性压力测试，以便准确地将系统原始资源信息与业务容量对应起来。</li>
+</ol>
+<h5 id="7-效率与性能">
+  7. 效率与性能
+  <a class="heading-link" href="#7-%e6%95%88%e7%8e%87%e4%b8%8e%e6%80%a7%e8%83%bd">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h5>
+<p>高效地利用各种资源是任何赢利性服务都要关心的，一个服务的利用率指标通常依赖于这个服务的工作方式以及对容量的配置与部署上。如果能通过密切关注一个服务的容量配置策略，进而改进其资源利用率，可以有效地降低系统的总成本。</p>
+<hr>
+<h2 id="成为sre">
+  成为SRE
+  <a class="heading-link" href="#%e6%88%90%e4%b8%basre">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<h3 id="技能要求">
+  技能要求
+  <a class="heading-link" href="#%e6%8a%80%e8%83%bd%e8%a6%81%e6%b1%82">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<blockquote>
+<p>– TCP/IP网络模型 (OSI模型)</p>
+<p>– Unix/Linux 系统</p>
+<p>– Unix/Linux 系统管理</p>
+<p>– 数据结构与算法</p>
+<p>– 编程语言</p>
+<p>– SQL和数据库管理</p>
+<p>– 人员管理</p>
+<p>– 项目管理</p>
+</blockquote>
+<h3 id="能力等级">
+  能力等级
+  <a class="heading-link" href="#%e8%83%bd%e5%8a%9b%e7%ad%89%e7%ba%a7">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<blockquote>
+<p>0 – 对于相关的技术领域还不熟悉。</p>
+<p>1 – 可以读懂这个领域的基础知识。</p>
+<p>2 – 可以实现一些小的改动，清楚基本的原理，并能够在简单的指导下自己找到更多的细节。</p>
+<p>3 – 基本精通这个技术领域，完全不需要别人的帮助。</p>
+<p>4 – 对这个技术领域非常的熟悉和舒适，可以应对和完成所有的日常工作。</p>
+<p>​	4 – 1 对于软件领域 – 有能力开发中等规模的程序，能够熟练和掌握并使用所有的语言特性，而不是需要翻书，并且能够找到所有的冷知识。</p>
+<p>​	4 – 2 对于系统领域 – 掌握网络和系统管理的很多基础知识，并能够掌握一些内核知识以运维一个小型的网络系统，包括恢复、调试和能解决一些不常见的故障。</p>
+<p>5 – 对于该技术领域有非常底层的了解和深入的技能。</p>
+<p>6 – 能够从零开发大规模的程序和系统，掌握底层和内在原理，能够设计和部署大规模的分布式系统架构。</p>
+<p>7 – 理解并能利用高级技术，以及相关的内在原理，并可以从根本上自动化大量的系统管理和运维工作。</p>
+<p>8 – 对于一些边角和晦涩的技术、协议和系统工作原理有很深入的理解和经验。能够设计，部署并负责非常关键以及规模很大的基础设施，并能够构建相应的自动化设施。</p>
+<p>9 – 能够在该技术领域出一本经典的书。并和标准委员会的人一起工作制定相关的技术标准和方法。</p>
+<p>10 – 在该领域写过一本书，被业内尊为专家，并是该技术的发明人。</p>
+</blockquote>
+<h3 id="roadmap">
+  Roadmap
+  <a class="heading-link" href="#roadmap">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p><img src="roadmap.png" alt=""></p>
+<hr>
+<p><strong>参考</strong></p>
+<p><a href="https://landing.google.com/sre/sre-book/toc/">Google SRE 运维解密</a></p>
+<p><a href="https://landing.google.com/sre/workbook/toc/">Google SRE Workbook</a></p>
+<p><a href="https://github.com/kamranahmedse/developer-roadmap">Roadmap</a></p>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    ©
+    
+      2019 -
+    
+    2021
+     Hello.CC 
+    ·
+    Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">CCoder</a>.
+    
+  </section>
+</footer>
+
+    </main>
+
+    
+      
+      <script src="/js/coder.min.03b17769f4f91ae35667e1f2a1ca8c16f50562576cf90ff32b3179926914daa5.js" integrity="sha256-A7F3afT5GuNWZ&#43;HyocqMFvUFYlds&#43;Q/zKzF5kmkU2qU="></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </body>
+
+</html>

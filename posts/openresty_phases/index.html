@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="color-scheme" content="light dark">
+
+    
+      <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests; block-all-mixed-content; default-src 'self'; child-src 'self'; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net/; form-action 'self'; frame-src 'self'; img-src 'self'; object-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com/ https://cdn.jsdelivr.net/; script-src 'self' 'unsafe-inline' https://www.google-analytics.com; prefetch-src 'self'; connect-src 'self' https://www.google-analytics.com;">
+
+    
+
+    <meta name="author" content="Hello.CC">
+    <meta name="description" content="执行阶段">
+    <meta name="keywords" content="blog,developer,personal">
+
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://cctrip.tech/posts/openresty_phases/resty-image.png"/>
+<meta name="twitter:title" content="Openresty执行阶段"/>
+<meta name="twitter:description" content="执行阶段"/>
+
+    <meta property="og:title" content="Openresty执行阶段" />
+<meta property="og:description" content="执行阶段" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cctrip.tech/posts/openresty_phases/" /><meta property="og:image" content="https://cctrip.tech/posts/openresty_phases/resty-image.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-01-30T17:55:28&#43;08:00" />
+<meta property="article:modified_time" content="2021-01-30T17:55:28&#43;08:00" />
+
+
+
+    <title>
+  Openresty执行阶段 · CC&#39;s Trip
+</title>
+
+    
+      <link rel="canonical" href="https://cctrip.tech/posts/openresty_phases/">
+    
+
+    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.543dc3579b222ee2eec7bc52e75060428d931ade1c0263624cf4be95f0f467a2.css" integrity="sha256-VD3DV5siLuLux7xS51BgQo2TGt4cAmNiTPS&#43;lfD0Z6I=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="/css/coder-dark.min.92eafdad7963af697840da26de3829cd3610aa623b917f6c37fb3f81e404b693.css" integrity="sha256-kur9rXljr2l4QNom3jgpzTYQqmI7kX9sN/s/geQEtpM=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/leo.png" sizes="32x32">
+    
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    <meta name="generator" content="Hugo 0.81.0" />
+  </head>
+
+  
+  
+    
+  
+  <body class="preload-transitions colorscheme-auto">
+    
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      CC&#39;s Trip
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">Blog</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/projects/">Projects</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/contact/">Contact me</a>
+            </li>
+          
+        
+        
+          
+          
+          
+            
+          
+            
+              
+                <li class="navigation-item menu-separator">
+                  <span>|</span>
+                </li>
+                
+              
+              <li class="navigation-item">
+                <a href="https://cctrip.tech/zh-cn/">🇨🇳</a>
+              </li>
+            
+          
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://cctrip.tech/posts/openresty_phases/">
+              Openresty执行阶段
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2021-01-30T17:55:28&#43;08:00'>
+                January 30, 2021
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              One-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/nginx/">Nginx</a></div>
+
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/nginx/">nginx</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <h3 id="nginx执行阶段">
+  Nginx执行阶段
+  <a class="heading-link" href="#nginx%e6%89%a7%e8%a1%8c%e9%98%b6%e6%ae%b5">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p><img src="nginx_phases.png" alt=""></p>
+<ul>
+<li><code>NGX_HTTP_POST_READ_PHASE</code> — 第一阶段， <a href="http://nginx.org/en/docs/http/ngx_http_realip_module.html">ngx_http_realip_module</a> 在此阶段注册其处理程序，以允许在调用任何其他模块之前替换客户端地址。</li>
+<li><code>NGX_HTTP_SERVER_REWRITE_PHASE</code> — 该阶段处理<code>server</code>块(<code>location</code>块除外)定义的rewrite指令。  <a href="http://nginx.org/en/docs/http/ngx_http_rewrite_module.html">ngx_http_rewrite_module</a> 在此阶段安装其处理程序。</li>
+<li><code>NGX_HTTP_FIND_CONFIG_PHASE</code> — 根据请求URI选择位置的特殊阶段。在此阶段之前，将相关虚拟服务器的默认位置分配给请求，并且任何请求位置配置的模块都将接收默认服务器位置的配置。该阶段为请求分配一个新位置。该阶段无法注册其他处理程序。</li>
+<li><code>NGX_HTTP_REWRITE_PHASE</code> — 同 <code>NGX_HTTP_SERVER_REWRITE_PHASE</code>, 但处理的是上一个阶段选择的<code>location</code>块内的定义的rewrite规则指令。</li>
+<li><code>NGX_HTTP_POST_REWRITE_PHASE</code> — 特殊阶段，如果请求的URI在rewirte期间更改，则将请求重定向到新的<code>location</code>块。这是通过再次请求  <code>NGX_HTTP_FIND_CONFIG_PHASE</code> 来完成的。此阶段无法注册其他处理程序。</li>
+<li><code>NGX_HTTP_PREACCESS_PHASE</code> — 与访问控制无关的用于不同类型的处理程序的公共阶段。标准nginx模块 <a href="http://nginx.org/en/docs/http/ngx_http_limit_conn_module.html">ngx_http_limit_conn_module </a>和 <a href="http://nginx.org/en/docs/http/ngx_http_limit_req_module.html">ngx_http_limit_req_module</a> 在此阶段注册其处理程序。</li>
+<li><code>NGX_HTTP_ACCESS_PHASE</code> — 验证客户端请求是否合法的阶段。例如<a href="http://nginx.org/en/docs/http/ngx_http_access_module.html">ngx_http_access_module</a> 和 <a href="http://nginx.org/en/docs/http/ngx_http_auth_basic_module.html">ngx_http_auth_basic_module </a>等标准nginx模块在此阶段注册其处理程序。默认情况下，客户端必须通过该阶段所有处理程序的合法验证才能继续请求下一个阶段。  通过<a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#satisfy">satisfy</a> 指令，则可以允许客户端在通过该阶段任何一个处理程序的合法验证后直接进入下一个阶段。</li>
+<li><code>NGX_HTTP_POST_ACCESS_PHASE</code> — 特殊阶段，处理满足 <a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#satisfy">satisfy any</a> 指令的阶段。如果某些访问阶段处理程序拒绝了访问并且没有显式允许访问，则该请求完成。此阶段无法注册其他处理程序。</li>
+<li><code>NGX_HTTP_PRECONTENT_PHASE</code> — 在生成内容之前调用处理程序的阶段。一些标准nginx模块如 <a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#try_files">ngx_http_try_files_module</a> 和 <a href="http://nginx.org/en/docs/http/ngx_http_mirror_module.html">ngx_http_mirror_module</a> 在此阶段注册其处理程序。</li>
+<li><code>NGX_HTTP_CONTENT_PHASE</code> — 正常生成响应的阶段. 多个Nginx标准模块在此阶段注册其处理程序, 包括 <a href="http://nginx.org/en/docs/http/ngx_http_index_module.html">ngx_http_index_module</a> 和 <code>ngx_http_static_module</code>。它们按顺序被调用直到某一个模块产生输出。也可以按<code>location</code>设置内容处理程序，如果 <a href="http://nginx.org/en/docs/http/ngx_http_core_module.html">ngx_http_core_module</a>的<em>location</em>配置已设置处理程序，则将其称为内容处理程序，并且在此阶段安装的处理程序将被忽略。</li>
+<li><code>NGX_HTTP_LOG_PHASE</code> — 执行请求日志记录的阶段。当前，只有 <a href="http://nginx.org/en/docs/http/ngx_http_log_module.html">ngx_http_log_module</a> 在此阶段注册其处理程序以进行访问日志记录。在释放请求之前，在请求处理的最后阶段调用日志阶段处理程序。</li>
+</ul>
+<hr>
+<h3 id="lua执行阶段">
+  Lua执行阶段
+  <a class="heading-link" href="#lua%e6%89%a7%e8%a1%8c%e9%98%b6%e6%ae%b5">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p><img src="openresty_phases.png" alt=""></p>
+<ul>
+<li><code>init_by_lua*</code> — 在Nginx master 进程加载配置时候时，在全局LuaVM 级别上运行指定的lua代码。通常在该阶段注册全局变量或者预加载lua模块。</li>
+<li><code>init_worker_by_lua*</code> — 启用master进程后，在每次Nginx worker进程启动时运行指定的Lua代码。当禁用master进程时，此hook将仅在init_by_lua *之后运行。通常用于创建每个worker的重复计时器（通过Lua API的ngx.timer.at），也用于后端运行状况检查或其他定时例行工作。</li>
+<li><code>ssl_certificate_by_lua*</code> — 当Nginx即将启动下游https连接的SSL握手时，此指令运行用户Lua代码。</li>
+<li><code>set_by_lua*</code> — 该指令旨在执行简短，快速运行的代码块，因为在代码执行期间会阻止Nginx事件循环。因此，应该避免耗时的代码队列。</li>
+<li><code>rewrite_by_lua*</code> — 充当rewrite阶段处理程序，并针对每个请求执行指定的Lua代码字符串。 Lua代码可以进行API调用，并在独立的全局环境（即沙箱）中作为新生成的协程执行。请注意，此处理程序始终在标准ngx_http_rewrite_module之后运行。</li>
+<li><code>access_by_lua*</code> —  充当access阶段处理程序。请注意，此处理程序始终在标准<a href="http://nginx.org/en/docs/http/ngx_http_access_module.html">ngx_http_access_module</a> 之后运行。</li>
+<li><code>content_by_lua*</code> — 充当content阶段处理程序。</li>
+<li><code>balancer_by_lua*</code> — 该指令将Lua代码作为upstream{}配置块定义的任何upstream实体的upsteam balancer 运行</li>
+<li><code>header_filter_by_lua*</code> — 执行lua代码用于定义输出header过滤器</li>
+<li><code>body_filter_by_lua*</code> — 执行lua代码用于定义输出body过滤器</li>
+<li><code>log_by_lua*</code> — 在日志请求处理阶段执行lua代码，此操作不会替代当前的access日志，而是在它之前执行。</li>
+</ul>
+<hr>
+<p><strong>参考</strong></p>
+<p><a href="https://nginx.org/en/docs/dev/development_guide.html#http_phases">nginx-http-phases</a></p>
+<p><a href="https://openresty-reference.readthedocs.io/en/latest/Directives/">openresty-reference</a></p>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    ©
+    
+      2019 -
+    
+    2021
+     Hello.CC 
+    ·
+    Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">CCoder</a>.
+    
+  </section>
+</footer>
+
+    </main>
+
+    
+      
+      <script src="/js/coder.min.03b17769f4f91ae35667e1f2a1ca8c16f50562576cf90ff32b3179926914daa5.js" integrity="sha256-A7F3afT5GuNWZ&#43;HyocqMFvUFYlds&#43;Q/zKzF5kmkU2qU="></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </body>
+
+</html>

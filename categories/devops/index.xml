@@ -1,77 +1,249 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-    <channel>
-        <title>DevOps - Category - CC&#39;s Trip</title>
-        <link>https://cctrip.github.io/categories/devops/</link>
-        <description>DevOps - Category - CC&#39;s Trip</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 20 Mar 2021 17:55:28 &#43;0800</lastBuildDate><atom:link href="https://cctrip.github.io/categories/devops/" rel="self" type="application/rss+xml" /><item>
-    <title>Oops管理系统(二)</title>
-    <link>https://cctrip.github.io/oops_series_two/</link>
-    <pubDate>Sat, 20 Mar 2021 17:55:28 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://cctrip.github.io/oops_series_two/</guid>
-    <description><![CDATA[系列目录 《Oops管理系统(一)》 《Oops管理系统(二)》 1. 介绍 本篇，要先讲下整体的技术框架。 因为我们是基于go-admin这个脚手架来做]]></description>
-</item><item>
-    <title>Oops管理系统(一)</title>
-    <link>https://cctrip.github.io/oops_series_one/</link>
-    <pubDate>Wed, 17 Mar 2021 17:55:28 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://cctrip.github.io/oops_series_one/</guid>
-    <description><![CDATA[系列目录 《Oops管理系统(一)》 《Oops管理系统(二)》 1. 介绍 做了那么的久的运维，了解、运维和开发过各种各样的发布系统、运维系统、监控系]]></description>
-</item><item>
-    <title>[译]当我们谈论Ops，我们在谈论什么</title>
-    <link>https://cctrip.github.io/talk_ops/</link>
-    <pubDate>Wed, 13 Jan 2021 17:55:28 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://cctrip.github.io/talk_ops/</guid>
-    <description><![CDATA[原文链接：What the Ops are you talking about? 水平有限，本文不免存在遗漏或错误之处。如有疑问，请查阅原文。 背景 两年前，我因为效率低下的领导而获得了耻辱。我的]]></description>
-</item><item>
-    <title>DevOps系列：SRE</title>
-    <link>https://cctrip.github.io/devops_series_sre/</link>
-    <pubDate>Wed, 29 Jul 2020 17:55:28 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://cctrip.github.io/devops_series_sre/</guid>
-    <description><![CDATA[系列目录 《DevOps系列：开篇》 《DevOps系列：概述》 《DevOps系列：CMDB》 《DevOps系列：CI/CD》 《DevOps系列]]></description>
-</item><item>
-    <title>[译]DevOps成熟度模型</title>
-    <link>https://cctrip.github.io/devops_model/</link>
-    <pubDate>Sun, 26 Jul 2020 17:55:28 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://cctrip.github.io/devops_model/</guid>
-    <description><![CDATA[原文链接：DevOps Maturity Model – Explained 水平有限，本文不免存在遗漏或错误之处。如有疑问，请查阅原文。 DevOps通过改善团队在方法链和工作流程中的运作]]></description>
-</item><item>
-    <title>DevOps系列：监控</title>
-    <link>https://cctrip.github.io/devops_series_mon/</link>
-    <pubDate>Mon, 20 Jul 2020 17:55:28 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://cctrip.github.io/devops_series_mon/</guid>
-    <description><![CDATA[系列目录 《DevOps系列：开篇》 《DevOps系列：概述》 《DevOps系列：CMDB》 《DevOps系列：CI/CD》 《DevOps系列]]></description>
-</item><item>
-    <title>DevOps系列：CI/CD</title>
-    <link>https://cctrip.github.io/devops_series_cicd/</link>
-    <pubDate>Wed, 15 Jul 2020 17:55:28 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://cctrip.github.io/devops_series_cicd/</guid>
-    <description><![CDATA[系列目录 《DevOps系列：开篇》 《DevOps系列：概述》 《DevOps系列：CMDB》 《DevOps系列：CI/CD》 《DevOps系列]]></description>
-</item><item>
-    <title>DevOps系列：CMDB</title>
-    <link>https://cctrip.github.io/devops_series_cmdb/</link>
-    <pubDate>Fri, 10 Jul 2020 17:55:28 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://cctrip.github.io/devops_series_cmdb/</guid>
-    <description><![CDATA[系列目录 《DevOps系列：开篇》 《DevOps系列：概述》 《DevOps系列：CMDB》 《DevOps系列：CI/CD》 《DevOps系列]]></description>
-</item><item>
-    <title>DevOps系列：概述</title>
-    <link>https://cctrip.github.io/devops_series_intro/</link>
-    <pubDate>Sun, 05 Jul 2020 17:55:28 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://cctrip.github.io/devops_series_intro/</guid>
-    <description><![CDATA[系列目录 《DevOps系列：开篇》 《DevOps系列：概述》 《DevOps系列：CMDB》 《DevOps系列：CI/CD》 《DevOps系列]]></description>
-</item><item>
-    <title>DevOps系列：开篇</title>
-    <link>https://cctrip.github.io/devops_series/</link>
-    <pubDate>Wed, 01 Jul 2020 17:55:28 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://cctrip.github.io/devops_series/</guid>
-    <description><![CDATA[系列目录 《DevOps系列：开篇》 《DevOps系列：概述》 《DevOps系列：CMDB》 《DevOps系列：CI/CD》 《DevOps系列]]></description>
-</item></channel>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DevOps on CC&#39;s Trip</title>
+    <link>https://cctrip.tech/categories/devops/</link>
+    <description>Recent content in DevOps on CC&#39;s Trip</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 20 Mar 2021 17:55:28 +0800</lastBuildDate><atom:link href="https://cctrip.tech/categories/devops/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Oops管理系统(二)</title>
+      <link>https://cctrip.tech/posts/oops_series_two/</link>
+      <pubDate>Sat, 20 Mar 2021 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/oops_series_two/</guid>
+      <description>系列目录    《Oops管理系统(一)》
+《Oops管理系统(二)》
+ 1. 介绍    本篇，要先讲下整体的技术框架。
+因为我们是基于go-admin这个脚手架来做前后端框架的，所以，先来说明下整个代码架构。
+在这之前，我们先简单说明下go程序的代码执行顺序
+1.1 Go程序执行顺序     执行go run或者编译后binary文件时，会先加载main package main package一般会import其他package，其他package也会import其依赖的package，这边会有一个递归的初始化操作。 package会执行global variables和init()的初始化 main package执行本身的global variables和init()的初始化 执行main()   2. 目录结构    Oops基于project-layout和go-admin构建了如下图所示的目录结构
+ 3. 源码解析    这边只说明应用相关的源码逻辑。
+3.1 系统初始化    main.go
+package main import ( &amp;#34;oops/cmd&amp;#34; ) func main() { cmd.Execute() } main函数只有一个逻辑，加载cmd包以及执行cmd包中的Execute()函数。
+cmd package
+package cmd import ( .</description>
+    </item>
+    
+    <item>
+      <title>Oops管理系统(一)</title>
+      <link>https://cctrip.tech/posts/oops_series_one/</link>
+      <pubDate>Wed, 17 Mar 2021 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/oops_series_one/</guid>
+      <description>系列目录    《Oops管理系统(一)》
+《Oops管理系统(二)》
+ 1. 介绍    做了那么的久的运维，了解、运维和开发过各种各样的发布系统、运维系统、监控系统，经历了服务器从物理时代、到云时代再到容器时代的变革，服务器规模也经历从十几台到几千台甚至几万台规模的管理，管理手段也经历从手工到工具再到平台的演变。做过那么些的管理系统，因为各种各样的原因，可能是历史包袱，可能是人言式微，可能是早期技术没有那么的好，很多时候做出来的管理系统不是自己理想中的管理系统，因此，想花一些业余时间，写一个自己理解的DevOps管理系统。
+ 2. 目标    个人理解，一个DevOps管理系统应该具备以下功能：
+ 元数据管理，包括物理资源、云资源、容器资源、中间件资源、应用资源等 CI/CD，包括应用的打包、编译以及发布，服务器资源的创建、更新、删除等 监控告警，能实现不同指标的采集监控，监控数据可视化以及告警自定义等。 机器操作，可能是SSH登录，或者远程操作命令等。   3. 系统设计    完整的一套DevOps系统肯定是功能复杂、组件繁多的，不大可能自己造轮子，因此，底层会采用一些开源方案，然后在各个开源组件上构建自己的管理平台。
+3.1 元数据管理    说到底，我们要做的是一套能完整接入软件工程生命周期的工具平台，一个软件最终的目的是要发布到线上环境供用户使用，服务器资源只是软件的载体。那么，我们把软件叫做应用，从软件层面上来讲，一个应用应该是唯一的，而从&amp;quot;硬件&amp;quot;层面来说，一台&amp;quot;服务器&amp;quot;也是唯一的。那么，我们就可以将这两个&amp;quot;唯一&amp;quot;建立一种联系，然后再通过这两个唯一延伸出各种关联信息，比如，一个应用可能需要关联它的代码仓库，对应的负责人，归属部门等等，而一台服务器可能需要知道它的机房、机柜，或者是云平台，区域等信息。下图是一个我自己构建的元数据关联图：
+在设计元数据的表的时候，我们就可以根据这种关联关系来设计表。
+ 3.2 CI/CD    一个应用的生命周期一般包含以下步骤：
+ Design，接收需求，产品设计，沟通等，这边可能需要接入一些项目管理的工具，比如JIRA等、 Develop，程序员进行代码开发、架构设计等 Test，开发人员进行代码测试，测试人员进行功能测试等，这边可以引入一些自动化测试工具。 Deploy，各种人员可能会进行各种环境的部署，这边可以引入类似Jenkins的打包发布工具提高效率。 Monitor，进行监控数据的收集，通过平台输出可视化页面，配置告警、告警通知等功能。   3.3 监控告警    一个业务应用上线后，需要有工具来知道业务是否出现了问题，这时候就需要提供监控告警的一些工具。一个监控系统一般是如下图所示的架构
+ Agent，监控数据的收集器，可能是自研的跑在服务器上的采集客户端，也可能是嵌入到应用的收集器等待 Server，接收监控数据，进行存储的服务 Data，对数据进行整合、解析，告警触发、发送告警等操作的服务 Display，展示平台，供用户查看监控数据，配置告警规则的服务   3.4 机器操作    当整个DevOps平台完善的话，其实用户是可以不需要进入机器进行操作的，但是现实往往是不完美的，因此还需要类似堡垒机这样的服务来供用户登录机器进行一些日志查看，debug等操作。</description>
+    </item>
+    
+    <item>
+      <title>[译]当我们谈论Ops，我们在谈论什么</title>
+      <link>https://cctrip.tech/posts/talk_ops/</link>
+      <pubDate>Wed, 13 Jan 2021 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/talk_ops/</guid>
+      <description>原文链接：What the Ops are you talking about?
+水平有限，本文不免存在遗漏或错误之处。如有疑问，请查阅原文。
+ 背景    两年前，我因为效率低下的领导而获得了耻辱。我的背景是数据科学和机器学习，因此，我当然从我的工程同事那边学习到了DevOps。至少我们认为是这样的。
+令人费解的是，即使我们遵循了日常站立会议所有敏捷开发的良好实践，讨论我们的难点，也没有将难题扔给别人的态度。我们紧密合作并且相互友爱。但是开发效率依然缓慢，这令整个团队很沮丧。
+两年过后，我终于掌握了DevOps的含义，并且理解了它在数据团队中如此的相同而又如此不同。
+什么是Ops？    在我们谈论以数据为中心的Ops时，先让我们从软件开始说起，
+自从09年DevOps普及以来，软件行业就一直痴迷于各种Ops术语。十年前，从软件开发到部署的方法已经推陈出新。软件工程师开发应用，然后将其交付给运维工程师。该应用程序在部署期间经常中断，并在团队之间造成很大的摩擦。
+DevOps实践的目的是简化部署过程。该想法是将自动化视为构建和部署软件应用程序的一等公民。
+这种想法彻底改变了这个行业。许多组织开始建立跨职能团队来照顾整个SDLC。该团队将建立基础架构（基础工程师），开发应用程序（软件工程师），构建CI/CD管道（DevOps工程师），部署应用程序（每位工程师），然后连续监视和观察应用程序（站点可靠性工程师）。
+在一个大团队里面，一个工程师可能只会有一项主要职能，但是在较小的团队中，一位工程师经常担任许多职务。理想的情况是使许多团队成员能够履行多项职能，从而消除瓶颈和关键人员的依存关系。所以实际上，
+ DevOps并非是一项工作职能，而是更多的实践或文化。 在开始构建任何软件时都应采用它。
+ 随着DevOps的兴起，各种各样的Ops诞生了。
+SecOps以安全性为核心，GitOps致力于持续交付，NetOps确保网络可以支持数据流，而ITOps则专注于软件交付之外的操作任务。但是，这些操作的基石都源自DevOps所承诺的愿景：
+ 在错误最小的情况下尽可能快的发布软件
+  DataOps 🆚 MLOps 🆚 DevOps (and AIOps?)    注意：在本文中，分析团队是指使用SQL / PowerBI来生成业务洞察力的传统BI团队。 AI团队是指使用大数据技术构建高级分析和机器学习模型的团队。 有时他们是同一个团队，但我们将它们分开，以便更容易地解释概念。
+五年前，“数据是新石油”一语成为炒作对象。世界各地的领导者开始倾注资源，建立大数据团队来挖掘这些宝贵的资产。这些团队交付的压力巨大—毕竟，我们如何才能兑现新石油的承诺？随着快速扩展，分析团队也经历了同样的痛苦。
+然后，我们使这一切成为现实。
+数据科学家成为21世纪最吃香的职业。我们正在建立和处于数据和分析的黄金时代。每个执行者都有一个仪表板，具有来自整个组织的数据和嵌入式预测模型的仪表板，每个客户都有基于其行为的个性化推荐。
+但是，现在添加一个新功能需要花费数周甚至数月的时间。数据模型是混乱的并且没有人知道我们是使用信贷团队还是营销团队的活跃客户的定义。我们变得非常警惕将模型推向生成环境，因为我们不知道我们会破坏什么？
+因此，以数据为中心的社区团结在一起，保证不会因管理不善的数据流程而造成的效率低下，从那时起，各种以数据为中心的OPS诞生了
+要了解所有这些不同的Ops，让我们来看看数据如何在组织中流动的场景：
+ 数据是由与软件应用程序交互的客户生成的 软件将数据存储在其应用程序数据库中 分析团队从组织中的团队使用这些应用程序数据库构建ETL 然后，数据工程师将原始数据，合并的数据集（来自分析团队）和其他非结构化数据集摄取到某种形式的数据湖中 然后，数据科学家根据这些庞大的数据集建立模型 然后，这些模型采用用户生成的新数据进行预测。 然后，软件工程师将预测结果呈现给用户 并且周期继续  我们知道DevOps的诞生是由于开发团队和运维团队之间的摩擦。因此，想象一下运维，开发，分析和AI团队之间的4向界面所带来的令人头疼的问题。
+为了说明不同的Ops如何解决上述过程，下面的图形绘制了每个作业功能在整个时间轴上执行的一些任务
+理想情况下，应在项目开始时采用X-Ops文化，并在整个过程中实施实践.
+总而言之，这就是每个Ops的意义</description>
+    </item>
+    
+    <item>
+      <title>DevOps系列：SRE</title>
+      <link>https://cctrip.tech/posts/devops_series_sre/</link>
+      <pubDate>Wed, 29 Jul 2020 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/devops_series_sre/</guid>
+      <description>系列目录    《DevOps系列：开篇》
+《DevOps系列：概述》
+《DevOps系列：CMDB》
+《DevOps系列：CI/CD》
+《DevOps系列：监控》
+《DevOps系列：SRE》
+ 困局    计算机软件系统离开人通常是无法自主运行的，那要如何去运维一个日趋复杂的大型分布式计算机系统呢？
+Dev/Ops分离团队模型    雇佣系统管理员(sysadmin)运维复杂的计算机系统是行业内一直以来的普遍做法，系统管理员的工作主要在于应对系统中产生的各种需要人工干预的事件，以及来自业务部门的变更需求。但随着系统变得复杂，组件越来越多，流量不断上升，相关的事件和变更需求也会越来越多，就需要招聘更多的系统管理员。系统管理员的日常工作和研发工程师的相差甚远，通常归属于两个不同的部门，开发部(Dev)和运维部(Ops)。也就是Dev/Ops分离团队模型。
+但是这个模型存在两个无法避免的问题。
+ 直接成本。随着系统复杂度的增加，部署规模的扩大，团队的大小基本与系统负载成线性相关，共同成长。 间接成本。即研发团队和运维团队之间的沟通成本。研发团队想要&amp;quot;随时随地发布新功能，没有任何阻拦&amp;quot;，运维团队想要”一旦一个东西在生产环境中正常工作了，就不要再进行任何改动“。本质来说，两个团队的目标是互相矛盾的。   解决之道    DevOps     DevOps（开发 Development 与运维 Operations 的组合词）是一种文化、一场运动或实践，强调在自动化软件交付流程及基础设施变更过程中，软件开发人员与其他信息技术（IT）专业人员彼此之间的协作与沟通。它旨在建立一种文化与环境，使构建、测试、软件发布得以快速、频繁以及更加稳定地进行。
+ SRE     SRE可以理解为DevOps的一种实践，SRE基本是在进行由运维团队完成的工作，但是雇佣具有软件专业知识的工程师，通过创造软件系统的方式来维护系统运行并替代传统模型中的人工操作。本质上，SRE是在用软件工程的思维和方法论，通过设计、构建自动化工具来完成以前由系统管理员人工操作完成的任务。
+ SRE方法论    1. 确保长期关注研发工作    SRE团队应将运维工作限制在50%以内，并将剩余时间投入到研发项目上
+2. 在保障SLO的前提下最大化迭代速度    错误预算，任何产品都不是，也不应该做到100%可靠，部门建立起一个合理的可靠性目标，错误预算等于”1-可靠性目标“，通过错误预算来最大化新功能上线的速度，同时保障服务质量。
+3. 监控系统    监控系统是SRE团队监控服务质量和可用性的一个主要手段。一个监控系统应该只有三类输出：</description>
+    </item>
+    
+    <item>
+      <title>[译]DevOps成熟度模型</title>
+      <link>https://cctrip.tech/posts/devops_model/</link>
+      <pubDate>Sun, 26 Jul 2020 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/devops_model/</guid>
+      <description>原文链接：DevOps Maturity Model – Explained
+水平有限，本文不免存在遗漏或错误之处。如有疑问，请查阅原文。
+ DevOps通过改善团队在方法链和工作流程中的运作和合作方式，改变了IT行业。实际上，根据最近的一项调查，有63％的公司报告说在采用DevOps之后其软件部署质量得到了改善。
+到目前为止，大部分的公司已经在其软件开发过程中完成了一些DevOps实施阶段。但是，尽管有几家公司在采用DevOps方面受益匪浅，但许多公司仍未充分发挥其潜力。
+关于DevOps选择的最常见错误仍然存在，即“将其作为旅程或目标”。
+这就是“ DevOps成熟度模型”的用处。阅读以下文章，深入了解什么是DevOps成熟度模型以及它如何为您提供帮助。
+ 1. 理解DevOps成熟度    通过描述，DevOps成熟度被定义为一种模式，该模式确定组织在DevOps课程中的位置以及决定要执行的操作以获得期望的结果。
+理解将DevOps“作为一个连续的旅程，而不是一个目的地”，对于管理DevOps的成熟度至关重要。
+DevOps成熟度设计通过双方和组织方面的不断培训来管理增长。更多的才能和技能，将有更大的能力来处理规模和复杂性问题。
+ 2. DevOps成熟度所需的能力    2.1 文化与策略    DevOps必须被视为一种文化驱动的计划，该计划吸引了不同的团队，将他们推向共同的目标。向DevOps的过渡涉及在一系列方法和框架的支持下，以及组织工作文化的变化。因此，这需要适当的计划和全面的程序。
+2.2 自动化    自动化是DevOps方法中持续交付和持续部署工具的代码。通过自动化执行的任务，自动化流程有助于DevOps系列产品的开发，实验和生产，从而节省了时间并提高了资源效率。
+2.3 结构与过程    这是DevOps文化的最重要方面。对于同一地点的DevOps和团队而言，协作和共享至关重要，或者不同地点的DevOps和团队需要加入工具和资源才能达成共同的目标。
+根据《福布斯》的一项研究，组织通常会在DevOps课程的一部分中找到以下步骤：
+ 潜意识的不足：组织忽视了学习DevOps及其好处 有意识但是无能：即使经过一些工业化的DevOps课程，即使12-18个月后，组织仍然看到孤立的方法。 意识强：经过四年的DevOps课程和可靠的自动化，组织专注于团队之间的协作和简化分配机制。 潜意识技能：这里的组织都徘徊在结构化框架，深入协作，有效共享的实际方法上   3. DevOps成熟度模型需要什么？    完整的DevOps成熟度模型通过三种方式定义DevOps成熟度：
+ 评估现代技能水平 确定增长措施 概述实现DevOps目标的步骤  与这三个级别一致，DevOps成熟度模块支持跨表单，数据和基础架构级别的开发，部署和测试阶段的成熟度：
+3.1 应用的DevOps成熟度    这通过从开发到生产阶段的代码开发安全性来定义DevOps的成熟度。为了实现这一点，需要将构建，测试，代码覆盖，安全扫描和监控作为部署管道的自动化元素。</description>
+    </item>
+    
+    <item>
+      <title>DevOps系列：监控</title>
+      <link>https://cctrip.tech/posts/devops_series_mon/</link>
+      <pubDate>Mon, 20 Jul 2020 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/devops_series_mon/</guid>
+      <description>系列目录    《DevOps系列：开篇》
+《DevOps系列：概述》
+《DevOps系列：CMDB》
+《DevOps系列：CI/CD》
+《DevOps系列：监控》
+《DevOps系列：SRE》
+ 为什么需要监控系统？    两个场景    场景一    技术部门上线了一个新项目，系统宕机了，客户在访问时发现无法访问，客户 A 不知道如何处理，放弃了访问，客户 B 知道客服系统，告知了运营人员，运营人员自己访问后也发现无法访问，于是通知了测试人员，再由测试人员通知线上项目的负责人，由负责人来进行故障恢复。 整个流程中，能处理故障的人成了最后知道故障的人。
+场景二    用户反馈访问某个系统很慢，通知技术人员排查问题，由于系统涉及的组件很多，技术人员没办法立即知道问题出在哪里，于是技术人员只能通过自己把整个数据流走完的方式来排查问题： 1、由入口开始排查问题，先确认网络是否丢包，延时是否过高，发现无异常。 2、于是排查服务所在机器的负载情况，以及服务相关日志 (未必有记录)，也无异常。 3、排查代码发现有做 sql 查询，于是根据 sql 手动到数据库执行，发现 sql 执行很慢。 4、于是排查数据库所在机器的负载情况，发现 cpu 一直处在 100% 状态，是数据库进程造成的。 5、通过查询相关执行 sql 发现有某个 sql 在执行复杂查询导致了 cpu 使用率一直很高，从而影响了其他 sql 查询。
+极端情况下，技术人员可能需要把所有相关组件都排查一遍，才能发现问题出在哪里。
+ 场景解决方案    开头提到的两个场景应该是大部分技术人员都会碰到的问题，场景一是故障出现到故障处理的耗时问题，场景二是故障处理到故障恢复的耗时问题。
+场景一的解决方式，可以由一个脚本或者一个系统，定时收集客户访问的 url 的返回状态码，如果出现错误的状态码达到一定次数，就发送邮件或者短信给到对应的负载人。
+场景二的解决方式，可以由一个系统，定时收集所有组件的相关信息，然后通过聚合和数据展示，来提供一个全局的问题查看功能。
+解决上面两种场景的系统就是监控系统。</description>
+    </item>
+    
+    <item>
+      <title>DevOps系列：CI/CD</title>
+      <link>https://cctrip.tech/posts/devops_series_cicd/</link>
+      <pubDate>Wed, 15 Jul 2020 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/devops_series_cicd/</guid>
+      <description>系列目录    《DevOps系列：开篇》
+《DevOps系列：概述》
+《DevOps系列：CMDB》
+《DevOps系列：CI/CD》
+《DevOps系列：监控》
+《DevOps系列：SRE》
+ 1. 介绍    CI/CD 是一种通过在应用开发阶段引入自动化来频繁向客户交付应用的方法。CI/CD 的核心概念是持续集成、持续交付和持续部署。作为一个面向开发和运营团队的解决方案，CI/CD 主要针对在集成新代码时所引发的问题（亦称：“集成地狱”）。
+具体而言，CI/CD 可让持续自动化和持续监控贯穿于应用的整个生命周期（从集成和测试阶段，到交付和部署）。这些关联的事务通常被统称为“CI/CD 管道”，由开发和运维团队以敏捷方式协同支持。
+1.1 CI 是什么？CI 和 CD 有什么区别？    缩略词 CI / CD 具有几个不同的含义。CI/CD 中的“CI”始终指持续集成，它属于开发人员的自动化流程。成功的 CI 意味着应用代码的新更改会定期构建、测试并合并到共享存储库中。该解决方案可以解决在一次开发中有太多应用分支，从而导致相互冲突的问题。
+CI/CD 中的“CD”指的是持续交付和/或持续部署，这些相关概念有时会交叉使用。两者都事关管道后续阶段的自动化，但它们有时也会单独使用，用于说明自动化程度。
+持续交付通常是指开发人员对应用的更改会自动进行错误测试并上传到存储库（如 GitHub 或容器注册表），然后由运维团队将其部署到实时生产环境中。这旨在解决开发和运维团队之间可见性及沟通较差的问题。因此，持续交付的目的就是确保尽可能减少部署新代码时所需的工作量。
+持续部署（另一种“CD”）指的是自动将开发人员的更改从存储库发布到生产环境，以供客户使用。它主要为了解决因手动流程降低应用交付速度，从而使运维团队超负荷的问题。持续部署以持续交付的优势为根基，实现了管道后续阶段的自动化。
+CI/CD 既可能仅指持续集成和持续交付构成的关联环节，也可以指持续集成、持续交付和持续部署这三项构成的关联环节。更为复杂的是，有时“持续交付”也包含了持续部署流程。
+归根结底，我们没必要纠结于这些语义，您只需记得 CI/CD 其实就是一个流程（通常形象地表述为管道），用于实现应用开发中的高度持续自动化和持续监控。因案例而异，该术语的具体含义取决于 CI/CD 管道的自动化程度。许多企业最开始先添加 CI，然后逐步实现交付和部署的自动化（例如作为云原生应用的一部分）。
+1.2 CI 持续集成（Continuous Integration）    现代应用开发的目标是让多位开发人员同时处理同一应用的不同功能。但是，如果企业安排在一天内将所有分支源代码合并在一起（称为“合并日”），最终可能造成工作繁琐、耗时，而且需要手动完成。这是因为当一位独立工作的开发人员对应用进行更改时，有可能会与其他开发人员同时进行的更改发生冲突。如果每个开发人员都自定义自己的本地集成开发环境（IDE），而不是让团队就一个基于云的 IDE 达成一致，那么就会让问题更加雪上加霜。
+持续集成（CI）可以帮助开发人员更加频繁地（有时甚至每天）将代码更改合并到共享分支或“主干”中。一旦开发人员对应用所做的更改被合并，系统就会通过自动构建应用并运行不同级别的自动化测试（通常是单元测试和集成测试）来验证这些更改，确保这些更改没有对应用造成破坏。这意味着测试内容涵盖了从类和函数到构成整个应用的不同模块。如果自动化测试发现新代码和现有代码之间存在冲突，CI 可以更加轻松地快速修复这些错误。
+进一步了解技术细节
+1.3 CD 持续交付（Continuous Delivery）    完成 CI 中构建及单元测试和集成测试的自动化流程后，持续交付可自动将已验证的代码发布到存储库。为了实现高效的持续交付流程，务必要确保 CI 已内置于开发管道。持续交付的目标是拥有一个可随时部署到生产环境的代码库。</description>
+    </item>
+    
+    <item>
+      <title>DevOps系列：CMDB</title>
+      <link>https://cctrip.tech/posts/devops_series_cmdb/</link>
+      <pubDate>Fri, 10 Jul 2020 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/devops_series_cmdb/</guid>
+      <description>系列目录    《DevOps系列：开篇》
+《DevOps系列：概述》
+《DevOps系列：CMDB》
+《DevOps系列：CI/CD》
+《DevOps系列：监控》
+《DevOps系列：SRE》
+ 1. 介绍     CMDB是组织使用的ITIL术语，用于组织存储有关硬件和软件资产的信息（通常称为配置项[CI]）。CMDB提供了一种了解组织的关键资产及其关系的方法，例如信息系统，资产的上游来源或依存关系以及资产的下游目标。
+ 用比较通俗的语言解释，CMDB可以存储并自动发现整个IT网络上的各种信息，比如一个IT网络上有多少台服务器、多少存储、设备的品牌、资产编号、维护人员、所属部门、服务器上运营什么操作系统、操作系统的版本、操作系统上有哪些应用、每个应用的版本等等，此外，CMDB还有一个非常重要的功能，即存储不同资源之间的依赖关系，如果网络上某个节点出现问题，通过CMDB，可以判断因此受到影响的业务。
+ 2. 云原生时代的CMDB设计    2.1 传统时代的CMDB    通常，我们在建设运维的基础管理平台时，通常要做的事情：
+1、把服务器、网络、IDC、机柜、存储、配件等这几大维度先定下来；
+2、这些硬件的属性确定下来，比如服务器就会有 SN 序列号、IP 地址、厂商、硬件配置（如 CPU、内存、硬盘、网卡、PCIE、BIOS）、维保信息等等；网络设备如交换机也会有厂商、型号、带宽等等；
+3、以上信息之间的关联关系，或者叫拓扑关系。比如服务器所在机柜，虚拟机所在的宿主机、机柜所在 IDC 等简单关系，复杂一点就会有核心交换机、汇聚交换机、接入交换机以及机柜和服务器之间的级联关系，这个就相对复杂一些
+4、其实应该是 3.5 步，在上面信息的梳理过程中肯定就会遇到一些规划问题，比如，IP 地址段的规划，xx 网段用于 DB，xx 网段用于大数据、xx 网段用于业务应用等等，再比如同步要做的还有 xx 机柜用于做虚拟化宿主机、xx 机柜只放 DB 机器等等。
+以上信息梳理清楚，通过 ER 建模工具进行数据建模，再将以上的信息固化到 DB 中，一个资源层面的信息管理平台就基本成型了。但是，信息固化不是目的，也没有价值，只有信息动态流转起来才有价值（跟货币一样）。接下来我们可以做的事情：
+1、基于这些信息进行流程规范的建设，比如服务器的上线、下线、维修、装机等流程。同时，流程过程中状态的变更要同步管理起来。
+2、拓扑关系的可视化和动态展示，比如交换机与服务器之间的级联关系、状态（正常 or 故障）的展示等，这样可以很直观的关注到资源节点的状态。
+至此，从资源维度的信息梳理，以及基于这些信息的平台和流程规范建设也算是基本成型了。这个时候，以服务器简单示例，我们的视角是下面这样的：
+ 2.2 云时代的CMDB    云和k8s的出现以及DevOps的普及，开始了以应用为中心的CMDB构建</description>
+    </item>
+    
+    <item>
+      <title>DevOps系列：概述</title>
+      <link>https://cctrip.tech/posts/devops_series_intro/</link>
+      <pubDate>Sun, 05 Jul 2020 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/devops_series_intro/</guid>
+      <description>系列目录    《DevOps系列：开篇》
+《DevOps系列：概述》
+《DevOps系列：CMDB》
+《DevOps系列：CI/CD》
+《DevOps系列：监控》
+《DevOps系列：SRE》
+ 1. 介绍    DevOps大概起源于08到09年之间，最初的目的是要打破开发与运维之间的壁垒，2010年，The Agile Admin博客发布了《What is DevOps》给出了一个详细的DevOps定义，算是对DevOps有了一个初步的定义。不过，我这里还是引用一下wiki的定义：
+ DevOps（开发 Development 与运维 Operations 的组合词）是一种文化、一场运动或实践，强调在自动化软件交付流程及基础设施变更过程中，软件开发人员与其他信息技术（IT）专业人员彼此之间的协作与沟通。它旨在建立一种文化与环境，使构建、测试、软件发布得以快速、频繁以及更加稳定地进行。
+  2. 优势    传统的瀑布模型会带来很多沟通上的问题和成本，DevOps实际上是要来解决这些问题的。我们分别从工程上和角色上的优势来说一说
+2.1 基于DevOps的工程上的优势     DevOps的主要好处是可以更快地交付质量大大提高的软件。 根据行业的不同，可能还会有其他好处。大部分软件工程采用DevOps具有如下优势：
+  提升了可靠性
+  更快速的软件更新
+  减少故障恢复时间
+  更好的用户体验
+  更加高效
+  减少失败
+  降低风险
+  更好的质量
+  更短的开发周期</description>
+    </item>
+    
+    <item>
+      <title>DevOps系列：开篇</title>
+      <link>https://cctrip.tech/posts/devops_series/</link>
+      <pubDate>Wed, 01 Jul 2020 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/devops_series/</guid>
+      <description>系列目录    《DevOps系列：开篇》
+《DevOps系列：概述》
+《DevOps系列：CMDB》
+《DevOps系列：CI/CD》
+《DevOps系列：监控》
+《DevOps系列：SRE》
+ 1. 介绍    在Ops领域工作也接近8年了，个人也经历了从人工Ops&amp;ndash;&amp;gt;工具Ops&amp;ndash;&amp;gt;平台Ops的转变，最近想把自己的一些DevOps相关的学习和经验记录下来，整理成一个系列，算是对自己这么多年的工作经验的一个总结，也想对之后的发展想法做下自己的规划和判断。
+ 2. 当我们谈论Ops，我们在谈论什么    2.1 从开发模型说起    早期的软件开发模型一般采用瀑布式开发模型，该模型将软件过程划分成几个阶段，从需求到设计、开发、测试和运维，它的理念是软件开发的规模越来越大，必须以一种工程管理的方式来定义每个阶段，以及相应的交付产物和交付标准，以期通过一种重流程，重管控，按照计划一步步推进整个项目的交付过程。Ops处于软件交付的末端。那么，具体的Ops是什么呢？
+2.2 什么是运维(Ops)     运维(Ops)， 通常指IT运维（IT Operations）， 是指通过一系列步骤和方法，管理与维护线上服务（Online Service）或者产品 （Product）的过程。
+ 运维有着非常广泛的定义，在不同的公司不同的阶段代表不同的职责与定位，没有一个统一的标准。尤其是随着互联网的发展，运维的含义也在逐渐互联网化。互联网运维通常属于技术部门，与研发、测试、系统管理同为互联网产品的技术支撑，这种划分在国内和国外以及大小公司之间都会多少有一些不同。运维的重点在于系统运行的各种环境，从机房、网络、存储、物理机、虚拟机这些基础的架构，到数据库、中间件平台、云平台、大数据平台，偏重的也不是编程，而是对这类平台的使用和管理。运维的水平可以成为衡量一个公司（IT公司）技术实力的标准。随着软件行业和规模的不断发展，Ops也在不断的改进。
+2.3 Ops的发展历程    2.3.1 人工阶段    在这个阶段，所有运维问题，基本靠人工操作完成。这种情况下，系统规模不大，遇到的问题相对简单，大多集中在硬件、网络和系统层面，所以有一定操作系统或网络维护经验的人就可以搞定。
+2.3.2 脚本&amp;amp;工具阶段    一般绝大多数企业都会很快从第一阶段过渡到第二阶段，因为上一阶段的大量重复繁琐的操作，完全可以转化为脚本来实现，而不是每次都去敲一堆类似的命令。
+早期的运维主要以各种 shell 为主，所以很多运维如果会 shell 编写一些批处理脚本，就会很有竞争力了。再往后，我们大家所熟知的 Perl、Ruby、Python 等动态语言也被广泛应用于脚本工具的实现，特别是一些逻辑和场景相对复杂的自动化实现。不同的工具也被开发出现，例如ansible、chef、puppet等。
+2.3.3 流程&amp;amp;工具阶段    在该阶段，要面临更加复杂化的场景实现，比如做一次业务部署，运维同学可能要安装服务器，做系统配置变更，安装软件包、启停进程，然后再负载均衡上配置服务等等。这时，就需要有一个流程将一个个的脚本功能串联起来，同时还要有一些脚本执行结果校验及判断的过程。</description>
+    </item>
+    
+  </channel>
 </rss>

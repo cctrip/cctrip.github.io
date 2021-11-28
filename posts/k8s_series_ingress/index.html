@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="color-scheme" content="light dark">
+
+    
+      <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests; block-all-mixed-content; default-src 'self'; child-src 'self'; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net/; form-action 'self'; frame-src 'self'; img-src 'self'; object-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com/ https://cdn.jsdelivr.net/; script-src 'self' 'unsafe-inline' https://www.google-analytics.com; prefetch-src 'self'; connect-src 'self' https://www.google-analytics.com;">
+
+    
+
+    <meta name="author" content="Hello.CC">
+    <meta name="description" content="Ingress">
+    <meta name="keywords" content="blog,developer,personal">
+
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://cctrip.tech/posts/k8s_series_ingress/ingress-choose.png"/>
+<meta name="twitter:title" content="Kubernetes系列：Ingress"/>
+<meta name="twitter:description" content="Ingress"/>
+
+    <meta property="og:title" content="Kubernetes系列：Ingress" />
+<meta property="og:description" content="Ingress" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cctrip.tech/posts/k8s_series_ingress/" /><meta property="og:image" content="https://cctrip.tech/posts/k8s_series_ingress/ingress-choose.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-11-11T17:55:28&#43;08:00" />
+<meta property="article:modified_time" content="2020-11-11T17:55:28&#43;08:00" />
+
+
+
+    <title>
+  Kubernetes系列：Ingress · CC&#39;s Trip
+</title>
+
+    
+      <link rel="canonical" href="https://cctrip.tech/posts/k8s_series_ingress/">
+    
+
+    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.543dc3579b222ee2eec7bc52e75060428d931ade1c0263624cf4be95f0f467a2.css" integrity="sha256-VD3DV5siLuLux7xS51BgQo2TGt4cAmNiTPS&#43;lfD0Z6I=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="/css/coder-dark.min.92eafdad7963af697840da26de3829cd3610aa623b917f6c37fb3f81e404b693.css" integrity="sha256-kur9rXljr2l4QNom3jgpzTYQqmI7kX9sN/s/geQEtpM=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/leo.png" sizes="32x32">
+    
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    <meta name="generator" content="Hugo 0.81.0" />
+  </head>
+
+  
+  
+    
+  
+  <body class="preload-transitions colorscheme-auto">
+    
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      CC&#39;s Trip
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">Blog</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/projects/">Projects</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/contact/">Contact me</a>
+            </li>
+          
+        
+        
+          
+          
+          
+            
+          
+            
+              
+                <li class="navigation-item menu-separator">
+                  <span>|</span>
+                </li>
+                
+              
+              <li class="navigation-item">
+                <a href="https://cctrip.tech/zh-cn/">🇨🇳</a>
+              </li>
+            
+          
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://cctrip.tech/posts/k8s_series_ingress/">
+              Kubernetes系列：Ingress
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2020-11-11T17:55:28&#43;08:00'>
+                November 11, 2020
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              3-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/cloud-native/">Cloud Native</a></div>
+
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/kubernetes/">kubernetes</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <h2 id="系列目录">
+  系列目录
+  <a class="heading-link" href="#%e7%b3%bb%e5%88%97%e7%9b%ae%e5%bd%95">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p><a href="../k8s_series">《Kubernetes系列：开篇》</a></p>
+<p><a href="../k8s_series_intro">《Kubernetes系列：概述》</a></p>
+<p><a href="../k8s_series_arch">《Kubernetes系列：架构》</a></p>
+<p><a href="../k8s_series_container">《Kubernetes系列：容器》</a></p>
+<p><a href="../k8s_series_network">《Kubernetes系列：网络》</a></p>
+<p><a href="../k8s_series_storage">《Kubernetes系列：存储》</a></p>
+<p><a href="../k8s_series_service">《Kubernetes系列：Service》</a></p>
+<p><a href="../k8s_series_ingress">《Kubernetes系列：Ingress》</a></p>
+<p><a href="../k8s_series_oma">《Kubernetes系列：OAM》</a></p>
+<hr>
+<h2 id="1-介绍">
+  1. 介绍
+  <a class="heading-link" href="#1-%e4%bb%8b%e7%bb%8d">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<h3 id="11-ingress">
+  1.1 Ingress
+  <a class="heading-link" href="#11-ingress">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<blockquote>
+<p><a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.20/#ingress-v1beta1-networking-k8s-io">Ingress</a> 公开了从集群外部到集群内<a href="https://kubernetes.io/zh/docs/concepts/services-networking/service/">service</a>的 HTTP 和 HTTPS 路由。 流量路由由 Ingress 资源上定义的规则控制。</p>
+</blockquote>
+<p><img src="ingress-process.jpg" alt=""></p>
+<p>可以将 Ingress 配置为服务提供外部可访问的 URL、负载均衡流量、终止 SSL/TLS，以及提供基于名称的虚拟主机等能力。 <a href="https://kubernetes.io/zh/docs/concepts/services-networking/ingress-controllers">Ingress Controller</a> 通常负责通过负载均衡器来实现 Ingress，尽管它也可以配置边缘路由器或其他前端来帮助处理流量。</p>
+<hr>
+<h3 id="12-ingress-controller">
+  1.2 Ingress Controller
+  <a class="heading-link" href="#12-ingress-controller">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>为了让 Ingress 资源工作，集群必须有一个正在运行的 Ingress Controller。</p>
+<p>与作为 <code>kube-controller-manager</code> 可执行文件的一部分运行的其他类型的控制器不同，Ingress 控制器不是随集群自动启动的。</p>
+<hr>
+<h2 id="2-ingress-contoller-选择">
+  2. Ingress Contoller 选择
+  <a class="heading-link" href="#2-ingress-contoller-%e9%80%89%e6%8b%a9">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>下表是一些常用的Contoller对比：</p>
+<table>
+<thead>
+<tr>
+<th>control plane</th>
+<th>data plane</th>
+<th>backend service discovery</th>
+<th>protocols</th>
+<th>ssl termination</th>
+<th>websocket</th>
+<th>routing</th>
+<th>scope</th>
+<th>resiliency</th>
+<th>lb algorithms</th>
+<th>auth</th>
+<th>Tracing</th>
+<th>canary/shadow</th>
+<th>istio integration</th>
+<th>state</th>
+<th>Paid support</th>
+<th>Linkaaaaaaaaaaaaaa</th>
+<th>dashboard</th>
+<th>sticky sessions</th>
+<th>lua</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ingress-nginx</td>
+<td>nginx</td>
+<td>dynamic</td>
+<td>http,https,tcp (separate lb),udp,grpc,fastcgi,IPC socket</td>
+<td>yes</td>
+<td>yes</td>
+<td>host,path(with regex)</td>
+<td>cross-namespace</td>
+<td>rate limit, retries</td>
+<td>rr,ewma,ip_hash</td>
+<td>basic, digest, external auth</td>
+<td>yes</td>
+<td>canary</td>
+<td></td>
+<td>kubernetes</td>
+<td></td>
+<td><a href="https://kubernetes.github.io/ingress-nginx/">https://kubernetes.github.io/ingress-nginx/</a></td>
+<td>Metrics can be seen in Grafana</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>kong</td>
+<td>nginx</td>
+<td>dynamic</td>
+<td>http,https, grpc</td>
+<td>yes</td>
+<td>yes</td>
+<td>host, header, path, method</td>
+<td>cross-namespace</td>
+<td>active and passive health check, circuit break, rate limit, retries</td>
+<td>rr, hash, header, cookie</td>
+<td>Basic Auth, HMAC, JWT, Key, LDAP, OAuth 2.0, PASETO, plus paid Kong Enterprise options like OpenID Connect</td>
+<td>yes</td>
+<td>canary</td>
+<td></td>
+<td>kubernetes</td>
+<td></td>
+<td><a href="https://github.com/Kong/kubernetes-ingress-controller">https://github.com/Kong/kubernetes-ingress-controller</a></td>
+<td>Admin Dashboard + Grafana+Prometheus<!-- raw HTML omitted -->statsd<!-- raw HTML omitted -->Datadog<!-- raw HTML omitted -->SignalFx</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>traefik</td>
+<td>traefik</td>
+<td>dynamic</td>
+<td>http,https,grpc,tcp + tls (alpha)</td>
+<td>yes</td>
+<td>yes</td>
+<td>host,path</td>
+<td>cross-namespace</td>
+<td>circuit break, retries</td>
+<td>rr, wrr</td>
+<td>basic, digest and forward auth in alpha</td>
+<td>yes</td>
+<td>canary</td>
+<td>yes</td>
+<td>kubernetes</td>
+<td></td>
+<td><a href="https://docs.traefik.io/configuration/backends/kubernetes/">https://docs.traefik.io/configuration/backends/kubernetes/</a></td>
+<td>Included</td>
+<td>Yes</td>
+<td>no</td>
+</tr>
+<tr>
+<td>istio ingress</td>
+<td>envoy</td>
+<td>dynamic</td>
+<td>tcp,http,https,grpc</td>
+<td>yes</td>
+<td>yes</td>
+<td>host,user</td>
+<td>cross-namespace</td>
+<td>circuit break, retries</td>
+<td>rr,leastconn,random,passthrough</td>
+<td>JWT</td>
+<td>yes</td>
+<td></td>
+<td>yes</td>
+<td>kubernetes</td>
+<td></td>
+<td><a href="https://istio.io/docs/tasks/traffic-management/ingress/">https://istio.io/docs/tasks/traffic-management/ingress/</a></td>
+<td>Metrics can be seen in Grafana and Prometheus, tracing can be seen through jaeger or zipkin UI</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="21-ingress-nginx">
+  2.1 ingress-nginx
+  <a class="heading-link" href="#21-ingress-nginx">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<ul>
+<li><a href="https://github.com/kubernetes/ingress-nginx"><em>github.com/kubernetes/ingress-nginx</em></a></li>
+<li><em>Implemented in: Go/Lua (while nginx is written in C)</em></li>
+<li><em>License: Apache 2.0</em></li>
+</ul>
+<p>官方的ingress controller，它是由社区开发的。基于nginx Web服务器，并补充了一组用于实现额外功能的Lua插件。</p>
+<h4 id="211-配置">
+  2.1.1 配置
+  <a class="heading-link" href="#211-%e9%85%8d%e7%bd%ae">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>一个最小的 Ingress 资源示例：</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#268bd2">apiVersion</span>: networking.k8s.io/v1
+<span style="color:#268bd2">kind</span>: Ingress
+<span style="color:#268bd2">metadata</span>:
+  <span style="color:#268bd2">name</span>: minimal-ingress
+  <span style="color:#268bd2">annotations</span>:
+    <span style="color:#268bd2">nginx.ingress.kubernetes.io/rewrite-target</span>: /
+<span style="color:#268bd2">spec</span>:
+  <span style="color:#268bd2">rules</span>:
+  - <span style="color:#268bd2">http</span>:
+      <span style="color:#268bd2">paths</span>:
+      - <span style="color:#268bd2">path</span>: /testpath
+        <span style="color:#268bd2">pathType</span>: Prefix
+        <span style="color:#268bd2">backend</span>:
+          <span style="color:#268bd2">service</span>:
+            <span style="color:#268bd2">name</span>: test
+            <span style="color:#268bd2">port</span>:
+              <span style="color:#268bd2">number</span>: <span style="color:#2aa198">80</span>
+</code></pre></div><p>与所有其他 Kubernetes 资源一样，Ingress 需要使用 <code>apiVersion</code>、<code>kind</code> 和 <code>metadata</code> 字段。 Ingress 对象的命名必须是合法的 <a href="https://kubernetes.io/zh/docs/concepts/overview/working-with-objects/names#dns-subdomain-names">DNS 子域名名称</a>。 有关使用配置文件的一般信息，请参见<a href="https://kubernetes.io/zh/docs/tasks/run-application/run-stateless-application-deployment/">部署应用</a>、 <a href="https://kubernetes.io/zh/docs/tasks/configure-pod-container/configure-pod-configmap/">配置容器</a>、 <a href="https://kubernetes.io/zh/docs/concepts/cluster-administration/manage-deployment/">管理资源</a>。 Ingress 经常使用注解（annotations）来配置一些选项，具体取决于 Ingress 控制器，例如 <a href="https://github.com/kubernetes/ingress-nginx/blob/master/docs/examples/rewrite/README.md">重写目标注解</a>。 不同的 <a href="https://kubernetes.io/zh/docs/concepts/services-networking/ingress-controllers">Ingress 控制器</a> 支持不同的注解。查看文档以供你选择 Ingress 控制器，以了解支持哪些注解。</p>
+<p>Ingress <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status">规约</a> 提供了配置负载均衡器或者代理服务器所需的所有信息。 最重要的是，其中包含与所有传入请求匹配的规则列表。 Ingress 资源仅支持用于转发 HTTP 流量的规则。</p>
+<h4 id="212-ingress-规则">
+  2.1.2 Ingress 规则
+  <a class="heading-link" href="#212-ingress-%e8%a7%84%e5%88%99">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>每个 HTTP 规则都包含以下信息：</p>
+<ul>
+<li>可选的 <code>host</code>。在此示例中，未指定 <code>host</code>，因此该规则适用于通过指定 IP 地址的所有入站 HTTP 通信。 如果提供了 <code>host</code>（例如 foo.bar.com），则 <code>rules</code> 适用于该 <code>host</code>。</li>
+<li>路径列表 paths（例如，<code>/testpath</code>）,每个路径都有一个由 <code>serviceName</code> 和 <code>servicePort</code> 定义的关联后端。 在负载均衡器将流量定向到引用的服务之前，主机和路径都必须匹配传入请求的内容。</li>
+<li><code>backend</code>（后端）是 <a href="https://kubernetes.io/zh/docs/concepts/services-networking/service/">Service 文档</a>中所述的服务和端口名称的组合。 与规则的 <code>host</code> 和 <code>path</code> 匹配的对 Ingress 的 HTTP（和 HTTPS ）请求将发送到列出的 <code>backend</code>。</li>
+</ul>
+<p>通常在 Ingress 控制器中会配置 <code>defaultBackend</code>（默认后端），以服务于任何不符合规约中 <code>path</code> 的请求。</p>
+<h4 id="213-defaultbackend">
+  2.1.3 DefaultBackend
+  <a class="heading-link" href="#213-defaultbackend">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>没有 <code>rules</code> 的 Ingress 将所有流量发送到同一个默认后端。 <code>defaultBackend</code> 通常是 <a href="https://kubernetes.io/zh/docs/concepts/services-networking/ingress-controllers">Ingress 控制器</a> 的配置选项，而非在 Ingress 资源中指定。</p>
+<p>如果 <code>hosts</code> 或 <code>paths</code> 都没有与 Ingress 对象中的 HTTP 请求匹配，则流量将路由到默认后端。</p>
+<h4 id="214-资源后端">
+  2.1.4 资源后端
+  <a class="heading-link" href="#214-%e8%b5%84%e6%ba%90%e5%90%8e%e7%ab%af">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p><code>Resource</code> 后端是一个 <code>ObjectRef</code>，指向同一名字空间中的另一个 Kubernetes，将其作为 Ingress 对象。<code>Resource</code> 与 <code>Service</code> 配置是互斥的，在 二者均被设置时会无法通过合法性检查。 <code>Resource</code> 后端的一种常见用法是将所有入站数据导向带有静态资产的对象存储后端。</p>
+<p><a href="https://raw.githubusercontent.com/kubernetes/website/master/content/zh/examples/service/networking/ingress-resource-backend.yaml"><code>service/networking/ingress-resource-backend.yaml</code></a> <img src="https://d33wubrfki0l68.cloudfront.net/0901162ab78eb4ff2e9e5dc8b17c3824befc91a6/44ccd/images/copycode.svg" alt="Copy service/networking/ingress-resource-backend.yaml to clipboard"></p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#268bd2">apiVersion</span>: networking.k8s.io/v1
+<span style="color:#268bd2">kind</span>: Ingress
+<span style="color:#268bd2">metadata</span>:
+  <span style="color:#268bd2">name</span>: ingress-resource-backend
+<span style="color:#268bd2">spec</span>:
+  <span style="color:#268bd2">defaultBackend</span>:
+    <span style="color:#268bd2">resource</span>:
+      <span style="color:#268bd2">apiGroup</span>: k8s.example.com
+      <span style="color:#268bd2">kind</span>: StorageBucket
+      <span style="color:#268bd2">name</span>: static-assets
+  <span style="color:#268bd2">rules</span>:
+    - <span style="color:#268bd2">http</span>:
+        <span style="color:#268bd2">paths</span>:
+          - <span style="color:#268bd2">path</span>: /icons
+            <span style="color:#268bd2">pathType</span>: ImplementationSpecific
+            <span style="color:#268bd2">backend</span>:
+              <span style="color:#268bd2">resource</span>:
+                <span style="color:#268bd2">apiGroup</span>: k8s.example.com
+                <span style="color:#268bd2">kind</span>: StorageBucket
+                <span style="color:#268bd2">name</span>: icon-assets
+</code></pre></div><p>创建了如上的 Ingress 之后，你可以使用下面的命令查看它：</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl describe ingress ingress-resource-backend
+Name:             ingress-resource-backend
+Namespace:        default
+Address:
+Default backend:  APIGroup: k8s.example.com, Kind: StorageBucket, Name: static-assets
+Rules:
+  Host        Path  Backends
+  ----        ----  --------
+  *
+              /icons   APIGroup: k8s.example.com, Kind: StorageBucket, Name: icon-assets
+Annotations:  &lt;none&gt;
+Events:       &lt;none&gt;
+</code></pre></div><h4 id="215-路径类型">
+  2.1.5 路径类型
+  <a class="heading-link" href="#215-%e8%b7%af%e5%be%84%e7%b1%bb%e5%9e%8b">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>Ingress 中的每个路径都需要有对应的路径类型（Path Type）。未明确设置 <code>pathType</code> 的路径无法通过合法性检查。当前支持的路径类型有三种：</p>
+<ul>
+<li><code>ImplementationSpecific</code>：对于这种路径类型，匹配方法取决于 IngressClass。 具体实现可以将其作为单独的 <code>pathType</code> 处理或者与 <code>Prefix</code> 或 <code>Exact</code> 类型作相同处理。</li>
+<li><code>Exact</code>：精确匹配 URL 路径，且区分大小写。</li>
+<li><code>Prefix</code>：基于以 <code>/</code> 分隔的 URL 路径前缀匹配。匹配区分大小写，并且对路径中的元素逐个完成。 路径元素指的是由 <code>/</code> 分隔符分隔的路径中的标签列表。 如果每个 <em>p</em> 都是请求路径 <em>p</em> 的元素前缀，则请求与路径 <em>p</em> 匹配。</li>
+</ul>
+<hr>
+<h3 id="22-kong-ingress">
+  2.2 Kong Ingress
+  <a class="heading-link" href="#22-kong-ingress">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<ul>
+<li><a href="https://github.com/Kong/kubernetes-ingress-controller"><em>github.com/Kong/kubernetes-ingress-controller</em></a></li>
+<li><em>Implemented in: Go</em></li>
+<li><em>License: Apache 2.0</em></li>
+</ul>
+<p>Kong Ingress建立在NGINX之上，并增加了扩展其功能的Lua模块。</p>
+<p>它的主要优点是易于安装和配置的大量其他模块/插件（包括来自第三方开发人员的模块/插件）。</p>
+<p>它为多种附加功能开辟了道路。附带地，内置功能已经提供了许多可能性。使用CRD执行配置。</p>
+<p>Kong的一个重要功能是它只能在一个环境中运行（而不是支持跨命名空间），这是一个颇具争议的主题：有人认为它是一个缺点（您必须为每个环境生成实例），而其他人则认为这是一个特殊功能（较高的隔离级别，因此一个控制器的故障影响仅限于其环境）。</p>
+<h3 id="23-istio-ingress">
+  2.3 Istio Ingress
+  <a class="heading-link" href="#23-istio-ingress">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<ul>
+<li><a href="https://istio.io/docs/tasks/traffic-management/ingress/"><em>istio.io/docs/tasks/traffic-management/ingress</em></a></li>
+<li><em>Implemented in: Go</em></li>
+<li><em>License: Apache 2.0</em></li>
+</ul>
+<p>Istio是IBM，Google和Lyft（Envoy的原始作者）的一个联合项目，它是一个全面的服务网格解决方案。它不仅可以管理所有传入的外部流量（作为Ingress控制器），还可以控制集群内部的所有流量。在幕后，Istio将Envoy用作每种服务的辅助代理。从本质上讲，它是一个可以执行几乎所有操作的大型处理器。其中心思想是最大程度的控制，可扩展性，安全性和透明性。</p>
+<p>借助Istio Ingress，您可以微调流量路由，服务之间的访问授权，平衡，监控，金丝雀发布等。</p>
+<p><em>Here is a great intro to learn about Istio: “</em><a href="https://medium.com/google-cloud/back-to-microservices-with-istio-p1-827c872daa53"><em>Back to microservices with Istio</em></a><em>”.</em></p>
+<hr>
+<h3 id="24-traefik">
+  2.4 Traefik
+  <a class="heading-link" href="#24-traefik">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<ul>
+<li><a href="https://github.com/containous/traefik"><em>github.com/containous/traefik</em></a></li>
+<li><em>Implemented in: Go</em></li>
+<li><em>License: MIT</em></li>
+</ul>
+<p>最初，此代理是为微服务及其动态环境的请求路由而创建的，因此，它具有许多有用的功能：连续更新配置（不重新启动），支持多种负载平衡算法，Web UI，指标导出，支持各种协议，REST API，canary版本等。他对开箱即用的“加密”证书的支持是另一个不错的功能。主要缺点是，为了组织控制器的高可用性，您必须安装并连接其自己的KV存储器。</p>
+<hr>
+<h2 id="3-结论">
+  3. 结论
+  <a class="heading-link" href="#3-%e7%bb%93%e8%ae%ba">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>本文讲述了ingress是啥，以及一些基础的配置。</p>
+<hr>
+<p><strong>参考</strong></p>
+<p><a href="https://medium.com/flant-com/comparing-ingress-controllers-for-kubernetes-9b397483b46b">https://medium.com/flant-com/comparing-ingress-controllers-for-kubernetes-9b397483b46b</a></p>
+<p><a href="https://kubernetes.io/docs/concepts/services-networking/ingress/">https://kubernetes.io/docs/concepts/services-networking/ingress/</a></p>
+<p><a href="https://docs.konghq.com/kubernetes-ingress-controller/1.1.x/introduction/">https://docs.konghq.com/kubernetes-ingress-controller/1.1.x/introduction/</a></p>
+<p><a href="https://doc.traefik.io/traefik/middlewares/overview/">https://doc.traefik.io/traefik/middlewares/overview/</a></p>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    ©
+    
+      2019 -
+    
+    2021
+     Hello.CC 
+    ·
+    Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">CCoder</a>.
+    
+  </section>
+</footer>
+
+    </main>
+
+    
+      
+      <script src="/js/coder.min.03b17769f4f91ae35667e1f2a1ca8c16f50562576cf90ff32b3179926914daa5.js" integrity="sha256-A7F3afT5GuNWZ&#43;HyocqMFvUFYlds&#43;Q/zKzF5kmkU2qU="></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </body>
+
+</html>

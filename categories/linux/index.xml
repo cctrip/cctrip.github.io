@@ -1,42 +1,114 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-    <channel>
-        <title>Linux - Category - CC&#39;s Trip</title>
-        <link>https://cctrip.github.io/categories/linux/</link>
-        <description>Linux - Category - CC&#39;s Trip</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 09 Nov 2020 17:55:28 &#43;0800</lastBuildDate><atom:link href="https://cctrip.github.io/categories/linux/" rel="self" type="application/rss+xml" /><item>
-    <title>深入理解LVS</title>
-    <link>https://cctrip.github.io/deep_lvs/</link>
-    <pubDate>Mon, 09 Nov 2020 17:55:28 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://cctrip.github.io/deep_lvs/</guid>
-    <description><![CDATA[1. 介绍 接上一篇深入理解iptables，kubernetes service技术还用到ipvs技术，讲到ipvs，那就得说说LVS了，这篇我们]]></description>
-</item><item>
-    <title>深入理解iptables</title>
-    <link>https://cctrip.github.io/deep_iptables/</link>
-    <pubDate>Sat, 07 Nov 2020 17:55:28 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://cctrip.github.io/deep_iptables/</guid>
-    <description><![CDATA[1. 介绍 最近在刚好在看Kubernetes的service相关内容，里面用到了iptables和ipvs技术，好久没看iptables了，快忘]]></description>
-</item><item>
-    <title>谈谈文件描述符</title>
-    <link>https://cctrip.github.io/file_descriptor/</link>
-    <pubDate>Sun, 29 Dec 2019 17:55:28 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://cctrip.github.io/file_descriptor/</guid>
-    <description><![CDATA[概念 wiki解释，文件描述符在形式上是一个非负整数。实际上，它是一个索引值，指向内核为每一个进程所维护的该进程打开文件的记录表。当程序打开一]]></description>
-</item><item>
-    <title>Linux PAM模块</title>
-    <link>https://cctrip.github.io/linux_pam/</link>
-    <pubDate>Thu, 05 Sep 2019 17:55:28 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://cctrip.github.io/linux_pam/</guid>
-    <description><![CDATA[概念 Linux-PAM（Pluggable Authentication Modules for Linux）是一套共享库,使本地系统管理员可以随意选择程序的认证方式。换句话说，不用(重新编]]></description>
-</item><item>
-    <title>理解系统启动过程</title>
-    <link>https://cctrip.github.io/system_start/</link>
-    <pubDate>Sat, 21 May 2016 17:55:28 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://cctrip.github.io/system_start/</guid>
-    <description><![CDATA[前言 Linux是一种自由和开放源代码的类UNIX操作系统。该操作系统的内核由林纳斯·托瓦兹在1991年10月5日首次发布。在加上用户空间的应]]></description>
-</item></channel>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on CC&#39;s Trip</title>
+    <link>https://cctrip.tech/categories/linux/</link>
+    <description>Recent content in Linux on CC&#39;s Trip</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 09 Nov 2020 17:55:28 +0800</lastBuildDate><atom:link href="https://cctrip.tech/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>深入理解LVS</title>
+      <link>https://cctrip.tech/posts/deep_lvs/</link>
+      <pubDate>Mon, 09 Nov 2020 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/deep_lvs/</guid>
+      <description>1. 介绍    接上一篇深入理解iptables，kubernetes service技术还用到ipvs技术，讲到ipvs，那就得说说LVS了，这篇我们来了解下LVS具体的实现机制。
+ 2. IPVS     IPVS（IP虚拟服务器）实现传输层负载均衡，通常称为第4层LAN交换。
+ 负载均衡器的概念可以看这篇文章，或者翻译版本。
+大多数情况下，负载均衡器和代理这两个术语会被混用在一起，所谓的代理，简单来说，就是接收客户端的数据包再转发到对应的后端服务器上。
+ipvs就在这样的软件，它依赖netfilter的功能来实现数据包的转发，我们还是先拉源码定义来看下。
+ip_vs_core.c
+static const struct nf_hook_ops ip_vs_ops4[] = { /* After packet filtering, change source only for VS/NAT */ { .hook	= ip_vs_reply4, .pf	= NFPROTO_IPV4, .hooknum	= NF_INET_LOCAL_IN, .priority	= NF_IP_PRI_NAT_SRC - 2, }, /* After packet filtering, forward packet through VS/DR, VS/TUN, * or VS/NAT(change destination), so that filtering rules can be * applied to IPVS.</description>
+    </item>
+    
+    <item>
+      <title>深入理解iptables</title>
+      <link>https://cctrip.tech/posts/deep_iptables/</link>
+      <pubDate>Sat, 07 Nov 2020 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/deep_iptables/</guid>
+      <description>1. 介绍    最近在刚好在看Kubernetes的service相关内容，里面用到了iptables和ipvs技术，好久没看iptables了，快忘记了，刚好复习重新记忆一下。
+讲iptables和ipvs，有个东西就一定得清楚，那就是netfilter
+ 2. netfilter     netfilter是一个数据包处理框架。
+ netfilter具备以下几个功能：
+ 数据包过滤 网络地址(端口)转换 数据包日志记录 用户空间数据包排队 其他数据包处理功能  2.1 netfilter架构    netfilter 提供了 5 个 hook 点。包经过协议栈时会触发内核模块注册在这里的处理函数 。触发哪个 hook 取决于包的方向（是发送还是接收）、包的目的地址、以及包在上一个 hook 点是被丢弃还是拒绝等等。
+下面几个 hook 是内核协议栈中已经定义好的：
+ NF_IP_PRE_ROUTING: 接收到的包进入协议栈后立即触发此 hook，在进行任何路由判断 （将包发往哪里）之前 NF_IP_LOCAL_IN: 接收到的包经过路由判断，如果目的是本机，将触发此 hook NF_IP_FORWARD: 接收到的包经过路由判断，如果目的是其他机器，将触发此 hook NF_IP_LOCAL_OUT: 本机产生的准备发送的包，在进入协议栈后立即触发此 hook NF_IP_POST_ROUTING: 本机产生的准备发送的包或者转发的包，在经过路由判断之后， 将触发此 hook  注册处理函数时必须提供优先级，以便 hook 触发时能按照 优先级高低调用处理函数。这使得多个模块（或者同一内核模块的多个实例）可以在同一 hook 点注册，并且有确定的处理顺序。内核模块会依次被调用，每次返回一个结果给 netfilter 框架，提示该对这个包做以下几个操作之一：</description>
+    </item>
+    
+    <item>
+      <title>谈谈文件描述符</title>
+      <link>https://cctrip.tech/posts/file_descriptor/</link>
+      <pubDate>Sun, 29 Dec 2019 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/file_descriptor/</guid>
+      <description>概念    wiki解释，文件描述符在形式上是一个非负整数。实际上，它是一个索引值，指向内核为每一个进程所维护的该进程打开文件的记录表。当程序打开一个现有文件或者创建一个新文件时，内核向进程返回一个文件描述符。在程序设计中，一些涉及底层的程序编写往往会围绕着文件描述符展开。
+一个文件描述符是一个数字，唯一标识一个在计算机的操作系统打开的文件。它描述了数据资源，以及如何访问该资源。
+当程序要求打开文件（或其他数据资源，例如网络套接字）时，内核：
+ 授予访问权限。 在全局文件表中创建一个条目。 向软件提供该条目的位置。  该描述符是唯一的非负整数。系统上每个打开的文件至少存在一个文件描述符。
+ 细节    对于内核，所有打开的文件均由文件描述符引用。文件描述符是一个非负数。当我们打开现有文件或创建新文件时，内核将文件描述符返回到进程。当我们想读取或写入文件时，我们用文件描述符标识文件。
+每个Linux进程（也许是守护程序除外）都应该具有三个标准的POSIX文件描述符：
+   POSIX常数名称 文件描述符 描述     STDIN_FILENO 0 标准输入   STDOUT_FILENO 1 标准输出   STDERR_FILENO 2 标准误差    有三个“系统文件表”：有一个文件描述符表，它将文件描述符（小整数）映射到打开的文件表中的条目。打开文件表中的每个条目（除其他事项外）还包含文件偏移量和指向内存中inode表的指针。在打开的文件表中，每个open（）调用都有一个文件表条目，如果文件描述符是dup（）ed或fork（）ed，则共享该条目。
+我们使用来自维基百科的示例来显示这些表的工作方式。这是一张照片： 单个进程的文件描述符，文件表和索引节点表。请注意，多个文件描述符可以引用相同的文件表条目（例如，由于dup系统调用），并且多个文件表条目可以依次引用同一个索引节点（如果已多次打开；则该表之所以仍然简化，是因为它通过文件名来表示索引节点，即使索引节点可以具有多个名称也是如此。文件描述符3没有引用文件表中的任何内容，表明它已关闭。
+理解具体情况，需要了解由内核维护的 3 个数据结构：
+ 进程级 文件描述符表 ( file descriptor table ) 系统级 打开文件表 ( open file table ) 文件系统 i-node表 ( i-node table )  这 3 个数据结构之间的关系如图所示：</description>
+    </item>
+    
+    <item>
+      <title>Linux PAM模块</title>
+      <link>https://cctrip.tech/posts/linux_pam/</link>
+      <pubDate>Thu, 05 Sep 2019 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/linux_pam/</guid>
+      <description>概念    Linux-PAM（Pluggable Authentication Modules for Linux）是一套共享库,使本地系统管理员可以随意选择程序的认证方式。换句话说，不用(重新编写)重新编译一个包含PAM功能的应用程序，就可以改变它使用的认证机制，这种方式下，就算升级本地认证机制,也不用修改程序。
+ 工作机制    当应用程序希望与PAM交互以处理事件时，他们必须包括libpam，该libpam允许通过库提供的API进行通信。 当PAM看到必须处理的新事件时，它将查看/etc/pam.d中的相关配置文件，并确定在某些阶段必须使用哪些模块。
+ /etc/pam.d配置文件介绍    配置文件语法
+type control module-path module-arguments 配置文件分为四列
+ 第一列代表模块类型 第二列代表控制标记 第三列代表模块路径 第四列代表模块参数  类型    类型 是规则对应的管理组。它用于指定后续模块要与哪个管理组关联。
+目前有四种类型:
+  account
+此模块类型执行基于非身份验证的帐户管理。 通常用于限制/允许对服务的访问，例如是否允许登录,是否达到最大用户数,或是root用户是否允许在这个终端登录等。
+  auth
+此模块为用户验证提供两方面服务。让应用程序提示用户输入密码或者其他标记，确认用户合法性；通过他的凭证许可权限，设定组成员关系或者其他优先权。
+  password
+此模块用于控制用户更改密码的全过程。
+  session
+此模块处理为用户提供服务之前/后需要做的些事情。包括：开启/关闭交换数据的信息，监视目录等，设置用户会话环境等。也就是说这是在系统正式进行服务提供之前的最后一道关口。
+  如果在类型前加一个短横线 -，就表示如果找不到这个模块，导致无法被加载时，这一事件不会被记录在日志中。这个功能适用于那些认证时非必需的、安装时可能没被安装进系统的模块。
+控制标记    流程栈（stack）
+它是认证时执行步骤和规则的堆叠。在某个服务的配置文件中，它体现在了配置文件中的自上而下的执行顺序中。栈是可以被引用的，即在一个栈（或者流程）中嵌入另一个栈。
+控制标记 规定如何处理PAM模块鉴别认证的结果，简而言之就是鉴别认证成功或者失败之后会发生什么事，如何进行控制。一般有两种形式，一种是比较常见的“关键字”方式，另一种则是用方括号（[]）包含的“value =action”方式。</description>
+    </item>
+    
+    <item>
+      <title>理解系统启动过程</title>
+      <link>https://cctrip.tech/posts/system_start/</link>
+      <pubDate>Sat, 21 May 2016 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/system_start/</guid>
+      <description>前言    Linux是一种自由和开放源代码的类UNIX操作系统。该操作系统的内核由林纳斯·托瓦兹在1991年10月5日首次发布。在加上用户空间的应用程序之后，成为Linux操作系统。Linux是自由软件和开放源代码软件发展中最著名的例子。
+接触Linux的时间也不算短了，一直都是直接使用Linux操作系统进行一些工作，很少去了解系统从开机到能使用的整个过程，感觉有需要好好理解下整个系统的启动过程，故写这篇博客加深一下理解。
+ 启动过程    先通过一张图来简单了解下整个系统启动的流程，整个过程基本可以分为POST&amp;ndash;&amp;gt;BIOS&amp;ndash;&amp;gt;MBR(GRUB)&amp;ndash;&amp;gt;Kernel&amp;ndash;&amp;gt;Init&amp;ndash;&amp;gt;Runlevel。下面会详细说明每个过程的作用。
+  BIOS
+BIOS(Basic Input/Output System)，基本输入输出系统，该系统存储于主板的ROM芯片上，计算机在开机时，会最先读取该系统，然后会有一个加电自检过程，这个过程其实就是检查CPU和内存，计算机最基本的组成单元(控制器、运算器和存储器)，还会检查其他硬件，若没有异常就开始加载BIOS程序到内存当中。详细的BIOS功能，这边就不说了，BIOS主要的一个功能就是存储了磁盘的启动顺序，BIOS会按照启动顺序去查找第一个磁盘头的MBR信息，并加载和执行MBR中的Bootloader程序，若第一个磁盘不存在MBR，则会继续查找第二个磁盘(PS：启动顺序可以在BIOS的界面中进行设置)，一旦BootLoader程序被检测并加载内存中，BIOS就将控制权交接给了BootLoader程序。
+  MBR
+MBR(Master Boot Record)，主引导记录，MBR存储于磁盘的头部，大小为512bytes，其中，446bytes用于存储BootLoader程序，64bytes用于存储分区表信息，最后2bytes用于MBR的有效性检查。
+  GRUB
+GRUB(Grand Unified Bootloader)，多系统启动程序，其执行过程可分为三个步骤：
+  Stage1：这个其实就是MBR，它的主要工作就是查找并加载第二段Bootloader程序(stage2)，但系统在没启动时，MBR根本找不到文件系统，也就找不到stage2所存放的位置，因此，就有了stage1_5
+  Stage1_5：该步骤就是为了识别文件系统
+  Stage2：GRUB程序会根据/boot/grub/grub.conf文件查找Kernel的信息，然后开始加载Kernel程序，当Kernel程序被检测并在加载到内存中，GRUB就将控制权交接给了Kernel程序。
+PS：实际上这个步骤/boot还没被挂载，GRUB直接识别grub所在磁盘的文件系统，所以实际上应该是/grub/grub.conf文件，该配置文件的信息如下：
+grub.conf:
+    #boot=/dev/sda
+default=0 #设定默认启动的title的编号，从0开始
+timeout=5 #等待用户选择的超时时间
+splashimage=(hd0,0)/boot/grub/splash.xpm.gz #GRUB的背景图片
+hiddenmenu #隐藏菜单
+title CentOS (2.6.18-194.el5PAE) #内核标题
+root (hd0,0) #内核文件所在的设备 kernel /vmlinuz-2.6.18-194.el5PAE ro root=LABEL=/ #内核文件路径以及传递给内核的参数 initrd /initrd-2.6.18-194.el5PAE.img #ramdisk文件路径 ```    Kernel</description>
+    </item>
+    
+  </channel>
 </rss>

@@ -1,21 +1,35 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-    <channel>
-        <title>Nginx - Category - CC&#39;s Trip</title>
-        <link>https://cctrip.github.io/categories/nginx/</link>
-        <description>Nginx - Category - CC&#39;s Trip</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 30 Jan 2021 17:55:28 &#43;0800</lastBuildDate><atom:link href="https://cctrip.github.io/categories/nginx/" rel="self" type="application/rss+xml" /><item>
-    <title>Openresty执行阶段</title>
-    <link>https://cctrip.github.io/openresty_phases/</link>
-    <pubDate>Sat, 30 Jan 2021 17:55:28 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://cctrip.github.io/openresty_phases/</guid>
-    <description><![CDATA[Nginx执行阶段 NGX_HTTP_POST_READ_PHASE — 第一阶段， ngx_http_realip_module 在此阶段注册其处理程序，以允许在调用任何其他模块之前替换客户端地址。 NGX_HTTP_SERVER_REWRITE_PHASE — 该阶段处理server块(loca]]></description>
-</item><item>
-    <title>Nginx匹配机制总结</title>
-    <link>https://cctrip.github.io/nginx_match/</link>
-    <pubDate>Thu, 06 Feb 2020 17:55:28 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://cctrip.github.io/nginx_match/</guid>
-    <description><![CDATA[背景 Nginx是一个当前主流的HTTP服务器和反向代理服务器，很多做WEB相关的同学基本都会用到，很多云厂商的七层负载均衡器也基本都是基于n]]></description>
-</item></channel>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nginx on CC&#39;s Trip</title>
+    <link>https://cctrip.tech/categories/nginx/</link>
+    <description>Recent content in Nginx on CC&#39;s Trip</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 30 Jan 2021 17:55:28 +0800</lastBuildDate><atom:link href="https://cctrip.tech/categories/nginx/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Openresty执行阶段</title>
+      <link>https://cctrip.tech/posts/openresty_phases/</link>
+      <pubDate>Sat, 30 Jan 2021 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/openresty_phases/</guid>
+      <description>Nginx执行阶段     NGX_HTTP_POST_READ_PHASE — 第一阶段， ngx_http_realip_module 在此阶段注册其处理程序，以允许在调用任何其他模块之前替换客户端地址。 NGX_HTTP_SERVER_REWRITE_PHASE — 该阶段处理server块(location块除外)定义的rewrite指令。 ngx_http_rewrite_module 在此阶段安装其处理程序。 NGX_HTTP_FIND_CONFIG_PHASE — 根据请求URI选择位置的特殊阶段。在此阶段之前，将相关虚拟服务器的默认位置分配给请求，并且任何请求位置配置的模块都将接收默认服务器位置的配置。该阶段为请求分配一个新位置。该阶段无法注册其他处理程序。 NGX_HTTP_REWRITE_PHASE — 同 NGX_HTTP_SERVER_REWRITE_PHASE, 但处理的是上一个阶段选择的location块内的定义的rewrite规则指令。 NGX_HTTP_POST_REWRITE_PHASE — 特殊阶段，如果请求的URI在rewirte期间更改，则将请求重定向到新的location块。这是通过再次请求 NGX_HTTP_FIND_CONFIG_PHASE 来完成的。此阶段无法注册其他处理程序。 NGX_HTTP_PREACCESS_PHASE — 与访问控制无关的用于不同类型的处理程序的公共阶段。标准nginx模块 ngx_http_limit_conn_module 和 ngx_http_limit_req_module 在此阶段注册其处理程序。 NGX_HTTP_ACCESS_PHASE — 验证客户端请求是否合法的阶段。例如ngx_http_access_module 和 ngx_http_auth_basic_module 等标准nginx模块在此阶段注册其处理程序。默认情况下，客户端必须通过该阶段所有处理程序的合法验证才能继续请求下一个阶段。 通过satisfy 指令，则可以允许客户端在通过该阶段任何一个处理程序的合法验证后直接进入下一个阶段。 NGX_HTTP_POST_ACCESS_PHASE — 特殊阶段，处理满足 satisfy any 指令的阶段。如果某些访问阶段处理程序拒绝了访问并且没有显式允许访问，则该请求完成。此阶段无法注册其他处理程序。 NGX_HTTP_PRECONTENT_PHASE — 在生成内容之前调用处理程序的阶段。一些标准nginx模块如 ngx_http_try_files_module 和 ngx_http_mirror_module 在此阶段注册其处理程序。 NGX_HTTP_CONTENT_PHASE — 正常生成响应的阶段. 多个Nginx标准模块在此阶段注册其处理程序, 包括 ngx_http_index_module 和 ngx_http_static_module。它们按顺序被调用直到某一个模块产生输出。也可以按location设置内容处理程序，如果 ngx_http_core_module的location配置已设置处理程序，则将其称为内容处理程序，并且在此阶段安装的处理程序将被忽略。 NGX_HTTP_LOG_PHASE — 执行请求日志记录的阶段。当前，只有 ngx_http_log_module 在此阶段注册其处理程序以进行访问日志记录。在释放请求之前，在请求处理的最后阶段调用日志阶段处理程序。   Lua执行阶段     init_by_lua* — 在Nginx master 进程加载配置时候时，在全局LuaVM 级别上运行指定的lua代码。通常在该阶段注册全局变量或者预加载lua模块。 init_worker_by_lua* — 启用master进程后，在每次Nginx worker进程启动时运行指定的Lua代码。当禁用master进程时，此hook将仅在init_by_lua *之后运行。通常用于创建每个worker的重复计时器（通过Lua API的ngx.</description>
+    </item>
+    
+    <item>
+      <title>Nginx匹配机制总结</title>
+      <link>https://cctrip.tech/posts/nginx_match/</link>
+      <pubDate>Thu, 06 Feb 2020 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/nginx_match/</guid>
+      <description>背景    Nginx是一个当前主流的HTTP服务器和反向代理服务器，很多做WEB相关的同学基本都会用到，很多云厂商的七层负载均衡器也基本都是基于nginx实现的，个人在工作过程也算是经常接触，这篇文章主要想总结一下nginx的匹配机制，主要分为两块，一块是server的匹配，一块是location的匹配。
+ Server匹配机制    配置过nginx的都知道，在一个http模块中是可以配置多个server模块的，并且多个server模块是可以配置相同的监听端口的，下面是一个简单的server配置例子：
+server { listen 80; server_name example.org www.example.org; ... } server { listen 80; server_name example.net www.example.net; ... } server { listen 80; server_name example.com www.example.com; ... } 当我们对nginx发起http请求后，nginx会拿到http请求中对应的 &amp;quot;Host&amp;quot; 头部跟server模块中的server_name进行匹配，根据匹配的server结果进入具体的server模块处理http请求。那么，它具体的匹配机制是怎样的呢？
+首先，我们先简单了解下nginx内部server的相关结构，
+其中listen和server_name在配置文件中的写法有：
+ listen(可带default_server标识)  ip:port ip(监听80端口) port(监听所有地址)   server_name  www.example.com(完整域名) *.example.com(带通配符开头的域名) www.example.*(带通配符结尾的域名) ~^(www.)?(.+)$(正则写法的域名)    代码中的具体结构：
+/************************************************************************************* 伪结构体示例 (port) --&amp;gt; address(ip:port) --&amp;gt; server(example.com) --&amp;gt; server(example.net) 一个server模块的唯一标识是由address(listen配置)和server(server_name配置)组成 *************************************************************************************/ /* address 结构体，具有相同的ip:port */ struct ngx_http_addr_conf_s { /* default_server 存储的是listen配置里带default_server标识的server， 若没有就为顺序中的第一个server */ ngx_http_core_srv_conf_t *default_server; ngx_http_virtual_names_t *virtual_names; unsigned ssl:1; unsigned http2:1; unsigned proxy_protocol:1; }; /* virtual_name结构体，存储hash_combined和正则写法的server_name */ typedef struct { ngx_hash_combined_t names; ngx_uint_t nregex; ngx_http_server_name_t *regex; } ngx_http_virtual_names_t; /* hash_combined结构体，存储完成域名、通配符开头、通配符结尾的server_name */ typedef struct { ngx_hash_t hash; ngx_hash_wildcard_t *wc_head; ngx_hash_wildcard_t *wc_tail; } ngx_hash_combined_t; 通过结构体，我们来说明下server的匹配规则：</description>
+    </item>
+    
+  </channel>
 </rss>

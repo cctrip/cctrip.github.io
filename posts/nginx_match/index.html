@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="color-scheme" content="light dark">
+
+    
+      <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests; block-all-mixed-content; default-src 'self'; child-src 'self'; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net/; form-action 'self'; frame-src 'self'; img-src 'self'; object-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com/ https://cdn.jsdelivr.net/; script-src 'self' 'unsafe-inline' https://www.google-analytics.com; prefetch-src 'self'; connect-src 'self' https://www.google-analytics.com;">
+
+    
+
+    <meta name="author" content="Hello.CC">
+    <meta name="description" content="Nginx匹配机制总结">
+    <meta name="keywords" content="blog,developer,personal">
+
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://cctrip.tech/posts/nginx_match/nginx.png"/>
+<meta name="twitter:title" content="Nginx匹配机制总结"/>
+<meta name="twitter:description" content="Nginx匹配机制总结"/>
+
+    <meta property="og:title" content="Nginx匹配机制总结" />
+<meta property="og:description" content="Nginx匹配机制总结" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cctrip.tech/posts/nginx_match/" /><meta property="og:image" content="https://cctrip.tech/posts/nginx_match/nginx.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-02-06T17:55:28&#43;08:00" />
+<meta property="article:modified_time" content="2020-02-06T17:55:28&#43;08:00" />
+
+
+
+    <title>
+  Nginx匹配机制总结 · CC&#39;s Trip
+</title>
+
+    
+      <link rel="canonical" href="https://cctrip.tech/posts/nginx_match/">
+    
+
+    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.543dc3579b222ee2eec7bc52e75060428d931ade1c0263624cf4be95f0f467a2.css" integrity="sha256-VD3DV5siLuLux7xS51BgQo2TGt4cAmNiTPS&#43;lfD0Z6I=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="/css/coder-dark.min.92eafdad7963af697840da26de3829cd3610aa623b917f6c37fb3f81e404b693.css" integrity="sha256-kur9rXljr2l4QNom3jgpzTYQqmI7kX9sN/s/geQEtpM=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/leo.png" sizes="32x32">
+    
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    <meta name="generator" content="Hugo 0.81.0" />
+  </head>
+
+  
+  
+    
+  
+  <body class="preload-transitions colorscheme-auto">
+    
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      CC&#39;s Trip
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">Blog</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/projects/">Projects</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/contact/">Contact me</a>
+            </li>
+          
+        
+        
+          
+          
+          
+            
+          
+            
+              
+                <li class="navigation-item menu-separator">
+                  <span>|</span>
+                </li>
+                
+              
+              <li class="navigation-item">
+                <a href="https://cctrip.tech/zh-cn/">🇨🇳</a>
+              </li>
+            
+          
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://cctrip.tech/posts/nginx_match/">
+              Nginx匹配机制总结
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2020-02-06T17:55:28&#43;08:00'>
+                February 6, 2020
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              2-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/nginx/">Nginx</a></div>
+
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/nginx/">nginx</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/linux/">linux&#34;</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/application/">application</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <h2 id="背景">
+  背景
+  <a class="heading-link" href="#%e8%83%8c%e6%99%af">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>Nginx是一个当前主流的HTTP服务器和反向代理服务器，很多做WEB相关的同学基本都会用到，很多云厂商的七层负载均衡器也基本都是基于nginx实现的，个人在工作过程也算是经常接触，这篇文章主要想总结一下nginx的匹配机制，主要分为两块，一块是server的匹配，一块是location的匹配。</p>
+<hr>
+<h2 id="server匹配机制">
+  Server匹配机制
+  <a class="heading-link" href="#server%e5%8c%b9%e9%85%8d%e6%9c%ba%e5%88%b6">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>配置过nginx的都知道，在一个http模块中是可以配置多个server模块的，并且多个server模块是可以配置相同的监听端口的，下面是一个简单的server配置例子：</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#719e07">server</span> {
+    <span style="color:#719e07">listen</span>      <span style="color:#2aa198">80</span>;
+    <span style="color:#719e07">server_name</span> <span style="color:#2aa198">example.org</span> <span style="color:#2aa198">www.example.org</span>;
+    <span style="color:#719e07">...</span>
+}
+
+<span style="color:#2aa198">server</span> {
+    <span style="color:#719e07">listen</span>      <span style="color:#2aa198">80</span>;
+    <span style="color:#719e07">server_name</span> <span style="color:#2aa198">example.net</span> <span style="color:#2aa198">www.example.net</span>;
+    <span style="color:#719e07">...</span>
+}
+
+<span style="color:#2aa198">server</span> {
+    <span style="color:#719e07">listen</span>      <span style="color:#2aa198">80</span>;
+    <span style="color:#719e07">server_name</span> <span style="color:#2aa198">example.com</span> <span style="color:#2aa198">www.example.com</span>;
+    <span style="color:#719e07">...</span>
+}
+</code></pre></div><p>当我们对nginx发起http请求后，nginx会拿到http请求中对应的 <code>&quot;Host&quot;</code> 头部跟server模块中的<code>server_name</code>进行匹配，根据匹配的server结果进入具体的server模块处理http请求。那么，它具体的匹配机制是怎样的呢？</p>
+<p>首先，我们先简单了解下nginx内部server的相关结构，</p>
+<p>其中listen和server_name在配置文件中的写法有：</p>
+<ul>
+<li>listen(可带default_server标识)
+<ul>
+<li><code>ip:port</code></li>
+<li><code>ip</code>(监听80端口)</li>
+<li><code>port</code>(监听所有地址)</li>
+</ul>
+</li>
+<li>server_name
+<ul>
+<li><code>www.example.com</code>(完整域名)</li>
+<li><code>*.example.com(</code>带通配符开头的域名)</li>
+<li><code>www.example.*</code>(带通配符结尾的域名)</li>
+<li><code>~^(www.)?(.+)$</code>(正则写法的域名)</li>
+</ul>
+</li>
+</ul>
+<p>代码中的具体结构：</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#586e75">/*************************************************************************************
+</span><span style="color:#586e75">伪结构体示例
+</span><span style="color:#586e75">(port) --&gt; address(ip:port) --&gt; server(example.com)
+</span><span style="color:#586e75">                            --&gt; server(example.net)
+</span><span style="color:#586e75">                           
+</span><span style="color:#586e75">一个server模块的唯一标识是由address(listen配置)和server(server_name配置)组成
+</span><span style="color:#586e75">*************************************************************************************/</span>
+
+<span style="color:#586e75">/* address 结构体，具有相同的ip:port */</span>
+<span style="color:#719e07">struct</span> ngx_http_addr_conf_s {
+  <span style="color:#586e75">/* default_server
+</span><span style="color:#586e75">  	 存储的是listen配置里带default_server标识的server，
+</span><span style="color:#586e75">     若没有就为顺序中的第一个server */</span>
+  ngx_http_core_srv_conf_t  <span style="color:#719e07">*</span>default_server;
+  ngx_http_virtual_names_t  <span style="color:#719e07">*</span>virtual_names;
+  <span style="color:#dc322f">unsigned</span>                   ssl:<span style="color:#2aa198">1</span>;
+  <span style="color:#dc322f">unsigned</span>                   http2:<span style="color:#2aa198">1</span>;
+  <span style="color:#dc322f">unsigned</span>                   proxy_protocol:<span style="color:#2aa198">1</span>;
+};
+
+<span style="color:#586e75">/* virtual_name结构体，存储hash_combined和正则写法的server_name */</span>
+<span style="color:#719e07">typedef</span> <span style="color:#719e07">struct</span> {
+  ngx_hash_combined_t        names;
+  ngx_uint_t                 nregex;
+  ngx_http_server_name_t    <span style="color:#719e07">*</span>regex;
+} ngx_http_virtual_names_t;
+
+<span style="color:#586e75">/* hash_combined结构体，存储完成域名、通配符开头、通配符结尾的server_name */</span>
+<span style="color:#719e07">typedef</span> <span style="color:#719e07">struct</span> {
+  ngx_hash_t            hash;
+  ngx_hash_wildcard_t  <span style="color:#719e07">*</span>wc_head;
+  ngx_hash_wildcard_t  <span style="color:#719e07">*</span>wc_tail;
+} ngx_hash_combined_t;
+
+</code></pre></div><p>通过结构体，我们来说明下server的匹配规则：</p>
+<ol>
+<li>host是否匹配virtual_names中的names中的完整域名(<code>hash</code>)，若是则返回</li>
+<li>host是否匹配virtual_name中的names中的通配符开头的域名(<code>wc_head</code>)，若是则返回</li>
+<li>host是否匹配virtual_name中的names中的通配符结尾的域名(<code>wc_tail</code>)，若是则返回</li>
+<li>host是否匹配virtual_name中的正则写法的域名(<code>regex</code>)，若是则返回</li>
+<li>返回<code>default_server</code></li>
+</ol>
+<p>具体示例如下：</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#586e75">#精确匹配，第一优先级
+</span><span style="color:#586e75"></span><span style="color:#719e07">server</span> {
+  <span style="color:#719e07">listen</span> <span style="color:#2aa198">80</span>;
+  <span style="color:#719e07">server_name</span> <span style="color:#2aa198">www.test.com</span>;
+}
+
+<span style="color:#586e75">#通配符开头匹配，第二优先级，
+</span><span style="color:#586e75"></span><span style="color:#719e07">server</span> {
+  <span style="color:#719e07">listen</span> <span style="color:#2aa198">80</span>;
+  <span style="color:#719e07">server_name</span> <span style="color:#2aa198">*.test.com</span>;
+}
+
+<span style="color:#586e75">#通配符结尾匹配，第三优先级
+</span><span style="color:#586e75"></span><span style="color:#719e07">server</span> {
+  <span style="color:#719e07">listen</span> <span style="color:#2aa198">80</span>;
+  <span style="color:#719e07">server_name</span> <span style="color:#2aa198">www.test.*</span>;
+}
+
+<span style="color:#586e75">#正则匹配，第三优先级
+</span><span style="color:#586e75"></span><span style="color:#719e07">server</span> {
+  <span style="color:#719e07">listen</span> <span style="color:#2aa198">80</span>;
+  <span style="color:#719e07">server_name</span> ~<span style="color:#dc322f">^(www.)?(.+)$;</span>
+}
+
+
+<span style="color:#586e75">#default，没找到对应host，则以此优先
+</span><span style="color:#586e75"></span><span style="color:#2aa198">server</span> {
+  <span style="color:#719e07">listen</span> <span style="color:#2aa198">80</span> <span style="color:#2aa198">defalut_server</span>;
+  <span style="color:#719e07">server_name</span> <span style="color:#2aa198">_</span>;
+}
+
+<span style="color:#586e75">#若没有加defalut_server，则第一个server为defalut_server
+</span><span style="color:#586e75"></span><span style="color:#719e07">server</span> {
+  <span style="color:#719e07">listen</span> <span style="color:#2aa198">80</span>;
+  <span style="color:#719e07">server_name</span> <span style="color:#2aa198">_</span>;
+}
+</code></pre></div><hr>
+<h2 id="location匹配机制">
+  Location匹配机制
+  <a class="heading-link" href="#location%e5%8c%b9%e9%85%8d%e6%9c%ba%e5%88%b6">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>一个server模块可以配置多个location，nginx根据<code>URI</code>来进行匹配，</p>
+<p>lication的写法有以下几种：</p>
+<ol>
+<li>
+<p><code>= /uri</code> 精确匹配</p>
+</li>
+<li>
+<p><code>^~ /uri</code> 非正则前缀匹配</p>
+</li>
+<li>
+<p><code>~ 或者 ~* /uri</code> 正则匹配</p>
+</li>
+<li>
+<p><code>/uri</code> 前缀匹配</p>
+</li>
+</ol>
+<p>整个location匹配机制如下：</p>
+<ol>
+<li>针对所有前缀字符串测试URI(包括精确匹配、非正则前缀匹配、前缀匹配中的字符串)</li>
+<li>uri等于精确匹配中的字符串，停止搜索</li>
+<li>最长(最相似)前缀字符串如果为非正则前缀匹配(带<code>^~</code>)，则停止正则搜索</li>
+<li>保存最长(最相似)的前缀字符串</li>
+<li>按顺序进行uri和正则匹配测试，有一个匹配成功后就停止搜索</li>
+<li>如果都没有，就使用最长(最相似)的前缀匹配</li>
+</ol>
+<p><strong>额外说明：</strong></p>
+<p>最长(最相似)前缀字符串的测试阶段，非正则前缀匹配匹配、前缀匹配的优先级是一致的，谁的长度长，谁优先。优先前缀匹配的前提必须是前缀字符串<code>非正则前缀匹配的长度</code>大于<code>前缀匹配的长度</code>，这个很多网站都是直接写成了非正则前缀匹配是第二优先级，没有说明前提条件。</p>
+<p>具体示例如下：</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#586e75">#精确匹配，第一优先级
+</span><span style="color:#586e75"></span><span style="color:#719e07">location</span> = <span style="color:#2aa198">/test</span> {
+  
+}
+<span style="color:#586e75">#前缀匹配，最低优先级，长度优先
+</span><span style="color:#586e75"></span><span style="color:#719e07">location</span> <span style="color:#2aa198">/test/aa</span> {
+  
+}
+
+<span style="color:#586e75">#非正则前缀匹配，最长前缀下为第二优先级(特殊条件下)
+</span><span style="color:#586e75"></span><span style="color:#719e07">location</span> <span style="color:#2aa198">^~</span> <span style="color:#2aa198">/test</span> {
+  
+}
+
+<span style="color:#586e75">#正则匹配，第三优先级,顺序优先
+</span><span style="color:#586e75"># ~ : 区分大小写
+</span><span style="color:#586e75"># ~* : 不区分大小写 
+</span><span style="color:#586e75"></span><span style="color:#719e07">location</span> ~<span style="color:#dc322f">*</span> <span style="color:#2aa198">^/test</span> {
+  
+}
+</code></pre></div><hr>
+<h2 id="参考">
+  参考
+  <a class="heading-link" href="#%e5%8f%82%e8%80%83">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p><a href="https://nginx.org/en/docs/http/request_processing.html">https://nginx.org/en/docs/http/request_processing.html</a></p>
+<p><a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#location">https://nginx.org/en/docs/http/ngx_http_core_module.html#location</a></p>
+<p><a href="https://docs.nginx.com/nginx/admin-guide/web-server/web-server/">https://docs.nginx.com/nginx/admin-guide/web-server/web-server/</a></p>
+<p><a href="https://www.codedump.info/post/20190212-nginx-http-config/">https://www.codedump.info/post/20190212-nginx-http-config/</a></p>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    ©
+    
+      2019 -
+    
+    2021
+     Hello.CC 
+    ·
+    Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">CCoder</a>.
+    
+  </section>
+</footer>
+
+    </main>
+
+    
+      
+      <script src="/js/coder.min.03b17769f4f91ae35667e1f2a1ca8c16f50562576cf90ff32b3179926914daa5.js" integrity="sha256-A7F3afT5GuNWZ&#43;HyocqMFvUFYlds&#43;Q/zKzF5kmkU2qU="></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </body>
+
+</html>

@@ -1,14 +1,26 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-    <channel>
-        <title>application - Tag - CC&#39;s Trip</title>
-        <link>https://cctrip.github.io/tags/application/</link>
-        <description>application - Tag - CC&#39;s Trip</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 06 Feb 2020 17:55:28 &#43;0800</lastBuildDate><atom:link href="https://cctrip.github.io/tags/application/" rel="self" type="application/rss+xml" /><item>
-    <title>Nginx匹配机制总结</title>
-    <link>https://cctrip.github.io/nginx_match/</link>
-    <pubDate>Thu, 06 Feb 2020 17:55:28 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://cctrip.github.io/nginx_match/</guid>
-    <description><![CDATA[背景 Nginx是一个当前主流的HTTP服务器和反向代理服务器，很多做WEB相关的同学基本都会用到，很多云厂商的七层负载均衡器也基本都是基于n]]></description>
-</item></channel>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>application on CC&#39;s Trip</title>
+    <link>https://cctrip.tech/tags/application/</link>
+    <description>Recent content in application on CC&#39;s Trip</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 06 Feb 2020 17:55:28 +0800</lastBuildDate><atom:link href="https://cctrip.tech/tags/application/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nginx匹配机制总结</title>
+      <link>https://cctrip.tech/posts/nginx_match/</link>
+      <pubDate>Thu, 06 Feb 2020 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/nginx_match/</guid>
+      <description>背景    Nginx是一个当前主流的HTTP服务器和反向代理服务器，很多做WEB相关的同学基本都会用到，很多云厂商的七层负载均衡器也基本都是基于nginx实现的，个人在工作过程也算是经常接触，这篇文章主要想总结一下nginx的匹配机制，主要分为两块，一块是server的匹配，一块是location的匹配。
+ Server匹配机制    配置过nginx的都知道，在一个http模块中是可以配置多个server模块的，并且多个server模块是可以配置相同的监听端口的，下面是一个简单的server配置例子：
+server { listen 80; server_name example.org www.example.org; ... } server { listen 80; server_name example.net www.example.net; ... } server { listen 80; server_name example.com www.example.com; ... } 当我们对nginx发起http请求后，nginx会拿到http请求中对应的 &amp;quot;Host&amp;quot; 头部跟server模块中的server_name进行匹配，根据匹配的server结果进入具体的server模块处理http请求。那么，它具体的匹配机制是怎样的呢？
+首先，我们先简单了解下nginx内部server的相关结构，
+其中listen和server_name在配置文件中的写法有：
+ listen(可带default_server标识)  ip:port ip(监听80端口) port(监听所有地址)   server_name  www.example.com(完整域名) *.example.com(带通配符开头的域名) www.example.*(带通配符结尾的域名) ~^(www.)?(.+)$(正则写法的域名)    代码中的具体结构：
+/************************************************************************************* 伪结构体示例 (port) --&amp;gt; address(ip:port) --&amp;gt; server(example.com) --&amp;gt; server(example.net) 一个server模块的唯一标识是由address(listen配置)和server(server_name配置)组成 *************************************************************************************/ /* address 结构体，具有相同的ip:port */ struct ngx_http_addr_conf_s { /* default_server 存储的是listen配置里带default_server标识的server， 若没有就为顺序中的第一个server */ ngx_http_core_srv_conf_t *default_server; ngx_http_virtual_names_t *virtual_names; unsigned ssl:1; unsigned http2:1; unsigned proxy_protocol:1; }; /* virtual_name结构体，存储hash_combined和正则写法的server_name */ typedef struct { ngx_hash_combined_t names; ngx_uint_t nregex; ngx_http_server_name_t *regex; } ngx_http_virtual_names_t; /* hash_combined结构体，存储完成域名、通配符开头、通配符结尾的server_name */ typedef struct { ngx_hash_t hash; ngx_hash_wildcard_t *wc_head; ngx_hash_wildcard_t *wc_tail; } ngx_hash_combined_t; 通过结构体，我们来说明下server的匹配规则：</description>
+    </item>
+    
+  </channel>
 </rss>

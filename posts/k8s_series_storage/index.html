@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="color-scheme" content="light dark">
+
+    
+      <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests; block-all-mixed-content; default-src 'self'; child-src 'self'; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net/; form-action 'self'; frame-src 'self'; img-src 'self'; object-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com/ https://cdn.jsdelivr.net/; script-src 'self' 'unsafe-inline' https://www.google-analytics.com; prefetch-src 'self'; connect-src 'self' https://www.google-analytics.com;">
+
+    
+
+    <meta name="author" content="Hello.CC">
+    <meta name="description" content="存储">
+    <meta name="keywords" content="blog,developer,personal">
+
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://cctrip.tech/posts/k8s_series_storage/k8s-image.jpg"/>
+<meta name="twitter:title" content="Kubernetes系列：存储"/>
+<meta name="twitter:description" content="存储"/>
+
+    <meta property="og:title" content="Kubernetes系列：存储" />
+<meta property="og:description" content="存储" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cctrip.tech/posts/k8s_series_storage/" /><meta property="og:image" content="https://cctrip.tech/posts/k8s_series_storage/k8s-image.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-11-05T17:55:28&#43;08:00" />
+<meta property="article:modified_time" content="2020-11-05T17:55:28&#43;08:00" />
+
+
+
+    <title>
+  Kubernetes系列：存储 · CC&#39;s Trip
+</title>
+
+    
+      <link rel="canonical" href="https://cctrip.tech/posts/k8s_series_storage/">
+    
+
+    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.543dc3579b222ee2eec7bc52e75060428d931ade1c0263624cf4be95f0f467a2.css" integrity="sha256-VD3DV5siLuLux7xS51BgQo2TGt4cAmNiTPS&#43;lfD0Z6I=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="/css/coder-dark.min.92eafdad7963af697840da26de3829cd3610aa623b917f6c37fb3f81e404b693.css" integrity="sha256-kur9rXljr2l4QNom3jgpzTYQqmI7kX9sN/s/geQEtpM=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/leo.png" sizes="32x32">
+    
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    <meta name="generator" content="Hugo 0.81.0" />
+  </head>
+
+  
+  
+    
+  
+  <body class="preload-transitions colorscheme-auto">
+    
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      CC&#39;s Trip
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">Blog</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/projects/">Projects</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/contact/">Contact me</a>
+            </li>
+          
+        
+        
+          
+          
+          
+            
+          
+            
+              
+                <li class="navigation-item menu-separator">
+                  <span>|</span>
+                </li>
+                
+              
+              <li class="navigation-item">
+                <a href="https://cctrip.tech/zh-cn/">🇨🇳</a>
+              </li>
+            
+          
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://cctrip.tech/posts/k8s_series_storage/">
+              Kubernetes系列：存储
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2020-11-05T17:55:28&#43;08:00'>
+                November 5, 2020
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              12-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/cloud-native/">Cloud Native</a></div>
+
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/kubernetes/">kubernetes</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <h2 id="系列目录">
+  系列目录
+  <a class="heading-link" href="#%e7%b3%bb%e5%88%97%e7%9b%ae%e5%bd%95">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p><a href="../k8s_series">《Kubernetes系列：开篇》</a></p>
+<p><a href="../k8s_series_intro">《Kubernetes系列：概述》</a></p>
+<p><a href="../k8s_series_arch">《Kubernetes系列：架构》</a></p>
+<p><a href="../k8s_series_container">《Kubernetes系列：容器》</a></p>
+<p><a href="../k8s_series_network">《Kubernetes系列：网络》</a></p>
+<p><a href="../k8s_series_storage">《Kubernetes系列：存储》</a></p>
+<p><a href="../k8s_series_service">《Kubernetes系列：Service》</a></p>
+<p><a href="../k8s_series_ingress">《Kubernetes系列：Ingress》</a></p>
+<p><a href="../k8s_series_oma">《Kubernetes系列：OAM》</a></p>
+<hr>
+<h2 id="1-介绍">
+  1. 介绍
+  <a class="heading-link" href="#1-%e4%bb%8b%e7%bb%8d">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>容器中的文件在磁盘上是临时存放的，这给容器中运行的较重要的应用程序带来一些问题：</p>
+<ol>
+<li>当容器崩溃时文件丢失。kubelet 会重新启动容器， 但容器会以干净的状态重启。</li>
+<li>在 <code>Pod</code> 中同时运行多个容器时，这些容器之间通常需要共享文件。</li>
+</ol>
+<p>Kubernetes 中的 <code>Volume</code> 抽象很好的解决了这些问题。</p>
+<hr>
+<h2 id="2-存储">
+  2. 存储
+  <a class="heading-link" href="#2-%e5%ad%98%e5%82%a8">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>为了管理存储，Kubernetes提供了Secret用于管理敏感信息，ConfigMap存储配置，Volume、PV、PVC、StorageClass等用来管理存储卷。</p>
+<h3 id="21-volume">
+  2.1 Volume
+  <a class="heading-link" href="#21-volume">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>Kubernetes 支持很多类型的卷。 <a href="https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/">Pod</a> 可以同时使用任意数目的卷类型。 临时卷类型的生命周期与 Pod 相同，但持久卷可以比 Pod 的存活期长。 因此，卷的存在时间会超出 Pod 中运行的所有容器，并且在容器重新启动时数据也会得到保留。 当 Pod 不再存在时，卷也将不再存在。</p>
+<p>卷的核心是包含一些数据的一个目录，Pod 中的容器可以访问该目录。 所采用的特定的卷类型将决定该目录如何形成的、使用何种介质保存数据以及目录中存放 的内容。</p>
+<p>使用卷时, 在 <code>.spec.volumes</code> 字段中设置为 Pod 提供的卷，并在 <code>.spec.containers[*].volumeMounts</code> 字段中声明卷在容器中的挂载位置。 容器中的进程看到的是由它们的 Docker 镜像和卷组成的文件系统视图。 <a href="https://docs.docker.com/userguide/dockerimages/">Docker 镜像</a> 位于文件系统层次结构的根部。各个卷则挂载在镜像内的指定路径上。 卷不能挂载到其他卷之上，也不能与其他卷有硬链接。 Pod 配置中的每个容器必须独立指定各个卷的挂载位置。</p>
+<h4 id="211-卷类型">
+  2.1.1 卷类型
+  <a class="heading-link" href="#211-%e5%8d%b7%e7%b1%bb%e5%9e%8b">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>Kubernetes 支持下列类型的卷：<a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/">详细</a></p>
+<p><strong>awsElasticBlockStore</strong></p>
+<p><code>awsElasticBlockStore</code> 卷将 Amazon Web服务（AWS）<a href="https://aws.amazon.com/ebs/">EBS 卷</a> 挂载到你的 Pod 中。与 <code>emptyDir</code> 在 Pod 被删除时也被删除不同，EBS 卷的内容在删除 Pod 时 会被保留，卷只是被卸载掉了。 这意味着 EBS 卷可以预先填充数据，并且该数据可以在 Pod 之间共享。</p>
+<blockquote>
+<p><strong>说明：</strong> 你在使用 EBS 卷之前必须使用 <code>aws ec2 create-volume</code> 命令或者 AWS API 创建该卷。</p>
+</blockquote>
+<p>使用 <code>awsElasticBlockStore</code> 卷时有一些限制：</p>
+<ul>
+<li>Pod 运行所在的节点必须是 AWS EC2 实例。</li>
+<li>这些实例需要与 EBS 卷在相同的地域（Region）和可用区（Availability-Zone）。</li>
+<li>EBS 卷只支持被挂载到单个 EC2 实例上。</li>
+</ul>
+<p><strong>azureDisk</strong></p>
+<p><code>azureDisk</code> 卷类型用来在 Pod 上挂载 Microsoft Azure <a href="https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-linux-about-disks-vhds/">数据盘（Data Disk）</a> 。 若需了解更多详情，请参考 <a href="https://github.com/kubernetes/examples/tree/master/staging/volumes/azure_disk/README.md"><code>azureDisk</code> 卷插件</a>。</p>
+<p><strong>azureFile</strong></p>
+<p><code>azureFile</code> 卷类型用来在 Pod 上挂载 Microsoft Azure 文件卷（File Volume）（SMB 2.1 和 3.0）。 更多详情请参考 <a href="https://github.com/kubernetes/examples/tree/master/staging/volumes/azure_file/README.md"><code>azureFile</code> 卷插件</a>。</p>
+<p><strong>cephfs</strong></p>
+<p><code>cephfs</code> 卷允许你将现存的 CephFS 卷挂载到 Pod 中。 不像 <code>emptyDir</code> 那样会在 Pod 被删除的同时也会被删除，<code>cephfs</code> 卷的内容在 Pod 被删除 时会被保留，只是卷被卸载了。这意味着 <code>cephfs</code> 卷可以被预先填充数据，且这些数据可以在 Pod 之间共享。同一 <code>cephfs</code> 卷可同时被多个写者挂载。</p>
+<blockquote>
+<p><strong>说明：</strong> 在使用 Ceph 卷之前，你的 Ceph 服务器必须已经运行并将要使用的 share 导出（exported）。</p>
+</blockquote>
+<p>更多信息请参考 <a href="https://github.com/kubernetes/examples/tree/master/volumes/cephfs/">CephFS 示例</a>。</p>
+<p><strong>cinder</strong></p>
+<blockquote>
+<p><strong>说明：</strong> Kubernetes 必须配置了 OpenStack Cloud Provider。</p>
+</blockquote>
+<p><code>cinder</code> 卷类型用于将 OpenStack Cinder 卷挂载到 Pod 中。</p>
+<p><strong>configMap</strong></p>
+<p><a href="https://kubernetes.io/zh/docs/tasks/configure-pod-container/configure-pod-configmap/"><code>configMap</code></a> 卷 提供了向 Pod 注入配置数据的方法。 ConfigMap 对象中存储的数据可以被 <code>configMap</code> 类型的卷引用，然后被 Pod 中运行的 容器化应用使用。</p>
+<p>引用 configMap 对象时，你可以在 volume 中通过它的名称来引用。 你可以自定义 ConfigMap 中特定条目所要使用的路径。 下面的配置显示了如何将名为 <code>log-config</code> 的 ConfigMap 挂载到名为 <code>configmap-pod</code> 的 Pod 中：</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#268bd2">apiVersion</span>: v1
+<span style="color:#268bd2">kind</span>: Pod
+<span style="color:#268bd2">metadata</span>:
+  <span style="color:#268bd2">name</span>: configmap-pod
+<span style="color:#268bd2">spec</span>:
+  <span style="color:#268bd2">containers</span>:
+    - <span style="color:#268bd2">name</span>: test
+      <span style="color:#268bd2">image</span>: busybox
+      <span style="color:#268bd2">volumeMounts</span>:
+        - <span style="color:#268bd2">name</span>: config-vol
+          <span style="color:#268bd2">mountPath</span>: /etc/config
+  <span style="color:#268bd2">volumes</span>:
+    - <span style="color:#268bd2">name</span>: config-vol
+      <span style="color:#268bd2">configMap</span>:
+        <span style="color:#268bd2">name</span>: log-config
+        <span style="color:#268bd2">items</span>:
+          - <span style="color:#268bd2">key</span>: log_level
+            <span style="color:#268bd2">path</span>: log_level
+</code></pre></div><p><code>log-config</code> ConfigMap 以卷的形式挂载，并且存储在 <code>log_level</code> 条目中的所有内容 都被挂载到 Pod 的 <code>/etc/config/log_level</code> 路径下。 请注意，这个路径来源于卷的 <code>mountPath</code> 和 <code>log_level</code> 键对应的 <code>path</code>。</p>
+<blockquote>
+<p><strong>说明：</strong></p>
+<ul>
+<li>在使用 <a href="https://kubernetes.io/zh/docs/tasks/configure-pod-container/configure-pod-configmap/">ConfigMap</a> 之前你首先要创建它。</li>
+<li>容器以 <a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#using-subpath">subPath</a> 卷挂载方式使用 ConfigMap 时，将无法接收 ConfigMap 的更新。</li>
+<li>文本数据挂载成文件时采用 UTF-8 字符编码。如果使用其他字符编码形式，可使用 <code>binaryData</code> 字段。</li>
+</ul>
+</blockquote>
+<p><strong>downwardAPI</strong></p>
+<p><code>downwardAPI</code> 卷用于使 downward API 数据对应用程序可用。 这种卷类型挂载一个目录并在纯文本文件中写入所请求的数据。</p>
+<blockquote>
+<p><strong>说明：</strong> 容器以 <a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#using-subpath">subPath</a> 卷挂载方式使用 downwardAPI 时，将不能接收到它的更新。</p>
+</blockquote>
+<p>更多详细信息请参考 <a href="https://kubernetes.io/zh/docs/tasks/inject-data-application/downward-api-volume-expose-pod-information/"><code>downwardAPI</code> 卷示例</a>。</p>
+<p><strong>emptyDir</strong></p>
+<p>当 Pod 分派到某个 Node 上时，<code>emptyDir</code> 卷会被创建，并且在 Pod 在该节点上运行期间，卷一直存在。 就像其名称表示的那样，卷最初是空的。 尽管 Pod 中的容器挂载 <code>emptyDir</code> 卷的路径可能相同也可能不同，这些容器都可以读写 <code>emptyDir</code> 卷中相同的文件。 当 Pod 因为某些原因被从节点上删除时，<code>emptyDir</code> 卷中的数据也会被永久删除。</p>
+<blockquote>
+<p><strong>说明：</strong> 容器崩溃并<strong>不</strong>会导致 Pod 被从节点上移除，因此容器崩溃期间 <code>emptyDir</code> 卷中的数据是安全的。</p>
+</blockquote>
+<p><code>emptyDir</code> 的一些用途：</p>
+<ul>
+<li>缓存空间，例如基于磁盘的归并排序。</li>
+<li>为耗时较长的计算任务提供检查点，以便任务能方便地从崩溃前状态恢复执行。</li>
+<li>在 Web 服务器容器服务数据时，保存内容管理器容器获取的文件。</li>
+</ul>
+<p>取决于你的环境，<code>emptyDir</code> 卷存储在该节点所使用的介质上；这里的介质可以是磁盘或 SSD 或网络存储。但是，你可以将 <code>emptyDir.medium</code> 字段设置为 <code>&quot;Memory&quot;</code>，以告诉 Kubernetes 为你挂载 tmpfs（基于 RAM 的文件系统）。 虽然 tmpfs 速度非常快，但是要注意它与磁盘不同。 tmpfs 在节点重启时会被清除，并且你所写入的所有文件都会计入容器的内存消耗，受容器内存限制约束。</p>
+<blockquote>
+<p><strong>说明：</strong> 当启用 <code>SizeMemoryBackedVolumes</code> <a href="https://kubernetes.io/zh/docs/reference/command-line-tools-reference/feature-gates/">特性门控</a>时， 你可以为基于内存提供的卷指定大小。 如果未指定大小，则基于内存的卷的大小为 Linux 主机上内存的 50％。</p>
+</blockquote>
+<p>emptyDir 配置示例</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#268bd2">apiVersion</span>: v1
+<span style="color:#268bd2">kind</span>: Pod
+<span style="color:#268bd2">metadata</span>:
+  <span style="color:#268bd2">name</span>: test-pd
+<span style="color:#268bd2">spec</span>:
+  <span style="color:#268bd2">containers</span>:
+  - <span style="color:#268bd2">image</span>: k8s.gcr.io/test-webserver
+    <span style="color:#268bd2">name</span>: test-container
+    <span style="color:#268bd2">volumeMounts</span>:
+    - <span style="color:#268bd2">mountPath</span>: /cache
+      <span style="color:#268bd2">name</span>: cache-volume
+  <span style="color:#268bd2">volumes</span>:
+  - <span style="color:#268bd2">name</span>: cache-volume
+    <span style="color:#268bd2">emptyDir</span>: {}
+</code></pre></div><p><strong>fc (光纤通道)</strong></p>
+<p><code>fc</code> 卷类型允许将现有的光纤通道块存储卷挂载到 Pod 中。 可以使用卷配置中的参数 <code>targetWWNs</code> 来指定单个或多个目标 WWN（World Wide Names）。 如果指定了多个 WWN，targetWWNs 期望这些 WWN 来自多路径连接。</p>
+<blockquote>
+<p><strong>注意：</strong> 你必须配置 FC SAN Zoning，以便预先向目标 WWN 分配和屏蔽这些 LUN（卷）， 这样 Kubernetes 主机才可以访问它们。</p>
+</blockquote>
+<p>更多详情请参考 <a href="https://github.com/kubernetes/examples/tree/master/staging/volumes/fibre_channel">FC 示例</a>。</p>
+<p><strong>gcePersistentDisk</strong></p>
+<p><code>gcePersistentDisk</code> 卷能将谷歌计算引擎 (GCE) <a href="http://cloud.google.com/compute/docs/disks">持久盘（PD）</a> 挂载到你的 Pod 中。 不像 <code>emptyDir</code> 那样会在 Pod 被删除的同时也会被删除，持久盘卷的内容在删除 Pod 时会被保留，卷只是被卸载了。 这意味着持久盘卷可以被预先填充数据，并且这些数据可以在 Pod 之间共享。</p>
+<blockquote>
+<p><strong>注意：</strong> 在使用 PD 前，你必须使用 <code>gcloud</code> 或者 GCE API 或 UI 创建它。</p>
+</blockquote>
+<p>使用 <code>gcePersistentDisk</code> 时有一些限制：</p>
+<ul>
+<li>运行 Pod 的节点必须是 GCE VM</li>
+<li>这些 VM 必须和持久盘位于相同的 GCE 项目和区域（zone）</li>
+</ul>
+<p>GCE PD 的一个特点是它们可以同时被多个消费者以只读方式挂载。 这意味着你可以用数据集预先填充 PD，然后根据需要并行地在尽可能多的 Pod 中提供该数据集。 不幸的是，PD 只能由单个使用者以读写模式挂载 —— 即不允许同时写入。</p>
+<p>在由 ReplicationController 所管理的 Pod 上使用 GCE PD 将会失败，除非 PD 是只读模式或者副本的数量是 0 或 1。</p>
+<p><strong>glusterfs</strong></p>
+<p><code>glusterfs</code> 卷能将 <a href="https://www.gluster.org/">Glusterfs</a> (一个开源的网络文件系统) 挂载到你的 Pod 中。不像 <code>emptyDir</code> 那样会在删除 Pod 的同时也会被删除，<code>glusterfs</code> 卷的内容在删除 Pod 时会被保存，卷只是被卸载。 这意味着 <code>glusterfs</code> 卷可以被预先填充数据，并且这些数据可以在 Pod 之间共享。 GlusterFS 可以被多个写者同时挂载。</p>
+<blockquote>
+<p><strong>说明：</strong> 在使用前你必须先安装运行自己的 GlusterFS。</p>
+</blockquote>
+<p>更多详情请参考 <a href="https://github.com/kubernetes/examples/tree/master/volumes/glusterfs">GlusterFS 示例</a>。</p>
+<p><strong>hostPath</strong></p>
+<p><code>hostPath</code> 卷能将主机节点文件系统上的文件或目录挂载到你的 Pod 中。 虽然这不是大多数 Pod 需要的，但是它为一些应用程序提供了强大的逃生舱。</p>
+<p>例如，<code>hostPath</code> 的一些用法有：</p>
+<ul>
+<li>运行一个需要访问 Docker 内部机制的容器；可使用 <code>hostPath</code> 挂载 <code>/var/lib/docker</code> 路径。</li>
+<li>在容器中运行 cAdvisor 时，以 <code>hostPath</code> 方式挂载 <code>/sys</code>。</li>
+<li>允许 Pod 指定给定的 <code>hostPath</code> 在运行 Pod 之前是否应该存在，是否应该创建以及应该以什么方式存在。</li>
+</ul>
+<p>除了必需的 <code>path</code> 属性之外，用户可以选择性地为 <code>hostPath</code> 卷指定 <code>type</code>。</p>
+<p>支持的 <code>type</code> 值如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">取值</th>
+<th style="text-align:left">行为</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left">空字符串（默认）用于向后兼容，这意味着在安装 hostPath 卷之前不会执行任何检查。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>DirectoryOrCreate</code></td>
+<td style="text-align:left">如果在给定路径上什么都不存在，那么将根据需要创建空目录，权限设置为 0755，具有与 kubelet 相同的组和属主信息。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>Directory</code></td>
+<td style="text-align:left">在给定路径上必须存在的目录。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>FileOrCreate</code></td>
+<td style="text-align:left">如果在给定路径上什么都不存在，那么将在那里根据需要创建空文件，权限设置为 0644，具有与 kubelet 相同的组和所有权。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>File</code></td>
+<td style="text-align:left">在给定路径上必须存在的文件。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>Socket</code></td>
+<td style="text-align:left">在给定路径上必须存在的 UNIX 套接字。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>CharDevice</code></td>
+<td style="text-align:left">在给定路径上必须存在的字符设备。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>BlockDevice</code></td>
+<td style="text-align:left">在给定路径上必须存在的块设备。</td>
+</tr>
+</tbody>
+</table>
+<p>当使用这种类型的卷时要小心，因为：</p>
+<ul>
+<li>具有相同配置（例如基于同一 PodTemplate 创建）的多个 Pod 会由于节点上文件的不同 而在不同节点上有不同的行为。</li>
+<li>下层主机上创建的文件或目录只能由 root 用户写入。你需要在 <a href="https://kubernetes.io/zh/docs/tasks/configure-pod-container/security-context/">特权容器</a> 中以 root 身份运行进程，或者修改主机上的文件权限以便容器能够写入 <code>hostPath</code> 卷。</li>
+</ul>
+<p>hostPath 配置示例：</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#268bd2">apiVersion</span>: v1
+<span style="color:#268bd2">kind</span>: Pod
+<span style="color:#268bd2">metadata</span>:
+  <span style="color:#268bd2">name</span>: test-pd
+<span style="color:#268bd2">spec</span>:
+  <span style="color:#268bd2">containers</span>:
+  - <span style="color:#268bd2">image</span>: k8s.gcr.io/test-webserver
+    <span style="color:#268bd2">name</span>: test-container
+    <span style="color:#268bd2">volumeMounts</span>:
+    - <span style="color:#268bd2">mountPath</span>: /test-pd
+      <span style="color:#268bd2">name</span>: test-volume
+  <span style="color:#268bd2">volumes</span>:
+  - <span style="color:#268bd2">name</span>: test-volume
+    <span style="color:#268bd2">hostPath</span>:
+      <span style="color:#586e75"># 宿主上目录位置</span>
+      <span style="color:#268bd2">path</span>: /data
+      <span style="color:#586e75"># 此字段为可选</span>
+      <span style="color:#268bd2">type</span>: Directory
+</code></pre></div><blockquote>
+<p><strong>注意：</strong> <code>FileOrCreate</code> 模式不会负责创建文件的父目录。 如果欲挂载的文件的父目录不存在，Pod 启动会失败。 为了确保这种模式能够工作，可以尝试把文件和它对应的目录分开挂载，如 <a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#hostpath-fileorcreate-example"><code>FileOrCreate</code> 配置</a> 所示。</p>
+</blockquote>
+<p>hostPath FileOrCreate 配置示例</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#268bd2">apiVersion</span>: v1
+<span style="color:#268bd2">kind</span>: Pod
+<span style="color:#268bd2">metadata</span>:
+  <span style="color:#268bd2">name</span>: test-webserver
+<span style="color:#268bd2">spec</span>:
+  <span style="color:#268bd2">containers</span>:
+  - <span style="color:#268bd2">name</span>: test-webserver
+    <span style="color:#268bd2">image</span>: k8s.gcr.io/test-webserver:latest
+    <span style="color:#268bd2">volumeMounts</span>:
+    - <span style="color:#268bd2">mountPath</span>: /var/local/aaa
+      <span style="color:#268bd2">name</span>: mydir
+    - <span style="color:#268bd2">mountPath</span>: /var/local/aaa/1.txt
+      <span style="color:#268bd2">name</span>: myfile
+  <span style="color:#268bd2">volumes</span>:
+  - <span style="color:#268bd2">name</span>: mydir
+    <span style="color:#268bd2">hostPath</span>:
+      <span style="color:#586e75"># 确保文件所在目录成功创建。</span>
+      <span style="color:#268bd2">path</span>: /var/local/aaa
+      <span style="color:#268bd2">type</span>: DirectoryOrCreate
+  - <span style="color:#268bd2">name</span>: myfile
+    <span style="color:#268bd2">hostPath</span>:
+      <span style="color:#268bd2">path</span>: /var/local/aaa/1.txt
+      <span style="color:#268bd2">type</span>: FileOrCreate
+</code></pre></div><p><strong>iscsi</strong></p>
+<p><code>iscsi</code> 卷能将 iSCSI (基于 IP 的 SCSI) 卷挂载到你的 Pod 中。 不像 <code>emptyDir</code> 那样会在删除 Pod 的同时也会被删除，<code>iscsi</code> 卷的内容在删除 Pod 时 会被保留，卷只是被卸载。 这意味着 <code>iscsi</code> 卷可以被预先填充数据，并且这些数据可以在 Pod 之间共享。</p>
+<blockquote>
+<p><strong>注意：</strong> 在使用 iSCSI 卷之前，你必须拥有自己的 iSCSI 服务器，并在上面创建卷。</p>
+</blockquote>
+<p>iSCSI 的一个特点是它可以同时被多个用户以只读方式挂载。 这意味着你可以用数据集预先填充卷，然后根据需要在尽可能多的 Pod 上使用它。 不幸的是，iSCSI 卷只能由单个使用者以读写模式挂载。不允许同时写入。</p>
+<p>更多详情请参考 <a href="https://github.com/kubernetes/examples/tree/master/volumes/iscsi">iSCSI 示例</a>。</p>
+<p><strong>local</strong></p>
+<p><code>local</code> 卷所代表的是某个被挂载的本地存储设备，例如磁盘、分区或者目录。</p>
+<p><code>local</code> 卷只能用作静态创建的持久卷。尚不支持动态配置。</p>
+<p>与 <code>hostPath</code> 卷相比，<code>local</code> 卷能够以持久和可移植的方式使用，而无需手动将 Pod 调度到节点。系统通过查看 PersistentVolume 的节点亲和性配置，就能了解卷的节点约束。</p>
+<p>然而，<code>local</code> 卷仍然取决于底层节点的可用性，并不适合所有应用程序。 如果节点变得不健康，那么<code>local</code> 卷也将变得不可被 Pod 访问。使用它的 Pod 将不能运行。 使用 <code>local</code> 卷的应用程序必须能够容忍这种可用性的降低，以及因底层磁盘的耐用性特征 而带来的潜在的数据丢失风险。</p>
+<p>下面是一个使用 <code>local</code> 卷和 <code>nodeAffinity</code> 的持久卷示例：</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#268bd2">apiVersion</span>: v1
+<span style="color:#268bd2">kind</span>: PersistentVolume
+<span style="color:#268bd2">metadata</span>:
+  <span style="color:#268bd2">name</span>: example-pv
+<span style="color:#268bd2">spec</span>:
+  <span style="color:#268bd2">capacity</span>:
+    <span style="color:#268bd2">storage</span>: 100Gi
+  <span style="color:#268bd2">volumeMode</span>: Filesystem
+  <span style="color:#268bd2">accessModes</span>:
+  - ReadWriteOnce
+  <span style="color:#268bd2">persistentVolumeReclaimPolicy</span>: Delete
+  <span style="color:#268bd2">storageClassName</span>: local-storage
+  <span style="color:#268bd2">local</span>:
+    <span style="color:#268bd2">path</span>: /mnt/disks/ssd1
+  <span style="color:#268bd2">nodeAffinity</span>:
+    <span style="color:#268bd2">required</span>:
+      <span style="color:#268bd2">nodeSelectorTerms</span>:
+      - <span style="color:#268bd2">matchExpressions</span>:
+        - <span style="color:#268bd2">key</span>: kubernetes.io/hostname
+          <span style="color:#268bd2">operator</span>: In
+          <span style="color:#268bd2">values</span>:
+          - example-node
+</code></pre></div><p>使用 <code>local</code> 卷时，你需要设置 PersistentVolume 对象的 <code>nodeAffinity</code> 字段。 Kubernetes 调度器使用 PersistentVolume 的 <code>nodeAffinity</code> 信息来将使用 <code>local</code> 卷的 Pod 调度到正确的节点。</p>
+<p>PersistentVolume 对象的 <code>volumeMode</code> 字段可被设置为 &ldquo;Block&rdquo; （而不是默认值 &ldquo;Filesystem&rdquo;），以将 <code>local</code> 卷作为原始块设备暴露出来。</p>
+<p>使用 <code>local</code> 卷时，建议创建一个 StorageClass 并将其 <code>volumeBindingMode</code> 设置为 <code>WaitForFirstConsumer</code>。要了解更多详细信息，请参考 <a href="https://kubernetes.io/zh/docs/concepts/storage/storage-classes/#local">local StorageClass 示例</a>。 延迟卷绑定的操作可以确保 Kubernetes 在为 PersistentVolumeClaim 作出绑定决策时， 会评估 Pod 可能具有的其他节点约束，例如：如节点资源需求、节点选择器、Pod 亲和性和 Pod 反亲和性。</p>
+<p>你可以在 Kubernetes 之外单独运行静态驱动以改进对 local 卷的生命周期管理。 请注意，此驱动尚不支持动态配置。 有关如何运行外部 <code>local</code> 卷驱动，请参考 <a href="https://github.com/kubernetes-sigs/sig-storage-local-static-provisioner">local 卷驱动用户指南</a>。</p>
+<blockquote>
+<p><strong>说明：</strong> 如果不使用外部静态驱动来管理卷的生命周期，用户需要手动清理和删除 local 类型的持久卷。</p>
+</blockquote>
+<p><strong>nfs</strong></p>
+<p><code>nfs</code> 卷能将 NFS (网络文件系统) 挂载到你的 Pod 中。 不像 <code>emptyDir</code> 那样会在删除 Pod 的同时也会被删除，<code>nfs</code> 卷的内容在删除 Pod 时会被保存，卷只是被卸载。 这意味着 <code>nfs</code> 卷可以被预先填充数据，并且这些数据可以在 Pod 之间共享。</p>
+<blockquote>
+<p><strong>注意：</strong> 在使用 NFS 卷之前，你必须运行自己的 NFS 服务器并将目标 share 导出备用。</p>
+</blockquote>
+<p>要了解更多详情请参考 <a href="https://github.com/kubernetes/examples/tree/master/staging/volumes/nfs">NFS 示例</a>。</p>
+<p><strong>persistentVolumeClaim</strong></p>
+<p><code>persistentVolumeClaim</code> 卷用来将<a href="https://kubernetes.io/zh/docs/concepts/storage/persistent-volumes/">持久卷</a>（PersistentVolume） 挂载到 Pod 中。 持久卷申领（PersistentVolumeClaim）是用户在不知道特定云环境细节的情况下&quot;申领&quot;持久存储 （例如 GCE PersistentDisk 或者 iSCSI 卷）的一种方法。</p>
+<p>更多详情请参考<a href="https://kubernetes.io/zh/docs/concepts/storage/persistent-volumes/">持久卷示例</a>。</p>
+<p><strong>portworxVolume</strong></p>
+<p><code>portworxVolume</code> 是一个可伸缩的块存储层，能够以超融合（hyperconverged）的方式与 Kubernetes 一起运行。 <a href="https://portworx.com/use-case/kubernetes-storage/">Portworx</a> 支持对服务器上存储的指纹处理、 基于存储能力进行分层以及跨多个服务器整合存储容量。 Portworx 可以以 in-guest 方式在虚拟机中运行，也可以在裸金属 Linux 节点上运行。</p>
+<p>更多详情可以参考 <a href="https://github.com/kubernetes/examples/tree/master/staging/volumes/portworx/README.md">Portworx 卷</a>。</p>
+<p><strong>projected</strong></p>
+<p><code>projected</code> 卷类型能将若干现有的卷来源映射到同一目录上。</p>
+<p>目前，可以映射的卷来源类型如下：</p>
+<ul>
+<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#secret"><code>secret</code></a></li>
+<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#downwardapi"><code>downwardAPI</code></a></li>
+<li><a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#configmap"><code>configMap</code></a></li>
+<li><code>serviceAccountToken</code></li>
+</ul>
+<p>所有的卷来源需要和 Pod 处于相同的命名空间。 更多详情请参考<a href="https://github.com/kubernetes/community/blob/master/contributors/design-proposals/node/all-in-one-volume.md">一体化卷设计文档</a>。</p>
+<p>包含 Secret、downwardAPI 和 configMap 的 Pod 示例</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#268bd2">apiVersion</span>: v1
+<span style="color:#268bd2">kind</span>: Pod
+<span style="color:#268bd2">metadata</span>:
+  <span style="color:#268bd2">name</span>: volume-test
+<span style="color:#268bd2">spec</span>:
+  <span style="color:#268bd2">containers</span>:
+  - <span style="color:#268bd2">name</span>: container-test
+    <span style="color:#268bd2">image</span>: busybox
+    <span style="color:#268bd2">volumeMounts</span>:
+    - <span style="color:#268bd2">name</span>: all-in-one
+      <span style="color:#268bd2">mountPath</span>: <span style="color:#2aa198">&#34;/projected-volume&#34;</span>
+      <span style="color:#268bd2">readOnly</span>: <span style="color:#cb4b16">true</span>
+  <span style="color:#268bd2">volumes</span>:
+  - <span style="color:#268bd2">name</span>: all-in-one
+    <span style="color:#268bd2">projected</span>:
+      <span style="color:#268bd2">sources</span>:
+      - <span style="color:#268bd2">secret</span>:
+          <span style="color:#268bd2">name</span>: mysecret
+          <span style="color:#268bd2">items</span>:
+            - <span style="color:#268bd2">key</span>: username
+              <span style="color:#268bd2">path</span>: my-group/my-username
+      - <span style="color:#268bd2">downwardAPI</span>:
+          <span style="color:#268bd2">items</span>:
+            - <span style="color:#268bd2">path</span>: <span style="color:#2aa198">&#34;labels&#34;</span>
+              <span style="color:#268bd2">fieldRef</span>:
+                <span style="color:#268bd2">fieldPath</span>: metadata.labels
+            - <span style="color:#268bd2">path</span>: <span style="color:#2aa198">&#34;cpu_limit&#34;</span>
+              <span style="color:#268bd2">resourceFieldRef</span>:
+                <span style="color:#268bd2">containerName</span>: container-test
+                <span style="color:#268bd2">resource</span>: limits.cpu
+      - <span style="color:#268bd2">configMap</span>:
+          <span style="color:#268bd2">name</span>: myconfigmap
+          <span style="color:#268bd2">items</span>:
+            - <span style="color:#268bd2">key</span>: config
+              <span style="color:#268bd2">path</span>: my-group/my-config
+</code></pre></div><p>下面是一个带有非默认访问权限设置的多个 secret 的 Pod 示例：</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#268bd2">apiVersion</span>: v1
+<span style="color:#268bd2">kind</span>: Pod
+<span style="color:#268bd2">metadata</span>:
+  <span style="color:#268bd2">name</span>: volume-test
+<span style="color:#268bd2">spec</span>:
+  <span style="color:#268bd2">containers</span>:
+  - <span style="color:#268bd2">name</span>: container-test
+    <span style="color:#268bd2">image</span>: busybox
+    <span style="color:#268bd2">volumeMounts</span>:
+    - <span style="color:#268bd2">name</span>: all-in-one
+      <span style="color:#268bd2">mountPath</span>: <span style="color:#2aa198">&#34;/projected-volume&#34;</span>
+      <span style="color:#268bd2">readOnly</span>: <span style="color:#cb4b16">true</span>
+  <span style="color:#268bd2">volumes</span>:
+  - <span style="color:#268bd2">name</span>: all-in-one
+    <span style="color:#268bd2">projected</span>:
+      <span style="color:#268bd2">sources</span>:
+      - <span style="color:#268bd2">secret</span>:
+          <span style="color:#268bd2">name</span>: mysecret
+          <span style="color:#268bd2">items</span>:
+            - <span style="color:#268bd2">key</span>: username
+              <span style="color:#268bd2">path</span>: my-group/my-username
+      - <span style="color:#268bd2">secret</span>:
+          <span style="color:#268bd2">name</span>: mysecret2
+          <span style="color:#268bd2">items</span>:
+            - <span style="color:#268bd2">key</span>: password
+              <span style="color:#268bd2">path</span>: my-group/my-password
+              <span style="color:#268bd2">mode</span>: <span style="color:#2aa198">511</span>
+</code></pre></div><p>每个被投射的卷来源都在规约中的 <code>sources</code> 内列出。参数几乎相同，除了两处例外：</p>
+<ul>
+<li>对于 <code>secret</code>，<code>secretName</code> 字段已被变更为 <code>name</code> 以便与 ConfigMap 命名一致。</li>
+<li><code>defaultMode</code> 只能在整个投射卷级别指定，而无法针对每个卷来源指定。 不过，如上所述，你可以显式地为每个投射项设置 <code>mode</code> 值。</li>
+</ul>
+<p>当开启 <code>TokenRequestProjection</code> 功能时，可以将当前 <a href="https://kubernetes.io/zh/docs/reference/access-authn-authz/authentication/#service-account-tokens">服务帐号</a> 的令牌注入 Pod 中的指定路径。 下面是一个例子：</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#268bd2">apiVersion</span>: v1
+<span style="color:#268bd2">kind</span>: Pod
+<span style="color:#268bd2">metadata</span>:
+  <span style="color:#268bd2">name</span>: sa-token-test
+<span style="color:#268bd2">spec</span>:
+  <span style="color:#268bd2">containers</span>:
+  - <span style="color:#268bd2">name</span>: container-test
+    <span style="color:#268bd2">image</span>: busybox
+    <span style="color:#268bd2">volumeMounts</span>:
+    - <span style="color:#268bd2">name</span>: token-vol
+      <span style="color:#268bd2">mountPath</span>: <span style="color:#2aa198">&#34;/service-account&#34;</span>
+      <span style="color:#268bd2">readOnly</span>: <span style="color:#cb4b16">true</span>
+  <span style="color:#268bd2">volumes</span>:
+  - <span style="color:#268bd2">name</span>: token-vol
+    <span style="color:#268bd2">projected</span>:
+      <span style="color:#268bd2">sources</span>:
+      - <span style="color:#268bd2">serviceAccountToken</span>:
+          <span style="color:#268bd2">audience</span>: api
+          <span style="color:#268bd2">expirationSeconds</span>: <span style="color:#2aa198">3600</span>
+          <span style="color:#268bd2">path</span>: token
+</code></pre></div><p>示例 Pod 具有包含注入服务帐户令牌的映射卷。 该令牌可以被 Pod 中的容器用来访问 Kubernetes API 服务器。 <code>audience</code> 字段包含令牌的预期受众。 令牌的接收者必须使用令牌的受众中指定的标识符来标识自己，否则应拒绝令牌。 此字段是可选的，默认值是 API 服务器的标识符。</p>
+<p><code>expirationSeconds</code> 是服务帐户令牌的有效期时长。 默认值为 1 小时，必须至少 10 分钟（600 秒）。 管理员还可以通过设置 API 服务器的 <code>--service-account-max-token-expiration</code> 选项来 限制其最大值。 <code>path</code> 字段指定相对于映射卷的挂载点的相对路径。</p>
+<blockquote>
+<p><strong>说明：</strong></p>
+<p>使用投射卷源作为 <a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#using-subpath">subPath</a> 卷挂载的容器将不会接收这些卷源的更新。</p>
+</blockquote>
+<p><strong>quobyte</strong></p>
+<p><code>quobyte</code> 卷允许将现有的 <a href="https://www.quobyte.com/">Quobyte</a> 卷挂载到你的 Pod 中。</p>
+<blockquote>
+<p><strong>说明：</strong> 在使用 Quobyte 卷之前，你首先要进行安装 Quobyte 并创建好卷。</p>
+</blockquote>
+<p>Quobyte 支持<a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#csi">容器存储接口（CSI）</a>。 推荐使用 CSI 插件以在 Kubernetes 中使用 Quobyte 卷。 Quobyte 的 GitHub 项目包含以 CSI 形式部署 Quobyte 的 <a href="https://github.com/quobyte/quobyte-csi#quobyte-csi">说明</a> 及使用示例。</p>
+<p><strong>rbd</strong></p>
+<p><code>rbd</code> 卷允许将 <a href="https://ceph.com/docs/master/rbd/rbd/">Rados 块设备</a> 卷挂载到你的 Pod 中. 不像 <code>emptyDir</code> 那样会在删除 Pod 的同时也会被删除，<code>rbd</code> 卷的内容在删除 Pod 时 会被保存，卷只是被卸载。 这意味着 <code>rbd</code> 卷可以被预先填充数据，并且这些数据可以在 Pod 之间共享。</p>
+<blockquote>
+<p><strong>注意：</strong> 在使用 RBD 之前，你必须安装运行 Ceph。</p>
+</blockquote>
+<p>RBD 的一个特性是它可以同时被多个用户以只读方式挂载。 这意味着你可以用数据集预先填充卷，然后根据需要在尽可能多的 Pod 中并行地使用卷。 不幸的是，RBD 卷只能由单个使用者以读写模式安装。不允许同时写入。</p>
+<p>更多详情请参考 <a href="https://github.com/kubernetes/examples/tree/master/volumes/rbd">RBD 示例</a>。</p>
+<p><strong>secret</strong></p>
+<p><code>secret</code> 卷用来给 Pod 传递敏感信息，例如密码。你可以将 Secret 存储在 Kubernetes API 服务器上，然后以文件的形式挂在到 Pod 中，无需直接与 Kubernetes 耦合。 <code>secret</code> 卷由 tmpfs（基于 RAM 的文件系统）提供存储，因此它们永远不会被写入非易失性 （持久化的）存储器。</p>
+<blockquote>
+<p><strong>说明：</strong> 使用前你必须在 Kubernetes API 中创建 secret。</p>
+</blockquote>
+<blockquote>
+<p><strong>说明：</strong> 容器以 <a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#using-subpath">subPath</a> 卷挂载方式挂载 Secret 时，将感知不到 Secret 的更新。</p>
+</blockquote>
+<p>更多详情请参考<a href="https://kubernetes.io/zh/docs/concepts/configuration/secret/">配置 Secrets</a>。</p>
+<p><strong>storageOS</strong></p>
+<p><code>storageos</code> 卷允许将现有的 <a href="https://www.storageos.com/">StorageOS</a> 卷挂载到你的 Pod 中。</p>
+<p>StorageOS 在 Kubernetes 环境中以容器的形式运行，这使得应用能够从 Kubernetes 集群中的任何节点访问本地的或挂接的存储。为应对节点失效状况，可以复制数据。 若需提高利用率和降低成本，可以考虑瘦配置（Thin Provisioning）和数据压缩。</p>
+<p>作为其核心能力之一，StorageOS 为容器提供了可以通过文件系统访问的块存储。</p>
+<p>关于 StorageOS 的进一步信息、动态供应和持久卷申领等等，请参考 <a href="https://github.com/kubernetes/examples/blob/master/volumes/storageos">StorageOS 示例</a>。</p>
+<p><strong>vsphereVolume</strong></p>
+<blockquote>
+<p><strong>说明：</strong> 你必须配置 Kubernetes 的 vSphere 云驱动。云驱动的配置方法请参考 <a href="https://vmware.github.io/vsphere-storage-for-kubernetes/documentation/">vSphere 使用指南</a>。</p>
+</blockquote>
+<p><code>vsphereVolume</code> 用来将 vSphere VMDK 卷挂载到你的 Pod 中。 在卸载卷时，卷的内容会被保留。 vSphereVolume 卷类型支持 VMFS 和 VSAN 数据仓库。</p>
+<hr>
+<h4 id="212-使用-subpath">
+  2.1.2 使用 subPath
+  <a class="heading-link" href="#212-%e4%bd%bf%e7%94%a8-subpath">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>有时，在单个 Pod 中共享卷以供多方使用是很有用的。 <code>volumeMounts.subPath</code> 属性可用于指定所引用的卷内的子路径，而不是其根路径。</p>
+<p>下面例子展示了如何配置某包含 LAMP 堆栈（Linux Apache MySQL PHP）的 Pod 使用同一共享卷。 此示例中的 <code>subPath</code> 配置不建议在生产环境中使用。 PHP 应用的代码和相关数据映射到卷的 <code>html</code> 文件夹，MySQL 数据库存储在卷的 <code>mysql</code> 文件夹中：</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#268bd2">apiVersion</span>: v1
+<span style="color:#268bd2">kind</span>: Pod
+<span style="color:#268bd2">metadata</span>:
+  <span style="color:#268bd2">name</span>: my-lamp-site
+<span style="color:#268bd2">spec</span>:
+    <span style="color:#268bd2">containers</span>:
+    - <span style="color:#268bd2">name</span>: mysql
+      <span style="color:#268bd2">image</span>: mysql
+      <span style="color:#268bd2">env</span>:
+      - <span style="color:#268bd2">name</span>: MYSQL_ROOT_PASSWORD
+        <span style="color:#268bd2">value</span>: <span style="color:#2aa198">&#34;rootpasswd&#34;</span>
+      <span style="color:#268bd2">volumeMounts</span>:
+      - <span style="color:#268bd2">mountPath</span>: /var/lib/mysql
+        <span style="color:#268bd2">name</span>: site-data
+        <span style="color:#268bd2">subPath</span>: mysql
+    - <span style="color:#268bd2">name</span>: php
+      <span style="color:#268bd2">image</span>: php:7.0-apache
+      <span style="color:#268bd2">volumeMounts</span>:
+      - <span style="color:#268bd2">mountPath</span>: /var/www/html
+        <span style="color:#268bd2">name</span>: site-data
+        <span style="color:#268bd2">subPath</span>: html
+    <span style="color:#268bd2">volumes</span>:
+    - <span style="color:#268bd2">name</span>: site-data
+      <span style="color:#268bd2">persistentVolumeClaim</span>:
+        <span style="color:#268bd2">claimName</span>: my-lamp-site-data
+</code></pre></div><p><strong>使用带有扩展环境变量的 subPath</strong></p>
+<p><strong>FEATURE STATE:</strong> <code>Kubernetes v1.17 [stable]</code></p>
+<p>使用 <code>subPathExpr</code> 字段可以基于 Downward API 环境变量来构造 <code>subPath</code> 目录名。 <code>subPath</code> 和 <code>subPathExpr</code> 属性是互斥的。</p>
+<p>在这个示例中，Pod 使用 <code>subPathExpr</code> 来 hostPath 卷 <code>/var/log/pods</code> 中创建目录 <code>pod1</code>。 <code>hostPath</code> 卷采用来自 <code>downwardAPI</code> 的 Pod 名称生成目录名。 宿主目录 <code>/var/log/pods/pod1</code> 被挂载到容器的 <code>/logs</code> 中。</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#268bd2">apiVersion</span>: v1
+<span style="color:#268bd2">kind</span>: Pod
+<span style="color:#268bd2">metadata</span>:
+  <span style="color:#268bd2">name</span>: pod1
+<span style="color:#268bd2">spec</span>:
+  <span style="color:#268bd2">containers</span>:
+  - <span style="color:#268bd2">name</span>: container1
+    <span style="color:#268bd2">env</span>:
+    - <span style="color:#268bd2">name</span>: POD_NAME
+      <span style="color:#268bd2">valueFrom</span>:
+        <span style="color:#268bd2">fieldRef</span>:
+          <span style="color:#268bd2">apiVersion</span>: v1
+          <span style="color:#268bd2">fieldPath</span>: metadata.name
+    <span style="color:#268bd2">image</span>: busybox
+    <span style="color:#268bd2">command</span>: [ <span style="color:#2aa198">&#34;sh&#34;</span>, <span style="color:#2aa198">&#34;-c&#34;</span>, <span style="color:#2aa198">&#34;while [ true ]; do echo &#39;Hello&#39;; sleep 10; done | tee -a /logs/hello.txt&#34;</span> ]
+    <span style="color:#268bd2">volumeMounts</span>:
+    - <span style="color:#268bd2">name</span>: workdir1
+      <span style="color:#268bd2">mountPath</span>: /logs
+      <span style="color:#268bd2">subPathExpr</span>: $(POD_NAME)
+  <span style="color:#268bd2">restartPolicy</span>: Never
+  <span style="color:#268bd2">volumes</span>:
+  - <span style="color:#268bd2">name</span>: workdir1
+    <span style="color:#268bd2">hostPath</span>:
+      <span style="color:#268bd2">path</span>: /var/log/pods
+</code></pre></div><h4 id="213-资源">
+  2.1.3 资源
+  <a class="heading-link" href="#213-%e8%b5%84%e6%ba%90">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p><code>emptyDir</code> 卷的存储介质（磁盘、SSD 等）是由保存 kubelet 数据的根目录 （通常是 <code>/var/lib/kubelet</code>）的文件系统的介质确定。 Kubernetes 对 <code>emptyDir</code> 卷或者 <code>hostPath</code> 卷可以消耗的空间没有限制， 容器之间或 Pod 之间也没有隔离。</p>
+<p>要了解如何使用资源规约来请求空间，可参考 <a href="https://kubernetes.io/zh/docs/concepts/configuration/manage-resources-containers/">如何管理资源</a>。</p>
+<h4 id="214-树外out-of-tree卷插件">
+  2.1.4 树外（Out-of-Tree）卷插件
+  <a class="heading-link" href="#214-%e6%a0%91%e5%a4%96out-of-tree%e5%8d%b7%e6%8f%92%e4%bb%b6">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>Out-of-Tree 卷插件包括 <a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/#csi">容器存储接口（CSI）</a> (CSI) 和 FlexVolume。 它们使存储供应商能够创建自定义存储插件，而无需将它们添加到 Kubernetes 代码仓库。</p>
+<p>以前，所有卷插件（如上面列出的卷类型）都是“树内（In-Tree）”的。 “树内”插件是与 Kubernetes 的核心组件一同构建、链接、编译和交付的。 这意味着向 Kubernetes 添加新的存储系统（卷插件）需要将代码合并到 Kubernetes 核心代码库中。</p>
+<p>CSI 和 FlexVolume 都允许独立于 Kubernetes 代码库开发卷插件，并作为扩展部署 （安装）在 Kubernetes 集群上。</p>
+<p>对于希望创建树外（Out-Of-Tree）卷插件的存储供应商，请参考 <a href="https://github.com/kubernetes/community/blob/master/sig-storage/volume-plugin-faq.md">卷插件常见问题</a>。</p>
+<h4 id="215--csi">
+  2.1.5  CSI
+  <a class="heading-link" href="#215--csi">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p><a href="https://github.com/container-storage-interface/spec/blob/master/spec.md">容器存储接口</a> (CSI) 为容器编排系统（如 Kubernetes）定义标准接口，以将任意存储系统暴露给它们的容器工作负载。</p>
+<p>更多详情请阅读 <a href="https://github.com/kubernetes/community/blob/master/contributors/design-proposals/storage/container-storage-interface.md">CSI 设计方案</a>。</p>
+<blockquote>
+<p><strong>说明：</strong> Kubernetes v1.13 废弃了对 CSI 规范版本 0.2 和 0.3 的支持，并将在以后的版本中删除。</p>
+</blockquote>
+<blockquote>
+<p><strong>说明：</strong> CSI 驱动可能并非兼容所有的 Kubernetes 版本。 请查看特定 CSI 驱动的文档，以了解各个 Kubernetes 版本所支持的部署步骤以及兼容性列表。</p>
+</blockquote>
+<p>一旦在 Kubernetes 集群上部署了 CSI 兼容卷驱动程序，用户就可以使用 <code>csi</code> 卷类型来 挂接、挂载 CSI 驱动所提供的卷。</p>
+<p><code>csi</code> 卷可以在 Pod 中以三种方式使用：</p>
+<ul>
+<li>通过 PersistentVolumeClaim(#persistentvolumeclaim) 对象引用</li>
+<li>使用<a href="https://kubernetes.io/zh/docs/concepts/storage/ephemeral-volumes/#generic-ephemeral-volume">一般性的临时卷</a> （Alpha 特性）</li>
+<li>使用 <a href="https://kubernetes.io/zh/docs/concepts/storage/ephemeral-volumes/#csi-ephemeral-volume">CSI 临时卷</a>， 前提是驱动支持这种用法（Beta 特性）</li>
+</ul>
+<p>存储管理员可以使用以下字段来配置 CSI 持久卷：</p>
+<ul>
+<li>
+<p><code>driver</code>：指定要使用的卷驱动名称的字符串值。 这个值必须与 CSI 驱动程序在 <code>GetPluginInfoResponse</code> 中返回的值相对应； 该接口定义在 <a href="https://github.com/container-storage-interface/spec/blob/master/spec.md#getplugininfo">CSI 规范</a>中。 Kubernetes 使用所给的值来标识要调用的 CSI 驱动程序；CSI 驱动程序也使用该值来辨识 哪些 PV 对象属于该 CSI 驱动程序。</p>
+</li>
+<li>
+<p><code>volumeHandle</code>：唯一标识卷的字符串值。 该值必须与 CSI 驱动在 <code>CreateVolumeResponse</code> 的 <code>volume_id</code> 字段中返回的值相对应； 接口定义在 <a href="https://github.com/container-storage-interface/spec/blob/master/spec.md#createvolume">CSI spec</a> 中。 在所有对 CSI 卷驱动程序的调用中，引用该 CSI 卷时都使用此值作为 <code>volume_id</code> 参数。</p>
+</li>
+<li>
+<p><code>readOnly</code>：一个可选的布尔值，指示通过 <code>ControllerPublished</code> 关联该卷时是否设置 该卷为只读。默认值是 false。 该值通过 <code>ControllerPublishVolumeRequest</code> 中的 <code>readonly</code> 字段传递给 CSI 驱动。</p>
+</li>
+<li>
+<p><code>fsType</code>：如果 PV 的 <code>VolumeMode</code> 为 <code>Filesystem</code>，那么此字段指定挂载卷时应该使用的文件系统。 如果卷尚未格式化，并且支持格式化，此值将用于格式化卷。 此值可以通过 <code>ControllerPublishVolumeRequest</code>、<code>NodeStageVolumeRequest</code> 和 <code>NodePublishVolumeRequest</code> 的 <code>VolumeCapability</code> 字段传递给 CSI 驱动。</p>
+</li>
+<li>
+<p><code>volumeAttributes</code>：一个字符串到字符串的映射表，用来设置卷的静态属性。 该映射必须与 CSI 驱动程序返回的 <code>CreateVolumeResponse</code> 中的 <code>volume.attributes</code> 字段的映射相对应； <a href="https://github.com/container-storage-interface/spec/blob/master/spec.md#createvolume">CSI 规范</a> 中有相应的定义。 该映射通过<code>ControllerPublishVolumeRequest</code>、<code>NodeStageVolumeRequest</code>、和 <code>NodePublishVolumeRequest</code> 中的 <code>volume_attributes</code> 字段传递给 CSI 驱动。</p>
+</li>
+<li>
+<p><code>controllerPublishSecretRef</code>：对包含敏感信息的 Secret 对象的引用； 该敏感信息会被传递给 CSI 驱动来完成 CSI <code>ControllerPublishVolume</code> 和 <code>ControllerUnpublishVolume</code> 调用。 此字段是可选的；在不需要 Secret 时可以是空的。 如果 Secret 对象包含多个 Secret 条目，则所有的 Secret 条目都会被传递。</p>
+</li>
+<li>
+<p><code>nodeStageSecretRef</code>：对包含敏感信息的 Secret 对象的引用。 该信息会传递给 CSI 驱动来完成 CSI <code>NodeStageVolume</code> 调用。 此字段是可选的，如果不需要 Secret，则可能是空的。 如果 Secret 对象包含多个 Secret 条目，则传递所有 Secret 条目。</p>
+</li>
+<li>
+<p><code>nodePublishSecretRef</code>：对包含敏感信息的 Secret 对象的引用。 该信息传递给 CSI 驱动来完成 CSI <code>NodePublishVolume</code> 调用。 此字段是可选的，如果不需要 Secret，则可能是空的。 如果 Secret 对象包含多个 Secret 条目，则传递所有 Secret 条目。</p>
+</li>
+</ul>
+<h4 id="216-flexvolume">
+  2.1.6 flexVolume
+  <a class="heading-link" href="#216-flexvolume">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>FlexVolume 是一个自 1.2 版本（在 CSI 之前）以来在 Kubernetes 中一直存在的树外插件接口。 它使用基于 exec 的模型来与驱动程序对接。 用户必须在每个节点（在某些情况下是主控节点）上的预定义卷插件路径中安装 FlexVolume 驱动程序可执行文件。</p>
+<p>Pod 通过 <code>flexvolume</code> 树内插件与 Flexvolume 驱动程序交互。 更多详情请参考 <a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-storage/flexvolume.md">FlexVolume</a> 示例。</p>
+<h4 id="217-挂载卷的传播">
+  2.1.7 挂载卷的传播
+  <a class="heading-link" href="#217-%e6%8c%82%e8%bd%bd%e5%8d%b7%e7%9a%84%e4%bc%a0%e6%92%ad">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>挂载卷的传播能力允许将容器安装的卷共享到同一 Pod 中的其他容器， 甚至共享到同一节点上的其他 Pod。</p>
+<p>卷的挂载传播特性由 <code>Container.volumeMounts</code> 中的 <code>mountPropagation</code> 字段控制。 它的值包括：</p>
+<ul>
+<li>
+<p><code>None</code> - 此卷挂载将不会感知到主机后续在此卷或其任何子目录上执行的挂载变化。 类似的，容器所创建的卷挂载在主机上是不可见的。这是默认模式。</p>
+<p>该模式等同于 <a href="https://www.kernel.org/doc/Documentation/filesystems/sharedsubtree.txt">Linux 内核文档</a> 中描述的 <code>private</code> 挂载传播选项。</p>
+</li>
+<li>
+<p><code>HostToContainer</code> - 此卷挂载将会感知到主机后续针对此卷或其任何子目录的挂载操作。</p>
+<p>换句话说，如果主机在此挂载卷中挂载任何内容，容器将能看到它被挂载在那里。</p>
+<p>类似的，配置了 <code>Bidirectional</code> 挂载传播选项的 Pod 如果在同一卷上挂载了内容， 挂载传播设置为 <code>HostToContainer</code> 的容器都将能看到这一变化。</p>
+<p>该模式等同于 <a href="https://www.kernel.org/doc/Documentation/filesystems/sharedsubtree.txt">Linux 内核文档</a> 中描述的 <code>rslave</code> 挂载传播选项。</p>
+</li>
+<li>
+<p><code>Bidirectional</code> - 这种卷挂载和 <code>HostToContainer</code> 挂载表现相同。 另外，容器创建的卷挂载将被传播回至主机和使用同一卷的所有 Pod 的所有容器。</p>
+<p>该模式等同于 <a href="https://www.kernel.org/doc/Documentation/filesystems/sharedsubtree.txt">Linux 内核文档</a> 中描述的 <code>rshared</code> 挂载传播选项。</p>
+<blockquote>
+<p><strong>警告：</strong> <code>Bidirectional</code> 形式的挂载传播可能比较危险。 它可以破坏主机操作系统，因此它只被允许在特权容器中使用。 强烈建议你熟悉 Linux 内核行为。 此外，由 Pod 中的容器创建的任何卷挂载必须在终止时由容器销毁（卸载）。</p>
+</blockquote>
+</li>
+</ul>
+<hr>
+<h3 id="22-configmap">
+  2.2 ConfigMap
+  <a class="heading-link" href="#22-configmap">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>ConfigMap 是一种 API 对象，用来将非机密性的数据保存到键值对中。使用时， <a href="https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/">Pods</a> 可以将其用作环境变量、命令行参数或者存储卷中的配置文件。</p>
+<p>ConfigMap 将您的环境配置信息和 <a href="https://kubernetes.io/zh/docs/reference/glossary/?all=true#term-image">容器镜像</a> 解耦，便于应用配置的修改。</p>
+<blockquote>
+<p><strong>注意：</strong></p>
+<p>ConfigMap 并不提供保密或者加密功能。 如果你想存储的数据是机密的，请使用 <a href="https://kubernetes.io/zh/docs/concepts/configuration/secret/">Secret</a>， 或者使用其他第三方工具来保证你的数据的私密性，而不是用 ConfigMap。</p>
+</blockquote>
+<h4 id="221-configmap-对象">
+  2.2.1 ConfigMap 对象
+  <a class="heading-link" href="#221-configmap-%e5%af%b9%e8%b1%a1">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>ConfigMap 是一个 API <a href="https://kubernetes.io/zh/docs/concepts/overview/working-with-objects/kubernetes-objects/">对象</a>， 让你可以存储其他对象所需要使用的配置。 和其他 Kubernetes 对象都有一个 <code>spec</code> 不同的是，ConfigMap 使用 <code>data</code> 和 <code>binaryData</code> 字段。这些字段能够接收键-值对作为其取值。<code>data</code> 和 <code>binaryData</code> 字段都是可选的。<code>data</code> 字段设计用来保存 UTF-8 字节序列，而 <code>binaryData</code> 则 被设计用来保存二进制数据。</p>
+<p>ConfigMap 的名字必须是一个合法的 <a href="https://kubernetes.io/zh/docs/concepts/overview/working-with-objects/names#dns-subdomain-names">DNS 子域名</a>。</p>
+<p><code>data</code> 或 <code>binaryData</code> 字段下面的每个键的名称都必须由字母数字字符或者 <code>-</code>、<code>_</code> 或 <code>.</code> 组成。在 <code>data</code> 下保存的键名不可以与在 <code>binaryData</code> 下 出现的键名有重叠。</p>
+<p>从 v1.19 开始，你可以添加一个 <code>immutable</code> 字段到 ConfigMap 定义中，创建 <a href="https://kubernetes.io/zh/docs/concepts/configuration/configmap/#configmap-immutable">不可变更的 ConfigMap</a>。</p>
+<h4 id="222-创建configmap">
+  2.2.2 创建ConfigMap
+  <a class="heading-link" href="#222-%e5%88%9b%e5%bb%baconfigmap">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#268bd2">apiVersion</span>: v1
+<span style="color:#268bd2">kind</span>: ConfigMap
+<span style="color:#268bd2">metadata</span>:
+  <span style="color:#268bd2">name</span>: myconfigmap
+<span style="color:#268bd2">data</span>:
+  <span style="color:#586e75"># 类属性键；每一个键都映射到一个简单的值</span>
+  <span style="color:#268bd2">player_initial_lives</span>: <span style="color:#2aa198">&#34;3&#34;</span>
+  <span style="color:#268bd2">ui_properties_file_name</span>: <span style="color:#2aa198">&#34;user-interface.properties&#34;</span>
+
+  <span style="color:#586e75"># 类文件键</span>
+  <span style="color:#268bd2">game.properties</span>: |<span style="color:#2aa198">
+</span><span style="color:#2aa198">    enemy.types=aliens,monsters
+</span><span style="color:#2aa198">    player.maximum-lives=5    </span>    
+  <span style="color:#268bd2">user-interface.properties</span>: |<span style="color:#2aa198">
+</span><span style="color:#2aa198">    color.good=purple
+</span><span style="color:#2aa198">    color.bad=yellow
+</span><span style="color:#2aa198">    allow.textmode=true    </span>    
+</code></pre></div><h4 id="223-使用configmap">
+  2.2.3 使用ConfigMap
+  <a class="heading-link" href="#223-%e4%bd%bf%e7%94%a8configmap">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#268bd2">apiVersion</span>: v1
+<span style="color:#268bd2">kind</span>: Pod
+<span style="color:#268bd2">metadata</span>:
+  <span style="color:#268bd2">name</span>: mypod
+<span style="color:#268bd2">spec</span>:
+  <span style="color:#268bd2">containers</span>:
+  - <span style="color:#268bd2">name</span>: mypod
+    <span style="color:#268bd2">image</span>: redis
+    <span style="color:#268bd2">volumeMounts</span>:
+    - <span style="color:#268bd2">name</span>: foo
+      <span style="color:#268bd2">mountPath</span>: <span style="color:#2aa198">&#34;/etc/foo&#34;</span>
+      <span style="color:#268bd2">readOnly</span>: <span style="color:#cb4b16">true</span>
+  <span style="color:#268bd2">volumes</span>:
+  - <span style="color:#268bd2">name</span>: foo
+    <span style="color:#268bd2">configMap</span>:
+      <span style="color:#268bd2">name</span>: myconfigmap
+</code></pre></div><hr>
+<h3 id="23-secret">
+  2.3 Secret
+  <a class="heading-link" href="#23-secret">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p><code>Secret</code> 对象类型用来保存敏感信息，例如密码、OAuth 令牌和 SSH 密钥。 将这些信息放在 <code>secret</code> 中比放在 <a href="https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/">Pod</a> 的定义或者 <a href="https://kubernetes.io/zh/docs/reference/glossary/?all=true#term-image">容器镜像</a> 中来说更加安全和灵活。</p>
+<p>ecret 是一种包含少量敏感信息例如密码、令牌或密钥的对象。 这样的信息可能会被放在 Pod 规约中或者镜像中。 用户可以创建 Secret，同时系统也创建了一些 Secret。</p>
+<blockquote>
+<p><strong>注意：</strong></p>
+<p>Kubernetes Secret 默认情况下存储为 base64-编码的、非加密的字符串。 默认情况下，能够访问 API 的任何人，或者能够访问 Kubernetes 下层数据存储（etcd） 的任何人都可以以明文形式读取这些数据。 为了能够安全地使用 Secret，我们建议你（至少）：</p>
+<ol>
+<li>为 Secret <a href="https://kubernetes.io/zh/docs/tasks/administer-cluster/encrypt-data/">启用静态加密</a>；</li>
+<li><a href="https://kubernetes.io/zh/docs/reference/access-authn-authz/authorization/">启用 RBAC 规则来限制对 Secret 的读写操作</a>。 要注意，任何被允许创建 Pod 的人都默认地具有读取 Secret 的权限。</li>
+</ol>
+</blockquote>
+<h4 id="231-secret概览">
+  2.3.1 Secret概览
+  <a class="heading-link" href="#231-secret%e6%a6%82%e8%a7%88">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>要使用 Secret，Pod 需要引用 Secret。 Pod 可以用三种方式之一来使用 Secret：</p>
+<ul>
+<li>作为挂载到一个或多个容器上的 <a href="https://kubernetes.io/zh/docs/concepts/storage/volumes/">卷</a> 中的<a href="https://kubernetes.io/zh/docs/concepts/configuration/secret/#using-secrets-as-files-from-a-pod">文件</a>。</li>
+<li>作为<a href="https://kubernetes.io/zh/docs/concepts/configuration/secret/#using-secrets-as-environment-variables">容器的环境变量</a></li>
+<li>由 <a href="https://kubernetes.io/zh/docs/concepts/configuration/secret/#using-imagepullsecrets">kubelet 在为 Pod 拉取镜像时使用</a></li>
+</ul>
+<p>Secret 对象的名称必须是合法的 <a href="https://kubernetes.io/zh/docs/concepts/overview/working-with-objects/names#dns-subdomain-names">DNS 子域名</a>。 在为创建 Secret 编写配置文件时，你可以设置 <code>data</code> 与/或 <code>stringData</code> 字段。 <code>data</code> 和 <code>stringData</code> 字段都是可选的。<code>data</code> 字段中所有键值都必须是 base64 编码的字符串。如果不希望执行这种 base64 字符串的转换操作，你可以选择设置 <code>stringData</code> 字段，其中可以使用任何字符串作为其取值。</p>
+<h4 id="232-secret类型">
+  2.3.2 Secret类型
+  <a class="heading-link" href="#232-secret%e7%b1%bb%e5%9e%8b">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>在创建 Secret 对象时，你可以使用 <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.20/#secret-v1-core"><code>Secret</code></a> 资源的 <code>type</code> 字段，或者与其等价的 <code>kubectl</code> 命令行参数（如果有的话）为其设置类型。 Secret 的类型用来帮助编写程序处理 Secret 数据。</p>
+<p>Kubernetes 提供若干种内置的类型，用于一些常见的使用场景。 针对这些类型，Kubernetes 所执行的合法性检查操作以及对其所实施的限制各不相同。</p>
+<table>
+<thead>
+<tr>
+<th>内置类型</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Opaque</code></td>
+<td>用户定义的任意数据</td>
+</tr>
+<tr>
+<td><code>kubernetes.io/service-account-token</code></td>
+<td>服务账号令牌</td>
+</tr>
+<tr>
+<td><code>kubernetes.io/dockercfg</code></td>
+<td><code>~/.dockercfg</code> 文件的序列化形式</td>
+</tr>
+<tr>
+<td><code>kubernetes.io/dockerconfigjson</code></td>
+<td><code>~/.docker/config.json</code> 文件的序列化形式</td>
+</tr>
+<tr>
+<td><code>kubernetes.io/basic-auth</code></td>
+<td>用于基本身份认证的凭据</td>
+</tr>
+<tr>
+<td><code>kubernetes.io/ssh-auth</code></td>
+<td>用于 SSH 身份认证的凭据</td>
+</tr>
+<tr>
+<td><code>kubernetes.io/tls</code></td>
+<td>用于 TLS 客户端或者服务器端的数据</td>
+</tr>
+<tr>
+<td><code>bootstrap.kubernetes.io/token</code></td>
+<td>启动引导令牌数据</td>
+</tr>
+</tbody>
+</table>
+<p>通过为 Secret 对象的 <code>type</code> 字段设置一个非空的字符串值，你也可以定义并使用自己 Secret 类型。如果 <code>type</code> 值为空字符串，则被视为 <code>Opaque</code> 类型。 Kubernetes 并不对类型的名称作任何限制。不过，如果你要使用内置类型之一， 则你必须满足为该类型所定义的所有要求。</p>
+<h4 id="233-创建secret">
+  2.3.3 创建Secret
+  <a class="heading-link" href="#233-%e5%88%9b%e5%bb%basecret">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ <span style="color:#b58900">echo</span> -n <span style="color:#2aa198">&#39;1f2d1e2e67df&#39;</span> | base64
+MWYyZDFlMmU2N2Rm
+</code></pre></div><div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#268bd2">apiVersion</span>: v1
+<span style="color:#268bd2">kind</span>: Secret
+<span style="color:#268bd2">metadata</span>:
+  <span style="color:#268bd2">name</span>: mysecret
+<span style="color:#268bd2">type</span>: Opaque
+<span style="color:#268bd2">data</span>:
+  <span style="color:#268bd2">username</span>: YWRtaW4=
+  <span style="color:#268bd2">password</span>: MWYyZDFlMmU2N2Rm
+</code></pre></div><h4 id="234-使用secret">
+  2.3.4 使用Secret
+  <a class="heading-link" href="#234-%e4%bd%bf%e7%94%a8secret">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#268bd2">apiVersion</span>: v1
+<span style="color:#268bd2">kind</span>: Pod
+<span style="color:#268bd2">metadata</span>:
+  <span style="color:#268bd2">name</span>: mypod
+<span style="color:#268bd2">spec</span>:
+  <span style="color:#268bd2">containers</span>:
+  - <span style="color:#268bd2">name</span>: mypod
+    <span style="color:#268bd2">image</span>: redis
+    <span style="color:#268bd2">volumeMounts</span>:
+    - <span style="color:#268bd2">name</span>: foo
+      <span style="color:#268bd2">mountPath</span>: <span style="color:#2aa198">&#34;/etc/foo&#34;</span>
+      <span style="color:#268bd2">readOnly</span>: <span style="color:#cb4b16">true</span>
+  <span style="color:#268bd2">volumes</span>:
+  - <span style="color:#268bd2">name</span>: foo
+    <span style="color:#268bd2">secret</span>:
+      <span style="color:#268bd2">secretName</span>: mysecret
+</code></pre></div><hr>
+<h3 id="24-pv-和-pvc">
+  2.4 PV 和 PVC
+  <a class="heading-link" href="#24-pv-%e5%92%8c-pvc">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>存储的管理是一个与计算实例的管理完全不同的问题。PersistentVolume 子系统为用户 和管理员提供了一组 API，将存储如何供应的细节从其如何被使用中抽象出来。 为了实现这点，我们引入了两个新的 API 资源：PersistentVolume 和 PersistentVolumeClaim。</p>
+<h4 id="241-pv">
+  2.4.1 PV
+  <a class="heading-link" href="#241-pv">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>持久卷（PersistentVolume，PV）是集群中的一块存储，可以由管理员事先供应，或者 使用<a href="https://kubernetes.io/zh/docs/concepts/storage/storage-classes/">存储类（Storage Class）</a>来动态供应。 持久卷是集群资源，就像节点也是集群资源一样。PV 持久卷和普通的 Volume 一样，也是使用 卷插件来实现的，只是它们拥有独立于任何使用 PV 的 Pod 的生命周期。 此 API 对象中记述了存储的实现细节，无论其背后是 NFS、iSCSI 还是特定于云平台的存储系统。</p>
+<h4 id="242-pvc">
+  2.4.2 PVC
+  <a class="heading-link" href="#242-pvc">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>持久卷申领（PersistentVolumeClaim，PVC）表达的是用户对存储的请求。概念上与 Pod 类似。 Pod 会耗用节点资源，而 PVC 申领会耗用 PV 资源。Pod 可以请求特定数量的资源（CPU 和内存）；同样 PVC 申领也可以请求特定的大小和访问模式 （例如，可以要求 PV 卷能够以 ReadWriteOnce、ReadOnlyMany 或 ReadWriteMany 模式之一来挂载，参见<a href="https://kubernetes.io/zh/docs/concepts/storage/persistent-volumes/#access-modes">访问模式</a>）。</p>
+<h4 id="244-pv和pvc的生命周期">
+  2.4.4 PV和PVC的生命周期
+  <a class="heading-link" href="#244-pv%e5%92%8cpvc%e7%9a%84%e7%94%9f%e5%91%bd%e5%91%a8%e6%9c%9f">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p><strong>供应</strong></p>
+<p>PV 卷的供应有两种方式：静态供应或动态供应。</p>
+<ul>
+<li>静态供应，集群管理员创建若干 PV 卷。这些卷对象带有真实存储的细节信息，并且对集群 用户可用（可见）。PV 卷对象存在于 Kubernetes API 中，可供用户消费（使用）。</li>
+<li>动态供应，这一供应操作是基于 StorageClass 来实现的：PVC 申领必须请求某个 <a href="https://kubernetes.io/zh/docs/concepts/storage/storage-classes/">存储类</a>，同时集群管理员必须 已经创建并配置了该类，这样动态供应卷的动作才会发生。 如果 PVC 申领指定存储类为 <code>&quot;&quot;</code>，则相当于为自身禁止使用动态供应的卷。</li>
+</ul>
+<p><strong>绑定</strong></p>
+<p>用户创建一个带有特定存储容量和特定访问模式需求的PVC对象；在静态供应中，该PVC要手动绑定PV，在动态供应场景下，这个 PVC 对象可能已经创建完毕。 主控节点中的控制回路监测新的 PVC 对象，寻找与之匹配的 PV 卷（如果可能的话）， 并将二者绑定到一起。一旦绑定关系建立，则 PersistentVolumeClaim 绑定就是排他性的，无论该 PVC 申领是 如何与 PV 卷建立的绑定关系。 PVC 申领与 PV 卷之间的绑定是一种一对一的映射，实现上使用 ClaimRef 来记述 PV 卷 与 PVC 申领间的双向绑定关系。</p>
+<p><strong>使用</strong></p>
+<p>Pod 将 PVC 申领当做存储卷来使用。集群会检视 PVC 申领，找到所绑定的卷，并 为 Pod 挂载该卷。</p>
+<p>一旦用户有了申领对象并且该申领已经被绑定，则所绑定的 PV 卷在用户仍然需要它期间 一直属于该用户。用户通过在 Pod 的 <code>volumes</code> 块中包含 <code>persistentVolumeClaim</code> 节区来调度 Pod，访问所申领的 PV 卷。</p>
+<p><strong>回收</strong></p>
+<p>当用户不再使用其存储卷时，他们可以从 API 中将 PVC 对象删除，从而允许 该资源被回收再利用。PersistentVolume 对象的回收策略告诉集群，当其被 从申领中释放时如何处理该数据卷。 目前，数据卷可以被 Retained（保留）或 Deleted（删除）。</p>
+<ul>
+<li>Retain，使得用户可以手动回收资源。当 PersistentVolumeClaim 对象 被删除时，PersistentVolume 卷仍然存在，对应的数据卷被视为&quot;已释放（released）&quot;。 由于卷上仍然存在这前一申领人的数据，该卷还不能用于其他申领。 管理员可以通过下面的步骤来手动回收该卷：
+<ol>
+<li>删除 PersistentVolume 对象。与之相关的、位于外部基础设施中的存储资产 （例如 AWS EBS、GCE PD、Azure Disk 或 Cinder 卷）在 PV 删除之后仍然存在。</li>
+<li>根据情况，手动清除所关联的存储资产上的数据。</li>
+<li>手动删除所关联的存储资产；如果你希望重用该存储资产，可以基于存储资产的 定义创建新的 PersistentVolume 卷对象。</li>
+</ol>
+</li>
+<li>Delete，对于支持 <code>Delete</code> 回收策略的卷插件，删除动作会将 PersistentVolume 对象从 Kubernetes 中移除，同时也会从外部基础设施（如 AWS EBS、GCE PD、Azure Disk 或 Cinder 卷）中移除所关联的存储资产。 动态供应的卷会继承<a href="https://kubernetes.io/zh/docs/concepts/storage/persistent-volumes/#reclaim-policy">其 StorageClass 中设置的回收策略</a>，该策略默认 为 <code>Delete</code>。 管理员需要根据用户的期望来配置 StorageClass；否则 PV 卷被创建之后必须要被 编辑或者修补。</li>
+</ul>
+<h3 id="25-storageclass">
+  2.5 StorageClass
+  <a class="heading-link" href="#25-storageclass">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>StorageClass 为管理员提供了描述存储 &ldquo;类&rdquo; 的方法。 不同的类型可能会映射到不同的服务质量等级或备份策略，或是由集群管理员制定的任意策略。 Kubernetes 本身并不清楚各种类代表的什么。这个类的概念在其他存储系统中有时被称为 &ldquo;配置文件&rdquo;。</p>
+<p>每个 StorageClass 都包含 <code>provisioner</code>、<code>parameters</code> 和 <code>reclaimPolicy</code> 字段， 这些字段会在 StorageClass 需要动态分配 PersistentVolume 时会使用到。</p>
+<p>StorageClass 对象的命名很重要，用户使用这个命名来请求生成一个特定的类。 当创建 StorageClass 对象时，管理员设置 StorageClass 对象的命名和其他参数，一旦创建了对象就不能再对其更新。</p>
+<p>管理员可以为没有申请绑定到特定 StorageClass 的 PVC 指定一个默认的存储类 ： 更多详情请参阅 <a href="https://kubernetes.io/zh/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims">PersistentVolumeClaim 章节</a>。</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#268bd2">apiVersion</span>: storage.k8s.io/v1
+<span style="color:#268bd2">kind</span>: StorageClass
+<span style="color:#268bd2">metadata</span>:
+  <span style="color:#268bd2">name</span>: standard
+<span style="color:#268bd2">provisioner</span>: kubernetes.io/aws-ebs
+<span style="color:#268bd2">parameters</span>:
+  <span style="color:#268bd2">type</span>: gp2
+<span style="color:#268bd2">reclaimPolicy</span>: Retain
+<span style="color:#268bd2">allowVolumeExpansion</span>: <span style="color:#cb4b16">true</span>
+<span style="color:#268bd2">mountOptions</span>:
+  - debug
+<span style="color:#268bd2">volumeBindingMode</span>: Immediate
+</code></pre></div><hr>
+<h2 id="3-动态供应">
+  3. 动态供应
+  <a class="heading-link" href="#3-%e5%8a%a8%e6%80%81%e4%be%9b%e5%ba%94">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>面对计算层的多种存储需求，要考虑如何高效且灵活的提供存储服务，于是就有了动态供应的策略。动态供应能按需分配资源，大大减轻了运维工作，是目前最为推荐的一种方式，在很多企业生产环境中都有它的应用。</p>
+<h3 id="31-如何实现动态供应">
+  3.1 如何实现动态供应
+  <a class="heading-link" href="#31-%e5%a6%82%e4%bd%95%e5%ae%9e%e7%8e%b0%e5%8a%a8%e6%80%81%e4%be%9b%e5%ba%94">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>显然动态供应比静态供应灵活更多，而且这种方式还解耦了Kubernetes系统的计算层和存储层，更重要的是它给存储供应商提供了可插拔式的开发模型，存储供应商只需要根据这个模型开发相应的卷插件即可为Kubernetes提供存储服务。</p>
+<p>有如下三种方法实现卷插件:</p>
+<ul>
+<li>In-tree Volume Plugin</li>
+<li>Out-of-tree Provisioner</li>
+<li>Out-of-tree CSI Driver</li>
+</ul>
+<p>第一种，Kubernetes内部代码中实现了一些存储插件，用于支持一些主流网络存储，叫作In-tree Volume Plugin。</p>
+<p>第二种 Out-of-tree Provisioner：如果官方的插件不能满足要求，存储供应商可以根据需要去定制或者优化存储插件并集成到Kubernetes系统。</p>
+<p>第三种是容器存储接口CSI (Container Storage Interface)，是Kubernetes对外开放的存储接口，实现这个接口即可集成到Kubernetes系统中。CSI特性在刚过去的12月正式GA，同时社区也宣布未来将不再对In tree/Out of tree继续开发，并将已有功能全部迁移到CSI上，所以对于存储供应商和使用者来说，第三种CSI是更推荐的解决方案。</p>
+<hr>
+<h3 id="32-几种卷插件对比">
+  3.2 几种卷插件对比
+  <a class="heading-link" href="#32-%e5%87%a0%e7%a7%8d%e5%8d%b7%e6%8f%92%e4%bb%b6%e5%af%b9%e6%af%94">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<h4 id="321--in-tree-volume-plugin">
+  3.2.1  In-tree Volume Plugin
+  <a class="heading-link" href="#321--in-tree-volume-plugin">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p><img src="in-tree.gif" alt="img"></p>
+<p>如上图所示，In-tree Volume Plugin是Kubernetes自带的，属于Kubernetes的一部分，由Kubernetes一起发布和维护，所有存储插件代码都集成在Kubernetes中，第三方存储供应商难以集成。</p>
+<h4 id="322-out-of-tree-provisioner">
+  3.2.2 Out-of-tree Provisioner
+  <a class="heading-link" href="#322-out-of-tree-provisioner">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p><img src="out-tree.gif" alt="img"></p>
+<p>其中挂载组件还是复用，只是把Provisioner组件从Kubernetes中挪出来，以供实现定制化或者自定义的高级功能。</p>
+<p>创建流程（绿色）：状态更新，监听状态，调用外部供给器，结合后端存储服务，创建一个PV对象，这一步借助外部的Provisioner组件来完成。</p>
+<p>挂载流程（橙色）：监听事件，插件挂载卷等操作由原有挂载组件继续负责。</p>
+<h4 id="323-container-storage-interface-csi">
+  3.2.3 Container Storage Interface (CSI)
+  <a class="heading-link" href="#323-container-storage-interface-csi">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p><img src="csi.gif" alt="img"></p>
+<p>一直以来，存储插件的测试、维护等事宜都由Kubernetes社区来完成，即使有贡献者提供协作也不容易合并到主分支发布。另外，存储插件需要随Kubernetes一同发布，如果存储插件存在问题有可能会影响Kubernetes其他组件的正常运行。</p>
+<p>鉴于此，Kubernetes和CNCF决定把容器存储进行抽象，通过标准接口的形式把存储部分移到容器编排系统外部去。CSI的设计目的是定义一个行业标准，该标准将使存储供应商能够自己实现，维护和部署他们的存储插件。这些存储插件会以Sidecar Container形式运行在Kubernetes上并为容器平台提供稳定的存储服务。</p>
+<p>如上CSI设计图：浅绿色表示从Kubernetes社区中抽离出来且可复用的组件，负责连接XSKY CSI插件（右侧）以及和Kubernetes集群交互：</p>
+<ul>
+<li>Driver-registrar: 使用 Kubelet注册 CSI 驱动程序的 sidecar 容器，并将 NodeId （通过 GetNodeID 调用检索到 CSI endpoint）添加到 Kubernetes Node API 对象的 annotation 里面；</li>
+<li>External-provisioner: 监听 Kubernetes PersistentVolumeClaim 对象的 sidecar 容器，并触发对 CSI 端点的 CreateVolume 和DeleteVolume 操作；</li>
+<li>External-attacher: 可监听 Kubernetes VolumeAttachment 对象并触发 ControllerPublish 和 ControllerUnPublish 操作的 sidecar 容器，负责attache/detache卷到node节点上。</li>
+</ul>
+<p>右侧橘黄色表示XSKY实现的存储插件驱动，分别有三个服务：</p>
+<ul>
+<li>CSI identify: 标志插件服务，并维持插件健康状态；</li>
+<li>CSI Controller: 创建/删除，attaching/detaching，快照等；</li>
+<li>CSI Node: attach/mount、umount/detach。</li>
+</ul>
+<p>动态供应方式总结：通过对比Kubernetes的In-tree Volume Plugin，以及Out-of-tree Provisioner和CSI三种方式，在对接比较常见的存储时，可以使用不需要改动的In-tree方案，因为开箱即用，但是缺点也非常明显，只支持有限的存储类型，可拓展性较差甚至有版本限制，另外官方宣布以后新特性将不再添加到其中。</p>
+<p>相比之下，使用Out-of-tree Provisioner或者CSI则可以实现和Kubernetes的核心组件解耦，并能支持更多的存储类型和高级特性，因而也是推荐使用的一种供应方式。由于后者对编排系统而言是非侵入式插件部署，因而更受存储供应商的青睐。</p>
+<hr>
+<h2 id="4-结论">
+  4. 结论
+  <a class="heading-link" href="#4-%e7%bb%93%e8%ae%ba">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>本章我们介绍kubernetes的存储方式，包括PV、PVC、StorageClass，并说明了动态供应的实现机制。</p>
+<hr>
+<p><strong>参考</strong></p>
+<p><a href="https://jimmysong.io/kubernetes-handbook/concepts/persistent-volume.html">https://jimmysong.io/kubernetes-handbook/concepts/persistent-volume.html</a></p>
+<p><a href="https://kubernetes.io/blog/2019/01/15/container-storage-interface-ga/">https://kubernetes.io/blog/2019/01/15/container-storage-interface-ga/</a></p>
+<p><a href="https://github.com/kubernetes/community/blob/master/contributors/design-proposals/storage/container-storage-interface.md">https://github.com/kubernetes/community/blob/master/contributors/design-proposals/storage/container-storage-interface.md</a></p>
+<p><a href="https://www.xsky.com/tec/5609/">https://www.xsky.com/tec/5609/</a></p>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    ©
+    
+      2019 -
+    
+    2021
+     Hello.CC 
+    ·
+    Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">CCoder</a>.
+    
+  </section>
+</footer>
+
+    </main>
+
+    
+      
+      <script src="/js/coder.min.03b17769f4f91ae35667e1f2a1ca8c16f50562576cf90ff32b3179926914daa5.js" integrity="sha256-A7F3afT5GuNWZ&#43;HyocqMFvUFYlds&#43;Q/zKzF5kmkU2qU="></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </body>
+
+</html>

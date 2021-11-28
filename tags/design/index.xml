@@ -1,21 +1,45 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-    <channel>
-        <title>design - Tag - CC&#39;s Trip</title>
-        <link>https://cctrip.github.io/tags/design/</link>
-        <description>design - Tag - CC&#39;s Trip</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 05 Apr 2021 17:55:28 &#43;0800</lastBuildDate><atom:link href="https://cctrip.github.io/tags/design/" rel="self" type="application/rss+xml" /><item>
-    <title>K8S设计系列：架构</title>
-    <link>https://cctrip.github.io/k8s_design_arch/</link>
-    <pubDate>Mon, 05 Apr 2021 17:55:28 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://cctrip.github.io/k8s_design_arch/</guid>
-    <description><![CDATA[系列目录 《K8S设计系列：开篇》 《K8S设计系列：架构》 1. 介绍 本篇要介绍的是k8s的整体架构，以及为什么要这么设计。 Kubernetes是生]]></description>
-</item><item>
-    <title>K8S设计系列：开篇</title>
-    <link>https://cctrip.github.io/k8s_design/</link>
-    <pubDate>Tue, 30 Mar 2021 17:55:28 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://cctrip.github.io/k8s_design/</guid>
-    <description><![CDATA[系列目录 《K8S设计系列：开篇》 1. 介绍 个人觉得，k8s包含着许多运维理念，理解了k8s的功能设计，就基本理解了运维。并且，一个优秀的系统是值]]></description>
-</item></channel>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>design on CC&#39;s Trip</title>
+    <link>https://cctrip.tech/tags/design/</link>
+    <description>Recent content in design on CC&#39;s Trip</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 05 Apr 2021 17:55:28 +0800</lastBuildDate><atom:link href="https://cctrip.tech/tags/design/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>K8S设计系列：架构</title>
+      <link>https://cctrip.tech/posts/k8s_design_arch/</link>
+      <pubDate>Mon, 05 Apr 2021 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/k8s_design_arch/</guid>
+      <description>系列目录    《K8S设计系列：开篇》
+《K8S设计系列：架构》
+ 1. 介绍    本篇要介绍的是k8s的整体架构，以及为什么要这么设计。
+ Kubernetes是生产级的开源基础架构，用于跨主机集群部署，扩展，管理和组合应用程序容器。但是，Kubernetes不仅仅是一个“容器编排程序”，它旨在消除协调物理/虚拟计算，网络和存储基础架构的负担，并使应用程序运营商和开发人员完全专注于以容器为中心的自助服务操作原语。Kubernetes还提供了一个稳定，可移植的基础（平台），用于构建自定义工作流和更高级别的自动化。
+ Kubernetes主要针对由多个容器组成的应用程序。因此，它使用吊舱和标签将容器分组为紧密耦合和松散耦合的形式，以便于管理和发现。
+ 1.1 范围    Kubernetes提供了容器运行时，容器编排，以容器为中心的基础架构编排，自我修复机制（例如运行状况检查和重新调度）以及服务发现和负载平衡。
+Kubernetes渴望成为一个可扩展的，可插入的，构建模块的OSS平台和工具包。因此，在架构上，我们希望将Kubernetes构建为可插入组件和层的集合，能够使用其他调度程序，控制器，存储系统和分发机制，并且我们正在朝着这个方向发展其当前代码。此外，我们希望其他人能够在不修改核心Kubernetes源代码的情况下扩展Kubernetes功能，例如具有更高级别的PaaS功能或多集群层。因此，其API不仅（或者甚至主要是主要）针对最终用户，还针对工具和扩展开发人员。其API旨在作为工具，自动化系统和更高级别API层的开放生态系统的基础。因此，没有“内部”组件间API。所有API都是可见且可用的，包括调度程序，节点控制器，复制控制器管理器，Kubelet的API等所使用的API。没有困难可言-为了处理更复杂的用例，人们可以以完全透明，可组合的方式访问较低级别的API。
+ 1.2 目标    该项目致力于以下（理想的）设计理想：
+ Portable，Kubernetes以一致的行为在任何地方运行-公共云，私有云，裸机，笔记本电脑。这样，应用程序和工具就可以在整个生态系统以及开发和生产环境之间移植。 General-purpose，Kubernetes应该运行所有主要类别的工作负载，以使您可以在单个基础架构，无状态和有状态，微服务和整体，服务和批处理，未开发的环境和遗留的基础架构上运行所有工作负载。 Meet users partway，Kubernetes不仅迎合纯天然云原生应用程序，也需要满足所有用户的需求。它着重于微服务和云原生应用程序的部署和管理，但提供了一些机制来促进整体和遗留应用程序的迁移。 Flexible，可以单点使用Kubernetes功能，并且（在大多数情况下）Kubernetes不会阻止您使用自己的解决方案来代替内置功能。 Extensible，Kubernetes使您可以通过暴露内置功能所使用的相同接口，将其集成到您的环境中并添加所需的其他功能。 Automatable，Kubernetes旨在极大地减少手动操作的负担。它通过通过其API指定用户期望的意图来支持声明式控制，以及支持更高级别的编排和自动化的命令式控制。声明式方法是系统自我修复和自主功能的关键。 Advance the state of the art，尽管Kubernetes打算支持非云原生应用程序，但它也希望推动云原生和DevOps技术的发展，例如让应用程序参与其自身的管理。但是，这样做时，我们努力不强迫应用程序将自己锁定在Kubernetes API中，这就是例如为什么我们偏爱向下API中的配置优先于约定的原因。此外，Kubernetes不受它所依赖的系统的最低公分母的约束，例如容器运行时和云提供商。我们突破可实现范围的一个例子是其IP Pod网络模型。   2. 分层    kubernetes将自己的架构设计分为下面几层：
+ Nucleus ，提供标准化的API和执行机制，包括基本的REST机制，安全性，单个Pod，容器，网络接口和存储卷管理，所有这些都可以通过定义明确的接口进行扩展。Nucleus是非可选的，有望成为系统中最稳定的部分。 Application Management Layer，应用程序管理层提供基本的部署和路由，包括自我修复，扩展，服务发现，负载平衡和流量路由。这通常称为编排和服务结构。提供了所有功能的默认实现，但允许进行兼容的替换。 Governance Layer，它提供了更高级别的自动化和策略实施，包括单租户和多租户，指标，智能自动扩展和配置以及授权，配额，网络和存储策略表达与实施的方案。 Interface Layer，它提供了用于与Kubernetes API交互的常用库，工具，UI和系统。 Ecosystem，其中包括与Kubernetes相关的所有其他内容，并且实际上根本不是Kubernetes的“一部分”。这是大多数开发发生的地方，并且包括CI / CD，中间件，日志记录，监视，数据处理，PaaS，无服务器/ FaaS系统，工作流，容器运行时，映像注册表，节点和云提供商管理以及许多其他功能。   2.</description>
+    </item>
+    
+    <item>
+      <title>K8S设计系列：开篇</title>
+      <link>https://cctrip.tech/posts/k8s_design/</link>
+      <pubDate>Tue, 30 Mar 2021 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/k8s_design/</guid>
+      <description>系列目录    《K8S设计系列：开篇》
+ 1. 介绍    个人觉得，k8s包含着许多运维理念，理解了k8s的功能设计，就基本理解了运维。并且，一个优秀的系统是值得深入了解和学习的，这样对自身的系统架构也有很大帮助。本系列将通过阅读k8s的设计文档来加深对k8s的理解，并输出自己的一些看法。
+ 软件服务于业务。随着业务规模的扩大，软件的中断的时间越长，对业务的影响面越大。所以，稳定大于一切。
+永远不变的就是变化，变更的速度在互联网时代决定着业务存活的时长。因此，效率很重要。
+在软件的世界，计算资源就是金钱，浪费一毫秒的计算资源就是在浪费金钱。我们能说，钱不重要吗？ 不能，这样子的话，成本就很关键了。
+CDN、负载均衡、微服务、云计算、敏捷开发、DevOps、容器、k8s，层出不穷的概念和实践，其实最终都在解决上面说的稳定、效率、成本问题。
+ 2. 总览     architecture，架构相关 apps，应用相关 auth，认证相关 autoscaling，扩缩容相关 network，网络相关 scheduling，调度相关 storage，存储相关  本系列将对以上内容相关内容进行细讲。
+ </description>
+    </item>
+    
+  </channel>
 </rss>

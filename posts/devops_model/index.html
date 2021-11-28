@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="color-scheme" content="light dark">
+
+    
+      <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests; block-all-mixed-content; default-src 'self'; child-src 'self'; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net/; form-action 'self'; frame-src 'self'; img-src 'self'; object-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com/ https://cdn.jsdelivr.net/; script-src 'self' 'unsafe-inline' https://www.google-analytics.com; prefetch-src 'self'; connect-src 'self' https://www.google-analytics.com;">
+
+    
+
+    <meta name="author" content="Hello.CC">
+    <meta name="description" content="DevOps成熟度模型">
+    <meta name="keywords" content="blog,developer,personal">
+
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://cctrip.tech/posts/devops_model/devops-image.jpg"/>
+<meta name="twitter:title" content="[译]DevOps成熟度模型"/>
+<meta name="twitter:description" content="DevOps成熟度模型"/>
+
+    <meta property="og:title" content="[译]DevOps成熟度模型" />
+<meta property="og:description" content="DevOps成熟度模型" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cctrip.tech/posts/devops_model/" /><meta property="og:image" content="https://cctrip.tech/posts/devops_model/devops-image.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-07-26T17:55:28&#43;08:00" />
+<meta property="article:modified_time" content="2020-07-06T17:55:28&#43;08:00" />
+
+
+
+    <title>
+  [译]DevOps成熟度模型 · CC&#39;s Trip
+</title>
+
+    
+      <link rel="canonical" href="https://cctrip.tech/posts/devops_model/">
+    
+
+    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.543dc3579b222ee2eec7bc52e75060428d931ade1c0263624cf4be95f0f467a2.css" integrity="sha256-VD3DV5siLuLux7xS51BgQo2TGt4cAmNiTPS&#43;lfD0Z6I=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="/css/coder-dark.min.92eafdad7963af697840da26de3829cd3610aa623b917f6c37fb3f81e404b693.css" integrity="sha256-kur9rXljr2l4QNom3jgpzTYQqmI7kX9sN/s/geQEtpM=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/leo.png" sizes="32x32">
+    
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    <meta name="generator" content="Hugo 0.81.0" />
+  </head>
+
+  
+  
+    
+  
+  <body class="preload-transitions colorscheme-auto">
+    
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      CC&#39;s Trip
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">Blog</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/projects/">Projects</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/contact/">Contact me</a>
+            </li>
+          
+        
+        
+          
+          
+          
+            
+          
+            
+              
+                <li class="navigation-item menu-separator">
+                  <span>|</span>
+                </li>
+                
+              
+              <li class="navigation-item">
+                <a href="https://cctrip.tech/zh-cn/">🇨🇳</a>
+              </li>
+            
+          
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://cctrip.tech/posts/devops_model/">
+              [译]DevOps成熟度模型
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2020-07-26T17:55:28&#43;08:00'>
+                July 26, 2020
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              One-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/devops/">DevOps</a></div>
+
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/devops/">devops</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/translation/">translation</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <p>原文链接：<a href="https://www.invensislearning.com/blog/devops-maturity-model/">DevOps Maturity Model – Explained</a></p>
+<p><strong>水平有限，本文不免存在遗漏或错误之处。如有疑问，请查阅原文。</strong></p>
+<hr>
+<p>DevOps通过改善团队在方法链和工作流程中的运作和合作方式，改变了IT行业。实际上，根据最近的一项调查，有63％的公司报告说在采用DevOps之后其软件部署质量得到了改善。</p>
+<p>到目前为止，大部分的公司已经在其软件开发过程中完成了一些DevOps实施阶段。但是，尽管有几家公司在采用DevOps方面受益匪浅，但许多公司仍未充分发挥其潜力。</p>
+<p>关于DevOps选择的最常见错误仍然存在，即“将其作为旅程或目标”。</p>
+<p>这就是“ DevOps成熟度模型”的用处。阅读以下文章，深入了解什么是DevOps成熟度模型以及它如何为您提供帮助。</p>
+<hr>
+<h2 id="1-理解devops成熟度">
+  1. 理解DevOps成熟度
+  <a class="heading-link" href="#1-%e7%90%86%e8%a7%a3devops%e6%88%90%e7%86%9f%e5%ba%a6">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>通过描述，DevOps成熟度被定义为一种模式，该模式确定组织在DevOps课程中的位置以及决定要执行的操作以获得期望的结果。</p>
+<p>理解将DevOps“作为一个连续的旅程，而不是一个目的地”，对于管理DevOps的成熟度至关重要。</p>
+<p>DevOps成熟度设计通过双方和组织方面的不断培训来管理增长。更多的才能和技能，将有更大的能力来处理规模和复杂性问题。</p>
+<hr>
+<h2 id="2-devops成熟度所需的能力">
+  2. DevOps成熟度所需的能力
+  <a class="heading-link" href="#2-devops%e6%88%90%e7%86%9f%e5%ba%a6%e6%89%80%e9%9c%80%e7%9a%84%e8%83%bd%e5%8a%9b">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<h3 id="21-文化与策略">
+  2.1 文化与策略
+  <a class="heading-link" href="#21-%e6%96%87%e5%8c%96%e4%b8%8e%e7%ad%96%e7%95%a5">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>DevOps必须被视为一种文化驱动的计划，该计划吸引了不同的团队，将他们推向共同的目标。向DevOps的过渡涉及在一系列方法和框架的支持下，以及组织工作文化的变化。因此，这需要适当的计划和全面的程序。</p>
+<h3 id="22-自动化">
+  2.2 自动化
+  <a class="heading-link" href="#22-%e8%87%aa%e5%8a%a8%e5%8c%96">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>自动化是DevOps方法中持续交付和持续部署工具的代码。通过自动化执行的任务，自动化流程有助于DevOps系列产品的开发，实验和生产，从而节省了时间并提高了资源效率。</p>
+<h3 id="23-结构与过程">
+  2.3 结构与过程
+  <a class="heading-link" href="#23-%e7%bb%93%e6%9e%84%e4%b8%8e%e8%bf%87%e7%a8%8b">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>这是DevOps文化的最重要方面。对于同一地点的DevOps和团队而言，协作和共享至关重要，或者不同地点的DevOps和团队需要加入工具和资源才能达成共同的目标。</p>
+<p>根据《福布斯》的一项研究，组织通常会在DevOps课程的一部分中找到以下步骤：</p>
+<ul>
+<li>潜意识的不足：组织忽视了学习DevOps及其好处</li>
+<li>有意识但是无能：即使经过一些工业化的DevOps课程，即使12-18个月后，组织仍然看到孤立的方法。</li>
+<li>意识强：经过四年的DevOps课程和可靠的自动化，组织专注于团队之间的协作和简化分配机制。</li>
+<li>潜意识技能：这里的组织都徘徊在结构化框架，深入协作，有效共享的实际方法上</li>
+</ul>
+<hr>
+<h2 id="3-devops成熟度模型需要什么">
+  3. DevOps成熟度模型需要什么？
+  <a class="heading-link" href="#3-devops%e6%88%90%e7%86%9f%e5%ba%a6%e6%a8%a1%e5%9e%8b%e9%9c%80%e8%a6%81%e4%bb%80%e4%b9%88">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>完整的DevOps成熟度模型通过三种方式定义DevOps成熟度：</p>
+<ul>
+<li>评估现代技能水平</li>
+<li>确定增长措施</li>
+<li>概述实现DevOps目标的步骤</li>
+</ul>
+<p>与这三个级别一致，DevOps成熟度模块支持跨表单，数据和基础架构级别的开发，部署和测试阶段的成熟度：</p>
+<h3 id="31-应用的devops成熟度">
+  3.1 应用的DevOps成熟度
+  <a class="heading-link" href="#31-%e5%ba%94%e7%94%a8%e7%9a%84devops%e6%88%90%e7%86%9f%e5%ba%a6">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>这通过从开发到生产阶段的代码开发安全性来定义DevOps的成熟度。为了实现这一点，需要将构建，测试，代码覆盖，安全扫描和监控作为部署管道的自动化元素。</p>
+<h3 id="32-数据的devops成熟度">
+  3.2 数据的DevOps成熟度
+  <a class="heading-link" href="#32-%e6%95%b0%e6%8d%ae%e7%9a%84devops%e6%88%90%e7%86%9f%e5%ba%a6">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>这通过使用DataOps进行课程来自动完成对数据的更改和自动验证功能的能力来定义DevOps的成熟度。</p>
+<h3 id="33-基础设施的devops成熟度">
+  3.3 基础设施的DevOps成熟度
+  <a class="heading-link" href="#33-%e5%9f%ba%e7%a1%80%e8%ae%be%e6%96%bd%e7%9a%84devops%e6%88%90%e7%86%9f%e5%ba%a6">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>这可以通过简化与自动化相关的基础架构处理技能，简化并促进自助服务以存储环境以及其他业务的能力来定义DevOps的成熟度。</p>
+<hr>
+<p>总结而言，DevOps成熟度模型包括五个转换阶段：</p>
+<ul>
+<li>
+<p>阶段1：初始阶段</p>
+<p>处理了Dev和Ops部门的传统设置。</p>
+</li>
+<li>
+<p>阶段2：管理</p>
+<p>创新心态的起源集中在Dev的活动和Ops的初始自动化中，并强调协作。</p>
+</li>
+<li>
+<p>阶段3：定义</p>
+<p>组织范围内的变化始于既定的规则和安全的自动化。</p>
+</li>
+<li>
+<p>阶段4：测量</p>
+<p>对目标和自动化有更好的了解，并伴随着不断的发展。</p>
+</li>
+<li>
+<p>阶段5：优化</p>
+<p>行动可见，团队差距消失，员工获得荣誉。</p>
+</li>
+</ul>
+<p>尽管这5个步骤构成了整个DevOps成熟度模型，但企业必须在每个阶段不断检查其成熟度，并最终识别中心区域和实现总体任务的方式。</p>
+<hr>
+<h2 id="4-devops成熟度模型应包含哪些内容">
+  4. DevOps成熟度模型应包含哪些内容？
+  <a class="heading-link" href="#4-devops%e6%88%90%e7%86%9f%e5%ba%a6%e6%a8%a1%e5%9e%8b%e5%ba%94%e5%8c%85%e5%90%ab%e5%93%aa%e4%ba%9b%e5%86%85%e5%ae%b9">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>DevOps成熟度模型的每个步骤都需要保留几个参数，以建立组织的DevOps成熟度级别。这些项目理想地定义了组织在DevOps旅程中的发展方式。他们是：</p>
+<ul>
+<li>设计与输出的完成数最好应具有较高的投资回报率</li>
+<li>安全部署的百分比应胜过已损坏的部署</li>
+<li>从经历之时起，奇妙的事件/故障的平均恢复时间（MTTR）应该为零或尽可能低</li>
+<li>领先一代，从代码开发到部署的返回，应该是相当的</li>
+<li>部署数量限制了新代码部署的频率</li>
+</ul>
+<p>阶段性方法和上述参数代表组织的DevOps成熟度成功。</p>
+<hr>
+<h2 id="5-devops成熟度与安全性息息相关">
+  5. DevOps成熟度与安全性息息相关
+  <a class="heading-link" href="#5-devops%e6%88%90%e7%86%9f%e5%ba%a6%e4%b8%8e%e5%ae%89%e5%85%a8%e6%80%a7%e6%81%af%e6%81%af%e7%9b%b8%e5%85%b3">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>DevOps的成熟度与DevOps的安全性息息相关。随着组织在DevOps旅程中的发展，竞争优势已成为至关重要的市场，需要更快的发布周期，而数字发现则需要大力宣传。</p>
+<p>这就是安全性测试开始变得更加严格的地方，这就是为什么DevOps文化要求重新考虑安全系统。</p>
+<p>最终，组织必须将安全性作为其DevOps方法的重要组成部分，并使它更接近所有应用程序开发平台。</p>
+<p>DevOps专家与安全人员合作，在软件开发生命周期的所有阶段中，以成熟度级别进行新的安全集成。</p>
+<p>这可以通过主动的DevSecOps实施来发生。通过检查暴露的资源，诸如容器化之类的解决方案还可以在任何程度上连续参与标签问题。</p>
+<hr>
+<h2 id="6-devops成熟度的业务优势">
+  6. DevOps成熟度的业务优势
+  <a class="heading-link" href="#6-devops%e6%88%90%e7%86%9f%e5%ba%a6%e7%9a%84%e4%b8%9a%e5%8a%a1%e4%bc%98%e5%8a%bf">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>提供组织的DevOps职位的完整情况，DevOps成熟度指南具有多种业务优势：</p>
+<ul>
+<li>更快的开发灵活性</li>
+<li>挖掘事件的能力</li>
+<li>确定实现领域</li>
+<li>可扩展性增强</li>
+<li>运营表现</li>
+<li>交付活动增加</li>
+<li>品质提升</li>
+</ul>
+<p>DevOps成熟度模型中包含更多此类商品，该模型使您能够观察到完整的DevOps潜力。</p>
+<hr>
+<h2 id="7-结论">
+  7. 结论
+  <a class="heading-link" href="#7-%e7%bb%93%e8%ae%ba">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>DevOps成熟度改善了您的整体组织工作流程，提高了发行率，并缩短了上市时间，从而为您提供了一个优势！</p>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    ©
+    
+      2019 -
+    
+    2021
+     Hello.CC 
+    ·
+    Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">CCoder</a>.
+    
+  </section>
+</footer>
+
+    </main>
+
+    
+      
+      <script src="/js/coder.min.03b17769f4f91ae35667e1f2a1ca8c16f50562576cf90ff32b3179926914daa5.js" integrity="sha256-A7F3afT5GuNWZ&#43;HyocqMFvUFYlds&#43;Q/zKzF5kmkU2qU="></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </body>
+
+</html>

@@ -1,79 +1,910 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-    <channel>
-        <title>CC&#39;s Trip</title>
-        <link>https://cctrip.github.io/</link>
-        <description>About LoveIt Theme</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 05 Apr 2021 17:55:28 &#43;0800</lastBuildDate>
-            <atom:link href="https://cctrip.github.io/index.xml" rel="self" type="application/rss+xml" />
-        <item>
-    <title>K8S设计系列：架构</title>
-    <link>https://cctrip.github.io/k8s_design_arch/</link>
-    <pubDate>Mon, 05 Apr 2021 17:55:28 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://cctrip.github.io/k8s_design_arch/</guid>
-    <description><![CDATA[系列目录 《K8S设计系列：开篇》 《K8S设计系列：架构》 1. 介绍 本篇要介绍的是k8s的整体架构，以及为什么要这么设计。 Kubernetes是生]]></description>
-</item><item>
-    <title>K8S设计系列：开篇</title>
-    <link>https://cctrip.github.io/k8s_design/</link>
-    <pubDate>Tue, 30 Mar 2021 17:55:28 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://cctrip.github.io/k8s_design/</guid>
-    <description><![CDATA[系列目录 《K8S设计系列：开篇》 1. 介绍 个人觉得，k8s包含着许多运维理念，理解了k8s的功能设计，就基本理解了运维。并且，一个优秀的系统是值]]></description>
-</item><item>
-    <title>Oops管理系统(二)</title>
-    <link>https://cctrip.github.io/oops_series_two/</link>
-    <pubDate>Sat, 20 Mar 2021 17:55:28 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://cctrip.github.io/oops_series_two/</guid>
-    <description><![CDATA[系列目录 《Oops管理系统(一)》 《Oops管理系统(二)》 1. 介绍 本篇，要先讲下整体的技术框架。 因为我们是基于go-admin这个脚手架来做]]></description>
-</item><item>
-    <title>Oops管理系统(一)</title>
-    <link>https://cctrip.github.io/oops_series_one/</link>
-    <pubDate>Wed, 17 Mar 2021 17:55:28 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://cctrip.github.io/oops_series_one/</guid>
-    <description><![CDATA[系列目录 《Oops管理系统(一)》 《Oops管理系统(二)》 1. 介绍 做了那么的久的运维，了解、运维和开发过各种各样的发布系统、运维系统、监控系]]></description>
-</item><item>
-    <title>Openresty执行阶段</title>
-    <link>https://cctrip.github.io/openresty_phases/</link>
-    <pubDate>Sat, 30 Jan 2021 17:55:28 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://cctrip.github.io/openresty_phases/</guid>
-    <description><![CDATA[Nginx执行阶段 NGX_HTTP_POST_READ_PHASE — 第一阶段， ngx_http_realip_module 在此阶段注册其处理程序，以允许在调用任何其他模块之前替换客户端地址。 NGX_HTTP_SERVER_REWRITE_PHASE — 该阶段处理server块(loca]]></description>
-</item><item>
-    <title>[译]Kubernetes成熟度模型</title>
-    <link>https://cctrip.github.io/k8s_model/</link>
-    <pubDate>Thu, 28 Jan 2021 17:55:28 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://cctrip.github.io/k8s_model/</guid>
-    <description><![CDATA[原文链接：kubernetes maturity model 水平有限，本文不免存在遗漏或错误之处。如有疑问，请查阅原文。 前言 Kubernetes有很多好处。 同时，当组]]></description>
-</item><item>
-    <title>[译]当我们谈论Ops，我们在谈论什么</title>
-    <link>https://cctrip.github.io/talk_ops/</link>
-    <pubDate>Wed, 13 Jan 2021 17:55:28 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://cctrip.github.io/talk_ops/</guid>
-    <description><![CDATA[原文链接：What the Ops are you talking about? 水平有限，本文不免存在遗漏或错误之处。如有疑问，请查阅原文。 背景 两年前，我因为效率低下的领导而获得了耻辱。我的]]></description>
-</item><item>
-    <title>2021年flag</title>
-    <link>https://cctrip.github.io/2021_flag/</link>
-    <pubDate>Sat, 02 Jan 2021 17:55:28 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://cctrip.github.io/2021_flag/</guid>
-    <description><![CDATA[2021年已经到来，在这里给自己列一个flag清单。 习惯成自然 每2周完成一个ARTS(Algorithm|Review|Technique|]]></description>
-</item><item>
-    <title>Kubernetes系列：OAM</title>
-    <link>https://cctrip.github.io/k8s_series_oam/</link>
-    <pubDate>Sun, 15 Nov 2020 17:55:28 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://cctrip.github.io/k8s_series_oam/</guid>
-    <description><![CDATA[系列目录 《Kubernetes系列：开篇》 《Kubernetes系列：概述》 《Kubernetes系列：架构》 《Kubernetes系列：容]]></description>
-</item><item>
-    <title>Kubernetes系列：Ingress</title>
-    <link>https://cctrip.github.io/k8s_series_ingress/</link>
-    <pubDate>Wed, 11 Nov 2020 17:55:28 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://cctrip.github.io/k8s_series_ingress/</guid>
-    <description><![CDATA[系列目录 《Kubernetes系列：开篇》 《Kubernetes系列：概述》 《Kubernetes系列：架构》 《Kubernetes系列：容]]></description>
-</item></channel>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CC&#39;s Trip</title>
+    <link>https://cctrip.tech/</link>
+    <description>Recent content on CC&#39;s Trip</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 16 Aug 2021 17:55:28 +0800</lastBuildDate><atom:link href="https://cctrip.tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Traefik系列(一)：Ingress Controller</title>
+      <link>https://cctrip.tech/posts/why_traefik/</link>
+      <pubDate>Mon, 16 Aug 2021 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/why_traefik/</guid>
+      <description>1. 介绍    最近，我们在拥抱云原生，准备基于k8s开发一套PaaS平台，我这边负责了服务路由相关的功能，因此，要选出一个Ingress Controller来实现我们的服务路由相关的功能，市面上那么多种，哪个才是最适合我们的呢？
+ 2. 需求    在EC2时代，我们用openresty来实现我们的服务路由功能，线上有几十上百个域名，基于稳定性和安全的考虑，通过人工配置和git来管理server和location模块，开发测试环境，不同的项目环境，基线环境等等，服务路由配置更是成倍数的增长，因此我们通过openresty+lua，以及DevOps平台来动态管理服务路由的变更。
+同时，基于安全和稳定性的考虑，我们在线上环境基于lua写了一些简单的waf，来防攻击以及限流操作。
+在容器上，我们的标准将不同的应用划分为不同的namespace，但是域名又是统一的。
+基于以上的各类需求，因此，在k8s上的服务路由功能至少要具备以下功能，
+ 多域名转发 跨namespace配置location tls支持 tcp和udp转发 限流 api支持 动态加载配置文件 metric监控 跨域支持 重写支持 外部域名转发   3. 对比    ​	选型
+data plane &amp;ndash; control plane
+envoy &amp;ndash;&amp;gt; gloo|Ambassador | istio
+nginx &amp;ndash;&amp;gt; kong|apisix
+traefik &amp;ndash;&amp;gt; traefik
+   control plane data plane backend service discovery protocols ssl termination websocket routing scope resiliency lb algorithms auth Tracing canary/shadow istio integration state Paid support Linkaaaaaaaaaaaaaa dashboard sticky sessions lua     ingress-nginx nginx dynamic http,https,tcp (separate lb),udp,grpc,fastcgi,IPC socket yes yes host,path(with regex) cross-namespace rate limit, retries rr,ewma,ip_hash basic, digest, external auth yes canary  kubernetes  https://kubernetes.</description>
+    </item>
+    
+    <item>
+      <title>K8S设计系列：架构</title>
+      <link>https://cctrip.tech/posts/k8s_design_arch/</link>
+      <pubDate>Mon, 05 Apr 2021 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/k8s_design_arch/</guid>
+      <description>系列目录    《K8S设计系列：开篇》
+《K8S设计系列：架构》
+ 1. 介绍    本篇要介绍的是k8s的整体架构，以及为什么要这么设计。
+ Kubernetes是生产级的开源基础架构，用于跨主机集群部署，扩展，管理和组合应用程序容器。但是，Kubernetes不仅仅是一个“容器编排程序”，它旨在消除协调物理/虚拟计算，网络和存储基础架构的负担，并使应用程序运营商和开发人员完全专注于以容器为中心的自助服务操作原语。Kubernetes还提供了一个稳定，可移植的基础（平台），用于构建自定义工作流和更高级别的自动化。
+ Kubernetes主要针对由多个容器组成的应用程序。因此，它使用吊舱和标签将容器分组为紧密耦合和松散耦合的形式，以便于管理和发现。
+ 1.1 范围    Kubernetes提供了容器运行时，容器编排，以容器为中心的基础架构编排，自我修复机制（例如运行状况检查和重新调度）以及服务发现和负载平衡。
+Kubernetes渴望成为一个可扩展的，可插入的，构建模块的OSS平台和工具包。因此，在架构上，我们希望将Kubernetes构建为可插入组件和层的集合，能够使用其他调度程序，控制器，存储系统和分发机制，并且我们正在朝着这个方向发展其当前代码。此外，我们希望其他人能够在不修改核心Kubernetes源代码的情况下扩展Kubernetes功能，例如具有更高级别的PaaS功能或多集群层。因此，其API不仅（或者甚至主要是主要）针对最终用户，还针对工具和扩展开发人员。其API旨在作为工具，自动化系统和更高级别API层的开放生态系统的基础。因此，没有“内部”组件间API。所有API都是可见且可用的，包括调度程序，节点控制器，复制控制器管理器，Kubelet的API等所使用的API。没有困难可言-为了处理更复杂的用例，人们可以以完全透明，可组合的方式访问较低级别的API。
+ 1.2 目标    该项目致力于以下（理想的）设计理想：
+ Portable，Kubernetes以一致的行为在任何地方运行-公共云，私有云，裸机，笔记本电脑。这样，应用程序和工具就可以在整个生态系统以及开发和生产环境之间移植。 General-purpose，Kubernetes应该运行所有主要类别的工作负载，以使您可以在单个基础架构，无状态和有状态，微服务和整体，服务和批处理，未开发的环境和遗留的基础架构上运行所有工作负载。 Meet users partway，Kubernetes不仅迎合纯天然云原生应用程序，也需要满足所有用户的需求。它着重于微服务和云原生应用程序的部署和管理，但提供了一些机制来促进整体和遗留应用程序的迁移。 Flexible，可以单点使用Kubernetes功能，并且（在大多数情况下）Kubernetes不会阻止您使用自己的解决方案来代替内置功能。 Extensible，Kubernetes使您可以通过暴露内置功能所使用的相同接口，将其集成到您的环境中并添加所需的其他功能。 Automatable，Kubernetes旨在极大地减少手动操作的负担。它通过通过其API指定用户期望的意图来支持声明式控制，以及支持更高级别的编排和自动化的命令式控制。声明式方法是系统自我修复和自主功能的关键。 Advance the state of the art，尽管Kubernetes打算支持非云原生应用程序，但它也希望推动云原生和DevOps技术的发展，例如让应用程序参与其自身的管理。但是，这样做时，我们努力不强迫应用程序将自己锁定在Kubernetes API中，这就是例如为什么我们偏爱向下API中的配置优先于约定的原因。此外，Kubernetes不受它所依赖的系统的最低公分母的约束，例如容器运行时和云提供商。我们突破可实现范围的一个例子是其IP Pod网络模型。   2. 分层    kubernetes将自己的架构设计分为下面几层：
+ Nucleus ，提供标准化的API和执行机制，包括基本的REST机制，安全性，单个Pod，容器，网络接口和存储卷管理，所有这些都可以通过定义明确的接口进行扩展。Nucleus是非可选的，有望成为系统中最稳定的部分。 Application Management Layer，应用程序管理层提供基本的部署和路由，包括自我修复，扩展，服务发现，负载平衡和流量路由。这通常称为编排和服务结构。提供了所有功能的默认实现，但允许进行兼容的替换。 Governance Layer，它提供了更高级别的自动化和策略实施，包括单租户和多租户，指标，智能自动扩展和配置以及授权，配额，网络和存储策略表达与实施的方案。 Interface Layer，它提供了用于与Kubernetes API交互的常用库，工具，UI和系统。 Ecosystem，其中包括与Kubernetes相关的所有其他内容，并且实际上根本不是Kubernetes的“一部分”。这是大多数开发发生的地方，并且包括CI / CD，中间件，日志记录，监视，数据处理，PaaS，无服务器/ FaaS系统，工作流，容器运行时，映像注册表，节点和云提供商管理以及许多其他功能。   2.</description>
+    </item>
+    
+    <item>
+      <title>K8S设计系列：开篇</title>
+      <link>https://cctrip.tech/posts/k8s_design/</link>
+      <pubDate>Tue, 30 Mar 2021 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/k8s_design/</guid>
+      <description>系列目录    《K8S设计系列：开篇》
+ 1. 介绍    个人觉得，k8s包含着许多运维理念，理解了k8s的功能设计，就基本理解了运维。并且，一个优秀的系统是值得深入了解和学习的，这样对自身的系统架构也有很大帮助。本系列将通过阅读k8s的设计文档来加深对k8s的理解，并输出自己的一些看法。
+ 软件服务于业务。随着业务规模的扩大，软件的中断的时间越长，对业务的影响面越大。所以，稳定大于一切。
+永远不变的就是变化，变更的速度在互联网时代决定着业务存活的时长。因此，效率很重要。
+在软件的世界，计算资源就是金钱，浪费一毫秒的计算资源就是在浪费金钱。我们能说，钱不重要吗？ 不能，这样子的话，成本就很关键了。
+CDN、负载均衡、微服务、云计算、敏捷开发、DevOps、容器、k8s，层出不穷的概念和实践，其实最终都在解决上面说的稳定、效率、成本问题。
+ 2. 总览     architecture，架构相关 apps，应用相关 auth，认证相关 autoscaling，扩缩容相关 network，网络相关 scheduling，调度相关 storage，存储相关  本系列将对以上内容相关内容进行细讲。
+ </description>
+    </item>
+    
+    <item>
+      <title>Oops管理系统(二)</title>
+      <link>https://cctrip.tech/posts/oops_series_two/</link>
+      <pubDate>Sat, 20 Mar 2021 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/oops_series_two/</guid>
+      <description>系列目录    《Oops管理系统(一)》
+《Oops管理系统(二)》
+ 1. 介绍    本篇，要先讲下整体的技术框架。
+因为我们是基于go-admin这个脚手架来做前后端框架的，所以，先来说明下整个代码架构。
+在这之前，我们先简单说明下go程序的代码执行顺序
+1.1 Go程序执行顺序     执行go run或者编译后binary文件时，会先加载main package main package一般会import其他package，其他package也会import其依赖的package，这边会有一个递归的初始化操作。 package会执行global variables和init()的初始化 main package执行本身的global variables和init()的初始化 执行main()   2. 目录结构    Oops基于project-layout和go-admin构建了如下图所示的目录结构
+ 3. 源码解析    这边只说明应用相关的源码逻辑。
+3.1 系统初始化    main.go
+package main import ( &amp;#34;oops/cmd&amp;#34; ) func main() { cmd.Execute() } main函数只有一个逻辑，加载cmd包以及执行cmd包中的Execute()函数。
+cmd package
+package cmd import ( .</description>
+    </item>
+    
+    <item>
+      <title>Oops管理系统(一)</title>
+      <link>https://cctrip.tech/posts/oops_series_one/</link>
+      <pubDate>Wed, 17 Mar 2021 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/oops_series_one/</guid>
+      <description>系列目录    《Oops管理系统(一)》
+《Oops管理系统(二)》
+ 1. 介绍    做了那么的久的运维，了解、运维和开发过各种各样的发布系统、运维系统、监控系统，经历了服务器从物理时代、到云时代再到容器时代的变革，服务器规模也经历从十几台到几千台甚至几万台规模的管理，管理手段也经历从手工到工具再到平台的演变。做过那么些的管理系统，因为各种各样的原因，可能是历史包袱，可能是人言式微，可能是早期技术没有那么的好，很多时候做出来的管理系统不是自己理想中的管理系统，因此，想花一些业余时间，写一个自己理解的DevOps管理系统。
+ 2. 目标    个人理解，一个DevOps管理系统应该具备以下功能：
+ 元数据管理，包括物理资源、云资源、容器资源、中间件资源、应用资源等 CI/CD，包括应用的打包、编译以及发布，服务器资源的创建、更新、删除等 监控告警，能实现不同指标的采集监控，监控数据可视化以及告警自定义等。 机器操作，可能是SSH登录，或者远程操作命令等。   3. 系统设计    完整的一套DevOps系统肯定是功能复杂、组件繁多的，不大可能自己造轮子，因此，底层会采用一些开源方案，然后在各个开源组件上构建自己的管理平台。
+3.1 元数据管理    说到底，我们要做的是一套能完整接入软件工程生命周期的工具平台，一个软件最终的目的是要发布到线上环境供用户使用，服务器资源只是软件的载体。那么，我们把软件叫做应用，从软件层面上来讲，一个应用应该是唯一的，而从&amp;quot;硬件&amp;quot;层面来说，一台&amp;quot;服务器&amp;quot;也是唯一的。那么，我们就可以将这两个&amp;quot;唯一&amp;quot;建立一种联系，然后再通过这两个唯一延伸出各种关联信息，比如，一个应用可能需要关联它的代码仓库，对应的负责人，归属部门等等，而一台服务器可能需要知道它的机房、机柜，或者是云平台，区域等信息。下图是一个我自己构建的元数据关联图：
+在设计元数据的表的时候，我们就可以根据这种关联关系来设计表。
+ 3.2 CI/CD    一个应用的生命周期一般包含以下步骤：
+ Design，接收需求，产品设计，沟通等，这边可能需要接入一些项目管理的工具，比如JIRA等、 Develop，程序员进行代码开发、架构设计等 Test，开发人员进行代码测试，测试人员进行功能测试等，这边可以引入一些自动化测试工具。 Deploy，各种人员可能会进行各种环境的部署，这边可以引入类似Jenkins的打包发布工具提高效率。 Monitor，进行监控数据的收集，通过平台输出可视化页面，配置告警、告警通知等功能。   3.3 监控告警    一个业务应用上线后，需要有工具来知道业务是否出现了问题，这时候就需要提供监控告警的一些工具。一个监控系统一般是如下图所示的架构
+ Agent，监控数据的收集器，可能是自研的跑在服务器上的采集客户端，也可能是嵌入到应用的收集器等待 Server，接收监控数据，进行存储的服务 Data，对数据进行整合、解析，告警触发、发送告警等操作的服务 Display，展示平台，供用户查看监控数据，配置告警规则的服务   3.4 机器操作    当整个DevOps平台完善的话，其实用户是可以不需要进入机器进行操作的，但是现实往往是不完美的，因此还需要类似堡垒机这样的服务来供用户登录机器进行一些日志查看，debug等操作。</description>
+    </item>
+    
+    <item>
+      <title>Openresty执行阶段</title>
+      <link>https://cctrip.tech/posts/openresty_phases/</link>
+      <pubDate>Sat, 30 Jan 2021 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/openresty_phases/</guid>
+      <description>Nginx执行阶段     NGX_HTTP_POST_READ_PHASE — 第一阶段， ngx_http_realip_module 在此阶段注册其处理程序，以允许在调用任何其他模块之前替换客户端地址。 NGX_HTTP_SERVER_REWRITE_PHASE — 该阶段处理server块(location块除外)定义的rewrite指令。 ngx_http_rewrite_module 在此阶段安装其处理程序。 NGX_HTTP_FIND_CONFIG_PHASE — 根据请求URI选择位置的特殊阶段。在此阶段之前，将相关虚拟服务器的默认位置分配给请求，并且任何请求位置配置的模块都将接收默认服务器位置的配置。该阶段为请求分配一个新位置。该阶段无法注册其他处理程序。 NGX_HTTP_REWRITE_PHASE — 同 NGX_HTTP_SERVER_REWRITE_PHASE, 但处理的是上一个阶段选择的location块内的定义的rewrite规则指令。 NGX_HTTP_POST_REWRITE_PHASE — 特殊阶段，如果请求的URI在rewirte期间更改，则将请求重定向到新的location块。这是通过再次请求 NGX_HTTP_FIND_CONFIG_PHASE 来完成的。此阶段无法注册其他处理程序。 NGX_HTTP_PREACCESS_PHASE — 与访问控制无关的用于不同类型的处理程序的公共阶段。标准nginx模块 ngx_http_limit_conn_module 和 ngx_http_limit_req_module 在此阶段注册其处理程序。 NGX_HTTP_ACCESS_PHASE — 验证客户端请求是否合法的阶段。例如ngx_http_access_module 和 ngx_http_auth_basic_module 等标准nginx模块在此阶段注册其处理程序。默认情况下，客户端必须通过该阶段所有处理程序的合法验证才能继续请求下一个阶段。 通过satisfy 指令，则可以允许客户端在通过该阶段任何一个处理程序的合法验证后直接进入下一个阶段。 NGX_HTTP_POST_ACCESS_PHASE — 特殊阶段，处理满足 satisfy any 指令的阶段。如果某些访问阶段处理程序拒绝了访问并且没有显式允许访问，则该请求完成。此阶段无法注册其他处理程序。 NGX_HTTP_PRECONTENT_PHASE — 在生成内容之前调用处理程序的阶段。一些标准nginx模块如 ngx_http_try_files_module 和 ngx_http_mirror_module 在此阶段注册其处理程序。 NGX_HTTP_CONTENT_PHASE — 正常生成响应的阶段. 多个Nginx标准模块在此阶段注册其处理程序, 包括 ngx_http_index_module 和 ngx_http_static_module。它们按顺序被调用直到某一个模块产生输出。也可以按location设置内容处理程序，如果 ngx_http_core_module的location配置已设置处理程序，则将其称为内容处理程序，并且在此阶段安装的处理程序将被忽略。 NGX_HTTP_LOG_PHASE — 执行请求日志记录的阶段。当前，只有 ngx_http_log_module 在此阶段注册其处理程序以进行访问日志记录。在释放请求之前，在请求处理的最后阶段调用日志阶段处理程序。   Lua执行阶段     init_by_lua* — 在Nginx master 进程加载配置时候时，在全局LuaVM 级别上运行指定的lua代码。通常在该阶段注册全局变量或者预加载lua模块。 init_worker_by_lua* — 启用master进程后，在每次Nginx worker进程启动时运行指定的Lua代码。当禁用master进程时，此hook将仅在init_by_lua *之后运行。通常用于创建每个worker的重复计时器（通过Lua API的ngx.</description>
+    </item>
+    
+    <item>
+      <title>[译]Kubernetes成熟度模型</title>
+      <link>https://cctrip.tech/posts/k8s_model/</link>
+      <pubDate>Thu, 28 Jan 2021 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/k8s_model/</guid>
+      <description>原文链接：kubernetes maturity model
+水平有限，本文不免存在遗漏或错误之处。如有疑问，请查阅原文。
+ 前言    Kubernetes有很多好处。 同时，当组织采用云原生技术时，它可能变得复杂。 Kubernetes成熟度模型的存在可帮助您确定自己在迁移到原生云的过程中所处的位置，无论您是Kubernetes的新手还是有部署经验的人。 这是一个重要的工具，可帮助您自我确定您所处的阶段，了解环境中的差距并获得有关增强和改善Kubernetes技术栈的见解。
+如何使用Kubernetes成熟度模型    Kubernetes和您的工作负载在不断变化。 使用此成熟度模型时，请知道，如果确实达到某个阶段，则可能仍需要重新访问以前的阶段。 另外，请注意，Kubernetes的成熟并非一朝一夕就能完成，而是需要时间。 Kubernetes成熟度模型应用作工具，以帮助您了解在迁移到云原生过程中需要集中精力或需要帮助的地方。
+ 1. 准备阶段    从哪里开始？如何证明k8s的价值？谁可以信任？
+在该阶段，你将学习/精通以下内容：
+云原生和k8s将如何帮助推动业务和技术目标。它将耗费什么？并就整个组织的目标达成共识。
+ 明白云原生、容器、以及k8s的价值 能够向企业领导者描述该价值 得到团队，领导和整个组织的支持   必要条件    明白你的问题
+为什么要使用kubernetes？想要通过kubernetes解决什么问题？
+同意使用OSS
+转换到kubernetes需要你明白开源软件(OSS)在云原生生态中的角色和能量
+接受投资未来
+kubernetes的旅程将会耗费大量的时间和金钱。你需要面向未来投资。
+ 介绍    在采用Kubernetes时，第一步是准备工作。在这里，理解并能够阐明云原生和Kubernetes为什么对组织很重要至关重要。一些核心概念包括理解云原生计算，容器和Kubernetes的价值和影响。在较高的层次上，我们在这里每个定义。
+Cloud Native
+ 云原生技术有利于各组织在公有云、私有云和混合云等新型动态环境中，构建和运行可弹性扩展的应用。云原生的代表技术包括容器、服务网格、微服务、不可变基础设施和声明式API。
+这些技术能够构建容错性好、易于管理和便于观察的松耦合系统。结合可靠的自动化手段，云原生技术使工程师能够轻松地对系统作出频繁和可预测的重大变更。
+云原生计算基金会（CNCF）致力于培育和维护一个厂商中立的开源生态系统，来推广云原生技术。我们通过将最前沿的模式民主化，让这些创新为大众所用。
+ Source: CNCF definition.
+云原生计算的好处包括更快的发布速度，易于管理，通过容器化和云标准降低了成本，能够构建更可靠的系统，避免了供应商锁定以及改善了客户应用体验。
+Container
+ 一个打包代码及其所有依赖项的标准软件单元，使得应用程序可以从一个计算环境快速可靠地运行到另一个计算环境
+ Source: Docker
+ 在k8s中，你运行的每个容器都是可重复的；通过包含依赖项实现标准化意味着无论您在哪里运行它，都可以得到相同的行为。容器将应用程序与基础主机基础结构分离。这使得在不同的云或OS环境中的部署更加容易</description>
+    </item>
+    
+    <item>
+      <title>[译]当我们谈论Ops，我们在谈论什么</title>
+      <link>https://cctrip.tech/posts/talk_ops/</link>
+      <pubDate>Wed, 13 Jan 2021 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/talk_ops/</guid>
+      <description>原文链接：What the Ops are you talking about?
+水平有限，本文不免存在遗漏或错误之处。如有疑问，请查阅原文。
+ 背景    两年前，我因为效率低下的领导而获得了耻辱。我的背景是数据科学和机器学习，因此，我当然从我的工程同事那边学习到了DevOps。至少我们认为是这样的。
+令人费解的是，即使我们遵循了日常站立会议所有敏捷开发的良好实践，讨论我们的难点，也没有将难题扔给别人的态度。我们紧密合作并且相互友爱。但是开发效率依然缓慢，这令整个团队很沮丧。
+两年过后，我终于掌握了DevOps的含义，并且理解了它在数据团队中如此的相同而又如此不同。
+什么是Ops？    在我们谈论以数据为中心的Ops时，先让我们从软件开始说起，
+自从09年DevOps普及以来，软件行业就一直痴迷于各种Ops术语。十年前，从软件开发到部署的方法已经推陈出新。软件工程师开发应用，然后将其交付给运维工程师。该应用程序在部署期间经常中断，并在团队之间造成很大的摩擦。
+DevOps实践的目的是简化部署过程。该想法是将自动化视为构建和部署软件应用程序的一等公民。
+这种想法彻底改变了这个行业。许多组织开始建立跨职能团队来照顾整个SDLC。该团队将建立基础架构（基础工程师），开发应用程序（软件工程师），构建CI/CD管道（DevOps工程师），部署应用程序（每位工程师），然后连续监视和观察应用程序（站点可靠性工程师）。
+在一个大团队里面，一个工程师可能只会有一项主要职能，但是在较小的团队中，一位工程师经常担任许多职务。理想的情况是使许多团队成员能够履行多项职能，从而消除瓶颈和关键人员的依存关系。所以实际上，
+ DevOps并非是一项工作职能，而是更多的实践或文化。 在开始构建任何软件时都应采用它。
+ 随着DevOps的兴起，各种各样的Ops诞生了。
+SecOps以安全性为核心，GitOps致力于持续交付，NetOps确保网络可以支持数据流，而ITOps则专注于软件交付之外的操作任务。但是，这些操作的基石都源自DevOps所承诺的愿景：
+ 在错误最小的情况下尽可能快的发布软件
+  DataOps 🆚 MLOps 🆚 DevOps (and AIOps?)    注意：在本文中，分析团队是指使用SQL / PowerBI来生成业务洞察力的传统BI团队。 AI团队是指使用大数据技术构建高级分析和机器学习模型的团队。 有时他们是同一个团队，但我们将它们分开，以便更容易地解释概念。
+五年前，“数据是新石油”一语成为炒作对象。世界各地的领导者开始倾注资源，建立大数据团队来挖掘这些宝贵的资产。这些团队交付的压力巨大—毕竟，我们如何才能兑现新石油的承诺？随着快速扩展，分析团队也经历了同样的痛苦。
+然后，我们使这一切成为现实。
+数据科学家成为21世纪最吃香的职业。我们正在建立和处于数据和分析的黄金时代。每个执行者都有一个仪表板，具有来自整个组织的数据和嵌入式预测模型的仪表板，每个客户都有基于其行为的个性化推荐。
+但是，现在添加一个新功能需要花费数周甚至数月的时间。数据模型是混乱的并且没有人知道我们是使用信贷团队还是营销团队的活跃客户的定义。我们变得非常警惕将模型推向生成环境，因为我们不知道我们会破坏什么？
+因此，以数据为中心的社区团结在一起，保证不会因管理不善的数据流程而造成的效率低下，从那时起，各种以数据为中心的OPS诞生了
+要了解所有这些不同的Ops，让我们来看看数据如何在组织中流动的场景：
+ 数据是由与软件应用程序交互的客户生成的 软件将数据存储在其应用程序数据库中 分析团队从组织中的团队使用这些应用程序数据库构建ETL 然后，数据工程师将原始数据，合并的数据集（来自分析团队）和其他非结构化数据集摄取到某种形式的数据湖中 然后，数据科学家根据这些庞大的数据集建立模型 然后，这些模型采用用户生成的新数据进行预测。 然后，软件工程师将预测结果呈现给用户 并且周期继续  我们知道DevOps的诞生是由于开发团队和运维团队之间的摩擦。因此，想象一下运维，开发，分析和AI团队之间的4向界面所带来的令人头疼的问题。
+为了说明不同的Ops如何解决上述过程，下面的图形绘制了每个作业功能在整个时间轴上执行的一些任务
+理想情况下，应在项目开始时采用X-Ops文化，并在整个过程中实施实践.
+总而言之，这就是每个Ops的意义</description>
+    </item>
+    
+    <item>
+      <title>2021年flag</title>
+      <link>https://cctrip.tech/posts/2021_flag/</link>
+      <pubDate>Sat, 02 Jan 2021 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/2021_flag/</guid>
+      <description>2021年已经到来，在这里给自己列一个flag清单。
+习惯成自然      每2周完成一个ARTS(Algorithm|Review|Technique|Share)
+  完成12篇博客(每月一篇)
+  完成4篇英文技术文章翻译(每季度一篇)
+   读书清单     《性能之巅 洞悉系统、企业与云计算》 《Web性能权威指南》   极客时间清单     程序员的数学基础课 MySQL实战45讲   </description>
+    </item>
+    
+    <item>
+      <title>Kubernetes系列：OAM</title>
+      <link>https://cctrip.tech/posts/k8s_series_oam/</link>
+      <pubDate>Sun, 15 Nov 2020 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/k8s_series_oam/</guid>
+      <description>系列目录    《Kubernetes系列：开篇》
+《Kubernetes系列：概述》
+《Kubernetes系列：架构》
+《Kubernetes系列：容器》
+《Kubernetes系列：网络》
+《Kubernetes系列：存储》
+《Kubernetes系列：Service》
+《Kubernetes系列：Ingress》
+《Kubernetes系列：OAM》
+ 1. 介绍     开放应用程序模型(OAM)是与运行时无关的规范，用于定义云原生应用程序。
+ OAM专注于应用程序，而不是容器或协调器。
+OAM带来了模块化，可扩展和可移植的设计，可用于对云原生应用程序建模，并以统一的方式将应用程序交付给Kubernetes，云或IoT设备等任何运行时。
+ 2. KubeVela    2.1 是什么    云原生技术的趋势正在朝着使用Kubernetes作为通用抽象层跨云和本地基础架构追求一致的应用程序交付的趋势。
+对于平台构建者而言，KubeVela是一个框架，使他们能够轻松创建用户友好但高度可扩展的平台。详细地说，KubeVela通过执行以下操作减轻了构建此类平台的麻烦：
+ 以应用为中心。 KubeVela强制采用一种应用程序概念作为其主要API，并且所有KubeVela的功能仅可满足应用程序的需求。这是通过采用开放应用程序模型作为KubeVela的核心API来实现的。 本地扩展。KubeVela中的应用程序由各种模块化组件（称为：服务）组成。 Kubernetes生态系统的功能可以随时通过Kubernetes CRD注册机制作为新的工作负载类型或特征添加到KubeVela中。 简单但可扩展的抽象机制。KubeVela引入了一个模板引擎（支持CUELang等），用于从下划线的Kubernetes资源中提取面向用户的模式。KubeVela提供了一组内置的抽象作为起点，并且平台构建者可以随时自由地对其进行修改。抽象更改在运行时生效，无需重新编译或重新部署KubeVela。  借助KubeVela，平台构建者现在终于获得了工具支持，以高信心和低周转时间设计并向其最终用户交付任何新功能。
+对于开发人员而言，使用KubeVela构建的此类平台将使他们能够以最小的努力设计并将其应用程序发布到Kubernetes。他们只需要一个简单的应用程序定义，而不是管理少量的基础结构细节，而是遵循以开发人员为中心的工作流，该工作流可以轻松地与任何CI / CD管道集成。
+ 2.2 对比    PaaS    它们提供了完整的应用程序管理功能，旨在改善开发人员的体验和效率。KubeVela可以提供类似的体验，但是与大多数现有的PaaS产品相比，其内置功能轻巧得多，并且易于维护。KubeVela核心组件不过是一组Kubernetes控制器/插件。
+KubeVela被设计为核心引擎，其主要目标是使平台团队能够通过简单地注册CRD和定义模板来创建“类似PaaS”的体验。与此经验相比，大多数现有的PaaS系统要么不可扩展，要么具有自己的附加系统。因此，对他们来说，在受支持的应用程序类型和受支持的功能上强加约束是很常见的，而这在基于KubeVela的体验中是不会发生的。
+Serverless Platforms    无服务器平台（例如AWS Lambda）可提供非凡的用户体验和敏捷性，以部署无服务器应用程序。但是，这些平台在可扩展性方面施加了更多限制。它们可以说是“硬编码” PaaS。
+通过将自己注册为新的工作负载类型和特征，可以轻松地将基于Kubernetes的Knative，OpenFaaS等无服务器平台与KubeVela集成。即使对于AWS Lambda，也有成功的故事，可以通过Crossplane开发的工具将其与KubeVela集成。</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes系列：Ingress</title>
+      <link>https://cctrip.tech/posts/k8s_series_ingress/</link>
+      <pubDate>Wed, 11 Nov 2020 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/k8s_series_ingress/</guid>
+      <description>系列目录    《Kubernetes系列：开篇》
+《Kubernetes系列：概述》
+《Kubernetes系列：架构》
+《Kubernetes系列：容器》
+《Kubernetes系列：网络》
+《Kubernetes系列：存储》
+《Kubernetes系列：Service》
+《Kubernetes系列：Ingress》
+《Kubernetes系列：OAM》
+ 1. 介绍    1.1 Ingress     Ingress 公开了从集群外部到集群内service的 HTTP 和 HTTPS 路由。 流量路由由 Ingress 资源上定义的规则控制。
+ 可以将 Ingress 配置为服务提供外部可访问的 URL、负载均衡流量、终止 SSL/TLS，以及提供基于名称的虚拟主机等能力。 Ingress Controller 通常负责通过负载均衡器来实现 Ingress，尽管它也可以配置边缘路由器或其他前端来帮助处理流量。
+ 1.2 Ingress Controller    为了让 Ingress 资源工作，集群必须有一个正在运行的 Ingress Controller。
+与作为 kube-controller-manager 可执行文件的一部分运行的其他类型的控制器不同，Ingress 控制器不是随集群自动启动的。
+ 2. Ingress Contoller 选择    下表是一些常用的Contoller对比：
+   control plane data plane backend service discovery protocols ssl termination websocket routing scope resiliency lb algorithms auth Tracing canary/shadow istio integration state Paid support Linkaaaaaaaaaaaaaa dashboard sticky sessions lua     ingress-nginx nginx dynamic http,https,tcp (separate lb),udp,grpc,fastcgi,IPC socket yes yes host,path(with regex) cross-namespace rate limit, retries rr,ewma,ip_hash basic, digest, external auth yes canary  kubernetes  https://kubernetes.</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes系列：Service</title>
+      <link>https://cctrip.tech/posts/k8s_series_service/</link>
+      <pubDate>Tue, 10 Nov 2020 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/k8s_series_service/</guid>
+      <description>系列目录    《Kubernetes系列：开篇》
+《Kubernetes系列：概述》
+《Kubernetes系列：架构》
+《Kubernetes系列：容器》
+《Kubernetes系列：网络》
+《Kubernetes系列：存储》
+《Kubernetes系列：Service》
+《Kubernetes系列：Ingress》
+《Kubernetes系列：OAM》
+ 1. 介绍     在Kubernetes中，Service是将运行在一组Pods上的应用程序公开为网络服务的抽象方法。
+ 1. 1 为什么需要Service？    pod是一个非永久性的资源。如果我们使用Deployment来运行应用程序，则pod是可以被动态创建和销毁的。
+这导致了一个问题： 如果一组 Pod（称为“后端”）为集群内的其他 Pod（称为“前端”）提供功能， 那么前端如何找出并跟踪要连接的 IP 地址，以便前端可以使用提供工作负载的后端部分？
+1.2 Service资源    Kubernetes Service 定义了这样一种抽象：逻辑上的一组 Pod，一种可以访问它们的策略 —— 通常称为微服务。 Service 所针对的 Pods 集合通常是通过选择算符来确定的。
+ 2. 配置    Service 在 Kubernetes 中是一个 REST 对象，和 Pod 类似。 像所有的 REST 对象一样，Service 定义可以基于 POST 方式，请求 API server 创建新的实例。 Service 对象的名称必须是合法的 DNS 标签名称。</description>
+    </item>
+    
+    <item>
+      <title>深入理解LVS</title>
+      <link>https://cctrip.tech/posts/deep_lvs/</link>
+      <pubDate>Mon, 09 Nov 2020 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/deep_lvs/</guid>
+      <description>1. 介绍    接上一篇深入理解iptables，kubernetes service技术还用到ipvs技术，讲到ipvs，那就得说说LVS了，这篇我们来了解下LVS具体的实现机制。
+ 2. IPVS     IPVS（IP虚拟服务器）实现传输层负载均衡，通常称为第4层LAN交换。
+ 负载均衡器的概念可以看这篇文章，或者翻译版本。
+大多数情况下，负载均衡器和代理这两个术语会被混用在一起，所谓的代理，简单来说，就是接收客户端的数据包再转发到对应的后端服务器上。
+ipvs就在这样的软件，它依赖netfilter的功能来实现数据包的转发，我们还是先拉源码定义来看下。
+ip_vs_core.c
+static const struct nf_hook_ops ip_vs_ops4[] = { /* After packet filtering, change source only for VS/NAT */ { .hook	= ip_vs_reply4, .pf	= NFPROTO_IPV4, .hooknum	= NF_INET_LOCAL_IN, .priority	= NF_IP_PRI_NAT_SRC - 2, }, /* After packet filtering, forward packet through VS/DR, VS/TUN, * or VS/NAT(change destination), so that filtering rules can be * applied to IPVS.</description>
+    </item>
+    
+    <item>
+      <title>深入理解iptables</title>
+      <link>https://cctrip.tech/posts/deep_iptables/</link>
+      <pubDate>Sat, 07 Nov 2020 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/deep_iptables/</guid>
+      <description>1. 介绍    最近在刚好在看Kubernetes的service相关内容，里面用到了iptables和ipvs技术，好久没看iptables了，快忘记了，刚好复习重新记忆一下。
+讲iptables和ipvs，有个东西就一定得清楚，那就是netfilter
+ 2. netfilter     netfilter是一个数据包处理框架。
+ netfilter具备以下几个功能：
+ 数据包过滤 网络地址(端口)转换 数据包日志记录 用户空间数据包排队 其他数据包处理功能  2.1 netfilter架构    netfilter 提供了 5 个 hook 点。包经过协议栈时会触发内核模块注册在这里的处理函数 。触发哪个 hook 取决于包的方向（是发送还是接收）、包的目的地址、以及包在上一个 hook 点是被丢弃还是拒绝等等。
+下面几个 hook 是内核协议栈中已经定义好的：
+ NF_IP_PRE_ROUTING: 接收到的包进入协议栈后立即触发此 hook，在进行任何路由判断 （将包发往哪里）之前 NF_IP_LOCAL_IN: 接收到的包经过路由判断，如果目的是本机，将触发此 hook NF_IP_FORWARD: 接收到的包经过路由判断，如果目的是其他机器，将触发此 hook NF_IP_LOCAL_OUT: 本机产生的准备发送的包，在进入协议栈后立即触发此 hook NF_IP_POST_ROUTING: 本机产生的准备发送的包或者转发的包，在经过路由判断之后， 将触发此 hook  注册处理函数时必须提供优先级，以便 hook 触发时能按照 优先级高低调用处理函数。这使得多个模块（或者同一内核模块的多个实例）可以在同一 hook 点注册，并且有确定的处理顺序。内核模块会依次被调用，每次返回一个结果给 netfilter 框架，提示该对这个包做以下几个操作之一：</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes系列：存储</title>
+      <link>https://cctrip.tech/posts/k8s_series_storage/</link>
+      <pubDate>Thu, 05 Nov 2020 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/k8s_series_storage/</guid>
+      <description>系列目录    《Kubernetes系列：开篇》
+《Kubernetes系列：概述》
+《Kubernetes系列：架构》
+《Kubernetes系列：容器》
+《Kubernetes系列：网络》
+《Kubernetes系列：存储》
+《Kubernetes系列：Service》
+《Kubernetes系列：Ingress》
+《Kubernetes系列：OAM》
+ 1. 介绍    容器中的文件在磁盘上是临时存放的，这给容器中运行的较重要的应用程序带来一些问题：
+ 当容器崩溃时文件丢失。kubelet 会重新启动容器， 但容器会以干净的状态重启。 在 Pod 中同时运行多个容器时，这些容器之间通常需要共享文件。  Kubernetes 中的 Volume 抽象很好的解决了这些问题。
+ 2. 存储    为了管理存储，Kubernetes提供了Secret用于管理敏感信息，ConfigMap存储配置，Volume、PV、PVC、StorageClass等用来管理存储卷。
+2.1 Volume    Kubernetes 支持很多类型的卷。 Pod 可以同时使用任意数目的卷类型。 临时卷类型的生命周期与 Pod 相同，但持久卷可以比 Pod 的存活期长。 因此，卷的存在时间会超出 Pod 中运行的所有容器，并且在容器重新启动时数据也会得到保留。 当 Pod 不再存在时，卷也将不再存在。
+卷的核心是包含一些数据的一个目录，Pod 中的容器可以访问该目录。 所采用的特定的卷类型将决定该目录如何形成的、使用何种介质保存数据以及目录中存放 的内容。
+使用卷时, 在 .spec.volumes 字段中设置为 Pod 提供的卷，并在 .spec.containers[*].volumeMounts 字段中声明卷在容器中的挂载位置。 容器中的进程看到的是由它们的 Docker 镜像和卷组成的文件系统视图。 Docker 镜像 位于文件系统层次结构的根部。各个卷则挂载在镜像内的指定路径上。 卷不能挂载到其他卷之上，也不能与其他卷有硬链接。 Pod 配置中的每个容器必须独立指定各个卷的挂载位置。</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes系列：网络</title>
+      <link>https://cctrip.tech/posts/k8s_series_network/</link>
+      <pubDate>Fri, 30 Oct 2020 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/k8s_series_network/</guid>
+      <description>系列目录    《Kubernetes系列：开篇》
+《Kubernetes系列：概述》
+《Kubernetes系列：架构》
+《Kubernetes系列：容器》
+《Kubernetes系列：网络》
+《Kubernetes系列：存储》
+《Kubernetes系列：Service》
+《Kubernetes系列：Ingress》
+《Kubernetes系列：OAM》
+ 1. 介绍    网络是 Kubernetes 的核心部分，不过，Kubernetes本身并不提供网络功能，只是把网络接口开放出来，通过插件的形式实现。这就是CNI(Container Network Interface)。
+ CNI（Container Network Interface）是 CNCF 旗下的一个项目，由一组用于配置 Linux 容器的网络接口的规范和库组成，同时还包含了一些插件。CNI 仅关心容器创建时的网络分配，和当容器被删除时释放网络资源。通过此链接浏览该项目：https://github.com/containernetworking/cni。
+ Kubernetes 对所有网络设施的实施，都需要满足以下的基本要求：
+ 节点上的 Pod 可以不通过 NAT 和其他任何节点上的 Pod 通信 节点上的代理(比如：系统守护进程、kubelet)可以和节点上的所有Pod通信 Pod自己的IP就是其他人看到的IP  因此，一个kubernetes网络插件必须要解决下面五个问题：
+ Container-to-Container 网络通信 Pod-to-Pod 网络通信 Pod-to-Service 网络通信 Internet-to-Service 网络通信 Pod IP在集群内唯一   2. 基本原理    2.1 Container-to-Container    在kubernetes中，一个Pod是一组Container的组合，并且，Pod内的Container是共享network namespace的，因此该Pod内的Container的ip和mac地址都是相同的，所以它们只需要通过localhost就能跟Pod内其他Container通信了，不过，因为是共享network namespace，因此该Pod内的端口必须是唯一的，不能冲突。</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes系列：容器</title>
+      <link>https://cctrip.tech/posts/k8s_series_container/</link>
+      <pubDate>Sun, 25 Oct 2020 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/k8s_series_container/</guid>
+      <description>系列目录    《Kubernetes系列：开篇》
+《Kubernetes系列：概述》
+《Kubernetes系列：架构》
+《Kubernetes系列：容器》
+《Kubernetes系列：网络》
+《Kubernetes系列：存储》
+《Kubernetes系列：Service》
+《Kubernetes系列：Ingress》
+《Kubernetes系列：OAM》
+ 1. 介绍    1.1 容器技术     LXC（Linux容器）是一种操作系统级虚拟化技术，用于使用单个Linux内核在控制主机上运行多个隔离的Linux系统（容器）。
+ 每个运行的容器都是可重复的； 包含依赖环境在内的标准，意味着无论您在哪里运行它，您都会得到相同的行为。容器将应用程序从底层的主机设施中解耦。 这使得在不同的云或 OS 环境中部署更加容易。
+1.2 容器镜像     容器镜像是一个随时可以运行的软件包， 包含运行应用程序所需的一切：代码和它需要的所有运行时、应用程序和系统库，以及一些基本设置的默认值。
+ 根据设计，容器是不可变的：你不能更改已经运行的容器的代码。 如果有一个容器化的应用程序需要修改，则需要构建包含更改的新镜像，然后再基于新构建的镜像重新运行容器。
+1.3 容器运行时     容器运行环境是负责运行容器的软件。
+ Kubernetes 支持多个容器运行环境: Docker、 containerd、CRI-O 以及任何实现 Kubernetes CRI (容器运行环境接口)。
+1.4 CRI(容器运行时接口)     CRI，一个插件接口，使kubelet可以使用各种容器运行时，而无需重新编译。
+CRI由规范/要求(待添加)、protobuf API和用于容器运行时的库组成，以与节点上的kubelet集成。
+  2.</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes系列：架构</title>
+      <link>https://cctrip.tech/posts/k8s_series_arch/</link>
+      <pubDate>Tue, 20 Oct 2020 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/k8s_series_arch/</guid>
+      <description>系列目录    《Kubernetes系列：开篇》
+《Kubernetes系列：概述》
+《Kubernetes系列：架构》
+《Kubernetes系列：容器》
+《Kubernetes系列：网络》
+《Kubernetes系列：存储》
+《Kubernetes系列：Service》
+《Kubernetes系列：Ingress》
+《Kubernetes系列：OAM》
+ 一个 Kubernetes 集群由一组被称作节点的机器组成。这些节点上运行 Kubernetes 所管理的容器化应用。集群具有至少一个工作节点。
+工作节点托管作为应用负载的组件的 Pod 。控制平面管理集群中的工作节点和 Pod 。 为集群提供故障转移和高可用性，这些控制平面一般跨多主机运行，集群跨多个节点运行。
+本文档概述了交付正常运行的 Kubernetes 集群所需的各种组件。
+这张图表展示了包含所有相互关联组件的 Kubernetes 集群。
+控制平面组件（Control Plane Components）    控制平面的组件对集群做出全局决策(比如调度)，以及检测和响应集群事件（例如，当不满足部署的 replicas 字段时，启动新的 pod）。
+控制平面组件可以在集群中的任何节点上运行。 然而，为了简单起见，设置脚本通常会在同一个计算机上启动所有控制平面组件，并且不会在此计算机上运行用户容器。 请参阅构建高可用性集群 中对于多主机 VM 的设置示例。
+kube-apiserver    API 服务器是 Kubernetes 控制面的组件， 该组件公开了 Kubernetes API。 API 服务器是 Kubernetes 控制面的前端。
+Kubernetes API 服务器的主要实现是 kube-apiserver。 kube-apiserver 设计上考虑了水平伸缩，也就是说，它可通过部署多个实例进行伸缩。 你可以运行 kube-apiserver 的多个实例，并在这些实例之间平衡流量。</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes系列：概述</title>
+      <link>https://cctrip.tech/posts/k8s_series_intro/</link>
+      <pubDate>Thu, 15 Oct 2020 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/k8s_series_intro/</guid>
+      <description>系列目录    《Kubernetes系列：开篇》
+《Kubernetes系列：概述》
+《Kubernetes系列：架构》
+《Kubernetes系列：容器》
+《Kubernetes系列：网络》
+《Kubernetes系列：存储》
+《Kubernetes系列：Service》
+《Kubernetes系列：Ingress》
+《Kubernetes系列：OAM》
+ 1. 介绍    Kubernetes 是一个可移植的、可扩展的开源平台，用于管理容器化的工作负载和服务，可促进声明式配置和自动化。 Kubernetes 拥有一个庞大且快速增长的生态系统。Kubernetes 的服务、支持和工具广泛可用。
+名称 Kubernetes 源于希腊语，意为“舵手”或“飞行员”。Google 在 2014 年开源了 Kubernetes 项目。 Kubernetes 建立在 Google 在大规模运行生产工作负载方面拥有十几年的经验 的基础上，结合了社区中最好的想法和实践。
+ 2. 部署模式的发展史    让我们回顾一下为什么 Kubernetes 如此有用。
+传统部署时代：
+早期，各个组织机构在物理服务器上运行应用程序。无法为物理服务器中的应用程序定义资源边界，这会导致资源分配问题。 例如，如果在物理服务器上运行多个应用程序，则可能会出现一个应用程序占用大部分资源的情况， 结果可能导致其他应用程序的性能下降。 一种解决方案是在不同的物理服务器上运行每个应用程序，但是由于资源利用不足而无法扩展， 并且维护许多物理服务器的成本很高。
+虚拟化部署时代：
+作为解决方案，引入了虚拟化。虚拟化技术允许你在单个物理服务器的 CPU 上运行多个虚拟机（VM）。 虚拟化允许应用程序在 VM 之间隔离，并提供一定程度的安全，因为一个应用程序的信息 不能被另一应用程序随意访问。
+虚拟化技术能够更好地利用物理服务器上的资源，并且因为可轻松地添加或更新应用程序 而可以实现更好的可伸缩性，降低硬件成本等等。
+每个 VM 是一台完整的计算机，在虚拟化硬件之上运行所有组件，包括其自己的操作系统。
+容器部署时代：
+容器类似于 VM，但是它们具有被放宽的隔离属性，可以在应用程序之间共享操作系统（OS）。 因此，容器被认为是轻量级的。容器与 VM 类似，具有自己的文件系统、CPU、内存、进程空间等。 由于它们与基础架构分离，因此可以跨云和 OS 发行版本进行移植。</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes系列：开篇</title>
+      <link>https://cctrip.tech/posts/k8s_series/</link>
+      <pubDate>Sat, 10 Oct 2020 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/k8s_series/</guid>
+      <description>系列目录    《Kubernetes系列：开篇》
+《Kubernetes系列：概述》
+《Kubernetes系列：架构》
+《Kubernetes系列：容器》
+《Kubernetes系列：网络》
+《Kubernetes系列：存储》
+《Kubernetes系列：Service》
+《Kubernetes系列：Ingress》
+《Kubernetes系列：OAM》
+ 1. 介绍    最近整体工作在往云原生和k8s上迁移，想将自己对于k8s的一些学习心得和经验写成一个系列记录下来。
+ 2. 云计算    云计算是一种按使用量付费的模式，这种模式提供可用的、便捷的、按需的网络访问， 进入可配置的计算资源共享池（资源包括网络，服务器，存储，应用软件，服务），这些资源能够被快速提供，只需投入很少的管理工作，或与服务供应商进行很少的交互。
+云计算最基本的特性是：“按使用量付费”、“资源共享池”和多租户隔离。
+1.2 云计算的特点
+ 超大规模  云具有相当的规模，Google 云计算已经拥有 100 多万台服务器， Amazon、IBM、微软、Yahoo 等的云均拥有几十万台服务器。企业私有云一般拥有数百上千台服务器。云能赋予用户前所未有的计算能力。
+ 虚拟化  云计算支持用户在任意位置、使用各种终端获取应用服务。所请求的资源来自云，而不是固定的有形的实体。应用在云中某处运行，但实际上用户无需了解、也不用担心应用运行的具体位置。只需要一台笔记本或者一个手机，就可以通过网络服务来实现我们需要的一切，甚至包括超级计算这样的任务。
+ 高可靠性  云使用了数据多副本容错、计算节点同构可互换等措施来保障服务的高可靠性，使用云计算比使用本地计算机可靠。
+ 通用性  云计算不针对特定的应用，在云的支撑下可以构造出千变万化的应用，同一个云可以同时支撑不同的应用运行。
+ 高可扩展性  云的规模可以动态伸缩，满足应用和用户规模增长的需要。
+ 按需服务  云是一个庞大的资源池，你按需购买;云可以像自来水，电，煤气那样计费。
+ 极其廉价  由于云的特殊容错措施可以采用极其廉价的节点来构成云，云的自动化集中式管理使大量企业无需负担日益高昂的数据中心管理成本，云的通用性使资源的利用率较之传统系统大幅提升，因此用户可以充分享受云的低成本优势，经常只要花费几百美元、几天时间就能完成以前需要数万美元、数月时间才能完成的任务。
+ 潜在的危险性  云计算服务除了提供计算服务外，还必然提供了存储服务。但是云计算服务当前垄断在私人机构(企业)手中，而他们仅仅能够提供商业信用。对于政府机构、商业机构(特别像银行这样持有敏感数据的商业机构)对于选择云计算服务应保持足够的警惕。一旦商业用户大规模使用私人机构提供的云计算服务，无论其技术优势有多强，都不可避免地让这些私人机构以数据(信息)的重要性挟制整个社会。
+对于信息社会而言，信息是至关重要的。另一方面，云计算中的数据对于数据所有者以外的其他用户云计算用户是保密的，但是对于提供云计算的商业机构而言确实毫无秘密可言。所有这些潜在的危险，是商业机构和政府机构选择云计算服务、特别是国外机构提供的云计算服务时，不得不考虑的一个重要的前提。
+1.3 云计算的分类</description>
+    </item>
+    
+    <item>
+      <title>DevOps系列：SRE</title>
+      <link>https://cctrip.tech/posts/devops_series_sre/</link>
+      <pubDate>Wed, 29 Jul 2020 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/devops_series_sre/</guid>
+      <description>系列目录    《DevOps系列：开篇》
+《DevOps系列：概述》
+《DevOps系列：CMDB》
+《DevOps系列：CI/CD》
+《DevOps系列：监控》
+《DevOps系列：SRE》
+ 困局    计算机软件系统离开人通常是无法自主运行的，那要如何去运维一个日趋复杂的大型分布式计算机系统呢？
+Dev/Ops分离团队模型    雇佣系统管理员(sysadmin)运维复杂的计算机系统是行业内一直以来的普遍做法，系统管理员的工作主要在于应对系统中产生的各种需要人工干预的事件，以及来自业务部门的变更需求。但随着系统变得复杂，组件越来越多，流量不断上升，相关的事件和变更需求也会越来越多，就需要招聘更多的系统管理员。系统管理员的日常工作和研发工程师的相差甚远，通常归属于两个不同的部门，开发部(Dev)和运维部(Ops)。也就是Dev/Ops分离团队模型。
+但是这个模型存在两个无法避免的问题。
+ 直接成本。随着系统复杂度的增加，部署规模的扩大，团队的大小基本与系统负载成线性相关，共同成长。 间接成本。即研发团队和运维团队之间的沟通成本。研发团队想要&amp;quot;随时随地发布新功能，没有任何阻拦&amp;quot;，运维团队想要”一旦一个东西在生产环境中正常工作了，就不要再进行任何改动“。本质来说，两个团队的目标是互相矛盾的。   解决之道    DevOps     DevOps（开发 Development 与运维 Operations 的组合词）是一种文化、一场运动或实践，强调在自动化软件交付流程及基础设施变更过程中，软件开发人员与其他信息技术（IT）专业人员彼此之间的协作与沟通。它旨在建立一种文化与环境，使构建、测试、软件发布得以快速、频繁以及更加稳定地进行。
+ SRE     SRE可以理解为DevOps的一种实践，SRE基本是在进行由运维团队完成的工作，但是雇佣具有软件专业知识的工程师，通过创造软件系统的方式来维护系统运行并替代传统模型中的人工操作。本质上，SRE是在用软件工程的思维和方法论，通过设计、构建自动化工具来完成以前由系统管理员人工操作完成的任务。
+ SRE方法论    1. 确保长期关注研发工作    SRE团队应将运维工作限制在50%以内，并将剩余时间投入到研发项目上
+2. 在保障SLO的前提下最大化迭代速度    错误预算，任何产品都不是，也不应该做到100%可靠，部门建立起一个合理的可靠性目标，错误预算等于”1-可靠性目标“，通过错误预算来最大化新功能上线的速度，同时保障服务质量。
+3. 监控系统    监控系统是SRE团队监控服务质量和可用性的一个主要手段。一个监控系统应该只有三类输出：</description>
+    </item>
+    
+    <item>
+      <title>[译]DevOps成熟度模型</title>
+      <link>https://cctrip.tech/posts/devops_model/</link>
+      <pubDate>Sun, 26 Jul 2020 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/devops_model/</guid>
+      <description>原文链接：DevOps Maturity Model – Explained
+水平有限，本文不免存在遗漏或错误之处。如有疑问，请查阅原文。
+ DevOps通过改善团队在方法链和工作流程中的运作和合作方式，改变了IT行业。实际上，根据最近的一项调查，有63％的公司报告说在采用DevOps之后其软件部署质量得到了改善。
+到目前为止，大部分的公司已经在其软件开发过程中完成了一些DevOps实施阶段。但是，尽管有几家公司在采用DevOps方面受益匪浅，但许多公司仍未充分发挥其潜力。
+关于DevOps选择的最常见错误仍然存在，即“将其作为旅程或目标”。
+这就是“ DevOps成熟度模型”的用处。阅读以下文章，深入了解什么是DevOps成熟度模型以及它如何为您提供帮助。
+ 1. 理解DevOps成熟度    通过描述，DevOps成熟度被定义为一种模式，该模式确定组织在DevOps课程中的位置以及决定要执行的操作以获得期望的结果。
+理解将DevOps“作为一个连续的旅程，而不是一个目的地”，对于管理DevOps的成熟度至关重要。
+DevOps成熟度设计通过双方和组织方面的不断培训来管理增长。更多的才能和技能，将有更大的能力来处理规模和复杂性问题。
+ 2. DevOps成熟度所需的能力    2.1 文化与策略    DevOps必须被视为一种文化驱动的计划，该计划吸引了不同的团队，将他们推向共同的目标。向DevOps的过渡涉及在一系列方法和框架的支持下，以及组织工作文化的变化。因此，这需要适当的计划和全面的程序。
+2.2 自动化    自动化是DevOps方法中持续交付和持续部署工具的代码。通过自动化执行的任务，自动化流程有助于DevOps系列产品的开发，实验和生产，从而节省了时间并提高了资源效率。
+2.3 结构与过程    这是DevOps文化的最重要方面。对于同一地点的DevOps和团队而言，协作和共享至关重要，或者不同地点的DevOps和团队需要加入工具和资源才能达成共同的目标。
+根据《福布斯》的一项研究，组织通常会在DevOps课程的一部分中找到以下步骤：
+ 潜意识的不足：组织忽视了学习DevOps及其好处 有意识但是无能：即使经过一些工业化的DevOps课程，即使12-18个月后，组织仍然看到孤立的方法。 意识强：经过四年的DevOps课程和可靠的自动化，组织专注于团队之间的协作和简化分配机制。 潜意识技能：这里的组织都徘徊在结构化框架，深入协作，有效共享的实际方法上   3. DevOps成熟度模型需要什么？    完整的DevOps成熟度模型通过三种方式定义DevOps成熟度：
+ 评估现代技能水平 确定增长措施 概述实现DevOps目标的步骤  与这三个级别一致，DevOps成熟度模块支持跨表单，数据和基础架构级别的开发，部署和测试阶段的成熟度：
+3.1 应用的DevOps成熟度    这通过从开发到生产阶段的代码开发安全性来定义DevOps的成熟度。为了实现这一点，需要将构建，测试，代码覆盖，安全扫描和监控作为部署管道的自动化元素。</description>
+    </item>
+    
+    <item>
+      <title>DevOps系列：监控</title>
+      <link>https://cctrip.tech/posts/devops_series_mon/</link>
+      <pubDate>Mon, 20 Jul 2020 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/devops_series_mon/</guid>
+      <description>系列目录    《DevOps系列：开篇》
+《DevOps系列：概述》
+《DevOps系列：CMDB》
+《DevOps系列：CI/CD》
+《DevOps系列：监控》
+《DevOps系列：SRE》
+ 为什么需要监控系统？    两个场景    场景一    技术部门上线了一个新项目，系统宕机了，客户在访问时发现无法访问，客户 A 不知道如何处理，放弃了访问，客户 B 知道客服系统，告知了运营人员，运营人员自己访问后也发现无法访问，于是通知了测试人员，再由测试人员通知线上项目的负责人，由负责人来进行故障恢复。 整个流程中，能处理故障的人成了最后知道故障的人。
+场景二    用户反馈访问某个系统很慢，通知技术人员排查问题，由于系统涉及的组件很多，技术人员没办法立即知道问题出在哪里，于是技术人员只能通过自己把整个数据流走完的方式来排查问题： 1、由入口开始排查问题，先确认网络是否丢包，延时是否过高，发现无异常。 2、于是排查服务所在机器的负载情况，以及服务相关日志 (未必有记录)，也无异常。 3、排查代码发现有做 sql 查询，于是根据 sql 手动到数据库执行，发现 sql 执行很慢。 4、于是排查数据库所在机器的负载情况，发现 cpu 一直处在 100% 状态，是数据库进程造成的。 5、通过查询相关执行 sql 发现有某个 sql 在执行复杂查询导致了 cpu 使用率一直很高，从而影响了其他 sql 查询。
+极端情况下，技术人员可能需要把所有相关组件都排查一遍，才能发现问题出在哪里。
+ 场景解决方案    开头提到的两个场景应该是大部分技术人员都会碰到的问题，场景一是故障出现到故障处理的耗时问题，场景二是故障处理到故障恢复的耗时问题。
+场景一的解决方式，可以由一个脚本或者一个系统，定时收集客户访问的 url 的返回状态码，如果出现错误的状态码达到一定次数，就发送邮件或者短信给到对应的负载人。
+场景二的解决方式，可以由一个系统，定时收集所有组件的相关信息，然后通过聚合和数据展示，来提供一个全局的问题查看功能。
+解决上面两种场景的系统就是监控系统。</description>
+    </item>
+    
+    <item>
+      <title>DevOps系列：CI/CD</title>
+      <link>https://cctrip.tech/posts/devops_series_cicd/</link>
+      <pubDate>Wed, 15 Jul 2020 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/devops_series_cicd/</guid>
+      <description>系列目录    《DevOps系列：开篇》
+《DevOps系列：概述》
+《DevOps系列：CMDB》
+《DevOps系列：CI/CD》
+《DevOps系列：监控》
+《DevOps系列：SRE》
+ 1. 介绍    CI/CD 是一种通过在应用开发阶段引入自动化来频繁向客户交付应用的方法。CI/CD 的核心概念是持续集成、持续交付和持续部署。作为一个面向开发和运营团队的解决方案，CI/CD 主要针对在集成新代码时所引发的问题（亦称：“集成地狱”）。
+具体而言，CI/CD 可让持续自动化和持续监控贯穿于应用的整个生命周期（从集成和测试阶段，到交付和部署）。这些关联的事务通常被统称为“CI/CD 管道”，由开发和运维团队以敏捷方式协同支持。
+1.1 CI 是什么？CI 和 CD 有什么区别？    缩略词 CI / CD 具有几个不同的含义。CI/CD 中的“CI”始终指持续集成，它属于开发人员的自动化流程。成功的 CI 意味着应用代码的新更改会定期构建、测试并合并到共享存储库中。该解决方案可以解决在一次开发中有太多应用分支，从而导致相互冲突的问题。
+CI/CD 中的“CD”指的是持续交付和/或持续部署，这些相关概念有时会交叉使用。两者都事关管道后续阶段的自动化，但它们有时也会单独使用，用于说明自动化程度。
+持续交付通常是指开发人员对应用的更改会自动进行错误测试并上传到存储库（如 GitHub 或容器注册表），然后由运维团队将其部署到实时生产环境中。这旨在解决开发和运维团队之间可见性及沟通较差的问题。因此，持续交付的目的就是确保尽可能减少部署新代码时所需的工作量。
+持续部署（另一种“CD”）指的是自动将开发人员的更改从存储库发布到生产环境，以供客户使用。它主要为了解决因手动流程降低应用交付速度，从而使运维团队超负荷的问题。持续部署以持续交付的优势为根基，实现了管道后续阶段的自动化。
+CI/CD 既可能仅指持续集成和持续交付构成的关联环节，也可以指持续集成、持续交付和持续部署这三项构成的关联环节。更为复杂的是，有时“持续交付”也包含了持续部署流程。
+归根结底，我们没必要纠结于这些语义，您只需记得 CI/CD 其实就是一个流程（通常形象地表述为管道），用于实现应用开发中的高度持续自动化和持续监控。因案例而异，该术语的具体含义取决于 CI/CD 管道的自动化程度。许多企业最开始先添加 CI，然后逐步实现交付和部署的自动化（例如作为云原生应用的一部分）。
+1.2 CI 持续集成（Continuous Integration）    现代应用开发的目标是让多位开发人员同时处理同一应用的不同功能。但是，如果企业安排在一天内将所有分支源代码合并在一起（称为“合并日”），最终可能造成工作繁琐、耗时，而且需要手动完成。这是因为当一位独立工作的开发人员对应用进行更改时，有可能会与其他开发人员同时进行的更改发生冲突。如果每个开发人员都自定义自己的本地集成开发环境（IDE），而不是让团队就一个基于云的 IDE 达成一致，那么就会让问题更加雪上加霜。
+持续集成（CI）可以帮助开发人员更加频繁地（有时甚至每天）将代码更改合并到共享分支或“主干”中。一旦开发人员对应用所做的更改被合并，系统就会通过自动构建应用并运行不同级别的自动化测试（通常是单元测试和集成测试）来验证这些更改，确保这些更改没有对应用造成破坏。这意味着测试内容涵盖了从类和函数到构成整个应用的不同模块。如果自动化测试发现新代码和现有代码之间存在冲突，CI 可以更加轻松地快速修复这些错误。
+进一步了解技术细节
+1.3 CD 持续交付（Continuous Delivery）    完成 CI 中构建及单元测试和集成测试的自动化流程后，持续交付可自动将已验证的代码发布到存储库。为了实现高效的持续交付流程，务必要确保 CI 已内置于开发管道。持续交付的目标是拥有一个可随时部署到生产环境的代码库。</description>
+    </item>
+    
+    <item>
+      <title>DevOps系列：CMDB</title>
+      <link>https://cctrip.tech/posts/devops_series_cmdb/</link>
+      <pubDate>Fri, 10 Jul 2020 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/devops_series_cmdb/</guid>
+      <description>系列目录    《DevOps系列：开篇》
+《DevOps系列：概述》
+《DevOps系列：CMDB》
+《DevOps系列：CI/CD》
+《DevOps系列：监控》
+《DevOps系列：SRE》
+ 1. 介绍     CMDB是组织使用的ITIL术语，用于组织存储有关硬件和软件资产的信息（通常称为配置项[CI]）。CMDB提供了一种了解组织的关键资产及其关系的方法，例如信息系统，资产的上游来源或依存关系以及资产的下游目标。
+ 用比较通俗的语言解释，CMDB可以存储并自动发现整个IT网络上的各种信息，比如一个IT网络上有多少台服务器、多少存储、设备的品牌、资产编号、维护人员、所属部门、服务器上运营什么操作系统、操作系统的版本、操作系统上有哪些应用、每个应用的版本等等，此外，CMDB还有一个非常重要的功能，即存储不同资源之间的依赖关系，如果网络上某个节点出现问题，通过CMDB，可以判断因此受到影响的业务。
+ 2. 云原生时代的CMDB设计    2.1 传统时代的CMDB    通常，我们在建设运维的基础管理平台时，通常要做的事情：
+1、把服务器、网络、IDC、机柜、存储、配件等这几大维度先定下来；
+2、这些硬件的属性确定下来，比如服务器就会有 SN 序列号、IP 地址、厂商、硬件配置（如 CPU、内存、硬盘、网卡、PCIE、BIOS）、维保信息等等；网络设备如交换机也会有厂商、型号、带宽等等；
+3、以上信息之间的关联关系，或者叫拓扑关系。比如服务器所在机柜，虚拟机所在的宿主机、机柜所在 IDC 等简单关系，复杂一点就会有核心交换机、汇聚交换机、接入交换机以及机柜和服务器之间的级联关系，这个就相对复杂一些
+4、其实应该是 3.5 步，在上面信息的梳理过程中肯定就会遇到一些规划问题，比如，IP 地址段的规划，xx 网段用于 DB，xx 网段用于大数据、xx 网段用于业务应用等等，再比如同步要做的还有 xx 机柜用于做虚拟化宿主机、xx 机柜只放 DB 机器等等。
+以上信息梳理清楚，通过 ER 建模工具进行数据建模，再将以上的信息固化到 DB 中，一个资源层面的信息管理平台就基本成型了。但是，信息固化不是目的，也没有价值，只有信息动态流转起来才有价值（跟货币一样）。接下来我们可以做的事情：
+1、基于这些信息进行流程规范的建设，比如服务器的上线、下线、维修、装机等流程。同时，流程过程中状态的变更要同步管理起来。
+2、拓扑关系的可视化和动态展示，比如交换机与服务器之间的级联关系、状态（正常 or 故障）的展示等，这样可以很直观的关注到资源节点的状态。
+至此，从资源维度的信息梳理，以及基于这些信息的平台和流程规范建设也算是基本成型了。这个时候，以服务器简单示例，我们的视角是下面这样的：
+ 2.2 云时代的CMDB    云和k8s的出现以及DevOps的普及，开始了以应用为中心的CMDB构建</description>
+    </item>
+    
+    <item>
+      <title>DevOps系列：概述</title>
+      <link>https://cctrip.tech/posts/devops_series_intro/</link>
+      <pubDate>Sun, 05 Jul 2020 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/devops_series_intro/</guid>
+      <description>系列目录    《DevOps系列：开篇》
+《DevOps系列：概述》
+《DevOps系列：CMDB》
+《DevOps系列：CI/CD》
+《DevOps系列：监控》
+《DevOps系列：SRE》
+ 1. 介绍    DevOps大概起源于08到09年之间，最初的目的是要打破开发与运维之间的壁垒，2010年，The Agile Admin博客发布了《What is DevOps》给出了一个详细的DevOps定义，算是对DevOps有了一个初步的定义。不过，我这里还是引用一下wiki的定义：
+ DevOps（开发 Development 与运维 Operations 的组合词）是一种文化、一场运动或实践，强调在自动化软件交付流程及基础设施变更过程中，软件开发人员与其他信息技术（IT）专业人员彼此之间的协作与沟通。它旨在建立一种文化与环境，使构建、测试、软件发布得以快速、频繁以及更加稳定地进行。
+  2. 优势    传统的瀑布模型会带来很多沟通上的问题和成本，DevOps实际上是要来解决这些问题的。我们分别从工程上和角色上的优势来说一说
+2.1 基于DevOps的工程上的优势     DevOps的主要好处是可以更快地交付质量大大提高的软件。 根据行业的不同，可能还会有其他好处。大部分软件工程采用DevOps具有如下优势：
+  提升了可靠性
+  更快速的软件更新
+  减少故障恢复时间
+  更好的用户体验
+  更加高效
+  减少失败
+  降低风险
+  更好的质量
+  更短的开发周期</description>
+    </item>
+    
+    <item>
+      <title>DevOps系列：开篇</title>
+      <link>https://cctrip.tech/posts/devops_series/</link>
+      <pubDate>Wed, 01 Jul 2020 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/devops_series/</guid>
+      <description>系列目录    《DevOps系列：开篇》
+《DevOps系列：概述》
+《DevOps系列：CMDB》
+《DevOps系列：CI/CD》
+《DevOps系列：监控》
+《DevOps系列：SRE》
+ 1. 介绍    在Ops领域工作也接近8年了，个人也经历了从人工Ops&amp;ndash;&amp;gt;工具Ops&amp;ndash;&amp;gt;平台Ops的转变，最近想把自己的一些DevOps相关的学习和经验记录下来，整理成一个系列，算是对自己这么多年的工作经验的一个总结，也想对之后的发展想法做下自己的规划和判断。
+ 2. 当我们谈论Ops，我们在谈论什么    2.1 从开发模型说起    早期的软件开发模型一般采用瀑布式开发模型，该模型将软件过程划分成几个阶段，从需求到设计、开发、测试和运维，它的理念是软件开发的规模越来越大，必须以一种工程管理的方式来定义每个阶段，以及相应的交付产物和交付标准，以期通过一种重流程，重管控，按照计划一步步推进整个项目的交付过程。Ops处于软件交付的末端。那么，具体的Ops是什么呢？
+2.2 什么是运维(Ops)     运维(Ops)， 通常指IT运维（IT Operations）， 是指通过一系列步骤和方法，管理与维护线上服务（Online Service）或者产品 （Product）的过程。
+ 运维有着非常广泛的定义，在不同的公司不同的阶段代表不同的职责与定位，没有一个统一的标准。尤其是随着互联网的发展，运维的含义也在逐渐互联网化。互联网运维通常属于技术部门，与研发、测试、系统管理同为互联网产品的技术支撑，这种划分在国内和国外以及大小公司之间都会多少有一些不同。运维的重点在于系统运行的各种环境，从机房、网络、存储、物理机、虚拟机这些基础的架构，到数据库、中间件平台、云平台、大数据平台，偏重的也不是编程，而是对这类平台的使用和管理。运维的水平可以成为衡量一个公司（IT公司）技术实力的标准。随着软件行业和规模的不断发展，Ops也在不断的改进。
+2.3 Ops的发展历程    2.3.1 人工阶段    在这个阶段，所有运维问题，基本靠人工操作完成。这种情况下，系统规模不大，遇到的问题相对简单，大多集中在硬件、网络和系统层面，所以有一定操作系统或网络维护经验的人就可以搞定。
+2.3.2 脚本&amp;amp;工具阶段    一般绝大多数企业都会很快从第一阶段过渡到第二阶段，因为上一阶段的大量重复繁琐的操作，完全可以转化为脚本来实现，而不是每次都去敲一堆类似的命令。
+早期的运维主要以各种 shell 为主，所以很多运维如果会 shell 编写一些批处理脚本，就会很有竞争力了。再往后，我们大家所熟知的 Perl、Ruby、Python 等动态语言也被广泛应用于脚本工具的实现，特别是一些逻辑和场景相对复杂的自动化实现。不同的工具也被开发出现，例如ansible、chef、puppet等。
+2.3.3 流程&amp;amp;工具阶段    在该阶段，要面临更加复杂化的场景实现，比如做一次业务部署，运维同学可能要安装服务器，做系统配置变更，安装软件包、启停进程，然后再负载均衡上配置服务等等。这时，就需要有一个流程将一个个的脚本功能串联起来，同时还要有一些脚本执行结果校验及判断的过程。</description>
+    </item>
+    
+    <item>
+      <title>Go系列：并发</title>
+      <link>https://cctrip.tech/posts/go_series_conc/</link>
+      <pubDate>Tue, 07 Apr 2020 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/go_series_conc/</guid>
+      <description>系列目录    《Go系列：内存管理》
+《Go系列：调度器》
+《Go系列：并发》
+ 1. 介绍    2. 面向并发的内存模型     Go内存模型指定了一种条件，在这种条件下，可以保证在一个goroutine中读取变量可以观察到在不同goroutine中写入同一变量所产生的值。
+ 程序如果修改被多个协程同时访问的数据，那么必须串行化这些访问操作。
+为了保证串行化访问，可以使用golang的channel操作或者使用sync和sync/atomic包中的同步原语来保护数据。
+2.1 Happens Before    在单个goroutine中，读取和写入的行为必须像它们按照程序指定的顺序执行一样。也就是说，仅当重新排序不会改变语言规范所定义的该goroutine中的行为时，编译器和处理器才可以对单个goroutine中执行的读取和写入进行重新排序。由于此重新排序，一个goroutine观察到的执行顺序可能不同于另一个goroutine所察觉到的执行顺序。例如，如果一个goroutine执行a = 1； b = 2；另一个可能会在b的更新值之前观察b的更新值。
+为了指定读取和写入的要求，我们定义happens Before，Go程序中执行内存操作的部分顺序。如果事件e1happens before事件e2，那么我们说e2happens aftere1。同样的，如果e1不happens beforee2并且e1也不happens aftere2，那么我们说e1和e2happens concurrently。
+在单个goroutine中，事前发生顺序是程序表示的顺序。
+如果同时满足以下两个条件，则允许对变量v的读r观察对v的写w：
+ r does not happen before w. There is no other write w&#39; to v that happens after w but before r.  为了保证变量v的读取r观察到对v的特定写入w，请确保w是唯一允许r观察的写入。也就是说，如果同时满足以下两个条件，则保证r遵守w：
+ w happens before r.</description>
+    </item>
+    
+    <item>
+      <title>Go系列：调度器</title>
+      <link>https://cctrip.tech/posts/go_series_scheduler/</link>
+      <pubDate>Tue, 07 Apr 2020 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/go_series_scheduler/</guid>
+      <description>系列目录    《Go系列：内存管理》
+《Go系列：调度器》
+《Go系列：并发》
+ 1. 介绍    随着技术的不断发展，CPU也在不断发展，出现了多处理器、多核心、CPU缓存、NUMA架构等概念。为了最大化利用CPU的计算能力，软件也在不断发展，出现了并发和并行等概念。而为了支持并发和并行，就需要调度器，用于处理计算任务在不同CPU上的计算。我们主要从系统调度和语言层面的调度来说明。
+ 2. OS Scheduler    我们的的程序只是一系列机器指令，需要依次执行。为此，操作系统使用了线程的概念，线程的工作就是负责说明并按顺序执行分配给它的指令集。执行将不断进行，直到没有更多指令可以执行。
+在操作系统上，我们运行的每个程序都会创建一个进程，并且为每个进程分配一个初始线程。线程具有创建更多线程的能力。所有这些不同的线程彼此独立运行，并且调度决策是在线程级别而不是在进程级别做出的。线程可以同时运行(并发，每个任务运行在同一个的core上)，也可以并行运行(并行，每个任务运行在不同core上同时运行)。线程还维护自己的状态，以允许在本地安全和独立地执行指令。
+如果存在可以执行的线程时，OS Scheduler负责确保core不处于空闲状态。它还必须产生一种幻想，即所有可以执行的线程正在同时执行。在创建这种幻想的过程中，Scheduler需要优先运行优先级较高的线程，而不是运行优先级较低的线程。但是，具有较低优先级的线程并无法节省执行时间。Scheduler还需要通过做出快速而明智的决策来最大程度地减少调度延迟。
+ 2.1 执行指令    程序计数器(PC)有时也称为指令指针(IP)，它使线程可以跟踪要执行的下一条指令。在大多数处理器中，PC指向下一条指令，而不是当前指令。
+ 2.2 Thread状态     Waiting，这意味着线程已经停止执行并需要等待某些操作才能继续。这可能是由于诸如等待硬件(磁盘，网络)，操作系统(系统调用)或同步调用(原子，互斥体)之类的原因。这些类型的延迟是导致性能下降的根本原因。 Runnable ，这意味着线程需要获得cpu时间，这样它可以执行其分配的机器指令。如果您有很多需要cpu时间的线程，则线程必须等待更长的时间才能获得cpu时间。而且，随着更多线程争夺cpu时间，任何给定线程获得的cpu时间都将缩短。这种类型的调度延迟也可能是性能下降的原因 Executing，这意味着线程已放置在core上并正在执行其机器指令。与应用程序相关的工作已经完成。这是每个人都想要的状态。   2.3 工作类型    CPU-Bound，这项工作永远不会造成线程可能处于等待状态的情况。这是不断进行计算的工作。计算Pi到第N位的线程将是CPU-Bound的。
+IO-Bound，这项工作导致线程进入等待状态。这项工作包括请求通过网络访问资源或对操作系统进行系统调用。需要访问数据库的线程将是IO-Bound。我将包括同步事件(互斥量，原子)等导致线程进入等待状态的事件都归为此类。
+ 2.4 上下文切换    抢占式调度
+首先，这意味着在任何给定时间选择要运行的线程时，调度程序都是不可预测的。线程优先级和事件(例如在网络上接收数据)一起使得无法确定调度程序将选择做什么以及何时执行。
+其次，这意味着您绝不能基于自己幸运的经历但不能保证每次都发生的某些感知行为来编写代码。让自己思考很容易，因为我已经看到这种情况以1000次相同的方式发生，这是有保证的行为。如果需要在应用程序中确定性，则必须控制线程的同步和编排。
+ 在内核上交换线程的物理行为称为上下文切换。当调度程序从core中拉出一个excuting线程并将其替换为可runnable线程时，就会发生上下文切换。从运行队列中选择的线程将进入excuting状态。被拉出的线程可以移回runnable状态(如果它仍具有运行能力)或waitting状态(如果由于IO-Bound类型的请求而被替换)。
+上下文切换被认为是昂贵的，因为在core上和在core外交换线程都需要时间。上下文切换期间的延迟等待时间量取决于不同的因素，但花费约1000到1500纳秒的时间并非没有道理。虑到硬件应该能够合理地(平均)在每核每纳秒执行12条指令，上下文切换可能会花费大约12000至18k的延迟指令。本质上，您的程序在上下文切换期间将失去执行大量指令的能力。
+如果您有一个专注于IO-Bound工作的程序，那么上下文切换将是一个优势。一旦一个线程进入等待状态，另一个处于可运行状态的线程就会代替它。这使核心始终可以工作。这是调度的最重要方面之一。如果有工作要做(线程处于可运行状态)，请不要让core闲置。
+如果您的程序专注于CPU-Bound工作，那么上下文切换将成为性能噩梦。由于Thead总是有工作要做，因此上下文切换将阻止该工作的进行。这种情况与IO-Bound工作负载形成鲜明对比。
+ 2.5 少即是多    制定调度决策时，scheduler还需要考虑和处理更多的事情。您可以控制在应用程序中使用的线程数。当要考虑的线程更多，并且发生IO-Bound工作时，就会出现更多的混乱和不确定性行为。任务需要更长的时间来计划和执行。</description>
+    </item>
+    
+    <item>
+      <title>Go系列：内存管理</title>
+      <link>https://cctrip.tech/posts/go_series_mem/</link>
+      <pubDate>Wed, 01 Apr 2020 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/go_series_mem/</guid>
+      <description>系列目录    《Go系列：内存管理》
+《Go系列：并发》
+ 1.介绍     内存管理是控制和协调软件应用程序访问计算机内存的方式的过程。
+ 这是软件工程中一个严肃的话题，它使一些人感到困惑，并且对某些人来说是一个黑盒。
+2. 内存管理    当软件在计算机上的目标操作系统上运行时，它需要访问计算机RAM（随机存取存储器）以执行以下操作：
+ 加载自己需要执行的字节码 存储执行的程序使用的数据值和数据结构 加载程序执行所需的所有运行时系统  当软件程序使用内存时，除了用于加载字节码的空间外，还有两个内存区域，即stack内存和heap内存。
+2.1 Stack    Stack用于静态内存分配，顾名思义，它是一个后进先出（LIFO）堆栈（将其视为盒子堆栈）。
+ 由于这种性质，由于不需要查找，因此从堆栈中存储和检索数据的过程非常快，您只需从其最上面的块中存储和检索数据即可。 但这意味着存储在堆栈中的任何数据都必须是有限且静态的（数据大小在编译时是已知的）。 这是函数的执行数据作为堆栈帧存储的位置（因此，这是实际的执行堆栈）。每个帧都是一个空间块，用于存储该功能所需的数据。例如，每当一个函数声明一个新变量时，它就被“压入”到栈顶块中。然后，每次退出函数时，都会清除最顶层的块，从而清除该函数压入堆栈的所有变量。由于此处存储的数据的静态性质，可以在编译时确定这些值。 多线程应用程序每个线程可以有一个堆栈。 堆栈的内存管理非常简单明了，并且由操作系统完成。 存储在堆栈中的典型数据是局部变量（值类型或原语，原语常量），指针和函数框。 这是您会遇到堆栈溢出错误的地方，因为与堆相比，堆栈的大小受到限制。 对于大多数语言，可以存储在堆栈中的值的大小是有限制的。   2.2 Heap    堆用于动态内存分配，与堆栈不同，程序需要使用指针在堆中查找数据（将其视为大型的多级库）。
+ 它比堆栈慢，因为查找数据的过程涉及更多，但它可以存储比堆栈更多的数据。 这意味着可以在此处存储具有动态大小的数据。 堆在应用程序的线程之间共享。 由于其动态特性，堆管理起来比较棘手，这是大多数内存管理问题的起因，这也是该语言自动内存管理解决方案的起因。 存储在堆中的典型数据是全局变量，引用类型（如对象，字符串，映射和其他复杂数据结构）。 如果您的应用程序尝试使用比分配的堆更多的内存，这就是您遇到内存不足错误的地方（尽管这里还有许多其他因素在起作用，例如GC，压缩）。 通常，对堆中可以存储的值的大小没有限制。当然，为应用程序分配多少内存是有上限的。   2.3 为什么如此重要    与硬盘驱动器不同，RAM不是无限的。 如果程序继续消耗内存而不释放内存，最终它将耗尽内存并崩溃，甚至使操作系统崩溃。 因此，软件程序不仅会继续使用自己喜欢的RAM，还会导致其他程序和进程的内存不足。 因此，大多数编程语言都没有提供让软件开发人员解决此问题的方法，而是提供了执行自动内存管理的方法。 当我们谈论内存管理时，我们主要是在谈论管理堆内存。</description>
+    </item>
+    
+    <item>
+      <title>Nginx匹配机制总结</title>
+      <link>https://cctrip.tech/posts/nginx_match/</link>
+      <pubDate>Thu, 06 Feb 2020 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/nginx_match/</guid>
+      <description>背景    Nginx是一个当前主流的HTTP服务器和反向代理服务器，很多做WEB相关的同学基本都会用到，很多云厂商的七层负载均衡器也基本都是基于nginx实现的，个人在工作过程也算是经常接触，这篇文章主要想总结一下nginx的匹配机制，主要分为两块，一块是server的匹配，一块是location的匹配。
+ Server匹配机制    配置过nginx的都知道，在一个http模块中是可以配置多个server模块的，并且多个server模块是可以配置相同的监听端口的，下面是一个简单的server配置例子：
+server { listen 80; server_name example.org www.example.org; ... } server { listen 80; server_name example.net www.example.net; ... } server { listen 80; server_name example.com www.example.com; ... } 当我们对nginx发起http请求后，nginx会拿到http请求中对应的 &amp;quot;Host&amp;quot; 头部跟server模块中的server_name进行匹配，根据匹配的server结果进入具体的server模块处理http请求。那么，它具体的匹配机制是怎样的呢？
+首先，我们先简单了解下nginx内部server的相关结构，
+其中listen和server_name在配置文件中的写法有：
+ listen(可带default_server标识)  ip:port ip(监听80端口) port(监听所有地址)   server_name  www.example.com(完整域名) *.example.com(带通配符开头的域名) www.example.*(带通配符结尾的域名) ~^(www.)?(.+)$(正则写法的域名)    代码中的具体结构：
+/************************************************************************************* 伪结构体示例 (port) --&amp;gt; address(ip:port) --&amp;gt; server(example.com) --&amp;gt; server(example.net) 一个server模块的唯一标识是由address(listen配置)和server(server_name配置)组成 *************************************************************************************/ /* address 结构体，具有相同的ip:port */ struct ngx_http_addr_conf_s { /* default_server 存储的是listen配置里带default_server标识的server， 若没有就为顺序中的第一个server */ ngx_http_core_srv_conf_t *default_server; ngx_http_virtual_names_t *virtual_names; unsigned ssl:1; unsigned http2:1; unsigned proxy_protocol:1; }; /* virtual_name结构体，存储hash_combined和正则写法的server_name */ typedef struct { ngx_hash_combined_t names; ngx_uint_t nregex; ngx_http_server_name_t *regex; } ngx_http_virtual_names_t; /* hash_combined结构体，存储完成域名、通配符开头、通配符结尾的server_name */ typedef struct { ngx_hash_t hash; ngx_hash_wildcard_t *wc_head; ngx_hash_wildcard_t *wc_tail; } ngx_hash_combined_t; 通过结构体，我们来说明下server的匹配规则：</description>
+    </item>
+    
+    <item>
+      <title>谈谈文件描述符</title>
+      <link>https://cctrip.tech/posts/file_descriptor/</link>
+      <pubDate>Sun, 29 Dec 2019 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/file_descriptor/</guid>
+      <description>概念    wiki解释，文件描述符在形式上是一个非负整数。实际上，它是一个索引值，指向内核为每一个进程所维护的该进程打开文件的记录表。当程序打开一个现有文件或者创建一个新文件时，内核向进程返回一个文件描述符。在程序设计中，一些涉及底层的程序编写往往会围绕着文件描述符展开。
+一个文件描述符是一个数字，唯一标识一个在计算机的操作系统打开的文件。它描述了数据资源，以及如何访问该资源。
+当程序要求打开文件（或其他数据资源，例如网络套接字）时，内核：
+ 授予访问权限。 在全局文件表中创建一个条目。 向软件提供该条目的位置。  该描述符是唯一的非负整数。系统上每个打开的文件至少存在一个文件描述符。
+ 细节    对于内核，所有打开的文件均由文件描述符引用。文件描述符是一个非负数。当我们打开现有文件或创建新文件时，内核将文件描述符返回到进程。当我们想读取或写入文件时，我们用文件描述符标识文件。
+每个Linux进程（也许是守护程序除外）都应该具有三个标准的POSIX文件描述符：
+   POSIX常数名称 文件描述符 描述     STDIN_FILENO 0 标准输入   STDOUT_FILENO 1 标准输出   STDERR_FILENO 2 标准误差    有三个“系统文件表”：有一个文件描述符表，它将文件描述符（小整数）映射到打开的文件表中的条目。打开文件表中的每个条目（除其他事项外）还包含文件偏移量和指向内存中inode表的指针。在打开的文件表中，每个open（）调用都有一个文件表条目，如果文件描述符是dup（）ed或fork（）ed，则共享该条目。
+我们使用来自维基百科的示例来显示这些表的工作方式。这是一张照片： 单个进程的文件描述符，文件表和索引节点表。请注意，多个文件描述符可以引用相同的文件表条目（例如，由于dup系统调用），并且多个文件表条目可以依次引用同一个索引节点（如果已多次打开；则该表之所以仍然简化，是因为它通过文件名来表示索引节点，即使索引节点可以具有多个名称也是如此。文件描述符3没有引用文件表中的任何内容，表明它已关闭。
+理解具体情况，需要了解由内核维护的 3 个数据结构：
+ 进程级 文件描述符表 ( file descriptor table ) 系统级 打开文件表 ( open file table ) 文件系统 i-node表 ( i-node table )  这 3 个数据结构之间的关系如图所示：</description>
+    </item>
+    
+    <item>
+      <title>Linux PAM模块</title>
+      <link>https://cctrip.tech/posts/linux_pam/</link>
+      <pubDate>Thu, 05 Sep 2019 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/linux_pam/</guid>
+      <description>概念    Linux-PAM（Pluggable Authentication Modules for Linux）是一套共享库,使本地系统管理员可以随意选择程序的认证方式。换句话说，不用(重新编写)重新编译一个包含PAM功能的应用程序，就可以改变它使用的认证机制，这种方式下，就算升级本地认证机制,也不用修改程序。
+ 工作机制    当应用程序希望与PAM交互以处理事件时，他们必须包括libpam，该libpam允许通过库提供的API进行通信。 当PAM看到必须处理的新事件时，它将查看/etc/pam.d中的相关配置文件，并确定在某些阶段必须使用哪些模块。
+ /etc/pam.d配置文件介绍    配置文件语法
+type control module-path module-arguments 配置文件分为四列
+ 第一列代表模块类型 第二列代表控制标记 第三列代表模块路径 第四列代表模块参数  类型    类型 是规则对应的管理组。它用于指定后续模块要与哪个管理组关联。
+目前有四种类型:
+  account
+此模块类型执行基于非身份验证的帐户管理。 通常用于限制/允许对服务的访问，例如是否允许登录,是否达到最大用户数,或是root用户是否允许在这个终端登录等。
+  auth
+此模块为用户验证提供两方面服务。让应用程序提示用户输入密码或者其他标记，确认用户合法性；通过他的凭证许可权限，设定组成员关系或者其他优先权。
+  password
+此模块用于控制用户更改密码的全过程。
+  session
+此模块处理为用户提供服务之前/后需要做的些事情。包括：开启/关闭交换数据的信息，监视目录等，设置用户会话环境等。也就是说这是在系统正式进行服务提供之前的最后一道关口。
+  如果在类型前加一个短横线 -，就表示如果找不到这个模块，导致无法被加载时，这一事件不会被记录在日志中。这个功能适用于那些认证时非必需的、安装时可能没被安装进系统的模块。
+控制标记    流程栈（stack）
+它是认证时执行步骤和规则的堆叠。在某个服务的配置文件中，它体现在了配置文件中的自上而下的执行顺序中。栈是可以被引用的，即在一个栈（或者流程）中嵌入另一个栈。
+控制标记 规定如何处理PAM模块鉴别认证的结果，简而言之就是鉴别认证成功或者失败之后会发生什么事，如何进行控制。一般有两种形式，一种是比较常见的“关键字”方式，另一种则是用方括号（[]）包含的“value =action”方式。</description>
+    </item>
+    
+    <item>
+      <title>理解TCP协议</title>
+      <link>https://cctrip.tech/posts/deep_tcp/</link>
+      <pubDate>Wed, 08 Aug 2018 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/deep_tcp/</guid>
+      <description>1. 介绍    TCP协议是个复杂的东西，但是对学习网络知识也好，排查网络问题也好，优化网络性能也是，又是一个不得不啃的东西。自己也反反复复的看了不少文章，书籍和RFC文档，这次，想总结一下自己这些年对TCP的理解，方便后续查阅。
+1.1 TCP是什么？    我们知道，IP协议是不可靠的，它不保证IP数据报文能成功达到目的地，它只提供最好的传输服务。而TCP的出现就是为了在IP协议不可靠的传输上面提供可靠的传输服务。
+ wiki上的定义，TCP是在通过IP网络进行通信的主机上运行的应用程序之间，提供可靠，有序且经过错误检查的八位位组（字节）流交付。
+ 在RFC 793中，定义了为了实现TCP服务，需要做什么：
+  Basic data transfer
+TCP通过将一定量的字节打包成在internet系统上传输的分片，能够在用户之间在两个方向上传输连续的字节流。通常情况下，TCPs决定什么时候阻塞以及前推数据。有时候用户需要确保他们所提交给TCP的所有数据都被传输。基于这个目的，定义了push功能。为了确认提交给TCP的数据报确实被传送了，发送用户指示数据必须被推给接收用户。Push导致了TCPs立即前推和投递数据给接收者。确切的push点对接收用户可能不可见，且push功能不提供一个记录边界标识。
+  Reliability
+为确保可靠性，TCP必须能解决由通讯网络造成的数据损坏、丢失、重复、或者乱序问题。TCP通过给每个字节分配序列号，并要求接收者必须确认(ACK)的机制来达到这个目的。(确认机制)，如果在超时时间间隔内没有收到ACK，将重传该”数据“。（重传机制）。对于接收方而言，序列号用来对可能接收到的乱序的、重复的数据段进行正确的排序并且消除重复数据。对于损坏的数据而言，通过在每个传输的数据段中添加checksum，并且在接收端进行检查来进行丢弃处理。
+  Flow control
+TCP为接受方提供了一种管理发送方发送数据量大小的机制。通过在每次返回确认信息（ACK）的时候增加一个窗口，这个窗口表示接收方最后一次成功接收之后还可以接收的字节数量。
+  Multiplexing
+为了允许在一个单独的主机里多个进程同时使用TCP通信机制，TCP提供了一套地址和端口。从internet通信层同网络和宿主地址连接，这形成了一个socket。一对socket标识了一个连接。也就是说，一个socket可能同时被使用在多个连接中。绑定端口到进程被每个主机单独处理。是，将常用的进程（如“logger”或者时间服务）隶属于众所皆知的socket被证明是有用的。这些服务就可以通过已知的地址获取到。建立和学习其它进程的端口地址可能包括更加动态的机制。
+  Connections
+上面描述的可靠性和流量控制机制要求所有的TCP为每个数据流发起和维护某些状态信息。这些信息的结合体，包括sockets，系列号，和窗口大小，被称为一个连接。每个连接被一套指定两端的socket唯一指定。当两个进程需要通信的时候，他们的TCPs必须首先建立一个连接（在每一端初始化状态信息）。当通信完成的时候，连接终止或者关闭以释放资源用于其它用途。由于连接必须在不可靠的主机和不可靠的internet通信系统上建立，一个带有基于时钟的系列号的握手机制被用来避免连接的错误初始化。
+  Precedence and Security
+TCP用户可以指示通信的安全性和优先级。当这些特性不需要的时候，规定采用缺省值。
+  1.2 数据封装    首先，我们要知道，真实数据是通过层层封装后传输出去的，每一层都会添加自己的协议信息到header里面加上数据形成新的数据&amp;quot;包&amp;quot;，方便对方解析。接下来，我们来了解TCP的相关数据信息。
+ 2. TCP基本信息    2.1 Header    在TCP传输中，是以段(segment)为一个单位进行传输的，一个TCP段由header和data部分组成，header由10个固定字段(共20字节)和一个可选扩展字段组成：
+  Source port (16 bits)</description>
+    </item>
+    
+    <item>
+      <title>理解SSL/TLS协议</title>
+      <link>https://cctrip.tech/posts/tls/</link>
+      <pubDate>Sun, 08 Jan 2017 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/tls/</guid>
+      <description>背景    早期我们在访问web时使用HTTP协议，该协议在传输数据时使用明文传输，明文传输带来了以下风险：
+ 信息窃听风险，第三方可以获取通信内容 信息篡改风险，第三方可以篡改通信内容 身份冒充风险，第三方可以冒充他人身份参与通信  为了解决明文传输所带来的风险，网景公司在1994年设计了SSL用于Web的安全传输协议，这是SSL的起源。IETF将SSL进行标准化，1999年公布了第一版TLS标准文件。随后又公布了 RFC 5246（2008年8月）与 RFC 6176 （2011年3月）。该协议在web中被广泛应用。
+ SSL/TLS协议    TLS（Transport Layer Security，传输层安全协议），及其前身SSL（Secure Sockets Layer，安全套接层）是一种安全协议，目的是为互联网通信，提供安全及数据完整性保障。
+TLS协议使用以下三种机制为信息通信提供安全传输：
+ 隐秘性，所有通信都通过加密后进行传播 身份认证，通过证书进行认证 可靠性，通过校验数据完整性维护一个可靠的安全连接   以TLS1.2为例说明TLS协议    TLS协议由TLS Record Protocol和TLS Handshake Protocol两层协议组成
+TLS Record Protocol    该协议提供了连接安全的两个基本特性：
+  连接私有
+对称密码用于数据加密，这种对称加密是为每条连接唯一生成的并基于另一个人协商的秘密协议
+  连接可靠
+消息传输包括一条消息 使用密钥MAC进行完整性检查，安全哈希函数（例如， SHA-1等）用于MAC计算。
+   TLS Handshake Protocol    该协议提供了连接安全的三个基本特性：
+ 可以使用非对称身份验证对等方的身份，或者 公钥，密码学等 共享密钥的协商是安全的 谈判可靠   一个TLS握手协议一般涉及以下步骤：</description>
+    </item>
+    
+    <item>
+      <title>谈谈HTTP</title>
+      <link>https://cctrip.tech/posts/http/</link>
+      <pubDate>Sun, 29 May 2016 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/http/</guid>
+      <description>写在前面    如今网络已经无处不在，人们通过网络获取浏览各种信息，其中，大部分都是通过浏览器访问各种网页来获取我们想要的信息，那么浏览器与网页(服务端)究竟是如何通信的呢？这就得从HTTP协议说起了，浏览器获取网页信息都是基于HTTP协议来处理的。
+ 概念    HTTP（HyperText Transfer Protocol，超文本传输协议）是互联网上应用最为广泛的一种网络协议。设计HTTP最初的目的是为了提供一种发布和接收HTML页面的方法。通过HTTP或者HTTPS协议请求的资源由统一资源标识符（Uniform Resource Identifiers，URI）来标识。HTTP是一个应用层协议，由请求和响应构成，是一个标准的客户端服务器模型。其具有如下特点：
+  支持客户/服务器模式。
+  简单快速：客户向服务器请求服务时，只需传送请求方法和路径。请求方法常用的有GET、HEAD、POST。每种方法规定了客户与服务器联系的类型不同。由于HTTP协议简单，使得HTTP服务器的程序规模小，因而通信速度很快。
+  灵活：HTTP允许传输任意类型的数据对象。正在传输的类型由Content-Type加以标记。
+  无连接：无连接的含义是限制每次连接只处理一个请求。服务器处理完客户的请求，并收到客户的应答后，即断开连接。采用这种方式可以节省传输时间。
+  无状态：HTTP协议是无状态协议。无状态是指协议对于事务处理没有记忆能力。缺少状态意味着如果后续处理需要前面的信息，则它必须重传，这样可能导致每次连接传送的数据量增大。另一方面，在服务器不需要先前信息时它的应答就较快
+  PS：尽管TCP/IP协议是互联网上最流行的应用，HTTP协议中，并没有规定必须使用它或它支持的层。事实上，HTTP可以在任何互联网协议上，或其他网络上实现。HTTP假定其下层协议提供可靠的传输。因此，任何能够提供这种保证的协议都可以被其使用。因此也就是其在TCP/IP协议族使用TCP作为其传输层。
+ 工作流程    HTTP协议的通信过程永远是客户端发起请求(request)，服务器回送响应(respone)，如下图所示：
+一个完整的HTTP操作称为一个事务，其流程可分为四步：
+  建立连接(TCP三次握手)
+  客户端发送一个请求报文给服务器
+  服务器响应对应信息
+  客户端接收信息，然后断开连接
+   请求和响应详解    请求报文      请求行：由请求方法、URL和HTTP版本组成
+eg：GET /index.html HTTP/1.1
+  请求方法</description>
+    </item>
+    
+    <item>
+      <title>理解系统启动过程</title>
+      <link>https://cctrip.tech/posts/system_start/</link>
+      <pubDate>Sat, 21 May 2016 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/system_start/</guid>
+      <description>前言    Linux是一种自由和开放源代码的类UNIX操作系统。该操作系统的内核由林纳斯·托瓦兹在1991年10月5日首次发布。在加上用户空间的应用程序之后，成为Linux操作系统。Linux是自由软件和开放源代码软件发展中最著名的例子。
+接触Linux的时间也不算短了，一直都是直接使用Linux操作系统进行一些工作，很少去了解系统从开机到能使用的整个过程，感觉有需要好好理解下整个系统的启动过程，故写这篇博客加深一下理解。
+ 启动过程    先通过一张图来简单了解下整个系统启动的流程，整个过程基本可以分为POST&amp;ndash;&amp;gt;BIOS&amp;ndash;&amp;gt;MBR(GRUB)&amp;ndash;&amp;gt;Kernel&amp;ndash;&amp;gt;Init&amp;ndash;&amp;gt;Runlevel。下面会详细说明每个过程的作用。
+  BIOS
+BIOS(Basic Input/Output System)，基本输入输出系统，该系统存储于主板的ROM芯片上，计算机在开机时，会最先读取该系统，然后会有一个加电自检过程，这个过程其实就是检查CPU和内存，计算机最基本的组成单元(控制器、运算器和存储器)，还会检查其他硬件，若没有异常就开始加载BIOS程序到内存当中。详细的BIOS功能，这边就不说了，BIOS主要的一个功能就是存储了磁盘的启动顺序，BIOS会按照启动顺序去查找第一个磁盘头的MBR信息，并加载和执行MBR中的Bootloader程序，若第一个磁盘不存在MBR，则会继续查找第二个磁盘(PS：启动顺序可以在BIOS的界面中进行设置)，一旦BootLoader程序被检测并加载内存中，BIOS就将控制权交接给了BootLoader程序。
+  MBR
+MBR(Master Boot Record)，主引导记录，MBR存储于磁盘的头部，大小为512bytes，其中，446bytes用于存储BootLoader程序，64bytes用于存储分区表信息，最后2bytes用于MBR的有效性检查。
+  GRUB
+GRUB(Grand Unified Bootloader)，多系统启动程序，其执行过程可分为三个步骤：
+  Stage1：这个其实就是MBR，它的主要工作就是查找并加载第二段Bootloader程序(stage2)，但系统在没启动时，MBR根本找不到文件系统，也就找不到stage2所存放的位置，因此，就有了stage1_5
+  Stage1_5：该步骤就是为了识别文件系统
+  Stage2：GRUB程序会根据/boot/grub/grub.conf文件查找Kernel的信息，然后开始加载Kernel程序，当Kernel程序被检测并在加载到内存中，GRUB就将控制权交接给了Kernel程序。
+PS：实际上这个步骤/boot还没被挂载，GRUB直接识别grub所在磁盘的文件系统，所以实际上应该是/grub/grub.conf文件，该配置文件的信息如下：
+grub.conf:
+    #boot=/dev/sda
+default=0 #设定默认启动的title的编号，从0开始
+timeout=5 #等待用户选择的超时时间
+splashimage=(hd0,0)/boot/grub/splash.xpm.gz #GRUB的背景图片
+hiddenmenu #隐藏菜单
+title CentOS (2.6.18-194.el5PAE) #内核标题
+root (hd0,0) #内核文件所在的设备 kernel /vmlinuz-2.6.18-194.el5PAE ro root=LABEL=/ #内核文件路径以及传递给内核的参数 initrd /initrd-2.6.18-194.el5PAE.img #ramdisk文件路径 ```    Kernel</description>
+    </item>
+    
+    <item>
+      <title>谈谈DNS</title>
+      <link>https://cctrip.tech/posts/dns/</link>
+      <pubDate>Sat, 21 May 2016 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/dns/</guid>
+      <description>写在前面    目前，我们大部分的网络通信都是基于TCP/IP协议的，而TCP/IP又基于IP地址作为唯一标识进行通信，随着需要记忆的IP地址数量的增多，肯定会超出我们的记忆能力范围，但如果使用一种利于人们的记忆的方式，如域名，例如&amp;quot;www.google.com&amp;quot;，我们便可以轻松的记忆这种方式的标识，而不是繁杂的数字。而DNS(域名系统)就是为了可以使用这种方式提供服务的。
+ 概念    DNS(Domain Name System)，域名系统，它是因特网的一项服务。它作为将域名和IP地址相互映射的一个分布式数据库，能够使人更方便地访问互联网。DNS使用TCP和UDP端口53。当前，对于每一级域名长度的限制是63个字符，域名总长度则不能超过253个字符。
+DNS Domain Namespace，DNS域命名空间，是一种分层树状结构，其格式如下:&amp;ldquo;www.google.com&amp;rdquo;,以点&amp;quot;.&amp;ldquo;为分隔。结构如图所示：
+  根域：绝对域名(FQDN)，以点&amp;rdquo;.&amp;ldquo;结尾的域名
+  顶级域：用来指示某个国家/地区或组织使用的名称的类型名称，例如.com
+  二级域：个人或组织在因特网上使用的注册名称，例如google.com
+  子域：已注册的二级域名派生的域名，一般就是网站名，例如www.google.com
+  主机名：标识网络上的特定计算机，例如h1.www.google.com
+  DNS资源记录：(即映射关系，通常由域名管理员进行配置)，常见类型如下：
+  SOA：起始授权机构
+  NS：名称服务器
+  MX：邮件服务器
+  A：IP地址(最常用，映射IP地址)
+  CNAME：别名(较常用，映射到其他域名)
+   DNS工作原理    当我们请求一个域名时，会通过DNS服务器将域名解析成IP访问最终的主机，那么，DNS是如何查询到域名所对应的IP并返回给我们的呢？请工作机制如图所示：
+当我们请求一个域名时，直到获取到IP地址，整个过程是如何工作的？以请求www.codecc.xyz为例：
+  首先，我们的主机会去查找本地的hosts文件和本地DNS解析器缓存，如果hosts文件和本地DNS缓存存在www.codecc.xyz和IP的映射关系，则完成域名解析，请求该IP地址，否则进入第二步。
+  当hosts和本地DNS解析器缓存都没有对应的网址映射关系，则会根据机器(/etc/reslove.conf)配置的本地DNS服务器进行查询，此服务器收到查询时，如果要查询的域名在本地配置区域资源或者缓存中存在映射关系，则跳到步骤9，将解析结果直接返回给客户机。
+  PS：一二步骤为递归查询，其余步骤为迭代查询
+ 若本地DNS服务器不存在该域名的映射关系，就把请求发送至13台根DNS服务器。
+  根DNS服务器会判断这个域名(.</description>
+    </item>
+    
+    <item>
+      <title>WEB安全之CSP</title>
+      <link>https://cctrip.tech/posts/webcsp/</link>
+      <pubDate>Fri, 20 May 2016 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/webcsp/</guid>
+      <description>概念    内容安全策略(Content-Security-Policy，CSP)：是一种web应用技术用于帮助缓解大部分类型的内容注入攻击，包括XSS攻击和数据注入等，这些攻击可实现数据窃取、网站破坏和作为恶意软件分发版本等行为。该策略可让网站管理员指定客户端允许加载的各类可信任资源。
+ 浏览器支持    统计来源：caniuse.com/contentsecuritypolicy &amp;amp; Mozilla
+ 指令参考    Content-Security-Policy 响应头的值可配置一个或多个，多个指令以分号;隔开。
+   指令 示例 描述     default-src &amp;lsquo;self&amp;rsquo; cdn.example.com 默认配置，若其他指令没有配置，都以此配置的规则为准   script-src &amp;lsquo;self&amp;rsquo; js.example.com 定义允许加载的JavaScript来源   style-src &amp;lsquo;self&amp;rsquo; css.example.com 定义允许加载的样式表来源   img-src &amp;lsquo;self&amp;rsquo; img.example.com 定义允许加载的图片来源   connect-src &amp;lsquo;self&amp;rsquo; 适用于XMLHttpRequest(AJAX),WebSocket或EventSource，当为不允许的来源，浏览器返回一个400的状态码。   font-src font.example.com 定义允许加载的字体来源   object-src &amp;lsquo;self&amp;rsquo; 定义允许加载的插件来源.eg,&amp;lt;object&amp;gt;,&amp;lt;embed&amp;gt;或&amp;lt;applet&amp;gt;   media-src media.</description>
+    </item>
+    
+    <item>
+      <title>初识网络通信</title>
+      <link>https://cctrip.tech/posts/network_comm/</link>
+      <pubDate>Wed, 18 May 2016 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/network_comm/</guid>
+      <description>写在前面    在计算机刚出现的时候，只能在本机进行一些运算处理，想将一台计算机中的数据转移到另一台计算机中，需要通过外部存储介质来传输，例如磁带、软盘。而网络技术的出现，使得计算机间可以通过一些传输介质(网线、光纤等)，实现快速的数据传输和信息交互。如今，网络已无处不在，那么，计算机之间究竟是如何通信的呢？下面会通过一些基础的网络知识来简单理解计算机之间的通信过程。
+ 网络通信模型     网络通信模型是一种概念模型和框架，旨在使各种计算机在世界范围内互连为网络。其中有OSI七层模型和TCP/IP四层模型，现在大部分网络通信都是以TCP/IP四层模型为基础的。
+ 它们的对应层次如下图：
+ OSI有七层：从上到下依次为应用层、表示层、会话层、传输层、网络层、数据链路层、物理层
+  TCP/IP有四层：从上到下依次为应用层、传输层、互连层(网络层)、网络接口层(链路层)。
+ 因为目前大部分TCP/IP模型，所以就以TCP/IP为例，我们来理解下数据间的通信，下图是两台计算机通信的数据的传输过程：
+ 数据封装    在详细了解TCP/IP每一层各自的作用前，先要理解数据封装的概念，数据在通过网络接口传送出去前，会经过层层封装，每层都会在前面的基础上添加自己的信息，在传输到对方计算机后，又会被层层进行解封装后得到最后的数据。其过程如下图所示：
+ TCP/IP参考模型     TCP/IP参考模型是一个抽象的分层模型，这个模型中，所有的TCP/IP系列网络协议都被归类到4个抽象的&amp;quot;层&amp;quot;中。每一抽象层创建在低一层提供的服务上，并且为高一层提供服务。 完成一些特定的任务需要众多的协议协同工作，这些协议分布在参考模型的不同层中的，因此有时称它们为一个协议栈。
+  应用层(Application Layer)     该层包括所有和应用程序协同工作，利用基础网络交换应用程序专用的数据的协议。 应用层是大多数普通与网络相关的程序为了通过网络与其他程序通信所使用的层。这个层的处理过程是应用特有的；数据从网络相关的程序以这种应用内部使用的格式进行传送，然后被编码成标准协议的格式。
+  常见的应用层协议有HTTP、FTP、DNS、SNMP(基于UDP)   传输层(Transport Layer)     主要为两台主机上的应用程序提供端到端的通信，包括TCP协议（传输控制协议）和UDP（用户数据报协议）。 端口号由此层提供，且在一台计算机中具有唯一性。
+  UDP为应用层提供一种非常简单的服务。它只是把称作数据报的分组从一台主机发送到另一台主机，但并不保证该数据报能到达另一端。任何必需的可靠性必须由应用层来提供。
+  TCP为两台主机提供高可靠性的数据通信。它所做的工作包括把应用程序交给它的数据分成合适的小块交给下面的网络层，确认接收到的分组，设置发送最后确认分组的超时时钟等,由于运输层提供了高可靠性的端到端的通信，因此应用层可以忽略所有这些细节。
+ 因为TCP是一种面向连接的协议，所以两个在使用TCP的应用在彼此交换数据前必须先建立一个TCP连接，也就是有名的TCP三次握手，如下图所示：
+建立连接协议过程：（TCP三次握手协议）
+ 客户端发送一个SYN段指明客户打算连接的服务器的端口，以及初始序号（ISN）。 服务器发回包含服务器的初始序号的SYN报文段作为应答。同时，将确认序号设置为客户的ISN加1以对客户的SYN报文段进行确认。一个SYN占用一个序号。 客户将确认序号设置为服务器的ISN加1以对服务器的SYN报文段进行确认。   网络层(Internet Layer)     处理分组在网络中的活动。网络层协议包括IP协议（网际协议），ICPM协议（Internet互联网控制报文协议），以及IGMP协议（Internet组管理协议），其中的IP协议身是TCP/IP协议簇中最为核心的协议。IP提供的是不可靠、无连接的数据包传送服务。</description>
+    </item>
+    
+    <item>
+      <title>About Mess</title>
+      <link>https://cctrip.tech/about/</link>
+      <pubDate>Fri, 02 Aug 2019 11:04:49 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/about/</guid>
+      <description>About CC     Software Developer Networking Engineer  Working Experience     CF (2019-current) DevOps Engineer CNC (2015-2018) Operations Engineer(SA)  Focus &amp;amp; Interests     Linux Networking Cloud Native Golang, Shell DevOps  </description>
+    </item>
+    
+  </channel>
 </rss>

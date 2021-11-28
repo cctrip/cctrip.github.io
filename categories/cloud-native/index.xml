@@ -1,77 +1,324 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-    <channel>
-        <title>Cloud Native - Category - CC&#39;s Trip</title>
-        <link>https://cctrip.github.io/categories/cloud-native/</link>
-        <description>Cloud Native - Category - CC&#39;s Trip</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 05 Apr 2021 17:55:28 &#43;0800</lastBuildDate><atom:link href="https://cctrip.github.io/categories/cloud-native/" rel="self" type="application/rss+xml" /><item>
-    <title>K8S设计系列：架构</title>
-    <link>https://cctrip.github.io/k8s_design_arch/</link>
-    <pubDate>Mon, 05 Apr 2021 17:55:28 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://cctrip.github.io/k8s_design_arch/</guid>
-    <description><![CDATA[系列目录 《K8S设计系列：开篇》 《K8S设计系列：架构》 1. 介绍 本篇要介绍的是k8s的整体架构，以及为什么要这么设计。 Kubernetes是生]]></description>
-</item><item>
-    <title>K8S设计系列：开篇</title>
-    <link>https://cctrip.github.io/k8s_design/</link>
-    <pubDate>Tue, 30 Mar 2021 17:55:28 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://cctrip.github.io/k8s_design/</guid>
-    <description><![CDATA[系列目录 《K8S设计系列：开篇》 1. 介绍 个人觉得，k8s包含着许多运维理念，理解了k8s的功能设计，就基本理解了运维。并且，一个优秀的系统是值]]></description>
-</item><item>
-    <title>[译]Kubernetes成熟度模型</title>
-    <link>https://cctrip.github.io/k8s_model/</link>
-    <pubDate>Thu, 28 Jan 2021 17:55:28 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://cctrip.github.io/k8s_model/</guid>
-    <description><![CDATA[原文链接：kubernetes maturity model 水平有限，本文不免存在遗漏或错误之处。如有疑问，请查阅原文。 前言 Kubernetes有很多好处。 同时，当组]]></description>
-</item><item>
-    <title>Kubernetes系列：OAM</title>
-    <link>https://cctrip.github.io/k8s_series_oam/</link>
-    <pubDate>Sun, 15 Nov 2020 17:55:28 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://cctrip.github.io/k8s_series_oam/</guid>
-    <description><![CDATA[系列目录 《Kubernetes系列：开篇》 《Kubernetes系列：概述》 《Kubernetes系列：架构》 《Kubernetes系列：容]]></description>
-</item><item>
-    <title>Kubernetes系列：Ingress</title>
-    <link>https://cctrip.github.io/k8s_series_ingress/</link>
-    <pubDate>Wed, 11 Nov 2020 17:55:28 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://cctrip.github.io/k8s_series_ingress/</guid>
-    <description><![CDATA[系列目录 《Kubernetes系列：开篇》 《Kubernetes系列：概述》 《Kubernetes系列：架构》 《Kubernetes系列：容]]></description>
-</item><item>
-    <title>Kubernetes系列：Service</title>
-    <link>https://cctrip.github.io/k8s_series_service/</link>
-    <pubDate>Tue, 10 Nov 2020 17:55:28 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://cctrip.github.io/k8s_series_service/</guid>
-    <description><![CDATA[系列目录 《Kubernetes系列：开篇》 《Kubernetes系列：概述》 《Kubernetes系列：架构》 《Kubernetes系列：容]]></description>
-</item><item>
-    <title>Kubernetes系列：存储</title>
-    <link>https://cctrip.github.io/k8s_series_storage/</link>
-    <pubDate>Thu, 05 Nov 2020 17:55:28 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://cctrip.github.io/k8s_series_storage/</guid>
-    <description><![CDATA[系列目录 《Kubernetes系列：开篇》 《Kubernetes系列：概述》 《Kubernetes系列：架构》 《Kubernetes系列：容]]></description>
-</item><item>
-    <title>Kubernetes系列：网络</title>
-    <link>https://cctrip.github.io/k8s_series_network/</link>
-    <pubDate>Fri, 30 Oct 2020 17:55:28 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://cctrip.github.io/k8s_series_network/</guid>
-    <description><![CDATA[系列目录 《Kubernetes系列：开篇》 《Kubernetes系列：概述》 《Kubernetes系列：架构》 《Kubernetes系列：容]]></description>
-</item><item>
-    <title>Kubernetes系列：容器</title>
-    <link>https://cctrip.github.io/k8s_series_container/</link>
-    <pubDate>Sun, 25 Oct 2020 17:55:28 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://cctrip.github.io/k8s_series_container/</guid>
-    <description><![CDATA[系列目录 《Kubernetes系列：开篇》 《Kubernetes系列：概述》 《Kubernetes系列：架构》 《Kubernetes系列：容]]></description>
-</item><item>
-    <title>Kubernetes系列：架构</title>
-    <link>https://cctrip.github.io/k8s_series_arch/</link>
-    <pubDate>Tue, 20 Oct 2020 17:55:28 &#43;0800</pubDate>
-    <author>Author</author>
-    <guid>https://cctrip.github.io/k8s_series_arch/</guid>
-    <description><![CDATA[系列目录 《Kubernetes系列：开篇》 《Kubernetes系列：概述》 《Kubernetes系列：架构》 《Kubernetes系列：容]]></description>
-</item></channel>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cloud Native on CC&#39;s Trip</title>
+    <link>https://cctrip.tech/categories/cloud-native/</link>
+    <description>Recent content in Cloud Native on CC&#39;s Trip</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 16 Aug 2021 17:55:28 +0800</lastBuildDate><atom:link href="https://cctrip.tech/categories/cloud-native/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Traefik系列(一)：Ingress Controller</title>
+      <link>https://cctrip.tech/posts/why_traefik/</link>
+      <pubDate>Mon, 16 Aug 2021 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/why_traefik/</guid>
+      <description>1. 介绍    最近，我们在拥抱云原生，准备基于k8s开发一套PaaS平台，我这边负责了服务路由相关的功能，因此，要选出一个Ingress Controller来实现我们的服务路由相关的功能，市面上那么多种，哪个才是最适合我们的呢？
+ 2. 需求    在EC2时代，我们用openresty来实现我们的服务路由功能，线上有几十上百个域名，基于稳定性和安全的考虑，通过人工配置和git来管理server和location模块，开发测试环境，不同的项目环境，基线环境等等，服务路由配置更是成倍数的增长，因此我们通过openresty+lua，以及DevOps平台来动态管理服务路由的变更。
+同时，基于安全和稳定性的考虑，我们在线上环境基于lua写了一些简单的waf，来防攻击以及限流操作。
+在容器上，我们的标准将不同的应用划分为不同的namespace，但是域名又是统一的。
+基于以上的各类需求，因此，在k8s上的服务路由功能至少要具备以下功能，
+ 多域名转发 跨namespace配置location tls支持 tcp和udp转发 限流 api支持 动态加载配置文件 metric监控 跨域支持 重写支持 外部域名转发   3. 对比    ​	选型
+data plane &amp;ndash; control plane
+envoy &amp;ndash;&amp;gt; gloo|Ambassador | istio
+nginx &amp;ndash;&amp;gt; kong|apisix
+traefik &amp;ndash;&amp;gt; traefik
+   control plane data plane backend service discovery protocols ssl termination websocket routing scope resiliency lb algorithms auth Tracing canary/shadow istio integration state Paid support Linkaaaaaaaaaaaaaa dashboard sticky sessions lua     ingress-nginx nginx dynamic http,https,tcp (separate lb),udp,grpc,fastcgi,IPC socket yes yes host,path(with regex) cross-namespace rate limit, retries rr,ewma,ip_hash basic, digest, external auth yes canary  kubernetes  https://kubernetes.</description>
+    </item>
+    
+    <item>
+      <title>K8S设计系列：架构</title>
+      <link>https://cctrip.tech/posts/k8s_design_arch/</link>
+      <pubDate>Mon, 05 Apr 2021 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/k8s_design_arch/</guid>
+      <description>系列目录    《K8S设计系列：开篇》
+《K8S设计系列：架构》
+ 1. 介绍    本篇要介绍的是k8s的整体架构，以及为什么要这么设计。
+ Kubernetes是生产级的开源基础架构，用于跨主机集群部署，扩展，管理和组合应用程序容器。但是，Kubernetes不仅仅是一个“容器编排程序”，它旨在消除协调物理/虚拟计算，网络和存储基础架构的负担，并使应用程序运营商和开发人员完全专注于以容器为中心的自助服务操作原语。Kubernetes还提供了一个稳定，可移植的基础（平台），用于构建自定义工作流和更高级别的自动化。
+ Kubernetes主要针对由多个容器组成的应用程序。因此，它使用吊舱和标签将容器分组为紧密耦合和松散耦合的形式，以便于管理和发现。
+ 1.1 范围    Kubernetes提供了容器运行时，容器编排，以容器为中心的基础架构编排，自我修复机制（例如运行状况检查和重新调度）以及服务发现和负载平衡。
+Kubernetes渴望成为一个可扩展的，可插入的，构建模块的OSS平台和工具包。因此，在架构上，我们希望将Kubernetes构建为可插入组件和层的集合，能够使用其他调度程序，控制器，存储系统和分发机制，并且我们正在朝着这个方向发展其当前代码。此外，我们希望其他人能够在不修改核心Kubernetes源代码的情况下扩展Kubernetes功能，例如具有更高级别的PaaS功能或多集群层。因此，其API不仅（或者甚至主要是主要）针对最终用户，还针对工具和扩展开发人员。其API旨在作为工具，自动化系统和更高级别API层的开放生态系统的基础。因此，没有“内部”组件间API。所有API都是可见且可用的，包括调度程序，节点控制器，复制控制器管理器，Kubelet的API等所使用的API。没有困难可言-为了处理更复杂的用例，人们可以以完全透明，可组合的方式访问较低级别的API。
+ 1.2 目标    该项目致力于以下（理想的）设计理想：
+ Portable，Kubernetes以一致的行为在任何地方运行-公共云，私有云，裸机，笔记本电脑。这样，应用程序和工具就可以在整个生态系统以及开发和生产环境之间移植。 General-purpose，Kubernetes应该运行所有主要类别的工作负载，以使您可以在单个基础架构，无状态和有状态，微服务和整体，服务和批处理，未开发的环境和遗留的基础架构上运行所有工作负载。 Meet users partway，Kubernetes不仅迎合纯天然云原生应用程序，也需要满足所有用户的需求。它着重于微服务和云原生应用程序的部署和管理，但提供了一些机制来促进整体和遗留应用程序的迁移。 Flexible，可以单点使用Kubernetes功能，并且（在大多数情况下）Kubernetes不会阻止您使用自己的解决方案来代替内置功能。 Extensible，Kubernetes使您可以通过暴露内置功能所使用的相同接口，将其集成到您的环境中并添加所需的其他功能。 Automatable，Kubernetes旨在极大地减少手动操作的负担。它通过通过其API指定用户期望的意图来支持声明式控制，以及支持更高级别的编排和自动化的命令式控制。声明式方法是系统自我修复和自主功能的关键。 Advance the state of the art，尽管Kubernetes打算支持非云原生应用程序，但它也希望推动云原生和DevOps技术的发展，例如让应用程序参与其自身的管理。但是，这样做时，我们努力不强迫应用程序将自己锁定在Kubernetes API中，这就是例如为什么我们偏爱向下API中的配置优先于约定的原因。此外，Kubernetes不受它所依赖的系统的最低公分母的约束，例如容器运行时和云提供商。我们突破可实现范围的一个例子是其IP Pod网络模型。   2. 分层    kubernetes将自己的架构设计分为下面几层：
+ Nucleus ，提供标准化的API和执行机制，包括基本的REST机制，安全性，单个Pod，容器，网络接口和存储卷管理，所有这些都可以通过定义明确的接口进行扩展。Nucleus是非可选的，有望成为系统中最稳定的部分。 Application Management Layer，应用程序管理层提供基本的部署和路由，包括自我修复，扩展，服务发现，负载平衡和流量路由。这通常称为编排和服务结构。提供了所有功能的默认实现，但允许进行兼容的替换。 Governance Layer，它提供了更高级别的自动化和策略实施，包括单租户和多租户，指标，智能自动扩展和配置以及授权，配额，网络和存储策略表达与实施的方案。 Interface Layer，它提供了用于与Kubernetes API交互的常用库，工具，UI和系统。 Ecosystem，其中包括与Kubernetes相关的所有其他内容，并且实际上根本不是Kubernetes的“一部分”。这是大多数开发发生的地方，并且包括CI / CD，中间件，日志记录，监视，数据处理，PaaS，无服务器/ FaaS系统，工作流，容器运行时，映像注册表，节点和云提供商管理以及许多其他功能。   2.</description>
+    </item>
+    
+    <item>
+      <title>K8S设计系列：开篇</title>
+      <link>https://cctrip.tech/posts/k8s_design/</link>
+      <pubDate>Tue, 30 Mar 2021 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/k8s_design/</guid>
+      <description>系列目录    《K8S设计系列：开篇》
+ 1. 介绍    个人觉得，k8s包含着许多运维理念，理解了k8s的功能设计，就基本理解了运维。并且，一个优秀的系统是值得深入了解和学习的，这样对自身的系统架构也有很大帮助。本系列将通过阅读k8s的设计文档来加深对k8s的理解，并输出自己的一些看法。
+ 软件服务于业务。随着业务规模的扩大，软件的中断的时间越长，对业务的影响面越大。所以，稳定大于一切。
+永远不变的就是变化，变更的速度在互联网时代决定着业务存活的时长。因此，效率很重要。
+在软件的世界，计算资源就是金钱，浪费一毫秒的计算资源就是在浪费金钱。我们能说，钱不重要吗？ 不能，这样子的话，成本就很关键了。
+CDN、负载均衡、微服务、云计算、敏捷开发、DevOps、容器、k8s，层出不穷的概念和实践，其实最终都在解决上面说的稳定、效率、成本问题。
+ 2. 总览     architecture，架构相关 apps，应用相关 auth，认证相关 autoscaling，扩缩容相关 network，网络相关 scheduling，调度相关 storage，存储相关  本系列将对以上内容相关内容进行细讲。
+ </description>
+    </item>
+    
+    <item>
+      <title>[译]Kubernetes成熟度模型</title>
+      <link>https://cctrip.tech/posts/k8s_model/</link>
+      <pubDate>Thu, 28 Jan 2021 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/k8s_model/</guid>
+      <description>原文链接：kubernetes maturity model
+水平有限，本文不免存在遗漏或错误之处。如有疑问，请查阅原文。
+ 前言    Kubernetes有很多好处。 同时，当组织采用云原生技术时，它可能变得复杂。 Kubernetes成熟度模型的存在可帮助您确定自己在迁移到原生云的过程中所处的位置，无论您是Kubernetes的新手还是有部署经验的人。 这是一个重要的工具，可帮助您自我确定您所处的阶段，了解环境中的差距并获得有关增强和改善Kubernetes技术栈的见解。
+如何使用Kubernetes成熟度模型    Kubernetes和您的工作负载在不断变化。 使用此成熟度模型时，请知道，如果确实达到某个阶段，则可能仍需要重新访问以前的阶段。 另外，请注意，Kubernetes的成熟并非一朝一夕就能完成，而是需要时间。 Kubernetes成熟度模型应用作工具，以帮助您了解在迁移到云原生过程中需要集中精力或需要帮助的地方。
+ 1. 准备阶段    从哪里开始？如何证明k8s的价值？谁可以信任？
+在该阶段，你将学习/精通以下内容：
+云原生和k8s将如何帮助推动业务和技术目标。它将耗费什么？并就整个组织的目标达成共识。
+ 明白云原生、容器、以及k8s的价值 能够向企业领导者描述该价值 得到团队，领导和整个组织的支持   必要条件    明白你的问题
+为什么要使用kubernetes？想要通过kubernetes解决什么问题？
+同意使用OSS
+转换到kubernetes需要你明白开源软件(OSS)在云原生生态中的角色和能量
+接受投资未来
+kubernetes的旅程将会耗费大量的时间和金钱。你需要面向未来投资。
+ 介绍    在采用Kubernetes时，第一步是准备工作。在这里，理解并能够阐明云原生和Kubernetes为什么对组织很重要至关重要。一些核心概念包括理解云原生计算，容器和Kubernetes的价值和影响。在较高的层次上，我们在这里每个定义。
+Cloud Native
+ 云原生技术有利于各组织在公有云、私有云和混合云等新型动态环境中，构建和运行可弹性扩展的应用。云原生的代表技术包括容器、服务网格、微服务、不可变基础设施和声明式API。
+这些技术能够构建容错性好、易于管理和便于观察的松耦合系统。结合可靠的自动化手段，云原生技术使工程师能够轻松地对系统作出频繁和可预测的重大变更。
+云原生计算基金会（CNCF）致力于培育和维护一个厂商中立的开源生态系统，来推广云原生技术。我们通过将最前沿的模式民主化，让这些创新为大众所用。
+ Source: CNCF definition.
+云原生计算的好处包括更快的发布速度，易于管理，通过容器化和云标准降低了成本，能够构建更可靠的系统，避免了供应商锁定以及改善了客户应用体验。
+Container
+ 一个打包代码及其所有依赖项的标准软件单元，使得应用程序可以从一个计算环境快速可靠地运行到另一个计算环境
+ Source: Docker
+ 在k8s中，你运行的每个容器都是可重复的；通过包含依赖项实现标准化意味着无论您在哪里运行它，都可以得到相同的行为。容器将应用程序与基础主机基础结构分离。这使得在不同的云或OS环境中的部署更加容易</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes系列：OAM</title>
+      <link>https://cctrip.tech/posts/k8s_series_oam/</link>
+      <pubDate>Sun, 15 Nov 2020 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/k8s_series_oam/</guid>
+      <description>系列目录    《Kubernetes系列：开篇》
+《Kubernetes系列：概述》
+《Kubernetes系列：架构》
+《Kubernetes系列：容器》
+《Kubernetes系列：网络》
+《Kubernetes系列：存储》
+《Kubernetes系列：Service》
+《Kubernetes系列：Ingress》
+《Kubernetes系列：OAM》
+ 1. 介绍     开放应用程序模型(OAM)是与运行时无关的规范，用于定义云原生应用程序。
+ OAM专注于应用程序，而不是容器或协调器。
+OAM带来了模块化，可扩展和可移植的设计，可用于对云原生应用程序建模，并以统一的方式将应用程序交付给Kubernetes，云或IoT设备等任何运行时。
+ 2. KubeVela    2.1 是什么    云原生技术的趋势正在朝着使用Kubernetes作为通用抽象层跨云和本地基础架构追求一致的应用程序交付的趋势。
+对于平台构建者而言，KubeVela是一个框架，使他们能够轻松创建用户友好但高度可扩展的平台。详细地说，KubeVela通过执行以下操作减轻了构建此类平台的麻烦：
+ 以应用为中心。 KubeVela强制采用一种应用程序概念作为其主要API，并且所有KubeVela的功能仅可满足应用程序的需求。这是通过采用开放应用程序模型作为KubeVela的核心API来实现的。 本地扩展。KubeVela中的应用程序由各种模块化组件（称为：服务）组成。 Kubernetes生态系统的功能可以随时通过Kubernetes CRD注册机制作为新的工作负载类型或特征添加到KubeVela中。 简单但可扩展的抽象机制。KubeVela引入了一个模板引擎（支持CUELang等），用于从下划线的Kubernetes资源中提取面向用户的模式。KubeVela提供了一组内置的抽象作为起点，并且平台构建者可以随时自由地对其进行修改。抽象更改在运行时生效，无需重新编译或重新部署KubeVela。  借助KubeVela，平台构建者现在终于获得了工具支持，以高信心和低周转时间设计并向其最终用户交付任何新功能。
+对于开发人员而言，使用KubeVela构建的此类平台将使他们能够以最小的努力设计并将其应用程序发布到Kubernetes。他们只需要一个简单的应用程序定义，而不是管理少量的基础结构细节，而是遵循以开发人员为中心的工作流，该工作流可以轻松地与任何CI / CD管道集成。
+ 2.2 对比    PaaS    它们提供了完整的应用程序管理功能，旨在改善开发人员的体验和效率。KubeVela可以提供类似的体验，但是与大多数现有的PaaS产品相比，其内置功能轻巧得多，并且易于维护。KubeVela核心组件不过是一组Kubernetes控制器/插件。
+KubeVela被设计为核心引擎，其主要目标是使平台团队能够通过简单地注册CRD和定义模板来创建“类似PaaS”的体验。与此经验相比，大多数现有的PaaS系统要么不可扩展，要么具有自己的附加系统。因此，对他们来说，在受支持的应用程序类型和受支持的功能上强加约束是很常见的，而这在基于KubeVela的体验中是不会发生的。
+Serverless Platforms    无服务器平台（例如AWS Lambda）可提供非凡的用户体验和敏捷性，以部署无服务器应用程序。但是，这些平台在可扩展性方面施加了更多限制。它们可以说是“硬编码” PaaS。
+通过将自己注册为新的工作负载类型和特征，可以轻松地将基于Kubernetes的Knative，OpenFaaS等无服务器平台与KubeVela集成。即使对于AWS Lambda，也有成功的故事，可以通过Crossplane开发的工具将其与KubeVela集成。</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes系列：Ingress</title>
+      <link>https://cctrip.tech/posts/k8s_series_ingress/</link>
+      <pubDate>Wed, 11 Nov 2020 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/k8s_series_ingress/</guid>
+      <description>系列目录    《Kubernetes系列：开篇》
+《Kubernetes系列：概述》
+《Kubernetes系列：架构》
+《Kubernetes系列：容器》
+《Kubernetes系列：网络》
+《Kubernetes系列：存储》
+《Kubernetes系列：Service》
+《Kubernetes系列：Ingress》
+《Kubernetes系列：OAM》
+ 1. 介绍    1.1 Ingress     Ingress 公开了从集群外部到集群内service的 HTTP 和 HTTPS 路由。 流量路由由 Ingress 资源上定义的规则控制。
+ 可以将 Ingress 配置为服务提供外部可访问的 URL、负载均衡流量、终止 SSL/TLS，以及提供基于名称的虚拟主机等能力。 Ingress Controller 通常负责通过负载均衡器来实现 Ingress，尽管它也可以配置边缘路由器或其他前端来帮助处理流量。
+ 1.2 Ingress Controller    为了让 Ingress 资源工作，集群必须有一个正在运行的 Ingress Controller。
+与作为 kube-controller-manager 可执行文件的一部分运行的其他类型的控制器不同，Ingress 控制器不是随集群自动启动的。
+ 2. Ingress Contoller 选择    下表是一些常用的Contoller对比：
+   control plane data plane backend service discovery protocols ssl termination websocket routing scope resiliency lb algorithms auth Tracing canary/shadow istio integration state Paid support Linkaaaaaaaaaaaaaa dashboard sticky sessions lua     ingress-nginx nginx dynamic http,https,tcp (separate lb),udp,grpc,fastcgi,IPC socket yes yes host,path(with regex) cross-namespace rate limit, retries rr,ewma,ip_hash basic, digest, external auth yes canary  kubernetes  https://kubernetes.</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes系列：Service</title>
+      <link>https://cctrip.tech/posts/k8s_series_service/</link>
+      <pubDate>Tue, 10 Nov 2020 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/k8s_series_service/</guid>
+      <description>系列目录    《Kubernetes系列：开篇》
+《Kubernetes系列：概述》
+《Kubernetes系列：架构》
+《Kubernetes系列：容器》
+《Kubernetes系列：网络》
+《Kubernetes系列：存储》
+《Kubernetes系列：Service》
+《Kubernetes系列：Ingress》
+《Kubernetes系列：OAM》
+ 1. 介绍     在Kubernetes中，Service是将运行在一组Pods上的应用程序公开为网络服务的抽象方法。
+ 1. 1 为什么需要Service？    pod是一个非永久性的资源。如果我们使用Deployment来运行应用程序，则pod是可以被动态创建和销毁的。
+这导致了一个问题： 如果一组 Pod（称为“后端”）为集群内的其他 Pod（称为“前端”）提供功能， 那么前端如何找出并跟踪要连接的 IP 地址，以便前端可以使用提供工作负载的后端部分？
+1.2 Service资源    Kubernetes Service 定义了这样一种抽象：逻辑上的一组 Pod，一种可以访问它们的策略 —— 通常称为微服务。 Service 所针对的 Pods 集合通常是通过选择算符来确定的。
+ 2. 配置    Service 在 Kubernetes 中是一个 REST 对象，和 Pod 类似。 像所有的 REST 对象一样，Service 定义可以基于 POST 方式，请求 API server 创建新的实例。 Service 对象的名称必须是合法的 DNS 标签名称。</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes系列：存储</title>
+      <link>https://cctrip.tech/posts/k8s_series_storage/</link>
+      <pubDate>Thu, 05 Nov 2020 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/k8s_series_storage/</guid>
+      <description>系列目录    《Kubernetes系列：开篇》
+《Kubernetes系列：概述》
+《Kubernetes系列：架构》
+《Kubernetes系列：容器》
+《Kubernetes系列：网络》
+《Kubernetes系列：存储》
+《Kubernetes系列：Service》
+《Kubernetes系列：Ingress》
+《Kubernetes系列：OAM》
+ 1. 介绍    容器中的文件在磁盘上是临时存放的，这给容器中运行的较重要的应用程序带来一些问题：
+ 当容器崩溃时文件丢失。kubelet 会重新启动容器， 但容器会以干净的状态重启。 在 Pod 中同时运行多个容器时，这些容器之间通常需要共享文件。  Kubernetes 中的 Volume 抽象很好的解决了这些问题。
+ 2. 存储    为了管理存储，Kubernetes提供了Secret用于管理敏感信息，ConfigMap存储配置，Volume、PV、PVC、StorageClass等用来管理存储卷。
+2.1 Volume    Kubernetes 支持很多类型的卷。 Pod 可以同时使用任意数目的卷类型。 临时卷类型的生命周期与 Pod 相同，但持久卷可以比 Pod 的存活期长。 因此，卷的存在时间会超出 Pod 中运行的所有容器，并且在容器重新启动时数据也会得到保留。 当 Pod 不再存在时，卷也将不再存在。
+卷的核心是包含一些数据的一个目录，Pod 中的容器可以访问该目录。 所采用的特定的卷类型将决定该目录如何形成的、使用何种介质保存数据以及目录中存放 的内容。
+使用卷时, 在 .spec.volumes 字段中设置为 Pod 提供的卷，并在 .spec.containers[*].volumeMounts 字段中声明卷在容器中的挂载位置。 容器中的进程看到的是由它们的 Docker 镜像和卷组成的文件系统视图。 Docker 镜像 位于文件系统层次结构的根部。各个卷则挂载在镜像内的指定路径上。 卷不能挂载到其他卷之上，也不能与其他卷有硬链接。 Pod 配置中的每个容器必须独立指定各个卷的挂载位置。</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes系列：网络</title>
+      <link>https://cctrip.tech/posts/k8s_series_network/</link>
+      <pubDate>Fri, 30 Oct 2020 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/k8s_series_network/</guid>
+      <description>系列目录    《Kubernetes系列：开篇》
+《Kubernetes系列：概述》
+《Kubernetes系列：架构》
+《Kubernetes系列：容器》
+《Kubernetes系列：网络》
+《Kubernetes系列：存储》
+《Kubernetes系列：Service》
+《Kubernetes系列：Ingress》
+《Kubernetes系列：OAM》
+ 1. 介绍    网络是 Kubernetes 的核心部分，不过，Kubernetes本身并不提供网络功能，只是把网络接口开放出来，通过插件的形式实现。这就是CNI(Container Network Interface)。
+ CNI（Container Network Interface）是 CNCF 旗下的一个项目，由一组用于配置 Linux 容器的网络接口的规范和库组成，同时还包含了一些插件。CNI 仅关心容器创建时的网络分配，和当容器被删除时释放网络资源。通过此链接浏览该项目：https://github.com/containernetworking/cni。
+ Kubernetes 对所有网络设施的实施，都需要满足以下的基本要求：
+ 节点上的 Pod 可以不通过 NAT 和其他任何节点上的 Pod 通信 节点上的代理(比如：系统守护进程、kubelet)可以和节点上的所有Pod通信 Pod自己的IP就是其他人看到的IP  因此，一个kubernetes网络插件必须要解决下面五个问题：
+ Container-to-Container 网络通信 Pod-to-Pod 网络通信 Pod-to-Service 网络通信 Internet-to-Service 网络通信 Pod IP在集群内唯一   2. 基本原理    2.1 Container-to-Container    在kubernetes中，一个Pod是一组Container的组合，并且，Pod内的Container是共享network namespace的，因此该Pod内的Container的ip和mac地址都是相同的，所以它们只需要通过localhost就能跟Pod内其他Container通信了，不过，因为是共享network namespace，因此该Pod内的端口必须是唯一的，不能冲突。</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes系列：容器</title>
+      <link>https://cctrip.tech/posts/k8s_series_container/</link>
+      <pubDate>Sun, 25 Oct 2020 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/k8s_series_container/</guid>
+      <description>系列目录    《Kubernetes系列：开篇》
+《Kubernetes系列：概述》
+《Kubernetes系列：架构》
+《Kubernetes系列：容器》
+《Kubernetes系列：网络》
+《Kubernetes系列：存储》
+《Kubernetes系列：Service》
+《Kubernetes系列：Ingress》
+《Kubernetes系列：OAM》
+ 1. 介绍    1.1 容器技术     LXC（Linux容器）是一种操作系统级虚拟化技术，用于使用单个Linux内核在控制主机上运行多个隔离的Linux系统（容器）。
+ 每个运行的容器都是可重复的； 包含依赖环境在内的标准，意味着无论您在哪里运行它，您都会得到相同的行为。容器将应用程序从底层的主机设施中解耦。 这使得在不同的云或 OS 环境中部署更加容易。
+1.2 容器镜像     容器镜像是一个随时可以运行的软件包， 包含运行应用程序所需的一切：代码和它需要的所有运行时、应用程序和系统库，以及一些基本设置的默认值。
+ 根据设计，容器是不可变的：你不能更改已经运行的容器的代码。 如果有一个容器化的应用程序需要修改，则需要构建包含更改的新镜像，然后再基于新构建的镜像重新运行容器。
+1.3 容器运行时     容器运行环境是负责运行容器的软件。
+ Kubernetes 支持多个容器运行环境: Docker、 containerd、CRI-O 以及任何实现 Kubernetes CRI (容器运行环境接口)。
+1.4 CRI(容器运行时接口)     CRI，一个插件接口，使kubelet可以使用各种容器运行时，而无需重新编译。
+CRI由规范/要求(待添加)、protobuf API和用于容器运行时的库组成，以与节点上的kubelet集成。
+  2.</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes系列：架构</title>
+      <link>https://cctrip.tech/posts/k8s_series_arch/</link>
+      <pubDate>Tue, 20 Oct 2020 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/k8s_series_arch/</guid>
+      <description>系列目录    《Kubernetes系列：开篇》
+《Kubernetes系列：概述》
+《Kubernetes系列：架构》
+《Kubernetes系列：容器》
+《Kubernetes系列：网络》
+《Kubernetes系列：存储》
+《Kubernetes系列：Service》
+《Kubernetes系列：Ingress》
+《Kubernetes系列：OAM》
+ 一个 Kubernetes 集群由一组被称作节点的机器组成。这些节点上运行 Kubernetes 所管理的容器化应用。集群具有至少一个工作节点。
+工作节点托管作为应用负载的组件的 Pod 。控制平面管理集群中的工作节点和 Pod 。 为集群提供故障转移和高可用性，这些控制平面一般跨多主机运行，集群跨多个节点运行。
+本文档概述了交付正常运行的 Kubernetes 集群所需的各种组件。
+这张图表展示了包含所有相互关联组件的 Kubernetes 集群。
+控制平面组件（Control Plane Components）    控制平面的组件对集群做出全局决策(比如调度)，以及检测和响应集群事件（例如，当不满足部署的 replicas 字段时，启动新的 pod）。
+控制平面组件可以在集群中的任何节点上运行。 然而，为了简单起见，设置脚本通常会在同一个计算机上启动所有控制平面组件，并且不会在此计算机上运行用户容器。 请参阅构建高可用性集群 中对于多主机 VM 的设置示例。
+kube-apiserver    API 服务器是 Kubernetes 控制面的组件， 该组件公开了 Kubernetes API。 API 服务器是 Kubernetes 控制面的前端。
+Kubernetes API 服务器的主要实现是 kube-apiserver。 kube-apiserver 设计上考虑了水平伸缩，也就是说，它可通过部署多个实例进行伸缩。 你可以运行 kube-apiserver 的多个实例，并在这些实例之间平衡流量。</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes系列：概述</title>
+      <link>https://cctrip.tech/posts/k8s_series_intro/</link>
+      <pubDate>Thu, 15 Oct 2020 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/k8s_series_intro/</guid>
+      <description>系列目录    《Kubernetes系列：开篇》
+《Kubernetes系列：概述》
+《Kubernetes系列：架构》
+《Kubernetes系列：容器》
+《Kubernetes系列：网络》
+《Kubernetes系列：存储》
+《Kubernetes系列：Service》
+《Kubernetes系列：Ingress》
+《Kubernetes系列：OAM》
+ 1. 介绍    Kubernetes 是一个可移植的、可扩展的开源平台，用于管理容器化的工作负载和服务，可促进声明式配置和自动化。 Kubernetes 拥有一个庞大且快速增长的生态系统。Kubernetes 的服务、支持和工具广泛可用。
+名称 Kubernetes 源于希腊语，意为“舵手”或“飞行员”。Google 在 2014 年开源了 Kubernetes 项目。 Kubernetes 建立在 Google 在大规模运行生产工作负载方面拥有十几年的经验 的基础上，结合了社区中最好的想法和实践。
+ 2. 部署模式的发展史    让我们回顾一下为什么 Kubernetes 如此有用。
+传统部署时代：
+早期，各个组织机构在物理服务器上运行应用程序。无法为物理服务器中的应用程序定义资源边界，这会导致资源分配问题。 例如，如果在物理服务器上运行多个应用程序，则可能会出现一个应用程序占用大部分资源的情况， 结果可能导致其他应用程序的性能下降。 一种解决方案是在不同的物理服务器上运行每个应用程序，但是由于资源利用不足而无法扩展， 并且维护许多物理服务器的成本很高。
+虚拟化部署时代：
+作为解决方案，引入了虚拟化。虚拟化技术允许你在单个物理服务器的 CPU 上运行多个虚拟机（VM）。 虚拟化允许应用程序在 VM 之间隔离，并提供一定程度的安全，因为一个应用程序的信息 不能被另一应用程序随意访问。
+虚拟化技术能够更好地利用物理服务器上的资源，并且因为可轻松地添加或更新应用程序 而可以实现更好的可伸缩性，降低硬件成本等等。
+每个 VM 是一台完整的计算机，在虚拟化硬件之上运行所有组件，包括其自己的操作系统。
+容器部署时代：
+容器类似于 VM，但是它们具有被放宽的隔离属性，可以在应用程序之间共享操作系统（OS）。 因此，容器被认为是轻量级的。容器与 VM 类似，具有自己的文件系统、CPU、内存、进程空间等。 由于它们与基础架构分离，因此可以跨云和 OS 发行版本进行移植。</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes系列：开篇</title>
+      <link>https://cctrip.tech/posts/k8s_series/</link>
+      <pubDate>Sat, 10 Oct 2020 17:55:28 +0800</pubDate>
+      
+      <guid>https://cctrip.tech/posts/k8s_series/</guid>
+      <description>系列目录    《Kubernetes系列：开篇》
+《Kubernetes系列：概述》
+《Kubernetes系列：架构》
+《Kubernetes系列：容器》
+《Kubernetes系列：网络》
+《Kubernetes系列：存储》
+《Kubernetes系列：Service》
+《Kubernetes系列：Ingress》
+《Kubernetes系列：OAM》
+ 1. 介绍    最近整体工作在往云原生和k8s上迁移，想将自己对于k8s的一些学习心得和经验写成一个系列记录下来。
+ 2. 云计算    云计算是一种按使用量付费的模式，这种模式提供可用的、便捷的、按需的网络访问， 进入可配置的计算资源共享池（资源包括网络，服务器，存储，应用软件，服务），这些资源能够被快速提供，只需投入很少的管理工作，或与服务供应商进行很少的交互。
+云计算最基本的特性是：“按使用量付费”、“资源共享池”和多租户隔离。
+1.2 云计算的特点
+ 超大规模  云具有相当的规模，Google 云计算已经拥有 100 多万台服务器， Amazon、IBM、微软、Yahoo 等的云均拥有几十万台服务器。企业私有云一般拥有数百上千台服务器。云能赋予用户前所未有的计算能力。
+ 虚拟化  云计算支持用户在任意位置、使用各种终端获取应用服务。所请求的资源来自云，而不是固定的有形的实体。应用在云中某处运行，但实际上用户无需了解、也不用担心应用运行的具体位置。只需要一台笔记本或者一个手机，就可以通过网络服务来实现我们需要的一切，甚至包括超级计算这样的任务。
+ 高可靠性  云使用了数据多副本容错、计算节点同构可互换等措施来保障服务的高可靠性，使用云计算比使用本地计算机可靠。
+ 通用性  云计算不针对特定的应用，在云的支撑下可以构造出千变万化的应用，同一个云可以同时支撑不同的应用运行。
+ 高可扩展性  云的规模可以动态伸缩，满足应用和用户规模增长的需要。
+ 按需服务  云是一个庞大的资源池，你按需购买;云可以像自来水，电，煤气那样计费。
+ 极其廉价  由于云的特殊容错措施可以采用极其廉价的节点来构成云，云的自动化集中式管理使大量企业无需负担日益高昂的数据中心管理成本，云的通用性使资源的利用率较之传统系统大幅提升，因此用户可以充分享受云的低成本优势，经常只要花费几百美元、几天时间就能完成以前需要数万美元、数月时间才能完成的任务。
+ 潜在的危险性  云计算服务除了提供计算服务外，还必然提供了存储服务。但是云计算服务当前垄断在私人机构(企业)手中，而他们仅仅能够提供商业信用。对于政府机构、商业机构(特别像银行这样持有敏感数据的商业机构)对于选择云计算服务应保持足够的警惕。一旦商业用户大规模使用私人机构提供的云计算服务，无论其技术优势有多强，都不可避免地让这些私人机构以数据(信息)的重要性挟制整个社会。
+对于信息社会而言，信息是至关重要的。另一方面，云计算中的数据对于数据所有者以外的其他用户云计算用户是保密的，但是对于提供云计算的商业机构而言确实毫无秘密可言。所有这些潜在的危险，是商业机构和政府机构选择云计算服务、特别是国外机构提供的云计算服务时，不得不考虑的一个重要的前提。
+1.3 云计算的分类</description>
+    </item>
+    
+  </channel>
 </rss>
