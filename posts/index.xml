@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on CC&#39;s Trip</title>
-    <link>https://cctrip.tech/posts/</link>
+    <link>https://cctrip.github.io/posts/</link>
     <description>Recent content in Posts on CC&#39;s Trip</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 16 Aug 2021 17:55:28 +0800</lastBuildDate><atom:link href="https://cctrip.tech/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 16 Aug 2021 17:55:28 +0800</lastBuildDate><atom:link href="https://cctrip.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Traefik系列(一)：Ingress Controller</title>
-      <link>https://cctrip.tech/posts/why_traefik/</link>
+      <link>https://cctrip.github.io/posts/why_traefik/</link>
       <pubDate>Mon, 16 Aug 2021 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/why_traefik/</guid>
+      <guid>https://cctrip.github.io/posts/why_traefik/</guid>
       <description>1. 介绍    最近，我们在拥抱云原生，准备基于k8s开发一套PaaS平台，我这边负责了服务路由相关的功能，因此，要选出一个Ingress Controller来实现我们的服务路由相关的功能，市面上那么多种，哪个才是最适合我们的呢？
  2. 需求    在EC2时代，我们用openresty来实现我们的服务路由功能，线上有几十上百个域名，基于稳定性和安全的考虑，通过人工配置和git来管理server和location模块，开发测试环境，不同的项目环境，基线环境等等，服务路由配置更是成倍数的增长，因此我们通过openresty+lua，以及DevOps平台来动态管理服务路由的变更。
 同时，基于安全和稳定性的考虑，我们在线上环境基于lua写了一些简单的waf，来防攻击以及限流操作。
@@ -28,10 +28,10 @@ traefik &amp;ndash;&amp;gt; traefik
     
     <item>
       <title>K8S设计系列：架构</title>
-      <link>https://cctrip.tech/posts/k8s_design_arch/</link>
+      <link>https://cctrip.github.io/posts/k8s_design_arch/</link>
       <pubDate>Mon, 05 Apr 2021 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/k8s_design_arch/</guid>
+      <guid>https://cctrip.github.io/posts/k8s_design_arch/</guid>
       <description>系列目录    《K8S设计系列：开篇》
 《K8S设计系列：架构》
  1. 介绍    本篇要介绍的是k8s的整体架构，以及为什么要这么设计。
@@ -46,10 +46,10 @@ Kubernetes渴望成为一个可扩展的，可插入的，构建模块的OSS平�
     
     <item>
       <title>K8S设计系列：开篇</title>
-      <link>https://cctrip.tech/posts/k8s_design/</link>
+      <link>https://cctrip.github.io/posts/k8s_design/</link>
       <pubDate>Tue, 30 Mar 2021 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/k8s_design/</guid>
+      <guid>https://cctrip.github.io/posts/k8s_design/</guid>
       <description>系列目录    《K8S设计系列：开篇》
  1. 介绍    个人觉得，k8s包含着许多运维理念，理解了k8s的功能设计，就基本理解了运维。并且，一个优秀的系统是值得深入了解和学习的，这样对自身的系统架构也有很大帮助。本系列将通过阅读k8s的设计文档来加深对k8s的理解，并输出自己的一些看法。
  软件服务于业务。随着业务规模的扩大，软件的中断的时间越长，对业务的影响面越大。所以，稳定大于一切。
@@ -62,10 +62,10 @@ CDN、负载均衡、微服务、云计算、敏捷开发、DevOps、容器、k8
     
     <item>
       <title>Oops管理系统(二)</title>
-      <link>https://cctrip.tech/posts/oops_series_two/</link>
+      <link>https://cctrip.github.io/posts/oops_series_two/</link>
       <pubDate>Sat, 20 Mar 2021 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/oops_series_two/</guid>
+      <guid>https://cctrip.github.io/posts/oops_series_two/</guid>
       <description>系列目录    《Oops管理系统(一)》
 《Oops管理系统(二)》
  1. 介绍    本篇，要先讲下整体的技术框架。
@@ -81,10 +81,10 @@ package cmd import ( .</description>
     
     <item>
       <title>Oops管理系统(一)</title>
-      <link>https://cctrip.tech/posts/oops_series_one/</link>
+      <link>https://cctrip.github.io/posts/oops_series_one/</link>
       <pubDate>Wed, 17 Mar 2021 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/oops_series_one/</guid>
+      <guid>https://cctrip.github.io/posts/oops_series_one/</guid>
       <description>系列目录    《Oops管理系统(一)》
 《Oops管理系统(二)》
  1. 介绍    做了那么的久的运维，了解、运维和开发过各种各样的发布系统、运维系统、监控系统，经历了服务器从物理时代、到云时代再到容器时代的变革，服务器规模也经历从十几台到几千台甚至几万台规模的管理，管理手段也经历从手工到工具再到平台的演变。做过那么些的管理系统，因为各种各样的原因，可能是历史包袱，可能是人言式微，可能是早期技术没有那么的好，很多时候做出来的管理系统不是自己理想中的管理系统，因此，想花一些业余时间，写一个自己理解的DevOps管理系统。
@@ -99,19 +99,19 @@ package cmd import ( .</description>
     
     <item>
       <title>Openresty执行阶段</title>
-      <link>https://cctrip.tech/posts/openresty_phases/</link>
+      <link>https://cctrip.github.io/posts/openresty_phases/</link>
       <pubDate>Sat, 30 Jan 2021 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/openresty_phases/</guid>
+      <guid>https://cctrip.github.io/posts/openresty_phases/</guid>
       <description>Nginx执行阶段     NGX_HTTP_POST_READ_PHASE — 第一阶段， ngx_http_realip_module 在此阶段注册其处理程序，以允许在调用任何其他模块之前替换客户端地址。 NGX_HTTP_SERVER_REWRITE_PHASE — 该阶段处理server块(location块除外)定义的rewrite指令。 ngx_http_rewrite_module 在此阶段安装其处理程序。 NGX_HTTP_FIND_CONFIG_PHASE — 根据请求URI选择位置的特殊阶段。在此阶段之前，将相关虚拟服务器的默认位置分配给请求，并且任何请求位置配置的模块都将接收默认服务器位置的配置。该阶段为请求分配一个新位置。该阶段无法注册其他处理程序。 NGX_HTTP_REWRITE_PHASE — 同 NGX_HTTP_SERVER_REWRITE_PHASE, 但处理的是上一个阶段选择的location块内的定义的rewrite规则指令。 NGX_HTTP_POST_REWRITE_PHASE — 特殊阶段，如果请求的URI在rewirte期间更改，则将请求重定向到新的location块。这是通过再次请求 NGX_HTTP_FIND_CONFIG_PHASE 来完成的。此阶段无法注册其他处理程序。 NGX_HTTP_PREACCESS_PHASE — 与访问控制无关的用于不同类型的处理程序的公共阶段。标准nginx模块 ngx_http_limit_conn_module 和 ngx_http_limit_req_module 在此阶段注册其处理程序。 NGX_HTTP_ACCESS_PHASE — 验证客户端请求是否合法的阶段。例如ngx_http_access_module 和 ngx_http_auth_basic_module 等标准nginx模块在此阶段注册其处理程序。默认情况下，客户端必须通过该阶段所有处理程序的合法验证才能继续请求下一个阶段。 通过satisfy 指令，则可以允许客户端在通过该阶段任何一个处理程序的合法验证后直接进入下一个阶段。 NGX_HTTP_POST_ACCESS_PHASE — 特殊阶段，处理满足 satisfy any 指令的阶段。如果某些访问阶段处理程序拒绝了访问并且没有显式允许访问，则该请求完成。此阶段无法注册其他处理程序。 NGX_HTTP_PRECONTENT_PHASE — 在生成内容之前调用处理程序的阶段。一些标准nginx模块如 ngx_http_try_files_module 和 ngx_http_mirror_module 在此阶段注册其处理程序。 NGX_HTTP_CONTENT_PHASE — 正常生成响应的阶段. 多个Nginx标准模块在此阶段注册其处理程序, 包括 ngx_http_index_module 和 ngx_http_static_module。它们按顺序被调用直到某一个模块产生输出。也可以按location设置内容处理程序，如果 ngx_http_core_module的location配置已设置处理程序，则将其称为内容处理程序，并且在此阶段安装的处理程序将被忽略。 NGX_HTTP_LOG_PHASE — 执行请求日志记录的阶段。当前，只有 ngx_http_log_module 在此阶段注册其处理程序以进行访问日志记录。在释放请求之前，在请求处理的最后阶段调用日志阶段处理程序。   Lua执行阶段     init_by_lua* — 在Nginx master 进程加载配置时候时，在全局LuaVM 级别上运行指定的lua代码。通常在该阶段注册全局变量或者预加载lua模块。 init_worker_by_lua* — 启用master进程后，在每次Nginx worker进程启动时运行指定的Lua代码。当禁用master进程时，此hook将仅在init_by_lua *之后运行。通常用于创建每个worker的重复计时器（通过Lua API的ngx.</description>
     </item>
     
     <item>
       <title>[译]Kubernetes成熟度模型</title>
-      <link>https://cctrip.tech/posts/k8s_model/</link>
+      <link>https://cctrip.github.io/posts/k8s_model/</link>
       <pubDate>Thu, 28 Jan 2021 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/k8s_model/</guid>
+      <guid>https://cctrip.github.io/posts/k8s_model/</guid>
       <description>原文链接：kubernetes maturity model
 水平有限，本文不免存在遗漏或错误之处。如有疑问，请查阅原文。
  前言    Kubernetes有很多好处。 同时，当组织采用云原生技术时，它可能变得复杂。 Kubernetes成熟度模型的存在可帮助您确定自己在迁移到原生云的过程中所处的位置，无论您是Kubernetes的新手还是有部署经验的人。 这是一个重要的工具，可帮助您自我确定您所处的阶段，了解环境中的差距并获得有关增强和改善Kubernetes技术栈的见解。
@@ -140,10 +140,10 @@ Container
     
     <item>
       <title>[译]当我们谈论Ops，我们在谈论什么</title>
-      <link>https://cctrip.tech/posts/talk_ops/</link>
+      <link>https://cctrip.github.io/posts/talk_ops/</link>
       <pubDate>Wed, 13 Jan 2021 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/talk_ops/</guid>
+      <guid>https://cctrip.github.io/posts/talk_ops/</guid>
       <description>原文链接：What the Ops are you talking about?
 水平有限，本文不免存在遗漏或错误之处。如有疑问，请查阅原文。
  背景    两年前，我因为效率低下的领导而获得了耻辱。我的背景是数据科学和机器学习，因此，我当然从我的工程同事那边学习到了DevOps。至少我们认为是这样的。
@@ -173,10 +173,10 @@ SecOps以安全性为核心，GitOps致力于持续交付，NetOps确保网络�
     
     <item>
       <title>2021年flag</title>
-      <link>https://cctrip.tech/posts/2021_flag/</link>
+      <link>https://cctrip.github.io/posts/2021_flag/</link>
       <pubDate>Sat, 02 Jan 2021 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/2021_flag/</guid>
+      <guid>https://cctrip.github.io/posts/2021_flag/</guid>
       <description>2021年已经到来，在这里给自己列一个flag清单。
 习惯成自然      每2周完成一个ARTS(Algorithm|Review|Technique|Share)
   完成12篇博客(每月一篇)
@@ -186,10 +186,10 @@ SecOps以安全性为核心，GitOps致力于持续交付，NetOps确保网络�
     
     <item>
       <title>Kubernetes系列：OAM</title>
-      <link>https://cctrip.tech/posts/k8s_series_oam/</link>
+      <link>https://cctrip.github.io/posts/k8s_series_oam/</link>
       <pubDate>Sun, 15 Nov 2020 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/k8s_series_oam/</guid>
+      <guid>https://cctrip.github.io/posts/k8s_series_oam/</guid>
       <description>系列目录    《Kubernetes系列：开篇》
 《Kubernetes系列：概述》
 《Kubernetes系列：架构》
@@ -214,10 +214,10 @@ Serverless Platforms    无服务器平台（例如AWS Lambda）可提供非凡�
     
     <item>
       <title>Kubernetes系列：Ingress</title>
-      <link>https://cctrip.tech/posts/k8s_series_ingress/</link>
+      <link>https://cctrip.github.io/posts/k8s_series_ingress/</link>
       <pubDate>Wed, 11 Nov 2020 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/k8s_series_ingress/</guid>
+      <guid>https://cctrip.github.io/posts/k8s_series_ingress/</guid>
       <description>系列目录    《Kubernetes系列：开篇》
 《Kubernetes系列：概述》
 《Kubernetes系列：架构》
@@ -237,10 +237,10 @@ Serverless Platforms    无服务器平台（例如AWS Lambda）可提供非凡�
     
     <item>
       <title>Kubernetes系列：Service</title>
-      <link>https://cctrip.tech/posts/k8s_series_service/</link>
+      <link>https://cctrip.github.io/posts/k8s_series_service/</link>
       <pubDate>Tue, 10 Nov 2020 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/k8s_series_service/</guid>
+      <guid>https://cctrip.github.io/posts/k8s_series_service/</guid>
       <description>系列目录    《Kubernetes系列：开篇》
 《Kubernetes系列：概述》
 《Kubernetes系列：架构》
@@ -259,10 +259,10 @@ Serverless Platforms    无服务器平台（例如AWS Lambda）可提供非凡�
     
     <item>
       <title>深入理解LVS</title>
-      <link>https://cctrip.tech/posts/deep_lvs/</link>
+      <link>https://cctrip.github.io/posts/deep_lvs/</link>
       <pubDate>Mon, 09 Nov 2020 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/deep_lvs/</guid>
+      <guid>https://cctrip.github.io/posts/deep_lvs/</guid>
       <description>1. 介绍    接上一篇深入理解iptables，kubernetes service技术还用到ipvs技术，讲到ipvs，那就得说说LVS了，这篇我们来了解下LVS具体的实现机制。
  2. IPVS     IPVS（IP虚拟服务器）实现传输层负载均衡，通常称为第4层LAN交换。
  负载均衡器的概念可以看这篇文章，或者翻译版本。
@@ -274,10 +274,10 @@ static const struct nf_hook_ops ip_vs_ops4[] = { /* After packet filtering, chan
     
     <item>
       <title>深入理解iptables</title>
-      <link>https://cctrip.tech/posts/deep_iptables/</link>
+      <link>https://cctrip.github.io/posts/deep_iptables/</link>
       <pubDate>Sat, 07 Nov 2020 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/deep_iptables/</guid>
+      <guid>https://cctrip.github.io/posts/deep_iptables/</guid>
       <description>1. 介绍    最近在刚好在看Kubernetes的service相关内容，里面用到了iptables和ipvs技术，好久没看iptables了，快忘记了，刚好复习重新记忆一下。
 讲iptables和ipvs，有个东西就一定得清楚，那就是netfilter
  2. netfilter     netfilter是一个数据包处理框架。
@@ -289,10 +289,10 @@ static const struct nf_hook_ops ip_vs_ops4[] = { /* After packet filtering, chan
     
     <item>
       <title>Kubernetes系列：存储</title>
-      <link>https://cctrip.tech/posts/k8s_series_storage/</link>
+      <link>https://cctrip.github.io/posts/k8s_series_storage/</link>
       <pubDate>Thu, 05 Nov 2020 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/k8s_series_storage/</guid>
+      <guid>https://cctrip.github.io/posts/k8s_series_storage/</guid>
       <description>系列目录    《Kubernetes系列：开篇》
 《Kubernetes系列：概述》
 《Kubernetes系列：架构》
@@ -312,10 +312,10 @@ static const struct nf_hook_ops ip_vs_ops4[] = { /* After packet filtering, chan
     
     <item>
       <title>Kubernetes系列：网络</title>
-      <link>https://cctrip.tech/posts/k8s_series_network/</link>
+      <link>https://cctrip.github.io/posts/k8s_series_network/</link>
       <pubDate>Fri, 30 Oct 2020 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/k8s_series_network/</guid>
+      <guid>https://cctrip.github.io/posts/k8s_series_network/</guid>
       <description>系列目录    《Kubernetes系列：开篇》
 《Kubernetes系列：概述》
 《Kubernetes系列：架构》
@@ -334,10 +334,10 @@ static const struct nf_hook_ops ip_vs_ops4[] = { /* After packet filtering, chan
     
     <item>
       <title>Kubernetes系列：容器</title>
-      <link>https://cctrip.tech/posts/k8s_series_container/</link>
+      <link>https://cctrip.github.io/posts/k8s_series_container/</link>
       <pubDate>Sun, 25 Oct 2020 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/k8s_series_container/</guid>
+      <guid>https://cctrip.github.io/posts/k8s_series_container/</guid>
       <description>系列目录    《Kubernetes系列：开篇》
 《Kubernetes系列：概述》
 《Kubernetes系列：架构》
@@ -360,10 +360,10 @@ CRI由规范/要求(待添加)、protobuf API和用于容器运行时的库组�
     
     <item>
       <title>Kubernetes系列：架构</title>
-      <link>https://cctrip.tech/posts/k8s_series_arch/</link>
+      <link>https://cctrip.github.io/posts/k8s_series_arch/</link>
       <pubDate>Tue, 20 Oct 2020 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/k8s_series_arch/</guid>
+      <guid>https://cctrip.github.io/posts/k8s_series_arch/</guid>
       <description>系列目录    《Kubernetes系列：开篇》
 《Kubernetes系列：概述》
 《Kubernetes系列：架构》
@@ -385,10 +385,10 @@ Kubernetes API 服务器的主要实现是 kube-apiserver。 kube-apiserver 设�
     
     <item>
       <title>Kubernetes系列：概述</title>
-      <link>https://cctrip.tech/posts/k8s_series_intro/</link>
+      <link>https://cctrip.github.io/posts/k8s_series_intro/</link>
       <pubDate>Thu, 15 Oct 2020 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/k8s_series_intro/</guid>
+      <guid>https://cctrip.github.io/posts/k8s_series_intro/</guid>
       <description>系列目录    《Kubernetes系列：开篇》
 《Kubernetes系列：概述》
 《Kubernetes系列：架构》
@@ -413,10 +413,10 @@ Kubernetes API 服务器的主要实现是 kube-apiserver。 kube-apiserver 设�
     
     <item>
       <title>Kubernetes系列：开篇</title>
-      <link>https://cctrip.tech/posts/k8s_series/</link>
+      <link>https://cctrip.github.io/posts/k8s_series/</link>
       <pubDate>Sat, 10 Oct 2020 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/k8s_series/</guid>
+      <guid>https://cctrip.github.io/posts/k8s_series/</guid>
       <description>系列目录    《Kubernetes系列：开篇》
 《Kubernetes系列：概述》
 《Kubernetes系列：架构》
@@ -444,10 +444,10 @@ Kubernetes API 服务器的主要实现是 kube-apiserver。 kube-apiserver 设�
     
     <item>
       <title>DevOps系列：SRE</title>
-      <link>https://cctrip.tech/posts/devops_series_sre/</link>
+      <link>https://cctrip.github.io/posts/devops_series_sre/</link>
       <pubDate>Wed, 29 Jul 2020 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/devops_series_sre/</guid>
+      <guid>https://cctrip.github.io/posts/devops_series_sre/</guid>
       <description>系列目录    《DevOps系列：开篇》
 《DevOps系列：概述》
 《DevOps系列：CMDB》
@@ -466,10 +466,10 @@ Dev/Ops分离团队模型    雇佣系统管理员(sysadmin)运维复杂的计�
     
     <item>
       <title>[译]DevOps成熟度模型</title>
-      <link>https://cctrip.tech/posts/devops_model/</link>
+      <link>https://cctrip.github.io/posts/devops_model/</link>
       <pubDate>Sun, 26 Jul 2020 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/devops_model/</guid>
+      <guid>https://cctrip.github.io/posts/devops_model/</guid>
       <description>原文链接：DevOps Maturity Model – Explained
 水平有限，本文不免存在遗漏或错误之处。如有疑问，请查阅原文。
  DevOps通过改善团队在方法链和工作流程中的运作和合作方式，改变了IT行业。实际上，根据最近的一项调查，有63％的公司报告说在采用DevOps之后其软件部署质量得到了改善。
@@ -490,10 +490,10 @@ DevOps成熟度设计通过双方和组织方面的不断培训来管理增长�
     
     <item>
       <title>DevOps系列：监控</title>
-      <link>https://cctrip.tech/posts/devops_series_mon/</link>
+      <link>https://cctrip.github.io/posts/devops_series_mon/</link>
       <pubDate>Mon, 20 Jul 2020 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/devops_series_mon/</guid>
+      <guid>https://cctrip.github.io/posts/devops_series_mon/</guid>
       <description>系列目录    《DevOps系列：开篇》
 《DevOps系列：概述》
 《DevOps系列：CMDB》
@@ -511,10 +511,10 @@ DevOps成熟度设计通过双方和组织方面的不断培训来管理增长�
     
     <item>
       <title>DevOps系列：CI/CD</title>
-      <link>https://cctrip.tech/posts/devops_series_cicd/</link>
+      <link>https://cctrip.github.io/posts/devops_series_cicd/</link>
       <pubDate>Wed, 15 Jul 2020 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/devops_series_cicd/</guid>
+      <guid>https://cctrip.github.io/posts/devops_series_cicd/</guid>
       <description>系列目录    《DevOps系列：开篇》
 《DevOps系列：概述》
 《DevOps系列：CMDB》
@@ -537,10 +537,10 @@ CI/CD 既可能仅指持续集成和持续交付构成的关联环节，也可�
     
     <item>
       <title>DevOps系列：CMDB</title>
-      <link>https://cctrip.tech/posts/devops_series_cmdb/</link>
+      <link>https://cctrip.github.io/posts/devops_series_cmdb/</link>
       <pubDate>Fri, 10 Jul 2020 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/devops_series_cmdb/</guid>
+      <guid>https://cctrip.github.io/posts/devops_series_cmdb/</guid>
       <description>系列目录    《DevOps系列：开篇》
 《DevOps系列：概述》
 《DevOps系列：CMDB》
@@ -563,10 +563,10 @@ CI/CD 既可能仅指持续集成和持续交付构成的关联环节，也可�
     
     <item>
       <title>DevOps系列：概述</title>
-      <link>https://cctrip.tech/posts/devops_series_intro/</link>
+      <link>https://cctrip.github.io/posts/devops_series_intro/</link>
       <pubDate>Sun, 05 Jul 2020 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/devops_series_intro/</guid>
+      <guid>https://cctrip.github.io/posts/devops_series_intro/</guid>
       <description>系列目录    《DevOps系列：开篇》
 《DevOps系列：概述》
 《DevOps系列：CMDB》
@@ -590,10 +590,10 @@ CI/CD 既可能仅指持续集成和持续交付构成的关联环节，也可�
     
     <item>
       <title>DevOps系列：开篇</title>
-      <link>https://cctrip.tech/posts/devops_series/</link>
+      <link>https://cctrip.github.io/posts/devops_series/</link>
       <pubDate>Wed, 01 Jul 2020 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/devops_series/</guid>
+      <guid>https://cctrip.github.io/posts/devops_series/</guid>
       <description>系列目录    《DevOps系列：开篇》
 《DevOps系列：概述》
 《DevOps系列：CMDB》
@@ -612,10 +612,10 @@ CI/CD 既可能仅指持续集成和持续交付构成的关联环节，也可�
     
     <item>
       <title>Go系列：并发</title>
-      <link>https://cctrip.tech/posts/go_series_conc/</link>
+      <link>https://cctrip.github.io/posts/go_series_conc/</link>
       <pubDate>Tue, 07 Apr 2020 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/go_series_conc/</guid>
+      <guid>https://cctrip.github.io/posts/go_series_conc/</guid>
       <description>系列目录    《Go系列：内存管理》
 《Go系列：调度器》
 《Go系列：并发》
@@ -632,10 +632,10 @@ CI/CD 既可能仅指持续集成和持续交付构成的关联环节，也可�
     
     <item>
       <title>Go系列：调度器</title>
-      <link>https://cctrip.tech/posts/go_series_scheduler/</link>
+      <link>https://cctrip.github.io/posts/go_series_scheduler/</link>
       <pubDate>Tue, 07 Apr 2020 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/go_series_scheduler/</guid>
+      <guid>https://cctrip.github.io/posts/go_series_scheduler/</guid>
       <description>系列目录    《Go系列：内存管理》
 《Go系列：调度器》
 《Go系列：并发》
@@ -658,10 +658,10 @@ IO-Bound，这项工作导致线程进入等待状态。这项工作包括请求
     
     <item>
       <title>Go系列：内存管理</title>
-      <link>https://cctrip.tech/posts/go_series_mem/</link>
+      <link>https://cctrip.github.io/posts/go_series_mem/</link>
       <pubDate>Wed, 01 Apr 2020 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/go_series_mem/</guid>
+      <guid>https://cctrip.github.io/posts/go_series_mem/</guid>
       <description>系列目录    《Go系列：内存管理》
 《Go系列：并发》
  1.介绍     内存管理是控制和协调软件应用程序访问计算机内存的方式的过程。
@@ -675,10 +675,10 @@ IO-Bound，这项工作导致线程进入等待状态。这项工作包括请求
     
     <item>
       <title>Nginx匹配机制总结</title>
-      <link>https://cctrip.tech/posts/nginx_match/</link>
+      <link>https://cctrip.github.io/posts/nginx_match/</link>
       <pubDate>Thu, 06 Feb 2020 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/nginx_match/</guid>
+      <guid>https://cctrip.github.io/posts/nginx_match/</guid>
       <description>背景    Nginx是一个当前主流的HTTP服务器和反向代理服务器，很多做WEB相关的同学基本都会用到，很多云厂商的七层负载均衡器也基本都是基于nginx实现的，个人在工作过程也算是经常接触，这篇文章主要想总结一下nginx的匹配机制，主要分为两块，一块是server的匹配，一块是location的匹配。
  Server匹配机制    配置过nginx的都知道，在一个http模块中是可以配置多个server模块的，并且多个server模块是可以配置相同的监听端口的，下面是一个简单的server配置例子：
 server { listen 80; server_name example.org www.example.org; ... } server { listen 80; server_name example.net www.example.net; ... } server { listen 80; server_name example.com www.example.com; ... } 当我们对nginx发起http请求后，nginx会拿到http请求中对应的 &amp;quot;Host&amp;quot; 头部跟server模块中的server_name进行匹配，根据匹配的server结果进入具体的server模块处理http请求。那么，它具体的匹配机制是怎样的呢？
@@ -690,10 +690,10 @@ server { listen 80; server_name example.org www.example.org; ... } server { list
     
     <item>
       <title>谈谈文件描述符</title>
-      <link>https://cctrip.tech/posts/file_descriptor/</link>
+      <link>https://cctrip.github.io/posts/file_descriptor/</link>
       <pubDate>Sun, 29 Dec 2019 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/file_descriptor/</guid>
+      <guid>https://cctrip.github.io/posts/file_descriptor/</guid>
       <description>概念    wiki解释，文件描述符在形式上是一个非负整数。实际上，它是一个索引值，指向内核为每一个进程所维护的该进程打开文件的记录表。当程序打开一个现有文件或者创建一个新文件时，内核向进程返回一个文件描述符。在程序设计中，一些涉及底层的程序编写往往会围绕着文件描述符展开。
 一个文件描述符是一个数字，唯一标识一个在计算机的操作系统打开的文件。它描述了数据资源，以及如何访问该资源。
 当程序要求打开文件（或其他数据资源，例如网络套接字）时，内核：
@@ -708,10 +708,10 @@ server { listen 80; server_name example.org www.example.org; ... } server { list
     
     <item>
       <title>Linux PAM模块</title>
-      <link>https://cctrip.tech/posts/linux_pam/</link>
+      <link>https://cctrip.github.io/posts/linux_pam/</link>
       <pubDate>Thu, 05 Sep 2019 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/linux_pam/</guid>
+      <guid>https://cctrip.github.io/posts/linux_pam/</guid>
       <description>概念    Linux-PAM（Pluggable Authentication Modules for Linux）是一套共享库,使本地系统管理员可以随意选择程序的认证方式。换句话说，不用(重新编写)重新编译一个包含PAM功能的应用程序，就可以改变它使用的认证机制，这种方式下，就算升级本地认证机制,也不用修改程序。
  工作机制    当应用程序希望与PAM交互以处理事件时，他们必须包括libpam，该libpam允许通过库提供的API进行通信。 当PAM看到必须处理的新事件时，它将查看/etc/pam.d中的相关配置文件，并确定在某些阶段必须使用哪些模块。
  /etc/pam.d配置文件介绍    配置文件语法
@@ -734,10 +734,10 @@ type control module-path module-arguments 配置文件分为四列
     
     <item>
       <title>理解TCP协议</title>
-      <link>https://cctrip.tech/posts/deep_tcp/</link>
+      <link>https://cctrip.github.io/posts/deep_tcp/</link>
       <pubDate>Wed, 08 Aug 2018 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/deep_tcp/</guid>
+      <guid>https://cctrip.github.io/posts/deep_tcp/</guid>
       <description>1. 介绍    TCP协议是个复杂的东西，但是对学习网络知识也好，排查网络问题也好，优化网络性能也是，又是一个不得不啃的东西。自己也反反复复的看了不少文章，书籍和RFC文档，这次，想总结一下自己这些年对TCP的理解，方便后续查阅。
 1.1 TCP是什么？    我们知道，IP协议是不可靠的，它不保证IP数据报文能成功达到目的地，它只提供最好的传输服务。而TCP的出现就是为了在IP协议不可靠的传输上面提供可靠的传输服务。
  wiki上的定义，TCP是在通过IP网络进行通信的主机上运行的应用程序之间，提供可靠，有序且经过错误检查的八位位组（字节）流交付。
@@ -761,10 +761,10 @@ TCP用户可以指示通信的安全性和优先级。当这些特性不需要�
     
     <item>
       <title>理解SSL/TLS协议</title>
-      <link>https://cctrip.tech/posts/tls/</link>
+      <link>https://cctrip.github.io/posts/tls/</link>
       <pubDate>Sun, 08 Jan 2017 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/tls/</guid>
+      <guid>https://cctrip.github.io/posts/tls/</guid>
       <description>背景    早期我们在访问web时使用HTTP协议，该协议在传输数据时使用明文传输，明文传输带来了以下风险：
  信息窃听风险，第三方可以获取通信内容 信息篡改风险，第三方可以篡改通信内容 身份冒充风险，第三方可以冒充他人身份参与通信  为了解决明文传输所带来的风险，网景公司在1994年设计了SSL用于Web的安全传输协议，这是SSL的起源。IETF将SSL进行标准化，1999年公布了第一版TLS标准文件。随后又公布了 RFC 5246（2008年8月）与 RFC 6176 （2011年3月）。该协议在web中被广泛应用。
  SSL/TLS协议    TLS（Transport Layer Security，传输层安全协议），及其前身SSL（Secure Sockets Layer，安全套接层）是一种安全协议，目的是为互联网通信，提供安全及数据完整性保障。
@@ -781,10 +781,10 @@ TLS Record Protocol    该协议提供了连接安全的两个基本特性：
     
     <item>
       <title>谈谈HTTP</title>
-      <link>https://cctrip.tech/posts/http/</link>
+      <link>https://cctrip.github.io/posts/http/</link>
       <pubDate>Sun, 29 May 2016 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/http/</guid>
+      <guid>https://cctrip.github.io/posts/http/</guid>
       <description>写在前面    如今网络已经无处不在，人们通过网络获取浏览各种信息，其中，大部分都是通过浏览器访问各种网页来获取我们想要的信息，那么浏览器与网页(服务端)究竟是如何通信的呢？这就得从HTTP协议说起了，浏览器获取网页信息都是基于HTTP协议来处理的。
  概念    HTTP（HyperText Transfer Protocol，超文本传输协议）是互联网上应用最为广泛的一种网络协议。设计HTTP最初的目的是为了提供一种发布和接收HTML页面的方法。通过HTTP或者HTTPS协议请求的资源由统一资源标识符（Uniform Resource Identifiers，URI）来标识。HTTP是一个应用层协议，由请求和响应构成，是一个标准的客户端服务器模型。其具有如下特点：
   支持客户/服务器模式。
@@ -806,10 +806,10 @@ eg：GET /index.html HTTP/1.1
     
     <item>
       <title>理解系统启动过程</title>
-      <link>https://cctrip.tech/posts/system_start/</link>
+      <link>https://cctrip.github.io/posts/system_start/</link>
       <pubDate>Sat, 21 May 2016 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/system_start/</guid>
+      <guid>https://cctrip.github.io/posts/system_start/</guid>
       <description>前言    Linux是一种自由和开放源代码的类UNIX操作系统。该操作系统的内核由林纳斯·托瓦兹在1991年10月5日首次发布。在加上用户空间的应用程序之后，成为Linux操作系统。Linux是自由软件和开放源代码软件发展中最著名的例子。
 接触Linux的时间也不算短了，一直都是直接使用Linux操作系统进行一些工作，很少去了解系统从开机到能使用的整个过程，感觉有需要好好理解下整个系统的启动过程，故写这篇博客加深一下理解。
  启动过程    先通过一张图来简单了解下整个系统启动的流程，整个过程基本可以分为POST&amp;ndash;&amp;gt;BIOS&amp;ndash;&amp;gt;MBR(GRUB)&amp;ndash;&amp;gt;Kernel&amp;ndash;&amp;gt;Init&amp;ndash;&amp;gt;Runlevel。下面会详细说明每个过程的作用。
@@ -835,10 +835,10 @@ root (hd0,0) #内核文件所在的设备 kernel /vmlinuz-2.6.18-194.el5PAE ro r
     
     <item>
       <title>谈谈DNS</title>
-      <link>https://cctrip.tech/posts/dns/</link>
+      <link>https://cctrip.github.io/posts/dns/</link>
       <pubDate>Sat, 21 May 2016 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/dns/</guid>
+      <guid>https://cctrip.github.io/posts/dns/</guid>
       <description>写在前面    目前，我们大部分的网络通信都是基于TCP/IP协议的，而TCP/IP又基于IP地址作为唯一标识进行通信，随着需要记忆的IP地址数量的增多，肯定会超出我们的记忆能力范围，但如果使用一种利于人们的记忆的方式，如域名，例如&amp;quot;www.google.com&amp;quot;，我们便可以轻松的记忆这种方式的标识，而不是繁杂的数字。而DNS(域名系统)就是为了可以使用这种方式提供服务的。
  概念    DNS(Domain Name System)，域名系统，它是因特网的一项服务。它作为将域名和IP地址相互映射的一个分布式数据库，能够使人更方便地访问互联网。DNS使用TCP和UDP端口53。当前，对于每一级域名长度的限制是63个字符，域名总长度则不能超过253个字符。
 DNS Domain Namespace，DNS域命名空间，是一种分层树状结构，其格式如下:&amp;ldquo;www.google.com&amp;rdquo;,以点&amp;quot;.&amp;ldquo;为分隔。结构如图所示：
@@ -864,10 +864,10 @@ DNS Domain Namespace，DNS域命名空间，是一种分层树状结构，其格
     
     <item>
       <title>WEB安全之CSP</title>
-      <link>https://cctrip.tech/posts/webcsp/</link>
+      <link>https://cctrip.github.io/posts/webcsp/</link>
       <pubDate>Fri, 20 May 2016 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/webcsp/</guid>
+      <guid>https://cctrip.github.io/posts/webcsp/</guid>
       <description>概念    内容安全策略(Content-Security-Policy，CSP)：是一种web应用技术用于帮助缓解大部分类型的内容注入攻击，包括XSS攻击和数据注入等，这些攻击可实现数据窃取、网站破坏和作为恶意软件分发版本等行为。该策略可让网站管理员指定客户端允许加载的各类可信任资源。
  浏览器支持    统计来源：caniuse.com/contentsecuritypolicy &amp;amp; Mozilla
  指令参考    Content-Security-Policy 响应头的值可配置一个或多个，多个指令以分号;隔开。
@@ -876,10 +876,10 @@ DNS Domain Namespace，DNS域命名空间，是一种分层树状结构，其格
     
     <item>
       <title>初识网络通信</title>
-      <link>https://cctrip.tech/posts/network_comm/</link>
+      <link>https://cctrip.github.io/posts/network_comm/</link>
       <pubDate>Wed, 18 May 2016 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/network_comm/</guid>
+      <guid>https://cctrip.github.io/posts/network_comm/</guid>
       <description>写在前面    在计算机刚出现的时候，只能在本机进行一些运算处理，想将一台计算机中的数据转移到另一台计算机中，需要通过外部存储介质来传输，例如磁带、软盘。而网络技术的出现，使得计算机间可以通过一些传输介质(网线、光纤等)，实现快速的数据传输和信息交互。如今，网络已无处不在，那么，计算机之间究竟是如何通信的呢？下面会通过一些基础的网络知识来简单理解计算机之间的通信过程。
  网络通信模型     网络通信模型是一种概念模型和框架，旨在使各种计算机在世界范围内互连为网络。其中有OSI七层模型和TCP/IP四层模型，现在大部分网络通信都是以TCP/IP四层模型为基础的。
  它们的对应层次如下图：

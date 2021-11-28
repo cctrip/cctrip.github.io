@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>translation on CC&#39;s Trip</title>
-    <link>https://cctrip.tech/tags/translation/</link>
+    <link>https://cctrip.github.io/tags/translation/</link>
     <description>Recent content in translation on CC&#39;s Trip</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 28 Jan 2021 17:55:28 +0800</lastBuildDate><atom:link href="https://cctrip.tech/tags/translation/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 28 Jan 2021 17:55:28 +0800</lastBuildDate><atom:link href="https://cctrip.github.io/tags/translation/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[译]Kubernetes成熟度模型</title>
-      <link>https://cctrip.tech/posts/k8s_model/</link>
+      <link>https://cctrip.github.io/posts/k8s_model/</link>
       <pubDate>Thu, 28 Jan 2021 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/k8s_model/</guid>
+      <guid>https://cctrip.github.io/posts/k8s_model/</guid>
       <description>原文链接：kubernetes maturity model
 水平有限，本文不免存在遗漏或错误之处。如有疑问，请查阅原文。
  前言    Kubernetes有很多好处。 同时，当组织采用云原生技术时，它可能变得复杂。 Kubernetes成熟度模型的存在可帮助您确定自己在迁移到原生云的过程中所处的位置，无论您是Kubernetes的新手还是有部署经验的人。 这是一个重要的工具，可帮助您自我确定您所处的阶段，了解环境中的差距并获得有关增强和改善Kubernetes技术栈的见解。
@@ -41,10 +41,10 @@ Container
     
     <item>
       <title>[译]当我们谈论Ops，我们在谈论什么</title>
-      <link>https://cctrip.tech/posts/talk_ops/</link>
+      <link>https://cctrip.github.io/posts/talk_ops/</link>
       <pubDate>Wed, 13 Jan 2021 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/talk_ops/</guid>
+      <guid>https://cctrip.github.io/posts/talk_ops/</guid>
       <description>原文链接：What the Ops are you talking about?
 水平有限，本文不免存在遗漏或错误之处。如有疑问，请查阅原文。
  背景    两年前，我因为效率低下的领导而获得了耻辱。我的背景是数据科学和机器学习，因此，我当然从我的工程同事那边学习到了DevOps。至少我们认为是这样的。
@@ -74,10 +74,10 @@ SecOps以安全性为核心，GitOps致力于持续交付，NetOps确保网络�
     
     <item>
       <title>[译]DevOps成熟度模型</title>
-      <link>https://cctrip.tech/posts/devops_model/</link>
+      <link>https://cctrip.github.io/posts/devops_model/</link>
       <pubDate>Sun, 26 Jul 2020 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/devops_model/</guid>
+      <guid>https://cctrip.github.io/posts/devops_model/</guid>
       <description>原文链接：DevOps Maturity Model – Explained
 水平有限，本文不免存在遗漏或错误之处。如有疑问，请查阅原文。
  DevOps通过改善团队在方法链和工作流程中的运作和合作方式，改变了IT行业。实际上，根据最近的一项调查，有63％的公司报告说在采用DevOps之后其软件部署质量得到了改善。

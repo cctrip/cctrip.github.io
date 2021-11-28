@@ -2,9 +2,9 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Authors on CC&#39;s Trip</title>
-    <link>https://cctrip.tech/zh-cn/authors/</link>
+    <link>https://cctrip.github.io/zh-cn/authors/</link>
     <description>Recent content in Authors on CC&#39;s Trip</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language><atom:link href="https://cctrip.tech/zh-cn/authors/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language><atom:link href="https://cctrip.github.io/zh-cn/authors/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Cloud Native on CC&#39;s Trip</title>
-    <link>https://cctrip.tech/categories/cloud-native/</link>
+    <link>https://cctrip.github.io/categories/cloud-native/</link>
     <description>Recent content in Cloud Native on CC&#39;s Trip</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 16 Aug 2021 17:55:28 +0800</lastBuildDate><atom:link href="https://cctrip.tech/categories/cloud-native/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 16 Aug 2021 17:55:28 +0800</lastBuildDate><atom:link href="https://cctrip.github.io/categories/cloud-native/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Traefik系列(一)：Ingress Controller</title>
-      <link>https://cctrip.tech/posts/why_traefik/</link>
+      <link>https://cctrip.github.io/posts/why_traefik/</link>
       <pubDate>Mon, 16 Aug 2021 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/why_traefik/</guid>
+      <guid>https://cctrip.github.io/posts/why_traefik/</guid>
       <description>1. 介绍    最近，我们在拥抱云原生，准备基于k8s开发一套PaaS平台，我这边负责了服务路由相关的功能，因此，要选出一个Ingress Controller来实现我们的服务路由相关的功能，市面上那么多种，哪个才是最适合我们的呢？
  2. 需求    在EC2时代，我们用openresty来实现我们的服务路由功能，线上有几十上百个域名，基于稳定性和安全的考虑，通过人工配置和git来管理server和location模块，开发测试环境，不同的项目环境，基线环境等等，服务路由配置更是成倍数的增长，因此我们通过openresty+lua，以及DevOps平台来动态管理服务路由的变更。
 同时，基于安全和稳定性的考虑，我们在线上环境基于lua写了一些简单的waf，来防攻击以及限流操作。
@@ -28,10 +28,10 @@ traefik &amp;ndash;&amp;gt; traefik
     
     <item>
       <title>K8S设计系列：架构</title>
-      <link>https://cctrip.tech/posts/k8s_design_arch/</link>
+      <link>https://cctrip.github.io/posts/k8s_design_arch/</link>
       <pubDate>Mon, 05 Apr 2021 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/k8s_design_arch/</guid>
+      <guid>https://cctrip.github.io/posts/k8s_design_arch/</guid>
       <description>系列目录    《K8S设计系列：开篇》
 《K8S设计系列：架构》
  1. 介绍    本篇要介绍的是k8s的整体架构，以及为什么要这么设计。
@@ -46,10 +46,10 @@ Kubernetes渴望成为一个可扩展的，可插入的，构建模块的OSS平�
     
     <item>
       <title>K8S设计系列：开篇</title>
-      <link>https://cctrip.tech/posts/k8s_design/</link>
+      <link>https://cctrip.github.io/posts/k8s_design/</link>
       <pubDate>Tue, 30 Mar 2021 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/k8s_design/</guid>
+      <guid>https://cctrip.github.io/posts/k8s_design/</guid>
       <description>系列目录    《K8S设计系列：开篇》
  1. 介绍    个人觉得，k8s包含着许多运维理念，理解了k8s的功能设计，就基本理解了运维。并且，一个优秀的系统是值得深入了解和学习的，这样对自身的系统架构也有很大帮助。本系列将通过阅读k8s的设计文档来加深对k8s的理解，并输出自己的一些看法。
  软件服务于业务。随着业务规模的扩大，软件的中断的时间越长，对业务的影响面越大。所以，稳定大于一切。
@@ -62,10 +62,10 @@ CDN、负载均衡、微服务、云计算、敏捷开发、DevOps、容器、k8
     
     <item>
       <title>[译]Kubernetes成熟度模型</title>
-      <link>https://cctrip.tech/posts/k8s_model/</link>
+      <link>https://cctrip.github.io/posts/k8s_model/</link>
       <pubDate>Thu, 28 Jan 2021 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/k8s_model/</guid>
+      <guid>https://cctrip.github.io/posts/k8s_model/</guid>
       <description>原文链接：kubernetes maturity model
 水平有限，本文不免存在遗漏或错误之处。如有疑问，请查阅原文。
  前言    Kubernetes有很多好处。 同时，当组织采用云原生技术时，它可能变得复杂。 Kubernetes成熟度模型的存在可帮助您确定自己在迁移到原生云的过程中所处的位置，无论您是Kubernetes的新手还是有部署经验的人。 这是一个重要的工具，可帮助您自我确定您所处的阶段，了解环境中的差距并获得有关增强和改善Kubernetes技术栈的见解。
@@ -94,10 +94,10 @@ Container
     
     <item>
       <title>Kubernetes系列：OAM</title>
-      <link>https://cctrip.tech/posts/k8s_series_oam/</link>
+      <link>https://cctrip.github.io/posts/k8s_series_oam/</link>
       <pubDate>Sun, 15 Nov 2020 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/k8s_series_oam/</guid>
+      <guid>https://cctrip.github.io/posts/k8s_series_oam/</guid>
       <description>系列目录    《Kubernetes系列：开篇》
 《Kubernetes系列：概述》
 《Kubernetes系列：架构》
@@ -122,10 +122,10 @@ Serverless Platforms    无服务器平台（例如AWS Lambda）可提供非凡�
     
     <item>
       <title>Kubernetes系列：Ingress</title>
-      <link>https://cctrip.tech/posts/k8s_series_ingress/</link>
+      <link>https://cctrip.github.io/posts/k8s_series_ingress/</link>
       <pubDate>Wed, 11 Nov 2020 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/k8s_series_ingress/</guid>
+      <guid>https://cctrip.github.io/posts/k8s_series_ingress/</guid>
       <description>系列目录    《Kubernetes系列：开篇》
 《Kubernetes系列：概述》
 《Kubernetes系列：架构》
@@ -145,10 +145,10 @@ Serverless Platforms    无服务器平台（例如AWS Lambda）可提供非凡�
     
     <item>
       <title>Kubernetes系列：Service</title>
-      <link>https://cctrip.tech/posts/k8s_series_service/</link>
+      <link>https://cctrip.github.io/posts/k8s_series_service/</link>
       <pubDate>Tue, 10 Nov 2020 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/k8s_series_service/</guid>
+      <guid>https://cctrip.github.io/posts/k8s_series_service/</guid>
       <description>系列目录    《Kubernetes系列：开篇》
 《Kubernetes系列：概述》
 《Kubernetes系列：架构》
@@ -167,10 +167,10 @@ Serverless Platforms    无服务器平台（例如AWS Lambda）可提供非凡�
     
     <item>
       <title>Kubernetes系列：存储</title>
-      <link>https://cctrip.tech/posts/k8s_series_storage/</link>
+      <link>https://cctrip.github.io/posts/k8s_series_storage/</link>
       <pubDate>Thu, 05 Nov 2020 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/k8s_series_storage/</guid>
+      <guid>https://cctrip.github.io/posts/k8s_series_storage/</guid>
       <description>系列目录    《Kubernetes系列：开篇》
 《Kubernetes系列：概述》
 《Kubernetes系列：架构》
@@ -190,10 +190,10 @@ Serverless Platforms    无服务器平台（例如AWS Lambda）可提供非凡�
     
     <item>
       <title>Kubernetes系列：网络</title>
-      <link>https://cctrip.tech/posts/k8s_series_network/</link>
+      <link>https://cctrip.github.io/posts/k8s_series_network/</link>
       <pubDate>Fri, 30 Oct 2020 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/k8s_series_network/</guid>
+      <guid>https://cctrip.github.io/posts/k8s_series_network/</guid>
       <description>系列目录    《Kubernetes系列：开篇》
 《Kubernetes系列：概述》
 《Kubernetes系列：架构》
@@ -212,10 +212,10 @@ Serverless Platforms    无服务器平台（例如AWS Lambda）可提供非凡�
     
     <item>
       <title>Kubernetes系列：容器</title>
-      <link>https://cctrip.tech/posts/k8s_series_container/</link>
+      <link>https://cctrip.github.io/posts/k8s_series_container/</link>
       <pubDate>Sun, 25 Oct 2020 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/k8s_series_container/</guid>
+      <guid>https://cctrip.github.io/posts/k8s_series_container/</guid>
       <description>系列目录    《Kubernetes系列：开篇》
 《Kubernetes系列：概述》
 《Kubernetes系列：架构》
@@ -238,10 +238,10 @@ CRI由规范/要求(待添加)、protobuf API和用于容器运行时的库组�
     
     <item>
       <title>Kubernetes系列：架构</title>
-      <link>https://cctrip.tech/posts/k8s_series_arch/</link>
+      <link>https://cctrip.github.io/posts/k8s_series_arch/</link>
       <pubDate>Tue, 20 Oct 2020 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/k8s_series_arch/</guid>
+      <guid>https://cctrip.github.io/posts/k8s_series_arch/</guid>
       <description>系列目录    《Kubernetes系列：开篇》
 《Kubernetes系列：概述》
 《Kubernetes系列：架构》
@@ -263,10 +263,10 @@ Kubernetes API 服务器的主要实现是 kube-apiserver。 kube-apiserver 设�
     
     <item>
       <title>Kubernetes系列：概述</title>
-      <link>https://cctrip.tech/posts/k8s_series_intro/</link>
+      <link>https://cctrip.github.io/posts/k8s_series_intro/</link>
       <pubDate>Thu, 15 Oct 2020 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/k8s_series_intro/</guid>
+      <guid>https://cctrip.github.io/posts/k8s_series_intro/</guid>
       <description>系列目录    《Kubernetes系列：开篇》
 《Kubernetes系列：概述》
 《Kubernetes系列：架构》
@@ -291,10 +291,10 @@ Kubernetes API 服务器的主要实现是 kube-apiserver。 kube-apiserver 设�
     
     <item>
       <title>Kubernetes系列：开篇</title>
-      <link>https://cctrip.tech/posts/k8s_series/</link>
+      <link>https://cctrip.github.io/posts/k8s_series/</link>
       <pubDate>Sat, 10 Oct 2020 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/k8s_series/</guid>
+      <guid>https://cctrip.github.io/posts/k8s_series/</guid>
       <description>系列目录    《Kubernetes系列：开篇》
 《Kubernetes系列：概述》
 《Kubernetes系列：架构》

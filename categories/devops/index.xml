@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>DevOps on CC&#39;s Trip</title>
-    <link>https://cctrip.tech/categories/devops/</link>
+    <link>https://cctrip.github.io/categories/devops/</link>
     <description>Recent content in DevOps on CC&#39;s Trip</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 20 Mar 2021 17:55:28 +0800</lastBuildDate><atom:link href="https://cctrip.tech/categories/devops/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 20 Mar 2021 17:55:28 +0800</lastBuildDate><atom:link href="https://cctrip.github.io/categories/devops/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Oops管理系统(二)</title>
-      <link>https://cctrip.tech/posts/oops_series_two/</link>
+      <link>https://cctrip.github.io/posts/oops_series_two/</link>
       <pubDate>Sat, 20 Mar 2021 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/oops_series_two/</guid>
+      <guid>https://cctrip.github.io/posts/oops_series_two/</guid>
       <description>系列目录    《Oops管理系统(一)》
 《Oops管理系统(二)》
  1. 介绍    本篇，要先讲下整体的技术框架。
@@ -28,10 +28,10 @@ package cmd import ( .</description>
     
     <item>
       <title>Oops管理系统(一)</title>
-      <link>https://cctrip.tech/posts/oops_series_one/</link>
+      <link>https://cctrip.github.io/posts/oops_series_one/</link>
       <pubDate>Wed, 17 Mar 2021 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/oops_series_one/</guid>
+      <guid>https://cctrip.github.io/posts/oops_series_one/</guid>
       <description>系列目录    《Oops管理系统(一)》
 《Oops管理系统(二)》
  1. 介绍    做了那么的久的运维，了解、运维和开发过各种各样的发布系统、运维系统、监控系统，经历了服务器从物理时代、到云时代再到容器时代的变革，服务器规模也经历从十几台到几千台甚至几万台规模的管理，管理手段也经历从手工到工具再到平台的演变。做过那么些的管理系统，因为各种各样的原因，可能是历史包袱，可能是人言式微，可能是早期技术没有那么的好，很多时候做出来的管理系统不是自己理想中的管理系统，因此，想花一些业余时间，写一个自己理解的DevOps管理系统。
@@ -46,10 +46,10 @@ package cmd import ( .</description>
     
     <item>
       <title>[译]当我们谈论Ops，我们在谈论什么</title>
-      <link>https://cctrip.tech/posts/talk_ops/</link>
+      <link>https://cctrip.github.io/posts/talk_ops/</link>
       <pubDate>Wed, 13 Jan 2021 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/talk_ops/</guid>
+      <guid>https://cctrip.github.io/posts/talk_ops/</guid>
       <description>原文链接：What the Ops are you talking about?
 水平有限，本文不免存在遗漏或错误之处。如有疑问，请查阅原文。
  背景    两年前，我因为效率低下的领导而获得了耻辱。我的背景是数据科学和机器学习，因此，我当然从我的工程同事那边学习到了DevOps。至少我们认为是这样的。
@@ -79,10 +79,10 @@ SecOps以安全性为核心，GitOps致力于持续交付，NetOps确保网络�
     
     <item>
       <title>DevOps系列：SRE</title>
-      <link>https://cctrip.tech/posts/devops_series_sre/</link>
+      <link>https://cctrip.github.io/posts/devops_series_sre/</link>
       <pubDate>Wed, 29 Jul 2020 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/devops_series_sre/</guid>
+      <guid>https://cctrip.github.io/posts/devops_series_sre/</guid>
       <description>系列目录    《DevOps系列：开篇》
 《DevOps系列：概述》
 《DevOps系列：CMDB》
@@ -101,10 +101,10 @@ Dev/Ops分离团队模型    雇佣系统管理员(sysadmin)运维复杂的计�
     
     <item>
       <title>[译]DevOps成熟度模型</title>
-      <link>https://cctrip.tech/posts/devops_model/</link>
+      <link>https://cctrip.github.io/posts/devops_model/</link>
       <pubDate>Sun, 26 Jul 2020 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/devops_model/</guid>
+      <guid>https://cctrip.github.io/posts/devops_model/</guid>
       <description>原文链接：DevOps Maturity Model – Explained
 水平有限，本文不免存在遗漏或错误之处。如有疑问，请查阅原文。
  DevOps通过改善团队在方法链和工作流程中的运作和合作方式，改变了IT行业。实际上，根据最近的一项调查，有63％的公司报告说在采用DevOps之后其软件部署质量得到了改善。
@@ -125,10 +125,10 @@ DevOps成熟度设计通过双方和组织方面的不断培训来管理增长�
     
     <item>
       <title>DevOps系列：监控</title>
-      <link>https://cctrip.tech/posts/devops_series_mon/</link>
+      <link>https://cctrip.github.io/posts/devops_series_mon/</link>
       <pubDate>Mon, 20 Jul 2020 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/devops_series_mon/</guid>
+      <guid>https://cctrip.github.io/posts/devops_series_mon/</guid>
       <description>系列目录    《DevOps系列：开篇》
 《DevOps系列：概述》
 《DevOps系列：CMDB》
@@ -146,10 +146,10 @@ DevOps成熟度设计通过双方和组织方面的不断培训来管理增长�
     
     <item>
       <title>DevOps系列：CI/CD</title>
-      <link>https://cctrip.tech/posts/devops_series_cicd/</link>
+      <link>https://cctrip.github.io/posts/devops_series_cicd/</link>
       <pubDate>Wed, 15 Jul 2020 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/devops_series_cicd/</guid>
+      <guid>https://cctrip.github.io/posts/devops_series_cicd/</guid>
       <description>系列目录    《DevOps系列：开篇》
 《DevOps系列：概述》
 《DevOps系列：CMDB》
@@ -172,10 +172,10 @@ CI/CD 既可能仅指持续集成和持续交付构成的关联环节，也可�
     
     <item>
       <title>DevOps系列：CMDB</title>
-      <link>https://cctrip.tech/posts/devops_series_cmdb/</link>
+      <link>https://cctrip.github.io/posts/devops_series_cmdb/</link>
       <pubDate>Fri, 10 Jul 2020 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/devops_series_cmdb/</guid>
+      <guid>https://cctrip.github.io/posts/devops_series_cmdb/</guid>
       <description>系列目录    《DevOps系列：开篇》
 《DevOps系列：概述》
 《DevOps系列：CMDB》
@@ -198,10 +198,10 @@ CI/CD 既可能仅指持续集成和持续交付构成的关联环节，也可�
     
     <item>
       <title>DevOps系列：概述</title>
-      <link>https://cctrip.tech/posts/devops_series_intro/</link>
+      <link>https://cctrip.github.io/posts/devops_series_intro/</link>
       <pubDate>Sun, 05 Jul 2020 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/devops_series_intro/</guid>
+      <guid>https://cctrip.github.io/posts/devops_series_intro/</guid>
       <description>系列目录    《DevOps系列：开篇》
 《DevOps系列：概述》
 《DevOps系列：CMDB》
@@ -225,10 +225,10 @@ CI/CD 既可能仅指持续集成和持续交付构成的关联环节，也可�
     
     <item>
       <title>DevOps系列：开篇</title>
-      <link>https://cctrip.tech/posts/devops_series/</link>
+      <link>https://cctrip.github.io/posts/devops_series/</link>
       <pubDate>Wed, 01 Jul 2020 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/devops_series/</guid>
+      <guid>https://cctrip.github.io/posts/devops_series/</guid>
       <description>系列目录    《DevOps系列：开篇》
 《DevOps系列：概述》
 《DevOps系列：CMDB》

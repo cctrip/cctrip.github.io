@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>design on CC&#39;s Trip</title>
-    <link>https://cctrip.tech/tags/design/</link>
+    <link>https://cctrip.github.io/tags/design/</link>
     <description>Recent content in design on CC&#39;s Trip</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 05 Apr 2021 17:55:28 +0800</lastBuildDate><atom:link href="https://cctrip.tech/tags/design/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 05 Apr 2021 17:55:28 +0800</lastBuildDate><atom:link href="https://cctrip.github.io/tags/design/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>K8S设计系列：架构</title>
-      <link>https://cctrip.tech/posts/k8s_design_arch/</link>
+      <link>https://cctrip.github.io/posts/k8s_design_arch/</link>
       <pubDate>Mon, 05 Apr 2021 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/k8s_design_arch/</guid>
+      <guid>https://cctrip.github.io/posts/k8s_design_arch/</guid>
       <description>系列目录    《K8S设计系列：开篇》
 《K8S设计系列：架构》
  1. 介绍    本篇要介绍的是k8s的整体架构，以及为什么要这么设计。
@@ -27,10 +27,10 @@ Kubernetes渴望成为一个可扩展的，可插入的，构建模块的OSS平�
     
     <item>
       <title>K8S设计系列：开篇</title>
-      <link>https://cctrip.tech/posts/k8s_design/</link>
+      <link>https://cctrip.github.io/posts/k8s_design/</link>
       <pubDate>Tue, 30 Mar 2021 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/k8s_design/</guid>
+      <guid>https://cctrip.github.io/posts/k8s_design/</guid>
       <description>系列目录    《K8S设计系列：开篇》
  1. 介绍    个人觉得，k8s包含着许多运维理念，理解了k8s的功能设计，就基本理解了运维。并且，一个优秀的系统是值得深入了解和学习的，这样对自身的系统架构也有很大帮助。本系列将通过阅读k8s的设计文档来加深对k8s的理解，并输出自己的一些看法。
  软件服务于业务。随着业务规模的扩大，软件的中断的时间越长，对业务的影响面越大。所以，稳定大于一切。

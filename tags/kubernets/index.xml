@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>kubernets on CC&#39;s Trip</title>
-    <link>https://cctrip.tech/tags/kubernets/</link>
+    <link>https://cctrip.github.io/tags/kubernets/</link>
     <description>Recent content in kubernets on CC&#39;s Trip</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 16 Aug 2021 17:55:28 +0800</lastBuildDate><atom:link href="https://cctrip.tech/tags/kubernets/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 16 Aug 2021 17:55:28 +0800</lastBuildDate><atom:link href="https://cctrip.github.io/tags/kubernets/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Traefik系列(一)：Ingress Controller</title>
-      <link>https://cctrip.tech/posts/why_traefik/</link>
+      <link>https://cctrip.github.io/posts/why_traefik/</link>
       <pubDate>Mon, 16 Aug 2021 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/why_traefik/</guid>
+      <guid>https://cctrip.github.io/posts/why_traefik/</guid>
       <description>1. 介绍    最近，我们在拥抱云原生，准备基于k8s开发一套PaaS平台，我这边负责了服务路由相关的功能，因此，要选出一个Ingress Controller来实现我们的服务路由相关的功能，市面上那么多种，哪个才是最适合我们的呢？
  2. 需求    在EC2时代，我们用openresty来实现我们的服务路由功能，线上有几十上百个域名，基于稳定性和安全的考虑，通过人工配置和git来管理server和location模块，开发测试环境，不同的项目环境，基线环境等等，服务路由配置更是成倍数的增长，因此我们通过openresty+lua，以及DevOps平台来动态管理服务路由的变更。
 同时，基于安全和稳定性的考虑，我们在线上环境基于lua写了一些简单的waf，来防攻击以及限流操作。
@@ -28,10 +28,10 @@ traefik &amp;ndash;&amp;gt; traefik
     
     <item>
       <title>深入理解LVS</title>
-      <link>https://cctrip.tech/posts/deep_lvs/</link>
+      <link>https://cctrip.github.io/posts/deep_lvs/</link>
       <pubDate>Mon, 09 Nov 2020 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/deep_lvs/</guid>
+      <guid>https://cctrip.github.io/posts/deep_lvs/</guid>
       <description>1. 介绍    接上一篇深入理解iptables，kubernetes service技术还用到ipvs技术，讲到ipvs，那就得说说LVS了，这篇我们来了解下LVS具体的实现机制。
  2. IPVS     IPVS（IP虚拟服务器）实现传输层负载均衡，通常称为第4层LAN交换。
  负载均衡器的概念可以看这篇文章，或者翻译版本。
@@ -43,10 +43,10 @@ static const struct nf_hook_ops ip_vs_ops4[] = { /* After packet filtering, chan
     
     <item>
       <title>深入理解iptables</title>
-      <link>https://cctrip.tech/posts/deep_iptables/</link>
+      <link>https://cctrip.github.io/posts/deep_iptables/</link>
       <pubDate>Sat, 07 Nov 2020 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/deep_iptables/</guid>
+      <guid>https://cctrip.github.io/posts/deep_iptables/</guid>
       <description>1. 介绍    最近在刚好在看Kubernetes的service相关内容，里面用到了iptables和ipvs技术，好久没看iptables了，快忘记了，刚好复习重新记忆一下。
 讲iptables和ipvs，有个东西就一定得清楚，那就是netfilter
  2. netfilter     netfilter是一个数据包处理框架。

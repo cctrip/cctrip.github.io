@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>network on CC&#39;s Trip</title>
-    <link>https://cctrip.tech/tags/network/</link>
+    <link>https://cctrip.github.io/tags/network/</link>
     <description>Recent content in network on CC&#39;s Trip</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 08 Aug 2018 17:55:28 +0800</lastBuildDate><atom:link href="https://cctrip.tech/tags/network/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 08 Aug 2018 17:55:28 +0800</lastBuildDate><atom:link href="https://cctrip.github.io/tags/network/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>理解TCP协议</title>
-      <link>https://cctrip.tech/posts/deep_tcp/</link>
+      <link>https://cctrip.github.io/posts/deep_tcp/</link>
       <pubDate>Wed, 08 Aug 2018 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/deep_tcp/</guid>
+      <guid>https://cctrip.github.io/posts/deep_tcp/</guid>
       <description>1. 介绍    TCP协议是个复杂的东西，但是对学习网络知识也好，排查网络问题也好，优化网络性能也是，又是一个不得不啃的东西。自己也反反复复的看了不少文章，书籍和RFC文档，这次，想总结一下自己这些年对TCP的理解，方便后续查阅。
 1.1 TCP是什么？    我们知道，IP协议是不可靠的，它不保证IP数据报文能成功达到目的地，它只提供最好的传输服务。而TCP的出现就是为了在IP协议不可靠的传输上面提供可靠的传输服务。
  wiki上的定义，TCP是在通过IP网络进行通信的主机上运行的应用程序之间，提供可靠，有序且经过错误检查的八位位组（字节）流交付。
@@ -36,10 +36,10 @@ TCP用户可以指示通信的安全性和优先级。当这些特性不需要�
     
     <item>
       <title>谈谈HTTP</title>
-      <link>https://cctrip.tech/posts/http/</link>
+      <link>https://cctrip.github.io/posts/http/</link>
       <pubDate>Sun, 29 May 2016 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/http/</guid>
+      <guid>https://cctrip.github.io/posts/http/</guid>
       <description>写在前面    如今网络已经无处不在，人们通过网络获取浏览各种信息，其中，大部分都是通过浏览器访问各种网页来获取我们想要的信息，那么浏览器与网页(服务端)究竟是如何通信的呢？这就得从HTTP协议说起了，浏览器获取网页信息都是基于HTTP协议来处理的。
  概念    HTTP（HyperText Transfer Protocol，超文本传输协议）是互联网上应用最为广泛的一种网络协议。设计HTTP最初的目的是为了提供一种发布和接收HTML页面的方法。通过HTTP或者HTTPS协议请求的资源由统一资源标识符（Uniform Resource Identifiers，URI）来标识。HTTP是一个应用层协议，由请求和响应构成，是一个标准的客户端服务器模型。其具有如下特点：
   支持客户/服务器模式。
@@ -61,10 +61,10 @@ eg：GET /index.html HTTP/1.1
     
     <item>
       <title>谈谈DNS</title>
-      <link>https://cctrip.tech/posts/dns/</link>
+      <link>https://cctrip.github.io/posts/dns/</link>
       <pubDate>Sat, 21 May 2016 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/dns/</guid>
+      <guid>https://cctrip.github.io/posts/dns/</guid>
       <description>写在前面    目前，我们大部分的网络通信都是基于TCP/IP协议的，而TCP/IP又基于IP地址作为唯一标识进行通信，随着需要记忆的IP地址数量的增多，肯定会超出我们的记忆能力范围，但如果使用一种利于人们的记忆的方式，如域名，例如&amp;quot;www.google.com&amp;quot;，我们便可以轻松的记忆这种方式的标识，而不是繁杂的数字。而DNS(域名系统)就是为了可以使用这种方式提供服务的。
  概念    DNS(Domain Name System)，域名系统，它是因特网的一项服务。它作为将域名和IP地址相互映射的一个分布式数据库，能够使人更方便地访问互联网。DNS使用TCP和UDP端口53。当前，对于每一级域名长度的限制是63个字符，域名总长度则不能超过253个字符。
 DNS Domain Namespace，DNS域命名空间，是一种分层树状结构，其格式如下:&amp;ldquo;www.google.com&amp;rdquo;,以点&amp;quot;.&amp;ldquo;为分隔。结构如图所示：
@@ -90,10 +90,10 @@ DNS Domain Namespace，DNS域命名空间，是一种分层树状结构，其格
     
     <item>
       <title>初识网络通信</title>
-      <link>https://cctrip.tech/posts/network_comm/</link>
+      <link>https://cctrip.github.io/posts/network_comm/</link>
       <pubDate>Wed, 18 May 2016 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/network_comm/</guid>
+      <guid>https://cctrip.github.io/posts/network_comm/</guid>
       <description>写在前面    在计算机刚出现的时候，只能在本机进行一些运算处理，想将一台计算机中的数据转移到另一台计算机中，需要通过外部存储介质来传输，例如磁带、软盘。而网络技术的出现，使得计算机间可以通过一些传输介质(网线、光纤等)，实现快速的数据传输和信息交互。如今，网络已无处不在，那么，计算机之间究竟是如何通信的呢？下面会通过一些基础的网络知识来简单理解计算机之间的通信过程。
  网络通信模型     网络通信模型是一种概念模型和框架，旨在使各种计算机在世界范围内互连为网络。其中有OSI七层模型和TCP/IP四层模型，现在大部分网络通信都是以TCP/IP四层模型为基础的。
  它们的对应层次如下图：

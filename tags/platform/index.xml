@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>platform on CC&#39;s Trip</title>
-    <link>https://cctrip.tech/tags/platform/</link>
+    <link>https://cctrip.github.io/tags/platform/</link>
     <description>Recent content in platform on CC&#39;s Trip</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 20 Mar 2021 17:55:28 +0800</lastBuildDate><atom:link href="https://cctrip.tech/tags/platform/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 20 Mar 2021 17:55:28 +0800</lastBuildDate><atom:link href="https://cctrip.github.io/tags/platform/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Oops管理系统(二)</title>
-      <link>https://cctrip.tech/posts/oops_series_two/</link>
+      <link>https://cctrip.github.io/posts/oops_series_two/</link>
       <pubDate>Sat, 20 Mar 2021 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/oops_series_two/</guid>
+      <guid>https://cctrip.github.io/posts/oops_series_two/</guid>
       <description>系列目录    《Oops管理系统(一)》
 《Oops管理系统(二)》
  1. 介绍    本篇，要先讲下整体的技术框架。
@@ -28,10 +28,10 @@ package cmd import ( .</description>
     
     <item>
       <title>Oops管理系统(一)</title>
-      <link>https://cctrip.tech/posts/oops_series_one/</link>
+      <link>https://cctrip.github.io/posts/oops_series_one/</link>
       <pubDate>Wed, 17 Mar 2021 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/oops_series_one/</guid>
+      <guid>https://cctrip.github.io/posts/oops_series_one/</guid>
       <description>系列目录    《Oops管理系统(一)》
 《Oops管理系统(二)》
  1. 介绍    做了那么的久的运维，了解、运维和开发过各种各样的发布系统、运维系统、监控系统，经历了服务器从物理时代、到云时代再到容器时代的变革，服务器规模也经历从十几台到几千台甚至几万台规模的管理，管理手段也经历从手工到工具再到平台的演变。做过那么些的管理系统，因为各种各样的原因，可能是历史包袱，可能是人言式微，可能是早期技术没有那么的好，很多时候做出来的管理系统不是自己理想中的管理系统，因此，想花一些业余时间，写一个自己理解的DevOps管理系统。

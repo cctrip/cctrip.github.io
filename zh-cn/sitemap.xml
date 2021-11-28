@@ -2,64 +2,64 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://cctrip.tech/zh-cn/authors/</loc>
+    <loc>https://cctrip.github.io/zh-cn/authors/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://cctrip.tech/authors/"
+                href="https://cctrip.github.io/authors/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="https://cctrip.tech/zh-cn/authors/"
+                href="https://cctrip.github.io/zh-cn/authors/"
                 />
   </url><url>
-    <loc>https://cctrip.tech/zh-cn/categories/</loc>
+    <loc>https://cctrip.github.io/zh-cn/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://cctrip.tech/categories/"
+                href="https://cctrip.github.io/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="https://cctrip.tech/zh-cn/categories/"
+                href="https://cctrip.github.io/zh-cn/categories/"
                 />
   </url><url>
-    <loc>https://cctrip.tech/zh-cn/</loc>
+    <loc>https://cctrip.github.io/zh-cn/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://cctrip.tech/"
+                href="https://cctrip.github.io/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="https://cctrip.tech/zh-cn/"
+                href="https://cctrip.github.io/zh-cn/"
                 />
   </url><url>
-    <loc>https://cctrip.tech/zh-cn/series/</loc>
+    <loc>https://cctrip.github.io/zh-cn/series/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://cctrip.tech/series/"
+                href="https://cctrip.github.io/series/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="https://cctrip.tech/zh-cn/series/"
+                href="https://cctrip.github.io/zh-cn/series/"
                 />
   </url><url>
-    <loc>https://cctrip.tech/zh-cn/tags/</loc>
+    <loc>https://cctrip.github.io/zh-cn/tags/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://cctrip.tech/tags/"
+                href="https://cctrip.github.io/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="https://cctrip.tech/zh-cn/tags/"
+                href="https://cctrip.github.io/zh-cn/tags/"
                 />
   </url>
 </urlset>

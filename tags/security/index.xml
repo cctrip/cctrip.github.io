@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>security on CC&#39;s Trip</title>
-    <link>https://cctrip.tech/tags/security/</link>
+    <link>https://cctrip.github.io/tags/security/</link>
     <description>Recent content in security on CC&#39;s Trip</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 09 Nov 2020 17:55:28 +0800</lastBuildDate><atom:link href="https://cctrip.tech/tags/security/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 09 Nov 2020 17:55:28 +0800</lastBuildDate><atom:link href="https://cctrip.github.io/tags/security/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>深入理解LVS</title>
-      <link>https://cctrip.tech/posts/deep_lvs/</link>
+      <link>https://cctrip.github.io/posts/deep_lvs/</link>
       <pubDate>Mon, 09 Nov 2020 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/deep_lvs/</guid>
+      <guid>https://cctrip.github.io/posts/deep_lvs/</guid>
       <description>1. 介绍    接上一篇深入理解iptables，kubernetes service技术还用到ipvs技术，讲到ipvs，那就得说说LVS了，这篇我们来了解下LVS具体的实现机制。
  2. IPVS     IPVS（IP虚拟服务器）实现传输层负载均衡，通常称为第4层LAN交换。
  负载均衡器的概念可以看这篇文章，或者翻译版本。
@@ -24,10 +24,10 @@ static const struct nf_hook_ops ip_vs_ops4[] = { /* After packet filtering, chan
     
     <item>
       <title>深入理解iptables</title>
-      <link>https://cctrip.tech/posts/deep_iptables/</link>
+      <link>https://cctrip.github.io/posts/deep_iptables/</link>
       <pubDate>Sat, 07 Nov 2020 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/deep_iptables/</guid>
+      <guid>https://cctrip.github.io/posts/deep_iptables/</guid>
       <description>1. 介绍    最近在刚好在看Kubernetes的service相关内容，里面用到了iptables和ipvs技术，好久没看iptables了，快忘记了，刚好复习重新记忆一下。
 讲iptables和ipvs，有个东西就一定得清楚，那就是netfilter
  2. netfilter     netfilter是一个数据包处理框架。
@@ -39,10 +39,10 @@ static const struct nf_hook_ops ip_vs_ops4[] = { /* After packet filtering, chan
     
     <item>
       <title>Linux PAM模块</title>
-      <link>https://cctrip.tech/posts/linux_pam/</link>
+      <link>https://cctrip.github.io/posts/linux_pam/</link>
       <pubDate>Thu, 05 Sep 2019 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/linux_pam/</guid>
+      <guid>https://cctrip.github.io/posts/linux_pam/</guid>
       <description>概念    Linux-PAM（Pluggable Authentication Modules for Linux）是一套共享库,使本地系统管理员可以随意选择程序的认证方式。换句话说，不用(重新编写)重新编译一个包含PAM功能的应用程序，就可以改变它使用的认证机制，这种方式下，就算升级本地认证机制,也不用修改程序。
  工作机制    当应用程序希望与PAM交互以处理事件时，他们必须包括libpam，该libpam允许通过库提供的API进行通信。 当PAM看到必须处理的新事件时，它将查看/etc/pam.d中的相关配置文件，并确定在某些阶段必须使用哪些模块。
  /etc/pam.d配置文件介绍    配置文件语法
@@ -65,10 +65,10 @@ type control module-path module-arguments 配置文件分为四列
     
     <item>
       <title>理解SSL/TLS协议</title>
-      <link>https://cctrip.tech/posts/tls/</link>
+      <link>https://cctrip.github.io/posts/tls/</link>
       <pubDate>Sun, 08 Jan 2017 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/tls/</guid>
+      <guid>https://cctrip.github.io/posts/tls/</guid>
       <description>背景    早期我们在访问web时使用HTTP协议，该协议在传输数据时使用明文传输，明文传输带来了以下风险：
  信息窃听风险，第三方可以获取通信内容 信息篡改风险，第三方可以篡改通信内容 身份冒充风险，第三方可以冒充他人身份参与通信  为了解决明文传输所带来的风险，网景公司在1994年设计了SSL用于Web的安全传输协议，这是SSL的起源。IETF将SSL进行标准化，1999年公布了第一版TLS标准文件。随后又公布了 RFC 5246（2008年8月）与 RFC 6176 （2011年3月）。该协议在web中被广泛应用。
  SSL/TLS协议    TLS（Transport Layer Security，传输层安全协议），及其前身SSL（Secure Sockets Layer，安全套接层）是一种安全协议，目的是为互联网通信，提供安全及数据完整性保障。
@@ -85,10 +85,10 @@ TLS Record Protocol    该协议提供了连接安全的两个基本特性：
     
     <item>
       <title>WEB安全之CSP</title>
-      <link>https://cctrip.tech/posts/webcsp/</link>
+      <link>https://cctrip.github.io/posts/webcsp/</link>
       <pubDate>Fri, 20 May 2016 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/webcsp/</guid>
+      <guid>https://cctrip.github.io/posts/webcsp/</guid>
       <description>概念    内容安全策略(Content-Security-Policy，CSP)：是一种web应用技术用于帮助缓解大部分类型的内容注入攻击，包括XSS攻击和数据注入等，这些攻击可实现数据窃取、网站破坏和作为恶意软件分发版本等行为。该策略可让网站管理员指定客户端允许加载的各类可信任资源。
  浏览器支持    统计来源：caniuse.com/contentsecuritypolicy &amp;amp; Mozilla
  指令参考    Content-Security-Policy 响应头的值可配置一个或多个，多个指令以分号;隔开。

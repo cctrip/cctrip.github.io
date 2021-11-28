@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Linux on CC&#39;s Trip</title>
-    <link>https://cctrip.tech/categories/linux/</link>
+    <link>https://cctrip.github.io/categories/linux/</link>
     <description>Recent content in Linux on CC&#39;s Trip</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 09 Nov 2020 17:55:28 +0800</lastBuildDate><atom:link href="https://cctrip.tech/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 09 Nov 2020 17:55:28 +0800</lastBuildDate><atom:link href="https://cctrip.github.io/categories/linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>深入理解LVS</title>
-      <link>https://cctrip.tech/posts/deep_lvs/</link>
+      <link>https://cctrip.github.io/posts/deep_lvs/</link>
       <pubDate>Mon, 09 Nov 2020 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/deep_lvs/</guid>
+      <guid>https://cctrip.github.io/posts/deep_lvs/</guid>
       <description>1. 介绍    接上一篇深入理解iptables，kubernetes service技术还用到ipvs技术，讲到ipvs，那就得说说LVS了，这篇我们来了解下LVS具体的实现机制。
  2. IPVS     IPVS（IP虚拟服务器）实现传输层负载均衡，通常称为第4层LAN交换。
  负载均衡器的概念可以看这篇文章，或者翻译版本。
@@ -24,10 +24,10 @@ static const struct nf_hook_ops ip_vs_ops4[] = { /* After packet filtering, chan
     
     <item>
       <title>深入理解iptables</title>
-      <link>https://cctrip.tech/posts/deep_iptables/</link>
+      <link>https://cctrip.github.io/posts/deep_iptables/</link>
       <pubDate>Sat, 07 Nov 2020 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/deep_iptables/</guid>
+      <guid>https://cctrip.github.io/posts/deep_iptables/</guid>
       <description>1. 介绍    最近在刚好在看Kubernetes的service相关内容，里面用到了iptables和ipvs技术，好久没看iptables了，快忘记了，刚好复习重新记忆一下。
 讲iptables和ipvs，有个东西就一定得清楚，那就是netfilter
  2. netfilter     netfilter是一个数据包处理框架。
@@ -39,10 +39,10 @@ static const struct nf_hook_ops ip_vs_ops4[] = { /* After packet filtering, chan
     
     <item>
       <title>谈谈文件描述符</title>
-      <link>https://cctrip.tech/posts/file_descriptor/</link>
+      <link>https://cctrip.github.io/posts/file_descriptor/</link>
       <pubDate>Sun, 29 Dec 2019 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/file_descriptor/</guid>
+      <guid>https://cctrip.github.io/posts/file_descriptor/</guid>
       <description>概念    wiki解释，文件描述符在形式上是一个非负整数。实际上，它是一个索引值，指向内核为每一个进程所维护的该进程打开文件的记录表。当程序打开一个现有文件或者创建一个新文件时，内核向进程返回一个文件描述符。在程序设计中，一些涉及底层的程序编写往往会围绕着文件描述符展开。
 一个文件描述符是一个数字，唯一标识一个在计算机的操作系统打开的文件。它描述了数据资源，以及如何访问该资源。
 当程序要求打开文件（或其他数据资源，例如网络套接字）时，内核：
@@ -57,10 +57,10 @@ static const struct nf_hook_ops ip_vs_ops4[] = { /* After packet filtering, chan
     
     <item>
       <title>Linux PAM模块</title>
-      <link>https://cctrip.tech/posts/linux_pam/</link>
+      <link>https://cctrip.github.io/posts/linux_pam/</link>
       <pubDate>Thu, 05 Sep 2019 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/linux_pam/</guid>
+      <guid>https://cctrip.github.io/posts/linux_pam/</guid>
       <description>概念    Linux-PAM（Pluggable Authentication Modules for Linux）是一套共享库,使本地系统管理员可以随意选择程序的认证方式。换句话说，不用(重新编写)重新编译一个包含PAM功能的应用程序，就可以改变它使用的认证机制，这种方式下，就算升级本地认证机制,也不用修改程序。
  工作机制    当应用程序希望与PAM交互以处理事件时，他们必须包括libpam，该libpam允许通过库提供的API进行通信。 当PAM看到必须处理的新事件时，它将查看/etc/pam.d中的相关配置文件，并确定在某些阶段必须使用哪些模块。
  /etc/pam.d配置文件介绍    配置文件语法
@@ -83,10 +83,10 @@ type control module-path module-arguments 配置文件分为四列
     
     <item>
       <title>理解系统启动过程</title>
-      <link>https://cctrip.tech/posts/system_start/</link>
+      <link>https://cctrip.github.io/posts/system_start/</link>
       <pubDate>Sat, 21 May 2016 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/system_start/</guid>
+      <guid>https://cctrip.github.io/posts/system_start/</guid>
       <description>前言    Linux是一种自由和开放源代码的类UNIX操作系统。该操作系统的内核由林纳斯·托瓦兹在1991年10月5日首次发布。在加上用户空间的应用程序之后，成为Linux操作系统。Linux是自由软件和开放源代码软件发展中最著名的例子。
 接触Linux的时间也不算短了，一直都是直接使用Linux操作系统进行一些工作，很少去了解系统从开机到能使用的整个过程，感觉有需要好好理解下整个系统的启动过程，故写这篇博客加深一下理解。
  启动过程    先通过一张图来简单了解下整个系统启动的流程，整个过程基本可以分为POST&amp;ndash;&amp;gt;BIOS&amp;ndash;&amp;gt;MBR(GRUB)&amp;ndash;&amp;gt;Kernel&amp;ndash;&amp;gt;Init&amp;ndash;&amp;gt;Runlevel。下面会详细说明每个过程的作用。

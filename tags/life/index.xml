@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>life on CC&#39;s Trip</title>
-    <link>https://cctrip.tech/tags/life/</link>
+    <link>https://cctrip.github.io/tags/life/</link>
     <description>Recent content in life on CC&#39;s Trip</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 02 Jan 2021 17:55:28 +0800</lastBuildDate><atom:link href="https://cctrip.tech/tags/life/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 02 Jan 2021 17:55:28 +0800</lastBuildDate><atom:link href="https://cctrip.github.io/tags/life/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>2021年flag</title>
-      <link>https://cctrip.tech/posts/2021_flag/</link>
+      <link>https://cctrip.github.io/posts/2021_flag/</link>
       <pubDate>Sat, 02 Jan 2021 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/2021_flag/</guid>
+      <guid>https://cctrip.github.io/posts/2021_flag/</guid>
       <description>2021年已经到来，在这里给自己列一个flag清单。
 习惯成自然      每2周完成一个ARTS(Algorithm|Review|Technique|Share)
   完成12篇博客(每月一篇)

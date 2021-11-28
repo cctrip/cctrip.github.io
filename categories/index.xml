@@ -2,80 +2,80 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on CC&#39;s Trip</title>
-    <link>https://cctrip.tech/categories/</link>
+    <link>https://cctrip.github.io/categories/</link>
     <description>Recent content in Categories on CC&#39;s Trip</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 16 Aug 2021 17:55:28 +0800</lastBuildDate><atom:link href="https://cctrip.tech/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 16 Aug 2021 17:55:28 +0800</lastBuildDate><atom:link href="https://cctrip.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Cloud Native</title>
-      <link>https://cctrip.tech/categories/cloud-native/</link>
+      <link>https://cctrip.github.io/categories/cloud-native/</link>
       <pubDate>Mon, 16 Aug 2021 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/categories/cloud-native/</guid>
+      <guid>https://cctrip.github.io/categories/cloud-native/</guid>
       <description></description>
     </item>
     
     <item>
       <title>DevOps</title>
-      <link>https://cctrip.tech/categories/devops/</link>
+      <link>https://cctrip.github.io/categories/devops/</link>
       <pubDate>Sat, 20 Mar 2021 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/categories/devops/</guid>
+      <guid>https://cctrip.github.io/categories/devops/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Nginx</title>
-      <link>https://cctrip.tech/categories/nginx/</link>
+      <link>https://cctrip.github.io/categories/nginx/</link>
       <pubDate>Sat, 30 Jan 2021 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/categories/nginx/</guid>
+      <guid>https://cctrip.github.io/categories/nginx/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Other</title>
-      <link>https://cctrip.tech/categories/other/</link>
+      <link>https://cctrip.github.io/categories/other/</link>
       <pubDate>Sat, 02 Jan 2021 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/categories/other/</guid>
+      <guid>https://cctrip.github.io/categories/other/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Linux</title>
-      <link>https://cctrip.tech/categories/linux/</link>
+      <link>https://cctrip.github.io/categories/linux/</link>
       <pubDate>Mon, 09 Nov 2020 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/categories/linux/</guid>
+      <guid>https://cctrip.github.io/categories/linux/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Golang</title>
-      <link>https://cctrip.tech/categories/golang/</link>
+      <link>https://cctrip.github.io/categories/golang/</link>
       <pubDate>Tue, 07 Apr 2020 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/categories/golang/</guid>
+      <guid>https://cctrip.github.io/categories/golang/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Network</title>
-      <link>https://cctrip.tech/categories/network/</link>
+      <link>https://cctrip.github.io/categories/network/</link>
       <pubDate>Wed, 08 Aug 2018 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/categories/network/</guid>
+      <guid>https://cctrip.github.io/categories/network/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Security</title>
-      <link>https://cctrip.tech/categories/security/</link>
+      <link>https://cctrip.github.io/categories/security/</link>
       <pubDate>Sun, 08 Jan 2017 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/categories/security/</guid>
+      <guid>https://cctrip.github.io/categories/security/</guid>
       <description></description>
     </item>
     

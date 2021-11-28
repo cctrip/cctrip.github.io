@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>web on CC&#39;s Trip</title>
-    <link>https://cctrip.tech/tags/web/</link>
+    <link>https://cctrip.github.io/tags/web/</link>
     <description>Recent content in web on CC&#39;s Trip</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 20 May 2016 17:55:28 +0800</lastBuildDate><atom:link href="https://cctrip.tech/tags/web/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 20 May 2016 17:55:28 +0800</lastBuildDate><atom:link href="https://cctrip.github.io/tags/web/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>WEB安全之CSP</title>
-      <link>https://cctrip.tech/posts/webcsp/</link>
+      <link>https://cctrip.github.io/posts/webcsp/</link>
       <pubDate>Fri, 20 May 2016 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/webcsp/</guid>
+      <guid>https://cctrip.github.io/posts/webcsp/</guid>
       <description>概念    内容安全策略(Content-Security-Policy，CSP)：是一种web应用技术用于帮助缓解大部分类型的内容注入攻击，包括XSS攻击和数据注入等，这些攻击可实现数据窃取、网站破坏和作为恶意软件分发版本等行为。该策略可让网站管理员指定客户端允许加载的各类可信任资源。
  浏览器支持    统计来源：caniuse.com/contentsecuritypolicy &amp;amp; Mozilla
  指令参考    Content-Security-Policy 响应头的值可配置一个或多个，多个指令以分号;隔开。

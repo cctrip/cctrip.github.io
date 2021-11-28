@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>linux on CC&#39;s Trip</title>
-    <link>https://cctrip.tech/tags/linux/</link>
+    <link>https://cctrip.github.io/tags/linux/</link>
     <description>Recent content in linux on CC&#39;s Trip</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 16 Aug 2021 17:55:28 +0800</lastBuildDate><atom:link href="https://cctrip.tech/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 16 Aug 2021 17:55:28 +0800</lastBuildDate><atom:link href="https://cctrip.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Traefik系列(一)：Ingress Controller</title>
-      <link>https://cctrip.tech/posts/why_traefik/</link>
+      <link>https://cctrip.github.io/posts/why_traefik/</link>
       <pubDate>Mon, 16 Aug 2021 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/why_traefik/</guid>
+      <guid>https://cctrip.github.io/posts/why_traefik/</guid>
       <description>1. 介绍    最近，我们在拥抱云原生，准备基于k8s开发一套PaaS平台，我这边负责了服务路由相关的功能，因此，要选出一个Ingress Controller来实现我们的服务路由相关的功能，市面上那么多种，哪个才是最适合我们的呢？
  2. 需求    在EC2时代，我们用openresty来实现我们的服务路由功能，线上有几十上百个域名，基于稳定性和安全的考虑，通过人工配置和git来管理server和location模块，开发测试环境，不同的项目环境，基线环境等等，服务路由配置更是成倍数的增长，因此我们通过openresty+lua，以及DevOps平台来动态管理服务路由的变更。
 同时，基于安全和稳定性的考虑，我们在线上环境基于lua写了一些简单的waf，来防攻击以及限流操作。
@@ -28,10 +28,10 @@ traefik &amp;ndash;&amp;gt; traefik
     
     <item>
       <title>深入理解LVS</title>
-      <link>https://cctrip.tech/posts/deep_lvs/</link>
+      <link>https://cctrip.github.io/posts/deep_lvs/</link>
       <pubDate>Mon, 09 Nov 2020 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/deep_lvs/</guid>
+      <guid>https://cctrip.github.io/posts/deep_lvs/</guid>
       <description>1. 介绍    接上一篇深入理解iptables，kubernetes service技术还用到ipvs技术，讲到ipvs，那就得说说LVS了，这篇我们来了解下LVS具体的实现机制。
  2. IPVS     IPVS（IP虚拟服务器）实现传输层负载均衡，通常称为第4层LAN交换。
  负载均衡器的概念可以看这篇文章，或者翻译版本。
@@ -43,10 +43,10 @@ static const struct nf_hook_ops ip_vs_ops4[] = { /* After packet filtering, chan
     
     <item>
       <title>深入理解iptables</title>
-      <link>https://cctrip.tech/posts/deep_iptables/</link>
+      <link>https://cctrip.github.io/posts/deep_iptables/</link>
       <pubDate>Sat, 07 Nov 2020 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/deep_iptables/</guid>
+      <guid>https://cctrip.github.io/posts/deep_iptables/</guid>
       <description>1. 介绍    最近在刚好在看Kubernetes的service相关内容，里面用到了iptables和ipvs技术，好久没看iptables了，快忘记了，刚好复习重新记忆一下。
 讲iptables和ipvs，有个东西就一定得清楚，那就是netfilter
  2. netfilter     netfilter是一个数据包处理框架。
@@ -58,10 +58,10 @@ static const struct nf_hook_ops ip_vs_ops4[] = { /* After packet filtering, chan
     
     <item>
       <title>Nginx匹配机制总结</title>
-      <link>https://cctrip.tech/posts/nginx_match/</link>
+      <link>https://cctrip.github.io/posts/nginx_match/</link>
       <pubDate>Thu, 06 Feb 2020 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/nginx_match/</guid>
+      <guid>https://cctrip.github.io/posts/nginx_match/</guid>
       <description>背景    Nginx是一个当前主流的HTTP服务器和反向代理服务器，很多做WEB相关的同学基本都会用到，很多云厂商的七层负载均衡器也基本都是基于nginx实现的，个人在工作过程也算是经常接触，这篇文章主要想总结一下nginx的匹配机制，主要分为两块，一块是server的匹配，一块是location的匹配。
  Server匹配机制    配置过nginx的都知道，在一个http模块中是可以配置多个server模块的，并且多个server模块是可以配置相同的监听端口的，下面是一个简单的server配置例子：
 server { listen 80; server_name example.org www.example.org; ... } server { listen 80; server_name example.net www.example.net; ... } server { listen 80; server_name example.com www.example.com; ... } 当我们对nginx发起http请求后，nginx会拿到http请求中对应的 &amp;quot;Host&amp;quot; 头部跟server模块中的server_name进行匹配，根据匹配的server结果进入具体的server模块处理http请求。那么，它具体的匹配机制是怎样的呢？
@@ -73,10 +73,10 @@ server { listen 80; server_name example.org www.example.org; ... } server { list
     
     <item>
       <title>谈谈文件描述符</title>
-      <link>https://cctrip.tech/posts/file_descriptor/</link>
+      <link>https://cctrip.github.io/posts/file_descriptor/</link>
       <pubDate>Sun, 29 Dec 2019 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/file_descriptor/</guid>
+      <guid>https://cctrip.github.io/posts/file_descriptor/</guid>
       <description>概念    wiki解释，文件描述符在形式上是一个非负整数。实际上，它是一个索引值，指向内核为每一个进程所维护的该进程打开文件的记录表。当程序打开一个现有文件或者创建一个新文件时，内核向进程返回一个文件描述符。在程序设计中，一些涉及底层的程序编写往往会围绕着文件描述符展开。
 一个文件描述符是一个数字，唯一标识一个在计算机的操作系统打开的文件。它描述了数据资源，以及如何访问该资源。
 当程序要求打开文件（或其他数据资源，例如网络套接字）时，内核：
@@ -91,10 +91,10 @@ server { listen 80; server_name example.org www.example.org; ... } server { list
     
     <item>
       <title>Linux PAM模块</title>
-      <link>https://cctrip.tech/posts/linux_pam/</link>
+      <link>https://cctrip.github.io/posts/linux_pam/</link>
       <pubDate>Thu, 05 Sep 2019 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/linux_pam/</guid>
+      <guid>https://cctrip.github.io/posts/linux_pam/</guid>
       <description>概念    Linux-PAM（Pluggable Authentication Modules for Linux）是一套共享库,使本地系统管理员可以随意选择程序的认证方式。换句话说，不用(重新编写)重新编译一个包含PAM功能的应用程序，就可以改变它使用的认证机制，这种方式下，就算升级本地认证机制,也不用修改程序。
  工作机制    当应用程序希望与PAM交互以处理事件时，他们必须包括libpam，该libpam允许通过库提供的API进行通信。 当PAM看到必须处理的新事件时，它将查看/etc/pam.d中的相关配置文件，并确定在某些阶段必须使用哪些模块。
  /etc/pam.d配置文件介绍    配置文件语法
@@ -117,10 +117,10 @@ type control module-path module-arguments 配置文件分为四列
     
     <item>
       <title>理解TCP协议</title>
-      <link>https://cctrip.tech/posts/deep_tcp/</link>
+      <link>https://cctrip.github.io/posts/deep_tcp/</link>
       <pubDate>Wed, 08 Aug 2018 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/deep_tcp/</guid>
+      <guid>https://cctrip.github.io/posts/deep_tcp/</guid>
       <description>1. 介绍    TCP协议是个复杂的东西，但是对学习网络知识也好，排查网络问题也好，优化网络性能也是，又是一个不得不啃的东西。自己也反反复复的看了不少文章，书籍和RFC文档，这次，想总结一下自己这些年对TCP的理解，方便后续查阅。
 1.1 TCP是什么？    我们知道，IP协议是不可靠的，它不保证IP数据报文能成功达到目的地，它只提供最好的传输服务。而TCP的出现就是为了在IP协议不可靠的传输上面提供可靠的传输服务。
  wiki上的定义，TCP是在通过IP网络进行通信的主机上运行的应用程序之间，提供可靠，有序且经过错误检查的八位位组（字节）流交付。
@@ -144,10 +144,10 @@ TCP用户可以指示通信的安全性和优先级。当这些特性不需要�
     
     <item>
       <title>理解系统启动过程</title>
-      <link>https://cctrip.tech/posts/system_start/</link>
+      <link>https://cctrip.github.io/posts/system_start/</link>
       <pubDate>Sat, 21 May 2016 17:55:28 +0800</pubDate>
       
-      <guid>https://cctrip.tech/posts/system_start/</guid>
+      <guid>https://cctrip.github.io/posts/system_start/</guid>
       <description>前言    Linux是一种自由和开放源代码的类UNIX操作系统。该操作系统的内核由林纳斯·托瓦兹在1991年10月5日首次发布。在加上用户空间的应用程序之后，成为Linux操作系统。Linux是自由软件和开放源代码软件发展中最著名的例子。
 接触Linux的时间也不算短了，一直都是直接使用Linux操作系统进行一些工作，很少去了解系统从开机到能使用的整个过程，感觉有需要好好理解下整个系统的启动过程，故写这篇博客加深一下理解。
  启动过程    先通过一张图来简单了解下整个系统启动的流程，整个过程基本可以分为POST&amp;ndash;&amp;gt;BIOS&amp;ndash;&amp;gt;MBR(GRUB)&amp;ndash;&amp;gt;Kernel&amp;ndash;&amp;gt;Init&amp;ndash;&amp;gt;Runlevel。下面会详细说明每个过程的作用。
