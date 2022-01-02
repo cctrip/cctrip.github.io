@@ -6,26 +6,7 @@
     <description>Recent content in Posts on CC&#39;s Trip</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 16 Aug 2021 17:55:28 +0800</lastBuildDate><atom:link href="https://cctrip.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Traefik系列(一)：Ingress Controller</title>
-      <link>https://cctrip.github.io/posts/why_traefik/</link>
-      <pubDate>Mon, 16 Aug 2021 17:55:28 +0800</pubDate>
-      
-      <guid>https://cctrip.github.io/posts/why_traefik/</guid>
-      <description>1. 介绍    最近，我们在拥抱云原生，准备基于k8s开发一套PaaS平台，我这边负责了服务路由相关的功能，因此，要选出一个Ingress Controller来实现我们的服务路由相关的功能，市面上那么多种，哪个才是最适合我们的呢？
- 2. 需求    在EC2时代，我们用openresty来实现我们的服务路由功能，线上有几十上百个域名，基于稳定性和安全的考虑，通过人工配置和git来管理server和location模块，开发测试环境，不同的项目环境，基线环境等等，服务路由配置更是成倍数的增长，因此我们通过openresty+lua，以及DevOps平台来动态管理服务路由的变更。
-同时，基于安全和稳定性的考虑，我们在线上环境基于lua写了一些简单的waf，来防攻击以及限流操作。
-在容器上，我们的标准将不同的应用划分为不同的namespace，但是域名又是统一的。
-基于以上的各类需求，因此，在k8s上的服务路由功能至少要具备以下功能，
- 多域名转发 跨namespace配置location tls支持 tcp和udp转发 限流 api支持 动态加载配置文件 metric监控 跨域支持 重写支持 外部域名转发   3. 对比    ​	选型
-data plane &amp;ndash; control plane
-envoy &amp;ndash;&amp;gt; gloo|Ambassador | istio
-nginx &amp;ndash;&amp;gt; kong|apisix
-traefik &amp;ndash;&amp;gt; traefik
-   control plane data plane backend service discovery protocols ssl termination websocket routing scope resiliency lb algorithms auth Tracing canary/shadow istio integration state Paid support Linkaaaaaaaaaaaaaa dashboard sticky sessions lua     ingress-nginx nginx dynamic http,https,tcp (separate lb),udp,grpc,fastcgi,IPC socket yes yes host,path(with regex) cross-namespace rate limit, retries rr,ewma,ip_hash basic, digest, external auth yes canary  kubernetes  https://kubernetes.</description>
-    </item>
-    
+    <lastBuildDate>Mon, 05 Apr 2021 17:55:28 +0800</lastBuildDate><atom:link href="https://cctrip.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>K8S设计系列：架构</title>
       <link>https://cctrip.github.io/posts/k8s_design_arch/</link>
@@ -169,19 +150,6 @@ SecOps以安全性为核心，GitOps致力于持续交付，NetOps确保网络�
 为了说明不同的Ops如何解决上述过程，下面的图形绘制了每个作业功能在整个时间轴上执行的一些任务
 理想情况下，应在项目开始时采用X-Ops文化，并在整个过程中实施实践.
 总而言之，这就是每个Ops的意义</description>
-    </item>
-    
-    <item>
-      <title>2021年flag</title>
-      <link>https://cctrip.github.io/posts/2021_flag/</link>
-      <pubDate>Sat, 02 Jan 2021 17:55:28 +0800</pubDate>
-      
-      <guid>https://cctrip.github.io/posts/2021_flag/</guid>
-      <description>2021年已经到来，在这里给自己列一个flag清单。
-习惯成自然      每2周完成一个ARTS(Algorithm|Review|Technique|Share)
-  完成12篇博客(每月一篇)
-  完成4篇英文技术文章翻译(每季度一篇)
-   读书清单     《性能之巅 洞悉系统、企业与云计算》 《Web性能权威指南》   极客时间清单     程序员的数学基础课 MySQL实战45讲   </description>
     </item>
     
     <item>

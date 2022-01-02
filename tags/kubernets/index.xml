@@ -6,26 +6,7 @@
     <description>Recent content in kubernets on CC&#39;s Trip</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 16 Aug 2021 17:55:28 +0800</lastBuildDate><atom:link href="https://cctrip.github.io/tags/kubernets/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Traefik系列(一)：Ingress Controller</title>
-      <link>https://cctrip.github.io/posts/why_traefik/</link>
-      <pubDate>Mon, 16 Aug 2021 17:55:28 +0800</pubDate>
-      
-      <guid>https://cctrip.github.io/posts/why_traefik/</guid>
-      <description>1. 介绍    最近，我们在拥抱云原生，准备基于k8s开发一套PaaS平台，我这边负责了服务路由相关的功能，因此，要选出一个Ingress Controller来实现我们的服务路由相关的功能，市面上那么多种，哪个才是最适合我们的呢？
- 2. 需求    在EC2时代，我们用openresty来实现我们的服务路由功能，线上有几十上百个域名，基于稳定性和安全的考虑，通过人工配置和git来管理server和location模块，开发测试环境，不同的项目环境，基线环境等等，服务路由配置更是成倍数的增长，因此我们通过openresty+lua，以及DevOps平台来动态管理服务路由的变更。
-同时，基于安全和稳定性的考虑，我们在线上环境基于lua写了一些简单的waf，来防攻击以及限流操作。
-在容器上，我们的标准将不同的应用划分为不同的namespace，但是域名又是统一的。
-基于以上的各类需求，因此，在k8s上的服务路由功能至少要具备以下功能，
- 多域名转发 跨namespace配置location tls支持 tcp和udp转发 限流 api支持 动态加载配置文件 metric监控 跨域支持 重写支持 外部域名转发   3. 对比    ​	选型
-data plane &amp;ndash; control plane
-envoy &amp;ndash;&amp;gt; gloo|Ambassador | istio
-nginx &amp;ndash;&amp;gt; kong|apisix
-traefik &amp;ndash;&amp;gt; traefik
-   control plane data plane backend service discovery protocols ssl termination websocket routing scope resiliency lb algorithms auth Tracing canary/shadow istio integration state Paid support Linkaaaaaaaaaaaaaa dashboard sticky sessions lua     ingress-nginx nginx dynamic http,https,tcp (separate lb),udp,grpc,fastcgi,IPC socket yes yes host,path(with regex) cross-namespace rate limit, retries rr,ewma,ip_hash basic, digest, external auth yes canary  kubernetes  https://kubernetes.</description>
-    </item>
-    
+    <lastBuildDate>Mon, 09 Nov 2020 17:55:28 +0800</lastBuildDate><atom:link href="https://cctrip.github.io/tags/kubernets/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>深入理解LVS</title>
       <link>https://cctrip.github.io/posts/deep_lvs/</link>

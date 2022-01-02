@@ -2,9 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://cctrip.github.io/posts/why_traefik/</loc>
-    <lastmod>2021-08-16T17:55:28+08:00</lastmod>
-  </url><url>
     <loc>https://cctrip.github.io/posts/k8s_design_arch/</loc>
     <lastmod>2021-04-05T17:55:28+08:00</lastmod>
   </url><url>
@@ -25,9 +22,6 @@
   </url><url>
     <loc>https://cctrip.github.io/posts/talk_ops/</loc>
     <lastmod>2021-01-14T22:22:22+08:00</lastmod>
-  </url><url>
-    <loc>https://cctrip.github.io/posts/2021_flag/</loc>
-    <lastmod>2021-01-02T17:55:28+08:00</lastmod>
   </url><url>
     <loc>https://cctrip.github.io/posts/k8s_series_oam/</loc>
     <lastmod>2020-11-15T17:55:28+08:00</lastmod>
@@ -123,7 +117,7 @@
     <lastmod>2016-05-18T17:55:28+08:00</lastmod>
   </url><url>
     <loc>https://cctrip.github.io/categories/</loc>
-    <lastmod>2021-08-16T17:55:28+08:00</lastmod>
+    <lastmod>2021-07-15T17:55:28+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
@@ -136,7 +130,7 @@
                 />
   </url><url>
     <loc>https://cctrip.github.io/</loc>
-    <lastmod>2021-08-16T17:55:28+08:00</lastmod>
+    <lastmod>2021-07-15T17:55:28+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
@@ -149,19 +143,19 @@
                 />
   </url><url>
     <loc>https://cctrip.github.io/categories/cloud-native/</loc>
-    <lastmod>2021-08-16T17:55:28+08:00</lastmod>
+    <lastmod>2021-04-05T17:55:28+08:00</lastmod>
   </url><url>
-    <loc>https://cctrip.github.io/tags/kubernets/</loc>
-    <lastmod>2021-08-16T17:55:28+08:00</lastmod>
+    <loc>https://cctrip.github.io/tags/design/</loc>
+    <lastmod>2021-04-05T17:55:28+08:00</lastmod>
   </url><url>
-    <loc>https://cctrip.github.io/tags/linux/</loc>
-    <lastmod>2021-08-16T17:55:28+08:00</lastmod>
+    <loc>https://cctrip.github.io/tags/kubernetes/</loc>
+    <lastmod>2021-04-05T17:55:28+08:00</lastmod>
   </url><url>
     <loc>https://cctrip.github.io/posts/</loc>
-    <lastmod>2021-08-16T17:55:28+08:00</lastmod>
+    <lastmod>2021-07-15T17:55:28+08:00</lastmod>
   </url><url>
     <loc>https://cctrip.github.io/tags/</loc>
-    <lastmod>2021-08-16T17:55:28+08:00</lastmod>
+    <lastmod>2021-07-15T17:55:28+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
@@ -172,12 +166,6 @@
                 hreflang="en"
                 href="https://cctrip.github.io/tags/"
                 />
-  </url><url>
-    <loc>https://cctrip.github.io/tags/design/</loc>
-    <lastmod>2021-04-05T17:55:28+08:00</lastmod>
-  </url><url>
-    <loc>https://cctrip.github.io/tags/kubernetes/</loc>
-    <lastmod>2021-04-05T17:55:28+08:00</lastmod>
   </url><url>
     <loc>https://cctrip.github.io/categories/devops/</loc>
     <lastmod>2021-07-15T17:55:28+08:00</lastmod>
@@ -197,13 +185,13 @@
     <loc>https://cctrip.github.io/tags/translation/</loc>
     <lastmod>2021-01-28T17:55:28+08:00</lastmod>
   </url><url>
-    <loc>https://cctrip.github.io/tags/life/</loc>
-    <lastmod>2021-01-02T17:55:28+08:00</lastmod>
-  </url><url>
-    <loc>https://cctrip.github.io/categories/other/</loc>
-    <lastmod>2021-01-02T17:55:28+08:00</lastmod>
+    <loc>https://cctrip.github.io/tags/kubernets/</loc>
+    <lastmod>2020-11-09T17:55:28+08:00</lastmod>
   </url><url>
     <loc>https://cctrip.github.io/categories/linux/</loc>
+    <lastmod>2020-11-09T17:55:28+08:00</lastmod>
+  </url><url>
+    <loc>https://cctrip.github.io/tags/linux/</loc>
     <lastmod>2020-11-09T17:55:28+08:00</lastmod>
   </url><url>
     <loc>https://cctrip.github.io/tags/security/</loc>

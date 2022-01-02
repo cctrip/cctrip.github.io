@@ -6,11 +6,11 @@
     <description>Recent content in Categories on CC&#39;s Trip</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 16 Aug 2021 17:55:28 +0800</lastBuildDate><atom:link href="https://cctrip.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 05 Apr 2021 17:55:28 +0800</lastBuildDate><atom:link href="https://cctrip.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Cloud Native</title>
       <link>https://cctrip.github.io/categories/cloud-native/</link>
-      <pubDate>Mon, 16 Aug 2021 17:55:28 +0800</pubDate>
+      <pubDate>Mon, 05 Apr 2021 17:55:28 +0800</pubDate>
       
       <guid>https://cctrip.github.io/categories/cloud-native/</guid>
       <description></description>
@@ -31,15 +31,6 @@
       <pubDate>Sat, 30 Jan 2021 17:55:28 +0800</pubDate>
       
       <guid>https://cctrip.github.io/categories/nginx/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Other</title>
-      <link>https://cctrip.github.io/categories/other/</link>
-      <pubDate>Sat, 02 Jan 2021 17:55:28 +0800</pubDate>
-      
-      <guid>https://cctrip.github.io/categories/other/</guid>
       <description></description>
     </item>
     
