@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="color-scheme" content="light dark">
+
+    
+      <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests; block-all-mixed-content; default-src 'self'; child-src 'self'; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net/; form-action 'self'; frame-src 'self'; img-src 'self'; object-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com/ https://cdn.jsdelivr.net/; script-src 'self' 'unsafe-inline' https://www.google-analytics.com; prefetch-src 'self'; connect-src 'self' https://www.google-analytics.com;">
+
+    
+
+    <meta name="author" content="Hello.CC">
+    <meta name="description" content="1. 介绍    做了那么的久的运维，了解、运维和开发过各种各样的发布系统、运维系统、监控系统，经历了服务器从物理时代、到云时代再到容器时代的变革，服务器规模也经历从十几台到几千台甚至几万台规模的管理，管理手段也经历从手工到工具再到平台的演变。做过那么些的管理系统，因为各种各样的原因，可能是历史包袱，可能是人言式微，可能是早期技术没有那么的好，很多时候做出来的管理系统不是自己理想中的管理系统，因此，想花一些业余时间，写一个自己理解的DevOps管理系统。
+ 2. 目标    个人理解，一个DevOps管理系统应该具备以下功能：
+ 元数据管理，包括物理资源、云资源、容器资源、中间件资源、应用资源等 CI/CD，包括应用的打包、编译以及发布，服务器资源的创建、更新、删除等 监控告警，能实现不同指标的采集监控，监控数据可视化以及告警自定义等。 机器操作，可能是SSH登录，或者远程操作命令等。   3. 系统设计    完整的一套DevOps系统肯定是功能复杂、组件繁多的，不大可能自己造轮子，因此，底层会采用一些开源方案，然后在各个开源组件上构建自己的管理平台。
+3.1 元数据管理    说到底，我们要做的是一套能完整接入软件工程生命周期的工具平台，一个软件最终的目的是要发布到线上环境供用户使用，服务器资源只是软件的载体。那么，我们把软件叫做应用，从软件层面上来讲，一个应用应该是唯一的，而从&quot;硬件&quot;层面来说，一台&quot;服务器&quot;也是唯一的。那么，我们就可以将这两个&quot;唯一&quot;建立一种联系，然后再通过这两个唯一延伸出各种关联信息，比如，一个应用可能需要关联它的代码仓库，对应的负责人，归属部门等等，而一台服务器可能需要知道它的机房、机柜，或者是云平台，区域等信息。下图是一个我自己构建的元数据关联图：
+在设计元数据的表的时候，我们就可以根据这种关联关系来设计表。
+ 3.2 CI/CD    一个应用的生命周期一般包含以下步骤：
+ Design，接收需求，产品设计，沟通等，这边可能需要接入一些项目管理的工具，比如JIRA等、 Develop，程序员进行代码开发、架构设计等 Test，开发人员进行代码测试，测试人员进行功能测试等，这边可以引入一些自动化测试工具。 Deploy，各种人员可能会进行各种环境的部署，这边可以引入类似Jenkins的打包发布工具提高效率。 Monitor，进行监控数据的收集，通过平台输出可视化页面，配置告警、告警通知等功能。   3.3 监控告警    一个业务应用上线后，需要有工具来知道业务是否出现了问题，这时候就需要提供监控告警的一些工具。一个监控系统一般是如下图所示的架构
+ Agent，监控数据的收集器，可能是自研的跑在服务器上的采集客户端，也可能是嵌入到应用的收集器等待 Server，接收监控数据，进行存储的服务 Data，对数据进行整合、解析，告警触发、发送告警等操作的服务 Display，展示平台，供用户查看监控数据，配置告警规则的服务   3.4 机器操作    当整个DevOps平台完善的话，其实用户是可以不需要进入机器进行操作的，但是现实往往是不完美的，因此还需要类似堡垒机这样的服务来供用户登录机器进行一些日志查看，debug等操作。
+ 4. 初步实现想法     管理页面的话，目前的话想基于go-admin来做，一个用vue&#43;go实现的管理系统脚手架 整个元数据的表设计和管理页面设计，目前的话，应该是要自己写，会参考一些例如bk-cmdb、nightingale等开源方案的设计。 CI/CD的话，代码仓库会采用gitlab组件，发布的话可能采用Jenkins、Argo-CD等开源组件，这个之前做的不多，需要再做点调研，载体的话，现在是容器化时代，可能会直接对接k8s来操作。 监控的话，考虑到Kubernetes，直接会在Prometheus&#43;grafana进行二次开发，日志监控选取ELK或者Loki 堡垒机现在还没有进行研究，后续再进行调研。  基础服务资源">
+    <meta name="keywords" content="blog,developer,personal,writer">
+
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://cctrip.github.io/posts/my_devops_system/oops-image.jpg"/>
+<meta name="twitter:title" content="DevOps系统之我见"/>
+<meta name="twitter:description" content="1. 介绍    做了那么的久的运维，了解、运维和开发过各种各样的发布系统、运维系统、监控系统，经历了服务器从物理时代、到云时代再到容器时代的变革，服务器规模也经历从十几台到几千台甚至几万台规模的管理，管理手段也经历从手工到工具再到平台的演变。做过那么些的管理系统，因为各种各样的原因，可能是历史包袱，可能是人言式微，可能是早期技术没有那么的好，很多时候做出来的管理系统不是自己理想中的管理系统，因此，想花一些业余时间，写一个自己理解的DevOps管理系统。
+ 2. 目标    个人理解，一个DevOps管理系统应该具备以下功能：
+ 元数据管理，包括物理资源、云资源、容器资源、中间件资源、应用资源等 CI/CD，包括应用的打包、编译以及发布，服务器资源的创建、更新、删除等 监控告警，能实现不同指标的采集监控，监控数据可视化以及告警自定义等。 机器操作，可能是SSH登录，或者远程操作命令等。   3. 系统设计    完整的一套DevOps系统肯定是功能复杂、组件繁多的，不大可能自己造轮子，因此，底层会采用一些开源方案，然后在各个开源组件上构建自己的管理平台。
+3.1 元数据管理    说到底，我们要做的是一套能完整接入软件工程生命周期的工具平台，一个软件最终的目的是要发布到线上环境供用户使用，服务器资源只是软件的载体。那么，我们把软件叫做应用，从软件层面上来讲，一个应用应该是唯一的，而从&quot;硬件&quot;层面来说，一台&quot;服务器&quot;也是唯一的。那么，我们就可以将这两个&quot;唯一&quot;建立一种联系，然后再通过这两个唯一延伸出各种关联信息，比如，一个应用可能需要关联它的代码仓库，对应的负责人，归属部门等等，而一台服务器可能需要知道它的机房、机柜，或者是云平台，区域等信息。下图是一个我自己构建的元数据关联图：
+在设计元数据的表的时候，我们就可以根据这种关联关系来设计表。
+ 3.2 CI/CD    一个应用的生命周期一般包含以下步骤：
+ Design，接收需求，产品设计，沟通等，这边可能需要接入一些项目管理的工具，比如JIRA等、 Develop，程序员进行代码开发、架构设计等 Test，开发人员进行代码测试，测试人员进行功能测试等，这边可以引入一些自动化测试工具。 Deploy，各种人员可能会进行各种环境的部署，这边可以引入类似Jenkins的打包发布工具提高效率。 Monitor，进行监控数据的收集，通过平台输出可视化页面，配置告警、告警通知等功能。   3.3 监控告警    一个业务应用上线后，需要有工具来知道业务是否出现了问题，这时候就需要提供监控告警的一些工具。一个监控系统一般是如下图所示的架构
+ Agent，监控数据的收集器，可能是自研的跑在服务器上的采集客户端，也可能是嵌入到应用的收集器等待 Server，接收监控数据，进行存储的服务 Data，对数据进行整合、解析，告警触发、发送告警等操作的服务 Display，展示平台，供用户查看监控数据，配置告警规则的服务   3.4 机器操作    当整个DevOps平台完善的话，其实用户是可以不需要进入机器进行操作的，但是现实往往是不完美的，因此还需要类似堡垒机这样的服务来供用户登录机器进行一些日志查看，debug等操作。
+ 4. 初步实现想法     管理页面的话，目前的话想基于go-admin来做，一个用vue&#43;go实现的管理系统脚手架 整个元数据的表设计和管理页面设计，目前的话，应该是要自己写，会参考一些例如bk-cmdb、nightingale等开源方案的设计。 CI/CD的话，代码仓库会采用gitlab组件，发布的话可能采用Jenkins、Argo-CD等开源组件，这个之前做的不多，需要再做点调研，载体的话，现在是容器化时代，可能会直接对接k8s来操作。 监控的话，考虑到Kubernetes，直接会在Prometheus&#43;grafana进行二次开发，日志监控选取ELK或者Loki 堡垒机现在还没有进行研究，后续再进行调研。  基础服务资源"/>
+
+    <meta property="og:title" content="DevOps系统之我见" />
+<meta property="og:description" content="1. 介绍    做了那么的久的运维，了解、运维和开发过各种各样的发布系统、运维系统、监控系统，经历了服务器从物理时代、到云时代再到容器时代的变革，服务器规模也经历从十几台到几千台甚至几万台规模的管理，管理手段也经历从手工到工具再到平台的演变。做过那么些的管理系统，因为各种各样的原因，可能是历史包袱，可能是人言式微，可能是早期技术没有那么的好，很多时候做出来的管理系统不是自己理想中的管理系统，因此，想花一些业余时间，写一个自己理解的DevOps管理系统。
+ 2. 目标    个人理解，一个DevOps管理系统应该具备以下功能：
+ 元数据管理，包括物理资源、云资源、容器资源、中间件资源、应用资源等 CI/CD，包括应用的打包、编译以及发布，服务器资源的创建、更新、删除等 监控告警，能实现不同指标的采集监控，监控数据可视化以及告警自定义等。 机器操作，可能是SSH登录，或者远程操作命令等。   3. 系统设计    完整的一套DevOps系统肯定是功能复杂、组件繁多的，不大可能自己造轮子，因此，底层会采用一些开源方案，然后在各个开源组件上构建自己的管理平台。
+3.1 元数据管理    说到底，我们要做的是一套能完整接入软件工程生命周期的工具平台，一个软件最终的目的是要发布到线上环境供用户使用，服务器资源只是软件的载体。那么，我们把软件叫做应用，从软件层面上来讲，一个应用应该是唯一的，而从&quot;硬件&quot;层面来说，一台&quot;服务器&quot;也是唯一的。那么，我们就可以将这两个&quot;唯一&quot;建立一种联系，然后再通过这两个唯一延伸出各种关联信息，比如，一个应用可能需要关联它的代码仓库，对应的负责人，归属部门等等，而一台服务器可能需要知道它的机房、机柜，或者是云平台，区域等信息。下图是一个我自己构建的元数据关联图：
+在设计元数据的表的时候，我们就可以根据这种关联关系来设计表。
+ 3.2 CI/CD    一个应用的生命周期一般包含以下步骤：
+ Design，接收需求，产品设计，沟通等，这边可能需要接入一些项目管理的工具，比如JIRA等、 Develop，程序员进行代码开发、架构设计等 Test，开发人员进行代码测试，测试人员进行功能测试等，这边可以引入一些自动化测试工具。 Deploy，各种人员可能会进行各种环境的部署，这边可以引入类似Jenkins的打包发布工具提高效率。 Monitor，进行监控数据的收集，通过平台输出可视化页面，配置告警、告警通知等功能。   3.3 监控告警    一个业务应用上线后，需要有工具来知道业务是否出现了问题，这时候就需要提供监控告警的一些工具。一个监控系统一般是如下图所示的架构
+ Agent，监控数据的收集器，可能是自研的跑在服务器上的采集客户端，也可能是嵌入到应用的收集器等待 Server，接收监控数据，进行存储的服务 Data，对数据进行整合、解析，告警触发、发送告警等操作的服务 Display，展示平台，供用户查看监控数据，配置告警规则的服务   3.4 机器操作    当整个DevOps平台完善的话，其实用户是可以不需要进入机器进行操作的，但是现实往往是不完美的，因此还需要类似堡垒机这样的服务来供用户登录机器进行一些日志查看，debug等操作。
+ 4. 初步实现想法     管理页面的话，目前的话想基于go-admin来做，一个用vue&#43;go实现的管理系统脚手架 整个元数据的表设计和管理页面设计，目前的话，应该是要自己写，会参考一些例如bk-cmdb、nightingale等开源方案的设计。 CI/CD的话，代码仓库会采用gitlab组件，发布的话可能采用Jenkins、Argo-CD等开源组件，这个之前做的不多，需要再做点调研，载体的话，现在是容器化时代，可能会直接对接k8s来操作。 监控的话，考虑到Kubernetes，直接会在Prometheus&#43;grafana进行二次开发，日志监控选取ELK或者Loki 堡垒机现在还没有进行研究，后续再进行调研。  基础服务资源" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cctrip.github.io/posts/my_devops_system/" /><meta property="og:image" content="https://cctrip.github.io/posts/my_devops_system/oops-image.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-03-17T17:55:28&#43;08:00" />
+<meta property="article:modified_time" content="2021-03-17T17:55:28&#43;08:00" />
+
+
+
+    <title>CC&#39;s Trip</title>
+
+    
+      <link rel="canonical" href="https://cctrip.github.io/posts/my_devops_system/">
+    
+
+    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.887ff26809d388f31b108940579ccc27a34133e2812f1da9974172cb551191b7.css" integrity="sha256-iH/yaAnTiPMbEIlAV5zMJ6NBM&#43;KBLx2pl0Fyy1URkbc=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/leo.png" sizes="32x32">
+    
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    <meta name="generator" content="Hugo 0.81.0" />
+</head>
+  
+  
+  
+  <body class="preload-transitions colorscheme-light">
+    
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      CC&#39;s Trip
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/about/"> About </a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/"> Posts </a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/categories/"> Category </a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/resume/"> Resume </a>
+            </li>
+          
+        
+        
+      </ul>
+    
+ </section>
+</nav>
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://cctrip.github.io/posts/my_devops_system/">
+              DevOps系统之我见
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2021-03-17T17:55:28&#43;08:00'>
+                March 17, 2021
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              One-minute read
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/devops/">DevOps</a></div>
+
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/devops/">devops</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/platform/">platform</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <h2 id="1-介绍">
+  1. 介绍
+  <a class="heading-link" href="#1-%e4%bb%8b%e7%bb%8d">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>做了那么的久的运维，了解、运维和开发过各种各样的发布系统、运维系统、监控系统，经历了服务器从物理时代、到云时代再到容器时代的变革，服务器规模也经历从十几台到几千台甚至几万台规模的管理，管理手段也经历从手工到工具再到平台的演变。做过那么些的管理系统，因为各种各样的原因，可能是历史包袱，可能是人言式微，可能是早期技术没有那么的好，很多时候做出来的管理系统不是自己理想中的管理系统，因此，想花一些业余时间，写一个自己理解的DevOps管理系统。</p>
+<hr>
+<h2 id="2-目标">
+  2. 目标
+  <a class="heading-link" href="#2-%e7%9b%ae%e6%a0%87">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>个人理解，一个DevOps管理系统应该具备以下功能：</p>
+<ul>
+<li>元数据管理，包括物理资源、云资源、容器资源、中间件资源、应用资源等</li>
+<li>CI/CD，包括应用的打包、编译以及发布，服务器资源的创建、更新、删除等</li>
+<li>监控告警，能实现不同指标的采集监控，监控数据可视化以及告警自定义等。</li>
+<li>机器操作，可能是SSH登录，或者远程操作命令等。</li>
+</ul>
+<hr>
+<h2 id="3-系统设计">
+  3. 系统设计
+  <a class="heading-link" href="#3-%e7%b3%bb%e7%bb%9f%e8%ae%be%e8%ae%a1">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>完整的一套DevOps系统肯定是功能复杂、组件繁多的，不大可能自己造轮子，因此，底层会采用一些开源方案，然后在各个开源组件上构建自己的管理平台。</p>
+<h3 id="31-元数据管理">
+  3.1 元数据管理
+  <a class="heading-link" href="#31-%e5%85%83%e6%95%b0%e6%8d%ae%e7%ae%a1%e7%90%86">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>说到底，我们要做的是一套能完整接入软件工程生命周期的工具平台，一个软件最终的目的是要发布到线上环境供用户使用，服务器资源只是软件的载体。那么，我们把软件叫做应用，从软件层面上来讲，一个应用应该是唯一的，而从&quot;硬件&quot;层面来说，一台&quot;服务器&quot;也是唯一的。那么，我们就可以将这两个&quot;唯一&quot;建立一种联系，然后再通过这两个唯一延伸出各种关联信息，比如，一个应用可能需要关联它的代码仓库，对应的负责人，归属部门等等，而一台服务器可能需要知道它的机房、机柜，或者是云平台，区域等信息。下图是一个我自己构建的元数据关联图：</p>
+<p><img src="cmdb.jpg" alt=""></p>
+<p>在设计元数据的表的时候，我们就可以根据这种关联关系来设计表。</p>
+<hr>
+<h3 id="32-cicd">
+  3.2 CI/CD
+  <a class="heading-link" href="#32-cicd">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>一个应用的生命周期一般包含以下步骤：</p>
+<p><img src="cicd.jpg" alt=""></p>
+<ul>
+<li><strong>Design</strong>，接收需求，产品设计，沟通等，这边可能需要接入一些项目管理的工具，比如JIRA等、</li>
+<li><strong>Develop</strong>，程序员进行代码开发、架构设计等</li>
+<li><strong>Test</strong>，开发人员进行代码测试，测试人员进行功能测试等，这边可以引入一些自动化测试工具。</li>
+<li><strong>Deploy</strong>，各种人员可能会进行各种环境的部署，这边可以引入类似Jenkins的打包发布工具提高效率。</li>
+<li><strong>Monitor</strong>，进行监控数据的收集，通过平台输出可视化页面，配置告警、告警通知等功能。</li>
+</ul>
+<hr>
+<h3 id="33-监控告警">
+  3.3 监控告警
+  <a class="heading-link" href="#33-%e7%9b%91%e6%8e%a7%e5%91%8a%e8%ad%a6">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>一个业务应用上线后，需要有工具来知道业务是否出现了问题，这时候就需要提供监控告警的一些工具。一个监控系统一般是如下图所示的架构</p>
+<p><img src="monitor.jpg" alt=""></p>
+<ul>
+<li><strong>Agent</strong>，监控数据的收集器，可能是自研的跑在服务器上的采集客户端，也可能是嵌入到应用的收集器等待</li>
+<li><strong>Server</strong>，接收监控数据，进行存储的服务</li>
+<li><strong>Data</strong>，对数据进行整合、解析，告警触发、发送告警等操作的服务</li>
+<li><strong>Display</strong>，展示平台，供用户查看监控数据，配置告警规则的服务</li>
+</ul>
+<hr>
+<h3 id="34-机器操作">
+  3.4 机器操作
+  <a class="heading-link" href="#34-%e6%9c%ba%e5%99%a8%e6%93%8d%e4%bd%9c">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h3>
+<p>当整个DevOps平台完善的话，其实用户是可以不需要进入机器进行操作的，但是现实往往是不完美的，因此还需要类似堡垒机这样的服务来供用户登录机器进行一些日志查看，debug等操作。</p>
+<hr>
+<h2 id="4-初步实现想法">
+  4. 初步实现想法
+  <a class="heading-link" href="#4-%e5%88%9d%e6%ad%a5%e5%ae%9e%e7%8e%b0%e6%83%b3%e6%b3%95">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<ol>
+<li>管理页面的话，目前的话想基于<a href="https://github.com/go-admin-team/go-admin">go-admin</a>来做，一个用vue+go实现的管理系统脚手架</li>
+<li>整个元数据的表设计和管理页面设计，目前的话，应该是要自己写，会参考一些例如<a href="https://github.com/Tencent/bk-cmdb">bk-cmdb</a>、<a href="https://github.com/didi/nightingale">nightingale</a>等开源方案的设计。</li>
+<li>CI/CD的话，代码仓库会采用gitlab组件，发布的话可能采用Jenkins、Argo-CD等开源组件，这个之前做的不多，需要再做点调研，载体的话，现在是容器化时代，可能会直接对接k8s来操作。</li>
+<li>监控的话，考虑到Kubernetes，直接会在Prometheus+grafana进行二次开发，日志监控选取ELK或者Loki</li>
+<li>堡垒机现在还没有进行研究，后续再进行调研。</li>
+</ol>
+<p><strong>基础服务资源</strong></p>
+<p>上面的话，都是针对软件层面的，而应用依赖载体，因此，还需要有一些功能是用来做资源申请的，整体会考虑到兼容物理资源、云服务器资源、容器资源。除了物理资源以为，另外两个其实都可以通过自动化来实现按需创建，即要用的时候再申请。不过，我们还是保留人工审核创建的功能。因此需要做如下事情。</p>
+<ol>
+<li>提供工单系统，用于资源的申请和下架，当然，一些事务处理，比如故障处理也可以放在这里做记录</li>
+<li>对接物理资源，可能需要录入资源的页面，人工操作，优先需要把字段规范好，高端点，也可以做些自动发现功能。</li>
+<li>对接各个云平台，可能采用terrform或者操作云平台API来构建基础设施，包括EC2、RDS、Redis、LB、消息队列、云存储等。</li>
+<li>对接k8s集群，包括集群的创建，管理、以及各种k8s资源的操作</li>
+</ol>
+<hr>
+<h2 id="5-总结">
+  5. 总结
+  <a class="heading-link" href="#5-%e6%80%bb%e7%bb%93">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h2>
+<p>目前的话，暂时就以上这些想法，开发的话，后续可能会写成一个系列，来深入的说下各个功能的实现。</p>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="container">
+    ©
+    
+      2021 -
+    
+    2022
+     Hello.CC 
+    ·
+    Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">CCoder</a>.
+    
+  </section>
+</footer>
+
+    </main>
+
+    
+      
+      <script src="/js/coder.min.03b17769f4f91ae35667e1f2a1ca8c16f50562576cf90ff32b3179926914daa5.js" integrity="sha256-A7F3afT5GuNWZ&#43;HyocqMFvUFYlds&#43;Q/zKzF5kmkU2qU="></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </body>
+
+</html>
